@@ -1,0 +1,101 @@
+﻿title,description,customer_name,customer_email,order_id,product_name,submission_channel,expected_category,expected_subcategory,expected_priority,expected_sentiment,expected_escalation_required
+Order Status,Where is my order? The tracking page has not changed since yesterday.,Aarav Mehta,customer001@example.test,,,Website,Orders & Delivery,Order Status,Medium,Neutral,false
+Delayed Delivery,My delivery is 5 days late and I need it before the weekend.,Diya Shah,customer002@example.test,SKORD-26-00002,Smartphone,Chat,Orders & Delivery,Delayed Delivery,High,Negative,false
+Missing Package,"The courier marked my package delivered, but I did not receive it.",Kabir Patel,customer003@example.test,SKORD-26-00003,Cotton Shirt,Email,Orders & Delivery,Missing Package,High,Negative,true
+Wrong Item Delivered,I ordered a phone case but received a screen protector instead.,Ananya Rao,customer004@example.test,SKORD-26-00004,Kitchen Mixer,Phone,Orders & Delivery,Wrong Item Delivered,Medium,Negative,false
+Address Change,I entered the wrong apartment number. Can the delivery address be updated?,Vivaan Desai,customer005@example.test,SKORD-26-00005,Laptop,Website,Orders & Delivery,Address Change,Low,Neutral,false
+Delivery Attempt Failed,"The app says delivery failed, but nobody called or visited.",Isha Nair,customer006@example.test,SKORD-26-00006,,Chat,Orders & Delivery,Delivery Attempt Failed,Medium,Negative,false
+Damaged in Transit,The parcel arrived crushed and the product inside is broken.,Arjun Joshi,customer007@example.test,SKORD-26-00007,Smartwatch,Email,Orders & Delivery,Damaged in Transit,High,Negative,false
+Order Status,Mera order abhi tak dispatch nahi hua. Please status bata dijiye.,Meera Iyer,customer008@example.test,,Home Appliance,Phone,Orders & Delivery,Order Status,Medium,Neutral,false
+Delayed Delivery,Mera parcel expected date se teen din late hai aur tracking update nahi ho raha.,Reyansh Shah,customer009@example.test,SKORD-26-00009,Bluetooth Speaker,Website,Orders & Delivery,Delayed Delivery,High,Negative,false
+Missing Package,"Delivery complete dikha raha hai, lekin package mila hi nahi.",Saanvi Kulkarni,customer010@example.test,SKORD-26-00010,Office Chair,Chat,Orders & Delivery,Missing Package,High,Negative,true
+Wrong Item Delivered,"Maine blue shirt order ki thi, par red shirt receive hui hai.",Aditya Verma,customer011@example.test,SKORD-26-00011,,Email,Orders & Delivery,Wrong Item Delivered,Medium,Negative,false
+Address Change,"Order place kar diya hai, but address mein flat number galat hai. Change ho sakta hai?",Kiara Singh,customer012@example.test,SKORD-26-00012,Smartphone,Phone,Orders & Delivery,Address Change,Low,Neutral,false
+Delivery Attempt Failed,"Courier ne failed attempt mark kiya, par main poore din ghar par tha.",Rohan Mehta,customer013@example.test,SKORD-26-00013,Cotton Shirt,Website,Orders & Delivery,Delivery Attempt Failed,Medium,Negative,false
+Damaged in Transit,Package ka box phata hua tha aur andar ka item bhi damaged hai.,Aditi Patel,customer014@example.test,SKORD-26-00014,Kitchen Mixer,Chat,Orders & Delivery,Damaged in Transit,High,Negative,false
+Delayed Delivery,My order is late again. This is the second time the delivery date has moved.,Dev Malhotra,customer015@example.test,,Laptop,Email,Orders & Delivery,Delayed Delivery,High,Negative,false
+Order Status,Order ka status 'processing' par atka hua hai. Kya update hai?,Myra Shah,customer016@example.test,SKORD-26-00016,,Phone,Orders & Delivery,Order Status,Low,Neutral,false
+Missing Package,I have checked with neighbours and security. The delivered parcel is still missing.,Ishaan Gupta,customer017@example.test,SKORD-26-00017,Smartwatch,Website,Orders & Delivery,Missing Package,Critical,Negative,true
+Payment Failed,"The payment was deducted from my bank, but the order was not created.",Sara Khan,customer018@example.test,SKORD-26-00018,Home Appliance,Chat,Payments & Billing,Payment Failed,High,Negative,true
+Duplicate Charge,I was charged twice for the same order. Please reverse one payment.,Neil Desai,customer019@example.test,SKORD-26-00019,Bluetooth Speaker,Email,Payments & Billing,Duplicate Charge,High,Negative,false
+Invoice Request,Please share the GST invoice for my recent purchase.,Tara Menon,customer020@example.test,SKORD-26-00020,Office Chair,Phone,Payments & Billing,Invoice Request,Low,Neutral,false
+Payment Method,My saved card is not appearing at checkout.,Yash Trivedi,customer021@example.test,SKORD-26-00021,,Website,Payments & Billing,Payment Method,Low,Neutral,false
+Promotional Discount,The advertised coupon is not applying even though my cart meets the conditions.,Avni Rao,customer022@example.test,,Smartphone,Chat,Payments & Billing,Promotional Discount,Medium,Negative,false
+Refund Status,The payment reversal is not visible in my bank account yet.,Krish Kapoor,customer023@example.test,SKORD-26-00023,Cotton Shirt,Email,Payments & Billing,Refund Status,Medium,Negative,false
+Payment Failed,Payment fail ho gaya but bank se amount debit ho gaya hai.,Riya Shah,customer024@example.test,SKORD-26-00024,Kitchen Mixer,Phone,Payments & Billing,Payment Failed,High,Negative,true
+Duplicate Charge,Ek hi order ke liye do baar paise cut hue hain. Please check.,Dhruv Nair,customer025@example.test,SKORD-26-00025,Laptop,Website,Payments & Billing,Duplicate Charge,High,Negative,false
+Invoice Request,"Mujhe order ka GST invoice chahiye, download option kaam nahi kar raha.",Mira Joshi,customer026@example.test,SKORD-26-00026,,Chat,Payments & Billing,Invoice Request,Low,Neutral,false
+Payment Method,UPI option checkout par show nahi ho raha. Please help.,Atharv Patel,customer027@example.test,SKORD-26-00027,Smartwatch,Email,Payments & Billing,Payment Method,Medium,Neutral,false
+Promotional Discount,"Coupon apply karne par invalid code aa raha hai, terms ke according eligible hoon.",Nisha Iyer,customer028@example.test,SKORD-26-00028,Home Appliance,Phone,Payments & Billing,Promotional Discount,Medium,Negative,false
+Refund Status,"Refund initiate hone ka message mila tha, lekin amount abhi tak credit nahi hua.",Parth Mehta,customer029@example.test,,Bluetooth Speaker,Website,Payments & Billing,Refund Status,Medium,Negative,false
+Payment Failed,My account shows multiple unexplained debits and I suspect someone accessed my payment details.,Zoya Khan,customer030@example.test,SKORD-26-00030,Office Chair,Chat,Payments & Billing,Payment Failed,Critical,Negative,true
+Duplicate Charge,I can see two successful charges for one order in my statement.,Aarav Mehta,customer031@example.test,SKORD-26-00031,,Email,Payments & Billing,Duplicate Charge,High,Negative,false
+Invoice Request,Can you resend the invoice to my registered email address?,Diya Shah,customer032@example.test,SKORD-26-00032,Smartphone,Phone,Payments & Billing,Invoice Request,Low,Neutral,false
+Payment Method,Card verification keeps failing although the card works elsewhere.,Kabir Patel,customer033@example.test,SKORD-26-00033,Cotton Shirt,Website,Payments & Billing,Payment Method,Medium,Negative,false
+Promotional Discount,The discount disappeared after I placed the order. Please explain the final amount.,Ananya Rao,customer034@example.test,SKORD-26-00034,Kitchen Mixer,Chat,Payments & Billing,Promotional Discount,Medium,Negative,false
+Return Request,The shoes are too small. I would like to return them.,Vivaan Desai,customer035@example.test,SKORD-26-00035,Laptop,Email,Returns & Refunds,Return Request,Low,Neutral,false
+Return Pickup,"My return pickup was scheduled yesterday, but nobody arrived.",Isha Nair,customer036@example.test,,,Phone,Returns & Refunds,Return Pickup,Medium,Negative,false
+Refund Delay,I returned the headphones last week and the refund has not arrived.,Arjun Joshi,customer037@example.test,SKORD-26-00037,Smartwatch,Website,Returns & Refunds,Refund Delay,Medium,Negative,false
+Exchange Request,Can I exchange this shirt for a larger size?,Meera Iyer,customer038@example.test,SKORD-26-00038,Home Appliance,Chat,Returns & Refunds,Exchange Request,Low,Neutral,false
+Return Rejected,"My return was rejected, but the product is unused and still has tags.",Reyansh Shah,customer039@example.test,SKORD-26-00039,Bluetooth Speaker,Email,Returns & Refunds,Return Rejected,High,Negative,false
+Cancellation,Please cancel my order before it is shipped.,Saanvi Kulkarni,customer040@example.test,SKORD-26-00040,Office Chair,Phone,Returns & Refunds,Cancellation,Low,Neutral,false
+Return Request,Product pasand nahi aaya. Return request kaise raise karun?,Aditya Verma,customer041@example.test,SKORD-26-00041,,Website,Returns & Refunds,Return Request,Low,Neutral,false
+Return Pickup,Pickup agent ne parcel collect nahi kiya aur request close ho gayi.,Kiara Singh,customer042@example.test,SKORD-26-00042,Smartphone,Chat,Returns & Refunds,Return Pickup,Medium,Negative,false
+Refund Delay,"Return complete ho gaya hai, but refund abhi tak account mein nahi aaya.",Rohan Mehta,customer043@example.test,,Cotton Shirt,Email,Returns & Refunds,Refund Delay,Medium,Negative,false
+Exchange Request,"Mujhe same shoes ka size 9 chahiye, size 8 exchange karna hai.",Aditi Patel,customer044@example.test,SKORD-26-00044,Kitchen Mixer,Phone,Returns & Refunds,Exchange Request,Low,Neutral,false
+Return Rejected,Return reject kar diya jabki item damaged condition mein receive hua tha.,Dev Malhotra,customer045@example.test,SKORD-26-00045,Laptop,Website,Returns & Refunds,Return Rejected,High,Negative,true
+Cancellation,"Order cancel karna hai, galti se wrong product select ho gaya.",Myra Shah,customer046@example.test,SKORD-26-00046,,Chat,Returns & Refunds,Cancellation,Low,Neutral,false
+Refund Delay,I have contacted support twice about the refund and both times I was given a date that passed.,Ishaan Gupta,customer047@example.test,SKORD-26-00047,Smartwatch,Email,Returns & Refunds,Refund Delay,High,Negative,true
+Return Pickup,The pickup person refused the parcel without explaining why.,Sara Khan,customer048@example.test,SKORD-26-00048,Home Appliance,Phone,Returns & Refunds,Return Pickup,Medium,Negative,false
+Return Request,"The product listing said easy returns, but the return button is missing.",Neil Desai,customer049@example.test,SKORD-26-00049,Bluetooth Speaker,Website,Returns & Refunds,Return Request,Medium,Negative,false
+Cancellation,Please stop shipment and cancel this order urgently.,Tara Menon,customer050@example.test,,Office Chair,Chat,Returns & Refunds,Cancellation,High,Negative,false
+Refund Delay,Refund has been pending for 20 days and support has not provided a clear update.,Yash Trivedi,customer051@example.test,SKORD-26-00051,,Email,Returns & Refunds,Refund Delay,High,Negative,true
+Defective Product,The mixer stops after running for a few seconds. It appears defective.,Avni Rao,customer052@example.test,SKORD-26-00052,Smartphone,Phone,Product Issues,Defective Product,High,Negative,false
+Damaged Product,The glass table arrived with a cracked top.,Krish Kapoor,customer053@example.test,SKORD-26-00053,Cotton Shirt,Website,Product Issues,Damaged Product,High,Negative,false
+Missing Parts,The package did not include the charger listed in the box contents.,Riya Shah,customer054@example.test,SKORD-26-00054,Kitchen Mixer,Chat,Product Issues,Missing Parts,Medium,Negative,false
+Product Information,Does this laptop support an additional SSD?,Dhruv Nair,customer055@example.test,SKORD-26-00055,Laptop,Email,Product Issues,Product Information,Low,Neutral,false
+Warranty,Please explain how to claim warranty for my smartwatch.,Mira Joshi,customer056@example.test,SKORD-26-00056,,Phone,Product Issues,Warranty,Low,Neutral,false
+Wrong Product,The model number on the box is different from the one I ordered.,Atharv Patel,customer057@example.test,,Smartwatch,Website,Product Issues,Wrong Product,High,Negative,false
+Defective Product,Naya mixer start hota hai aur kuch seconds mein band ho jata hai.,Nisha Iyer,customer058@example.test,SKORD-26-00058,Home Appliance,Chat,Product Issues,Defective Product,High,Negative,false
+Damaged Product,Mujhe received product par crack mila hai. Replacement chahiye.,Parth Mehta,customer059@example.test,SKORD-26-00059,Bluetooth Speaker,Email,Product Issues,Damaged Product,High,Negative,false
+Missing Parts,Box mein installation screws missing hain. Product assemble nahi ho pa raha.,Zoya Khan,customer060@example.test,SKORD-26-00060,Office Chair,Phone,Product Issues,Missing Parts,Medium,Negative,false
+Product Information,Is phone mein dual SIM aur 5G dono support hain?,Aarav Mehta,customer061@example.test,SKORD-26-00061,,Website,Product Issues,Product Information,Low,Neutral,false
+Warranty,Smartwatch ki warranty claim process aur required documents bata dijiye.,Diya Shah,customer062@example.test,SKORD-26-00062,Smartphone,Chat,Product Issues,Warranty,Low,Neutral,false
+Wrong Product,Product ka color aur model dono listing se different hain.,Kabir Patel,customer063@example.test,SKORD-26-00063,Cotton Shirt,Email,Product Issues,Wrong Product,High,Negative,false
+Defective Product,The appliance is sparking and smells burnt when switched on. I have unplugged it.,Ananya Rao,customer064@example.test,,Kitchen Mixer,Phone,Product Issues,Defective Product,Critical,Negative,true
+Damaged Product,The screen has a deep crack and the device is unsafe to power on.,Vivaan Desai,customer065@example.test,SKORD-26-00065,Laptop,Website,Product Issues,Damaged Product,Critical,Negative,true
+Missing Parts,The furniture package is missing a critical support bracket.,Isha Nair,customer066@example.test,SKORD-26-00066,,Chat,Product Issues,Missing Parts,Medium,Negative,false
+Product Information,Can you confirm whether this appliance is compatible with a 220V supply?,Arjun Joshi,customer067@example.test,SKORD-26-00067,Smartwatch,Email,Product Issues,Product Information,Low,Neutral,false
+Warranty,The service centre refused warranty despite the product being within the warranty period.,Meera Iyer,customer068@example.test,SKORD-26-00068,Home Appliance,Phone,Product Issues,Warranty,High,Negative,true
+Login Failure,I cannot log in even after entering the correct password.,Reyansh Shah,customer069@example.test,SKORD-26-00069,Bluetooth Speaker,Website,Account & Login,Login Failure,Medium,Negative,false
+Password Reset,The password reset email is not arriving.,Saanvi Kulkarni,customer070@example.test,SKORD-26-00070,Office Chair,Chat,Account & Login,Password Reset,Low,Neutral,false
+Account Locked,My account was locked after several failed login attempts.,Aditya Verma,customer071@example.test,,,Email,Account & Login,Account Locked,High,Negative,false
+Profile Update,I need to update the phone number linked to my account.,Kiara Singh,customer072@example.test,SKORD-26-00072,Smartphone,Phone,Account & Login,Profile Update,Low,Neutral,false
+Account Access,I no longer have access to my registered email address.,Rohan Mehta,customer073@example.test,SKORD-26-00073,Cotton Shirt,Website,Account & Login,Account Access,Medium,Negative,false
+Verification,The OTP expires before I can enter it.,Aditi Patel,customer074@example.test,SKORD-26-00074,Kitchen Mixer,Chat,Account & Login,Verification,Medium,Negative,false
+Login Failure,App mein correct password dalne ke baad bhi login nahi ho raha.,Dev Malhotra,customer075@example.test,SKORD-26-00075,Laptop,Email,Account & Login,Login Failure,Medium,Negative,false
+Password Reset,Password reset link email par receive nahi hua. Spam folder bhi check kiya.,Myra Shah,customer076@example.test,SKORD-26-00076,,Phone,Account & Login,Password Reset,Low,Neutral,false
+Account Locked,"Mera account lock ho gaya hai, please unlock karne mein help karein.",Ishaan Gupta,customer077@example.test,SKORD-26-00077,Smartwatch,Website,Account & Login,Account Locked,High,Negative,false
+Profile Update,Registered mobile number change karna hai. Process kya hai?,Sara Khan,customer078@example.test,,Home Appliance,Chat,Account & Login,Profile Update,Low,Neutral,false
+Account Access,"Purana email account band ho gaya hai, ab ShopKart account access nahi ho raha.",Neil Desai,customer079@example.test,SKORD-26-00079,Bluetooth Speaker,Email,Account & Login,Account Access,Medium,Negative,false
+Verification,OTP bahut late aa raha hai aur expire ho jata hai.,Tara Menon,customer080@example.test,SKORD-26-00080,Office Chair,Phone,Account & Login,Verification,Medium,Negative,false
+Account Access,I received a password-change alert that I did not request and suspect account compromise.,Yash Trivedi,customer081@example.test,SKORD-26-00081,,Website,Account & Login,Account Access,Critical,Negative,true
+Login Failure,The login page keeps returning an error after two-factor verification.,Avni Rao,customer082@example.test,SKORD-26-00082,Smartphone,Chat,Account & Login,Login Failure,Medium,Negative,false
+Profile Update,Please correct a spelling mistake in my profile name.,Krish Kapoor,customer083@example.test,SKORD-26-00083,Cotton Shirt,Email,Account & Login,Profile Update,Low,Neutral,false
+Verification,The verification SMS is being sent to an old number I no longer own.,Riya Shah,customer084@example.test,SKORD-26-00084,Kitchen Mixer,Phone,Account & Login,Verification,Medium,Negative,false
+Store Policy,What is the return window for electronics?,Dhruv Nair,customer085@example.test,,Laptop,Website,General Enquiries,Store Policy,Low,Neutral,false
+Product Availability,Will this model be available again next month?,Mira Joshi,customer086@example.test,SKORD-26-00086,,Chat,General Enquiries,Product Availability,Low,Neutral,false
+Feedback,The packaging was excellent and delivery was faster than expected. Thank you.,Atharv Patel,customer087@example.test,SKORD-26-00087,Smartwatch,Email,General Enquiries,Feedback,Low,Positive,false
+Complaint,I have contacted support several times but have not received a useful response.,Nisha Iyer,customer088@example.test,SKORD-26-00088,Home Appliance,Phone,General Enquiries,Complaint,High,Negative,true
+Other,Where can I find the list of accepted payment methods?,Parth Mehta,customer089@example.test,SKORD-26-00089,Bluetooth Speaker,Website,General Enquiries,Other,Low,Neutral,false
+Store Policy,Electronics ke liye return policy kitne din ki hai?,Zoya Khan,customer090@example.test,SKORD-26-00090,Office Chair,Chat,General Enquiries,Store Policy,Low,Neutral,false
+Product Availability,Ye product out of stock hai. Dobara kab available hoga?,Aarav Mehta,customer091@example.test,SKORD-26-00091,,Email,General Enquiries,Product Availability,Low,Neutral,false
+Feedback,Delivery bahut fast thi aur packaging bhi achhi thi. Thank you!,Diya Shah,customer092@example.test,,Smartphone,Phone,General Enquiries,Feedback,Low,Positive,false
+Complaint,"Teen baar complaint raise ki, par abhi tak kisi ne issue solve nahi kiya.",Kabir Patel,customer093@example.test,SKORD-26-00093,Cotton Shirt,Website,General Enquiries,Complaint,High,Negative,true
+Other,Customer support se contact karne ka official process kya hai?,Ananya Rao,customer094@example.test,SKORD-26-00094,Kitchen Mixer,Chat,General Enquiries,Other,Low,Neutral,false
+Store Policy,Can a sale item be exchanged if the size does not fit?,Vivaan Desai,customer095@example.test,SKORD-26-00095,Laptop,Email,General Enquiries,Store Policy,Low,Neutral,false
+Product Availability,Do you expect the white variant to be restocked soon?,Isha Nair,customer096@example.test,SKORD-26-00096,,Phone,General Enquiries,Product Availability,Low,Neutral,false
+Feedback,The support agent was patient and explained everything clearly.,Arjun Joshi,customer097@example.test,SKORD-26-00097,Smartwatch,Website,General Enquiries,Feedback,Low,Positive,false
+Complaint,An agent used abusive language during my support call. I want this reviewed.,Meera Iyer,customer098@example.test,SKORD-26-00098,Home Appliance,Chat,General Enquiries,Complaint,High,Negative,true
+Other,I would like to know whether gift wrapping is available.,Reyansh Shah,customer099@example.test,,Bluetooth Speaker,Email,General Enquiries,Other,Low,Neutral,false
+Complaint,I have received threatening messages claiming to be from ShopKart support and asking for my OTP.,Saanvi Kulkarni,customer100@example.test,SKORD-26-00100,Office Chair,Phone,General Enquiries,Complaint,Critical,Negative,true

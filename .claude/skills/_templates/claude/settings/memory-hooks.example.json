@@ -1,0 +1,27 @@
+{
+  "$comment": "Keeps project memory (documentation-maintainer's .ai/ notes) in play: SessionStart puts .ai/memory.md into context once per session, and PostToolUse reminds the agent to update docs after each edit. Move the SessionStart entry to UserPromptSubmit only if the file is short; it is then re-sent on every prompt.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python -c \"import pathlib; p = pathlib.Path('.ai/memory.md'); print(p.read_text(encoding='utf-8')) if p.exists() else None\"",
+            "statusMessage": "Loading project memory..."
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PostToolUse\",\"additionalContext\":\"File changed. Before finishing this task, update what the change made stale: the why-comment at the change, the folder README, .ai/tasks.md and .ai/memory.md (documentation-maintainer).\"}}'"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(**/.env.example)",
+      "Bash(git status*)",
+      "Bash(git log*)",
+      "Bash(git diff*)",
+      "Bash(git show*)",
+      "Bash(git ls-files*)",
+      "Bash(git check-ignore*)",
+      "Bash(git branch --show-current)",
+      "Bash(npm run *)",
+      "Bash(npm --prefix frontend run *)",
+      "Bash(backend/.venv/bin/pytest*)",
+      "Bash(backend/.venv/bin/ruff*)"
+    ],
+    "deny": [
+      "Read(**/.env)",
+      "Read(**/.env.local)",
+      "Read(**/.env.*.local)",
+      "Read(**/.env.production)",
+      "Read(**/*.pem)",
+      "Bash(printenv*)",
+      "Bash(env)",
+      "Bash(git push*)",
+      "Bash(git remote add*)",
+      "Bash(gh repo create*)",
+      "Bash(docker *)",
+      "Bash(brew install mongodb*)"
+    ]
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"hookSpecificOutput\":{\"hookEventName\":\"UserPromptSubmit\",\"additionalContext\":\"Skill routing is mandatory in this project. Before acting, apply .claude/skills/_orchestrator/SKILL.md 3-signal routing (keyword/intent, file/path, project context). Invoke every skill that clears the bar and name it in your response. If none applies, say so as a deliberate conclusion.\"}}'",
+            "statusMessage": "Checking skill routing..."
+          }
+        ]
+      }
+    ]
+  }
+}

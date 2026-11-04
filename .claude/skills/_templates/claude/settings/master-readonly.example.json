@@ -1,0 +1,16 @@
+{
+  "$comment": "Lets the agent in a project read and compare against the master library (and other reference repos) but never write to them. Replace /absolute/path/to/Claude_Skills with the real path, in .claude/settings.local.json when the path differs per machine. Add one entry per read-only reference repo.",
+  "permissions": {
+    "additionalDirectories": ["/absolute/path/to/Claude_Skills"],
+    "allow": [
+      "Read(//absolute/path/to/Claude_Skills/**)",
+      "Glob(//absolute/path/to/Claude_Skills/**)",
+      "Grep(//absolute/path/to/Claude_Skills/**)"
+    ],
+    "deny": [
+      "Edit(//absolute/path/to/Claude_Skills/**)",
+      "Write(//absolute/path/to/Claude_Skills/**)",
+      "NotebookEdit(//absolute/path/to/Claude_Skills/**)"
+    ]
+  }
+}

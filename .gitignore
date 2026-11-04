@@ -1,0 +1,41 @@
+# Secrets. Real env files stay local; every .env.example is committed.
+.env
+.env.*
+!.env.example
+*.pem
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Node
+node_modules/
+dist/
+*.tsbuildinfo
+.vite/
+.eslintcache
+
+# Test output
+playwright-report/
+test-results/
+coverage/
+
+# Logs and local exports
+logs/
+*.log
+exports/
+
+# Local database files, should MongoDB ever point inside the repo
+data/db/
+*.wt
+mongod.lock
+
+# Spec archive and machine-local files
+*.zip
+.claude/settings.local.json
+.DS_Store

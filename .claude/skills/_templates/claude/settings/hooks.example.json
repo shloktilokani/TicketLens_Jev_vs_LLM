@@ -1,0 +1,44 @@
+{
+  "$comment": "Merge into <project>/.claude/settings.json. Put SKILLS_MASTER_DIR in .claude/settings.local.json (per machine): {\"env\": {\"SKILLS_MASTER_DIR\": \"/absolute/path/to/Claude_Skills\"}}. Copy _templates/claude/hooks/*.py to <project>/.claude/hooks/. Use python3 instead of python where that is the interpreter's name.",
+  "env": {
+    "GUARD_DENY_PATHS": "",
+    "GUARD_REMINDER": "About to modify a file. Confirm the process skills that apply to this change (documentation-maintainer, logging-standards, database-migrations, core-logic-change-visualizer, ... per _orchestrator routing) have been applied. If one applies and was not yet invoked, invoke it now."
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$CLAUDE_PROJECT_DIR/.claude/hooks/skill_drift.py\"",
+            "timeout": 60,
+            "statusMessage": "Checking skill-library drift..."
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"hookSpecificOutput\":{\"hookEventName\":\"UserPromptSubmit\",\"additionalContext\":\"Skill routing is mandatory in this project. Before acting, apply .claude/skills/_orchestrator/SKILL.md 3-signal routing (keyword/intent, file/path, project context). Invoke every skill that clears the bar and name it in your response. If none applies, say so as a deliberate conclusion.\"}}'",
+            "statusMessage": "Checking skill routing..."
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$CLAUDE_PROJECT_DIR/.claude/hooks/guard_paths.py\"",
+            "statusMessage": "Checking skill routing for this edit..."
+          }
+        ]
+      }
+    ]
+  }
+}

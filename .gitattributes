@@ -1,0 +1,10 @@
+# Store text with LF so diffs and shell scripts behave the same on every OS.
+* text=auto eol=lf
+
+# Spec data is kept byte-for-byte as supplied (the sample CSV has a BOM and CRLF line endings).
+*.csv -text
+
+*.png binary
+*.jpg binary
+*.ico binary
+*.woff2 binary

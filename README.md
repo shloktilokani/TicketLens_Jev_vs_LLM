@@ -1,0 +1,63 @@
+# TicketLens_Jev_vs_LLM
+
+A single-user demonstration application for managing fictional ShopKart customer-support tickets and comparing Jev (TypeSafe AI) with a configurable GPT model on structured ticket-classification tasks.
+
+## Documentation map
+
+- `AGENTS.md` — operating instructions for an autonomous coding agent.
+- `implementation.md` — sequenced end-to-end build plan, acceptance criteria, and deployment-readiness work.
+- `design.md` — frontend UX, page layouts, interaction rules, and visual system.
+- `architecture.md` — system boundaries, request flows, provider adapters, and operational decisions.
+- `requirements.md` — product scope and functional/non-functional requirements.
+- `data-model.md` — MongoDB collections, document shapes, indexes, and deletion behavior.
+- `ai-evaluation.md` — shared classification contract, Jev/GPT integration, evaluation methodology, and cost logging.
+- `.env.example` — environment-variable template.
+- `sample_tickets_template.csv` — CSV import header template.
+- `sample_tickets_100.csv` — 100 fictional, labelled ShopKart tickets for evaluation and import.
+
+## Product summary
+
+ShopKart is a fictional Indian e-commerce marketplace. TicketLens lets one operator create or import support tickets, run Jev or GPT independently or together, inspect results side by side, manually choose a final classification, and review historical executions and costs.
+
+## Local-first development
+
+- Frontend: React + Vite + TypeScript
+- Styling: Tailwind CSS + shadcn/ui
+- Backend: Python + FastAPI
+- Database: locally installed MongoDB Community Edition
+- AI providers: TypeSafe Jev API and OpenAI API
+- No Docker for local development
+- No authentication in the initial local single-user version
+
+## Important scope boundary
+
+The initial application is local-first. A locally installed MongoDB instance is not directly reachable by a cloud-hosted backend. Before public/cloud deployment, choose a production hosting target and a reachable production MongoDB deployment (for example, managed MongoDB), and add authentication/access control. Do not expose the local MongoDB service to the public internet.
+
+## Run locally
+
+Requires Python 3.13 and Node 22.12 or newer. The app starts without MongoDB or API keys at this stage; MongoDB is needed from Phase 2 and API keys for real provider calls.
+
+Backend, from `backend/` (http://127.0.0.1:8000/docs):
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
+```
+
+Frontend, from `frontend/` (http://localhost:5173):
+
+```bash
+npm install
+npm run dev
+```
+
+Tests and checks are listed in `CLAUDE.md`. Build status is in `PROGRESS.md`.
+
+## Architecture
+
+See `architecture.md` for system boundaries and request flows, and `data-model.md` for the MongoDB collections.
+
+## Getting started
+
+Read `AGENTS.md` first, then follow `implementation.md` in order. The human operator is responsible for installing and starting MongoDB locally and providing API credentials in the backend `.env` file. The coding agent should implement the remaining application without asking for routine product decisions.
