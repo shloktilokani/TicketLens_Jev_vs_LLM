@@ -267,6 +267,53 @@ Jev and GPT ran in parallel (3.04 s wall time for 1.5 s + 3.0 s fake runs), comp
 
 **Not verified:** not viewed in a browser by the agent.
 
+## Visual check with Playwright (2026-11-07)
+
+A one-off Playwright walkthrough (headless Chromium, script kept outside the repo) ran against the isolated e2e
+stack (`:5174` / `:8001`, database `ticketlens_e2e`, mock providers), which was already running. It covered the
+overview, ticket list, create form (empty-submit validation and success), ticket detail, Compare (ready, running,
+done), the import dialog, the dark theme, and phone width (412×915: list, navigation drawer, Compare). 16
+screenshots were viewed.
+
+**Passed:** every step completed; Compare ran in 3.3 s with independent timers (Jev 1.50 s, GPT 3.00 s); field
+agreement shown with text and icons; "Fake AI" badges; "not supported by Jev" for free text; dark theme readable
+and remembered; phone layout stacks cleanly; drawer opens with all navigation. No failed requests or HTTP errors.
+This closes the "not verified visually" gap for Phases 5 and 6 and the Compare page.
+
+**Found, not yet fixed:**
+1. Header badges say "Jev/GPT: Not configured" even when the fake AI is on. They should show "Fake AI" in mock mode.
+2. The ticket list's "Latest AI run" column always says "Not run", even for tickets with runs. It is a placeholder until Phase 11.
+3. Console warning from `next-themes` with React 19 ("Encountered a script tag while rendering React component"). Harmless; the theme works.
+4. The Compare page's top card has extra empty space above the Existing/New buttons.
+5. At phone width, the page title in the header is cut to a few letters ("Co…", "Ti…") by the search box.
+
+## Local models and test-run reports (2026-11-07)
+
+**Decision:** both sides are switchable; local models are the default until API keys exist (see requirements.md section 5).
+Jev side: AutoTrust JEV `autotrust-jev:9b` through Ollama's System One endpoint. LLM side: Ollama `qwen3:8b`.
+Ollama was updated from 0.40.13 to 0.40.15, because the AutoTrust model needs a newer version. The update was
+checksum- and signature-verified, and the old app is kept in the scratchpad.
+
+**Built:** `providers/definitions.py` (one set of task definitions for both sides), `providers/http.py` (shared
+HTTP call, timeouts, error mapping, no automatic retries), `providers/jev.py` (System One: four `choice` questions
+plus a `noul` for escalation, with the configurable threshold), `providers/ollama.py` (structured JSON output, temperature 0),
+`providers/registry.py` (picks mock, local or hosted per side, plus labels for the UI), new settings (`JEV_BASE_URL`,
+`LLM_BACKEND`, `OLLAMA_BASE_URL`, `OLLAMA_MODEL`), and provider status with labels. The UI shows "LLM" instead of
+"GPT" and names each side's model. The internal provider key stays `gpt` for now; renaming it is a later cleanup.
+
+**Reports:** `backend/scripts/run_report.py` writes `reports/test-runs/<run-id>.html` and `<run-id>.json` from stored
+comparisons (metrics in `services/run_metrics.py`, page in `services/run_report.py`). Metrics: agreement per field
+with Cohen's kappa, exact matches, latency (mean, median, 90th percentile, min, max, side-by-side wall time),
+reliability, tokens and output speed, cost when priced, Jev confidence split by agreement, label distributions,
+disagreements, and a per-ticket table. There is no accuracy figure without human-verified labels.
+
+**Runs:** Run 1 (`2026-11-07-run-1-fake-ai`): 10 tickets (SK-1002 to SK-1011) on the fake providers, all 10 at
+5 of 5 agreement, report published as an artifact. Run 2 uses the real local models; see its report.
+
+**Tests run:** `pytest` 189 passed; ruff clean; frontend lint and build pass.
+
+**Found earlier, now fixed:** header badges said "Not configured" in fake mode (they now show each side's label).
+
 ## Code size requirement (2026-11-07)
 
 The owner requires a small, clean codebase without losing functionality or security. Rules, evidence and enforcement are in `code-size-standards.md`. `ponytail` is installed and always on for coding tasks. Lint limits: ruff `C90` (complexity 10) and `SIM`; ESLint `complexity: 10`.

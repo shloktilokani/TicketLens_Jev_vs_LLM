@@ -100,7 +100,7 @@ function ProviderBadges() {
   return (
     <div className="hidden items-center gap-1 lg:flex">
       {(["jev", "gpt"] as const).map((provider) => {
-        const configured = data[provider].configured
+        const { configured, label } = data[provider]
         const Icon = configured ? CircleCheck : CircleX
         return (
           <Badge key={provider} variant="outline" className="gap-1">
@@ -111,8 +111,8 @@ function ProviderBadges() {
               )}
               aria-hidden
             />
-            {provider === "jev" ? "Jev" : "GPT"}:{" "}
-            {configured ? "Configured" : "Not configured"}
+            {provider === "jev" ? "Jev" : "LLM"}:{" "}
+            {configured ? label : "Not configured"}
           </Badge>
         )
       })}

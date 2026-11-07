@@ -2,6 +2,7 @@
 
 from functools import lru_cache
 from pathlib import Path
+from typing import Literal
 
 from pydantic import Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -28,7 +29,13 @@ class Settings(BaseSettings):
     typesafe_api_key: SecretStr | None = None
     openai_api_key: SecretStr | None = None
 
+    # Jev side: TypeSafe's hosted API, or a local System One server (Ollama with AutoTrust JEV).
+    jev_base_url: str = "https://api.typesafe.ai"
     jev_model: str = "jev-latest"
+    # LLM side: a local Ollama model by default, or OpenAI.
+    llm_backend: Literal["ollama", "openai"] = "ollama"
+    ollama_base_url: str = "http://127.0.0.1:11434"
+    ollama_model: str = "qwen3:8b"
     openai_model: str | None = None
 
     provider_timeout_seconds: float = Field(default=45, gt=0)

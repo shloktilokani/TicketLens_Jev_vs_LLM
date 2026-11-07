@@ -72,3 +72,8 @@ def ensure_indexes(db: Database) -> None:
 def find_all(db: Database, collection: str, sort_field: str) -> list[dict]:
     """Every document in a collection, oldest first, without internal ids (used by exports)."""
     return list(db[collection].find({}, {"_id": 0}).sort(sort_field, ASCENDING))
+
+
+def find_in(db: Database, collection: str, field: str, values: list[str]) -> list[dict]:
+    """Documents whose `field` is one of `values`, without internal ids (used by run reports)."""
+    return list(db[collection].find({field: {"$in": list(values)}}, {"_id": 0}))

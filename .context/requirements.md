@@ -75,6 +75,7 @@ The application supports English ticket text only (owner decision, 2026-11-07; H
 ## 5. AI provider behavior
 
 - Providers: TypeSafe Jev and OpenAI GPT.
+- **Provider change (owner decision, 2026-11-07):** both sides are switchable, and local models are the default until API keys exist. The **Jev side** uses TypeSafe's hosted Jev, or AutoTrust's open JEV model (`autotrust-jev:9b`) served locally by Ollama through the same System One API. AutoTrust JEV is not TypeSafe's Jev and is labelled as such. The **LLM side** (called "GPT" in the rest of this document) uses a local Ollama model (`qwen3:8b`) by default, or OpenAI. Wherever this document says GPT, read "the LLM side".
 - The GPT model is configurable; default model comes from backend configuration and can be changed from Settings using a validated model identifier.
 - Jev model must be discovered/configured using TypeSafe's documented model list endpoint; do not hardcode an undocumented model name. `jev-latest` may be used as the documented default alias when available.
 - The operator can run Jev only, GPT only, or both.

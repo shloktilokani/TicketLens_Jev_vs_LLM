@@ -178,7 +178,8 @@ def test_failed_runs_are_still_recorded(test_db, test_settings, ticket, marker, 
 
 
 def test_missing_key_is_recorded_as_not_configured(test_db, test_settings, ticket):
-    record = run(test_db, ticket, "gpt", test_settings)  # live mode, no OpenAI key
+    openai = test_settings.model_copy(update={"llm_backend": "openai"})
+    record = run(test_db, ticket, "gpt", openai)  # live mode, no OpenAI key
 
     assert record["status"] == "Failed"
     assert record["error"]["code"] == "not_configured"

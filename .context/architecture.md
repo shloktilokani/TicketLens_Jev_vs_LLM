@@ -74,6 +74,8 @@ Do not leak provider-specific response structures into React. Return a normalize
 
 ## 4. Jev-specific behavior
 
+**Local option (2026-11-07):** `JEV_BASE_URL=http://127.0.0.1:11434` with `JEV_MODEL=autotrust-jev:9b` sends the same System One request to Ollama, which serves AutoTrust's open JEV model locally with no key. The adapter is `backend/app/providers/jev.py`.
+
 Official API reference: https://api.typesafe.ai/redoc
 
 Relevant documented endpoints:
@@ -96,6 +98,8 @@ Jev does not provide general free-form text generation in this documented API. D
 Do not hardcode a model if the authenticated model list is available. Provide a model refresh/test action in Settings if feasible; otherwise load models at backend startup or on demand and cache briefly.
 
 ## 5. GPT-specific behavior
+
+**Local default (2026-11-07):** `LLM_BACKEND=ollama` with `OLLAMA_MODEL=qwen3:8b` calls Ollama's `/api/chat` with a JSON schema that restricts every enum field to the taxonomy (`backend/app/providers/ollama.py`). `LLM_BACKEND=openai` selects OpenAI once its adapter is built. Both sides receive the same task definitions (`backend/app/providers/definitions.py`).
 
 Use the official OpenAI Python SDK and the currently documented Responses API with structured output / JSON schema support. Confirm current SDK/API details during implementation.
 

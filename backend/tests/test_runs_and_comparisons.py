@@ -57,7 +57,8 @@ def test_run_unknown_ticket_or_provider(api):
 
 
 def test_run_without_mock_or_key_is_recorded_as_not_configured(test_settings, test_db):
-    with TestClient(create_app(test_settings)) as client:
+    openai = test_settings.model_copy(update={"llm_backend": "openai"})
+    with TestClient(create_app(openai)) as client:
         ticket_id = client.post("/api/tickets", json=NEW).json()["ticket_id"]
         execution = client.post(f"/api/tickets/{ticket_id}/runs/gpt").json()
 

@@ -11,7 +11,10 @@ export type Taxonomy = {
   providers: string[]
 }
 
-export type ProviderStatus = Record<"jev" | "gpt", { configured: boolean }>
+export type ProviderStatus = Record<
+  "jev" | "gpt",
+  { configured: boolean; label: string }
+>
 
 export type Classification = {
   category: string

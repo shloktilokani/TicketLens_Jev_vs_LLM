@@ -174,7 +174,7 @@ export function ComparePage() {
             onClick={() => ticket.data && compare.start(ticket.data.ticket_id)}
           >
             <Play aria-hidden />{" "}
-            {compare.running ? "Running…" : "Run Jev + GPT"}
+            {compare.running ? "Running…" : "Run Jev + LLM"}
           </Button>
         </CardContent>
       </Card>

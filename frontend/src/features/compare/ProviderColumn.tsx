@@ -19,7 +19,7 @@ import {
 } from "@/features/compare/useCompareRun"
 import type { Comparison, Execution } from "@/types/api"
 
-const LABEL: Record<ProviderName, string> = { jev: "Jev", gpt: "GPT" }
+const LABEL: Record<ProviderName, string> = { jev: "Jev", gpt: "LLM" }
 const FIELDS = [
   ["category", "Category"],
   ["subcategory", "Subcategory"],

@@ -198,7 +198,7 @@ function AiResults({ ticketId }: { ticketId: string }) {
           className="justify-self-start"
         >
           <Link to={`/compare?ticket=${encodeURIComponent(ticketId)}`}>
-            Run Jev + GPT in Compare
+            Run Jev + LLM in Compare
           </Link>
         </Button>
       </CardContent>
