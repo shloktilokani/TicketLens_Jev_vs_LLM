@@ -109,7 +109,7 @@ Regardless of what's already there, still ensure the `.ai/` structure described 
 <!-- project-tailoring:begin -->
 ## Project tailoring
 
-- `PROGRESS.md` is the task tracker that `AGENTS.md` requires. Use it instead of `.ai/tasks.md`; do not keep a second tracker.
+- `.context/PROGRESS.md` is the task tracker that `AGENTS.md` requires. Use it instead of `.ai/tasks.md`; do not keep a second tracker.
 - Update it after every phase with completed work, tests run and remaining blockers. Record spec gaps and assumptions there too.
-- The root spec documents are the source of truth. If code and spec disagree, ask the owner which is wrong.
+- The spec documents in `.context/` are the source of truth. If code and spec disagree, ask the owner which is wrong.
 <!-- project-tailoring:end -->

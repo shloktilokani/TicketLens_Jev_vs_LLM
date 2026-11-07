@@ -1,7 +1,7 @@
 """TicketLens API entry point.
 
 Phase 1 scaffold: starts with no provider keys and no database. Routes and settings arrive in
-later phases (see implementation.md).
+later phases (see .context/implementation.md).
 """
 
 from fastapi import FastAPI

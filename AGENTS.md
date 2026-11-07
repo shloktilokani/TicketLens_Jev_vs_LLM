@@ -4,14 +4,14 @@ You are implementing **TicketLens_Jev_vs_LLM**. Treat this repository's document
 
 ## 1. Read before coding
 
-Read, in order:
+Spec and status documents are in `.context/`. Read, in order:
 1. `README.md`
-2. `requirements.md`
-3. `architecture.md`
-4. `data-model.md`
-5. `ai-evaluation.md`
-6. `design.md`
-7. `implementation.md`
+2. `.context/requirements.md`
+3. `.context/architecture.md`
+4. `.context/data-model.md`
+5. `.context/ai-evaluation.md`
+6. `.context/design.md`
+7. `.context/implementation.md`
 
 Do not begin by generating a large amount of code. Follow the implementation phases and their acceptance criteria sequentially.
 
@@ -21,7 +21,7 @@ Do not begin by generating a large amount of code. Follow the implementation pha
 - Do not ask the product owner questions for decisions already specified here.
 - If an external API detail is uncertain, inspect the provider's current official documentation and implement against the current contract. Do not invent request fields, SDK methods, or pricing.
 - If a decision is genuinely blocked (for example, a missing API key or unavailable local MongoDB), implement the surrounding code, provide a precise setup message, and continue with mock/test mode where possible.
-- Maintain a `PROGRESS.md` checklist. Update it after each phase with completed work, tests run, and remaining blockers.
+- Maintain a `.context/PROGRESS.md` checklist. Update it after each phase with completed work, tests run, and remaining blockers.
 - Keep changes scoped. Do not introduce unrelated infrastructure or features.
 
 ## 3. Technical guardrails
@@ -47,11 +47,11 @@ Do not begin by generating a large amount of code. Follow the implementation pha
 ## 4. Definition of done for each phase
 
 A phase is complete only when:
-- Its acceptance criteria in `implementation.md` pass.
+- Its acceptance criteria in `.context/implementation.md` pass.
 - Relevant automated tests exist and pass.
 - Error, loading, and empty states are implemented where applicable.
 - The application still starts using the documented local commands.
-- `PROGRESS.md` is updated.
+- `.context/PROGRESS.md` is updated.
 
 ## 5. Required developer experience
 

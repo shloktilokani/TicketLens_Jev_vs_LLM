@@ -49,7 +49,8 @@ Create a corrected dataset in Phase 14 with realistic titles and real Hindi tick
 - `Running` is used in `architecture.md` but missing from the status list in `requirements.md`. It is treated as an in-progress status.
 - `BULK_CONCURRENCY` and `JEV_ESCALATION_THRESHOLD` appear in both env and settings. Env seeds the default; `app_settings` overrides it.
 - `final_classification` is populated in the `data-model.md` example, but its notes say null until selected. The notes are followed.
-- `implementation.md` shows a root `docs/` folder. Nothing needs it yet, so it is not created.
+- Spec and status docs live in `.context/` at the owner's request; `README.md`, `AGENTS.md` and `CLAUDE.md` stay in the root. The layout in `implementation.md` is updated to match, and its root `docs/` folder is dropped.
+- Bare file names inside `.context/` refer to files in that same folder. Phase 7's template download reads `.context/sample_tickets_template.csv`.
 - `.env.example` lives at `backend/.env.example` (Phase 1 layout), not the repository root.
 - Playwright is the assumed tool for Phase 16 end-to-end tests.
 - UNCONFIRMED: the owner's "phase 120" was read as Phases 0 to 1.

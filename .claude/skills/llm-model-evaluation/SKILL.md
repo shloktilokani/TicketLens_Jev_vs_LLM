@@ -118,5 +118,5 @@ Find where model names are configured (global and per-stage), where per-request 
 - Never send labels, earlier model output, comparison results or the final classification to a provider.
 - Agreement is not accuracy: report them separately, with denominators. Never pick a winner automatically.
 - Jev confidence and GPT self-reported confidence are not comparable measures.
-- `sample_tickets_100.csv` must not be used for paid evaluation until the Phase 14 fix in `PROGRESS.md` is done: every title currently equals its expected subcategory.
+- `.context/sample_tickets_100.csv` must not be used for paid evaluation until the Phase 14 fix in `.context/PROGRESS.md` is done: every title currently equals its expected subcategory.
 <!-- project-tailoring:end -->

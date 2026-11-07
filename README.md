@@ -5,15 +5,15 @@ A single-user demonstration application for managing fictional ShopKart customer
 ## Documentation map
 
 - `AGENTS.md` — operating instructions for an autonomous coding agent.
-- `implementation.md` — sequenced end-to-end build plan, acceptance criteria, and deployment-readiness work.
-- `design.md` — frontend UX, page layouts, interaction rules, and visual system.
-- `architecture.md` — system boundaries, request flows, provider adapters, and operational decisions.
-- `requirements.md` — product scope and functional/non-functional requirements.
-- `data-model.md` — MongoDB collections, document shapes, indexes, and deletion behavior.
-- `ai-evaluation.md` — shared classification contract, Jev/GPT integration, evaluation methodology, and cost logging.
-- `.env.example` — environment-variable template.
-- `sample_tickets_template.csv` — CSV import header template.
-- `sample_tickets_100.csv` — 100 fictional, labelled ShopKart tickets for evaluation and import.
+- `.context/implementation.md` — sequenced end-to-end build plan, acceptance criteria, and deployment-readiness work.
+- `.context/design.md` — frontend UX, page layouts, interaction rules, and visual system.
+- `.context/architecture.md` — system boundaries, request flows, provider adapters, and operational decisions.
+- `.context/requirements.md` — product scope and functional/non-functional requirements.
+- `.context/data-model.md` — MongoDB collections, document shapes, indexes, and deletion behavior.
+- `.context/ai-evaluation.md` — shared classification contract, Jev/GPT integration, evaluation methodology, and cost logging.
+- `backend/.env.example` — environment-variable template.
+- `.context/sample_tickets_template.csv` — CSV import header template.
+- `.context/sample_tickets_100.csv` — 100 fictional, labelled ShopKart tickets for evaluation and import.
 
 ## Product summary
 
@@ -52,12 +52,12 @@ npm install
 npm run dev
 ```
 
-Tests and checks are listed in `CLAUDE.md`. Build status is in `PROGRESS.md`.
+Tests and checks are listed in `CLAUDE.md`. Build status is in `.context/PROGRESS.md`.
 
 ## Architecture
 
-See `architecture.md` for system boundaries and request flows, and `data-model.md` for the MongoDB collections.
+See `.context/architecture.md` for system boundaries and request flows, and `.context/data-model.md` for the MongoDB collections.
 
 ## Getting started
 
-Read `AGENTS.md` first, then follow `implementation.md` in order. The human operator is responsible for installing and starting MongoDB locally and providing API credentials in the backend `.env` file. The coding agent should implement the remaining application without asking for routine product decisions.
+Read `AGENTS.md` first, then follow `.context/implementation.md` in order. The human operator is responsible for installing and starting MongoDB locally and providing API credentials in the backend `.env` file. The coding agent should implement the remaining application without asking for routine product decisions.

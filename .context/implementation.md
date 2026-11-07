@@ -53,17 +53,20 @@ TicketLens_Jev_vs_LLM/
     tests/
     requirements.txt
     .env.example
-  docs/
   README.md
   AGENTS.md
-  implementation.md
-  design.md
-  architecture.md
-  requirements.md
-  data-model.md
-  ai-evaluation.md
-  sample_tickets_template.csv
-  PROGRESS.md
+  CLAUDE.md
+  .context/
+    implementation.md
+    design.md
+    architecture.md
+    requirements.md
+    data-model.md
+    ai-evaluation.md
+    DEPLOYMENT_DECISIONS.md
+    sample_tickets_template.csv
+    sample_tickets_100.csv
+    PROGRESS.md
 ```
 
 1. Scaffold React + Vite + TypeScript in `frontend`.

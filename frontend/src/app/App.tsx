@@ -1,4 +1,4 @@
-// Phase 1 placeholder. The app shell and routes arrive in Phase 5 (see implementation.md).
+// Phase 1 placeholder. The app shell and routes arrive in Phase 5 (see .context/implementation.md).
 export function App() {
   return (
     <main className="flex min-h-svh flex-col items-center justify-center gap-2 bg-background p-4 text-foreground">

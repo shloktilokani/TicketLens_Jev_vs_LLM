@@ -4,7 +4,7 @@ TicketLens_Jev_vs_LLM: local single-user app comparing Jev and GPT on ShopKart t
 
 @AGENTS.md
 
-Status and next phase: `PROGRESS.md`. Build order: `implementation.md`, one phase at a time.
+Status and next phase: `.context/PROGRESS.md`. Build order: `.context/implementation.md`, one phase at a time.
 
 ## Commands (from the repository root)
 

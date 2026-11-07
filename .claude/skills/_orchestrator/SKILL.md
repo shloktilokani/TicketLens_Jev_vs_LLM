@@ -416,12 +416,12 @@ requirements.
 <!-- project-tailoring:begin -->
 ## Project tailoring
 
-TicketLens: local single-user React + FastAPI + MongoDB app comparing Jev and GPT on ticket classification. Spec lives in the root docs; start with `AGENTS.md`. `implementation.md` sets the phase order and `PROGRESS.md` tracks it.
+TicketLens: local single-user React + FastAPI + MongoDB app comparing Jev and GPT on ticket classification. Spec and status docs live in `.context/`; start with `AGENTS.md` in the root. `.context/implementation.md` sets the phase order and `.context/PROGRESS.md` tracks it.
 
 Project routing: provider adapters and prompts route to `llm-application-architecture` and `prompt-and-context-design`; evaluation metrics route to `llm-model-evaluation` and `data-scientist`; charts route to `data-presentation-standards`.
 
 ### Checked and left out on purpose
-- GCP skills, `gcp-skill-builder`, `deployment-strategy`, `devops-engineer`, `platform-engineer`, `site-reliability-engineer`, `release-manager`, `aiops-engineer`: no hosting platform is chosen (`DEPLOYMENT_DECISIONS.md`).
+- GCP skills, `gcp-skill-builder`, `deployment-strategy`, `devops-engineer`, `platform-engineer`, `site-reliability-engineer`, `release-manager`, `aiops-engineer`: no hosting platform is chosen (`.context/DEPLOYMENT_DECISIONS.md`).
 - `ml-engineer`, `mlops-engineer`, `data-engineer`, `data-source-onboarding`: models are called as services; no training or pipelines.
 - `safe-database-access`, `database-migrations`: wrappers target SQL databases; this project uses local MongoDB.
 - `mobile-developer`, `csp-strict-frontend`, `low-vision-dashboard-design`, `persona-ui-testing`: outside the documented scope. Accessibility is covered by `accessibility-specialist`.
