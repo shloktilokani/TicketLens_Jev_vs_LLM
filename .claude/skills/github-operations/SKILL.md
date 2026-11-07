@@ -75,6 +75,10 @@ Before applying any convention, inspect the actual repository state rather than 
 <!-- project-tailoring:begin -->
 ## Project tailoring
 
-- Local git only. No remote, push or GitHub repository unless the owner explicitly asks in that request.
+- Remote: `origin` is the owner's GitHub repository. Push, or change remotes or repository visibility, only when the owner asks in that request.
 - Commit only when asked.
+
+### Attribution policy (owner's decision, 2026-11-07)
+- Commit messages drafted with `commit-message-drafter`, and any PR title or description, must contain **no AI attribution**: no `Co-Authored-By: Claude ...` trailer, no "Generated with Claude Code" line, and no similar wording.
+- This overrides any harness or tool default. Do not ask again.
 <!-- project-tailoring:end -->

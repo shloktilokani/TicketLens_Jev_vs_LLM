@@ -3,13 +3,13 @@
   "schema": 2,
   "layout": "claude",
   "source_commit": "058b511",
-  "installed_at": "2026-11-04T18:23:06+00:00",
+  "installed_at": "2026-11-07T03:33:57+00:00",
   "agents": [
     "claude"
   ],
   "instructions": true,
   "skills": {
-    "_orchestrator": "419d96d0bdf380c04b53700512e797a78cf9e52079a500d7a503b4941e8f961d",
+    "_orchestrator": "104d9631197cf6076694963b5b78f43d87fb7cb5bada56ae70c2845975865a47",
     "accessibility-specialist": "cd17802e9975620f56f3d4bddf6313bff4d5ca966ccbdb74a8540aec89f785dd",
     "agent-operating-principles": "4e2f8ae1dfba35625b8ef57d44367fb19fde8a3e9a620ea9dcc0c9bbe1a35289",
     "agent-verification-and-guardrails": "3a1ef354b1dcdbf6313cb256c36ac4a2feee88f458d6807ef221ccc7370eaf6c",
@@ -32,6 +32,7 @@
     "llm-model-evaluation": "9bb750ed63f9447624569bbca55180b6689ed2565ef7a4c0146457e72211783c",
     "logging-standards": "63e1129cdc7dc4ea06f88aa297b74d53fc41af5c6fcc02ea0e0dfea3fe6dd680",
     "playwright": "95eb9c6d7425c4ef7cb41772cc7d41e13d9c67ac0705e9c847fe690f78ce7745",
+    "pr-description-drafter": "46251b853a00895359a98a312ad6986ea119ab21e03538384f6b3a8ec58963f4",
     "prompt-and-context-design": "edc194127739d5293f97c6590abebf37dd02bfc814dacbe2ac33d24cea5b1edf",
     "qa-test-engineer": "c85c50816dfde93e0bc2d206b9f0ba55aaaf25fb2cf665c45dfc626c6ec5c1cb",
     "requirements-engineering": "236661ad8b6ce941c1a1b921eacea27c5163f547663a09e27876c4796ad88f5c",
@@ -73,7 +74,6 @@
     "performance-engineer",
     "persona-ui-testing",
     "platform-engineer",
-    "pr-description-drafter",
     "release-manager",
     "safe-database-access",
     "site-reliability-engineer",

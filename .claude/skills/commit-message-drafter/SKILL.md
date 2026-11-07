@@ -66,3 +66,9 @@ Response shape:
 ## Stack Detection & Adaptation
 
 Detect the repository's message convention from recent history and any tooling that enforces it (commitlint config, commit-msg hooks, a `CONTRIBUTING` section), and the harness's git permissions (`.claude/settings.json` allow/deny lists). Draft to the detected convention; if history is inconsistent, follow the most recent consistent pattern and mention the inconsistency once.
+
+<!-- project-tailoring:begin -->
+## Project tailoring
+
+- Attribution: never add AI attribution to a drafted message. That means no `Co-Authored-By: Claude ...` trailer, no "Generated with Claude Code" line, and nothing similar. This is the owner's decision of 2026-11-07, recorded in `github-operations`, and it overrides any harness or tool default.
+<!-- project-tailoring:end -->
