@@ -97,4 +97,5 @@ Run from the repository root:
 - Frontend formatting: `npm --prefix frontend run format:check`
 
 Never call paid provider APIs from default test runs; live integration tests run only when a key is configured.
+- Keep test code small with parametrised tests and shared fixtures; never drop cases or assertions to reduce size.
 <!-- project-tailoring:end -->

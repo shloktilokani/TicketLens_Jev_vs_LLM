@@ -6,6 +6,8 @@ Build order and acceptance criteria: `implementation.md`. Update this file after
 
 Phases 0 and 1 are complete. **Next: Phase 2**, which needs MongoDB installed by the operator.
 
+Plain-language phase order and every step that needs the owner: `ROADMAP.md`.
+
 ## Phases
 
 - [x] Phase 0: Repository and agent setup
@@ -72,6 +74,10 @@ Create a corrected dataset in Phase 14 with realistic titles and real Hindi tick
 - `cn` was added by shadcn and replaces `clsx` + `tailwind-merge`. It is MIT-licensed, published by shadcn from `shadcn-ui/cn`, used in shadcn's own install docs, and has no install script. A string scan found no network, env or exec use.
 
 **Known warning:** pytest reports `StarletteDeprecationWarning` about `httpx` in `starlette.testclient`. It is harmless today; check it when upgrading FastAPI.
+
+## Code size requirement (2026-11-07)
+
+The owner requires a small, clean codebase without losing functionality or security. Rules, evidence and enforcement are in `code-size-standards.md`. `ponytail` is installed and always on for coding tasks. Lint limits: ruff `C90` (complexity 10) and `SIM`; ESLint `complexity: 10`.
 
 ## Skills
 

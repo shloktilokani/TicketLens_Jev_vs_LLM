@@ -20,6 +20,8 @@ export default defineConfig([
     languageOptions: {
       globals: globals.browser,
     },
+    // Code-size rule: .context/code-size-standards.md, section 5.
+    rules: { complexity: ["error", 10] },
   },
   {
     // shadcn-generated files export variants beside components by design.

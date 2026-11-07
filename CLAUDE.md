@@ -6,6 +6,8 @@ TicketLens_Jev_vs_LLM: local single-user app comparing Jev and GPT on ShopKart t
 
 Status and next phase: `.context/PROGRESS.md`. Build order: `.context/implementation.md`, one phase at a time.
 
+**Code size:** apply the `ponytail` skill (level `full`) to every coding, development and database task, and follow `.context/code-size-standards.md`. Never cut security, validation, tests or required behaviour to save lines.
+
 ## Commands (from the repository root)
 
 ```bash

@@ -5,6 +5,8 @@ A single-user demonstration application for managing fictional ShopKart customer
 ## Documentation map
 
 - `AGENTS.md` — operating instructions for an autonomous coding agent.
+- `.context/code-size-standards.md` — code size and reuse rules, with the research behind them.
+- `.context/ROADMAP.md` — plain-language phase order and the steps that need the owner.
 - `.context/implementation.md` — sequenced end-to-end build plan, acceptance criteria, and deployment-readiness work.
 - `.context/design.md` — frontend UX, page layouts, interaction rules, and visual system.
 - `.context/architecture.md` — system boundaries, request flows, provider adapters, and operational decisions.

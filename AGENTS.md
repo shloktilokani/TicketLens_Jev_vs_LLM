@@ -12,6 +12,7 @@ Spec and status documents are in `.context/`. Read, in order:
 5. `.context/ai-evaluation.md`
 6. `.context/design.md`
 7. `.context/implementation.md`
+8. `.context/code-size-standards.md`
 
 Do not begin by generating a large amount of code. Follow the implementation phases and their acceptance criteria sequentially.
 

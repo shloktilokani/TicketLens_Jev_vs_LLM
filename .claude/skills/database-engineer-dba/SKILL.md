@@ -91,4 +91,5 @@ Before proposing schema, query, or migration changes, inspect the project to det
 - `evaluation_labels` is a separate collection and must never be read by provider request-building code.
 - Store timestamps as UTC BSON dates, and money as Decimal128 or integer micro-units.
 - The operator installs and runs MongoDB. Never install it, use Docker for it, or expose its port.
+- Repositories: one small shared base helper for common operations (timestamps, pagination, find-by-ID), and one module per collection. Do not build a generic CRUD framework ahead of need (`.context/code-size-standards.md`).
 <!-- project-tailoring:end -->

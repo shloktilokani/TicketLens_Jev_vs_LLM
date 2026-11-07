@@ -8,4 +8,8 @@ target-version = "py313"
 line-length = 100
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "B", "UP"]
+# C90 and SIM support the code-size rules in .context/code-size-standards.md.
+select = ["E", "F", "I", "B", "UP", "C90", "SIM"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10

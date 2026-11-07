@@ -105,4 +105,5 @@ Once the stack is identified, apply this role's principles — contract design, 
 - Stack: FastAPI, Pydantic, PyMongo, HTTPX. No LangChain or Docker.
 - Bind to `127.0.0.1` only. CORS allows exactly the configured frontend origin.
 - Do not silently retry paid provider requests; never retry 400, 401, 402 or 403 (`AGENTS.md` section 3).
+- Code size and reuse: follow `.context/code-size-standards.md`. Shared helpers go in `core/`, provider plumbing such as HTTP, timeout and retry is shared in `providers/`, and only MongoDB access goes in `repositories/`. Extract on the third repeat, or the second for security, money or validation logic. Complexity is capped at 10 per function by ruff.
 <!-- project-tailoring:end -->
