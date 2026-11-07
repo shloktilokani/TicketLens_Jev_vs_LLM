@@ -11,7 +11,7 @@ acceptance criteria for each phase are in `implementation.md`; status is ticked 
 |---|---|---|---|
 | 0 | Repository setup | Organised folder, docs, git | Done |
 | 1 | Scaffold | Empty website and empty server that start | Done |
-| 2 | Database connection | Server connects to MongoDB; health check | **You:** install and start MongoDB ([A](#a-install-and-start-mongodb-before-phase-2)) |
+| 2 | Database connection | Server connects to MongoDB; health check | Done by you: MongoDB installed ([A](#a-mongodb-done)) |
 | 3 | Rules and categories | The fixed lists: categories, priorities, statuses | *No input* |
 | 4 | Tickets in the database | Create, edit, search and delete tickets; IDs like `SK-1001` | *No input* |
 | 5 | App frame | Sidebar, pages, light and dark theme | *No input* |
@@ -34,23 +34,12 @@ Phases 9 and 10 can be built and tested in mock mode before keys arrive; only re
 
 ## Owner input plans
 
-### A. Install and start MongoDB (before Phase 2)
+### A. MongoDB (done)
 
-Why: the app stores everything in a local MongoDB database. Project rules say you install it, not the agent.
-
-1. Open MongoDB's official macOS guide and check the current version:
-   https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/
-2. In Terminal, the guide's Homebrew steps are currently:
-   ```bash
-   brew tap mongodb/brew
-   brew install mongodb-community
-   brew services start mongodb-community
-   ```
-3. Check it is running: `mongosh --eval 'db.runCommand({ ping: 1 })'` should print `ok: 1`.
-4. Keep it local: do not change its network settings to allow other machines. The default (`127.0.0.1` only) is correct.
-5. Tell me "MongoDB is running". I will confirm the connection from the app.
-
-Done when: the ping prints `ok: 1`.
+You installed MongoDB 9.0.4 from the official archive, plus mongosh, the database tools and Compass (paths in
+`~/.zshrc`). Starting it is delegated to me, on `127.0.0.1` only. The start command is in the README under
+"Run locally". If the data folder `~/data` ever becomes owned by root again (for example after starting
+MongoDB with `sudo`), approve the macOS administrator prompt I trigger to give it back to your user.
 
 ### B. Add API keys (before Phases 9 and 10)
 
@@ -87,9 +76,9 @@ Why: each real call costs money. Nothing paid runs without your go-ahead.
 
 ### E. Review the corrected sample dataset (Phase 14)
 
-Why: in the supplied 100 tickets, every title gives away the answer, and there is no Hindi in Devanagari script. Results would be misleading.
+Why: in the supplied 100 tickets, every title gives away the answer, and about 30 rows are not in English. Results would be misleading.
 
-1. I create a corrected copy with realistic titles and real Hindi tickets, keeping the same labels and 100 rows.
+1. I create a corrected English copy with realistic titles, keeping the same labels and 100 rows.
 2. You skim it (I will point to 10 sample rows to check) and say whether it looks realistic.
 3. Only then is it used for a paid evaluation run (see D).
 

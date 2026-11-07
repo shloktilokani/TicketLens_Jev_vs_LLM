@@ -70,7 +70,7 @@ If a category/subcategory pair is inconsistent, reject or flag the output for re
 - Short summary: English text
 - Suggested resolution: English text
 
-The application supports English, Hindi, and Hinglish ticket text. Preserve the original ticket text. All generated summaries and suggested resolutions must be in English.
+The application supports English ticket text only (owner decision, 2026-11-07; Hindi and Hinglish were dropped). Preserve the original ticket text. All generated summaries and suggested resolutions must be in English.
 
 ## 5. AI provider behavior
 

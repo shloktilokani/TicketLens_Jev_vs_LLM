@@ -118,7 +118,7 @@ Behavior:
 - show generated ticket ID after successful creation
 - offer next actions: Run Jev, Run GPT, Compare both
 - provide clear validation messages
-- preserve Hindi/Hinglish text exactly
+- preserve the ticket text exactly as entered
 
 ## 7. Ticket detail (`/tickets/:ticketId`)
 

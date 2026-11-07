@@ -117,7 +117,7 @@ Both providers receive the same safe, normalized input:
 - original description
 - customer/order/product context if present
 - submission channel
-- supported languages note
+- language note (English only)
 - taxonomy version and allowed labels
 - classification definitions
 

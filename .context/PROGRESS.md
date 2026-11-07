@@ -32,7 +32,7 @@ Plain-language phase order and every step that needs the owner: `ROADMAP.md`.
 
 ## Blockers
 
-- **Phase 2:** MongoDB Community Edition is not installed on this machine. The operator installs and starts it.
+- **Phase 2:** none. MongoDB 9.0.4 is installed by the owner; starting it is delegated to the agent (loopback only).
 - **Phases 9 and 10, real calls only:** `TYPESAFE_API_KEY` and `OPENAI_API_KEY` go in `backend/.env`. Mock mode covers development until then.
 - **Phase 10:** `OPENAI_MODEL` has no default in `.env.example` and must be chosen.
 
@@ -41,9 +41,9 @@ Plain-language phase order and every step that needs the owner: `ROADMAP.md`.
 `sample_tickets_100.csv` is kept exactly as supplied, but it must not be used for evaluation yet:
 
 - In all 100 rows, `title` is identical to `expected_subcategory`. Titles are sent to both providers, so this leaks a ground-truth label and breaks the rule in `AGENTS.md`.
-- No row uses Hindi in Devanagari script. About 30 rows look like romanised Hindi or Hinglish; the spec asks for English, Hindi and Hinglish.
+- About 30 rows are romanised Hindi or Hinglish. The spec is now English only, so these rows are rewritten in English.
 
-Create a corrected dataset in Phase 14 with realistic titles and real Hindi tickets, keeping the labels and the 100-row size. The owner reviews it before any paid run.
+Create a corrected English dataset in Phase 14 with realistic titles, keeping the labels and the 100-row size. The owner reviews it before any paid run.
 
 ## Assumptions and spec gaps
 
@@ -55,7 +55,9 @@ Create a corrected dataset in Phase 14 with realistic titles and real Hindi tick
 - Bare file names inside `.context/` refer to files in that same folder. Phase 7's template download reads `.context/sample_tickets_template.csv`.
 - `.env.example` lives at `backend/.env.example` (Phase 1 layout), not the repository root.
 - Playwright is the assumed tool for Phase 16 end-to-end tests.
-- UNCONFIRMED: the owner's "phase 120" was read as Phases 0 to 1.
+- Scope confirmed (2026-11-07): one phase at a time, with a review after each. I commit each phase locally; the owner pushes.
+- Language is English only (owner decision, 2026-11-07).
+- Considered and withdrawn (2026-11-07): an external dataset (ABCD), RAG over labelled examples, and Google OKF. The owner chose to keep the original spec.
 
 ## Phase 1 notes
 
@@ -81,6 +83,6 @@ The owner requires a small, clean codebase without losing functionality or secur
 
 ## Skills
 
-32 skills are installed in `.claude/skills/` from Claude_Skills commit `058b511`. Reasons for exclusions are in the `_orchestrator` tailoring block. Project-specific notes live only in tailoring blocks.
+34 skills are installed in `.claude/skills/` from Claude_Skills commit `058b511`. Reasons for exclusions are in the `_orchestrator` tailoring block. Project-specific notes live only in tailoring blocks.
 
 The skill drift hook is left out because `~/Projects/Claude_Skills` has 65 untracked `SKILL (1).md` files, which make its skill hashes differ. Run `skillpack` from a clean clone, or remove those files first.

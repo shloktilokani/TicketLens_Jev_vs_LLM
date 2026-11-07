@@ -37,7 +37,18 @@ The initial application is local-first. A locally installed MongoDB instance is 
 
 ## Run locally
 
-Requires Python 3.13 and Node 22.12 or newer. The app starts without MongoDB or API keys at this stage; MongoDB is needed from Phase 2 and API keys for real provider calls.
+Requires Python 3.13, Node 22.12 or newer, and MongoDB Community Edition. API keys are needed only for real provider calls.
+
+MongoDB, local only (adjust the paths if MongoDB is installed elsewhere):
+
+```bash
+# --fork is not supported on macOS, so run it in the background with nohup.
+nohup ~/mongodb-macos-aarch64--9.0.4/bin/mongod --dbpath ~/data/db --bind_ip 127.0.0.1 --port 27017 --logpath ~/data/mongod.log --logappend >/dev/null 2>&1 &
+mongosh --quiet --eval 'db.runCommand({ ping: 1 })'   # expect { ok: 1 }
+```
+
+Do not start `mongod` with `sudo`: the data folder would become owned by root, and later starts as your user fail.
+To stop it: `mongosh admin --quiet --eval 'db.shutdownServer()'`.
 
 Backend, from `backend/` (http://127.0.0.1:8000/docs):
 
@@ -62,4 +73,4 @@ See `.context/architecture.md` for system boundaries and request flows, and `.co
 
 ## Getting started
 
-Read `AGENTS.md` first, then follow `.context/implementation.md` in order. The human operator is responsible for installing and starting MongoDB locally and providing API credentials in the backend `.env` file. The coding agent should implement the remaining application without asking for routine product decisions.
+Read `AGENTS.md` first, then follow `.context/implementation.md` in order. The human operator is responsible for installing MongoDB locally (the coding agent may start it on loopback) and providing API credentials in the backend `.env` file. The coding agent should implement the remaining application without asking for routine product decisions.

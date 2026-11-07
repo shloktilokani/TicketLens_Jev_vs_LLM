@@ -93,7 +93,7 @@ Acceptance:
 6. Implement `/api/health/ready` to verify MongoDB connectivity.
 7. Create index initialization for all collections described in `data-model.md`.
 8. Create an explicit `scripts/init_db.py` or equivalent for database/index initialization.
-9. The human operator installs and starts MongoDB Community Edition locally. The coding agent must not install MongoDB, use Docker, or expose MongoDB publicly.
+9. The human operator installs MongoDB Community Edition locally. The coding agent may start it on loopback (`127.0.0.1`) only, as delegated by the owner on 2026-11-07. The agent must not install MongoDB, use Docker, or expose MongoDB publicly.
 10. Show a clear setup error if MongoDB is unavailable.
 
 Acceptance:
@@ -162,7 +162,7 @@ Acceptance:
 5. Add notes section.
 6. Add delete confirmation dialog.
 7. Add empty states and validation messages.
-8. Preserve Hindi/Hinglish text exactly in inputs and display.
+8. Preserve ticket text exactly as entered, in inputs and display.
 
 Acceptance:
 - Manual ticket creation and editing work end to end.
@@ -297,7 +297,7 @@ Acceptance:
 ## Phase 14 — Evaluation dataset and analytics
 
 1. Generate 100 synthetic ShopKart tickets across six categories.
-2. Include English, Hindi, and Hinglish examples.
+2. Write all tickets in English (Hindi and Hinglish dropped by the owner, 2026-11-07).
 3. Include expected labels for five shared fields.
 4. Export labelled dataset as CSV; do not auto-seed.
 5. Store labels in `evaluation_labels`, separate from tickets and provider inputs.

@@ -45,13 +45,13 @@ Escalate when the issue involves safety, suspected fraud, account compromise, le
 
 ## 4. Language handling
 
-- Input may be English, Hindi, or Hinglish.
+- Input is English only (owner decision, 2026-11-07; Hindi and Hinglish were dropped).
 - Preserve the original title and description.
 - Do not translate or rewrite the original ticket before sending it.
 - Both providers receive the same language instruction and original text.
 - All GPT summaries and suggested resolutions must be in English.
 - Classification labels must use the canonical English enum values.
-- Synthetic evaluation tickets should include a meaningful mix of English, Hindi, and Hinglish. Do not assume a language from customer name or other metadata.
+- Synthetic evaluation tickets are in English.
 
 ## 5. Canonical provider input
 
@@ -147,7 +147,7 @@ Extract usage from the official response object where available. Store requested
 
 ## 9. Labelled sample dataset
 
-Generate 100 synthetic tickets across all six categories and across English, Hindi, and Hinglish.
+Generate 100 synthetic English tickets across all six categories.
 
 Requirements:
 - Each sample ticket has expected category, subcategory, priority, sentiment, and escalation label.
