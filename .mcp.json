@@ -1,0 +1,36 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@0.0.84",
+        "--isolated",
+        "--executable-path",
+        "${HOME}/.cache/chrome-for-testing/current/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+        "--viewport-size",
+        "1280x800",
+        "--output-dir",
+        "e2e/output/mcp",
+        "--allowed-origins",
+        "http://localhost:5174;http://127.0.0.1:8001;http://localhost:5173;http://127.0.0.1:8000"
+      ]
+    },
+    "chrome-devtools": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@1.12.0",
+        "--isolated",
+        "--executable-path",
+        "${HOME}/.cache/chrome-for-testing/current/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+        "--no-usage-statistics",
+        "--no-performance-crux",
+        "--redact-network-headers"
+      ],
+      "env": {
+        "CHROME_DEVTOOLS_MCP_NO_USAGE_STATISTICS": "1"
+      }
+    }
+  }
+}

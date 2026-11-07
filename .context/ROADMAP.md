@@ -100,5 +100,5 @@ hosting platform, production database, login/access control, domain and HTTPS, b
 
 - **Scope:** "phase 120" was read as Phases 0 to 1. Confirm whether to continue phase by phase with check-ins (default) or straight through.
 - **Repository visibility:** the GitHub repository is currently public. Make it private in GitHub settings if that was the intent.
-- **Pushing:** you push to GitHub yourself, unless you remove the two `deny` lines (`git push`, `git remote add`) from `.claude/settings.json`.
+- **Git:** the agent never stages, commits or pushes. You review each phase's changes in VS Code Source Control, then commit and push them yourself.
 - **npm cache (small fix):** `~/.npm` has root-owned files, which can make `npm install` fail. Fix once with `sudo chown -R $(whoami) ~/.npm`.

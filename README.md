@@ -58,6 +58,12 @@ python3 -m venv .venv
 .venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
 ```
 
+The backend creates its MongoDB indexes at startup. To create them on their own (safe to repeat): `.venv/bin/python -m scripts.init_db`.
+
+To try the Compare page without API keys, start the backend with fake Jev and GPT: `MOCK_PROVIDERS=true .venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload` (or set `MOCK_PROVIDERS=true` in `backend/.env`).
+
+Health checks: http://127.0.0.1:8000/api/health (the process is up) and http://127.0.0.1:8000/api/health/ready (MongoDB is reachable; returns 503 with a hint when it is not). Settings come from `backend/.env` (copy `backend/.env.example`); without it, safe local defaults apply. Set `MOCK_PROVIDERS=true` to use built-in fake Jev and GPT (no API calls, no cost; results are labelled `mock-*`). The frontend calls the backend at `http://127.0.0.1:8000`; override with `VITE_API_BASE_URL` in `frontend/.env.local` if needed (never put secrets in `VITE_` variables).
+
 Frontend, from `frontend/` (http://localhost:5173):
 
 ```bash
@@ -65,7 +71,7 @@ npm install
 npm run dev
 ```
 
-Tests and checks are listed in `CLAUDE.md`. Build status is in `.context/PROGRESS.md`.
+Tests and checks are listed in `CLAUDE.md`. Build status is in `.context/PROGRESS.md`. UI tests (scripted, visual and persona-driven) are in `e2e/README.md`.
 
 ## Architecture
 

@@ -227,3 +227,13 @@ stale snapshot can actively point a project at a deprecated approach.
 4. This detection pass doubles as the project-context trigger signal above: an existing Playwright
    setup is itself the strongest signal this skill (rather than `agent-browser` or a from-scratch
    recommendation) is the right one to delegate to for that project's browser-automation needs.
+
+<!-- project-tailoring:begin -->
+## Project tailoring
+
+TicketLens's Playwright setup is `e2e/`, a separate package so it never touches `frontend/package.json`.
+- Run from the repository root: `npm --prefix e2e test`. Approve new or changed baselines with `npm --prefix e2e run test:update-baselines`, after looking at every changed image.
+- `playwright.config.ts` starts `e2e/scripts/stack.sh`: frontend on :5174, backend on :8001, database `ticketlens_e2e`, mock providers. Projects: `chromium-desktop` (1280×800) and `chromium-mobile` (Pixel 7). One worker, because the tests share a database.
+- Baselines live in `e2e/tests/*-snapshots/` and are committed. Mask anything that changes between runs (IDs, timestamps, counts).
+- The Playwright MCP server is configured in `.mcp.json`. Agent-driven persona runs follow `persona-ui-testing`.
+<!-- project-tailoring:end -->

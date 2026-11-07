@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UI Testing Tools Audit</title>
+<style>
+  :root { --bg:#fff; --fg:#1a1a1a; --muted:#5c5c5c; --line:#ddd; --warn:#8a4b00; --warn-bg:#fff4e5; --ok:#1d6b3a; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#151515; --fg:#eee; --muted:#aaa; --line:#333; --warn:#ffb74d; --warn-bg:#2b2113; --ok:#7bd69a; } }
+  body { background:var(--bg); color:var(--fg); font:15px/1.5 system-ui, sans-serif; max-width:960px; margin:0 auto; padding:24px 16px; }
+  h1 { font-size:22px; } h2 { font-size:17px; margin-top:28px; }
+  .callout { background:var(--warn-bg); border-left:4px solid var(--warn); padding:10px 14px; }
+  table { border-collapse:collapse; width:100%; font-size:14px; } th, td { border-bottom:1px solid var(--line); padding:8px 6px; text-align:left; vertical-align:top; }
+  .wrap { overflow-x:auto; } code { font-size:13px; } .muted { color:var(--muted); }
+  .v-warn { color:var(--warn); font-weight:600; } .v-ok { color:var(--ok); font-weight:600; }
+</style>
+</head>
+<body>
+<h1>Dependency data-risk audit: UI testing tools</h1>
+<p class="muted">2026-11-07 · TicketLens · tools for agent-driven and scripted UI testing of the local app (synthetic data only). All licences Apache-2.0.</p>
+
+<p><strong>Summary:</strong> 1 content-exposure risk (mitigated), 5 low / metadata-only, 0 training risk, 0 no-structural-risk.</p>
+
+<h2>Needs a decision (mitigation applied)</h2>
+<div class="callout">
+  <p><strong>chrome-devtools-mcp 1.12.0: content-exposure risk by default.</strong> It sends usage statistics (tool invocation success rates, latency, environment) to Google at <code>https://play.googleapis.com/log</code> (installed code: <code>build/src/telemetry/ClearcutLogger.js</code>, gated in <code>build/src/index.js:114</code>). Performance tools send trace page URLs to <code>https://chromeuxreport.googleapis.com/v1/records</code> (gated in <code>index.js:231</code>). Both are on by default. Source: package README (npm, v1.12.0), "Usage statistics" section.</p>
+  <p><strong>Mitigation:</strong> start it with <code>--no-usage-statistics --no-performance-crux</code> and set <code>CHROME_DEVTOOLS_MCP_NO_USAGE_STATISTICS=1</code>. The env var is honoured in <code>build/src/config/ServerConfig.js:147-151</code>. Both are set in <code>.mcp.json</code>.</p>
+</div>
+
+<h2>All tools</h2>
+<div class="wrap">
+<table>
+<thead><tr><th>Tool</th><th>Verdict</th><th>Evidence</th><th>Mitigation</th></tr></thead>
+<tbody>
+<tr><td>chrome-devtools-mcp 1.12.0</td><td class="v-warn">Content-exposure (mitigated)</td><td>See the callout above.</td><td>Opt-out flags plus env var in <code>.mcp.json</code>.</td></tr>
+<tr><td>@playwright/mcp 0.0.84 (+ playwright-core 1.65.0-alpha-2026-10-30)</td><td class="v-ok">Low / metadata-only</td><td>Searched the installed source for telemetry or analytics SDKs: only false positives (a WebM muxer's <code>kSegment</code>, a path-segment variable). There are no fetch or request calls to fixed external hosts. Its only network use is browser downloads from <code>cdn.playwright.dev</code>, and those happen only when installing browsers.</td><td><code>--isolated</code>, a Chrome for Testing executable (no download), and <code>--allowed-origins</code> limited to loopback (the README says this isn't a security boundary).</td></tr>
+<tr><td>@playwright/test 1.65.0 (+ playwright 1.65.0)</td><td class="v-ok">Low / metadata-only</td><td>Same searches over <code>playwright/lib</code>: no telemetry. <code>npx playwright install chromium</code> downloads the browser from the Playwright CDN.</td><td>None needed.</td></tr>
+<tr><td>agent-browser 0.41.2</td><td class="v-ok">Low / metadata-only</td><td><code>postinstall.js</code> only runs <code>chmod</code> on the bundled darwin-arm64 binary; it downloads from GitHub releases only if the binary is missing. Strings in the binary show no telemetry SDK. Outbound hosts found: the Chrome Releases blog (version check, on by default, <a href="https://agent-browser.dev/security">agent-browser.dev/security</a>), the Chrome for Testing JSON (install), and the npm registry (<code>upgrade</code>). Opt-in only, and only with API keys: Vercel AI Gateway chat, plus the Browserbase, Browser Use and Kernel cloud browsers. No telemetry is documented (<a href="https://agent-browser.dev/configuration">agent-browser.dev/configuration</a>).</td><td><code>AGENT_BROWSER_NO_VERSION_CHECK=1</code>. Never set <code>AI_GATEWAY_API_KEY</code> or the cloud-browser keys.</td></tr>
+<tr><td>@puppeteer/browsers 3.2.6</td><td class="v-ok">Low / metadata-only</td><td>Downloads Chrome for Testing from <code>storage.googleapis.com/chrome-for-testing-public</code>. One-off use.</td><td>None needed.</td></tr>
+<tr><td>Chrome for Testing (browser)</td><td class="v-ok">Low / metadata-only (partly inconclusive)</td><td>It only loads loopback app pages. Puppeteer and Playwright launch it with <code>--disable-background-networking</code> and <code>--disable-component-update</code>. Whether any Google background service, such as Safe Browsing, still runs was not checked with a network capture.</td><td>Use isolated, temporary profiles only, and don't sign in.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Training risk</h2>
+<p>None of these tools is an AI service. The only AI endpoint, agent-browser's optional Vercel AI Gateway chat, stays off unless <code>AI_GATEWAY_API_KEY</code> is set, and it is not set. Page content that the MCP servers return goes to the Claude Code session, the same as any other tool output. The app holds synthetic data only.</p>
+
+<h2>Not verified</h2>
+<ul><li>No network capture was taken while the tools ran. The verdicts come from installed code and the official docs.</li></ul>
+</body>
+</html>

@@ -76,7 +76,7 @@ Before applying any convention, inspect the actual repository state rather than 
 ## Project tailoring
 
 - Remote: `origin` is the owner's GitHub repository. Push, or change remotes or repository visibility, only when the owner asks in that request.
-- Commit only when asked.
+- **Read-only git only.** Allowed: `status`, `diff`, `log`, `show`, `blame`, `ls-files`, `check-ignore`, `rev-parse`, `branch --show-current`, `remote -v`. Never run any git command that changes the repository, its config, branches, remotes or the working tree (no `add`, `commit`, `push`, `pull`, `fetch`, `stash`, `reset`, `restore`, `checkout`, `switch`, `merge`, `rebase`, `tag`, `config`, `remote add`, and so on). Leave every change in the working tree, so the owner reviews it in VS Code Source Control and commits and pushes it. (Owner decision, 2026-11-07.) Drafting a message with `commit-message-drafter` is fine.
 
 ### Attribution policy (owner's decision, 2026-11-07)
 - Commit messages drafted with `commit-message-drafter`, and any PR title or description, must contain **no AI attribution**: no `Co-Authored-By: Claude ...` trailer, no "Generated with Claude Code" line, and no similar wording.

@@ -1,0 +1,16 @@
+{
+  "name": "ticketlens-e2e",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "stack": "scripts/stack.sh",
+    "test": "playwright test",
+    "test:update-baselines": "playwright test --update-snapshots",
+    "report": "playwright show-report output/playwright-report",
+    "browser": "AGENT_BROWSER_EXECUTABLE_PATH=\"$HOME/.cache/chrome-for-testing/current/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing\" AGENT_BROWSER_NO_VERSION_CHECK=1 AGENT_BROWSER_HEADED=1 agent-browser"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.0",
+    "agent-browser": "0.41.2"
+  }
+}
