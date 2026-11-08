@@ -6,10 +6,10 @@ Plugin: understand-anything 2.9.8. Risk audit: `dependency_risk_audits/2026-11-0
 
 ## Result
 
-- 637 nodes, 1,776 edges, 10 layers and a 14-step tour, built from 165 files.
-- It was validated with 0 issues. There are 10 harmless warnings: files with no links, such as empty `__init__.py` files.
-- It records commit `dbdf828`.
-- Structural fingerprints for all 165 files are in `fingerprints.json`, so a later update only reads what changed.
+- 795 nodes, 1,910 links, 10 layers and a 16-step tour, built from 192 files.
+- It was validated with 0 issues, and every scanned file has nodes. There are 9 harmless warnings: files with no links, such as empty `__init__.py` files.
+- It records commit `0e90f74`, and the structural fingerprints in `fingerprints.json` cover all 192 files, so a later update only reads what changed.
+- It was finished in two passes on 2026-11-08: the original 165 files, then an update that added the 28 new Phase 13 to 18 files and re-analyzed 37 files that had changed since the first scan.
 
 ## What is in this folder
 
@@ -29,7 +29,7 @@ Plugin: understand-anything 2.9.8. Risk audit: `dependency_risk_audits/2026-11-0
 
 ## Known gaps
 
-- **Behind the code:** the scan ran before the Phase 13 to 18 files were fully settled and before commit `dbdf828`. These files are therefore missing from the graph:
-  `backend/app/jobs/bulk.py`, `backend/app/api/bulk_jobs.py`, `backend/app/repositories/bulk_jobs.py`, `backend/app/services/evaluation.py`, `backend/app/services/app_settings.py`, `backend/app/api/app_settings.py`, `backend/app/api/evaluation.py`, `backend/app/schemas/app_settings.py`, `backend/app/repositories/app_settings.py`, `frontend/src/features/settings/`, `frontend/src/features/bulk/`, and the Phase 14 to 18 tests. An incremental update adds them.
-- `backend/app/repositories/executions.py` changed just after the scan, so its node is slightly stale.
-- **Git:** `.ua/` is not in `.gitignore`. Add `.ua/` there if you do not want it committed.
+- **Thin summaries:** about three of the nine refresh batches (the repository, service and settings files) wrote function summaries from names and structure instead of reading the source, so many read like "Repository function `X` querying MongoDB." The structure and links are right; only the wording is thin. Re-run `/understand-anything:understand --full` if you want richer summaries, which costs a full rebuild.
+- **Edge cases:** the merge step dropped 3 links earlier in the update, which the second pass restored, and the tool's own change detection could not see the 37 stale files, so they were refreshed by hand.
+- **Git:** `.ua/` is not in `.gitignore`. Two `.trash-*` folders of build scratch files are also in `.ua/` and safe to delete.
+- **Updating later:** commit your changes first, since the update tool refuses to run on a dirty tree. Then run `/understand-anything:understand`.

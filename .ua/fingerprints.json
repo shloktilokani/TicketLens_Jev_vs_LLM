@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "gitCommitHash": "dbdf8280a34f294c5e6a7ba9f6be2654c059f409",
-  "generatedAt": "2026-11-08T15:15:57.523Z",
+  "gitCommitHash": "0e90f7417dc7bba32dfa566ce281e1babcc87877",
+  "generatedAt": "2026-11-08T15:27:54.094Z",
   "files": {
     ".claude/settings.json": {
       "filePath": ".claude/settings.json",
@@ -25,7 +25,7 @@
     },
     ".context/PROGRESS.md": {
       "filePath": ".context/PROGRESS.md",
-      "contentHash": "c15e0441188feb197b928714e5fbf1939611aa6b4681d59355bc2282a94eb644",
+      "contentHash": "95076e6fd31e2ab3c5dd89748c3286fd818ff262bd30efb0f217a22eb1c5aa64",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -123,6 +123,16 @@
       "totalLines": 102,
       "hasStructuralAnalysis": false
     },
+    ".context/sample_tickets_100_v2.csv": {
+      "filePath": ".context/sample_tickets_100_v2.csv",
+      "contentHash": "b2e308bcdf64892f6f1cebda226bfe457e4f1e28b46388b59bbbe483fb447dd5",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 102,
+      "hasStructuralAnalysis": false
+    },
     ".context/sample_tickets_template.csv": {
       "filePath": ".context/sample_tickets_template.csv",
       "contentHash": "55bffadaefcad9226c21c156718e5e32c7a81aad55ace0899ddb99a5f55fd418",
@@ -211,6 +221,235 @@
       "imports": [],
       "exports": [],
       "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    "backend/app/api/app_settings.py": {
+      "filePath": "backend/app/api/app_settings.py",
+      "contentHash": "125f383827c627e5e086ac74a898c01003afab40024e38a4b6d5791f05033f62",
+      "functions": [
+        {
+          "name": "saved",
+          "params": [
+            "request",
+            "db",
+            "write"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "get_settings",
+          "params": [
+            "request",
+            "db"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "update_settings",
+          "params": [
+            "data",
+            "request",
+            "db"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "update_prompt",
+          "params": [
+            "data",
+            "request",
+            "db"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "update_taxonomy",
+          "params": [
+            "data",
+            "request",
+            "db"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "update_pricing",
+          "params": [
+            "data",
+            "request",
+            "db"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "list_models",
+          "params": [
+            "side",
+            "request"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "collections.abc",
+          "specifiers": [
+            "Callable"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Literal"
+          ]
+        },
+        {
+          "source": "fastapi",
+          "specifiers": [
+            "APIRouter",
+            "HTTPException",
+            "Request"
+          ]
+        },
+        {
+          "source": "app.api.deps",
+          "specifiers": [
+            "Db"
+          ]
+        },
+        {
+          "source": "app.providers.base",
+          "specifiers": [
+            "ProviderFailure"
+          ]
+        },
+        {
+          "source": "app.schemas.app_settings",
+          "specifiers": [
+            "PricingUpdate",
+            "PromptUpdate",
+            "SettingsUpdate",
+            "TaxonomyUpdate"
+          ]
+        },
+        {
+          "source": "app.services",
+          "specifiers": [
+            "service"
+          ]
+        }
+      ],
+      "exports": [
+        "saved",
+        "get_settings",
+        "update_settings",
+        "update_prompt",
+        "update_taxonomy",
+        "update_pricing",
+        "list_models"
+      ],
+      "totalLines": 60,
+      "hasStructuralAnalysis": true
+    },
+    "backend/app/api/bulk_jobs.py": {
+      "filePath": "backend/app/api/bulk_jobs.py",
+      "contentHash": "a0e7adc6b416866074f4bb84a75f3380d4dba2f14b602ed4c881d2638ed2ef6d",
+      "functions": [
+        {
+          "name": "create_bulk_job",
+          "params": [
+            "data",
+            "background",
+            "request",
+            "db"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "list_bulk_jobs",
+          "params": [
+            "db",
+            "limit"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "get_bulk_job",
+          "params": [
+            "job_id",
+            "db"
+          ],
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "typing",
+          "specifiers": [
+            "Annotated"
+          ]
+        },
+        {
+          "source": "fastapi",
+          "specifiers": [
+            "APIRouter",
+            "BackgroundTasks",
+            "HTTPException",
+            "Query",
+            "Request"
+          ]
+        },
+        {
+          "source": "app.api.deps",
+          "specifiers": [
+            "Db"
+          ]
+        },
+        {
+          "source": "app.jobs",
+          "specifiers": [
+            "bulk"
+          ]
+        },
+        {
+          "source": "app.repositories",
+          "specifiers": [
+            "bulk_jobs"
+          ]
+        },
+        {
+          "source": "app.schemas.bulk_jobs",
+          "specifiers": [
+            "BulkJob",
+            "BulkJobCreate",
+            "BulkJobList"
+          ]
+        }
+      ],
+      "exports": [
+        "create_bulk_job",
+        "list_bulk_jobs",
+        "get_bulk_job"
+      ],
+      "totalLines": 36,
       "hasStructuralAnalysis": true
     },
     "backend/app/api/dashboard.py": {
@@ -325,6 +564,47 @@
         "get_db"
       ],
       "totalLines": 12,
+      "hasStructuralAnalysis": true
+    },
+    "backend/app/api/evaluation.py": {
+      "filePath": "backend/app/api/evaluation.py",
+      "contentHash": "aba3d57462983ff5212f030d04e330da0c72cf324fa2adfc6b8fb2ed216446af",
+      "functions": [
+        {
+          "name": "get_evaluation",
+          "params": [
+            "db"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "fastapi",
+          "specifiers": [
+            "APIRouter"
+          ]
+        },
+        {
+          "source": "app.api.deps",
+          "specifiers": [
+            "Db"
+          ]
+        },
+        {
+          "source": "app.services",
+          "specifiers": [
+            "evaluation"
+          ]
+        }
+      ],
+      "exports": [
+        "get_evaluation"
+      ],
+      "totalLines": 13,
       "hasStructuralAnalysis": true
     },
     "backend/app/api/executions.py": {
@@ -1312,6 +1592,194 @@
       "totalLines": 1,
       "hasStructuralAnalysis": true
     },
+    "backend/app/jobs/bulk.py": {
+      "filePath": "backend/app/jobs/bulk.py",
+      "contentHash": "0a8a3a8c5c87889daeda34f66bebb133e91ded521385bc36c1a833816f11ef46",
+      "functions": [
+        {
+          "name": "select_tickets",
+          "params": [
+            "db",
+            "data"
+          ],
+          "returnType": "list[str]",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "create",
+          "params": [
+            "db",
+            "data"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "already_succeeded",
+          "params": [
+            "db",
+            "job",
+            "settings"
+          ],
+          "returnType": "dict[str, set[str]]",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "process_ticket",
+          "params": [
+            "db",
+            "job",
+            "ticket_id",
+            "skip",
+            "settings"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 22
+        },
+        {
+          "name": "finish",
+          "params": [
+            "db",
+            "job_id"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "run_job",
+          "params": [
+            "db",
+            "job_id",
+            "settings"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "mark_interrupted",
+          "params": [
+            "db"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [
+        {
+          "name": "BulkError",
+          "methods": [
+            "__init__"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "imports": [
+        {
+          "source": "logging",
+          "specifiers": [
+            "logging"
+          ]
+        },
+        {
+          "source": "concurrent.futures",
+          "specifiers": [
+            "ThreadPoolExecutor"
+          ]
+        },
+        {
+          "source": "uuid",
+          "specifiers": [
+            "uuid4"
+          ]
+        },
+        {
+          "source": "pymongo.database",
+          "specifiers": [
+            "Database"
+          ]
+        },
+        {
+          "source": "app.core.clock",
+          "specifiers": [
+            "utc_now"
+          ]
+        },
+        {
+          "source": "app.core.settings",
+          "specifiers": [
+            "Settings"
+          ]
+        },
+        {
+          "source": "app.core.taxonomy",
+          "specifiers": [
+            "BulkJobStatus",
+            "ExecutionStatus",
+            "Provider"
+          ]
+        },
+        {
+          "source": "app.providers.registry",
+          "specifiers": [
+            "requested_model"
+          ]
+        },
+        {
+          "source": "app.repositories",
+          "specifiers": [
+            "bulk_jobs",
+            "executions",
+            "tickets"
+          ]
+        },
+        {
+          "source": "app.repositories.database",
+          "specifiers": [
+            "find_in"
+          ]
+        },
+        {
+          "source": "app.schemas.bulk_jobs",
+          "specifiers": [
+            "BulkJobCreate"
+          ]
+        },
+        {
+          "source": "app.services",
+          "specifiers": [
+            "app_settings",
+            "comparisons"
+          ]
+        },
+        {
+          "source": "app.services.executions",
+          "specifiers": [
+            "run_provider"
+          ]
+        }
+      ],
+      "exports": [
+        "BulkError",
+        "select_tickets",
+        "create",
+        "already_succeeded",
+        "process_ticket",
+        "finish",
+        "run_job",
+        "mark_interrupted"
+      ],
+      "totalLines": 158,
+      "hasStructuralAnalysis": true
+    },
     "backend/app/main.py": {
       "filePath": "backend/app/main.py",
       "contentHash": "9911afcc83486c4406425158cf835682a34ce7b507cb4d854fda392e744f0f48",
@@ -2128,6 +2596,182 @@
       "totalLines": 1,
       "hasStructuralAnalysis": true
     },
+    "backend/app/repositories/app_settings.py": {
+      "filePath": "backend/app/repositories/app_settings.py",
+      "contentHash": "5ccae181fc7915c1a892fc2ff16b91acd33bf84cf8e42863cf365b683774867d",
+      "functions": [
+        {
+          "name": "get",
+          "params": [
+            "db"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "update",
+          "params": [
+            "db",
+            "operations"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "labels_in_use",
+          "params": [
+            "db"
+          ],
+          "returnType": "set[tuple[str, str]]",
+          "exported": true,
+          "lineCount": 15
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "pymongo",
+          "specifiers": [
+            "ReturnDocument"
+          ]
+        },
+        {
+          "source": "pymongo.database",
+          "specifiers": [
+            "Database"
+          ]
+        }
+      ],
+      "exports": [
+        "get",
+        "update",
+        "labels_in_use"
+      ],
+      "totalLines": 34,
+      "hasStructuralAnalysis": true
+    },
+    "backend/app/repositories/bulk_jobs.py": {
+      "filePath": "backend/app/repositories/bulk_jobs.py",
+      "contentHash": "165aa5b354b17546fbf69c968101ebb4284122f0deddfa184f351b854d69a35f",
+      "functions": [
+        {
+          "name": "insert",
+          "params": [
+            "db",
+            "doc"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "get",
+          "params": [
+            "db",
+            "job_id"
+          ],
+          "returnType": "dict | None",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "newest_first",
+          "params": [
+            "db",
+            "limit"
+          ],
+          "returnType": "list[dict]",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "count",
+          "params": [
+            "db"
+          ],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "has_active",
+          "params": [
+            "db"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "update",
+          "params": [
+            "db",
+            "job_id",
+            "changes"
+          ],
+          "returnType": "dict | None",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "record_outcome",
+          "params": [
+            "db",
+            "job_id",
+            "outcome",
+            "counter"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "mark_active_interrupted",
+          "params": [
+            "db",
+            "changes"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "pymongo",
+          "specifiers": [
+            "ReturnDocument"
+          ]
+        },
+        {
+          "source": "pymongo.database",
+          "specifiers": [
+            "Database"
+          ]
+        },
+        {
+          "source": "app.core.taxonomy",
+          "specifiers": [
+            "BulkJobStatus"
+          ]
+        }
+      ],
+      "exports": [
+        "insert",
+        "get",
+        "newest_first",
+        "count",
+        "has_active",
+        "update",
+        "record_outcome",
+        "mark_active_interrupted"
+      ],
+      "totalLines": 52,
+      "hasStructuralAnalysis": true
+    },
     "backend/app/repositories/comparisons.py": {
       "filePath": "backend/app/repositories/comparisons.py",
       "contentHash": "7227c470e8906a10ca5799b88261ea25e0514b53eff63790127a5c5c193b1f4b",
@@ -2660,6 +3304,117 @@
       "imports": [],
       "exports": [],
       "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    "backend/app/schemas/app_settings.py": {
+      "filePath": "backend/app/schemas/app_settings.py",
+      "contentHash": "3e7aba132f9a07acdab1083471e4bbf473177e7ac6c5cfcec891d1060cc3fe45",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Strict",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "SettingsUpdate",
+          "methods": [
+            "_not_empty"
+          ],
+          "properties": [
+            "jev_model",
+            "llm_model",
+            "jev_escalation_threshold",
+            "bulk_concurrency"
+          ],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "PromptUpdate",
+          "methods": [],
+          "properties": [
+            "instructions"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "TaxonomyUpdate",
+          "methods": [
+            "_within_limits"
+          ],
+          "properties": [
+            "categories"
+          ],
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "PricingEntry",
+          "methods": [],
+          "properties": [
+            "provider",
+            "model",
+            "input_per_million",
+            "output_per_million"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "PricingUpdate",
+          "methods": [
+            "_once_each"
+          ],
+          "properties": [
+            "entries"
+          ],
+          "exported": true,
+          "lineCount": 9
+        }
+      ],
+      "imports": [
+        {
+          "source": "decimal",
+          "specifiers": [
+            "Decimal"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Annotated"
+          ]
+        },
+        {
+          "source": "pydantic",
+          "specifiers": [
+            "BaseModel",
+            "ConfigDict",
+            "Field",
+            "StringConstraints",
+            "model_validator"
+          ]
+        },
+        {
+          "source": "app.core.taxonomy",
+          "specifiers": [
+            "Provider"
+          ]
+        }
+      ],
+      "exports": [
+        "Strict",
+        "SettingsUpdate",
+        "PromptUpdate",
+        "TaxonomyUpdate",
+        "PricingEntry",
+        "PricingUpdate"
+      ],
+      "totalLines": 74,
       "hasStructuralAnalysis": true
     },
     "backend/app/schemas/bulk_jobs.py": {
@@ -3329,6 +4084,253 @@
       "totalLines": 1,
       "hasStructuralAnalysis": true
     },
+    "backend/app/services/app_settings.py": {
+      "filePath": "backend/app/services/app_settings.py",
+      "contentHash": "b909d85527d0910b2dade6c7f2323e04b56efae8cacfb5d056fc0307d972ebfd",
+      "functions": [
+        {
+          "name": "next_version",
+          "params": [
+            "version"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "load_taxonomy",
+          "params": [
+            "db"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "effective",
+          "params": [
+            "db",
+            "settings"
+          ],
+          "returnType": "Settings",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "active_prompt",
+          "params": [
+            "db"
+          ],
+          "returnType": "tuple[str, str]",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "rates_for",
+          "params": [
+            "db",
+            "provider",
+            "settings"
+          ],
+          "returnType": "PricingSnapshot | None",
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "available_models",
+          "params": [
+            "settings",
+            "side",
+            "client"
+          ],
+          "returnType": "list[str]",
+          "exported": true,
+          "lineCount": 26
+        },
+        {
+          "name": "check_model",
+          "params": [
+            "settings",
+            "side",
+            "model"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "view",
+          "params": [
+            "db",
+            "settings"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "update_values",
+          "params": [
+            "db",
+            "settings",
+            "data"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "save_prompt",
+          "params": [
+            "db",
+            "instructions"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "save_taxonomy",
+          "params": [
+            "db",
+            "data"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 26
+        },
+        {
+          "name": "save_pricing",
+          "params": [
+            "db",
+            "data"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [
+        {
+          "name": "SettingsError",
+          "methods": [
+            "__init__"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "imports": [
+        {
+          "source": "httpx",
+          "specifiers": [
+            "httpx"
+          ]
+        },
+        {
+          "source": "pymongo.database",
+          "specifiers": [
+            "Database"
+          ]
+        },
+        {
+          "source": "app.core",
+          "specifiers": [
+            "taxonomy"
+          ]
+        },
+        {
+          "source": "app.core.clock",
+          "specifiers": [
+            "utc_now"
+          ]
+        },
+        {
+          "source": "app.core.pricing",
+          "specifiers": [
+            "snapshot_for"
+          ]
+        },
+        {
+          "source": "app.core.settings",
+          "specifiers": [
+            "Settings",
+            "is_local"
+          ]
+        },
+        {
+          "source": "app.core.taxonomy",
+          "specifiers": [
+            "Provider"
+          ]
+        },
+        {
+          "source": "app.providers",
+          "specifiers": [
+            "definitions"
+          ]
+        },
+        {
+          "source": "app.providers.base",
+          "specifiers": [
+            "PROMPT_VERSION",
+            "ProviderFailure"
+          ]
+        },
+        {
+          "source": "app.providers.http",
+          "specifiers": [
+            "get_json"
+          ]
+        },
+        {
+          "source": "app.providers.registry",
+          "specifiers": [
+            "provider_labels",
+            "provider_ready",
+            "requested_model"
+          ]
+        },
+        {
+          "source": "app.repositories",
+          "specifiers": [
+            "store"
+          ]
+        },
+        {
+          "source": "app.schemas.app_settings",
+          "specifiers": [
+            "PricingUpdate",
+            "SettingsUpdate",
+            "TaxonomyUpdate"
+          ]
+        },
+        {
+          "source": "app.schemas.executions",
+          "specifiers": [
+            "PricingSnapshot"
+          ]
+        }
+      ],
+      "exports": [
+        "SettingsError",
+        "next_version",
+        "load_taxonomy",
+        "effective",
+        "active_prompt",
+        "rates_for",
+        "available_models",
+        "check_model",
+        "view",
+        "update_values",
+        "save_prompt",
+        "save_taxonomy",
+        "save_pricing"
+      ],
+      "totalLines": 215,
+      "hasStructuralAnalysis": true
+    },
     "backend/app/services/comparisons.py": {
       "filePath": "backend/app/services/comparisons.py",
       "contentHash": "e8b6438782ea520942329e6f09de94d94915707aec95f9449cf283226c6115ce",
@@ -3841,6 +4843,166 @@
         "detail"
       ],
       "totalLines": 87,
+      "hasStructuralAnalysis": true
+    },
+    "backend/app/services/evaluation.py": {
+      "filePath": "backend/app/services/evaluation.py",
+      "contentHash": "c31ac098a433da3b149d53c2020ebbf69fb2475717f22afae81531bcfd74505d",
+      "functions": [
+        {
+          "name": "rate",
+          "params": [
+            "part",
+            "whole"
+          ],
+          "returnType": "float | None",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "macro_f1",
+          "params": [
+            "expected",
+            "predicted"
+          ],
+          "returnType": "float | None",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "is_scored",
+          "params": [
+            "run"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "as_label",
+          "params": [
+            "field",
+            "value"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "confusion",
+          "params": [
+            "field",
+            "pairs"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "field_score",
+          "params": [
+            "pairs"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "side_summary",
+          "params": [
+            "label_map",
+            "runs",
+            "provider"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "head_to_head_field",
+          "params": [
+            "triples"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "compute",
+          "params": [
+            "label_map",
+            "runs"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 27
+        },
+        {
+          "name": "summary",
+          "params": [
+            "db"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "collections",
+          "specifiers": [
+            "Counter"
+          ]
+        },
+        {
+          "source": "statistics",
+          "specifiers": [
+            "mean"
+          ]
+        },
+        {
+          "source": "pymongo.database",
+          "specifiers": [
+            "Database"
+          ]
+        },
+        {
+          "source": "app.core.taxonomy",
+          "specifiers": [
+            "ExecutionStatus",
+            "Priority",
+            "Sentiment",
+            "active_categories"
+          ]
+        },
+        {
+          "source": "app.repositories",
+          "specifiers": [
+            "executions",
+            "labels"
+          ]
+        },
+        {
+          "source": "app.services.run_metrics",
+          "specifiers": [
+            "FIELDS"
+          ]
+        }
+      ],
+      "exports": [
+        "rate",
+        "macro_f1",
+        "is_scored",
+        "as_label",
+        "confusion",
+        "field_score",
+        "side_summary",
+        "head_to_head_field",
+        "compute",
+        "summary"
+      ],
+      "totalLines": 148,
       "hasStructuralAnalysis": true
     },
     "backend/app/services/executions.py": {
@@ -4658,6 +5820,419 @@
       "totalLines": 44,
       "hasStructuralAnalysis": true
     },
+    "backend/tests/test_app_settings.py": {
+      "filePath": "backend/tests/test_app_settings.py",
+      "contentHash": "b522f7a699cc15eb49ff150ca0161c6ed88a08a0c54e62432887e32691ff9f5d",
+      "functions": [
+        {
+          "name": "api",
+          "params": [
+            "test_settings",
+            "test_db"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "local",
+          "params": [
+            "test_settings"
+          ],
+          "returnType": "Settings",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "categories",
+          "params": [
+            "**changes"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "new_ticket",
+          "params": [
+            "api"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "test_defaults_show_with_no_saved_settings",
+          "params": [
+            "api"
+          ],
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "test_api_keys_can_never_be_read",
+          "params": [
+            "test_settings",
+            "test_db"
+          ],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "test_keys_and_connection_details_cannot_be_changed",
+          "params": [
+            "api",
+            "test_db",
+            "field"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_threshold_and_concurrency_persist_and_take_effect",
+          "params": [
+            "test_settings",
+            "test_db"
+          ],
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "test_out_of_range_values_are_rejected",
+          "params": [
+            "api",
+            "test_db",
+            "body"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_a_bulk_run_uses_the_saved_concurrency",
+          "params": [
+            "api",
+            "test_db",
+            "monkeypatch"
+          ],
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "test_saved_models_reach_the_right_side",
+          "params": [
+            "local",
+            "test_db",
+            "monkeypatch"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "test_a_badly_formed_model_name_is_rejected",
+          "params": [
+            "api",
+            "bad"
+          ],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "test_a_model_the_server_does_not_have_is_rejected",
+          "params": [
+            "local",
+            "test_db",
+            "monkeypatch"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "test_the_documented_jev_alias_is_always_allowed",
+          "params": [
+            "local",
+            "test_db",
+            "monkeypatch"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_a_model_can_be_saved_when_the_server_is_unreachable",
+          "params": [
+            "local",
+            "test_db",
+            "monkeypatch"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "test_model_list_parses_the_servers_answer_and_sends_the_key_only_to_it",
+          "params": [
+            "local"
+          ],
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "test_models_endpoint_reports_a_safe_error",
+          "params": [
+            "local",
+            "test_db",
+            "monkeypatch"
+          ],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "test_a_new_prompt_gets_a_version_and_old_runs_keep_theirs",
+          "params": [
+            "api",
+            "test_db"
+          ],
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "test_both_sides_receive_the_same_saved_prompt",
+          "params": [],
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "test_a_blank_or_huge_prompt_is_rejected",
+          "params": [
+            "api",
+            "text"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_adding_labels_bumps_the_version_and_reaches_everything",
+          "params": [
+            "api",
+            "test_db"
+          ],
+          "exported": true,
+          "lineCount": 29
+        },
+        {
+          "name": "test_saved_taxonomy_survives_a_restart",
+          "params": [
+            "test_settings",
+            "test_db"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_unused_labels_can_be_removed",
+          "params": [
+            "api"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_a_label_in_use_cannot_be_removed_or_renamed",
+          "params": [
+            "api",
+            "test_db",
+            "use"
+          ],
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "test_invalid_taxonomies_are_rejected",
+          "params": [
+            "api",
+            "change"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_jev_limit_of_sixteen_categories_is_enforced",
+          "params": [
+            "api"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "entry",
+          "params": [
+            "**changes"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "test_saved_rates_are_used_and_old_runs_keep_theirs",
+          "params": [
+            "local",
+            "test_db"
+          ],
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "test_fake_runs_are_never_priced_even_with_saved_rates",
+          "params": [
+            "test_settings",
+            "test_db"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_invalid_rates_are_rejected",
+          "params": [
+            "api",
+            "test_db",
+            "bad"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_the_same_model_cannot_be_priced_twice",
+          "params": [
+            "api"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_rates_can_be_cleared",
+          "params": [
+            "api"
+          ],
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "decimal",
+          "specifiers": [
+            "Decimal"
+          ]
+        },
+        {
+          "source": "httpx",
+          "specifiers": [
+            "httpx"
+          ]
+        },
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "fastapi.testclient",
+          "specifiers": [
+            "TestClient"
+          ]
+        },
+        {
+          "source": "pydantic",
+          "specifiers": [
+            "SecretStr"
+          ]
+        },
+        {
+          "source": "app.core",
+          "specifiers": [
+            "taxonomy"
+          ]
+        },
+        {
+          "source": "app.core.settings",
+          "specifiers": [
+            "Settings"
+          ]
+        },
+        {
+          "source": "app.core.taxonomy",
+          "specifiers": [
+            "Provider"
+          ]
+        },
+        {
+          "source": "app.jobs",
+          "specifiers": [
+            "bulk"
+          ]
+        },
+        {
+          "source": "app.main",
+          "specifiers": [
+            "create_app"
+          ]
+        },
+        {
+          "source": "app.providers",
+          "specifiers": [
+            "jev",
+            "ollama"
+          ]
+        },
+        {
+          "source": "app.providers.base",
+          "specifiers": [
+            "build_input"
+          ]
+        },
+        {
+          "source": "app.services",
+          "specifiers": [
+            "app_settings"
+          ]
+        }
+      ],
+      "exports": [
+        "api",
+        "local",
+        "categories",
+        "new_ticket",
+        "test_defaults_show_with_no_saved_settings",
+        "test_api_keys_can_never_be_read",
+        "test_keys_and_connection_details_cannot_be_changed",
+        "test_threshold_and_concurrency_persist_and_take_effect",
+        "test_out_of_range_values_are_rejected",
+        "test_a_bulk_run_uses_the_saved_concurrency",
+        "test_saved_models_reach_the_right_side",
+        "test_a_badly_formed_model_name_is_rejected",
+        "test_a_model_the_server_does_not_have_is_rejected",
+        "test_the_documented_jev_alias_is_always_allowed",
+        "test_a_model_can_be_saved_when_the_server_is_unreachable",
+        "test_model_list_parses_the_servers_answer_and_sends_the_key_only_to_it",
+        "test_models_endpoint_reports_a_safe_error",
+        "test_a_new_prompt_gets_a_version_and_old_runs_keep_theirs",
+        "test_both_sides_receive_the_same_saved_prompt",
+        "test_a_blank_or_huge_prompt_is_rejected",
+        "test_adding_labels_bumps_the_version_and_reaches_everything",
+        "test_saved_taxonomy_survives_a_restart",
+        "test_unused_labels_can_be_removed",
+        "test_a_label_in_use_cannot_be_removed_or_renamed",
+        "test_invalid_taxonomies_are_rejected",
+        "test_jev_limit_of_sixteen_categories_is_enforced",
+        "entry",
+        "test_saved_rates_are_used_and_old_runs_keep_theirs",
+        "test_fake_runs_are_never_priced_even_with_saved_rates",
+        "test_invalid_rates_are_rejected",
+        "test_the_same_model_cannot_be_priced_twice",
+        "test_rates_can_be_cleared"
+      ],
+      "totalLines": 432,
+      "hasStructuralAnalysis": true
+    },
     "backend/tests/test_app_starts.py": {
       "filePath": "backend/tests/test_app_starts.py",
       "contentHash": "70a8a5b59b6735d364fcd453721e317601386fc0dab57fa2fae742a0e34203a8",
@@ -4697,6 +6272,257 @@
         "test_openapi_schema_names_the_app"
       ],
       "totalLines": 18,
+      "hasStructuralAnalysis": true
+    },
+    "backend/tests/test_bulk_jobs.py": {
+      "filePath": "backend/tests/test_bulk_jobs.py",
+      "contentHash": "5e425eb8ed53e399a6d19a2a70b1c61f978913aac3ff27504067d95964a3ce66",
+      "functions": [
+        {
+          "name": "api",
+          "params": [
+            "test_settings",
+            "test_db"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "new_ticket",
+          "params": [
+            "api",
+            "**changes"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "start",
+          "params": [
+            "api",
+            "**body"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_selected_tickets_on_both_sides_are_run_compared_and_counted",
+          "params": [
+            "api",
+            "test_db"
+          ],
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "test_one_side_runs_alone_with_no_comparison",
+          "params": [
+            "api",
+            "test_db"
+          ],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "test_a_failure_does_not_stop_unrelated_tickets",
+          "params": [
+            "api"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "test_a_partial_ticket_still_gets_a_comparison",
+          "params": [
+            "api",
+            "test_db"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_all_eligible_means_open_or_in_progress",
+          "params": [
+            "api"
+          ],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "test_all_eligible_never_repeats_a_side_that_already_succeeded",
+          "params": [
+            "api",
+            "test_db"
+          ],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "test_an_earlier_success_on_a_different_model_does_not_cause_a_skip",
+          "params": [
+            "api",
+            "test_db"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_an_explicit_selection_runs_again_because_the_operator_asked",
+          "params": [
+            "api",
+            "test_db"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "test_a_ticket_deleted_before_its_turn_is_skipped",
+          "params": [
+            "test_db",
+            "test_settings",
+            "api"
+          ],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "test_invalid_requests_are_rejected_and_nothing_runs",
+          "params": [
+            "api",
+            "test_db"
+          ],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "test_no_eligible_tickets_is_a_clear_error",
+          "params": [
+            "api"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_repeated_values_in_a_request_run_once",
+          "params": [
+            "api",
+            "test_db"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "test_a_second_job_is_refused_while_one_is_active",
+          "params": [
+            "api",
+            "test_db"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_concurrency_stays_within_the_limit",
+          "params": [
+            "test_db",
+            "test_settings",
+            "monkeypatch"
+          ],
+          "exported": true,
+          "lineCount": 25
+        },
+        {
+          "name": "test_restart_marks_unfinished_work_interrupted_and_does_not_rerun_it",
+          "params": [
+            "test_settings",
+            "test_db"
+          ],
+          "exported": true,
+          "lineCount": 25
+        },
+        {
+          "name": "test_jobs_are_listed_newest_first_and_unknown_is_404",
+          "params": [
+            "api"
+          ],
+          "exported": true,
+          "lineCount": 11
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "threading",
+          "specifiers": [
+            "threading"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "UTC",
+            "datetime"
+          ]
+        },
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "fastapi.testclient",
+          "specifiers": [
+            "TestClient"
+          ]
+        },
+        {
+          "source": "app.core.taxonomy",
+          "specifiers": [
+            "BulkJobStatus"
+          ]
+        },
+        {
+          "source": "app.jobs",
+          "specifiers": [
+            "bulk"
+          ]
+        },
+        {
+          "source": "app.main",
+          "specifiers": [
+            "create_app"
+          ]
+        }
+      ],
+      "exports": [
+        "api",
+        "new_ticket",
+        "start",
+        "test_selected_tickets_on_both_sides_are_run_compared_and_counted",
+        "test_one_side_runs_alone_with_no_comparison",
+        "test_a_failure_does_not_stop_unrelated_tickets",
+        "test_a_partial_ticket_still_gets_a_comparison",
+        "test_all_eligible_means_open_or_in_progress",
+        "test_all_eligible_never_repeats_a_side_that_already_succeeded",
+        "test_an_earlier_success_on_a_different_model_does_not_cause_a_skip",
+        "test_an_explicit_selection_runs_again_because_the_operator_asked",
+        "test_a_ticket_deleted_before_its_turn_is_skipped",
+        "test_invalid_requests_are_rejected_and_nothing_runs",
+        "test_no_eligible_tickets_is_a_clear_error",
+        "test_repeated_values_in_a_request_run_once",
+        "test_a_second_job_is_refused_while_one_is_active",
+        "test_concurrency_stays_within_the_limit",
+        "test_restart_marks_unfinished_work_interrupted_and_does_not_rerun_it",
+        "test_jobs_are_listed_newest_first_and_unknown_is_404"
+      ],
+      "totalLines": 251,
       "hasStructuralAnalysis": true
     },
     "backend/tests/test_csv.py": {
@@ -5066,6 +6892,263 @@
         "test_comparisons_can_be_listed_for_one_ticket"
       ],
       "totalLines": 123,
+      "hasStructuralAnalysis": true
+    },
+    "backend/tests/test_evaluation.py": {
+      "filePath": "backend/tests/test_evaluation.py",
+      "contentHash": "bc14c956bb0ae473a9c0621885e91446157c66ca89b0115e4f7df21ad09b045b",
+      "functions": [
+        {
+          "name": "rows",
+          "params": [
+            "path"
+          ],
+          "returnType": "list[dict]",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "test_v2_keeps_every_label_in_order",
+          "params": [],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_v2_titles_no_longer_give_away_the_answer",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "test_v2_titles_are_unique_and_text_is_english",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "test_v2_covers_all_six_categories_without_severe_imbalance",
+          "params": [],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_v2_passes_the_real_import_checks",
+          "params": [
+            "api"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "run",
+          "params": [
+            "answer",
+            "status",
+            "model"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "test_macro_f1_matches_a_hand_calculation",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_accuracy_uses_only_scored_runs_and_reports_every_denominator",
+          "params": [],
+          "exported": true,
+          "lineCount": 27
+        },
+        {
+          "name": "test_head_to_head_counts_only_tickets_both_sides_answered",
+          "params": [],
+          "exported": true,
+          "lineCount": 27
+        },
+        {
+          "name": "test_confusion_matrix_rows_are_expected_and_columns_are_predicted",
+          "params": [],
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "test_escalation_is_labelled_in_words_in_the_matrix",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "test_macro_f1_appears_once_there_are_enough_samples",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_results_are_reproducible",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_report_section_shows_scores_with_denominators",
+          "params": [],
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "api",
+          "params": [
+            "test_settings",
+            "test_db"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "import_labelled",
+          "params": [
+            "api",
+            "count"
+          ],
+          "returnType": "list[str]",
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "test_no_labels_is_an_empty_state_not_zero_percent",
+          "params": [
+            "api"
+          ],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "test_fake_runs_are_never_scored",
+          "params": [
+            "api"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_real_runs_are_scored_using_the_latest_finished_attempt",
+          "params": [
+            "api",
+            "test_db"
+          ],
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "test_labels_never_reach_a_model",
+          "params": [
+            "api"
+          ],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "test_the_dataset_downloads_and_does_not_seed_the_database",
+          "params": [
+            "api",
+            "test_db"
+          ],
+          "exported": true,
+          "lineCount": 8
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "csv",
+          "specifiers": [
+            "csv"
+          ]
+        },
+        {
+          "source": "io",
+          "specifiers": [
+            "io"
+          ]
+        },
+        {
+          "source": "re",
+          "specifiers": [
+            "re"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "fastapi.testclient",
+          "specifiers": [
+            "TestClient"
+          ]
+        },
+        {
+          "source": "app.core.taxonomy",
+          "specifiers": [
+            "SUBCATEGORIES"
+          ]
+        },
+        {
+          "source": "app.main",
+          "specifiers": [
+            "create_app"
+          ]
+        },
+        {
+          "source": "app.services.evaluation",
+          "specifiers": [
+            "compute",
+            "macro_f1"
+          ]
+        },
+        {
+          "source": "app.services.run_report",
+          "specifiers": [
+            "accuracy_section"
+          ]
+        }
+      ],
+      "exports": [
+        "rows",
+        "test_v2_keeps_every_label_in_order",
+        "test_v2_titles_no_longer_give_away_the_answer",
+        "test_v2_titles_are_unique_and_text_is_english",
+        "test_v2_covers_all_six_categories_without_severe_imbalance",
+        "test_v2_passes_the_real_import_checks",
+        "run",
+        "test_macro_f1_matches_a_hand_calculation",
+        "test_accuracy_uses_only_scored_runs_and_reports_every_denominator",
+        "test_head_to_head_counts_only_tickets_both_sides_answered",
+        "test_confusion_matrix_rows_are_expected_and_columns_are_predicted",
+        "test_escalation_is_labelled_in_words_in_the_matrix",
+        "test_macro_f1_appears_once_there_are_enough_samples",
+        "test_results_are_reproducible",
+        "test_report_section_shows_scores_with_denominators",
+        "api",
+        "import_labelled",
+        "test_no_labels_is_an_empty_state_not_zero_percent",
+        "test_fake_runs_are_never_scored",
+        "test_real_runs_are_scored_using_the_latest_finished_attempt",
+        "test_labels_never_reach_a_model",
+        "test_the_dataset_downloads_and_does_not_seed_the_database"
+      ],
+      "totalLines": 287,
       "hasStructuralAnalysis": true
     },
     "backend/tests/test_execution_log.py": {
@@ -5684,6 +7767,107 @@
       "totalLines": 277,
       "hasStructuralAnalysis": true
     },
+    "backend/tests/test_production_config.py": {
+      "filePath": "backend/tests/test_production_config.py",
+      "contentHash": "541f955fce16ec9c65209edbe3a7f3c6f1de0c3a659871c7207bc86e552ae615",
+      "functions": [
+        {
+          "name": "production",
+          "params": [
+            "**changes"
+          ],
+          "returnType": "Settings",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "test_a_safe_production_configuration_is_accepted",
+          "params": [],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "test_unsafe_production_settings_stop_the_app_starting",
+          "params": [
+            "changes",
+            "reason"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_the_demo_is_refused_in_production_by_default",
+          "params": [],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "test_development_keeps_its_local_defaults",
+          "params": [],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_database_credentials_never_appear_in_output_or_errors",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_interactive_api_docs_are_off_in_production_only",
+          "params": [
+            "test_settings",
+            "monkeypatch"
+          ],
+          "exported": true,
+          "lineCount": 8
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "fastapi.testclient",
+          "specifiers": [
+            "TestClient"
+          ]
+        },
+        {
+          "source": "pydantic",
+          "specifiers": [
+            "ValidationError"
+          ]
+        },
+        {
+          "source": "app.core.settings",
+          "specifiers": [
+            "Settings"
+          ]
+        },
+        {
+          "source": "app.main",
+          "specifiers": [
+            "create_app"
+          ]
+        }
+      ],
+      "exports": [
+        "production",
+        "test_a_safe_production_configuration_is_accepted",
+        "test_unsafe_production_settings_stop_the_app_starting",
+        "test_the_demo_is_refused_in_production_by_default",
+        "test_development_keeps_its_local_defaults",
+        "test_database_credentials_never_appear_in_output_or_errors",
+        "test_interactive_api_docs_are_off_in_production_only"
+      ],
+      "totalLines": 79,
+      "hasStructuralAnalysis": true
+    },
     "backend/tests/test_providers.py": {
       "filePath": "backend/tests/test_providers.py",
       "contentHash": "d8c2ea11bf19b6b1a806309e77afe6c1ac453b2efc8c78e09cf0f0d797b126ee",
@@ -5889,6 +8073,152 @@
         "test_payloads_are_redacted_before_saving"
       ],
       "totalLines": 218,
+      "hasStructuralAnalysis": true
+    },
+    "backend/tests/test_retries.py": {
+      "filePath": "backend/tests/test_retries.py",
+      "contentHash": "780defc885b2471c17a8f3109f874180ca1cf20b4ad9e03ce04f61fa120ab6fe",
+      "functions": [
+        {
+          "name": "call",
+          "params": [
+            "replies"
+          ],
+          "returnType": "tuple[list[int], dict | ProviderFailure]",
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "pauses",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "list[float]",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_temporary_errors_are_retried_and_can_recover",
+          "params": [
+            "status",
+            "pauses"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_a_refused_connection_is_retried_because_nothing_was_sent",
+          "params": [
+            "pauses"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_retries_stop_after_a_fixed_number_of_attempts",
+          "params": [
+            "pauses"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_backoff_grows_and_has_jitter",
+          "params": [
+            "pauses"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_retry_after_is_respected_and_capped",
+          "params": [
+            "pauses"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_permanent_errors_are_never_retried",
+          "params": [
+            "status",
+            "kind",
+            "pauses"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_a_call_that_may_have_reached_the_provider_is_not_repeated",
+          "params": [
+            "error",
+            "pauses"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "test_get_requests_share_the_same_rules",
+          "params": [
+            "pauses"
+          ],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "test_the_api_binds_to_this_computer_only_by_default",
+          "params": [],
+          "exported": true,
+          "lineCount": 2
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "httpx",
+          "specifiers": [
+            "httpx"
+          ]
+        },
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "app.core.settings",
+          "specifiers": [
+            "Settings"
+          ]
+        },
+        {
+          "source": "app.providers",
+          "specifiers": [
+            "http"
+          ]
+        },
+        {
+          "source": "app.providers.base",
+          "specifiers": [
+            "ProviderFailure"
+          ]
+        }
+      ],
+      "exports": [
+        "call",
+        "pauses",
+        "test_temporary_errors_are_retried_and_can_recover",
+        "test_a_refused_connection_is_retried_because_nothing_was_sent",
+        "test_retries_stop_after_a_fixed_number_of_attempts",
+        "test_backoff_grows_and_has_jitter",
+        "test_retry_after_is_respected_and_capped",
+        "test_permanent_errors_are_never_retried",
+        "test_a_call_that_may_have_reached_the_provider_is_not_repeated",
+        "test_get_requests_share_the_same_rules",
+        "test_the_api_binds_to_this_computer_only_by_default"
+      ],
+      "totalLines": 126,
       "hasStructuralAnalysis": true
     },
     "backend/tests/test_run_metrics.py": {
@@ -7139,6 +9469,42 @@
       ],
       "exports": [],
       "totalLines": 37,
+      "hasStructuralAnalysis": true
+    },
+    "e2e/tests/workflow.spec.ts": {
+      "filePath": "e2e/tests/workflow.spec.ts",
+      "contentHash": "cc5aef5931dcca84239adab1448b22c4abbff3d56bb50adacb19e4654a4c2ce2",
+      "functions": [
+        {
+          "name": "createTicket",
+          "params": [
+            "page",
+            "title"
+          ],
+          "returnType": "Promise<string>",
+          "exported": false,
+          "lineCount": 13
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "node:fs",
+          "specifiers": [
+            "readFileSync"
+          ]
+        },
+        {
+          "source": "@playwright/test",
+          "specifiers": [
+            "expect",
+            "Page",
+            "test"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 110,
       "hasStructuralAnalysis": true
     },
     "frontend/.prettierignore": {
@@ -8657,6 +11023,272 @@
       "totalLines": 18,
       "hasStructuralAnalysis": true
     },
+    "frontend/src/features/bulk/BulkBanner.tsx": {
+      "filePath": "frontend/src/features/bulk/BulkBanner.tsx",
+      "contentHash": "2f6a045f1913d4d98c0fcd4812d29527f6363b36d015dacdd4b90708cfdec2ee",
+      "functions": [
+        {
+          "name": "isRecent",
+          "params": [
+            "job",
+            "now"
+          ],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "BulkBanner",
+          "params": [],
+          "exported": true,
+          "lineCount": 45
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@tanstack/react-query",
+          "specifiers": [
+            "useQueryClient"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useState"
+          ]
+        },
+        {
+          "source": "react-router",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/features/bulk/hooks",
+          "specifiers": [
+            "attemptsDone",
+            "isActive",
+            "useBulkJobs"
+          ]
+        },
+        {
+          "source": "@/types/api",
+          "specifiers": [
+            "BulkJob"
+          ]
+        }
+      ],
+      "exports": [
+        "BulkBanner"
+      ],
+      "totalLines": 63,
+      "hasStructuralAnalysis": true
+    },
+    "frontend/src/features/bulk/BulkRunsPage.tsx": {
+      "filePath": "frontend/src/features/bulk/BulkRunsPage.tsx",
+      "contentHash": "a19cd8fce7357521524b38d8e2b4dbe6f200ff1a44256a8437814c9e233804ff",
+      "functions": [
+        {
+          "name": "sides",
+          "params": [
+            "job"
+          ],
+          "exported": false,
+          "lineCount": 2
+        },
+        {
+          "name": "Header",
+          "params": [
+            "{ labels }"
+          ],
+          "exported": false,
+          "lineCount": 11
+        },
+        {
+          "name": "BulkRunsPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 62
+        },
+        {
+          "name": "Outcomes",
+          "params": [
+            "{ job }"
+          ],
+          "exported": false,
+          "lineCount": 39
+        },
+        {
+          "name": "BulkRunDetailPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 55
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react-router",
+          "specifiers": [
+            "Link",
+            "useParams"
+          ]
+        },
+        {
+          "source": "@/components/Detail",
+          "specifiers": [
+            "Detail"
+          ]
+        },
+        {
+          "source": "@/components/states",
+          "specifiers": [
+            "EmptyState",
+            "ErrorState",
+            "LoadingState"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/components/ui/card",
+          "specifiers": [
+            "Card",
+            "CardContent",
+            "CardHeader",
+            "CardTitle"
+          ]
+        },
+        {
+          "source": "@/components/ui/table",
+          "specifiers": [
+            "Table",
+            "TableBody",
+            "TableCell",
+            "TableHead",
+            "TableHeader",
+            "TableRow"
+          ]
+        },
+        {
+          "source": "@/features/bulk/hooks",
+          "specifiers": [
+            "attemptsDone",
+            "useBulkJob",
+            "useBulkJobs"
+          ]
+        },
+        {
+          "source": "@/lib/format",
+          "specifiers": [
+            "formatDateTime",
+            "SIDE_LABELS"
+          ]
+        },
+        {
+          "source": "@/services/api",
+          "specifiers": [
+            "ApiError"
+          ]
+        },
+        {
+          "source": "@/types/api",
+          "specifiers": [
+            "BulkJob"
+          ]
+        }
+      ],
+      "exports": [
+        "BulkRunsPage",
+        "BulkRunDetailPage"
+      ],
+      "totalLines": 193,
+      "hasStructuralAnalysis": true
+    },
+    "frontend/src/features/bulk/hooks.ts": {
+      "filePath": "frontend/src/features/bulk/hooks.ts",
+      "contentHash": "12f572fed2a87a3380d9a42a2a117e74238a6fe2652c4bb37ad9170756fce722",
+      "functions": [
+        {
+          "name": "isActive",
+          "params": [
+            "job"
+          ],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "attemptsDone",
+          "params": [
+            "job"
+          ],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "useBulkJobs",
+          "params": [
+            "limit"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "useBulkJob",
+          "params": [
+            "jobId"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "useStartBulk",
+          "params": [],
+          "exported": true,
+          "lineCount": 8
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@tanstack/react-query",
+          "specifiers": [
+            "useMutation",
+            "useQuery",
+            "useQueryClient"
+          ]
+        },
+        {
+          "source": "@/services/api",
+          "specifiers": [
+            "api",
+            "send"
+          ]
+        },
+        {
+          "source": "@/types/api",
+          "specifiers": [
+            "BulkJob",
+            "BulkJobList",
+            "BulkStart"
+          ]
+        }
+      ],
+      "exports": [
+        "isActive",
+        "attemptsDone",
+        "useBulkJobs",
+        "useBulkJob",
+        "useStartBulk"
+      ],
+      "totalLines": 39,
+      "hasStructuralAnalysis": true
+    },
     "frontend/src/features/compare/ComparePage.tsx": {
       "filePath": "frontend/src/features/compare/ComparePage.tsx",
       "contentHash": "1a4eb18927f1bbf4cf6f48148f97a2b9836b98199cce043b7d3989333c3df8f6",
@@ -9395,6 +12027,254 @@
       "totalLines": 251,
       "hasStructuralAnalysis": true
     },
+    "frontend/src/features/dashboard/EvaluationSection.tsx": {
+      "filePath": "frontend/src/features/dashboard/EvaluationSection.tsx",
+      "contentHash": "e0c5222bce1eb18bb4488a012bafc006009ddb6c7f12798127c00ea7ac9f7e5f",
+      "functions": [
+        {
+          "name": "score",
+          "params": [
+            "s"
+          ],
+          "exported": false,
+          "lineCount": 2
+        },
+        {
+          "name": "f1",
+          "params": [
+            "value"
+          ],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "coverage",
+          "params": [
+            "side"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "Tiles",
+          "params": [
+            "{ data }"
+          ],
+          "exported": false,
+          "lineCount": 23
+        },
+        {
+          "name": "AccuracyChart",
+          "params": [
+            "{ data }"
+          ],
+          "exported": false,
+          "lineCount": 58
+        },
+        {
+          "name": "ScoreTable",
+          "params": [
+            "{ data }"
+          ],
+          "exported": false,
+          "lineCount": 59
+        },
+        {
+          "name": "Toggle",
+          "params": [
+            "{\n  label,\n  options,\n  value,\n  onChange,\n}"
+          ],
+          "exported": false,
+          "lineCount": 27
+        },
+        {
+          "name": "Matrix",
+          "params": [
+            "{ data }"
+          ],
+          "exported": false,
+          "lineCount": 69
+        },
+        {
+          "name": "Scored",
+          "params": [
+            "{ data }"
+          ],
+          "exported": false,
+          "lineCount": 21
+        },
+        {
+          "name": "EvaluationSection",
+          "params": [],
+          "exported": true,
+          "lineCount": 52
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@tanstack/react-query",
+          "specifiers": [
+            "useQuery"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "react-router",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "recharts",
+          "specifiers": [
+            "Bar",
+            "BarChart",
+            "CartesianGrid",
+            "Legend",
+            "Tooltip",
+            "XAxis",
+            "YAxis"
+          ]
+        },
+        {
+          "source": "@/components/states",
+          "specifiers": [
+            "EmptyState",
+            "ErrorState",
+            "LoadingState"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/components/ui/table",
+          "specifiers": [
+            "Table",
+            "TableBody",
+            "TableCell",
+            "TableHead",
+            "TableHeader",
+            "TableRow"
+          ]
+        },
+        {
+          "source": "@/features/dashboard/chartStyles",
+          "specifiers": [
+            "AXIS",
+            "FIELD_LABELS",
+            "percent",
+            "TOOLTIP"
+          ]
+        },
+        {
+          "source": "@/features/dashboard/parts",
+          "specifiers": [
+            "ChartCard",
+            "Stat"
+          ]
+        },
+        {
+          "source": "@/services/api",
+          "specifiers": [
+            "api",
+            "BASE_URL"
+          ]
+        },
+        {
+          "source": "@/types/api",
+          "specifiers": [
+            "EvaluationScored",
+            "EvaluationSide",
+            "FieldScore"
+          ]
+        }
+      ],
+      "exports": [
+        "EvaluationSection"
+      ],
+      "totalLines": 374,
+      "hasStructuralAnalysis": true
+    },
+    "frontend/src/features/dashboard/chartStyles.ts": {
+      "filePath": "frontend/src/features/dashboard/chartStyles.ts",
+      "contentHash": "a3daef30eef107c5140c6c67d485b5e47c88be8398ba17b4cad7fba7d7d90eb3",
+      "functions": [
+        {
+          "name": "percent",
+          "params": [
+            "rate"
+          ],
+          "exported": true,
+          "lineCount": 2
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "FIELD_LABELS",
+        "TOOLTIP",
+        "AXIS",
+        "percent"
+      ],
+      "totalLines": 23,
+      "hasStructuralAnalysis": true
+    },
+    "frontend/src/features/dashboard/parts.tsx": {
+      "filePath": "frontend/src/features/dashboard/parts.tsx",
+      "contentHash": "78522fdd01b7f1252745074ef1c24c4ceff2be1f90a7147c6d8ed8a37f85e445",
+      "functions": [
+        {
+          "name": "Stat",
+          "params": [
+            "{\n  value,\n  label,\n}"
+          ],
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "ChartCard",
+          "params": [
+            "{\n  title,\n  height,\n  children,\n}"
+          ],
+          "exported": true,
+          "lineCount": 24
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "recharts",
+          "specifiers": [
+            "ResponsiveContainer"
+          ]
+        },
+        {
+          "source": "@/components/ui/card",
+          "specifiers": [
+            "Card",
+            "CardContent",
+            "CardHeader",
+            "CardTitle"
+          ]
+        }
+      ],
+      "exports": [
+        "Stat",
+        "ChartCard"
+      ],
+      "totalLines": 44,
+      "hasStructuralAnalysis": true
+    },
     "frontend/src/features/executions/ExecutionDetailPage.tsx": {
       "filePath": "frontend/src/features/executions/ExecutionDetailPage.tsx",
       "contentHash": "4f015381559fafb1770343cb8042342c6dbb3de4245e945ef159c735e3c0c47a",
@@ -9688,6 +12568,406 @@
       "totalLines": 1,
       "hasStructuralAnalysis": false
     },
+    "frontend/src/features/settings/PricingCard.tsx": {
+      "filePath": "frontend/src/features/settings/PricingCard.tsx",
+      "contentHash": "75c9516b0df3150fa8552b8e3b96e01f18a9d280cb0636d5b60a6f105588ae09",
+      "functions": [
+        {
+          "name": "PricingCard",
+          "params": [
+            "{ pricing }"
+          ],
+          "exported": true,
+          "lineCount": 148
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Plus",
+            "Trash2"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/components/ui/card",
+          "specifiers": [
+            "Card",
+            "CardContent",
+            "CardHeader",
+            "CardTitle"
+          ]
+        },
+        {
+          "source": "@/components/ui/input",
+          "specifiers": [
+            "Input"
+          ]
+        },
+        {
+          "source": "@/components/ui/select",
+          "specifiers": [
+            "Select",
+            "SelectContent",
+            "SelectItem",
+            "SelectTrigger",
+            "SelectValue"
+          ]
+        },
+        {
+          "source": "@/components/ui/table",
+          "specifiers": [
+            "Table",
+            "TableBody",
+            "TableCell",
+            "TableHead",
+            "TableHeader",
+            "TableRow"
+          ]
+        },
+        {
+          "source": "@/features/settings/hooks",
+          "specifiers": [
+            "useSaveSettings"
+          ]
+        },
+        {
+          "source": "@/lib/format",
+          "specifiers": [
+            "SIDE_LABELS"
+          ]
+        },
+        {
+          "source": "@/types/api",
+          "specifiers": [
+            "AppSettings"
+          ]
+        }
+      ],
+      "exports": [
+        "PricingCard"
+      ],
+      "totalLines": 182,
+      "hasStructuralAnalysis": true
+    },
+    "frontend/src/features/settings/SettingsPage.tsx": {
+      "filePath": "frontend/src/features/settings/SettingsPage.tsx",
+      "contentHash": "91d2ba71138b48546ff337b6a8ca0be11c2049f0d3e7596618413597190cb936",
+      "functions": [
+        {
+          "name": "ProviderStatus",
+          "params": [
+            "{ settings }"
+          ],
+          "exported": false,
+          "lineCount": 29
+        },
+        {
+          "name": "listNote",
+          "params": [
+            "list"
+          ],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "ModelField",
+          "params": [
+            "{\n  side,\n  label,\n  saved,\n}"
+          ],
+          "exported": false,
+          "lineCount": 49
+        },
+        {
+          "name": "Tuning",
+          "params": [
+            "{ settings }"
+          ],
+          "exported": false,
+          "lineCount": 57
+        },
+        {
+          "name": "PromptCard",
+          "params": [
+            "{ prompt }"
+          ],
+          "exported": false,
+          "lineCount": 47
+        },
+        {
+          "name": "SettingsPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 29
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "CircleCheck",
+            "RefreshCw",
+            "TriangleAlert"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useId",
+            "useState"
+          ]
+        },
+        {
+          "source": "@/components/states",
+          "specifiers": [
+            "ErrorState",
+            "LoadingState"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/components/ui/card",
+          "specifiers": [
+            "Card",
+            "CardContent",
+            "CardHeader",
+            "CardTitle"
+          ]
+        },
+        {
+          "source": "@/components/ui/input",
+          "specifiers": [
+            "Input"
+          ]
+        },
+        {
+          "source": "@/components/ui/label",
+          "specifiers": [
+            "Label"
+          ]
+        },
+        {
+          "source": "@/components/ui/textarea",
+          "specifiers": [
+            "Textarea"
+          ]
+        },
+        {
+          "source": "@/features/settings/PricingCard",
+          "specifiers": [
+            "PricingCard"
+          ]
+        },
+        {
+          "source": "@/features/settings/TaxonomyCard",
+          "specifiers": [
+            "TaxonomyCard"
+          ]
+        },
+        {
+          "source": "@/features/settings/hooks",
+          "specifiers": [
+            "useModelList",
+            "useSaveSettings",
+            "useSettings"
+          ]
+        },
+        {
+          "source": "@/lib/format",
+          "specifiers": [
+            "formatDateTime",
+            "SIDE_LABELS"
+          ]
+        },
+        {
+          "source": "@/types/api",
+          "specifiers": [
+            "AppSettings"
+          ]
+        }
+      ],
+      "exports": [
+        "SettingsPage"
+      ],
+      "totalLines": 243,
+      "hasStructuralAnalysis": true
+    },
+    "frontend/src/features/settings/TaxonomyCard.tsx": {
+      "filePath": "frontend/src/features/settings/TaxonomyCard.tsx",
+      "contentHash": "ea0bed8fd7f3b691ef0e3199676909e9b8108729dbedb31ea42196ed1fb9fd37",
+      "functions": [
+        {
+          "name": "toRows",
+          "params": [
+            "categories"
+          ],
+          "returnType": "Row[]",
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "toBody",
+          "params": [
+            "rows"
+          ],
+          "exported": false,
+          "lineCount": 11
+        },
+        {
+          "name": "TaxonomyCard",
+          "params": [
+            "{\n  taxonomy,\n}"
+          ],
+          "exported": true,
+          "lineCount": 83
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Plus",
+            "Trash2"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/components/ui/card",
+          "specifiers": [
+            "Card",
+            "CardContent",
+            "CardHeader",
+            "CardTitle"
+          ]
+        },
+        {
+          "source": "@/components/ui/input",
+          "specifiers": [
+            "Input"
+          ]
+        },
+        {
+          "source": "@/components/ui/textarea",
+          "specifiers": [
+            "Textarea"
+          ]
+        },
+        {
+          "source": "@/features/settings/hooks",
+          "specifiers": [
+            "useSaveSettings"
+          ]
+        },
+        {
+          "source": "@/types/api",
+          "specifiers": [
+            "AppSettings"
+          ]
+        }
+      ],
+      "exports": [
+        "TaxonomyCard"
+      ],
+      "totalLines": 115,
+      "hasStructuralAnalysis": true
+    },
+    "frontend/src/features/settings/hooks.ts": {
+      "filePath": "frontend/src/features/settings/hooks.ts",
+      "contentHash": "ebf247e4eeee432c68962c1b20020e376e889882e58bb4977a2544d8b69ca727",
+      "functions": [
+        {
+          "name": "useSettings",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "useSaveSettings",
+          "params": [
+            "method",
+            "path"
+          ],
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "useModelList",
+          "params": [
+            "side"
+          ],
+          "exported": true,
+          "lineCount": 8
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@tanstack/react-query",
+          "specifiers": [
+            "useMutation",
+            "useQuery",
+            "useQueryClient"
+          ]
+        },
+        {
+          "source": "sonner",
+          "specifiers": [
+            "toast"
+          ]
+        },
+        {
+          "source": "@/services/api",
+          "specifiers": [
+            "api",
+            "send"
+          ]
+        },
+        {
+          "source": "@/types/api",
+          "specifiers": [
+            "AppSettings"
+          ]
+        }
+      ],
+      "exports": [
+        "useSettings",
+        "useSaveSettings",
+        "useModelList"
+      ],
+      "totalLines": 37,
+      "hasStructuralAnalysis": true
+    },
     "frontend/src/features/tickets/AiResults.tsx": {
       "filePath": "frontend/src/features/tickets/AiResults.tsx",
       "contentHash": "7bf620847ea637c4fff4cd8fe65d1e84ca4cd7011ab00ce3429dc68a8ecaaba1",
@@ -9816,6 +13096,74 @@
         "AiResults"
       ],
       "totalLines": 180,
+      "hasStructuralAnalysis": true
+    },
+    "frontend/src/features/tickets/BulkToolbar.tsx": {
+      "filePath": "frontend/src/features/tickets/BulkToolbar.tsx",
+      "contentHash": "52dd66321e2cfe9d3de69f4a11824e0ca69da512bf0de9eea17fb64346674f8d",
+      "functions": [
+        {
+          "name": "confirmText",
+          "params": [
+            "mode",
+            "selected",
+            "allEligible"
+          ],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "BulkToolbar",
+          "params": [
+            "{\n  selected,\n  allEligible,\n  onAllEligible,\n  onClear,\n}"
+          ],
+          "exported": true,
+          "lineCount": 82
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "sonner",
+          "specifiers": [
+            "toast"
+          ]
+        },
+        {
+          "source": "@/components/ConfirmDialog",
+          "specifiers": [
+            "ConfirmDialog"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/features/bulk/hooks",
+          "specifiers": [
+            "useStartBulk"
+          ]
+        },
+        {
+          "source": "@/types/api",
+          "specifiers": [
+            "BulkProvider"
+          ]
+        }
+      ],
+      "exports": [
+        "BulkToolbar"
+      ],
+      "totalLines": 108,
       "hasStructuralAnalysis": true
     },
     "frontend/src/features/tickets/FinalClassification.tsx": {

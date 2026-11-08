@@ -10,7 +10,7 @@ Plain-language phase order and every step that needs the owner: `ROADMAP.md`.
 
 **Next session:** the Phase 11 to 18 work was committed as `dbdf828` on `shlok-ai-dev`. The owner's open steps are listed in the completion report below.
 
-Separate side task, finished 2026-11-08: the Understand-Anything knowledge graph is saved in `.ua/knowledge-graph.json` (details and gaps in `.ua/RESUME.md`). Run `/understand-anything:understand` for an incremental update; it does not cover files added after its scan until then.
+Separate side task, finished 2026-11-08: the Understand-Anything knowledge graph is saved in `.ua/knowledge-graph.json` (details and gaps in `.ua/RESUME.md`). It covers all 192 files as of commit `0e90f74`. Run `/understand-anything:understand` after later changes, once they are committed.
 
 ## Phases
 
