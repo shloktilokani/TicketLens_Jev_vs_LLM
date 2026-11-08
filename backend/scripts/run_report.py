@@ -16,38 +16,22 @@ from pathlib import Path
 from app.core.clock import utc_now
 from app.core.settings import get_settings
 from app.repositories.database import connect, find_in
+from app.services.dashboard import load_rows
+from app.services.evaluation import summary
 from app.services.run_metrics import compute
 from app.services.run_report import render
 
 REPORTS = Path(__file__).resolve().parents[2] / "reports" / "test-runs"
 
 
-def load_rows(db, comparison_ids: list[str]) -> list[dict]:
-    comparisons = {
+def load_run(db, comparison_ids: list[str]) -> list[dict]:
+    docs = {
         c["comparison_id"]: c for c in find_in(db, "comparisons", "comparison_id", comparison_ids)
     }
-    missing = [c for c in comparison_ids if c not in comparisons]
+    missing = [c for c in comparison_ids if c not in docs]
     if missing:
         sys.exit(f"Comparison(s) not found: {', '.join(missing)}")
-    execution_ids = [
-        e for c in comparisons.values() for e in (c["jev_execution_id"], c["gpt_execution_id"]) if e
-    ]
-    executions = {
-        e["execution_id"]: e for e in find_in(db, "ai_executions", "execution_id", execution_ids)
-    }
-    ticket_ids = [c["ticket_id"] for c in comparisons.values()]
-    tickets = {t["ticket_id"]: t for t in find_in(db, "tickets", "ticket_id", ticket_ids)}
-    return [
-        {
-            "ticket": tickets.get(
-                c["ticket_id"], {"ticket_id": c["ticket_id"], "title": "(deleted ticket)"}
-            ),
-            "jev": executions.get(c["jev_execution_id"]),
-            "llm": executions.get(c["gpt_execution_id"]),
-            "comparison": c,
-        }
-        for c in (comparisons[i] for i in comparison_ids)
-    ]
+    return load_rows(db, [docs[c] for c in comparison_ids])
 
 
 def main() -> int:
@@ -62,7 +46,9 @@ def main() -> int:
     settings = get_settings()
     client = connect(settings)
     try:
-        rows = load_rows(client[settings.mongodb_database], ids)
+        db = client[settings.mongodb_database]
+        rows = load_run(db, ids)
+        evaluation = summary(db)
     finally:
         client.close()
 
@@ -82,7 +68,10 @@ def main() -> int:
     }
     REPORTS.mkdir(parents=True, exist_ok=True)
     html_path = REPORTS / f"{args.run_id}.html"
-    html_path.write_text(render(meta, compute(rows), rows), encoding="utf-8")
+    html_path.write_text(
+        render(meta, compute(rows), rows, evaluation if evaluation["scored"] else None),
+        encoding="utf-8",
+    )
     (REPORTS / f"{args.run_id}.json").write_text(
         json.dumps(meta | {"comparisons": ids}, indent=2) + "\n"
     )

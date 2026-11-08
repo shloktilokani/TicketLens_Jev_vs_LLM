@@ -1,5 +1,9 @@
 """MongoDB access: the client, a readiness ping, and index setup (data-model.md section 8)."""
 
+from decimal import Decimal
+
+from bson.codec_options import TypeCodec, TypeRegistry
+from bson.decimal128 import Decimal128
 from pymongo import ASCENDING, DESCENDING, MongoClient
 from pymongo.database import Database
 from pymongo.errors import PyMongoError
@@ -45,12 +49,26 @@ INDEXES: dict[str, list[tuple[list[tuple[str, int]], dict]]] = {
 }
 
 
+class DecimalCodec(TypeCodec):
+    """Python Decimal <-> BSON Decimal128: money stays exact, never floating point."""
+
+    python_type = Decimal
+    bson_type = Decimal128
+
+    def transform_python(self, value: Decimal) -> Decimal128:
+        return Decimal128(value)
+
+    def transform_bson(self, value: Decimal128) -> Decimal:
+        return value.to_decimal()
+
+
 def connect(settings: Settings) -> MongoClient:
     """Create the client. Connecting is lazy, so the app still starts when MongoDB is down."""
     return MongoClient(
         settings.mongodb_uri,
         serverSelectionTimeoutMS=SERVER_SELECTION_TIMEOUT_MS,
         tz_aware=True,
+        type_registry=TypeRegistry([DecimalCodec()]),
     )
 
 

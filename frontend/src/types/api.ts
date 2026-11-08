@@ -9,6 +9,7 @@ export type Taxonomy = {
   statuses: string[]
   channels: string[]
   providers: string[]
+  execution_statuses: string[]
 }
 
 export type ProviderStatus = Record<
@@ -22,6 +23,10 @@ export type Classification = {
   priority: string
   sentiment: string
   escalation_required: boolean
+}
+
+export type FinalClassificationInput = Classification & {
+  selected_from_execution_id: string | null
 }
 
 export type FinalClassification = Classification & {
@@ -42,6 +47,7 @@ export type Ticket = {
   submission_channel: string
   status: string
   final_classification: FinalClassification | null
+  latest_run: { provider: string; status: string; started_at: string } | null
   operator_notes: Note[]
   source: {
     type: "manual" | "csv_import"
@@ -116,7 +122,7 @@ export type Execution = {
     usage_source: string
   } | null
   estimated_cost: {
-    amount: string | null
+    amount: string | number | null
     currency: string
     is_estimate: boolean
   } | null
@@ -125,6 +131,126 @@ export type Execution = {
     http_status: number | null
     message: string
   } | null
+  pricing_snapshot: {
+    currency: string
+    input_per_million: string | number
+    output_per_million: string | number
+    pricing_version: string
+  } | null
+  prompt_version: string
+  taxonomy_version: string
+  input_snapshot: unknown
+  request_payload_redacted: unknown
+  response_payload_redacted: unknown
+}
+
+/** A run as listed in the log: everything except the payloads. */
+export type ExecutionSummary = Omit<
+  Execution,
+  "input_snapshot" | "request_payload_redacted" | "response_payload_redacted"
+>
+
+export type ExecutionPage = {
+  items: ExecutionSummary[]
+  total: number
+  page: number
+  page_size: number
+}
+
+export type FieldScore = {
+  correct: number
+  scored: number
+  accuracy: number | null
+  macro_f1?: number | null
+}
+
+export type EvaluationSide = {
+  labelled: number
+  scored: number
+  failed: number
+  not_run: number
+  models: string[]
+  per_field: Record<string, FieldScore & { macro_f1: number | null }>
+  exact_match: FieldScore
+  confusion: Record<
+    "category" | "priority" | "sentiment" | "escalation_required",
+    { labels: string[]; counts: number[][] }
+  >
+}
+
+export type EvaluationScored = {
+  labelled_tickets: number
+  scored: boolean
+  sides: { jev: EvaluationSide; llm: EvaluationSide }
+  head_to_head: {
+    compared_tickets: number
+    per_field: Record<
+      string,
+      {
+        compared: number
+        both_correct: number
+        jev_only: number
+        llm_only: number
+        both_wrong: number
+        agreed: number
+        agreement: number | null
+      }
+    >
+  }
+}
+
+export type AppSettings = {
+  providers: ProviderStatus
+  jev_model: string
+  llm_model: string
+  jev_escalation_threshold: number
+  bulk_concurrency: number
+  prompt: {
+    version: string
+    instructions: string
+    history: { version: string; instructions: string; created_at: string }[]
+  }
+  taxonomy: { version: string; categories: Record<string, string[]> }
+  pricing: {
+    provider: string
+    model: string
+    input_per_million: string | number
+    output_per_million: string | number
+    pricing_version: string
+  }[]
+  updated_at: string | null
+}
+
+export type BulkProvider = "jev" | "gpt"
+
+export type BulkJob = {
+  job_id: string
+  ticket_ids: string[] | null
+  all_eligible: boolean
+  providers: BulkProvider[]
+  status: string
+  total: number
+  completed: number
+  failed: number
+  skipped: number
+  outcomes: {
+    ticket_id: string
+    provider: BulkProvider
+    status: string
+    execution_id: string | null
+  }[]
+  created_at: string
+  started_at: string | null
+  completed_at: string | null
+  error_summary: string | null
+}
+
+export type BulkJobList = { items: BulkJob[]; total: number }
+
+export type BulkStart = {
+  ticket_ids?: string[]
+  all_eligible?: boolean
+  providers: BulkProvider[]
 }
 
 export type FieldComparison = {
@@ -144,4 +270,77 @@ export type Comparison = {
   comparable_field_count: number
   agreement_rate: number | null
   created_at: string
+}
+
+export type LatencyStats = {
+  count: number
+  mean: number | null
+  median: number | null
+  p90: number | null
+  min: number | null
+  max: number | null
+}
+
+type SideMetric<T> = { jev: T; llm: T }
+
+export type RunMetrics = {
+  tickets: number
+  comparisons: Record<string, number>
+  exact_matches: number
+  mean_agreement: number | null
+  per_field: Record<
+    string,
+    {
+      agreed: number
+      compared: number
+      rate: number | null
+      kappa: number | null
+    }
+  >
+  outcomes: SideMetric<{
+    total: number
+    counts: Record<string, number>
+    success_rate: number | null
+  }>
+  latency: SideMetric<LatencyStats>
+  wall_clock: LatencyStats
+  tokens: SideMetric<{
+    reported_runs: number
+    mean_input: number | null
+    mean_output: number | null
+  }>
+  distributions: SideMetric<Record<string, Record<string, number>>>
+  cost: SideMetric<{ priced_runs: number; total: number | null }>
+}
+
+export type DashboardData = {
+  tickets: { total: number; by_status: Record<string, number> }
+  real_comparisons: number
+  fake_comparisons_excluded: number
+  models: { jev: string[]; llm: string[] }
+  metrics: RunMetrics | null
+}
+
+export type ComparisonListItem = {
+  comparison_id: string
+  ticket_id: string
+  title: string
+  status: string
+  agreement_count: number
+  comparable_field_count: number
+  jev_model: string | null
+  llm_model: string | null
+  jev_ms: number | null
+  llm_ms: number | null
+  fake: boolean
+  created_at: string
+}
+
+export type ComparisonList = { items: ComparisonListItem[]; total: number }
+
+export type ComparisonDetail = {
+  ticket: Pick<Ticket, "ticket_id" | "title"> & Partial<Ticket>
+  jev: Execution | null
+  llm: Execution | null
+  comparison: Comparison
 }

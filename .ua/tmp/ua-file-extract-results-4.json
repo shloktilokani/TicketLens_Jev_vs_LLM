@@ -1,0 +1,3040 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 20,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 20,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 20,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "frontend/src/features/compare/useCompareRun.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 113,
+      "nonEmptyLines": 100,
+      "functions": [
+        {
+          "name": "useCompareRun",
+          "startLine": 31,
+          "endLine": 94,
+          "params": []
+        },
+        {
+          "name": "useElapsed",
+          "startLine": 97,
+          "endLine": 106,
+          "params": [
+            "run"
+          ]
+        },
+        {
+          "name": "formatElapsed",
+          "startLine": 108,
+          "endLine": 113,
+          "params": [
+            "ms"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "useCompareRun",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "useElapsed",
+          "line": 97,
+          "isDefault": false
+        },
+        {
+          "name": "formatElapsed",
+          "line": 108,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useCompareRun",
+          "callee": "useState",
+          "lineNumber": 32
+        },
+        {
+          "caller": "useCompareRun",
+          "callee": "useState",
+          "lineNumber": 33
+        },
+        {
+          "caller": "start",
+          "callee": "performance.now",
+          "lineNumber": 38
+        },
+        {
+          "caller": "start",
+          "callee": "setRuns",
+          "lineNumber": 39
+        },
+        {
+          "caller": "start",
+          "callee": "setComparison",
+          "lineNumber": 43
+        },
+        {
+          "caller": "finish",
+          "callee": "setRuns",
+          "lineNumber": 47
+        },
+        {
+          "caller": "finish",
+          "callee": "performance.now",
+          "lineNumber": 52
+        },
+        {
+          "caller": "runOne",
+          "callee": "await send",
+          "lineNumber": 57
+        },
+        {
+          "caller": "runOne",
+          "callee": "encodeURIComponent",
+          "lineNumber": 59
+        },
+        {
+          "caller": "runOne",
+          "callee": "finish",
+          "lineNumber": 61
+        },
+        {
+          "caller": "runOne",
+          "callee": "finish",
+          "lineNumber": 64
+        },
+        {
+          "caller": "start",
+          "callee": "Promise.all",
+          "lineNumber": 69
+        },
+        {
+          "caller": "start",
+          "callee": "runOne",
+          "lineNumber": 69
+        },
+        {
+          "caller": "start",
+          "callee": "runOne",
+          "lineNumber": 69
+        },
+        {
+          "caller": "start",
+          "callee": "setComparison",
+          "lineNumber": 71
+        },
+        {
+          "caller": "start",
+          "callee": "await send",
+          "lineNumber": 73
+        },
+        {
+          "caller": "start",
+          "callee": "setComparison",
+          "lineNumber": 78
+        },
+        {
+          "caller": "start",
+          "callee": "setComparison",
+          "lineNumber": 80
+        },
+        {
+          "caller": "reset",
+          "callee": "setRuns",
+          "lineNumber": 85
+        },
+        {
+          "caller": "reset",
+          "callee": "setComparison",
+          "lineNumber": 86
+        },
+        {
+          "caller": "useElapsed",
+          "callee": "useState",
+          "lineNumber": 98
+        },
+        {
+          "caller": "useElapsed",
+          "callee": "performance.now",
+          "lineNumber": 98
+        },
+        {
+          "caller": "useElapsed",
+          "callee": "useEffect",
+          "lineNumber": 99
+        },
+        {
+          "caller": "useElapsed",
+          "callee": "setInterval",
+          "lineNumber": 101
+        },
+        {
+          "caller": "useElapsed",
+          "callee": "setNow",
+          "lineNumber": 101
+        },
+        {
+          "caller": "useElapsed",
+          "callee": "performance.now",
+          "lineNumber": 101
+        },
+        {
+          "caller": "useElapsed",
+          "callee": "clearInterval",
+          "lineNumber": 102
+        },
+        {
+          "caller": "useElapsed",
+          "callee": "Math.max",
+          "lineNumber": 105
+        },
+        {
+          "caller": "formatElapsed",
+          "callee": "Math.floor",
+          "lineNumber": 109
+        },
+        {
+          "caller": "formatElapsed",
+          "callee": "Math.floor",
+          "lineNumber": 110
+        },
+        {
+          "caller": "formatElapsed",
+          "callee": "Math.floor",
+          "lineNumber": 111
+        },
+        {
+          "caller": "formatElapsed",
+          "callee": "String(minutes).padStart",
+          "lineNumber": 112
+        },
+        {
+          "caller": "formatElapsed",
+          "callee": "String",
+          "lineNumber": 112
+        },
+        {
+          "caller": "formatElapsed",
+          "callee": "String(seconds).padStart",
+          "lineNumber": 112
+        },
+        {
+          "caller": "formatElapsed",
+          "callee": "String",
+          "lineNumber": 112
+        },
+        {
+          "caller": "formatElapsed",
+          "callee": "String(hundredths).padStart",
+          "lineNumber": 112
+        },
+        {
+          "caller": "formatElapsed",
+          "callee": "String",
+          "lineNumber": 112
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 103,
+      "nonEmptyLines": 97,
+      "functions": [
+        {
+          "name": "storedRun",
+          "startLine": 12,
+          "endLine": 20,
+          "params": [
+            "execution"
+          ]
+        },
+        {
+          "name": "verdict",
+          "startLine": 22,
+          "endLine": 30,
+          "params": [
+            "{ comparison }"
+          ]
+        },
+        {
+          "name": "ComparisonDetailPage",
+          "startLine": 32,
+          "endLine": 103,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ComparisonDetailPage",
+          "line": 32,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "verdict",
+          "callee": "Math.round",
+          "lineNumber": 24
+        },
+        {
+          "caller": "ComparisonDetailPage",
+          "callee": "useParams",
+          "lineNumber": 33
+        },
+        {
+          "caller": "ComparisonDetailPage",
+          "callee": "useQuery",
+          "lineNumber": 34
+        },
+        {
+          "caller": "ComparisonDetailPage",
+          "callee": "api",
+          "lineNumber": 37
+        },
+        {
+          "caller": "ComparisonDetailPage",
+          "callee": "encodeURIComponent",
+          "lineNumber": 38
+        },
+        {
+          "caller": "ComparisonDetailPage",
+          "callee": "formatDateTime",
+          "lineNumber": 80
+        },
+        {
+          "caller": "ComparisonDetailPage",
+          "callee": "storedRun",
+          "lineNumber": 86
+        },
+        {
+          "caller": "ComparisonDetailPage",
+          "callee": "storedRun",
+          "lineNumber": 91
+        },
+        {
+          "caller": "ComparisonDetailPage",
+          "callee": "verdict",
+          "lineNumber": 96
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 1,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/features/comparisons/ComparisonsPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 103,
+      "nonEmptyLines": 99,
+      "functions": [
+        {
+          "name": "agreement",
+          "startLine": 19,
+          "endLine": 22,
+          "params": [
+            "item"
+          ]
+        },
+        {
+          "name": "ComparisonTable",
+          "startLine": 24,
+          "endLine": 72,
+          "params": [
+            "{ items }"
+          ]
+        },
+        {
+          "name": "ComparisonsPage",
+          "startLine": 74,
+          "endLine": 103,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ComparisonTable",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "ComparisonsPage",
+          "line": 74,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ComparisonTable",
+          "callee": "[\"Ticket\", \"Title\", \"Agreement\", \"Jev\", \"LLM\", \"When\"].map",
+          "lineNumber": 30
+        },
+        {
+          "caller": "ComparisonTable",
+          "callee": "items.map",
+          "lineNumber": 36
+        },
+        {
+          "caller": "ComparisonTable",
+          "callee": "agreement",
+          "lineNumber": 49
+        },
+        {
+          "caller": "ComparisonTable",
+          "callee": "seconds",
+          "lineNumber": 58
+        },
+        {
+          "caller": "ComparisonTable",
+          "callee": "seconds",
+          "lineNumber": 61
+        },
+        {
+          "caller": "ComparisonTable",
+          "callee": "formatDateTime",
+          "lineNumber": 64
+        },
+        {
+          "caller": "ComparisonsPage",
+          "callee": "useComparisons",
+          "lineNumber": 75
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 2,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/features/comparisons/hooks.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 14,
+      "nonEmptyLines": 12,
+      "functions": [
+        {
+          "name": "useComparisons",
+          "startLine": 6,
+          "endLine": 14,
+          "params": [
+            "limit",
+            "ticketId"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "useComparisons",
+          "line": 6,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useComparisons",
+          "callee": "useQuery",
+          "lineNumber": 7
+        },
+        {
+          "caller": "useComparisons",
+          "callee": "api",
+          "lineNumber": 10
+        },
+        {
+          "caller": "useComparisons",
+          "callee": "encodeURIComponent",
+          "lineNumber": 11
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/features/dashboard/DashboardPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 291,
+      "nonEmptyLines": 278,
+      "functions": [
+        {
+          "name": "percent",
+          "startLine": 43,
+          "endLine": 44,
+          "params": [
+            "rate"
+          ]
+        },
+        {
+          "name": "Stat",
+          "startLine": 46,
+          "endLine": 53,
+          "params": [
+            "{ value, label }"
+          ]
+        },
+        {
+          "name": "Stats",
+          "startLine": 55,
+          "endLine": 72,
+          "params": [
+            "{ data, m }"
+          ]
+        },
+        {
+          "name": "ChartCard",
+          "startLine": 74,
+          "endLine": 97,
+          "params": [
+            "{\n  title,\n  height,\n  children,\n}"
+          ]
+        },
+        {
+          "name": "AgreementChart",
+          "startLine": 99,
+          "endLine": 139,
+          "params": [
+            "{ m }"
+          ]
+        },
+        {
+          "name": "SideBySideChart",
+          "startLine": 141,
+          "endLine": 194,
+          "params": [
+            "{\n  title,\n  field,\n  m,\n}"
+          ]
+        },
+        {
+          "name": "Reliability",
+          "startLine": 196,
+          "endLine": 214,
+          "params": [
+            "{ m }"
+          ]
+        },
+        {
+          "name": "Recent",
+          "startLine": 216,
+          "endLine": 233,
+          "params": []
+        },
+        {
+          "name": "NoRealRuns",
+          "startLine": 235,
+          "endLine": 250,
+          "params": [
+            "{ fake }"
+          ]
+        },
+        {
+          "name": "DashboardPage",
+          "startLine": 252,
+          "endLine": 291,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "DashboardPage",
+          "line": 252,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "percent",
+          "callee": "Math.round",
+          "lineNumber": 44
+        },
+        {
+          "caller": "Stats",
+          "callee": "percent",
+          "lineNumber": 63
+        },
+        {
+          "caller": "Stats",
+          "callee": "seconds",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Stats",
+          "callee": "seconds",
+          "lineNumber": 69
+        },
+        {
+          "caller": "AgreementChart",
+          "callee": "Object.entries(m.per_field).map",
+          "lineNumber": 100
+        },
+        {
+          "caller": "AgreementChart",
+          "callee": "Object.entries",
+          "lineNumber": 100
+        },
+        {
+          "caller": "AgreementChart",
+          "callee": "Math.round",
+          "lineNumber": 102
+        },
+        {
+          "caller": "SideBySideChart",
+          "callee": "[...new Set([...Object.keys(jev), ...Object.keys(llm)])]\n    .sort((a, b) => ORDER.indexOf(a) - ORDER.indexOf(b) || a.localeCompare(b))\n    .map",
+          "lineNumber": 152
+        },
+        {
+          "caller": "SideBySideChart",
+          "callee": "[...new Set([...Object.keys(jev), ...Object.keys(llm)])]\n    .sort",
+          "lineNumber": 152
+        },
+        {
+          "caller": "SideBySideChart",
+          "callee": "Object.keys",
+          "lineNumber": 152
+        },
+        {
+          "caller": "SideBySideChart",
+          "callee": "Object.keys",
+          "lineNumber": 152
+        },
+        {
+          "caller": "SideBySideChart",
+          "callee": "ORDER.indexOf",
+          "lineNumber": 153
+        },
+        {
+          "caller": "SideBySideChart",
+          "callee": "ORDER.indexOf",
+          "lineNumber": 153
+        },
+        {
+          "caller": "SideBySideChart",
+          "callee": "a.localeCompare",
+          "lineNumber": 153
+        },
+        {
+          "caller": "SideBySideChart",
+          "callee": "Math.max",
+          "lineNumber": 156
+        },
+        {
+          "caller": "row",
+          "callee": "seconds",
+          "lineNumber": 202
+        },
+        {
+          "caller": "row",
+          "callee": "formatCost",
+          "lineNumber": 203
+        },
+        {
+          "caller": "Reliability",
+          "callee": "row",
+          "lineNumber": 210
+        },
+        {
+          "caller": "Reliability",
+          "callee": "row",
+          "lineNumber": 211
+        },
+        {
+          "caller": "Recent",
+          "callee": "useComparisons",
+          "lineNumber": 217
+        },
+        {
+          "caller": "DashboardPage",
+          "callee": "useQuery",
+          "lineNumber": 253
+        },
+        {
+          "caller": "DashboardPage",
+          "callee": "api",
+          "lineNumber": 255
+        },
+        {
+          "caller": "DashboardPage",
+          "callee": "data.models.jev.join",
+          "lineNumber": 269
+        },
+        {
+          "caller": "DashboardPage",
+          "callee": "data.models.llm.join",
+          "lineNumber": 270
+        }
+      ],
+      "metrics": {
+        "importCount": 8,
+        "exportCount": 1,
+        "functionCount": 10,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/features/executions/ExecutionDetailPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 207,
+      "nonEmptyLines": 199,
+      "functions": [
+        {
+          "name": "JsonBlock",
+          "startLine": 14,
+          "endLine": 57,
+          "params": [
+            "{\n  title,\n  value,\n  open = false,\n}"
+          ]
+        },
+        {
+          "name": "RatesNote",
+          "startLine": 59,
+          "endLine": 67,
+          "params": [
+            "{ saved }"
+          ]
+        },
+        {
+          "name": "UsageAndCost",
+          "startLine": 69,
+          "endLine": 102,
+          "params": [
+            "{ run }"
+          ]
+        },
+        {
+          "name": "Summary",
+          "startLine": 104,
+          "endLine": 146,
+          "params": [
+            "{ run }"
+          ]
+        },
+        {
+          "name": "ExecutionDetailPage",
+          "startLine": 148,
+          "endLine": 207,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ExecutionDetailPage",
+          "line": 148,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "JsonBlock",
+          "callee": "useState",
+          "lineNumber": 23
+        },
+        {
+          "caller": "JsonBlock",
+          "callee": "JSON.stringify",
+          "lineNumber": 24
+        },
+        {
+          "caller": "copy",
+          "callee": "navigator.clipboard.writeText",
+          "lineNumber": 27
+        },
+        {
+          "caller": "copy",
+          "callee": "setCopied",
+          "lineNumber": 28
+        },
+        {
+          "caller": "copy",
+          "callee": "setTimeout",
+          "lineNumber": 29
+        },
+        {
+          "caller": "copy",
+          "callee": "setCopied",
+          "lineNumber": 29
+        },
+        {
+          "caller": "copy",
+          "callee": "setCopied",
+          "lineNumber": 31
+        },
+        {
+          "caller": "UsageAndCost",
+          "callee": "formatCost",
+          "lineNumber": 85
+        },
+        {
+          "caller": "Summary",
+          "callee": "formatDateTime",
+          "lineNumber": 123
+        },
+        {
+          "caller": "Summary",
+          "callee": "seconds",
+          "lineNumber": 124
+        },
+        {
+          "caller": "ExecutionDetailPage",
+          "callee": "useParams",
+          "lineNumber": 149
+        },
+        {
+          "caller": "ExecutionDetailPage",
+          "callee": "useQuery",
+          "lineNumber": 150
+        },
+        {
+          "caller": "ExecutionDetailPage",
+          "callee": "api",
+          "lineNumber": 153
+        },
+        {
+          "caller": "ExecutionDetailPage",
+          "callee": "encodeURIComponent",
+          "lineNumber": 153
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 1,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/features/executions/ExecutionsPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 265,
+      "nonEmptyLines": 256,
+      "functions": [
+        {
+          "name": "useLogParams",
+          "startLine": 31,
+          "endLine": 43,
+          "params": []
+        },
+        {
+          "name": "DateFilter",
+          "startLine": 45,
+          "endLine": 70,
+          "params": [
+            "{\n  id,\n  label,\n  value,\n  onChange,\n}"
+          ]
+        },
+        {
+          "name": "Filters",
+          "startLine": 72,
+          "endLine": 123,
+          "params": [
+            "{ params, update }"
+          ]
+        },
+        {
+          "name": "LogTable",
+          "startLine": 125,
+          "endLine": 177,
+          "params": [
+            "{ items }"
+          ]
+        },
+        {
+          "name": "Body",
+          "startLine": 179,
+          "endLine": 228,
+          "params": [
+            "{\n  query,\n  filtered,\n  onClear,\n  onPage,\n}"
+          ]
+        },
+        {
+          "name": "useLog",
+          "startLine": 230,
+          "endLine": 236,
+          "params": [
+            "params"
+          ]
+        },
+        {
+          "name": "ExecutionsPage",
+          "startLine": 238,
+          "endLine": 265,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ExecutionsPage",
+          "line": 238,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useLogParams",
+          "callee": "useSearchParams",
+          "lineNumber": 32
+        },
+        {
+          "caller": "update",
+          "callee": "Object.entries",
+          "lineNumber": 35
+        },
+        {
+          "caller": "update",
+          "callee": "next.set",
+          "lineNumber": 36
+        },
+        {
+          "caller": "update",
+          "callee": "next.delete",
+          "lineNumber": 37
+        },
+        {
+          "caller": "update",
+          "callee": "next.delete",
+          "lineNumber": 39
+        },
+        {
+          "caller": "update",
+          "callee": "setParams",
+          "lineNumber": 40
+        },
+        {
+          "caller": "DateFilter",
+          "callee": "onChange",
+          "lineNumber": 66
+        },
+        {
+          "caller": "Filters",
+          "callee": "useTaxonomy",
+          "lineNumber": 73
+        },
+        {
+          "caller": "Filters",
+          "callee": "params.get",
+          "lineNumber": 78
+        },
+        {
+          "caller": "Filters",
+          "callee": "update",
+          "lineNumber": 81
+        },
+        {
+          "caller": "Filters",
+          "callee": "params.get",
+          "lineNumber": 85
+        },
+        {
+          "caller": "Filters",
+          "callee": "update",
+          "lineNumber": 87
+        },
+        {
+          "caller": "Filters",
+          "callee": "event.preventDefault",
+          "lineNumber": 91
+        },
+        {
+          "caller": "Filters",
+          "callee": "new FormData(event.currentTarget).get",
+          "lineNumber": 92
+        },
+        {
+          "caller": "Filters",
+          "callee": "update",
+          "lineNumber": 93
+        },
+        {
+          "caller": "Filters",
+          "callee": "String(id ?? \"\")\n              .trim()\n              .toUpperCase",
+          "lineNumber": 94
+        },
+        {
+          "caller": "Filters",
+          "callee": "String(id ?? \"\")\n              .trim",
+          "lineNumber": 94
+        },
+        {
+          "caller": "Filters",
+          "callee": "String",
+          "lineNumber": 94
+        },
+        {
+          "caller": "Filters",
+          "callee": "params.get",
+          "lineNumber": 101
+        },
+        {
+          "caller": "Filters",
+          "callee": "params.get",
+          "lineNumber": 103
+        },
+        {
+          "caller": "Filters",
+          "callee": "params.get",
+          "lineNumber": 112
+        },
+        {
+          "caller": "Filters",
+          "callee": "update",
+          "lineNumber": 113
+        },
+        {
+          "caller": "Filters",
+          "callee": "params.get",
+          "lineNumber": 118
+        },
+        {
+          "caller": "Filters",
+          "callee": "update",
+          "lineNumber": 119
+        },
+        {
+          "caller": "LogTable",
+          "callee": "[\n              \"When\",\n              \"Ticket\",\n              \"Side\",\n              \"Model\",\n              \"Status\",\n              \"Tokens in / out\",\n              \"Estimated cost\",\n              \"Duration\",\n            ].map",
+          "lineNumber": 131
+        },
+        {
+          "caller": "LogTable",
+          "callee": "items.map",
+          "lineNumber": 146
+        },
+        {
+          "caller": "LogTable",
+          "callee": "formatDateTime",
+          "lineNumber": 153
+        },
+        {
+          "caller": "LogTable",
+          "callee": "formatTokens",
+          "lineNumber": 163
+        },
+        {
+          "caller": "LogTable",
+          "callee": "formatCost",
+          "lineNumber": 166
+        },
+        {
+          "caller": "LogTable",
+          "callee": "seconds",
+          "lineNumber": 169
+        },
+        {
+          "caller": "useLog",
+          "callee": "useQuery",
+          "lineNumber": 231
+        },
+        {
+          "caller": "useLog",
+          "callee": "params.toString",
+          "lineNumber": 232
+        },
+        {
+          "caller": "useLog",
+          "callee": "api",
+          "lineNumber": 233
+        },
+        {
+          "caller": "ExecutionsPage",
+          "callee": "useLogParams",
+          "lineNumber": 239
+        },
+        {
+          "caller": "ExecutionsPage",
+          "callee": "useLog",
+          "lineNumber": 240
+        },
+        {
+          "caller": "ExecutionsPage",
+          "callee": "FILTER_KEYS.some",
+          "lineNumber": 241
+        },
+        {
+          "caller": "ExecutionsPage",
+          "callee": "params.get",
+          "lineNumber": 241
+        },
+        {
+          "caller": "ExecutionsPage",
+          "callee": "update",
+          "lineNumber": 259
+        },
+        {
+          "caller": "ExecutionsPage",
+          "callee": "Object.fromEntries",
+          "lineNumber": 259
+        },
+        {
+          "caller": "ExecutionsPage",
+          "callee": "FILTER_KEYS.map",
+          "lineNumber": 259
+        },
+        {
+          "caller": "ExecutionsPage",
+          "callee": "update",
+          "lineNumber": 261
+        },
+        {
+          "caller": "ExecutionsPage",
+          "callee": "String",
+          "lineNumber": 261
+        }
+      ],
+      "metrics": {
+        "importCount": 10,
+        "exportCount": 1,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/features/tickets/AiResults.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 179,
+      "nonEmptyLines": 173,
+      "functions": [
+        {
+          "name": "RunButton",
+          "startLine": 21,
+          "endLine": 50,
+          "params": [
+            "{\n  ticketId,\n  provider,\n}"
+          ]
+        },
+        {
+          "name": "RunRow",
+          "startLine": 52,
+          "endLine": 100,
+          "params": [
+            "{\n  run,\n  onUse,\n}"
+          ]
+        },
+        {
+          "name": "RunHistory",
+          "startLine": 102,
+          "endLine": 137,
+          "params": [
+            "{\n  ticketId,\n  onUse,\n}"
+          ]
+        },
+        {
+          "name": "ComparisonHistory",
+          "startLine": 139,
+          "endLine": 150,
+          "params": [
+            "{ ticketId }"
+          ]
+        },
+        {
+          "name": "AiResults",
+          "startLine": 152,
+          "endLine": 179,
+          "params": [
+            "{\n  ticketId,\n  onUse,\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "AiResults",
+          "line": 152,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "RunButton",
+          "callee": "useRunProvider",
+          "lineNumber": 28
+        },
+        {
+          "caller": "RunButton",
+          "callee": "run.mutate",
+          "lineNumber": 36
+        },
+        {
+          "caller": "RunButton",
+          "callee": "toast.success",
+          "lineNumber": 39
+        },
+        {
+          "caller": "RunButton",
+          "callee": "toast.error",
+          "lineNumber": 40
+        },
+        {
+          "caller": "RunButton",
+          "callee": "toast.error",
+          "lineNumber": 43
+        },
+        {
+          "caller": "RunRow",
+          "callee": "formatDateTime",
+          "lineNumber": 61
+        },
+        {
+          "caller": "RunRow",
+          "callee": "formatEscalation(answer.escalation_required).toLowerCase",
+          "lineNumber": 72
+        },
+        {
+          "caller": "RunRow",
+          "callee": "formatEscalation",
+          "lineNumber": 72
+        },
+        {
+          "caller": "RunRow",
+          "callee": "seconds",
+          "lineNumber": 77
+        },
+        {
+          "caller": "RunRow",
+          "callee": "formatTokens",
+          "lineNumber": 78
+        },
+        {
+          "caller": "RunRow",
+          "callee": "formatCost",
+          "lineNumber": 79
+        },
+        {
+          "caller": "RunRow",
+          "callee": "onUse",
+          "lineNumber": 93
+        },
+        {
+          "caller": "RunHistory",
+          "callee": "useTicketRuns",
+          "lineNumber": 109
+        },
+        {
+          "caller": "RunHistory",
+          "callee": "runs.data.items.map",
+          "lineNumber": 122
+        },
+        {
+          "caller": "RunHistory",
+          "callee": "encodeURIComponent",
+          "lineNumber": 129
+        },
+        {
+          "caller": "ComparisonHistory",
+          "callee": "useComparisons",
+          "lineNumber": 140
+        },
+        {
+          "caller": "AiResults",
+          "callee": "encodeURIComponent",
+          "lineNumber": 169
+        }
+      ],
+      "metrics": {
+        "importCount": 8,
+        "exportCount": 1,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/features/tickets/FinalClassification.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 280,
+      "nonEmptyLines": 270,
+      "functions": [
+        {
+          "name": "startingValues",
+          "startLine": 37,
+          "endLine": 46,
+          "params": [
+            "answer"
+          ]
+        },
+        {
+          "name": "Field",
+          "startLine": 48,
+          "endLine": 81,
+          "params": [
+            "{\n  label,\n  value,\n  options,\n  onChange,\n}"
+          ]
+        },
+        {
+          "name": "FinalForm",
+          "startLine": 83,
+          "endLine": 177,
+          "params": [
+            "{\n  ticket,\n  taxonomy,\n  run,\n  onClose,\n}"
+          ]
+        },
+        {
+          "name": "SavedFinal",
+          "startLine": 179,
+          "endLine": 222,
+          "params": [
+            "{ final }"
+          ]
+        },
+        {
+          "name": "FormLoader",
+          "startLine": 224,
+          "endLine": 234,
+          "params": [
+            "props"
+          ]
+        },
+        {
+          "name": "FinalClassificationPanel",
+          "startLine": 237,
+          "endLine": 280,
+          "params": [
+            "{\n  id,\n  ticket,\n  run,\n  onDone,\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "FinalClassificationPanel",
+          "line": 237,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "startingValues",
+          "callee": "formatEscalation",
+          "lineNumber": 44
+        },
+        {
+          "caller": "Field",
+          "callee": "useId",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Field",
+          "callee": "options.map",
+          "lineNumber": 72
+        },
+        {
+          "caller": "FinalForm",
+          "callee": "useState",
+          "lineNumber": 95
+        },
+        {
+          "caller": "FinalForm",
+          "callee": "startingValues",
+          "lineNumber": 96
+        },
+        {
+          "caller": "FinalForm",
+          "callee": "useSetFinal",
+          "lineNumber": 98
+        },
+        {
+          "caller": "set",
+          "callee": "setForm",
+          "lineNumber": 100
+        },
+        {
+          "caller": "submit",
+          "callee": "event.preventDefault",
+          "lineNumber": 103
+        },
+        {
+          "caller": "submit",
+          "callee": "save.mutate",
+          "lineNumber": 105
+        },
+        {
+          "caller": "submit",
+          "callee": "formatEscalation",
+          "lineNumber": 108
+        },
+        {
+          "caller": "submit",
+          "callee": "toast.success",
+          "lineNumber": 114
+        },
+        {
+          "caller": "submit",
+          "callee": "onClose",
+          "lineNumber": 115
+        },
+        {
+          "caller": "submit",
+          "callee": "toast.error",
+          "lineNumber": 117
+        },
+        {
+          "caller": "FinalForm",
+          "callee": "formatDateTime",
+          "lineNumber": 126
+        },
+        {
+          "caller": "FinalForm",
+          "callee": "Object.keys",
+          "lineNumber": 133
+        },
+        {
+          "caller": "FinalForm",
+          "callee": "setForm",
+          "lineNumber": 136
+        },
+        {
+          "caller": "FinalForm",
+          "callee": "set",
+          "lineNumber": 143
+        },
+        {
+          "caller": "FinalForm",
+          "callee": "set",
+          "lineNumber": 149
+        },
+        {
+          "caller": "FinalForm",
+          "callee": "set",
+          "lineNumber": 155
+        },
+        {
+          "caller": "FinalForm",
+          "callee": "set",
+          "lineNumber": 161
+        },
+        {
+          "caller": "FinalForm",
+          "callee": "Object.values(form).every",
+          "lineNumber": 167
+        },
+        {
+          "caller": "FinalForm",
+          "callee": "Object.values",
+          "lineNumber": 167
+        },
+        {
+          "caller": "SavedFinal",
+          "callee": "formatEscalation",
+          "lineNumber": 197
+        },
+        {
+          "caller": "SavedFinal",
+          "callee": "formatDateTime",
+          "lineNumber": 218
+        },
+        {
+          "caller": "FormLoader",
+          "callee": "useTaxonomy",
+          "lineNumber": 229
+        },
+        {
+          "caller": "FinalClassificationPanel",
+          "callee": "useState",
+          "lineNumber": 248
+        },
+        {
+          "caller": "close",
+          "callee": "setEditing",
+          "lineNumber": 252
+        },
+        {
+          "caller": "close",
+          "callee": "onDone",
+          "lineNumber": 253
+        },
+        {
+          "caller": "FinalClassificationPanel",
+          "callee": "setEditing",
+          "lineNumber": 260
+        }
+      ],
+      "metrics": {
+        "importCount": 10,
+        "exportCount": 1,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/features/tickets/ImportExport.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 199,
+      "nonEmptyLines": 190,
+      "functions": [
+        {
+          "name": "Count",
+          "startLine": 26,
+          "endLine": 33,
+          "params": [
+            "{ label, value }"
+          ]
+        },
+        {
+          "name": "SummaryView",
+          "startLine": 35,
+          "endLine": 95,
+          "params": [
+            "{ summary }"
+          ]
+        },
+        {
+          "name": "ImportDialog",
+          "startLine": 97,
+          "endLine": 176,
+          "params": []
+        },
+        {
+          "name": "ExportLinks",
+          "startLine": 184,
+          "endLine": 199,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ImportDialog",
+          "line": 97,
+          "isDefault": false
+        },
+        {
+          "name": "ExportLinks",
+          "line": 184,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SummaryView",
+          "callee": "summary.duplicate_rows.join",
+          "lineNumber": 49
+        },
+        {
+          "caller": "SummaryView",
+          "callee": "summary.errors.map",
+          "lineNumber": 66
+        },
+        {
+          "caller": "SummaryView",
+          "callee": "summary.preview.map",
+          "lineNumber": 84
+        },
+        {
+          "caller": "ImportDialog",
+          "callee": "useState",
+          "lineNumber": 98
+        },
+        {
+          "caller": "ImportDialog",
+          "callee": "useState",
+          "lineNumber": 99
+        },
+        {
+          "caller": "ImportDialog",
+          "callee": "useImportTickets",
+          "lineNumber": 100
+        },
+        {
+          "caller": "run",
+          "callee": "importer.mutate",
+          "lineNumber": 105
+        },
+        {
+          "caller": "run",
+          "callee": "toast.success",
+          "lineNumber": 110
+        },
+        {
+          "caller": "run",
+          "callee": "toast.error",
+          "lineNumber": 114
+        },
+        {
+          "caller": "reset",
+          "callee": "setOpen",
+          "lineNumber": 119
+        },
+        {
+          "caller": "reset",
+          "callee": "setFile",
+          "lineNumber": 121
+        },
+        {
+          "caller": "reset",
+          "callee": "importer.reset",
+          "lineNumber": 122
+        },
+        {
+          "caller": "ImportDialog",
+          "callee": "setOpen",
+          "lineNumber": 129
+        },
+        {
+          "caller": "ImportDialog",
+          "callee": "setFile",
+          "lineNumber": 151
+        },
+        {
+          "caller": "ImportDialog",
+          "callee": "importer.reset",
+          "lineNumber": 152
+        },
+        {
+          "caller": "ImportDialog",
+          "callee": "run",
+          "lineNumber": 160
+        },
+        {
+          "caller": "ImportDialog",
+          "callee": "run",
+          "lineNumber": 166
+        },
+        {
+          "caller": "ExportLinks",
+          "callee": "EXPORTS.map",
+          "lineNumber": 187
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 2,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/features/tickets/NewTicketPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 56,
+      "nonEmptyLines": 51,
+      "functions": [
+        {
+          "name": "NewTicketPage",
+          "startLine": 11,
+          "endLine": 56,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "NewTicketPage",
+          "line": 11,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "NewTicketPage",
+          "callee": "useTaxonomy",
+          "lineNumber": 12
+        },
+        {
+          "caller": "NewTicketPage",
+          "callee": "useCreateTicket",
+          "lineNumber": 13
+        },
+        {
+          "caller": "NewTicketPage",
+          "callee": "create.reset",
+          "lineNumber": 38
+        },
+        {
+          "caller": "NewTicketPage",
+          "callee": "create.mutate",
+          "lineNumber": 52
+        },
+        {
+          "caller": "NewTicketPage",
+          "callee": "toast.error",
+          "lineNumber": 52
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/features/tickets/TicketDetailPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 267,
+      "nonEmptyLines": 257,
+      "functions": [
+        {
+          "name": "fail",
+          "startLine": 34,
+          "endLine": 34,
+          "params": [
+            "error"
+          ]
+        },
+        {
+          "name": "StatusSelect",
+          "startLine": 37,
+          "endLine": 67,
+          "params": [
+            "{ ticket }"
+          ]
+        },
+        {
+          "name": "TicketInfo",
+          "startLine": 69,
+          "endLine": 91,
+          "params": [
+            "{ ticket }"
+          ]
+        },
+        {
+          "name": "Notes",
+          "startLine": 93,
+          "endLine": 143,
+          "params": [
+            "{ ticket }"
+          ]
+        },
+        {
+          "name": "TicketView",
+          "startLine": 145,
+          "endLine": 245,
+          "params": [
+            "{ ticket }"
+          ]
+        },
+        {
+          "name": "TicketDetailPage",
+          "startLine": 247,
+          "endLine": 267,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "TicketDetailPage",
+          "line": 247,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "fail",
+          "callee": "toast.error",
+          "lineNumber": 34
+        },
+        {
+          "caller": "StatusSelect",
+          "callee": "useTaxonomy",
+          "lineNumber": 38
+        },
+        {
+          "caller": "StatusSelect",
+          "callee": "useUpdateTicket",
+          "lineNumber": 39
+        },
+        {
+          "caller": "StatusSelect",
+          "callee": "update.mutate",
+          "lineNumber": 46
+        },
+        {
+          "caller": "StatusSelect",
+          "callee": "toast.success",
+          "lineNumber": 49
+        },
+        {
+          "caller": "StatusSelect",
+          "callee": "statuses.map",
+          "lineNumber": 59
+        },
+        {
+          "caller": "TicketInfo",
+          "callee": "formatDateTime",
+          "lineNumber": 86
+        },
+        {
+          "caller": "Notes",
+          "callee": "useState",
+          "lineNumber": 94
+        },
+        {
+          "caller": "Notes",
+          "callee": "useAddNote",
+          "lineNumber": 95
+        },
+        {
+          "caller": "Notes",
+          "callee": "ticket.operator_notes.map",
+          "lineNumber": 106
+        },
+        {
+          "caller": "Notes",
+          "callee": "formatDateTime",
+          "lineNumber": 110
+        },
+        {
+          "caller": "Notes",
+          "callee": "event.preventDefault",
+          "lineNumber": 118
+        },
+        {
+          "caller": "Notes",
+          "callee": "addNote.mutate",
+          "lineNumber": 119
+        },
+        {
+          "caller": "Notes",
+          "callee": "setText",
+          "lineNumber": 120
+        },
+        {
+          "caller": "Notes",
+          "callee": "setText",
+          "lineNumber": 128
+        },
+        {
+          "caller": "Notes",
+          "callee": "text.trim",
+          "lineNumber": 135
+        },
+        {
+          "caller": "TicketView",
+          "callee": "useState",
+          "lineNumber": 146
+        },
+        {
+          "caller": "TicketView",
+          "callee": "useState",
+          "lineNumber": 147
+        },
+        {
+          "caller": "TicketView",
+          "callee": "useState",
+          "lineNumber": 148
+        },
+        {
+          "caller": "TicketView",
+          "callee": "useTaxonomy",
+          "lineNumber": 149
+        },
+        {
+          "caller": "TicketView",
+          "callee": "useUpdateTicket",
+          "lineNumber": 150
+        },
+        {
+          "caller": "TicketView",
+          "callee": "useDeleteTicket",
+          "lineNumber": 151
+        },
+        {
+          "caller": "TicketView",
+          "callee": "useQueryClient",
+          "lineNumber": 152
+        },
+        {
+          "caller": "TicketView",
+          "callee": "useNavigate",
+          "lineNumber": 153
+        },
+        {
+          "caller": "deleteTicket",
+          "callee": "remove.mutate",
+          "lineNumber": 156
+        },
+        {
+          "caller": "deleteTicket",
+          "callee": "queryClient.removeQueries",
+          "lineNumber": 158
+        },
+        {
+          "caller": "deleteTicket",
+          "callee": "toast.success",
+          "lineNumber": 159
+        },
+        {
+          "caller": "deleteTicket",
+          "callee": "navigate",
+          "lineNumber": 160
+        },
+        {
+          "caller": "TicketView",
+          "callee": "setEditing",
+          "lineNumber": 178
+        },
+        {
+          "caller": "TicketView",
+          "callee": "setConfirming",
+          "lineNumber": 186
+        },
+        {
+          "caller": "TicketView",
+          "callee": "setEditing",
+          "lineNumber": 205
+        },
+        {
+          "caller": "TicketView",
+          "callee": "update.mutate",
+          "lineNumber": 207
+        },
+        {
+          "caller": "TicketView",
+          "callee": "setEditing",
+          "lineNumber": 209
+        },
+        {
+          "caller": "TicketView",
+          "callee": "toast.success",
+          "lineNumber": 210
+        },
+        {
+          "caller": "TicketView",
+          "callee": "setChosenRun",
+          "lineNumber": 223
+        },
+        {
+          "caller": "TicketView",
+          "callee": "setChosenRun",
+          "lineNumber": 228
+        },
+        {
+          "caller": "TicketView",
+          "callee": "document.getElementById(FINAL_PANEL_ID)?.focus",
+          "lineNumber": 230
+        },
+        {
+          "caller": "TicketView",
+          "callee": "document.getElementById",
+          "lineNumber": 230
+        },
+        {
+          "caller": "TicketDetailPage",
+          "callee": "useParams",
+          "lineNumber": 248
+        },
+        {
+          "caller": "TicketDetailPage",
+          "callee": "useTicket",
+          "lineNumber": 249
+        }
+      ],
+      "metrics": {
+        "importCount": 15,
+        "exportCount": 1,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/features/tickets/TicketForm.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 200,
+      "nonEmptyLines": 192,
+      "functions": [
+        {
+          "name": "Field",
+          "startLine": 61,
+          "endLine": 83,
+          "params": [
+            "{\n  id,\n  label,\n  error,\n  children,\n}"
+          ]
+        },
+        {
+          "name": "TicketForm",
+          "startLine": 86,
+          "endLine": 200,
+          "params": [
+            "{\n  channels,\n  initial = EMPTY_TICKET,\n  submitLabel,\n  pending,\n  onSubmit,\n  onCancel,\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "TicketForm",
+          "line": 86,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "TicketForm",
+          "callee": "useForm",
+          "lineNumber": 94
+        },
+        {
+          "caller": "TicketForm",
+          "callee": "zodResolver",
+          "lineNumber": 95
+        },
+        {
+          "caller": "field",
+          "callee": "Boolean",
+          "lineNumber": 102
+        },
+        {
+          "caller": "field",
+          "callee": "register",
+          "lineNumber": 104
+        },
+        {
+          "caller": "TicketForm",
+          "callee": "handleSubmit",
+          "lineNumber": 111
+        },
+        {
+          "caller": "TicketForm",
+          "callee": "onSubmit",
+          "lineNumber": 112
+        },
+        {
+          "caller": "TicketForm",
+          "callee": "msg",
+          "lineNumber": 119
+        },
+        {
+          "caller": "TicketForm",
+          "callee": "field",
+          "lineNumber": 120
+        },
+        {
+          "caller": "TicketForm",
+          "callee": "msg",
+          "lineNumber": 122
+        },
+        {
+          "caller": "TicketForm",
+          "callee": "field",
+          "lineNumber": 123
+        },
+        {
+          "caller": "TicketForm",
+          "callee": "msg",
+          "lineNumber": 129
+        },
+        {
+          "caller": "TicketForm",
+          "callee": "field",
+          "lineNumber": 131
+        },
+        {
+          "caller": "TicketForm",
+          "callee": "msg",
+          "lineNumber": 136
+        },
+        {
+          "caller": "TicketForm",
+          "callee": "field",
+          "lineNumber": 138
+        },
+        {
+          "caller": "TicketForm",
+          "callee": "msg",
+          "lineNumber": 143
+        },
+        {
+          "caller": "TicketForm",
+          "callee": "field",
+          "lineNumber": 145
+        },
+        {
+          "caller": "TicketForm",
+          "callee": "msg",
+          "lineNumber": 150
+        },
+        {
+          "caller": "TicketForm",
+          "callee": "field",
+          "lineNumber": 152
+        },
+        {
+          "caller": "TicketForm",
+          "callee": "msg",
+          "lineNumber": 158
+        },
+        {
+          "caller": "TicketForm",
+          "callee": "Boolean",
+          "lineNumber": 168
+        },
+        {
+          "caller": "TicketForm",
+          "callee": "channels.map",
+          "lineNumber": 173
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 1,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/features/tickets/TicketListPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 267,
+      "nonEmptyLines": 257,
+      "functions": [
+        {
+          "name": "useListParams",
+          "startLine": 39,
+          "endLine": 52,
+          "params": []
+        },
+        {
+          "name": "Filters",
+          "startLine": 54,
+          "endLine": 124,
+          "params": [
+            "{ query, update }"
+          ]
+        },
+        {
+          "name": "TicketRow",
+          "startLine": 126,
+          "endLine": 160,
+          "params": [
+            "{ ticket }"
+          ]
+        },
+        {
+          "name": "NoTickets",
+          "startLine": 162,
+          "endLine": 193,
+          "params": [
+            "{\n  filtered,\n  onClear,\n}"
+          ]
+        },
+        {
+          "name": "TicketTable",
+          "startLine": 195,
+          "endLine": 223,
+          "params": [
+            "{ data }"
+          ]
+        },
+        {
+          "name": "TicketListPage",
+          "startLine": 225,
+          "endLine": 267,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "TicketListPage",
+          "line": 225,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useListParams",
+          "callee": "useSearchParams",
+          "lineNumber": 40
+        },
+        {
+          "caller": "useListParams",
+          "callee": "Object.fromEntries",
+          "lineNumber": 41
+        },
+        {
+          "caller": "update",
+          "callee": "Object.entries",
+          "lineNumber": 44
+        },
+        {
+          "caller": "update",
+          "callee": "next.set",
+          "lineNumber": 45
+        },
+        {
+          "caller": "update",
+          "callee": "next.delete",
+          "lineNumber": 46
+        },
+        {
+          "caller": "update",
+          "callee": "next.delete",
+          "lineNumber": 48
+        },
+        {
+          "caller": "update",
+          "callee": "setParams",
+          "lineNumber": 49
+        },
+        {
+          "caller": "Filters",
+          "callee": "useTaxonomy",
+          "lineNumber": 55
+        },
+        {
+          "caller": "Filters",
+          "callee": "event.preventDefault",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Filters",
+          "callee": "update",
+          "lineNumber": 63
+        },
+        {
+          "caller": "Filters",
+          "callee": "String(new FormData(event.currentTarget).get(\"q\") ?? \"\").trim",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Filters",
+          "callee": "String",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Filters",
+          "callee": "new FormData(event.currentTarget).get",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Filters",
+          "callee": "Object.keys",
+          "lineNumber": 87
+        },
+        {
+          "caller": "Filters",
+          "callee": "update",
+          "lineNumber": 88
+        },
+        {
+          "caller": "Filters",
+          "callee": "update",
+          "lineNumber": 94
+        },
+        {
+          "caller": "Filters",
+          "callee": "update",
+          "lineNumber": 100
+        },
+        {
+          "caller": "Filters",
+          "callee": "v.split",
+          "lineNumber": 107
+        },
+        {
+          "caller": "Filters",
+          "callee": "update",
+          "lineNumber": 108
+        },
+        {
+          "caller": "Filters",
+          "callee": "SORTS.map",
+          "lineNumber": 115
+        },
+        {
+          "caller": "TicketRow",
+          "callee": "useNavigate",
+          "lineNumber": 127
+        },
+        {
+          "caller": "TicketRow",
+          "callee": "navigate",
+          "lineNumber": 132
+        },
+        {
+          "caller": "TicketRow",
+          "callee": "e.stopPropagation",
+          "lineNumber": 137
+        },
+        {
+          "caller": "TicketRow",
+          "callee": "formatDateTime",
+          "lineNumber": 151
+        },
+        {
+          "caller": "TicketTable",
+          "callee": "[\n              \"Ticket ID\",\n              \"Title\",\n              \"Customer\",\n              \"Category\",\n              \"Priority\",\n              \"Status\",\n              \"Created\",\n              \"Latest AI run\",\n            ].map",
+          "lineNumber": 201
+        },
+        {
+          "caller": "TicketTable",
+          "callee": "data.items.map",
+          "lineNumber": 216
+        },
+        {
+          "caller": "TicketListPage",
+          "callee": "useListParams",
+          "lineNumber": 226
+        },
+        {
+          "caller": "TicketListPage",
+          "callee": "useTickets",
+          "lineNumber": 227
+        },
+        {
+          "caller": "TicketListPage",
+          "callee": "FILTER_KEYS.some",
+          "lineNumber": 228
+        },
+        {
+          "caller": "TicketListPage",
+          "callee": "params.update",
+          "lineNumber": 239
+        },
+        {
+          "caller": "TicketListPage",
+          "callee": "params.update",
+          "lineNumber": 252
+        },
+        {
+          "caller": "TicketListPage",
+          "callee": "String",
+          "lineNumber": 252
+        }
+      ],
+      "metrics": {
+        "importCount": 12,
+        "exportCount": 1,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/features/tickets/hooks.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 118,
+      "nonEmptyLines": 104,
+      "functions": [
+        {
+          "name": "useTickets",
+          "startLine": 26,
+          "endLine": 32,
+          "params": [
+            "query"
+          ]
+        },
+        {
+          "name": "useTicket",
+          "startLine": 34,
+          "endLine": 40,
+          "params": [
+            "ticketId",
+            "enabled"
+          ]
+        },
+        {
+          "name": "useTicketWrite",
+          "startLine": 43,
+          "endLine": 53,
+          "params": [
+            "write"
+          ]
+        },
+        {
+          "name": "path",
+          "startLine": 55,
+          "endLine": 56,
+          "params": [
+            "ticketId"
+          ]
+        },
+        {
+          "name": "useCreateTicket",
+          "startLine": 58,
+          "endLine": 61,
+          "params": []
+        },
+        {
+          "name": "useUpdateTicket",
+          "startLine": 63,
+          "endLine": 66,
+          "params": [
+            "ticketId"
+          ]
+        },
+        {
+          "name": "useAddNote",
+          "startLine": 68,
+          "endLine": 71,
+          "params": [
+            "ticketId"
+          ]
+        },
+        {
+          "name": "useSetFinal",
+          "startLine": 73,
+          "endLine": 76,
+          "params": [
+            "ticketId"
+          ]
+        },
+        {
+          "name": "useTicketRuns",
+          "startLine": 78,
+          "endLine": 85,
+          "params": [
+            "ticketId"
+          ]
+        },
+        {
+          "name": "useRunProvider",
+          "startLine": 88,
+          "endLine": 98,
+          "params": [
+            "ticketId",
+            "provider"
+          ]
+        },
+        {
+          "name": "useDeleteTicket",
+          "startLine": 100,
+          "endLine": 101,
+          "params": [
+            "ticketId"
+          ]
+        },
+        {
+          "name": "useImportTickets",
+          "startLine": 104,
+          "endLine": 118,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "useTickets",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "useTicket",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "useCreateTicket",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "useUpdateTicket",
+          "line": 63,
+          "isDefault": false
+        },
+        {
+          "name": "useAddNote",
+          "line": 68,
+          "isDefault": false
+        },
+        {
+          "name": "useSetFinal",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "useTicketRuns",
+          "line": 78,
+          "isDefault": false
+        },
+        {
+          "name": "useRunProvider",
+          "line": 88,
+          "isDefault": false
+        },
+        {
+          "name": "useDeleteTicket",
+          "line": 100,
+          "isDefault": false
+        },
+        {
+          "name": "useImportTickets",
+          "line": 104,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useTickets",
+          "callee": "useQuery",
+          "lineNumber": 27
+        },
+        {
+          "caller": "useTickets",
+          "callee": "api",
+          "lineNumber": 30
+        },
+        {
+          "caller": "useTicket",
+          "callee": "useQuery",
+          "lineNumber": 35
+        },
+        {
+          "caller": "useTicket",
+          "callee": "api",
+          "lineNumber": 37
+        },
+        {
+          "caller": "useTicket",
+          "callee": "encodeURIComponent",
+          "lineNumber": 37
+        },
+        {
+          "caller": "useTicketWrite",
+          "callee": "useQueryClient",
+          "lineNumber": 44
+        },
+        {
+          "caller": "useTicketWrite",
+          "callee": "useMutation",
+          "lineNumber": 45
+        },
+        {
+          "caller": "useTicketWrite",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 48
+        },
+        {
+          "caller": "useTicketWrite",
+          "callee": "queryClient.setQueryData",
+          "lineNumber": 50
+        },
+        {
+          "caller": "path",
+          "callee": "encodeURIComponent",
+          "lineNumber": 56
+        },
+        {
+          "caller": "useCreateTicket",
+          "callee": "useTicketWrite",
+          "lineNumber": 59
+        },
+        {
+          "caller": "useCreateTicket",
+          "callee": "send",
+          "lineNumber": 60
+        },
+        {
+          "caller": "useUpdateTicket",
+          "callee": "useTicketWrite",
+          "lineNumber": 64
+        },
+        {
+          "caller": "useUpdateTicket",
+          "callee": "send",
+          "lineNumber": 65
+        },
+        {
+          "caller": "useUpdateTicket",
+          "callee": "path",
+          "lineNumber": 65
+        },
+        {
+          "caller": "useAddNote",
+          "callee": "useTicketWrite",
+          "lineNumber": 69
+        },
+        {
+          "caller": "useAddNote",
+          "callee": "send",
+          "lineNumber": 70
+        },
+        {
+          "caller": "useAddNote",
+          "callee": "path",
+          "lineNumber": 70
+        },
+        {
+          "caller": "useSetFinal",
+          "callee": "useTicketWrite",
+          "lineNumber": 74
+        },
+        {
+          "caller": "useSetFinal",
+          "callee": "send",
+          "lineNumber": 75
+        },
+        {
+          "caller": "useSetFinal",
+          "callee": "path",
+          "lineNumber": 75
+        },
+        {
+          "caller": "useTicketRuns",
+          "callee": "useQuery",
+          "lineNumber": 79
+        },
+        {
+          "caller": "useTicketRuns",
+          "callee": "api",
+          "lineNumber": 82
+        },
+        {
+          "caller": "useTicketRuns",
+          "callee": "encodeURIComponent",
+          "lineNumber": 83
+        },
+        {
+          "caller": "useRunProvider",
+          "callee": "useQueryClient",
+          "lineNumber": 89
+        },
+        {
+          "caller": "useRunProvider",
+          "callee": "useMutation",
+          "lineNumber": 90
+        },
+        {
+          "caller": "useRunProvider",
+          "callee": "send",
+          "lineNumber": 92
+        },
+        {
+          "caller": "useRunProvider",
+          "callee": "path",
+          "lineNumber": 92
+        },
+        {
+          "caller": "useRunProvider",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 94
+        },
+        {
+          "caller": "useRunProvider",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 95
+        },
+        {
+          "caller": "useDeleteTicket",
+          "callee": "useTicketWrite",
+          "lineNumber": 101
+        },
+        {
+          "caller": "useDeleteTicket",
+          "callee": "send",
+          "lineNumber": 101
+        },
+        {
+          "caller": "useDeleteTicket",
+          "callee": "path",
+          "lineNumber": 101
+        },
+        {
+          "caller": "useImportTickets",
+          "callee": "useQueryClient",
+          "lineNumber": 105
+        },
+        {
+          "caller": "useImportTickets",
+          "callee": "useMutation",
+          "lineNumber": 106
+        },
+        {
+          "caller": "useImportTickets",
+          "callee": "api",
+          "lineNumber": 108
+        },
+        {
+          "caller": "useImportTickets",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 115
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 10,
+        "functionCount": 12,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/lib/format.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 33,
+      "nonEmptyLines": 27,
+      "functions": [
+        {
+          "name": "formatDateTime",
+          "startLine": 6,
+          "endLine": 6,
+          "params": [
+            "iso"
+          ]
+        },
+        {
+          "name": "seconds",
+          "startLine": 8,
+          "endLine": 9,
+          "params": [
+            "ms"
+          ]
+        },
+        {
+          "name": "formatEscalation",
+          "startLine": 13,
+          "endLine": 14,
+          "params": [
+            "required"
+          ]
+        },
+        {
+          "name": "formatTokens",
+          "startLine": 16,
+          "endLine": 25,
+          "params": [
+            "usage"
+          ]
+        },
+        {
+          "name": "formatCost",
+          "startLine": 28,
+          "endLine": 33,
+          "params": [
+            "amount"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "formatDateTime",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "seconds",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "SIDE_LABELS",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "formatEscalation",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "formatTokens",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "formatCost",
+          "line": 28,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "formatDateTime",
+          "callee": "dateTime.format",
+          "lineNumber": 6
+        },
+        {
+          "caller": "seconds",
+          "callee": "(ms / 1000).toFixed",
+          "lineNumber": 9
+        },
+        {
+          "caller": "formatCost",
+          "callee": "Number",
+          "lineNumber": 30
+        },
+        {
+          "caller": "formatCost",
+          "callee": "value.toFixed",
+          "lineNumber": 32
+        },
+        {
+          "caller": "formatCost",
+          "callee": "value.toFixed",
+          "lineNumber": 32
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/lib/utils.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "exports": [
+        {
+          "name": "cn",
+          "line": 1,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/services/api.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 52,
+      "nonEmptyLines": 46,
+      "functions": [
+        {
+          "name": "messageFrom",
+          "startLine": 16,
+          "endLine": 26,
+          "params": [
+            "body",
+            "status"
+          ]
+        },
+        {
+          "name": "api",
+          "startLine": 28,
+          "endLine": 46,
+          "params": [
+            "path",
+            "init"
+          ]
+        },
+        {
+          "name": "send",
+          "startLine": 48,
+          "endLine": 52,
+          "params": [
+            "method",
+            "path",
+            "data"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "ApiError",
+          "startLine": 5,
+          "endLine": 12,
+          "methods": [
+            "constructor"
+          ],
+          "properties": [
+            "status"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "BASE_URL",
+          "line": 2,
+          "isDefault": false
+        },
+        {
+          "name": "ApiError",
+          "line": 5,
+          "isDefault": false
+        },
+        {
+          "name": "api",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "send",
+          "line": 48,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "constructor",
+          "callee": "super",
+          "lineNumber": 9
+        },
+        {
+          "caller": "messageFrom",
+          "callee": "Array.isArray",
+          "lineNumber": 19
+        },
+        {
+          "caller": "messageFrom",
+          "callee": "(detail as Detail[])\n      .map((d) => [d.loc?.slice(1).join(\".\"), d.msg].filter(Boolean).join(\": \"))\n      .join",
+          "lineNumber": 21
+        },
+        {
+          "caller": "messageFrom",
+          "callee": "(detail as Detail[])\n      .map",
+          "lineNumber": 21
+        },
+        {
+          "caller": "messageFrom",
+          "callee": "[d.loc?.slice(1).join(\".\"), d.msg].filter(Boolean).join",
+          "lineNumber": 22
+        },
+        {
+          "caller": "messageFrom",
+          "callee": "[d.loc?.slice(1).join(\".\"), d.msg].filter",
+          "lineNumber": 22
+        },
+        {
+          "caller": "messageFrom",
+          "callee": "d.loc?.slice(1).join",
+          "lineNumber": 22
+        },
+        {
+          "caller": "messageFrom",
+          "callee": "d.loc?.slice",
+          "lineNumber": 22
+        },
+        {
+          "caller": "api",
+          "callee": "fetch",
+          "lineNumber": 34
+        },
+        {
+          "caller": "api",
+          "callee": "response.json().catch",
+          "lineNumber": 42
+        },
+        {
+          "caller": "api",
+          "callee": "response.json",
+          "lineNumber": 42
+        },
+        {
+          "caller": "api",
+          "callee": "messageFrom",
+          "lineNumber": 44
+        },
+        {
+          "caller": "send",
+          "callee": "api",
+          "lineNumber": 49
+        },
+        {
+          "caller": "send",
+          "callee": "JSON.stringify",
+          "lineNumber": 51
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "frontend/src/services/queries.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 15,
+      "functions": [
+        {
+          "name": "useTaxonomy",
+          "startLine": 6,
+          "endLine": 11,
+          "params": []
+        },
+        {
+          "name": "useProviderStatus",
+          "startLine": 13,
+          "endLine": 18,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "useTaxonomy",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "useProviderStatus",
+          "line": 13,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useTaxonomy",
+          "callee": "useQuery",
+          "lineNumber": 7
+        },
+        {
+          "caller": "useTaxonomy",
+          "callee": "api",
+          "lineNumber": 9
+        },
+        {
+          "caller": "useProviderStatus",
+          "callee": "useQuery",
+          "lineNumber": 14
+        },
+        {
+          "caller": "useProviderStatus",
+          "callee": "api",
+          "lineNumber": 16
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/types/api.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 250,
+      "nonEmptyLines": 226,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Literal
 
-from pydantic import BaseModel, Field, model_validator
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 from app.core.taxonomy import BulkJobStatus, ExecutionStatus, Provider
 
@@ -9,9 +9,15 @@ from app.core.taxonomy import BulkJobStatus, ExecutionStatus, Provider
 class BulkJobCreate(BaseModel):
     """Either an explicit list of tickets or every eligible ticket, never both."""
 
-    ticket_ids: list[str] | None = Field(default=None, min_length=1)
+    ticket_ids: list[str] | None = Field(default=None, min_length=1, max_length=1000)
     all_eligible: bool = False
     providers: list[Provider] = Field(min_length=1)
+
+    @field_validator("ticket_ids", "providers")
+    @classmethod
+    def _once_each(cls, values):
+        # A repeated value would repeat a possibly paid call.
+        return list(dict.fromkeys(values)) if values else values
 
     @model_validator(mode="after")
     def _one_selection(self):
@@ -44,3 +50,8 @@ class BulkJob(BaseModel):
     started_at: datetime | None = None
     completed_at: datetime | None = None
     error_summary: str | None = None
+
+
+class BulkJobList(BaseModel):
+    items: list[BulkJob]
+    total: int

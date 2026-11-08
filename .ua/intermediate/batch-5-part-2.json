@@ -1,0 +1,1219 @@
+{
+ "nodes": [
+  {
+   "id": "file:backend/app/repositories/database.py",
+   "type": "file",
+   "name": "database.py",
+   "filePath": "backend/app/repositories/database.py",
+   "summary": "MongoDB access layer defining the client factory, readiness ping, index specifications, exact Decimal128 money codec, and shared read helpers.",
+   "tags": [
+    "database",
+    "repository",
+    "mongodb",
+    "indexes",
+    "serialization"
+   ],
+   "complexity": "moderate",
+   "languageNotes": "A partial unique index on source_fingerprint enforces import idempotency without colliding on manually created tickets that have no fingerprint."
+  },
+  {
+   "id": "function:backend/app/repositories/database.py:connect",
+   "type": "function",
+   "name": "connect",
+   "filePath": "backend/app/repositories/database.py",
+   "lineRange": [
+    65,
+    72
+   ],
+   "summary": "Creates a lazy, timezone-aware MongoClient with a short server-selection timeout and the Decimal codec, so the app can start while MongoDB is down.",
+   "tags": [
+    "database",
+    "factory",
+    "mongodb"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/database.py:is_reachable",
+   "type": "function",
+   "name": "is_reachable",
+   "filePath": "backend/app/repositories/database.py",
+   "lineRange": [
+    75,
+    80
+   ],
+   "summary": "Pings MongoDB and returns whether the server responded.",
+   "tags": [
+    "database",
+    "readiness",
+    "mongodb"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/database.py:ensure_indexes",
+   "type": "function",
+   "name": "ensure_indexes",
+   "filePath": "backend/app/repositories/database.py",
+   "lineRange": [
+    83,
+    87
+   ],
+   "summary": "Creates every declared collection index, and is safe to run repeatedly.",
+   "tags": [
+    "database",
+    "indexes",
+    "idempotent"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/database.py:find_all",
+   "type": "function",
+   "name": "find_all",
+   "filePath": "backend/app/repositories/database.py",
+   "lineRange": [
+    90,
+    92
+   ],
+   "summary": "Reads every document in a collection, sorted ascending and without internal ids, for exports.",
+   "tags": [
+    "database",
+    "query",
+    "export"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/database.py:find_in",
+   "type": "function",
+   "name": "find_in",
+   "filePath": "backend/app/repositories/database.py",
+   "lineRange": [
+    95,
+    97
+   ],
+   "summary": "Reads documents whose field matches any given value, without internal ids, for run reports.",
+   "tags": [
+    "database",
+    "query",
+    "reporting"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/repositories/database.py:DecimalCodec",
+   "type": "class",
+   "name": "DecimalCodec",
+   "filePath": "backend/app/repositories/database.py",
+   "lineRange": [
+    52,
+    62
+   ],
+   "summary": "BSON type codec converting Python Decimal to and from Decimal128 so stored money values stay exact.",
+   "tags": [
+    "serialization",
+    "codec",
+    "money",
+    "mongodb"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/scripts/init_db.py",
+   "type": "file",
+   "name": "init_db.py",
+   "filePath": "backend/scripts/init_db.py",
+   "summary": "Repeatable command-line script that creates all TicketLens MongoDB indexes and exits non-zero with setup guidance when the database is unreachable.",
+   "tags": [
+    "script",
+    "database",
+    "indexes",
+    "entry-point",
+    "idempotent"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/scripts/init_db.py:main",
+   "type": "function",
+   "name": "main",
+   "filePath": "backend/scripts/init_db.py",
+   "lineRange": [
+    14,
+    25
+   ],
+   "summary": "Ensures indexes in the configured database, prints the outcome, and returns exit code 1 with setup guidance when MongoDB is unreachable.",
+   "tags": [
+    "entry-point",
+    "script",
+    "indexes"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/tests/conftest.py",
+   "type": "file",
+   "name": "conftest.py",
+   "filePath": "backend/tests/conftest.py",
+   "summary": "Shared pytest fixtures providing settings isolated from backend/.env and a throwaway MongoDB test database that skips tests when MongoDB is down.",
+   "tags": [
+    "test",
+    "fixtures",
+    "pytest",
+    "mongodb"
+   ],
+   "complexity": "simple",
+   "languageNotes": "pytest discovers conftest.py fixtures by parameter name, so test modules can use them without importing them."
+  },
+  {
+   "id": "function:backend/tests/conftest.py:test_settings",
+   "type": "function",
+   "name": "test_settings",
+   "filePath": "backend/tests/conftest.py",
+   "lineRange": [
+    10,
+    12
+   ],
+   "summary": "Fixture that builds Settings pointing at the test database and ignoring any developer backend/.env.",
+   "tags": [
+    "test",
+    "fixture",
+    "configuration"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/conftest.py:test_db",
+   "type": "function",
+   "name": "test_db",
+   "filePath": "backend/tests/conftest.py",
+   "lineRange": [
+    16,
+    27
+   ],
+   "summary": "Fixture yielding a test database emptied before and after each test, skipping the test when MongoDB is down.",
+   "tags": [
+    "test",
+    "fixture",
+    "mongodb"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/tests/test_app_starts.py",
+   "type": "file",
+   "name": "test_app_starts.py",
+   "filePath": "backend/tests/test_app_starts.py",
+   "summary": "Smoke tests confirming the app imports and serves Swagger UI and an OpenAPI schema titled TicketLens API.",
+   "tags": [
+    "test",
+    "smoke-test",
+    "openapi",
+    "fastapi"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_app_starts.py:test_swagger_ui_is_served",
+   "type": "function",
+   "name": "test_swagger_ui_is_served",
+   "filePath": "backend/tests/test_app_starts.py",
+   "lineRange": [
+    6,
+    10
+   ],
+   "summary": "Verifies the /docs page returns Swagger UI.",
+   "tags": [
+    "test",
+    "smoke-test",
+    "openapi"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_app_starts.py:test_openapi_schema_names_the_app",
+   "type": "function",
+   "name": "test_openapi_schema_names_the_app",
+   "filePath": "backend/tests/test_app_starts.py",
+   "lineRange": [
+    13,
+    17
+   ],
+   "summary": "Verifies the OpenAPI schema is served with the TicketLens API title.",
+   "tags": [
+    "test",
+    "smoke-test",
+    "openapi"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/tests/test_dashboard.py",
+   "type": "file",
+   "name": "test_dashboard.py",
+   "filePath": "backend/tests/test_dashboard.py",
+   "summary": "API tests for dashboard metrics, comparison listing and detail, and each ticket's latest run, including exclusion of fake runs from real metrics.",
+   "tags": [
+    "test",
+    "dashboard",
+    "comparisons",
+    "api-test",
+    "metrics"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/tests/test_dashboard.py:api",
+   "type": "function",
+   "name": "api",
+   "filePath": "backend/tests/test_dashboard.py",
+   "lineRange": [
+    16,
+    19
+   ],
+   "summary": "Fixture yielding a test client backed by zero-delay mock providers.",
+   "tags": [
+    "test",
+    "fixture",
+    "mock"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_dashboard.py:compared",
+   "type": "function",
+   "name": "compared",
+   "filePath": "backend/tests/test_dashboard.py",
+   "lineRange": [
+    22,
+    34
+   ],
+   "summary": "Helper that creates a ticket, runs both fake providers, and returns their comparison.",
+   "tags": [
+    "test",
+    "helper",
+    "comparisons"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_dashboard.py:make_real",
+   "type": "function",
+   "name": "make_real",
+   "filePath": "backend/tests/test_dashboard.py",
+   "lineRange": [
+    37,
+    43
+   ],
+   "summary": "Helper that relabels a fake comparison's runs as if real models produced them.",
+   "tags": [
+    "test",
+    "helper",
+    "database"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_dashboard.py:test_dashboard_is_empty_before_any_runs",
+   "type": "function",
+   "name": "test_dashboard_is_empty_before_any_runs",
+   "filePath": "backend/tests/test_dashboard.py",
+   "lineRange": [
+    46,
+    51
+   ],
+   "summary": "Verifies the dashboard reports zero counts and no metrics before any runs exist.",
+   "tags": [
+    "test",
+    "dashboard",
+    "empty-state"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_dashboard.py:test_dashboard_counts_real_runs_and_excludes_fake_ones",
+   "type": "function",
+   "name": "test_dashboard_counts_real_runs_and_excludes_fake_ones",
+   "filePath": "backend/tests/test_dashboard.py",
+   "lineRange": [
+    54,
+    65
+   ],
+   "summary": "Verifies metrics count only real comparisons and report how many fake ones were excluded.",
+   "tags": [
+    "test",
+    "dashboard",
+    "metrics"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/tests/test_dashboard.py:test_comparison_list_is_newest_first_and_flags_fake_runs",
+   "type": "function",
+   "name": "test_comparison_list_is_newest_first_and_flags_fake_runs",
+   "filePath": "backend/tests/test_dashboard.py",
+   "lineRange": [
+    68,
+    89
+   ],
+   "summary": "Verifies comparisons are listed newest first, flagged as fake or real, and bounded by the limit parameter.",
+   "tags": [
+    "test",
+    "comparisons",
+    "pagination"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/tests/test_dashboard.py:test_comparison_detail_returns_both_stored_runs",
+   "type": "function",
+   "name": "test_comparison_detail_returns_both_stored_runs",
+   "filePath": "backend/tests/test_dashboard.py",
+   "lineRange": [
+    92,
+    101
+   ],
+   "summary": "Verifies comparison detail includes the ticket and both stored runs, and returns 404 for an unknown id.",
+   "tags": [
+    "test",
+    "comparisons",
+    "api-test"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_dashboard.py:test_ticket_list_shows_each_tickets_latest_run",
+   "type": "function",
+   "name": "test_ticket_list_shows_each_tickets_latest_run",
+   "filePath": "backend/tests/test_dashboard.py",
+   "lineRange": [
+    104,
+    112
+   ],
+   "summary": "Verifies the ticket list exposes the latest run status, or none for tickets without runs.",
+   "tags": [
+    "test",
+    "tickets",
+    "provider-runs"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_dashboard.py:test_comparisons_can_be_listed_for_one_ticket",
+   "type": "function",
+   "name": "test_comparisons_can_be_listed_for_one_ticket",
+   "filePath": "backend/tests/test_dashboard.py",
+   "lineRange": [
+    115,
+    122
+   ],
+   "summary": "Verifies the comparison list can be filtered to a single ticket.",
+   "tags": [
+    "test",
+    "comparisons",
+    "filtering"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/tests/test_health.py",
+   "type": "file",
+   "name": "test_health.py",
+   "filePath": "backend/tests/test_health.py",
+   "summary": "Tests the health and readiness endpoints with MongoDB reachable and unreachable, and checks connection credentials never reach the response.",
+   "tags": [
+    "test",
+    "health-check",
+    "readiness",
+    "security"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_health.py:test_health_reports_process_up",
+   "type": "function",
+   "name": "test_health_reports_process_up",
+   "filePath": "backend/tests/test_health.py",
+   "lineRange": [
+    8,
+    13
+   ],
+   "summary": "Verifies the health endpoint returns ok.",
+   "tags": [
+    "test",
+    "health-check",
+    "liveness"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_health.py:test_ready_when_database_is_reachable",
+   "type": "function",
+   "name": "test_ready_when_database_is_reachable",
+   "filePath": "backend/tests/test_health.py",
+   "lineRange": [
+    16,
+    21
+   ],
+   "summary": "Verifies readiness returns ready when MongoDB responds.",
+   "tags": [
+    "test",
+    "readiness",
+    "mongodb"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_health.py:test_not_ready_when_database_is_unreachable",
+   "type": "function",
+   "name": "test_not_ready_when_database_is_unreachable",
+   "filePath": "backend/tests/test_health.py",
+   "lineRange": [
+    24,
+    43
+   ],
+   "summary": "Verifies health stays up while readiness returns 503 with setup guidance and no connection password.",
+   "tags": [
+    "test",
+    "readiness",
+    "security"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:backend/tests/test_indexes.py",
+   "type": "file",
+   "name": "test_indexes.py",
+   "filePath": "backend/tests/test_indexes.py",
+   "summary": "Tests that MongoDB index creation is correct and repeatable, that tickets without fingerprints do not collide, and that the init_db script reports success and failure.",
+   "tags": [
+    "test",
+    "database",
+    "indexes",
+    "script"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_indexes.py:keys_of",
+   "type": "function",
+   "name": "keys_of",
+   "filePath": "backend/tests/test_indexes.py",
+   "lineRange": [
+    17,
+    18
+   ],
+   "summary": "Helper that maps a collection's index key tuples to their index details.",
+   "tags": [
+    "test",
+    "helper",
+    "indexes"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_indexes.py:test_indexes_are_created_and_safe_to_rerun",
+   "type": "function",
+   "name": "test_indexes_are_created_and_safe_to_rerun",
+   "filePath": "backend/tests/test_indexes.py",
+   "lineRange": [
+    21,
+    31
+   ],
+   "summary": "Verifies repeated index creation yields the expected unique, partial, and compound indexes.",
+   "tags": [
+    "test",
+    "indexes",
+    "idempotent"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_indexes.py:test_tickets_without_fingerprint_do_not_collide",
+   "type": "function",
+   "name": "test_tickets_without_fingerprint_do_not_collide",
+   "filePath": "backend/tests/test_indexes.py",
+   "lineRange": [
+    34,
+    39
+   ],
+   "summary": "Verifies multiple tickets lacking a fingerprint can coexist under the partial unique index.",
+   "tags": [
+    "test",
+    "indexes",
+    "import-idempotency"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_indexes.py:init_db_settings",
+   "type": "function",
+   "name": "init_db_settings",
+   "filePath": "backend/tests/test_indexes.py",
+   "lineRange": [
+    43,
+    50
+   ],
+   "summary": "Fixture that sets the MongoDB environment for the init script and clears the cached settings.",
+   "tags": [
+    "test",
+    "fixture",
+    "configuration"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_indexes.py:test_init_db_script_is_repeatable",
+   "type": "function",
+   "name": "test_init_db_script_is_repeatable",
+   "filePath": "backend/tests/test_indexes.py",
+   "lineRange": [
+    53,
+    58
+   ],
+   "summary": "Verifies the init script succeeds on consecutive runs and names the database in its output.",
+   "tags": [
+    "test",
+    "script",
+    "idempotent"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_indexes.py:test_init_db_script_explains_when_database_is_down",
+   "type": "function",
+   "name": "test_init_db_script_explains_when_database_is_down",
+   "filePath": "backend/tests/test_indexes.py",
+   "lineRange": [
+    61,
+    65
+   ],
+   "summary": "Verifies the init script exits 1 and points to the README when MongoDB is unreachable.",
+   "tags": [
+    "test",
+    "script",
+    "error-handling"
+   ],
+   "complexity": "simple"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:backend/app/repositories/database.py",
+   "target": "function:backend/app/repositories/database.py:connect",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/database.py",
+   "target": "function:backend/app/repositories/database.py:connect",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/database.py",
+   "target": "function:backend/app/repositories/database.py:is_reachable",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/database.py",
+   "target": "function:backend/app/repositories/database.py:is_reachable",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/database.py",
+   "target": "function:backend/app/repositories/database.py:ensure_indexes",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/database.py",
+   "target": "function:backend/app/repositories/database.py:ensure_indexes",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/database.py",
+   "target": "function:backend/app/repositories/database.py:find_all",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/database.py",
+   "target": "function:backend/app/repositories/database.py:find_all",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/database.py",
+   "target": "function:backend/app/repositories/database.py:find_in",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/database.py",
+   "target": "function:backend/app/repositories/database.py:find_in",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/database.py",
+   "target": "class:backend/app/repositories/database.py:DecimalCodec",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/database.py",
+   "target": "class:backend/app/repositories/database.py:DecimalCodec",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/database.py",
+   "target": "file:backend/app/core/settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/scripts/init_db.py",
+   "target": "function:backend/scripts/init_db.py:main",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/scripts/init_db.py",
+   "target": "function:backend/scripts/init_db.py:main",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/scripts/init_db.py",
+   "target": "file:backend/app/core/settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/scripts/init_db.py",
+   "target": "file:backend/app/repositories/database.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/conftest.py",
+   "target": "function:backend/tests/conftest.py:test_settings",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/conftest.py",
+   "target": "function:backend/tests/conftest.py:test_settings",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/conftest.py",
+   "target": "function:backend/tests/conftest.py:test_db",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/conftest.py",
+   "target": "function:backend/tests/conftest.py:test_db",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/conftest.py",
+   "target": "file:backend/app/core/settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_app_starts.py",
+   "target": "function:backend/tests/test_app_starts.py:test_swagger_ui_is_served",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_app_starts.py",
+   "target": "function:backend/tests/test_app_starts.py:test_swagger_ui_is_served",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_app_starts.py",
+   "target": "function:backend/tests/test_app_starts.py:test_openapi_schema_names_the_app",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_app_starts.py",
+   "target": "function:backend/tests/test_app_starts.py:test_openapi_schema_names_the_app",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_app_starts.py",
+   "target": "file:backend/app/main.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_dashboard.py",
+   "target": "function:backend/tests/test_dashboard.py:api",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_dashboard.py",
+   "target": "function:backend/tests/test_dashboard.py:api",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_dashboard.py",
+   "target": "function:backend/tests/test_dashboard.py:compared",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_dashboard.py",
+   "target": "function:backend/tests/test_dashboard.py:compared",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_dashboard.py",
+   "target": "function:backend/tests/test_dashboard.py:make_real",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_dashboard.py",
+   "target": "function:backend/tests/test_dashboard.py:make_real",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_dashboard.py",
+   "target": "function:backend/tests/test_dashboard.py:test_dashboard_is_empty_before_any_runs",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_dashboard.py",
+   "target": "function:backend/tests/test_dashboard.py:test_dashboard_is_empty_before_any_runs",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_dashboard.py",
+   "target": "function:backend/tests/test_dashboard.py:test_dashboard_counts_real_runs_and_excludes_fake_ones",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_dashboard.py",
+   "target": "function:backend/tests/test_dashboard.py:test_dashboard_counts_real_runs_and_excludes_fake_ones",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_dashboard.py",
+   "target": "function:backend/tests/test_dashboard.py:test_comparison_list_is_newest_first_and_flags_fake_runs",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_dashboard.py",
+   "target": "function:backend/tests/test_dashboard.py:test_comparison_list_is_newest_first_and_flags_fake_runs",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_dashboard.py",
+   "target": "function:backend/tests/test_dashboard.py:test_comparison_detail_returns_both_stored_runs",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_dashboard.py",
+   "target": "function:backend/tests/test_dashboard.py:test_comparison_detail_returns_both_stored_runs",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_dashboard.py",
+   "target": "function:backend/tests/test_dashboard.py:test_ticket_list_shows_each_tickets_latest_run",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_dashboard.py",
+   "target": "function:backend/tests/test_dashboard.py:test_ticket_list_shows_each_tickets_latest_run",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_dashboard.py",
+   "target": "function:backend/tests/test_dashboard.py:test_comparisons_can_be_listed_for_one_ticket",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_dashboard.py",
+   "target": "function:backend/tests/test_dashboard.py:test_comparisons_can_be_listed_for_one_ticket",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_dashboard.py",
+   "target": "file:backend/app/main.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_health.py",
+   "target": "function:backend/tests/test_health.py:test_health_reports_process_up",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_health.py",
+   "target": "function:backend/tests/test_health.py:test_health_reports_process_up",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_health.py",
+   "target": "function:backend/tests/test_health.py:test_ready_when_database_is_reachable",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_health.py",
+   "target": "function:backend/tests/test_health.py:test_ready_when_database_is_reachable",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_health.py",
+   "target": "function:backend/tests/test_health.py:test_not_ready_when_database_is_unreachable",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_health.py",
+   "target": "function:backend/tests/test_health.py:test_not_ready_when_database_is_unreachable",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_health.py",
+   "target": "file:backend/app/core/settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_health.py",
+   "target": "file:backend/app/main.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_health.py",
+   "target": "file:backend/tests/conftest.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_indexes.py",
+   "target": "function:backend/tests/test_indexes.py:keys_of",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_indexes.py",
+   "target": "function:backend/tests/test_indexes.py:keys_of",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_indexes.py",
+   "target": "function:backend/tests/test_indexes.py:test_indexes_are_created_and_safe_to_rerun",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_indexes.py",
+   "target": "function:backend/tests/test_indexes.py:test_indexes_are_created_and_safe_to_rerun",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_indexes.py",
+   "target": "function:backend/tests/test_indexes.py:test_tickets_without_fingerprint_do_not_collide",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_indexes.py",
+   "target": "function:backend/tests/test_indexes.py:test_tickets_without_fingerprint_do_not_collide",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_indexes.py",
+   "target": "function:backend/tests/test_indexes.py:init_db_settings",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_indexes.py",
+   "target": "function:backend/tests/test_indexes.py:init_db_settings",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_indexes.py",
+   "target": "function:backend/tests/test_indexes.py:test_init_db_script_is_repeatable",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_indexes.py",
+   "target": "function:backend/tests/test_indexes.py:test_init_db_script_is_repeatable",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_indexes.py",
+   "target": "function:backend/tests/test_indexes.py:test_init_db_script_explains_when_database_is_down",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_indexes.py",
+   "target": "function:backend/tests/test_indexes.py:test_init_db_script_explains_when_database_is_down",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_indexes.py",
+   "target": "file:backend/app/core/settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_indexes.py",
+   "target": "file:backend/app/repositories/database.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_indexes.py",
+   "target": "file:backend/tests/conftest.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "function:backend/scripts/init_db.py:main",
+   "target": "function:backend/app/core/settings.py:get_settings",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/scripts/init_db.py:main",
+   "target": "function:backend/app/repositories/database.py:connect",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/scripts/init_db.py:main",
+   "target": "function:backend/app/repositories/database.py:ensure_indexes",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_dashboard.py:api",
+   "target": "function:backend/app/main.py:create_app",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_health.py:test_health_reports_process_up",
+   "target": "function:backend/app/main.py:create_app",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_health.py:test_ready_when_database_is_reachable",
+   "target": "function:backend/app/main.py:create_app",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_health.py:test_not_ready_when_database_is_unreachable",
+   "target": "function:backend/app/main.py:create_app",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_indexes.py:test_indexes_are_created_and_safe_to_rerun",
+   "target": "function:backend/app/repositories/database.py:ensure_indexes",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_indexes.py:test_tickets_without_fingerprint_do_not_collide",
+   "target": "function:backend/app/repositories/database.py:ensure_indexes",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_indexes.py:init_db_settings",
+   "target": "function:backend/app/core/settings.py:get_settings",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_indexes.py:test_init_db_script_is_repeatable",
+   "target": "function:backend/scripts/init_db.py:main",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_indexes.py:test_init_db_script_explains_when_database_is_down",
+   "target": "function:backend/scripts/init_db.py:main",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_dashboard.py",
+   "target": "file:backend/tests/conftest.py",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:backend/tests/test_indexes.py",
+   "target": "file:backend/scripts/init_db.py",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:backend/app/repositories/database.py",
+   "target": "file:backend/tests/test_indexes.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/scripts/init_db.py",
+   "target": "file:backend/tests/test_indexes.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/api/dashboard.py",
+   "target": "file:backend/tests/test_dashboard.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/services/dashboard.py",
+   "target": "file:backend/tests/test_dashboard.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  }
+ ]
+}

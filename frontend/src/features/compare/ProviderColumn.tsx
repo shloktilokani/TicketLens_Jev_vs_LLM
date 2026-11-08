@@ -17,9 +17,9 @@ import {
   formatElapsed,
   useElapsed,
 } from "@/features/compare/useCompareRun"
+import { formatCost, formatEscalation, SIDE_LABELS } from "@/lib/format"
 import type { Comparison, Execution } from "@/types/api"
 
-const LABEL: Record<ProviderName, string> = { jev: "Jev", gpt: "LLM" }
 const FIELDS = [
   ["category", "Category"],
   ["subcategory", "Subcategory"],
@@ -71,7 +71,7 @@ function Match({ match }: { match: boolean | null | undefined }) {
 }
 
 function show(value: string | boolean | undefined): string {
-  if (typeof value === "boolean") return value ? "Required" : "Not required"
+  if (typeof value === "boolean") return formatEscalation(value)
   return value ?? "…"
 }
 
@@ -149,9 +149,12 @@ function Usage({ execution }: { execution?: Execution }) {
     usage && usage.usage_source !== "unavailable"
       ? `${usage.input_tokens ?? "?"} in · ${usage.output_tokens ?? "?"} out`
       : "Tokens not reported"
+  const cost = execution.estimated_cost
+    ? `est. cost ${formatCost(execution.estimated_cost.amount)}`
+    : "not priced"
   return (
     <p className="text-xs text-muted-foreground">
-      {tokens} · cost not calculated yet (Phase 11)
+      {tokens} · {cost}
       {execution.duration_ms !== null &&
         ` · server time ${(execution.duration_ms / 1000).toFixed(2)} s`}
     </p>
@@ -170,7 +173,7 @@ function ColumnHeader({
   return (
     <CardHeader className="flex flex-row items-center justify-between gap-2">
       <CardTitle className="flex items-center gap-2">
-        {LABEL[provider]}
+        {SIDE_LABELS[provider]}
         {fake && (
           <Badge variant="outline" className="gap-1">
             <FlaskConical className="size-3" aria-hidden /> Fake AI
@@ -179,7 +182,7 @@ function ColumnHeader({
       </CardTitle>
       <span
         className="flex items-center gap-1 font-mono text-lg tabular-nums"
-        aria-label={`${LABEL[provider]} elapsed time`}
+        aria-label={`${SIDE_LABELS[provider]} elapsed time`}
       >
         <Timer className="size-4" aria-hidden />
         {formatElapsed(elapsed)}

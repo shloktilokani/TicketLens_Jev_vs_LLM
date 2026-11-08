@@ -7,41 +7,44 @@ import json
 
 import httpx
 
-from app.core.taxonomy import Category, Priority, Sentiment
+from app.core.taxonomy import Priority, Sentiment, active_categories
 from app.providers import definitions as d
 from app.providers.base import ProviderFailure, ProviderInput, ProviderResult
 from app.providers.http import post_json
 from app.schemas.executions import Usage
 
-SCHEMA = {
-    "type": "object",
-    "properties": {
-        "category": {"type": "string", "enum": [c.value for c in Category]},
-        "subcategory": {"type": "string", "enum": list(d.SUBCATEGORY)},
-        "priority": {"type": "string", "enum": [p.value for p in Priority]},
-        "sentiment": {"type": "string", "enum": [s.value for s in Sentiment]},
-        "escalation_required": {"type": "boolean"},
-        "summary": {"type": "string"},
-        "suggested_resolution": {"type": "string"},
-    },
-    "required": [
-        "category",
-        "subcategory",
-        "priority",
-        "sentiment",
-        "escalation_required",
-        "summary",
-        "suggested_resolution",
-    ],
-}
+
+def schema() -> dict:
+    """Built per request, because Settings can change the taxonomy."""
+    return {
+        "type": "object",
+        "properties": {
+            "category": {"type": "string", "enum": list(active_categories())},
+            "subcategory": {"type": "string", "enum": list(d.subcategory_criteria())},
+            "priority": {"type": "string", "enum": [p.value for p in Priority]},
+            "sentiment": {"type": "string", "enum": [s.value for s in Sentiment]},
+            "escalation_required": {"type": "boolean"},
+            "summary": {"type": "string"},
+            "suggested_resolution": {"type": "string"},
+        },
+        "required": [
+            "category",
+            "subcategory",
+            "priority",
+            "sentiment",
+            "escalation_required",
+            "summary",
+            "suggested_resolution",
+        ],
+    }
 
 
-def system_prompt() -> str:
+def system_prompt(instructions: str = d.INSTRUCTIONS) -> str:
     lines = [
-        d.INSTRUCTIONS,
+        instructions,
         "Write the summary and the suggested resolution in English, in one or two sentences each.",
         "Never claim an action has already been taken.",
-        "Categories: " + json.dumps(d.CATEGORY),
+        "Categories: " + json.dumps(d.category_criteria()),
         "Priority: " + json.dumps(d.PRIORITY),
         "Sentiment: " + json.dumps(d.SENTIMENT),
         "Escalation: " + d.ESCALATION,
@@ -64,10 +67,10 @@ def build_request(model: str, data: ProviderInput) -> dict:
     return {
         "model": model,
         "messages": [
-            {"role": "system", "content": system_prompt()},
+            {"role": "system", "content": system_prompt(data.instructions)},
             {"role": "user", "content": json.dumps(ticket, ensure_ascii=False)},
         ],
-        "format": SCHEMA,
+        "format": schema(),
         "stream": False,
         "think": False,  # answer directly; thinking traces are not needed for classification
         "options": {"temperature": 0},

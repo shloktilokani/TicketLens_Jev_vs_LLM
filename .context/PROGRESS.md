@@ -4,9 +4,13 @@ Build order and acceptance criteria: `implementation.md`. Update this file after
 
 ## Status
 
-Phases 0 to 8 are complete. Phases 5 and 6 still need the owner's visual check in a browser (see Phase 5 notes). **Next: Phase 9** (real Jev), which needs the Jev API key for live calls.
+Phases 0 to 8 and 11 to 18 are complete on local models. **Phases 9 and 10 stay open:** hosted Jev has never run with a real key, and the OpenAI connection is not built. Both need keys from the owner. See the completion report below.
 
 Plain-language phase order and every step that needs the owner: `ROADMAP.md`.
+
+**Next session (planned 2026-11-09):** all work since commit `d6fb162` is uncommitted on `shlok-ai-dev`, and its commit message is still to be drafted from the real diff. The owner's steps are listed in the completion report below.
+
+Separate side task: the Understand-Anything knowledge graph is at Phase 5 of 7, tracked in `.ua/RESUME.md`. Do not re-run the command from scratch.
 
 ## Phases
 
@@ -21,14 +25,14 @@ Plain-language phase order and every step that needs the owner: `ROADMAP.md`.
 - [x] Phase 8: Provider adapter contracts and mock mode
 - [ ] Phase 9: Jev integration
 - [ ] Phase 10: GPT integration
-- [ ] Phase 11: Execution history and cost logging
-- [ ] Phase 12: Comparison workflow
-- [ ] Phase 13: Bulk processing
-- [ ] Phase 14: Evaluation dataset and analytics
-- [ ] Phase 15: Settings page
-- [ ] Phase 16: Testing, reliability, and security review
-- [ ] Phase 17: Local release and documentation
-- [ ] Phase 18: Deployment readiness
+- [x] Phase 11: Execution history and cost logging
+- [x] Phase 12: Comparison workflow
+- [x] Phase 13: Bulk processing
+- [x] Phase 14: Evaluation dataset and analytics
+- [x] Phase 15: Settings page
+- [x] Phase 16: Testing, reliability, and security review
+- [x] Phase 17: Local release and documentation
+- [x] Phase 18: Deployment readiness (documents and safety checks; nothing deployed)
 
 ## Blockers
 
@@ -307,12 +311,171 @@ with Cohen's kappa, exact matches, latency (mean, median, 90th percentile, min, 
 reliability, tokens and output speed, cost when priced, Jev confidence split by agreement, label distributions,
 disagreements, and a per-ticket table. There is no accuracy figure without human-verified labels.
 
-**Runs:** Run 1 (`2026-11-07-run-1-fake-ai`): 10 tickets (SK-1002 to SK-1011) on the fake providers, all 10 at
-5 of 5 agreement, report published as an artifact. Run 2 uses the real local models; see its report.
+**Runs:**
+- Run 1 (`2026-11-07-run-1-fake-ai`): 10 tickets (SK-1002 to SK-1011) on the fake providers, all 10 at 5 of 5 agreement. Report: https://claude.ai/artifact/DNWqG53RmPnX6oRJYrjBLG
+- Run 2 (`2026-11-08-run-2-local-models`): 10 tickets (SK-1012 to SK-1021) on `autotrust-jev:9b` and `qwen3:8b`, in a visible Playwright browser at desktop size, with a phone check on the first ticket. 9 comparisons complete and 1 partial (the LLM returned a mismatched category and subcategory on SK-1020, correctly recorded as Invalid Response). Mean agreement 78%; 2 of 9 agree on all five fields; median time Jev 1.43 s, LLM 2.74 s. Report: https://claude.ai/artifact/Y2SpdhvoUaGigawnxR34st
 
-**Tests run:** `pytest` 189 passed; ruff clean; frontend lint and build pass.
+**Found in testing:** AutoTrust allows 2-16 options per `choice` question, so the Jev adapter asks in two steps: category and the other fields first, then only that category's subcategories. Tokens from both steps are added together, and both payloads are stored.
+
+**Dashboard, brought forward from Phases 12 and 14:** `GET /api/dashboard`, `GET /api/comparisons`, `GET /api/comparisons/{id}`; the Overview page (counts, agreement, median times, charts by field and side, latest comparisons; refreshes every 5 s), the Comparisons list and a detail page that reopens stored results side by side. Fake-AI runs are excluded from dashboard metrics and the page says how many. The ticket list's "Latest AI run" column now shows real data. Phase 14 still owns the corrected labelled dataset and accuracy scores.
+
+**Tests run:** `pytest` 197 passed; ruff clean; frontend lint and build pass.
+**Not run:** the scripted `npm --prefix e2e test` suite: its screenshot baselines predate the Compare and dashboard changes and need the owner's review before updating. No frontend unit tests yet (Vitest is still a Phase 16 decision).
 
 **Found earlier, now fixed:** header badges said "Not configured" in fake mode (they now show each side's label).
+
+## Phase 11 notes (2026-11-08)
+
+**Built:** `core/pricing.py` (rates and the cost formula), a rate snapshot and estimated cost saved on every run, `GET /api/executions` (filters: side, status, ticket, UTC date range; paged) and `GET /api/executions/{id}`, the AI Executions list and detail pages, and cost on Compare and Overview. The CSV export already existed and now carries real costs. `components/ListControls.tsx` holds the filter dropdown and pager shared with the ticket list.
+
+**Decisions:**
+- Money is stored as exact decimals (`Decimal128`), not floats or integer micro-units, because a hosted Jev call can cost a few millionths of a dollar. This replaces the plan's "integer micro-units".
+- Local models are priced at $0 under the version `local-no-charge`. Hosted Jev uses the published input rate of $0.042 per million tokens, with free output. OpenAI has no rate yet, so it shows as not priced; rates are never guessed. The Settings page takes over rates in Phase 15.
+- Older runs are not backfilled. They show "—", and Overview says how many runs are priced.
+- Date filters use UTC, and the page says so, while the table shows local time. A run close to midnight can therefore fall under the neighbouring date.
+
+**Tests run:** `pytest` 213 passed; ruff clean; frontend lint and build pass. Visible-browser check at desktop size: one real local run on SK-1012, then the list, paging, every filter, empty and not-found states, failed-run detail, copy button, ticket list and Overview. Dark mode was looked at on the list and the failed-run detail only.
+**Credential check:** no credentials in the payloads of SK-1012's 4 runs. The browser check's first failure was a false match on the page text "SK-1012StatusSuccee".
+**Not run:** the scripted `npm --prefix e2e test` suite (baselines still need the owner's review). No frontend unit tests yet. Hosted Jev pricing has never been exercised by a real paid call.
+**Cleanup for the owner:** `frontend/src/features/executions/.gitkeep` is no longer needed. A safety check blocked my removal command, so it is still there.
+
+## Phase 12 notes (2026-11-08)
+
+**Built:** `PUT /api/tickets/{id}/final-classification` now also takes `selected_from_execution_id`. It accepts only a successful run of the same ticket (otherwise 422), and the server works out `manually_edited` by comparing the five fields with that run. `GET /api/comparisons` takes `ticket_id`. On the ticket page: Run Jev, Run LLM and Compare both buttons, the ticket's run history with each answer and a "Use this answer" button, its comparison history, and a final-answer form (`features/tickets/AiResults.tsx`, `FinalClassification.tsx`). `components/Detail.tsx` replaces two copies.
+
+**Decisions:**
+- Deviation: there is no server-side "run both" endpoint. Compare runs both sides as two separate requests and then saves the comparison, so each column finishes and its timer stops on its own. Closing the browser mid-run therefore keeps the runs but saves no comparison.
+- Running one side alone creates no comparison.
+- Fake-AI answers can also be chosen as the final answer; the run shows its `mock-` model name.
+- There is no "clear the final answer" action; it was not required. An edit replaces it.
+- Editing an answer that came from a run keeps the link to that run and marks it edited.
+
+**Tests run:** `pytest` 219 passed; ruff clean; frontend lint and build pass. Visible-browser check at desktop size on real local models, using new synthetic tickets SK-1023 and SK-1024: single-side runs, choosing and cancelling, saving unchanged, editing, subcategory clearing, setting by hand, reload, ticket list, compare both, failed-run display, and light and dark. No failed requests.
+**Not run:** the scripted `npm --prefix e2e test` suite; phone width (the owner limits responsiveness checks to the first test of a run, and this run skipped it). No frontend unit tests yet.
+**Worth checking in Phase 14:** an immediate repeat of a Jev run returned in 0.10 to 0.18 s against about 1 to 1.5 s for the first run (SK-1023, SK-1021), which looks like caching in the local model server. Repeat runs on one ticket can therefore pull the dashboard's Jev times down.
+
+## Phase 13 notes (2026-11-08)
+
+**Built:** `jobs/bulk.py`, `repositories/bulk_jobs.py`, and `POST/GET /api/bulk-jobs` plus `GET /api/bulk-jobs/{id}`. On screen: a selection toolbar and checkboxes on the ticket list with a confirmation before anything starts, a progress banner on every page, and a Bulk Runs list and detail page.
+
+**Decisions (the spec does not define these):**
+- "Eligible" means status Open or In Progress.
+- In an all-eligible run, a side that already succeeded on a ticket with the same model is recorded as Skipped, so calls are not repeated. An explicit selection always runs, because the operator asked. A fake-AI success never causes a real model to be skipped.
+- Only one bulk run at a time; a second gets 409. Repeated IDs or sides in a request run once.
+- Concurrency is per ticket: at most `BULK_CONCURRENCY` tickets at once, each ticket's sides one after another. A ticket run on both sides gets a comparison, including a partial one.
+- On startup, unfinished jobs become Interrupted and runs left Running become Cancelled. Neither is resumed.
+- Design deviation: a Bulk Runs sidebar item, so finished runs stay reachable. The banner shows active runs and runs finished within 10 minutes of the page being opened.
+- Stopping the backend normally waits for a running job to finish, because the job runs as a request background task. Only a hard kill leaves it Interrupted.
+
+**Tests run:** `pytest` 235 passed (16 new); ruff clean; frontend lint and build pass. Visible-browser check at desktop size: fake AI on the isolated test stack (selection, cancel, failure summary, navigation, all-eligible skipping, refusing a second run, a real `kill -9` mid-run with no resume, dark mode), then one real local run on SK-1023 and SK-1024 (4 of 4 succeeded). That real run adds two comparisons to Overview.
+**Not run:** the scripted `npm --prefix e2e test` suite; phone width. No frontend unit tests yet. A run with `BULK_CONCURRENCY` above 2 on real models has not been tried, and a large real run has not been timed.
+
+## Phase 14 notes (2026-11-08)
+
+**Built:**
+- `.context/sample_tickets_100_v2.csv`: same 100 rows and identical labels (a test checks this), with new titles that no longer give away the answer, 37 non-English descriptions translated, 17 product fields fixed where they contradicted the text, and order and product cleared on Account & Login tickets. The supplied file stays unchanged, and `shopkart-synthetic-v1` stays the dataset version named in the spec.
+- `services/evaluation.py`, `GET /api/evaluation` and `GET /api/imports/sample-dataset`.
+- An accuracy section on Overview: tiles, a chart by field, a table with every denominator, head-to-head counts and a confusion matrix.
+- An accuracy section in test-run reports.
+
+**Decisions:**
+- Each side is scored on its latest finished real run per ticket. Fake-AI runs are never scored.
+- Failed runs are listed but not counted as wrong, so accuracy is "of the tickets answered", and coverage is shown next to it.
+- Macro-F1 appears from 30 answered tickets up.
+- The confusion matrix leaves out subcategory, because 36 by 36 is unreadable.
+
+**Run 3 (`2026-11-08-run-3-labelled-100`):** the 100 tickets on `autotrust-jev:9b` and `qwen3:8b`, in a visible browser, on the isolated `ticketlens_e2e` database, so the real dashboard is untouched. About 5 minutes; 198 of 200 attempts succeeded, and the 2 failures were the LLM pairing a subcategory with the wrong category. Report: `reports/test-runs/2026-11-08-run-3-labelled-100.html`.
+
+| | Jev | LLM |
+|---|---|---|
+| All 5 fields right | 34% (34/100) | 38% (37/98) |
+| Category | 89% | 86% |
+| Subcategory | 84% | 81% |
+| Priority | 61% | 53% |
+| Sentiment | 88% | 87% |
+| Escalation | 71% | 93% |
+
+**These results are preliminary:** the labels came with the supplied dataset and no person has verified them. The owner's review (ROADMAP item E) is still open. Rows suggested for that review: 4, 11, 30, 46, 52, 64, 81, 88, 95 and 100.
+
+**Tests run:** `pytest` passed, ruff clean, frontend lint and build pass. The labelled data has not been imported into the real database, on purpose: that is the owner's choice.
+
+## Phase 15 notes (2026-11-08)
+
+**Built:** `services/app_settings.py`, `repositories/app_settings.py`, `schemas/app_settings.py`, `api/app_settings.py` (`GET` and `PATCH /api/settings`; `PUT .../prompt`, `.../taxonomy`, `.../pricing`; `GET .../models/{jev|llm}`) and the Settings page. Provider adapters, the CSV importer and evaluation now read the active taxonomy, and both sides receive the saved prompt.
+
+**Decisions:**
+- Saved settings overlay the environment defaults per run, through `app_settings.effective`. Environment values remain the starting point.
+- Every prompt and taxonomy change makes a new version (1.0, 1.1, and so on) with history. Each run stores its prompt text and rate snapshot, so history never changes.
+- A taxonomy edit needs 2 to 16 options at each level (Jev's limit) and unique subcategories. A label used by a ticket, run or evaluation answer cannot be removed or renamed (409).
+- A model name is refused if the server is reachable and does not offer it. If the server is unreachable, the operator's choice is accepted. TypeSafe's `jev-latest` alias is always allowed.
+- Update requests forbid unknown fields, so API keys and connection details cannot be set through this API.
+- The active taxonomy is held per process (a recorded shortcut), which fits the documented single backend process.
+
+**Tests and check:** see Phase 16's totals. Visible-browser check on the fake-AI stack (saving, refusals, prompt history, taxonomy, prices, dark mode), plus a read-only look at the real page. The real model lists return the 3 models on the local Ollama server.
+**Found and fixed from screenshots:** the model note read "0 models" while loading, and "1 models".
+**Not tried:** the TypeSafe model list against the real service (no key yet; the call is tested against a fake server).
+
+## Phase 16 notes (2026-11-08)
+
+**Built:** bounded retries in `providers/http.py`: at most 3 attempts, with growing delays plus jitter, honouring `Retry-After` up to 10 s. Only a refused connection, 429 and 5xx are retried. Other 4xx, timeouts and broken connections never are, because the provider may already have processed and charged for the call. `e2e/tests/workflow.spec.ts` covers the journey from creating a ticket through classify, compare, choosing a final answer and export to delete, plus partial failure, form validation, filters, backend-down errors and the absence of a key field.
+
+**Tool choice:** frontend tests use the Playwright setup already installed rather than adding Vitest, so there is no new dependency.
+
+**Tests run:**
+- `pytest`: passed, including every provider failure (401, 402, 403, 400, 404, 422, 429, 5xx, timeout, malformed response). Final total is in the completion report below.
+- `npm --prefix e2e test`: 14 passed on desktop and phone, in a visible browser.
+- ruff, frontend lint and build pass.
+
+**Baselines:** the `ticket-list` screenshots were regenerated after looking at old and new. Every difference was deliberate (real provider badges, the Bulk Runs link, the toolbar and checkboxes). They are in Source Control for review.
+
+**Security checks, observed on the running system:**
+- Ports 8000, 5173, 27017 and 11434 listen on 127.0.0.1 only.
+- The browser bundle has no keys or key names; `VITE_API_BASE_URL` is its only environment variable.
+- Git history: 26,205 added lines scanned for key shapes. The only match is a deliberately fake password in `backend/tests/test_health.py`, aimed at a dead local port.
+- `backend/.env.example` is the only env file ever committed, and `backend/.env` is ignored.
+- CORS refuses another origin (HTTP 400 on preflight).
+- `GET /api/settings` and all three CSV exports contain no key text.
+- 82 stored runs in the real database were checked: none holds credentials or labels.
+- Log calls carry only provider names and IDs.
+
+**Fixed:** the phone header squeezing the page title to "Ti…" (the header search is now hidden on phones; Tickets has its own), and the extra space on the Compare card.
+**Still open:** the harmless `next-themes` script-tag console warning with React 19. Logs were reviewed by reading the code, not by capturing a live log of a hosted call.
+
+## Phases 17 and 18 notes (2026-11-08)
+
+**Phase 17:** `README.md` rewritten for someone new to the project: what each AI connection needs and its real state, setup, how to use the app, troubleshooting, and a local verification checklist. Followed in a clean copy on other ports and a separate database: fresh install, health checks, fake-AI start, importing the 100 tickets (100 valid; a second import skipped all 100 as duplicates), and a frontend build.
+
+**Phase 18:** `.context/DEPLOYMENT_DECISIONS.md` now covers settings, build and run, HTTPS and proxy, MongoDB, backup, logging, and a readiness checklist. With `APP_ENV=production`, the backend refuses to start with a database on this computer, a non-https or wildcard origin, fake AI, or without `ACCESS_CONTROL_CONFIRMED=true`. Production turns off the interactive API docs. Errors never echo settings (checked with a test password). A production frontend build with `VITE_API_BASE_URL` was verified.
+
+**Not run:** the owner following the README (ROADMAP item F); installing MongoDB or pulling Ollama models from scratch; any real host, proxy or HTTPS. No hosting was chosen or provisioned.
+
+## Completion report (2026-11-08)
+
+**Done and working on local models:** ticket management, CSV import and export, side-by-side runs, comparisons, choosing a final answer, execution logs with cost, bulk runs, the labelled dataset with accuracy, Settings, reports, and deployment documents.
+
+**Final definition of done (`implementation.md`):**
+- [x] Local workflows operate end to end.
+- [ ] **Both provider integrations work with real credentials. Not met:** hosted Jev is untested with a real key, and the OpenAI adapter does not exist. The working comparison is AutoTrust JEV against an Ollama LLM.
+- [x] Every provider attempt is logged with usage and estimated cost.
+- [x] 100 labelled synthetic tickets are available for manual import.
+- [x] Evaluation and comparison dashboards work.
+- [x] Tests pass.
+- [x] The local setup is documented.
+- [x] Production prerequisites are documented, without pretending local MongoDB can serve a cloud backend.
+
+**Waiting on the owner:**
+1. API keys and the choice of OpenAI model (Phases 9 and 10), and approval of any paid run.
+2. Review the corrected dataset (rows 4, 11, 30, 46, 52, 64, 81, 88, 95, 100). The accuracy figures stay preliminary until then.
+3. Follow the README once.
+4. Add the local-model settings to `backend/.env`. That file does not exist yet, so the dev server has them only as process settings; a plain restart falls back to the hosted Jev default.
+5. Deployment decisions, only if going online.
+6. Resume the knowledge graph from `.ua/RESUME.md`.
+
+**Final checks:** `pytest` 335 passed; ruff clean; frontend lint and build pass. A real `mongodump` and `mongorestore` round trip worked on a throwaway database. The real `ticketlens` database still has no saved settings and no labels; these phases only added the runs on SK-1023 and SK-1024 described above.
+
+**Intermittent browser test failure, cause not proven:** one run of `npm --prefix e2e test` failed 3 of 14 tests and took 3.8 minutes instead of about 32 seconds. Runs before and after it passed 14 of 14. In the failed run a page load hung for over 30 seconds, and a page's elapsed timer sat at `00:00.00`, which suggests the visible browser window itself was stalled or throttled rather than an app fault. The phone screenshot failure followed from it: the failed journey never deleted its ticket, so the list had an extra row. That also shows a weakness: the `ticket-list` baseline depends on how many rows earlier tests leave behind. If this recurs, look there first.
+
+**Known limits:** the active taxonomy and bulk jobs assume one backend process. The harmless `next-themes` console warning remains. Phone width was not checked for the newest screens beyond the scripted phone tests. Dataset labels were not independently verified.
 
 ## Code size requirement (2026-11-07)
 

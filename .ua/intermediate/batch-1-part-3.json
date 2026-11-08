@@ -1,0 +1,1061 @@
+{
+ "nodes": [
+  {
+   "id": "file:backend/app/schemas/comparisons.py",
+   "type": "file",
+   "name": "comparisons.py",
+   "filePath": "backend/app/schemas/comparisons.py",
+   "summary": "Pydantic models for a Jev-vs-GPT comparison record, its per-field values and the request that creates one.",
+   "tags": [
+    "data-model",
+    "validation",
+    "pydantic",
+    "comparisons"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/comparisons.py:FieldComparison",
+   "type": "class",
+   "name": "FieldComparison",
+   "filePath": "backend/app/schemas/comparisons.py",
+   "lineRange": [
+    8,
+    11
+   ],
+   "summary": "One shared field's Jev and GPT values and whether they match; match is None when either side has no value.",
+   "tags": [
+    "data-model",
+    "pydantic",
+    "comparisons"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/comparisons.py:Comparison",
+   "type": "class",
+   "name": "Comparison",
+   "filePath": "backend/app/schemas/comparisons.py",
+   "lineRange": [
+    14,
+    26
+   ],
+   "summary": "A stored comparison of Jev and GPT on the five shared fields with agreement figures, which never names a winner.",
+   "tags": [
+    "data-model",
+    "pydantic",
+    "comparisons"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/comparisons.py:ComparisonCreate",
+   "type": "class",
+   "name": "ComparisonCreate",
+   "filePath": "backend/app/schemas/comparisons.py",
+   "lineRange": [
+    29,
+    32
+   ],
+   "summary": "Request body naming a ticket and the Jev and GPT executions to compare.",
+   "tags": [
+    "data-model",
+    "pydantic",
+    "api-schema"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/schemas/imports.py",
+   "type": "file",
+   "name": "imports.py",
+   "filePath": "backend/app/schemas/imports.py",
+   "summary": "Pydantic models for the CSV import result: row-level errors and the summary of imported, invalid and duplicate rows.",
+   "tags": [
+    "data-model",
+    "validation",
+    "pydantic",
+    "csv"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/imports.py:ImportRowError",
+   "type": "class",
+   "name": "ImportRowError",
+   "filePath": "backend/app/schemas/imports.py",
+   "lineRange": [
+    4,
+    7
+   ],
+   "summary": "One validation error tied to a 1-based data row and, where known, a field.",
+   "tags": [
+    "data-model",
+    "pydantic",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/imports.py:ImportSummary",
+   "type": "class",
+   "name": "ImportSummary",
+   "filePath": "backend/app/schemas/imports.py",
+   "lineRange": [
+    10,
+    19
+   ],
+   "summary": "Result of an import: total, imported, invalid and duplicate counts, row errors, new ticket IDs and a dry-run preview.",
+   "tags": [
+    "data-model",
+    "pydantic",
+    "csv"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/services/__init__.py",
+   "type": "file",
+   "name": "__init__.py",
+   "filePath": "backend/app/services/__init__.py",
+   "summary": "Empty package marker for the service layer.",
+   "tags": [
+    "package-marker",
+    "service-layer",
+    "python"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/services/comparisons.py",
+   "type": "file",
+   "name": "comparisons.py",
+   "filePath": "backend/app/services/comparisons.py",
+   "summary": "Compares one Jev run with one GPT run on the five shared fields, validates both executions and stores the agreement figures while leaving the final answer to the operator.",
+   "tags": [
+    "service",
+    "comparisons",
+    "evaluation",
+    "business-logic"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/services/comparisons.py:field_comparison",
+   "type": "function",
+   "name": "field_comparison",
+   "filePath": "backend/app/services/comparisons.py",
+   "lineRange": [
+    23,
+    33
+   ],
+   "summary": "Builds per-field Jev and GPT values, with match set only when both sides have a validated result.",
+   "tags": [
+    "comparisons",
+    "evaluation",
+    "business-logic"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/comparisons.py:status_of",
+   "type": "function",
+   "name": "status_of",
+   "filePath": "backend/app/services/comparisons.py",
+   "lineRange": [
+    36,
+    41
+   ],
+   "summary": "Derives Completed, Partial or Unavailable from which provider results exist.",
+   "tags": [
+    "comparisons",
+    "status",
+    "business-logic"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/comparisons.py:load",
+   "type": "function",
+   "name": "load",
+   "filePath": "backend/app/services/comparisons.py",
+   "lineRange": [
+    44,
+    54
+   ],
+   "summary": "Fetches an execution and checks that it exists, belongs to the ticket and provider, and has finished running.",
+   "tags": [
+    "comparisons",
+    "validation",
+    "data-access"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/comparisons.py:create",
+   "type": "function",
+   "name": "create",
+   "filePath": "backend/app/services/comparisons.py",
+   "lineRange": [
+    57,
+    77
+   ],
+   "summary": "Loads both runs, computes field agreement, stores the comparison and links it back to both executions.",
+   "tags": [
+    "comparisons",
+    "evaluation",
+    "business-logic"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:backend/app/services/comparisons.py:ComparisonError",
+   "type": "class",
+   "name": "ComparisonError",
+   "filePath": "backend/app/services/comparisons.py",
+   "lineRange": [
+    17,
+    20
+   ],
+   "summary": "ValueError carrying the HTTP status code the API should return for a failed comparison.",
+   "tags": [
+    "error-handling",
+    "comparisons",
+    "exception"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/services/csv_export.py",
+   "type": "file",
+   "name": "csv_export.py",
+   "filePath": "backend/app/services/csv_export.py",
+   "summary": "Builds CSV exports of tickets, AI executions and comparisons from declarative column maps, omitting payloads and neutralizing spreadsheet formula injection.",
+   "tags": [
+    "service",
+    "csv",
+    "serialization",
+    "security",
+    "import-export"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/services/csv_export.py:value_at",
+   "type": "function",
+   "name": "value_at",
+   "filePath": "backend/app/services/csv_export.py",
+   "lineRange": [
+    88,
+    91
+   ],
+   "summary": "Reads a dotted path from a nested document, returning None when any step is missing.",
+   "tags": [
+    "utility",
+    "serialization",
+    "csv"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/csv_export.py:cell",
+   "type": "function",
+   "name": "cell",
+   "filePath": "backend/app/services/csv_export.py",
+   "lineRange": [
+    94,
+    101
+   ],
+   "summary": "Formats a value for CSV and prefixes a quote on cells a spreadsheet could run as formulas.",
+   "tags": [
+    "serialization",
+    "csv",
+    "security"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/csv_export.py:to_csv",
+   "type": "function",
+   "name": "to_csv",
+   "filePath": "backend/app/services/csv_export.py",
+   "lineRange": [
+    104,
+    109
+   ],
+   "summary": "Writes documents to CSV text using the given header-to-path column map.",
+   "tags": [
+    "serialization",
+    "csv",
+    "utility"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/csv_export.py:export",
+   "type": "function",
+   "name": "export",
+   "filePath": "backend/app/services/csv_export.py",
+   "lineRange": [
+    112,
+    114
+   ],
+   "summary": "Loads the named collection in sorted order and serializes it with its column map.",
+   "tags": [
+    "service",
+    "csv",
+    "import-export"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/services/csv_import.py",
+   "type": "file",
+   "name": "csv_import.py",
+   "filePath": "backend/app/services/csv_import.py",
+   "summary": "Imports tickets from CSV with row-level validation, value normalization, fingerprint-based duplicate detection, a dry-run mode and separately stored evaluation labels.",
+   "tags": [
+    "service",
+    "csv",
+    "validation",
+    "idempotent-import",
+    "evaluation-labels"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/services/csv_import.py:normalize",
+   "type": "function",
+   "name": "normalize",
+   "filePath": "backend/app/services/csv_import.py",
+   "lineRange": [
+    70,
+    79
+   ],
+   "summary": "Collapses whitespace and maps enum-like values and booleans to canonical form while keeping descriptions exact.",
+   "tags": [
+    "validation",
+    "csv",
+    "normalization"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/csv_import.py:fingerprint",
+   "type": "function",
+   "name": "fingerprint",
+   "filePath": "backend/app/services/csv_import.py",
+   "lineRange": [
+    82,
+    87
+   ],
+   "summary": "Hashes title, description, email and order ID into a SHA-256 identity insensitive to case and spacing.",
+   "tags": [
+    "deduplication",
+    "hashing",
+    "csv"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/csv_import.py:read_rows",
+   "type": "function",
+   "name": "read_rows",
+   "filePath": "backend/app/services/csv_import.py",
+   "lineRange": [
+    90,
+    106
+   ],
+   "summary": "Decodes UTF-8 with an optional byte-order mark and rejects files with missing columns, no rows or too many rows.",
+   "tags": [
+    "validation",
+    "csv",
+    "parsing"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/services/csv_import.py:row_errors",
+   "type": "function",
+   "name": "row_errors",
+   "filePath": "backend/app/services/csv_import.py",
+   "lineRange": [
+    109,
+    117
+   ],
+   "summary": "Converts a Pydantic ValidationError into friendly per-field import row errors.",
+   "tags": [
+    "validation",
+    "csv",
+    "error-handling"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/csv_import.py:validate_row",
+   "type": "function",
+   "name": "validate_row",
+   "filePath": "backend/app/services/csv_import.py",
+   "lineRange": [
+    120,
+    142
+   ],
+   "summary": "Validates a row's ticket and optional all-or-nothing expected labels, returning ticket, label and errors.",
+   "tags": [
+    "validation",
+    "csv",
+    "evaluation-labels"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/services/csv_import.py:save",
+   "type": "function",
+   "name": "save",
+   "filePath": "backend/app/services/csv_import.py",
+   "lineRange": [
+    145,
+    161
+   ],
+   "summary": "Creates the ticket with its import source and stores any evaluation label separately.",
+   "tags": [
+    "csv",
+    "persistence",
+    "evaluation-labels"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/csv_import.py:import_csv",
+   "type": "function",
+   "name": "import_csv",
+   "filePath": "backend/app/services/csv_import.py",
+   "lineRange": [
+    164,
+    189
+   ],
+   "summary": "Runs the import loop, keeping valid rows when others fail, skipping duplicates within the file, in the database or from a concurrent import, and writing nothing in a dry run.",
+   "tags": [
+    "csv",
+    "idempotent-import",
+    "business-logic",
+    "orchestration"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:backend/app/services/csv_import.py:CsvFileError",
+   "type": "class",
+   "name": "CsvFileError",
+   "filePath": "backend/app/services/csv_import.py",
+   "lineRange": [
+    66,
+    67
+   ],
+   "summary": "Raised when the file as a whole cannot be read, so nothing is imported.",
+   "tags": [
+    "error-handling",
+    "csv",
+    "exception"
+   ],
+   "complexity": "simple"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:backend/app/schemas/comparisons.py",
+   "target": "class:backend/app/schemas/comparisons.py:FieldComparison",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/comparisons.py",
+   "target": "class:backend/app/schemas/comparisons.py:FieldComparison",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/comparisons.py",
+   "target": "class:backend/app/schemas/comparisons.py:Comparison",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/comparisons.py",
+   "target": "class:backend/app/schemas/comparisons.py:Comparison",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/comparisons.py",
+   "target": "class:backend/app/schemas/comparisons.py:ComparisonCreate",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/comparisons.py",
+   "target": "class:backend/app/schemas/comparisons.py:ComparisonCreate",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/comparisons.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/schemas/imports.py",
+   "target": "class:backend/app/schemas/imports.py:ImportRowError",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/imports.py",
+   "target": "class:backend/app/schemas/imports.py:ImportRowError",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/imports.py",
+   "target": "class:backend/app/schemas/imports.py:ImportSummary",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/imports.py",
+   "target": "class:backend/app/schemas/imports.py:ImportSummary",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/comparisons.py",
+   "target": "function:backend/app/services/comparisons.py:field_comparison",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/comparisons.py",
+   "target": "function:backend/app/services/comparisons.py:field_comparison",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/comparisons.py",
+   "target": "function:backend/app/services/comparisons.py:status_of",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/comparisons.py",
+   "target": "function:backend/app/services/comparisons.py:status_of",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/comparisons.py",
+   "target": "function:backend/app/services/comparisons.py:load",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/comparisons.py",
+   "target": "function:backend/app/services/comparisons.py:load",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/comparisons.py",
+   "target": "function:backend/app/services/comparisons.py:create",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/comparisons.py",
+   "target": "function:backend/app/services/comparisons.py:create",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/comparisons.py",
+   "target": "class:backend/app/services/comparisons.py:ComparisonError",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/comparisons.py",
+   "target": "class:backend/app/services/comparisons.py:ComparisonError",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/comparisons.py",
+   "target": "file:backend/app/core/clock.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/comparisons.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/comparisons.py",
+   "target": "file:backend/app/repositories/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/comparisons.py",
+   "target": "file:backend/app/repositories/comparisons.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/comparisons.py",
+   "target": "file:backend/app/repositories/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/csv_export.py",
+   "target": "function:backend/app/services/csv_export.py:value_at",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/csv_export.py",
+   "target": "function:backend/app/services/csv_export.py:value_at",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/csv_export.py",
+   "target": "function:backend/app/services/csv_export.py:cell",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/csv_export.py",
+   "target": "function:backend/app/services/csv_export.py:cell",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/csv_export.py",
+   "target": "function:backend/app/services/csv_export.py:to_csv",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/csv_export.py",
+   "target": "function:backend/app/services/csv_export.py:to_csv",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/csv_export.py",
+   "target": "function:backend/app/services/csv_export.py:export",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/csv_export.py",
+   "target": "function:backend/app/services/csv_export.py:export",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/csv_export.py",
+   "target": "file:backend/app/repositories/database.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/csv_export.py",
+   "target": "file:backend/app/services/csv_import.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:normalize",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:normalize",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:fingerprint",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:fingerprint",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:read_rows",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:read_rows",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:row_errors",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:row_errors",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:validate_row",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:validate_row",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:save",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:save",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:import_csv",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:import_csv",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "class:backend/app/services/csv_import.py:CsvFileError",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "class:backend/app/services/csv_import.py:CsvFileError",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "file:backend/app/core/clock.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "file:backend/app/repositories/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "file:backend/app/repositories/labels.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "file:backend/app/schemas/classification.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "file:backend/app/schemas/imports.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "file:backend/app/schemas/tickets.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "file:backend/app/services/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "function:backend/app/services/comparisons.py:load",
+   "target": "function:backend/app/repositories/executions.py:get",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/comparisons.py:create",
+   "target": "function:backend/app/services/comparisons.py:load",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/comparisons.py:create",
+   "target": "function:backend/app/services/comparisons.py:field_comparison",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/comparisons.py:create",
+   "target": "function:backend/app/services/comparisons.py:status_of",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/comparisons.py:create",
+   "target": "function:backend/app/repositories/comparisons.py:insert",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/comparisons.py:create",
+   "target": "function:backend/app/repositories/executions.py:link_comparison",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/comparisons.py:create",
+   "target": "function:backend/app/core/clock.py:utc_now",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/csv_export.py:to_csv",
+   "target": "function:backend/app/services/csv_export.py:cell",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/csv_export.py:to_csv",
+   "target": "function:backend/app/services/csv_export.py:value_at",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/csv_export.py:export",
+   "target": "function:backend/app/repositories/database.py:find_all",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/csv_export.py:export",
+   "target": "function:backend/app/services/csv_export.py:to_csv",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/csv_import.py:validate_row",
+   "target": "function:backend/app/services/csv_import.py:normalize",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/csv_import.py:validate_row",
+   "target": "function:backend/app/services/csv_import.py:row_errors",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/csv_import.py:save",
+   "target": "function:backend/app/services/tickets.py:create",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/csv_import.py:save",
+   "target": "function:backend/app/repositories/labels.py:insert",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/csv_import.py:save",
+   "target": "function:backend/app/core/clock.py:utc_now",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/csv_import.py:import_csv",
+   "target": "function:backend/app/services/csv_import.py:read_rows",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/csv_import.py:import_csv",
+   "target": "function:backend/app/services/csv_import.py:validate_row",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/csv_import.py:import_csv",
+   "target": "function:backend/app/services/csv_import.py:fingerprint",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/csv_import.py:import_csv",
+   "target": "function:backend/app/repositories/tickets.py:fingerprint_exists",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/csv_import.py:import_csv",
+   "target": "function:backend/app/services/csv_import.py:save",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "file:backend/app/services/tickets.py",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "file:backend/app/repositories/tickets.py",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "file:backend/tests/test_csv.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/services/csv_export.py",
+   "target": "file:backend/tests/test_csv.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  }
+ ]
+}

@@ -1,6 +1,6 @@
 import { Play, TriangleAlert } from "lucide-react"
 import { useState } from "react"
-import { useSearchParams } from "react-router"
+import { Link, useSearchParams } from "react-router"
 import { toast } from "sonner"
 
 import { ErrorState, LoadingState } from "@/components/states"
@@ -64,9 +64,12 @@ function TicketPanel({ ticket }: { ticket: Ticket }) {
   return (
     <div className="grid gap-1 text-sm">
       <p className="font-medium">
-        <span className="font-mono text-muted-foreground">
+        <Link
+          to={`/tickets/${ticket.ticket_id}`}
+          className="font-mono text-muted-foreground underline underline-offset-4"
+        >
           {ticket.ticket_id}
-        </span>{" "}
+        </Link>{" "}
         {ticket.title}
       </p>
       <p className="max-h-32 overflow-auto break-words whitespace-pre-wrap text-muted-foreground">
@@ -110,8 +113,8 @@ function Agreement({
       )}
       <span className="font-medium">{text}</span>
       <span className="text-muted-foreground">
-        Agreement is not accuracy, and no winner is chosen. Saved as{" "}
-        {data.comparison_id}.
+        Agreement is not accuracy, and no winner is chosen. Choose the final
+        answer on the ticket's page. Saved as {data.comparison_id}.
       </span>
     </div>
   )
@@ -163,7 +166,7 @@ export function ComparePage() {
   return (
     <div className="flex flex-col gap-4">
       <Card>
-        <CardContent className="grid gap-4 pt-6">
+        <CardContent className="grid gap-4">
           <TicketChooser onChoose={choose} />
           {ticket.isFetching && <LoadingState label="Loading ticket…" />}
           {ticket.isError && <ErrorState error={ticket.error} />}

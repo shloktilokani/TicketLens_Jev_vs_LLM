@@ -5,9 +5,9 @@ from fastapi import APIRouter, HTTPException, Query
 from pymongo.errors import PyMongoError
 
 from app.api.deps import Db
-from app.core.taxonomy import Category, Priority, TicketStatus
-from app.repositories import tickets
-from app.schemas.classification import Classification
+from app.core.taxonomy import Priority, TicketStatus
+from app.repositories import executions, tickets
+from app.schemas.classification import FinalClassificationInput
 from app.schemas.tickets import NoteCreate, Ticket, TicketCreate, TicketPage, TicketUpdate
 from app.services import tickets as service
 
@@ -33,7 +33,7 @@ def list_tickets(
     q: Annotated[
         str | None, Query(max_length=200, description="Ticket ID, title, name, email or order ID")
     ] = None,
-    category: Category | None = None,
+    category: Annotated[str | None, Query(max_length=80)] = None,
     priority: Priority | None = None,
     status: TicketStatus | None = None,
     sort: Literal["created_at", "priority"] = "created_at",
@@ -54,6 +54,9 @@ def list_tickets(
         page=page,
         page_size=page_size,
     )
+    latest = executions.latest_by_ticket(db, [t["ticket_id"] for t in items])
+    for ticket in items:
+        ticket["latest_run"] = latest.get(ticket["ticket_id"])
     return {"items": items, "total": total, "page": page, "page_size": page_size}
 
 
@@ -73,9 +76,12 @@ def add_note(ticket_id: str, data: NoteCreate, db: Db):
 
 
 @router.put("/{ticket_id}/final-classification", response_model=Ticket)
-def set_final_classification(ticket_id: str, data: Classification, db: Db):
-    """Set the operator's final classification by hand."""
-    return found(service.set_classification(db, ticket_id, data))
+def set_final_classification(ticket_id: str, data: FinalClassificationInput, db: Db):
+    """Save the operator's final answer, by hand or starting from one of the ticket's runs."""
+    try:
+        return found(service.set_classification(db, ticket_id, data))
+    except service.RunNotUsable as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from None
 
 
 @router.delete("/{ticket_id}", status_code=204)

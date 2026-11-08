@@ -14,12 +14,11 @@ from pymongo.errors import DuplicateKeyError
 
 from app.core.clock import utc_now
 from app.core.taxonomy import (
-    SUBCATEGORIES,
-    TAXONOMY_VERSION,
-    Category,
     Channel,
     Priority,
     Sentiment,
+    active_categories,
+    active_version,
 )
 from app.repositories import labels
 from app.repositories import tickets as ticket_repo
@@ -49,8 +48,6 @@ CANONICAL = {
     field: {value.lower(): value for value in values}
     for field, values in {
         "submission_channel": [c.value for c in Channel],
-        "category": [c.value for c in Category],
-        "subcategory": [s for subs in SUBCATEGORIES.values() for s in subs],
         "priority": [p.value for p in Priority],
         "sentiment": [s.value for s in Sentiment],
     }.items()
@@ -67,13 +64,23 @@ class CsvFileError(ValueError):
     """The file as a whole cannot be read, so nothing is imported."""
 
 
+def canonical_values(field: str) -> dict[str, str]:
+    """Lower-case lookups. Category and subcategory come from the taxonomy in force now."""
+    if field == "category":
+        return {c.lower(): c for c in active_categories()}
+    if field == "subcategory":
+        return {s.lower(): s for subs in active_categories().values() for s in subs}
+    return CANONICAL.get(field, {})
+
+
 def normalize(field: str, raw: str):
     """Collapse whitespace and map enum-like values to canonical form. Descriptions stay exact."""
     if field == "description":
         return raw
     value = " ".join(raw.split())
-    if field in CANONICAL:
-        return CANONICAL[field].get(value.lower(), value)  # unknown values fail validation later
+    known = canonical_values(field)
+    if known:
+        return known.get(value.lower(), value)  # unknown values fail validation later
     if field == "escalation_required":
         return BOOLEANS.get(value.lower(), value)
     return value
@@ -152,7 +159,7 @@ def save(
             db,
             {
                 "ticket_id": doc["ticket_id"],
-                "taxonomy_version": TAXONOMY_VERSION,
+                "taxonomy_version": active_version(),
                 "expected": label.model_dump(),
                 "dataset_version": DATASET_VERSION,
                 "created_at": utc_now(),

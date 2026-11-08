@@ -1,0 +1,1594 @@
+{
+  "scriptCompleted": true,
+  "entryPointCandidates": [
+    {
+      "id": "document:README.md",
+      "score": 5,
+      "name": "README.md",
+      "type": "document",
+      "summary": "Project overview for the single-user ShopKart ticket classification demo comparing Jev with a configurable GPT model, including a documentation map, stack summary, and local-first scope boundary. Its run guide covers MongoDB, backend, and frontend startup, Ollama-based local models, mock providers, health checks, and test-run reports."
+    },
+    {
+      "id": "file:backend/app/main.py",
+      "score": 4,
+      "name": "main.py",
+      "type": "file",
+      "summary": "TicketLens API entry point whose application factory wires the MongoDB lifespan, CORS for the local frontend, all routers, and a 503 handler for database connection failures."
+    },
+    {
+      "id": "file:frontend/src/main.tsx",
+      "score": 3,
+      "name": "main.tsx",
+      "type": "file",
+      "summary": "React entry point that mounts the app under StrictMode with the theme provider (light by default, remembered per browser), TanStack Query client, router, and global toaster."
+    },
+    {
+      "id": "document:AGENTS.md",
+      "score": 2,
+      "name": "AGENTS.md",
+      "type": "document",
+      "summary": "Operating instructions for autonomous coding agents, covering required spec reading order, autonomy expectations, technical guardrails, per-phase definition of done, developer-experience deliverables, and scope exclusions. Its guardrails fix key rules such as server-side secrets, a shared taxonomy, withholding ground-truth labels from models, and bounded retries."
+    },
+    {
+      "id": "document:CLAUDE.md",
+      "score": 2,
+      "name": "CLAUDE.md",
+      "type": "document",
+      "summary": "Claude Code entry-point instructions that pull in AGENTS.md, point to the progress and build-order documents, and list the backend and frontend test, lint, and build commands. It also sets the rules for the engineering skills library, including routing, security, and which actions need owner approval."
+    }
+  ],
+  "fanInRanking": [
+    {
+      "id": "file:backend/app/core/taxonomy.py",
+      "fanIn": 27,
+      "name": "taxonomy.py"
+    },
+    {
+      "id": "file:frontend/src/components/ui/button.tsx",
+      "fanIn": 18,
+      "name": "button.tsx"
+    },
+    {
+      "id": "file:frontend/src/types/api.ts",
+      "fanIn": 17,
+      "name": "api.ts"
+    },
+    {
+      "id": "file:backend/app/core/settings.py",
+      "fanIn": 16,
+      "name": "settings.py"
+    },
+    {
+      "id": "file:backend/app/main.py",
+      "fanIn": 14,
+      "name": "main.py"
+    },
+    {
+      "id": "file:backend/app/schemas/executions.py",
+      "fanIn": 13,
+      "name": "executions.py"
+    },
+    {
+      "id": "file:frontend/src/components/states.tsx",
+      "fanIn": 12,
+      "name": "states.tsx"
+    },
+    {
+      "id": "file:backend/app/providers/base.py",
+      "fanIn": 11,
+      "name": "base.py"
+    },
+    {
+      "id": "file:backend/app/schemas/classification.py",
+      "fanIn": 10,
+      "name": "classification.py"
+    },
+    {
+      "id": "file:frontend/src/lib/format.ts",
+      "fanIn": 10,
+      "name": "format.ts"
+    },
+    {
+      "id": "file:frontend/src/services/api.ts",
+      "fanIn": 10,
+      "name": "api.ts"
+    },
+    {
+      "id": "file:backend/app/repositories/database.py",
+      "fanIn": 9,
+      "name": "database.py"
+    },
+    {
+      "id": "file:backend/app/repositories/__init__.py",
+      "fanIn": 8,
+      "name": "__init__.py"
+    },
+    {
+      "id": "file:backend/app/repositories/tickets.py",
+      "fanIn": 8,
+      "name": "tickets.py"
+    },
+    {
+      "id": "file:backend/tests/conftest.py",
+      "fanIn": 7,
+      "name": "conftest.py"
+    },
+    {
+      "id": "file:frontend/src/components/ui/card.tsx",
+      "fanIn": 7,
+      "name": "card.tsx"
+    },
+    {
+      "id": "file:frontend/src/features/tickets/hooks.ts",
+      "fanIn": 7,
+      "name": "hooks.ts"
+    },
+    {
+      "id": "file:frontend/src/services/queries.ts",
+      "fanIn": 7,
+      "name": "queries.ts"
+    },
+    {
+      "id": "file:backend/app/repositories/executions.py",
+      "fanIn": 6,
+      "name": "executions.py"
+    },
+    {
+      "id": "file:backend/app/schemas/tickets.py",
+      "fanIn": 6,
+      "name": "tickets.py"
+    }
+  ],
+  "fanOutRanking": [
+    {
+      "id": "document:.context/PROGRESS.md",
+      "fanOut": 24,
+      "name": "PROGRESS.md"
+    },
+    {
+      "id": "document:README.md",
+      "fanOut": 15,
+      "name": "README.md"
+    },
+    {
+      "id": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+      "fanOut": 15,
+      "name": "TicketDetailPage.tsx"
+    },
+    {
+      "id": "file:backend/app/main.py",
+      "fanOut": 14,
+      "name": "main.py"
+    },
+    {
+      "id": "document:.context/implementation.md",
+      "fanOut": 13,
+      "name": "implementation.md"
+    },
+    {
+      "id": "file:backend/app/services/executions.py",
+      "fanOut": 13,
+      "name": "executions.py"
+    },
+    {
+      "id": "file:frontend/src/features/tickets/TicketListPage.tsx",
+      "fanOut": 12,
+      "name": "TicketListPage.tsx"
+    },
+    {
+      "id": "document:.context/ai-evaluation.md",
+      "fanOut": 11,
+      "name": "ai-evaluation.md"
+    },
+    {
+      "id": "file:backend/app/services/csv_import.py",
+      "fanOut": 11,
+      "name": "csv_import.py"
+    },
+    {
+      "id": "file:frontend/src/app/router.tsx",
+      "fanOut": 11,
+      "name": "router.tsx"
+    },
+    {
+      "id": "file:backend/app/api/runs.py",
+      "fanOut": 10,
+      "name": "runs.py"
+    },
+    {
+      "id": "file:backend/app/api/tickets.py",
+      "fanOut": 10,
+      "name": "tickets.py"
+    },
+    {
+      "id": "file:frontend/src/features/compare/ComparePage.tsx",
+      "fanOut": 10,
+      "name": "ComparePage.tsx"
+    },
+    {
+      "id": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+      "fanOut": 10,
+      "name": "ExecutionsPage.tsx"
+    },
+    {
+      "id": "file:frontend/src/features/tickets/FinalClassification.tsx",
+      "fanOut": 10,
+      "name": "FinalClassification.tsx"
+    },
+    {
+      "id": "document:.context/data-model.md",
+      "fanOut": 9,
+      "name": "data-model.md"
+    },
+    {
+      "id": "document:.context/design.md",
+      "fanOut": 9,
+      "name": "design.md"
+    },
+    {
+      "id": "document:AGENTS.md",
+      "fanOut": 9,
+      "name": "AGENTS.md"
+    },
+    {
+      "id": "document:.context/architecture.md",
+      "fanOut": 8,
+      "name": "architecture.md"
+    },
+    {
+      "id": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+      "fanOut": 8,
+      "name": "DashboardPage.tsx"
+    }
+  ],
+  "bfsTraversal": {
+    "startNode": "file:backend/app/main.py",
+    "order": [
+      "file:backend/app/main.py",
+      "file:backend/app/api/__init__.py",
+      "file:backend/app/api/dashboard.py",
+      "file:backend/app/api/executions.py",
+      "file:backend/app/api/health.py",
+      "file:backend/app/api/imports.py",
+      "file:backend/app/api/providers.py",
+      "file:backend/app/api/runs.py",
+      "file:backend/app/api/taxonomy.py",
+      "file:backend/app/api/tickets.py",
+      "file:backend/app/core/settings.py",
+      "file:backend/app/repositories/database.py",
+      "file:backend/app/api/deps.py",
+      "file:backend/app/services/__init__.py",
+      "file:backend/app/services/dashboard.py",
+      "file:backend/app/core/taxonomy.py",
+      "file:backend/app/repositories/__init__.py",
+      "file:backend/app/repositories/executions.py",
+      "file:backend/app/schemas/executions.py",
+      "file:backend/app/schemas/imports.py",
+      "file:backend/app/services/csv_export.py",
+      "file:backend/app/services/csv_import.py",
+      "file:backend/app/providers/registry.py",
+      "file:backend/app/repositories/tickets.py",
+      "file:backend/app/schemas/comparisons.py",
+      "file:backend/app/services/comparisons.py",
+      "file:backend/app/services/executions.py",
+      "file:backend/app/core/__init__.py",
+      "file:backend/app/schemas/classification.py",
+      "file:backend/app/schemas/tickets.py",
+      "file:backend/app/repositories/comparisons.py",
+      "file:backend/app/services/run_metrics.py",
+      "file:backend/app/core/clock.py",
+      "file:backend/app/repositories/labels.py",
+      "file:backend/app/providers/base.py",
+      "file:backend/app/providers/jev.py",
+      "file:backend/app/providers/mock.py",
+      "file:backend/app/providers/ollama.py",
+      "file:backend/app/core/pricing.py",
+      "file:backend/app/core/redaction.py",
+      "file:backend/app/providers/__init__.py",
+      "file:backend/app/providers/http.py"
+    ],
+    "depthMap": {
+      "file:backend/app/main.py": 0,
+      "file:backend/app/api/__init__.py": 1,
+      "file:backend/app/api/dashboard.py": 1,
+      "file:backend/app/api/executions.py": 1,
+      "file:backend/app/api/health.py": 1,
+      "file:backend/app/api/imports.py": 1,
+      "file:backend/app/api/providers.py": 1,
+      "file:backend/app/api/runs.py": 1,
+      "file:backend/app/api/taxonomy.py": 1,
+      "file:backend/app/api/tickets.py": 1,
+      "file:backend/app/core/settings.py": 1,
+      "file:backend/app/repositories/database.py": 1,
+      "file:backend/app/api/deps.py": 2,
+      "file:backend/app/services/__init__.py": 2,
+      "file:backend/app/services/dashboard.py": 2,
+      "file:backend/app/core/taxonomy.py": 2,
+      "file:backend/app/repositories/__init__.py": 2,
+      "file:backend/app/repositories/executions.py": 2,
+      "file:backend/app/schemas/executions.py": 2,
+      "file:backend/app/schemas/imports.py": 2,
+      "file:backend/app/services/csv_export.py": 2,
+      "file:backend/app/services/csv_import.py": 2,
+      "file:backend/app/providers/registry.py": 2,
+      "file:backend/app/repositories/tickets.py": 2,
+      "file:backend/app/schemas/comparisons.py": 2,
+      "file:backend/app/services/comparisons.py": 2,
+      "file:backend/app/services/executions.py": 2,
+      "file:backend/app/core/__init__.py": 2,
+      "file:backend/app/schemas/classification.py": 2,
+      "file:backend/app/schemas/tickets.py": 2,
+      "file:backend/app/repositories/comparisons.py": 3,
+      "file:backend/app/services/run_metrics.py": 3,
+      "file:backend/app/core/clock.py": 3,
+      "file:backend/app/repositories/labels.py": 3,
+      "file:backend/app/providers/base.py": 3,
+      "file:backend/app/providers/jev.py": 3,
+      "file:backend/app/providers/mock.py": 3,
+      "file:backend/app/providers/ollama.py": 3,
+      "file:backend/app/core/pricing.py": 3,
+      "file:backend/app/core/redaction.py": 3,
+      "file:backend/app/providers/__init__.py": 4,
+      "file:backend/app/providers/http.py": 4
+    },
+    "byDepth": {
+      "0": [
+        "file:backend/app/main.py"
+      ],
+      "1": [
+        "file:backend/app/api/__init__.py",
+        "file:backend/app/api/dashboard.py",
+        "file:backend/app/api/executions.py",
+        "file:backend/app/api/health.py",
+        "file:backend/app/api/imports.py",
+        "file:backend/app/api/providers.py",
+        "file:backend/app/api/runs.py",
+        "file:backend/app/api/taxonomy.py",
+        "file:backend/app/api/tickets.py",
+        "file:backend/app/core/settings.py",
+        "file:backend/app/repositories/database.py"
+      ],
+      "2": [
+        "file:backend/app/api/deps.py",
+        "file:backend/app/services/__init__.py",
+        "file:backend/app/services/dashboard.py",
+        "file:backend/app/core/taxonomy.py",
+        "file:backend/app/repositories/__init__.py",
+        "file:backend/app/repositories/executions.py",
+        "file:backend/app/schemas/executions.py",
+        "file:backend/app/schemas/imports.py",
+        "file:backend/app/services/csv_export.py",
+        "file:backend/app/services/csv_import.py",
+        "file:backend/app/providers/registry.py",
+        "file:backend/app/repositories/tickets.py",
+        "file:backend/app/schemas/comparisons.py",
+        "file:backend/app/services/comparisons.py",
+        "file:backend/app/services/executions.py",
+        "file:backend/app/core/__init__.py",
+        "file:backend/app/schemas/classification.py",
+        "file:backend/app/schemas/tickets.py"
+      ],
+      "3": [
+        "file:backend/app/repositories/comparisons.py",
+        "file:backend/app/services/run_metrics.py",
+        "file:backend/app/core/clock.py",
+        "file:backend/app/repositories/labels.py",
+        "file:backend/app/providers/base.py",
+        "file:backend/app/providers/jev.py",
+        "file:backend/app/providers/mock.py",
+        "file:backend/app/providers/ollama.py",
+        "file:backend/app/core/pricing.py",
+        "file:backend/app/core/redaction.py"
+      ],
+      "4": [
+        "file:backend/app/providers/__init__.py",
+        "file:backend/app/providers/http.py"
+      ]
+    }
+  },
+  "nonCodeFiles": {
+    "documentation": [
+      {
+        "id": "document:.context/DEPLOYMENT_DECISIONS.md",
+        "name": "DEPLOYMENT_DECISIONS.md",
+        "summary": "Lists the hosting, database, authentication, domain, backup and budget decisions the owner must make before any cloud deployment, plus non-negotiable constraints such as never deploying the no-auth demo publicly."
+      },
+      {
+        "id": "document:.context/PROGRESS.md",
+        "name": "PROGRESS.md",
+        "summary": "Living status log of the 19-phase build: phase checklist, blockers, spec gaps and assumptions, and dated notes per phase. It also records the required fix to the sample dataset before any paid evaluation."
+      },
+      {
+        "id": "document:.context/ROADMAP.md",
+        "name": "ROADMAP.md",
+        "summary": "Plain-language table of all phases with where the owner's input is needed, followed by step-by-step owner plans for MongoDB, API keys, model and price choice, spend approval, dataset review and deployment decisions."
+      },
+      {
+        "id": "document:.context/ai-evaluation.md",
+        "name": "ai-evaluation.md",
+        "summary": "Specifies the shared classification contract and taxonomy, Jev and GPT adapter behaviour, fair comparison rules, the labelled dataset, execution logging, cost calculation, retries and privacy handling."
+      },
+      {
+        "id": "document:.context/architecture.md",
+        "name": "architecture.md",
+        "summary": "Describes the local-first system: React UI, FastAPI backend and local MongoDB, the provider adapter boundary, canonical provider input, request flows for runs, bulk, import and deletion, and the deployment boundary."
+      },
+      {
+        "id": "document:.context/code-size-standards.md",
+        "name": "code-size-standards.md",
+        "summary": "Owner-mandated standards for keeping the codebase small without losing functionality or security: research basis, thresholds for sharing code, per-task rules, and enforcement through tools such as Ruff complexity checks."
+      },
+      {
+        "id": "document:.context/data-model.md",
+        "name": "data-model.md",
+        "summary": "Defines the `ticketlens` MongoDB collections (tickets, evaluation_labels, ai_executions, comparisons, bulk_jobs, app_settings, counters), their document shapes, required indexes and deletion behaviour."
+      },
+      {
+        "id": "document:.context/design.md",
+        "name": "design.md",
+        "summary": "Frontend design specification for a Linear-inspired dashboard: application shell, routes, each page's layout and states, CSV import/export UX, theme tokens, accessibility rules and non-goals."
+      },
+      {
+        "id": "document:.context/implementation.md",
+        "name": "implementation.md",
+        "summary": "Authoritative sequential build plan from Phase 0 repository setup to Phase 18 deployment readiness, with steps and acceptance criteria per phase and a final definition of done."
+      },
+      {
+        "id": "document:.context/requirements.md",
+        "name": "requirements.md",
+        "summary": "Product and technical requirements for TicketLens, a single-user demo for fictional marketplace ShopKart: ticket lifecycle and fields, classification taxonomy, provider behaviour, comparison, CSV, dashboard, settings and non-functional needs."
+      },
+      {
+        "id": "document:AGENTS.md",
+        "name": "AGENTS.md",
+        "summary": "Operating instructions for autonomous coding agents, covering required spec reading order, autonomy expectations, technical guardrails, per-phase definition of done, developer-experience deliverables, and scope exclusions. Its guardrails fix key rules such as server-side secrets, a shared taxonomy, withholding ground-truth labels from models, and bounded retries."
+      },
+      {
+        "id": "document:CLAUDE.md",
+        "name": "CLAUDE.md",
+        "summary": "Claude Code entry-point instructions that pull in AGENTS.md, point to the progress and build-order documents, and list the backend and frontend test, lint, and build commands. It also sets the rules for the engineering skills library, including routing, security, and which actions need owner approval."
+      },
+      {
+        "id": "document:README.md",
+        "name": "README.md",
+        "summary": "Project overview for the single-user ShopKart ticket classification demo comparing Jev with a configurable GPT model, including a documentation map, stack summary, and local-first scope boundary. Its run guide covers MongoDB, backend, and frontend startup, Ollama-based local models, mock providers, health checks, and test-run reports."
+      },
+      {
+        "id": "document:backend/requirements.txt",
+        "name": "requirements.txt",
+        "summary": "Pinned direct Python dependencies for the backend: FastAPI, Uvicorn, pydantic-settings, PyMongo and httpx at runtime, plus pytest and Ruff for testing and linting."
+      },
+      {
+        "id": "document:e2e/personas/analysts/adversarial-input-tester.md",
+        "name": "adversarial-input-tester.md",
+        "summary": "Test persona brief for an analyst who probes input handling with boundary lengths, hostile markup, malformed emails, double submits, and ticket text that tries to steer the model. It flags rendered markup, form and API validation mismatches, altered data, crashes, and models obeying instructions in ticket text."
+      },
+      {
+        "id": "document:e2e/personas/analysts/careful-power-user.md",
+        "name": "careful-power-user.md",
+        "summary": "Test persona brief for an experienced analyst who combines search, filters and sorting, compares Jev and GPT results field by field, and checks CSV exports against the screen. It flags mismatches across list, detail, comparison and export views, wrong counts, inconsistent numeric precision or units, and filter state lost on reload."
+      },
+      {
+        "id": "document:e2e/personas/analysts/first-time-user.md",
+        "name": "first-time-user.md",
+        "summary": "Test persona brief for a newcomer who explores navigation and empty states, submits forms with missing or wrong fields, then corrects them. It checks that error messages say what to fix, empty states point to the next step, and placeholder pages explain themselves."
+      },
+      {
+        "id": "document:e2e/personas/analysts/keyboard-screen-reader.md",
+        "name": "keyboard-screen-reader.md",
+        "summary": "Test persona brief for a user who navigates by keyboard only and reads pages through accessibility snapshots, intended to pair with the accessibility-specialist skill. It flags unreachable controls, lost or invisible focus, keyboard-inoperable selects, unannounced form errors, unlabelled controls, and dark-theme contrast problems."
+      },
+      {
+        "id": "document:e2e/personas/analysts/rushed-operator.md",
+        "name": "rushed-operator.md",
+        "summary": "Test persona brief for a support analyst clearing a queue quickly by pasting text, double-clicking submit, using the back button mid-flow, and skipping optional fields. It flags duplicate tickets from double submits, input lost on navigating back, buttons left enabled while saving, and unclear loading states."
+      },
+      {
+        "id": "document:e2e/personas/customers/angry-impatient.md",
+        "name": "angry-impatient.md",
+        "summary": "E2E test persona for a frustrated repeat-contact customer who writes short, heated tickets with capitals and threats to leave, but no insults. Checks that classification finds the underlying issue rather than just 'Complaint' and that sentiment is Negative."
+      },
+      {
+        "id": "document:e2e/personas/customers/casual-typos.md",
+        "name": "casual-typos.md",
+        "summary": "E2E test persona for a hurried phone user writing lowercase text with abbreviations, typos, emoji and everyday words instead of taxonomy terms. Checks that classification copes with noisy text and that the UI stores and shows emoji correctly."
+      },
+      {
+        "id": "document:e2e/personas/customers/non-native-english.md",
+        "name": "non-native-english.md",
+        "summary": "E2E test persona for a ShopKart customer writing understandable but imperfect English, with dropped articles and literal phrasing, and no other languages or transliteration. Checks that classification is robust to grammar variation."
+      },
+      {
+        "id": "document:e2e/personas/customers/rambling-multi-issue.md",
+        "name": "rambling-multi-issue.md",
+        "summary": "E2E test persona for a customer who writes long, tangential tickets where the main ask arrives late alongside one minor issue from a different category. Checks that models pick the primary issue and handle long input, up to the 10,000-character description limit."
+      },
+      {
+        "id": "document:e2e/personas/customers/terse.md",
+        "name": "terse.md",
+        "summary": "E2E test persona for a customer who writes one line or a fragment plus an order number, under about 12 words while staying classifiable. Checks classification with very little context and how confidence and priority behave."
+      },
+      {
+        "id": "document:e2e/personas/customers/vague.md",
+        "name": "vague.md",
+        "summary": "E2E test persona for a polite, hedging customer whose ticket leaves out exactly one key detail, such as which order or what went wrong. Checks that models still land in the right category and that confidence drops sensibly."
+      },
+      {
+        "id": "document:e2e/README.md",
+        "name": "README.md",
+        "summary": "Guide to UI testing through the real interface, covering the isolated test stack, what each browser tool is for, commands, how to write test cases and personas, the unbuilt real-provider mode, and tool data-risk settings."
+      },
+      {
+        "id": "document:e2e/personas/README.md",
+        "name": "README.md",
+        "summary": "Explains how a persona run pairs a customer voice (how the ticket is written) with an analyst (how the app is used), and sets rules for synthetic data, taxonomy limits, and never typing expected labels."
+      },
+      {
+        "id": "document:e2e/test-cases/TC-001-create-ticket.md",
+        "name": "TC-001-create-ticket.md",
+        "summary": "Test case for creating a duplicate-charge ticket and finding it again by search, with expected labels, field-validation outcomes, and visual checkpoints for desktop and mobile."
+      },
+      {
+        "id": "document:e2e/test-cases/TEMPLATE.md",
+        "name": "TEMPLATE.md",
+        "summary": "Copyable template for persona test cases, with sections for mode, personas, preconditions, ticket intent, expected labels, steps, expected results, and visual checkpoints."
+      }
+    ],
+    "infrastructure": [],
+    "data": [
+      {
+        "id": "table:.context/sample_tickets_100.csv:sample_tickets_100",
+        "name": "sample_tickets_100.csv",
+        "summary": "100 fictional labelled ShopKart tickets, balanced across six categories and four channels, with expected category, subcategory, priority, sentiment and escalation columns. Every title equals its expected_subcategory, so it leaks a label and PROGRESS.md bars it from evaluation until corrected."
+      },
+      {
+        "id": "table:.context/sample_tickets_template.csv:sample_tickets_template",
+        "name": "sample_tickets_template.csv",
+        "summary": "Header-only CSV listing the 12 ticket import columns: seven ticket fields and five expected_* label fields. `test_csv.py` compares it to the importer's COLUMNS constant, which the template download endpoint uses to build its response."
+      }
+    ],
+    "config": [
+      {
+        "id": "config:.mcp.json",
+        "name": ".mcp.json",
+        "summary": "Project-scoped MCP server configuration that launches version-pinned Playwright and Chrome DevTools servers against an isolated Chrome for Testing binary. It limits Playwright to the local frontend and backend origins and turns off DevTools usage statistics and CrUX lookups while redacting network headers."
+      },
+      {
+        "id": "config:backend/.env.example",
+        "name": ".env.example",
+        "summary": "Template of 21 backend environment variables covering the API host and port, local MongoDB connection, blank provider API keys, Jev and LLM backend selection (hosted or local Ollama), request timeouts and concurrency, mock-provider mode, and log level."
+      },
+      {
+        "id": "config:backend/pyproject.toml",
+        "name": "pyproject.toml",
+        "summary": "Tool-only backend configuration that sets pytest test paths and Ruff linting for Python 3.13, including a 100-character line length, a McCabe complexity limit of 10, and a long-line exemption for the run-report HTML template."
+      },
+      {
+        "id": "config:frontend/.prettierrc.json",
+        "name": ".prettierrc.json",
+        "summary": "Prettier configuration for the frontend that disables semicolons and otherwise keeps Prettier's default formatting rules."
+      },
+      {
+        "id": "config:frontend/components.json",
+        "name": "components.json",
+        "summary": "shadcn/ui CLI configuration selecting the radix-nova style, neutral base color with CSS variables, lucide icons, and the @/ alias locations where generated TSX components, hooks, and utilities are placed."
+      },
+      {
+        "id": "config:frontend/package.json",
+        "name": "package.json",
+        "summary": "Private ES-module package manifest for the TicketLens frontend, defining Vite dev, build, and preview scripts plus ESLint and Prettier commands, with dependencies on React 19, React Router, TanStack Query, Radix UI, Recharts, and Zod."
+      },
+      {
+        "id": "config:frontend/tsconfig.app.json",
+        "name": "tsconfig.app.json",
+        "summary": "TypeScript project configuration for browser application code under src, targeting ES2023 and the DOM with bundler module resolution, react-jsx, no emit, unused-code checks, and the @/* path alias."
+      },
+      {
+        "id": "config:frontend/tsconfig.json",
+        "name": "tsconfig.json",
+        "summary": "Root TypeScript solution file that compiles no files itself and references the separate app and node projects while declaring the @/* path alias for tooling."
+      },
+      {
+        "id": "config:frontend/tsconfig.node.json",
+        "name": "tsconfig.node.json",
+        "summary": "TypeScript project configuration for Node-side build tooling, type-checking only vite.config.ts with nodenext modules, Node types, no emit, and unused-code checks."
+      },
+      {
+        "id": "config:.claude/settings.json",
+        "name": "settings.json",
+        "summary": "Project Claude Code settings that allow read-only git and test commands, deny secret-file reads, docker and every git write, and add a prompt hook enforcing skill routing."
+      },
+      {
+        "id": "config:e2e/package.json",
+        "name": "package.json",
+        "summary": "Standalone npm package for UI testing that pins `@playwright/test` and `agent-browser` and defines scripts for the test stack, tests, baseline updates, reports, and a visible Chrome for Testing browser."
+      }
+    ]
+  },
+  "clusters": [
+    {
+      "nodes": [
+        "file:backend/app/providers/base.py",
+        "file:backend/tests/test_live_adapters.py",
+        "file:backend/app/core/taxonomy.py",
+        "file:backend/app/providers/http.py",
+        "file:backend/app/providers/jev.py"
+      ],
+      "edgeCount": 11
+    },
+    {
+      "nodes": [
+        "file:backend/app/schemas/bulk_jobs.py",
+        "file:backend/tests/test_schemas.py",
+        "file:backend/app/core/taxonomy.py",
+        "file:backend/app/schemas/classification.py",
+        "file:backend/app/schemas/executions.py"
+      ],
+      "edgeCount": 11
+    },
+    {
+      "nodes": [
+        "file:backend/app/schemas/classification.py",
+        "file:backend/tests/test_providers.py",
+        "file:backend/app/schemas/executions.py",
+        "file:backend/app/services/executions.py",
+        "file:backend/tests/test_execution_log.py"
+      ],
+      "edgeCount": 11
+    },
+    {
+      "nodes": [
+        "file:backend/app/schemas/executions.py",
+        "file:backend/tests/test_execution_log.py",
+        "file:backend/app/core/pricing.py",
+        "file:backend/app/core/taxonomy.py",
+        "file:backend/app/providers/base.py"
+      ],
+      "edgeCount": 11
+    },
+    {
+      "nodes": [
+        "file:backend/app/schemas/tickets.py",
+        "file:backend/tests/test_schemas.py",
+        "file:backend/app/core/taxonomy.py",
+        "file:backend/app/schemas/bulk_jobs.py",
+        "file:backend/app/schemas/classification.py"
+      ],
+      "edgeCount": 11
+    },
+    {
+      "nodes": [
+        "file:backend/app/services/executions.py",
+        "file:backend/tests/test_providers.py",
+        "file:backend/app/core/redaction.py",
+        "file:backend/app/providers/base.py",
+        "file:backend/app/providers/mock.py"
+      ],
+      "edgeCount": 11
+    },
+    {
+      "nodes": [
+        "file:backend/app/providers/base.py",
+        "file:backend/tests/test_providers.py",
+        "file:backend/app/providers/mock.py",
+        "file:backend/app/providers/registry.py",
+        "file:backend/app/schemas/executions.py"
+      ],
+      "edgeCount": 10
+    },
+    {
+      "nodes": [
+        "file:backend/app/providers/jev.py",
+        "file:backend/tests/test_live_adapters.py",
+        "file:backend/app/core/taxonomy.py",
+        "file:backend/app/providers/base.py",
+        "file:backend/app/providers/definitions.py"
+      ],
+      "edgeCount": 10
+    },
+    {
+      "nodes": [
+        "file:backend/app/providers/ollama.py",
+        "file:backend/tests/test_live_adapters.py",
+        "file:backend/app/core/taxonomy.py",
+        "file:backend/app/providers/base.py",
+        "file:backend/app/providers/definitions.py"
+      ],
+      "edgeCount": 10
+    },
+    {
+      "nodes": [
+        "file:backend/app/providers/registry.py",
+        "file:backend/tests/test_live_adapters.py",
+        "file:backend/app/core/taxonomy.py",
+        "file:backend/app/providers/base.py",
+        "file:backend/app/providers/http.py"
+      ],
+      "edgeCount": 10
+    }
+  ],
+  "layers": {
+    "count": 10,
+    "list": [
+      {
+        "id": "layer:api",
+        "name": "API Layer",
+        "description": "FastAPI application factory and routers that expose tickets, CSV imports, comparison runs, executions, providers, taxonomy, dashboard metrics and health checks."
+      },
+      {
+        "id": "layer:service",
+        "name": "Application Services",
+        "description": "Workflow logic for tickets, Jev-vs-LLM comparison runs, execution logging, CSV import and export, run metrics and test-run reports, including the report command-line script."
+      },
+      {
+        "id": "layer:providers",
+        "name": "Provider Adapters",
+        "description": "Separate Jev, Ollama and mock classification adapters behind a shared base contract, HTTP helper and registry that normalize every provider response."
+      },
+      {
+        "id": "layer:data",
+        "name": "Data Layer",
+        "description": "PyMongo repositories for tickets, labels, executions and comparisons, the database connection and index script, and the synthetic ShopKart sample ticket CSVs."
+      },
+      {
+        "id": "layer:core-contracts",
+        "name": "Core and Contracts",
+        "description": "Canonical taxonomy, typed settings, UTC clock, pricing and redaction helpers, plus the Pydantic schemas shared by the API, services and provider adapters."
+      },
+      {
+        "id": "layer:frontend-app",
+        "name": "Frontend Application",
+        "description": "React entry point, router and app shell, the feature pages for tickets, compare, comparisons, executions and dashboard, and the typed API client and queries they call."
+      },
+      {
+        "id": "layer:ui-kit",
+        "name": "UI Kit",
+        "description": "Reusable shadcn/ui primitives, shared dialogs, list controls and loading or empty states, and the display formatting helpers used across feature pages."
+      },
+      {
+        "id": "layer:test",
+        "name": "Tests and UI Testing",
+        "description": "Pytest suite for the backend plus the isolated Playwright stack with its mock-provider startup scripts, smoke test, personas and test cases."
+      },
+      {
+        "id": "layer:config",
+        "name": "Project Configuration",
+        "description": "Build, lint, TypeScript, dependency and environment settings for the frontend and backend, plus repository-level Claude and MCP tooling configuration."
+      },
+      {
+        "id": "layer:documentation",
+        "name": "Documentation",
+        "description": "Root README and agent instructions plus the .context specification set covering requirements, architecture, data model, AI evaluation, design, build phases and progress."
+      }
+    ]
+  },
+  "nodeSummaryIndex": {
+    "file:backend/app/api/dashboard.py": {
+      "name": "dashboard.py",
+      "type": "file",
+      "summary": "FastAPI routes for the Overview metrics and for listing and reading stored Jev-vs-LLM comparisons, delegating all work to the dashboard service."
+    },
+    "file:backend/app/api/deps.py": {
+      "name": "deps.py",
+      "type": "file",
+      "summary": "Shared FastAPI dependency that exposes the MongoDB database held on application state as the injectable `Db` type used by every route module."
+    },
+    "file:backend/app/api/executions.py": {
+      "name": "executions.py",
+      "type": "file",
+      "summary": "FastAPI routes for the execution log: a filtered, paginated list of every AI attempt without payloads, and a detail route returning one attempt in full."
+    },
+    "file:backend/app/api/imports.py": {
+      "name": "imports.py",
+      "type": "file",
+      "summary": "FastAPI routes for the CSV import template, ticket imports with a dry-run mode and a 5 MB size limit, and CSV downloads of tickets, executions and comparisons."
+    },
+    "file:backend/app/api/runs.py": {
+      "name": "runs.py",
+      "type": "file",
+      "summary": "FastAPI routes that run one provider on one ticket and record a comparison between finished Jev and GPT runs, without ever choosing a winner."
+    },
+    "file:backend/app/api/tickets.py": {
+      "name": "tickets.py",
+      "type": "file",
+      "summary": "FastAPI CRUD routes for tickets, covering search, filtering, sorting, pagination, notes, the operator's final classification and cascading deletion."
+    },
+    "file:backend/app/core/clock.py": {
+      "name": "clock.py",
+      "type": "file",
+      "summary": "Provides the UTC clock used for stored timestamps, truncated to the millisecond precision that BSON dates keep."
+    },
+    "file:backend/app/repositories/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "Empty package marker for the MongoDB repository layer."
+    },
+    "file:backend/app/repositories/comparisons.py": {
+      "name": "comparisons.py",
+      "type": "file",
+      "summary": "MongoDB access for Jev-vs-GPT comparison records: insert, newest-first listing, counting and lookup by ID."
+    },
+    "file:backend/app/repositories/executions.py": {
+      "name": "executions.py",
+      "type": "file",
+      "summary": "MongoDB access for AI execution records, including updates, comparison linking, each ticket's latest run and a paginated search that leaves out payloads."
+    },
+    "file:backend/app/repositories/labels.py": {
+      "name": "labels.py",
+      "type": "file",
+      "summary": "Write-only MongoDB access for evaluation labels, which are kept apart from tickets and never read when building provider requests."
+    },
+    "file:backend/app/repositories/tickets.py": {
+      "name": "tickets.py",
+      "type": "file",
+      "summary": "MongoDB access for tickets and the atomic ticket-ID counter, with plain-text search, priority-ranked sorting, status counts and dependents-first deletion."
+    },
+    "file:backend/app/schemas/comparisons.py": {
+      "name": "comparisons.py",
+      "type": "file",
+      "summary": "Pydantic models for a Jev-vs-GPT comparison record, its per-field values and the request that creates one."
+    },
+    "file:backend/app/schemas/imports.py": {
+      "name": "imports.py",
+      "type": "file",
+      "summary": "Pydantic models for the CSV import result: row-level errors and the summary of imported, invalid and duplicate rows."
+    },
+    "file:backend/app/services/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "Empty package marker for the service layer."
+    },
+    "file:backend/app/services/comparisons.py": {
+      "name": "comparisons.py",
+      "type": "file",
+      "summary": "Compares one Jev run with one GPT run on the five shared fields, validates both executions and stores the agreement figures while leaving the final answer to the operator."
+    },
+    "file:backend/app/services/csv_export.py": {
+      "name": "csv_export.py",
+      "type": "file",
+      "summary": "Builds CSV exports of tickets, AI executions and comparisons from declarative column maps, omitting payloads and neutralizing spreadsheet formula injection."
+    },
+    "file:backend/app/services/csv_import.py": {
+      "name": "csv_import.py",
+      "type": "file",
+      "summary": "Imports tickets from CSV with row-level validation, value normalization, fingerprint-based duplicate detection, a dry-run mode and separately stored evaluation labels."
+    },
+    "file:backend/app/services/dashboard.py": {
+      "name": "dashboard.py",
+      "type": "file",
+      "summary": "Assembles Overview and Comparisons page data by joining stored comparisons with their runs and tickets, keeping fake-provider runs out of the metrics."
+    },
+    "file:backend/app/services/run_metrics.py": {
+      "name": "run_metrics.py",
+      "type": "file",
+      "summary": "Computes pure metrics for a set of Jev-vs-LLM comparisons: per-field agreement and Cohen's kappa, latency, tokens, outcomes, cost, Jev confidence, distributions and disagreements."
+    },
+    "file:backend/app/services/run_report.py": {
+      "name": "run_report.py",
+      "type": "file",
+      "summary": "Renders one test run as a self-contained HTML report with inline CSS, SVG charts and summary tables, escaping stored text and stating that agreement is not accuracy."
+    },
+    "file:backend/scripts/run_report.py": {
+      "name": "run_report.py",
+      "type": "file",
+      "summary": "Command-line entry point that loads named comparisons from MongoDB and writes a test run's HTML report and JSON record to reports/test-runs."
+    },
+    "file:backend/tests/test_csv.py": {
+      "name": "test_csv.py",
+      "type": "file",
+      "summary": "API-level tests for CSV import and export, covering row counts, normalization, duplicates, dry runs, label separation, malformed files, formula neutralization and payload exclusion."
+    },
+    "file:backend/tests/test_run_metrics.py": {
+      "name": "test_run_metrics.py",
+      "type": "file",
+      "summary": "Unit tests for the run metrics, using hand-built rows to check percentile, kappa, completed-only agreement, latency, tokens, outcomes, cost and Jev confidence."
+    },
+    "file:backend/app/core/pricing.py": {
+      "name": "pricing.py",
+      "type": "file",
+      "summary": "Default provider rates and token-cost estimation: picks a pricing snapshot per provider and computes exact Decimal costs, returning None rather than guessing when a price or token count is missing."
+    },
+    "file:backend/app/core/redaction.py": {
+      "name": "redaction.py",
+      "type": "file",
+      "summary": "Recursively strips credentials from provider payloads by replacing the values of secret-looking keys, so stored and displayed request and response data never holds secrets."
+    },
+    "file:backend/app/core/taxonomy.py": {
+      "name": "taxonomy.py",
+      "type": "file",
+      "summary": "Canonical taxonomy shared by validation, providers, evaluation and the UI: enums for categories, priorities, sentiments and statuses, the category-to-subcategory map, and the version constant."
+    },
+    "file:backend/app/providers/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "Empty package marker that makes the provider adapters importable as app.providers."
+    },
+    "file:backend/app/providers/base.py": {
+      "name": "base.py",
+      "type": "file",
+      "summary": "The contract every provider adapter follows: the fixed input both models see, the raw result shape, the safe ProviderFailure exception, HTTP status mapping and the Adapter protocol."
+    },
+    "file:backend/app/providers/definitions.py": {
+      "name": "definitions.py",
+      "type": "file",
+      "summary": "Task definitions given identically to Jev and the LLM (priority, sentiment, escalation, category and subcategory meanings plus base instructions), keeping the comparison fair."
+    },
+    "file:backend/app/providers/http.py": {
+      "name": "http.py",
+      "type": "file",
+      "summary": "The single HTTP helper both real adapters use: posts JSON with a timeout, maps transport and status errors to safe ProviderFailure objects, and deliberately never retries because calls can cost money."
+    },
+    "file:backend/app/providers/jev.py": {
+      "name": "jev.py",
+      "type": "file",
+      "summary": "Jev adapter over the System One decision API, for hosted TypeSafe or local AutoTrust models: runs a two-step classification (category and other fields, then that category's subcategories) and marks free text as unsupported."
+    },
+    "file:backend/app/providers/mock.py": {
+      "name": "mock.py",
+      "type": "file",
+      "summary": "Deterministic fake Jev and GPT provider for tests and UI work: keyword rules produce classifications with no network or cost, and title markers simulate failures, timeouts and invalid answers."
+    },
+    "file:backend/app/providers/ollama.py": {
+      "name": "ollama.py",
+      "type": "file",
+      "summary": "LLM adapter through a local Ollama chat model: builds a system prompt from the shared definitions, forces valid enum values with a JSON schema, and parses the structured reply and token counts."
+    },
+    "file:backend/app/providers/registry.py": {
+      "name": "registry.py",
+      "type": "file",
+      "summary": "Chooses the provider adapter from settings: mock, Jev (hosted or local) or the LLM backend, supplies UI labels and requested model names, and raises not_configured failures when something is missing."
+    },
+    "file:backend/app/schemas/bulk_jobs.py": {
+      "name": "bulk_jobs.py",
+      "type": "file",
+      "summary": "Pydantic models for bulk classification jobs: the create request that needs exactly one ticket selection mode, per-ticket outcomes, and persisted job progress."
+    },
+    "file:backend/app/schemas/classification.py": {
+      "name": "classification.py",
+      "type": "file",
+      "summary": "Pydantic models for the five compared classification fields, the operator's final answer and a provider's normalized result, rejecting any category and subcategory pair that does not belong together."
+    },
+    "file:backend/app/schemas/executions.py": {
+      "name": "executions.py",
+      "type": "file",
+      "summary": "Pydantic models for a provider attempt record: token usage, the pricing snapshot, estimated Decimal cost, a user-safe error and the full execution document including failures."
+    },
+    "file:backend/app/schemas/tickets.py": {
+      "name": "tickets.py",
+      "type": "file",
+      "summary": "Pydantic models and field constraints for ticket creation, partial update, notes and the stored ticket returned by the API, including trimming rules and paged results."
+    },
+    "file:backend/app/services/executions.py": {
+      "name": "executions.py",
+      "type": "file",
+      "summary": "Runs one provider on one ticket and always records the attempt: writes a Running record first, then stores the validated outcome, redacted payloads and cost, returning failures rather than raising them."
+    },
+    "file:backend/app/services/tickets.py": {
+      "name": "tickets.py",
+      "type": "file",
+      "summary": "Ticket workflows that turn API input into stored documents: creation, partial updates, operator notes and saving the operator's final classification with its source run and edit flag."
+    },
+    "file:backend/tests/test_execution_log.py": {
+      "name": "test_execution_log.py",
+      "type": "file",
+      "summary": "Tests for cost calculation, rate snapshots that stay fixed over time, secret-free stored records, and the execution list and detail API filters, paging and payload handling."
+    },
+    "file:backend/tests/test_live_adapters.py": {
+      "name": "test_live_adapters.py",
+      "type": "file",
+      "summary": "Tests the Jev and Ollama adapters against simulated HTTP replies with no network, covering the two-step flow, token totals, failure handling, escalation thresholds and registry selection."
+    },
+    "file:backend/tests/test_providers.py": {
+      "name": "test_providers.py",
+      "type": "file",
+      "summary": "Tests the provider contract and run recording: input fairness, HTTP failure mapping, redaction, mock behaviour, and that every attempt is logged including failures, crashes and missing keys."
+    },
+    "file:backend/tests/test_schemas.py": {
+      "name": "test_schemas.py",
+      "type": "file",
+      "summary": "Validation tests for the classification, execution, ticket and bulk-job schemas, including invalid pairs, trimming rules, unsupported Jev free text and taxonomy version recording."
+    },
+    "file:frontend/src/app/AppShell.tsx": {
+      "name": "AppShell.tsx",
+      "type": "file",
+      "summary": "Application layout route that renders the responsive sidebar and mobile navigation sheet, header with provider status badges and global ticket search, and the routed page outlet; it also keeps the document title in sync with the matched route."
+    },
+    "file:frontend/src/app/PlaceholderPage.tsx": {
+      "name": "PlaceholderPage.tsx",
+      "type": "file",
+      "summary": "Provides the honest stand-in page for features a later build phase delivers and the catch-all not-found page, both built on the shared empty state."
+    },
+    "file:frontend/src/app/router.tsx": {
+      "name": "router.tsx",
+      "type": "file",
+      "summary": "Declares the browser router: AppShell as the layout route with child routes for the overview dashboard, tickets, compare, comparisons, executions, a placeholder settings page, and a not-found fallback."
+    },
+    "file:frontend/src/components/ConfirmDialog.tsx": {
+      "name": "ConfirmDialog.tsx",
+      "type": "file",
+      "summary": "Reusable confirmation dialog for destructive actions that stays open with a pending label until the caller closes it after the request succeeds."
+    },
+    "file:frontend/src/components/Detail.tsx": {
+      "name": "Detail.tsx",
+      "type": "file",
+      "summary": "Tiny presentational component rendering one labelled value inside a definition list, with a dash for missing values."
+    },
+    "file:frontend/src/components/ListControls.tsx": {
+      "name": "ListControls.tsx",
+      "type": "file",
+      "summary": "Shared list-page controls: a dropdown filter with an All option and a pager showing the total, current page, and previous and next buttons."
+    },
+    "file:frontend/src/components/states.tsx": {
+      "name": "states.tsx",
+      "type": "file",
+      "summary": "Shared loading, error, and empty state components that give every page consistent async feedback, using status and alert ARIA roles."
+    },
+    "file:frontend/src/components/ui/alert-dialog.tsx": {
+      "name": "alert-dialog.tsx",
+      "type": "file",
+      "summary": "shadcn/ui alert dialog primitives wrapping Radix AlertDialog with project styling, including size variants plus action and cancel buttons built on Button."
+    },
+    "file:frontend/src/components/ui/badge.tsx": {
+      "name": "badge.tsx",
+      "type": "file",
+      "summary": "shadcn/ui badge component with class-variance-authority variants and optional rendering through a Radix Slot."
+    },
+    "file:frontend/src/components/ui/button.tsx": {
+      "name": "button.tsx",
+      "type": "file",
+      "summary": "shadcn/ui button defining the project's variant and size styles with class-variance-authority, with optional Radix Slot rendering; other UI primitives build on it."
+    },
+    "file:frontend/src/components/ui/card.tsx": {
+      "name": "card.tsx",
+      "type": "file",
+      "summary": "shadcn/ui card family of styled div wrappers for the header, title, description, action, content, and footer regions of a card."
+    },
+    "file:frontend/src/components/ui/dialog.tsx": {
+      "name": "dialog.tsx",
+      "type": "file",
+      "summary": "shadcn/ui modal dialog primitives wrapping Radix Dialog, with an overlay, optional close buttons, and header and footer layout helpers."
+    },
+    "file:frontend/src/components/ui/input.tsx": {
+      "name": "input.tsx",
+      "type": "file",
+      "summary": "shadcn/ui styled single-line text input wrapping the native input element."
+    },
+    "file:frontend/src/components/ui/label.tsx": {
+      "name": "label.tsx",
+      "type": "file",
+      "summary": "shadcn/ui form label wrapping the Radix Label primitive with project styling."
+    },
+    "file:frontend/src/components/ui/select.tsx": {
+      "name": "select.tsx",
+      "type": "file",
+      "summary": "shadcn/ui dropdown select primitives wrapping Radix Select, with a styled trigger, portalled content, items, separators, and scroll buttons."
+    },
+    "file:frontend/src/components/ui/sheet.tsx": {
+      "name": "sheet.tsx",
+      "type": "file",
+      "summary": "shadcn/ui slide-in side panel built on the Radix Dialog primitive, supporting top, right, bottom, and left placement; AppShell uses it for mobile navigation."
+    },
+    "file:frontend/src/components/ui/table.tsx": {
+      "name": "table.tsx",
+      "type": "file",
+      "summary": "shadcn/ui table family of styled semantic table elements, with a container that scrolls horizontally on overflow."
+    },
+    "file:frontend/src/components/ui/textarea.tsx": {
+      "name": "textarea.tsx",
+      "type": "file",
+      "summary": "shadcn/ui styled multi-line text input wrapping the native textarea element."
+    },
+    "file:frontend/src/features/compare/ComparePage.tsx": {
+      "name": "ComparePage.tsx",
+      "type": "file",
+      "summary": "Compare workbench page where the user loads or creates a ticket, runs Jev and the LLM side by side, and sees the field agreement summary without any winner being chosen."
+    },
+    "file:frontend/src/features/compare/ProviderColumn.tsx": {
+      "name": "ProviderColumn.tsx",
+      "type": "file",
+      "summary": "Renders one provider's side of the compare workbench: live status and elapsed timer, normalized classification fields with agreement markers, free text, and token and cost usage."
+    },
+    "file:frontend/src/features/compare/useCompareRun.ts": {
+      "name": "useCompareRun.ts",
+      "type": "file",
+      "summary": "Drives the live Compare workbench: runs Jev and GPT concurrently as separate requests so each column finishes independently, then asks the backend to save a comparison. Also provides the elapsed-time timer hook and its formatter."
+    },
+    "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx": {
+      "name": "ComparisonDetailPage.tsx",
+      "type": "file",
+      "summary": "Page that shows one saved comparison, reusing the live provider columns with timers frozen at each run's stored duration. States how many fields agree and that agreement is not accuracy."
+    },
+    "file:frontend/src/features/comparisons/ComparisonsPage.tsx": {
+      "name": "ComparisonsPage.tsx",
+      "type": "file",
+      "summary": "Page listing saved comparisons newest first, and the shared comparison table that the dashboard and ticket detail views also render. Flags fake-AI runs with a badge."
+    },
+    "file:frontend/src/features/comparisons/hooks.ts": {
+      "name": "hooks.ts",
+      "type": "file",
+      "summary": "Single React Query hook that fetches saved comparisons, optionally for one ticket, and polls every 5 seconds so new runs appear during a test."
+    },
+    "file:frontend/src/features/dashboard/DashboardPage.tsx": {
+      "name": "DashboardPage.tsx",
+      "type": "file",
+      "summary": "Dashboard page summarising real comparison runs: ticket counts, agreement rates, side-by-side distribution charts, latency, success and estimated cost. It polls every 5 seconds, excludes fake-AI comparisons and states that agreement is not accuracy."
+    },
+    "file:frontend/src/features/executions/ExecutionDetailPage.tsx": {
+      "name": "ExecutionDetailPage.tsx",
+      "type": "file",
+      "summary": "Page for one AI run: status, models, versions, token usage, the pricing snapshot saved with the run and any error. Collapsible, copyable JSON blocks expose the validated result, input snapshot and redacted request and response payloads."
+    },
+    "file:frontend/src/features/executions/ExecutionsPage.tsx": {
+      "name": "ExecutionsPage.tsx",
+      "type": "file",
+      "summary": "Paginated log of every AI run, including failures, with provider, status, ticket and UTC date filters kept in the URL so a filtered view can be bookmarked. Also links to the executions CSV export."
+    },
+    "file:frontend/src/features/tickets/AiResults.tsx": {
+      "name": "AiResults.tsx",
+      "type": "file",
+      "summary": "Ticket-level AI panel with buttons that run Jev or the LLM on demand, the ticket's run history and its comparisons. Each successful run offers a 'Use this answer' action that seeds the final classification form."
+    },
+    "file:frontend/src/features/tickets/FinalClassification.tsx": {
+      "name": "FinalClassification.tsx",
+      "type": "file",
+      "summary": "Panel where the operator views and sets a ticket's final classification, by hand or starting from an AI answer. The value changes only on Save, escalation has no default, and changing category clears the subcategory."
+    },
+    "file:frontend/src/features/tickets/ImportExport.tsx": {
+      "name": "ImportExport.tsx",
+      "type": "file",
+      "summary": "CSV import dialog with a dry-run check that reports valid, invalid and duplicate rows before anything is saved, plus download links for the ticket, execution and comparison CSV exports."
+    },
+    "file:frontend/src/features/tickets/NewTicketPage.tsx": {
+      "name": "NewTicketPage.tsx",
+      "type": "file",
+      "summary": "Page that loads the taxonomy, renders the ticket form and, once the API confirms creation, shows a success state with a link to the new ticket. No AI runs on creation."
+    },
+    "file:frontend/src/features/tickets/TicketDetailPage.tsx": {
+      "name": "TicketDetailPage.tsx",
+      "type": "file",
+      "summary": "Ticket detail page composing ticket info, status select, edit form, final classification, AI results, internal notes and confirmed deletion. Status changes and edits appear only after the API confirms them."
+    },
+    "file:frontend/src/features/tickets/TicketForm.tsx": {
+      "name": "TicketForm.tsx",
+      "type": "file",
+      "summary": "Shared create and edit form for tickets, validated client-side with a Zod schema that mirrors the backend's schema. Blank optional fields are sent as null, and the description is kept untrimmed."
+    },
+    "file:frontend/src/features/tickets/TicketListPage.tsx": {
+      "name": "TicketListPage.tsx",
+      "type": "file",
+      "summary": "Ticket list page with search, taxonomy filters, sort and pagination kept in the URL, plus import and export actions. Rows navigate to the ticket and show its final classification and latest AI run."
+    },
+    "file:frontend/src/features/tickets/hooks.ts": {
+      "name": "hooks.ts",
+      "type": "file",
+      "summary": "React Query hooks for ticket reads and writes, per-ticket AI runs and CSV import. Writes update the cache only after the API confirms them, and paid provider runs are never retried automatically."
+    },
+    "file:frontend/src/lib/format.ts": {
+      "name": "format.ts",
+      "type": "file",
+      "summary": "Display formatters for dates, durations, escalation, tokens and estimated costs, plus the labels that show the gpt provider as 'LLM'. Missing values render as an em dash."
+    },
+    "file:frontend/src/lib/utils.ts": {
+      "name": "utils.ts",
+      "type": "file",
+      "summary": "One-line re-export of the cn class-name merging helper from the external cn package, used by UI components."
+    },
+    "file:frontend/src/services/api.ts": {
+      "name": "api.ts",
+      "type": "file",
+      "summary": "The frontend's single HTTP client for the TicketLens backend, with a typed fetch wrapper, an ApiError class and readable messages from FastAPI errors. The browser never calls Jev or OpenAI directly."
+    },
+    "file:frontend/src/services/queries.ts": {
+      "name": "queries.ts",
+      "type": "file",
+      "summary": "Shared React Query hooks for the taxonomy, cached indefinitely as fixed per backend version, and for provider configuration status, cached for one minute."
+    },
+    "file:frontend/src/types/api.ts": {
+      "name": "api.ts",
+      "type": "file",
+      "summary": "TypeScript shapes for every TicketLens API response and request, including tickets, executions, comparisons, imports and dashboard metrics. Enum-like values stay plain strings because the allowed values come from the taxonomy endpoint."
+    },
+    "file:backend/app/api/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "Empty package marker that makes the API routers importable as app.api."
+    },
+    "file:backend/app/api/health.py": {
+      "name": "health.py",
+      "type": "file",
+      "summary": "FastAPI router for process health and MongoDB readiness probes, returning 503 with a safe setup message when the database is unreachable."
+    },
+    "file:backend/app/api/providers.py": {
+      "name": "providers.py",
+      "type": "file",
+      "summary": "FastAPI router reporting whether the Jev and LLM sides can run and their display labels, without exposing API key values."
+    },
+    "file:backend/app/api/taxonomy.py": {
+      "name": "taxonomy.py",
+      "type": "file",
+      "summary": "FastAPI router serving the canonical categories and enum values so the frontend reads the taxonomy rather than copying it."
+    },
+    "file:backend/app/core/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "Empty package marker for the core settings, taxonomy, and pricing modules."
+    },
+    "file:backend/app/core/settings.py": {
+      "name": "settings.py",
+      "type": "file",
+      "summary": "Typed backend settings and the only module that reads environment variables or backend/.env, covering MongoDB, provider backends, secrets, timeouts, and mock mode."
+    },
+    "file:backend/app/main.py": {
+      "name": "main.py",
+      "type": "file",
+      "summary": "TicketLens API entry point whose application factory wires the MongoDB lifespan, CORS for the local frontend, all routers, and a 503 handler for database connection failures."
+    },
+    "file:backend/app/repositories/database.py": {
+      "name": "database.py",
+      "type": "file",
+      "summary": "MongoDB access layer defining the client factory, readiness ping, index specifications, exact Decimal128 money codec, and shared read helpers."
+    },
+    "file:backend/scripts/init_db.py": {
+      "name": "init_db.py",
+      "type": "file",
+      "summary": "Repeatable command-line script that creates all TicketLens MongoDB indexes and exits non-zero with setup guidance when the database is unreachable."
+    },
+    "file:backend/tests/conftest.py": {
+      "name": "conftest.py",
+      "type": "file",
+      "summary": "Shared pytest fixtures providing settings isolated from backend/.env and a throwaway MongoDB test database that skips tests when MongoDB is down."
+    },
+    "file:backend/tests/test_app_starts.py": {
+      "name": "test_app_starts.py",
+      "type": "file",
+      "summary": "Smoke tests confirming the app imports and serves Swagger UI and an OpenAPI schema titled TicketLens API."
+    },
+    "file:backend/tests/test_dashboard.py": {
+      "name": "test_dashboard.py",
+      "type": "file",
+      "summary": "API tests for dashboard metrics, comparison listing and detail, and each ticket's latest run, including exclusion of fake runs from real metrics."
+    },
+    "file:backend/tests/test_health.py": {
+      "name": "test_health.py",
+      "type": "file",
+      "summary": "Tests the health and readiness endpoints with MongoDB reachable and unreachable, and checks connection credentials never reach the response."
+    },
+    "file:backend/tests/test_indexes.py": {
+      "name": "test_indexes.py",
+      "type": "file",
+      "summary": "Tests that MongoDB index creation is correct and repeatable, that tickets without fingerprints do not collide, and that the init_db script reports success and failure."
+    },
+    "file:backend/tests/test_runs_and_comparisons.py": {
+      "name": "test_runs_and_comparisons.py",
+      "type": "file",
+      "summary": "API tests for provider runs, agreement-counting comparisons, partial and unavailable outcomes, final answer selection, and keeping the chosen answer out of model input."
+    },
+    "file:backend/tests/test_settings.py": {
+      "name": "test_settings.py",
+      "type": "file",
+      "summary": "Tests settings defaults, environment overrides, empty-value handling, secret masking, range validation, and that .env.example lists every setting."
+    },
+    "file:backend/tests/test_shell_support.py": {
+      "name": "test_shell_support.py",
+      "type": "file",
+      "summary": "Tests the CORS allow-list for the configured frontend origin and that provider status reports readiness without revealing API keys."
+    },
+    "file:backend/tests/test_taxonomy.py": {
+      "name": "test_taxonomy.py",
+      "type": "file",
+      "summary": "Tests that the canonical taxonomy matches the specification exactly, including enum values, valid category-subcategory pairs, and the taxonomy endpoint response."
+    },
+    "file:backend/tests/test_tickets.py": {
+      "name": "test_tickets.py",
+      "type": "file",
+      "summary": "End-to-end API tests for ticket creation, updates, notes, classification, search, filtering, sorting, pagination, dependent-safe deletion, and database outage responses."
+    },
+    "document:.context/DEPLOYMENT_DECISIONS.md": {
+      "name": "DEPLOYMENT_DECISIONS.md",
+      "type": "document",
+      "summary": "Lists the hosting, database, authentication, domain, backup and budget decisions the owner must make before any cloud deployment, plus non-negotiable constraints such as never deploying the no-auth demo publicly."
+    },
+    "document:.context/PROGRESS.md": {
+      "name": "PROGRESS.md",
+      "type": "document",
+      "summary": "Living status log of the 19-phase build: phase checklist, blockers, spec gaps and assumptions, and dated notes per phase. It also records the required fix to the sample dataset before any paid evaluation."
+    },
+    "document:.context/ROADMAP.md": {
+      "name": "ROADMAP.md",
+      "type": "document",
+      "summary": "Plain-language table of all phases with where the owner's input is needed, followed by step-by-step owner plans for MongoDB, API keys, model and price choice, spend approval, dataset review and deployment decisions."
+    },
+    "document:.context/ai-evaluation.md": {
+      "name": "ai-evaluation.md",
+      "type": "document",
+      "summary": "Specifies the shared classification contract and taxonomy, Jev and GPT adapter behaviour, fair comparison rules, the labelled dataset, execution logging, cost calculation, retries and privacy handling."
+    },
+    "document:.context/architecture.md": {
+      "name": "architecture.md",
+      "type": "document",
+      "summary": "Describes the local-first system: React UI, FastAPI backend and local MongoDB, the provider adapter boundary, canonical provider input, request flows for runs, bulk, import and deletion, and the deployment boundary."
+    },
+    "document:.context/code-size-standards.md": {
+      "name": "code-size-standards.md",
+      "type": "document",
+      "summary": "Owner-mandated standards for keeping the codebase small without losing functionality or security: research basis, thresholds for sharing code, per-task rules, and enforcement through tools such as Ruff complexity checks."
+    },
+    "document:.context/data-model.md": {
+      "name": "data-model.md",
+      "type": "document",
+      "summary": "Defines the `ticketlens` MongoDB collections (tickets, evaluation_labels, ai_executions, comparisons, bulk_jobs, app_settings, counters), their document shapes, required indexes and deletion behaviour."
+    },
+    "document:.context/design.md": {
+      "name": "design.md",
+      "type": "document",
+      "summary": "Frontend design specification for a Linear-inspired dashboard: application shell, routes, each page's layout and states, CSV import/export UX, theme tokens, accessibility rules and non-goals."
+    },
+    "document:.context/implementation.md": {
+      "name": "implementation.md",
+      "type": "document",
+      "summary": "Authoritative sequential build plan from Phase 0 repository setup to Phase 18 deployment readiness, with steps and acceptance criteria per phase and a final definition of done."
+    },
+    "document:.context/requirements.md": {
+      "name": "requirements.md",
+      "type": "document",
+      "summary": "Product and technical requirements for TicketLens, a single-user demo for fictional marketplace ShopKart: ticket lifecycle and fields, classification taxonomy, provider behaviour, comparison, CSV, dashboard, settings and non-functional needs."
+    },
+    "table:.context/sample_tickets_100.csv:sample_tickets_100": {
+      "name": "sample_tickets_100.csv",
+      "type": "table",
+      "summary": "100 fictional labelled ShopKart tickets, balanced across six categories and four channels, with expected category, subcategory, priority, sentiment and escalation columns. Every title equals its expected_subcategory, so it leaks a label and PROGRESS.md bars it from evaluation until corrected."
+    },
+    "table:.context/sample_tickets_template.csv:sample_tickets_template": {
+      "name": "sample_tickets_template.csv",
+      "type": "table",
+      "summary": "Header-only CSV listing the 12 ticket import columns: seven ticket fields and five expected_* label fields. `test_csv.py` compares it to the importer's COLUMNS constant, which the template download endpoint uses to build its response."
+    },
+    "config:.mcp.json": {
+      "name": ".mcp.json",
+      "type": "config",
+      "summary": "Project-scoped MCP server configuration that launches version-pinned Playwright and Chrome DevTools servers against an isolated Chrome for Testing binary. It limits Playwright to the local frontend and backend origins and turns off DevTools usage statistics and CrUX lookups while redacting network headers."
+    },
+    "document:AGENTS.md": {
+      "name": "AGENTS.md",
+      "type": "document",
+      "summary": "Operating instructions for autonomous coding agents, covering required spec reading order, autonomy expectations, technical guardrails, per-phase definition of done, developer-experience deliverables, and scope exclusions. Its guardrails fix key rules such as server-side secrets, a shared taxonomy, withholding ground-truth labels from models, and bounded retries."
+    },
+    "document:CLAUDE.md": {
+      "name": "CLAUDE.md",
+      "type": "document",
+      "summary": "Claude Code entry-point instructions that pull in AGENTS.md, point to the progress and build-order documents, and list the backend and frontend test, lint, and build commands. It also sets the rules for the engineering skills library, including routing, security, and which actions need owner approval."
+    },
+    "document:README.md": {
+      "name": "README.md",
+      "type": "document",
+      "summary": "Project overview for the single-user ShopKart ticket classification demo comparing Jev with a configurable GPT model, including a documentation map, stack summary, and local-first scope boundary. Its run guide covers MongoDB, backend, and frontend startup, Ollama-based local models, mock providers, health checks, and test-run reports."
+    },
+    "config:backend/.env.example": {
+      "name": ".env.example",
+      "type": "config",
+      "summary": "Template of 21 backend environment variables covering the API host and port, local MongoDB connection, blank provider API keys, Jev and LLM backend selection (hosted or local Ollama), request timeouts and concurrency, mock-provider mode, and log level."
+    },
+    "config:backend/pyproject.toml": {
+      "name": "pyproject.toml",
+      "type": "config",
+      "summary": "Tool-only backend configuration that sets pytest test paths and Ruff linting for Python 3.13, including a 100-character line length, a McCabe complexity limit of 10, and a long-line exemption for the run-report HTML template."
+    },
+    "document:backend/requirements.txt": {
+      "name": "requirements.txt",
+      "type": "document",
+      "summary": "Pinned direct Python dependencies for the backend: FastAPI, Uvicorn, pydantic-settings, PyMongo and httpx at runtime, plus pytest and Ruff for testing and linting."
+    },
+    "document:e2e/personas/analysts/adversarial-input-tester.md": {
+      "name": "adversarial-input-tester.md",
+      "type": "document",
+      "summary": "Test persona brief for an analyst who probes input handling with boundary lengths, hostile markup, malformed emails, double submits, and ticket text that tries to steer the model. It flags rendered markup, form and API validation mismatches, altered data, crashes, and models obeying instructions in ticket text."
+    },
+    "document:e2e/personas/analysts/careful-power-user.md": {
+      "name": "careful-power-user.md",
+      "type": "document",
+      "summary": "Test persona brief for an experienced analyst who combines search, filters and sorting, compares Jev and GPT results field by field, and checks CSV exports against the screen. It flags mismatches across list, detail, comparison and export views, wrong counts, inconsistent numeric precision or units, and filter state lost on reload."
+    },
+    "document:e2e/personas/analysts/first-time-user.md": {
+      "name": "first-time-user.md",
+      "type": "document",
+      "summary": "Test persona brief for a newcomer who explores navigation and empty states, submits forms with missing or wrong fields, then corrects them. It checks that error messages say what to fix, empty states point to the next step, and placeholder pages explain themselves."
+    },
+    "document:e2e/personas/analysts/keyboard-screen-reader.md": {
+      "name": "keyboard-screen-reader.md",
+      "type": "document",
+      "summary": "Test persona brief for a user who navigates by keyboard only and reads pages through accessibility snapshots, intended to pair with the accessibility-specialist skill. It flags unreachable controls, lost or invisible focus, keyboard-inoperable selects, unannounced form errors, unlabelled controls, and dark-theme contrast problems."
+    },
+    "document:e2e/personas/analysts/rushed-operator.md": {
+      "name": "rushed-operator.md",
+      "type": "document",
+      "summary": "Test persona brief for a support analyst clearing a queue quickly by pasting text, double-clicking submit, using the back button mid-flow, and skipping optional fields. It flags duplicate tickets from double submits, input lost on navigating back, buttons left enabled while saving, and unclear loading states."
+    },
+    "document:e2e/personas/customers/angry-impatient.md": {
+      "name": "angry-impatient.md",
+      "type": "document",
+      "summary": "E2E test persona for a frustrated repeat-contact customer who writes short, heated tickets with capitals and threats to leave, but no insults. Checks that classification finds the underlying issue rather than just 'Complaint' and that sentiment is Negative."
+    },
+    "document:e2e/personas/customers/casual-typos.md": {
+      "name": "casual-typos.md",
+      "type": "document",
+      "summary": "E2E test persona for a hurried phone user writing lowercase text with abbreviations, typos, emoji and everyday words instead of taxonomy terms. Checks that classification copes with noisy text and that the UI stores and shows emoji correctly."
+    },
+    "document:e2e/personas/customers/non-native-english.md": {
+      "name": "non-native-english.md",
+      "type": "document",
+      "summary": "E2E test persona for a ShopKart customer writing understandable but imperfect English, with dropped articles and literal phrasing, and no other languages or transliteration. Checks that classification is robust to grammar variation."
+    },
+    "document:e2e/personas/customers/rambling-multi-issue.md": {
+      "name": "rambling-multi-issue.md",
+      "type": "document",
+      "summary": "E2E test persona for a customer who writes long, tangential tickets where the main ask arrives late alongside one minor issue from a different category. Checks that models pick the primary issue and handle long input, up to the 10,000-character description limit."
+    },
+    "document:e2e/personas/customers/terse.md": {
+      "name": "terse.md",
+      "type": "document",
+      "summary": "E2E test persona for a customer who writes one line or a fragment plus an order number, under about 12 words while staying classifiable. Checks classification with very little context and how confidence and priority behave."
+    },
+    "document:e2e/personas/customers/vague.md": {
+      "name": "vague.md",
+      "type": "document",
+      "summary": "E2E test persona for a polite, hedging customer whose ticket leaves out exactly one key detail, such as which order or what went wrong. Checks that models still land in the right category and that confidence drops sensibly."
+    },
+    "config:frontend/.prettierrc.json": {
+      "name": ".prettierrc.json",
+      "type": "config",
+      "summary": "Prettier configuration for the frontend that disables semicolons and otherwise keeps Prettier's default formatting rules."
+    },
+    "config:frontend/components.json": {
+      "name": "components.json",
+      "type": "config",
+      "summary": "shadcn/ui CLI configuration selecting the radix-nova style, neutral base color with CSS variables, lucide icons, and the @/ alias locations where generated TSX components, hooks, and utilities are placed."
+    },
+    "file:frontend/index.html": {
+      "name": "index.html",
+      "type": "file",
+      "summary": "Vite HTML entry page for the TicketLens single-page app, providing the #root mount element and loading /src/main.tsx as an ES module."
+    },
+    "config:frontend/package.json": {
+      "name": "package.json",
+      "type": "config",
+      "summary": "Private ES-module package manifest for the TicketLens frontend, defining Vite dev, build, and preview scripts plus ESLint and Prettier commands, with dependencies on React 19, React Router, TanStack Query, Radix UI, Recharts, and Zod."
+    },
+    "config:frontend/tsconfig.app.json": {
+      "name": "tsconfig.app.json",
+      "type": "config",
+      "summary": "TypeScript project configuration for browser application code under src, targeting ES2023 and the DOM with bundler module resolution, react-jsx, no emit, unused-code checks, and the @/* path alias."
+    },
+    "config:frontend/tsconfig.json": {
+      "name": "tsconfig.json",
+      "type": "config",
+      "summary": "Root TypeScript solution file that compiles no files itself and references the separate app and node projects while declaring the @/* path alias for tooling."
+    },
+    "config:frontend/tsconfig.node.json": {
+      "name": "tsconfig.node.json",
+      "type": "config",
+      "summary": "TypeScript project configuration for Node-side build tooling, type-checking only vite.config.ts with nodenext modules, Node types, no emit, and unused-code checks."
+    },
+    "config:.claude/settings.json": {
+      "name": "settings.json",
+      "type": "config",
+      "summary": "Project Claude Code settings that allow read-only git and test commands, deny secret-file reads, docker and every git write, and add a prompt hook enforcing skill routing."
+    },
+    "file:.gitattributes": {
+      "name": ".gitattributes",
+      "type": "file",
+      "summary": "Git attributes that normalize text to LF, keep CSV spec data byte-for-byte (BOM and CRLF preserved), and mark images and fonts as binary."
+    },
+    "file:backend/app/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "Empty marker that makes the backend `app` directory a Python package."
+    },
+    "file:backend/app/jobs/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "Empty marker that makes the backend `app.jobs` directory a Python package."
+    },
+    "file:backend/app/schemas/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "Empty marker that makes the backend `app.schemas` directory a Python package."
+    },
+    "file:backend/tests/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "Empty marker that makes the backend test directory a Python package."
+    },
+    "document:e2e/README.md": {
+      "name": "README.md",
+      "type": "document",
+      "summary": "Guide to UI testing through the real interface, covering the isolated test stack, what each browser tool is for, commands, how to write test cases and personas, the unbuilt real-provider mode, and tool data-risk settings."
+    },
+    "config:e2e/package.json": {
+      "name": "package.json",
+      "type": "config",
+      "summary": "Standalone npm package for UI testing that pins `@playwright/test` and `agent-browser` and defines scripts for the test stack, tests, baseline updates, reports, and a visible Chrome for Testing browser."
+    },
+    "document:e2e/personas/README.md": {
+      "name": "README.md",
+      "type": "document",
+      "summary": "Explains how a persona run pairs a customer voice (how the ticket is written) with an analyst (how the app is used), and sets rules for synthetic data, taxonomy limits, and never typing expected labels."
+    },
+    "file:e2e/playwright.config.ts": {
+      "name": "playwright.config.ts",
+      "type": "file",
+      "summary": "Playwright configuration that runs tests serially against the isolated stack on port 5174, on desktop and Pixel 7 Chromium projects, with a 1% screenshot diff tolerance and traces kept on failure."
+    },
+    "file:e2e/scripts/reset_db.py": {
+      "name": "reset_db.py",
+      "type": "file",
+      "summary": "Safety-guarded script that drops the UI-test MongoDB database so each stack start is clean, refusing any database name not ending in `_e2e`."
+    },
+    "file:e2e/scripts/stack.sh": {
+      "name": "stack.sh",
+      "type": "file",
+      "summary": "Starts the isolated UI-test stack: resets `ticketlens_e2e`, launches the backend with mock providers on port 8001, waits for the database readiness check, then starts Vite on port 5174, and refuses real-provider mode."
+    },
+    "document:e2e/test-cases/TC-001-create-ticket.md": {
+      "name": "TC-001-create-ticket.md",
+      "type": "document",
+      "summary": "Test case for creating a duplicate-charge ticket and finding it again by search, with expected labels, field-validation outcomes, and visual checkpoints for desktop and mobile."
+    },
+    "document:e2e/test-cases/TEMPLATE.md": {
+      "name": "TEMPLATE.md",
+      "type": "document",
+      "summary": "Copyable template for persona test cases, with sections for mode, personas, preconditions, ticket intent, expected labels, steps, expected results, and visual checkpoints."
+    },
+    "file:e2e/tests/smoke.spec.ts": {
+      "name": "smoke.spec.ts",
+      "type": "file",
+      "summary": "End-to-end smoke test that creates a ticket through the form, finds it in the list and on its detail page, and checks pixel baselines with changing rows and totals masked."
+    },
+    "file:frontend/.prettierignore": {
+      "name": ".prettierignore",
+      "type": "file",
+      "summary": "Prettier ignore list that excludes build output, dependencies, the lockfile, and generated shadcn components so their updates diff cleanly."
+    },
+    "file:frontend/eslint.config.js": {
+      "name": "eslint.config.js",
+      "type": "file",
+      "summary": "ESLint flat config for TypeScript and React that combines the recommended rule sets with Prettier, enforces a maximum complexity of 10, and relaxes the fast-refresh export rule for shadcn files."
+    },
+    "file:frontend/src/components/ui/sonner.tsx": {
+      "name": "sonner.tsx",
+      "type": "file",
+      "summary": "shadcn wrapper around the Sonner toaster that follows the active theme, sets the status icons, and maps toast colors and radius to the app's design tokens."
+    },
+    "file:frontend/src/features/settings/.gitkeep": {
+      "name": ".gitkeep",
+      "type": "file",
+      "summary": "Empty placeholder that keeps the settings feature directory in git."
+    },
+    "file:frontend/src/index.css": {
+      "name": "index.css",
+      "type": "file",
+      "summary": "Global stylesheet that imports Tailwind and shadcn styles, defines the light and dark theme tokens, maps them into the Tailwind theme, and sets base element styles."
+    },
+    "file:frontend/src/main.tsx": {
+      "name": "main.tsx",
+      "type": "file",
+      "summary": "React entry point that mounts the app under StrictMode with the theme provider (light by default, remembered per browser), TanStack Query client, router, and global toaster."
+    },
+    "file:frontend/src/services/.gitkeep": {
+      "name": ".gitkeep",
+      "type": "file",
+      "summary": "Empty placeholder that keeps the frontend services directory in git."
+    },
+    "file:frontend/src/types/.gitkeep": {
+      "name": ".gitkeep",
+      "type": "file",
+      "summary": "Empty placeholder that keeps the frontend types directory in git."
+    },
+    "file:frontend/vite.config.ts": {
+      "name": "vite.config.ts",
+      "type": "file",
+      "summary": "Vite configuration with the React and Tailwind plugins, the `@` alias for `src`, and a dev server fixed to localhost:5173 because the backend allows exactly that CORS origin."
+    }
+  },
+  "totalNodes": 165,
+  "totalEdges": 549
+}

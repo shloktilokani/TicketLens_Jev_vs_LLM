@@ -6,18 +6,12 @@
 - MOCK_PROVIDERS=true replaces both with fake providers.
 """
 
-from urllib.parse import urlparse
-
-from app.core.settings import Settings
+from app.core.settings import Settings, is_local
 from app.core.taxonomy import Provider
 from app.providers.base import Adapter, ProviderFailure
 from app.providers.jev import JevAdapter
 from app.providers.mock import MockProvider
 from app.providers.ollama import OllamaAdapter
-
-
-def is_local(url: str) -> bool:
-    return urlparse(url).hostname in ("127.0.0.1", "localhost", "::1")
 
 
 def provider_labels(settings: Settings) -> dict[str, str]:
@@ -30,6 +24,15 @@ def provider_labels(settings: Settings) -> dict[str, str]:
     else:
         llm = f"OpenAI · {settings.openai_model or 'model not set'}"
     return {"jev": f"{jev} · {settings.jev_model}", "gpt": llm}
+
+
+def provider_ready(key: str, settings: Settings) -> bool:
+    """Whether a side can run. Reports only yes or no about keys, never their values."""
+    if settings.mock_providers:
+        return True
+    if key == Provider.JEV:
+        return is_local(settings.jev_base_url) or settings.typesafe_api_key is not None
+    return settings.llm_backend == "ollama" or settings.openai_api_key is not None
 
 
 def requested_model(provider: Provider, settings: Settings) -> str:

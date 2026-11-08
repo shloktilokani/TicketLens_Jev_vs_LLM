@@ -1,0 +1,2122 @@
+{
+ "nodes": [
+  {
+   "id": "file:backend/tests/test_runs_and_comparisons.py",
+   "type": "file",
+   "name": "test_runs_and_comparisons.py",
+   "filePath": "backend/tests/test_runs_and_comparisons.py",
+   "summary": "API tests for provider runs, agreement-counting comparisons, partial and unavailable outcomes, final answer selection, and keeping the chosen answer out of model input.",
+   "tags": [
+    "test",
+    "provider-runs",
+    "comparisons",
+    "evaluation-integrity",
+    "api-test"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/tests/test_runs_and_comparisons.py:api",
+   "type": "function",
+   "name": "api",
+   "filePath": "backend/tests/test_runs_and_comparisons.py",
+   "lineRange": [
+    16,
+    19
+   ],
+   "summary": "Fixture yielding a test client backed by zero-delay mock providers.",
+   "tags": [
+    "test",
+    "fixture",
+    "mock"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_runs_and_comparisons.py:new_ticket",
+   "type": "function",
+   "name": "new_ticket",
+   "filePath": "backend/tests/test_runs_and_comparisons.py",
+   "lineRange": [
+    22,
+    23
+   ],
+   "summary": "Helper that creates a ticket and returns its id.",
+   "tags": [
+    "test",
+    "helper",
+    "tickets"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_runs_and_comparisons.py:run",
+   "type": "function",
+   "name": "run",
+   "filePath": "backend/tests/test_runs_and_comparisons.py",
+   "lineRange": [
+    26,
+    29
+   ],
+   "summary": "Helper that runs a provider on a ticket, asserts success, and returns the execution.",
+   "tags": [
+    "test",
+    "helper",
+    "provider-runs"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_runs_and_comparisons.py:compare",
+   "type": "function",
+   "name": "compare",
+   "filePath": "backend/tests/test_runs_and_comparisons.py",
+   "lineRange": [
+    32,
+    40
+   ],
+   "summary": "Helper that posts a comparison request for a Jev and a GPT execution.",
+   "tags": [
+    "test",
+    "helper",
+    "comparisons"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_runs_and_comparisons.py:test_run_endpoint_records_and_returns_the_execution",
+   "type": "function",
+   "name": "test_run_endpoint_records_and_returns_the_execution",
+   "filePath": "backend/tests/test_runs_and_comparisons.py",
+   "lineRange": [
+    43,
+    51
+   ],
+   "summary": "Verifies a run returns a successful normalized execution and stores one record.",
+   "tags": [
+    "test",
+    "provider-runs",
+    "execution-log"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_runs_and_comparisons.py:test_run_unknown_ticket_or_provider",
+   "type": "function",
+   "name": "test_run_unknown_ticket_or_provider",
+   "filePath": "backend/tests/test_runs_and_comparisons.py",
+   "lineRange": [
+    54,
+    56
+   ],
+   "summary": "Verifies an unknown ticket returns 404 and an unknown provider returns 422.",
+   "tags": [
+    "test",
+    "provider-runs",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_runs_and_comparisons.py:test_run_without_mock_or_key_is_recorded_as_not_configured",
+   "type": "function",
+   "name": "test_run_without_mock_or_key_is_recorded_as_not_configured",
+   "filePath": "backend/tests/test_runs_and_comparisons.py",
+   "lineRange": [
+    59,
+    66
+   ],
+   "summary": "Verifies an OpenAI run without a key is stored as a failed execution with a not_configured error.",
+   "tags": [
+    "test",
+    "provider-runs",
+    "error-handling"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_runs_and_comparisons.py:test_comparison_counts_agreement_and_links_both_runs",
+   "type": "function",
+   "name": "test_comparison_counts_agreement_and_links_both_runs",
+   "filePath": "backend/tests/test_runs_and_comparisons.py",
+   "lineRange": [
+    69,
+    91
+   ],
+   "summary": "Verifies a completed comparison computes per-field agreement, names no winner, and links both executions.",
+   "tags": [
+    "test",
+    "comparisons",
+    "agreement"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/tests/test_runs_and_comparisons.py:test_comparison_is_partial_when_one_provider_fails",
+   "type": "function",
+   "name": "test_comparison_is_partial_when_one_provider_fails",
+   "filePath": "backend/tests/test_runs_and_comparisons.py",
+   "lineRange": [
+    94,
+    110
+   ],
+   "summary": "Verifies one failed run gives a Partial comparison with no agreement rate while keeping the successful result.",
+   "tags": [
+    "test",
+    "comparisons",
+    "failure-isolation"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/tests/test_runs_and_comparisons.py:test_comparison_is_unavailable_when_both_fail",
+   "type": "function",
+   "name": "test_comparison_is_unavailable_when_both_fail",
+   "filePath": "backend/tests/test_runs_and_comparisons.py",
+   "lineRange": [
+    113,
+    117
+   ],
+   "summary": "Verifies the comparison status is Unavailable when both providers fail.",
+   "tags": [
+    "test",
+    "comparisons",
+    "error-handling"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_runs_and_comparisons.py:test_comparison_rejects_mismatched_runs",
+   "type": "function",
+   "name": "test_comparison_rejects_mismatched_runs",
+   "filePath": "backend/tests/test_runs_and_comparisons.py",
+   "lineRange": [
+    120,
+    127
+   ],
+   "summary": "Verifies comparisons reject runs from another ticket or the wrong provider, and unknown executions.",
+   "tags": [
+    "test",
+    "comparisons",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_runs_and_comparisons.py:test_comparison_waits_for_running_executions",
+   "type": "function",
+   "name": "test_comparison_waits_for_running_executions",
+   "filePath": "backend/tests/test_runs_and_comparisons.py",
+   "lineRange": [
+    130,
+    137
+   ],
+   "summary": "Verifies comparing an execution that is still running returns 409.",
+   "tags": [
+    "test",
+    "comparisons",
+    "concurrency"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_runs_and_comparisons.py:answer_of",
+   "type": "function",
+   "name": "answer_of",
+   "filePath": "backend/tests/test_runs_and_comparisons.py",
+   "lineRange": [
+    140,
+    143
+   ],
+   "summary": "Helper that extracts the five classification fields from an execution's normalized result.",
+   "tags": [
+    "test",
+    "helper",
+    "classification"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_runs_and_comparisons.py:choose",
+   "type": "function",
+   "name": "choose",
+   "filePath": "backend/tests/test_runs_and_comparisons.py",
+   "lineRange": [
+    146,
+    150
+   ],
+   "summary": "Helper that submits a final classification, optionally naming the source execution.",
+   "tags": [
+    "test",
+    "helper",
+    "classification"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_runs_and_comparisons.py:test_final_answer_taken_unchanged_from_a_run_is_not_marked_edited",
+   "type": "function",
+   "name": "test_final_answer_taken_unchanged_from_a_run_is_not_marked_edited",
+   "filePath": "backend/tests/test_runs_and_comparisons.py",
+   "lineRange": [
+    153,
+    162
+   ],
+   "summary": "Verifies an unchanged answer records its source run and is not marked manually edited.",
+   "tags": [
+    "test",
+    "classification",
+    "final-answer"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_runs_and_comparisons.py:test_final_answer_changed_after_choosing_a_run_is_marked_edited",
+   "type": "function",
+   "name": "test_final_answer_changed_after_choosing_a_run_is_marked_edited",
+   "filePath": "backend/tests/test_runs_and_comparisons.py",
+   "lineRange": [
+    165,
+    176
+   ],
+   "summary": "Verifies changing an answer selected from a run marks it manually edited while keeping the source.",
+   "tags": [
+    "test",
+    "classification",
+    "final-answer"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_runs_and_comparisons.py:test_final_answer_rejects_a_run_it_cannot_come_from",
+   "type": "function",
+   "name": "test_final_answer_rejects_a_run_it_cannot_come_from",
+   "filePath": "backend/tests/test_runs_and_comparisons.py",
+   "lineRange": [
+    179,
+    192
+   ],
+   "summary": "Verifies missing, other-ticket, and failed source runs are rejected and no final answer is saved.",
+   "tags": [
+    "test",
+    "classification",
+    "validation"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/tests/test_runs_and_comparisons.py:test_running_and_comparing_never_set_the_final_answer",
+   "type": "function",
+   "name": "test_running_and_comparing_never_set_the_final_answer",
+   "filePath": "backend/tests/test_runs_and_comparisons.py",
+   "lineRange": [
+    195,
+    199
+   ],
+   "summary": "Verifies provider runs and comparisons leave the final classification unset.",
+   "tags": [
+    "test",
+    "classification",
+    "evaluation-integrity"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_runs_and_comparisons.py:test_the_chosen_final_answer_is_never_sent_to_a_model",
+   "type": "function",
+   "name": "test_the_chosen_final_answer_is_never_sent_to_a_model",
+   "filePath": "backend/tests/test_runs_and_comparisons.py",
+   "lineRange": [
+    202,
+    211
+   ],
+   "summary": "Verifies later provider input and redacted request payloads contain no final-answer fields.",
+   "tags": [
+    "test",
+    "evaluation-integrity",
+    "provider-input"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/tests/test_settings.py",
+   "type": "file",
+   "name": "test_settings.py",
+   "filePath": "backend/tests/test_settings.py",
+   "summary": "Tests settings defaults, environment overrides, empty-value handling, secret masking, range validation, and that .env.example lists every setting.",
+   "tags": [
+    "test",
+    "configuration",
+    "settings",
+    "secrets",
+    "validation"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/tests/test_settings.py:test_defaults_need_no_env_file_or_api_keys",
+   "type": "function",
+   "name": "test_defaults_need_no_env_file_or_api_keys",
+   "filePath": "backend/tests/test_settings.py",
+   "lineRange": [
+    11,
+    21
+   ],
+   "summary": "Verifies settings load with local defaults and without any env file or API keys.",
+   "tags": [
+    "test",
+    "settings",
+    "defaults"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_settings.py:test_environment_overrides_defaults",
+   "type": "function",
+   "name": "test_environment_overrides_defaults",
+   "filePath": "backend/tests/test_settings.py",
+   "lineRange": [
+    24,
+    31
+   ],
+   "summary": "Verifies environment variables override defaults with type conversion.",
+   "tags": [
+    "test",
+    "settings",
+    "environment"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_settings.py:test_empty_values_count_as_unset",
+   "type": "function",
+   "name": "test_empty_values_count_as_unset",
+   "filePath": "backend/tests/test_settings.py",
+   "lineRange": [
+    34,
+    42
+   ],
+   "summary": "Verifies empty environment values read as not configured.",
+   "tags": [
+    "test",
+    "settings",
+    "environment"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_settings.py:test_api_keys_never_appear_in_repr",
+   "type": "function",
+   "name": "test_api_keys_never_appear_in_repr",
+   "filePath": "backend/tests/test_settings.py",
+   "lineRange": [
+    45,
+    51
+   ],
+   "summary": "Verifies API keys are masked in the settings repr yet remain retrievable as secrets.",
+   "tags": [
+    "test",
+    "settings",
+    "secrets"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_settings.py:test_out_of_range_values_are_rejected",
+   "type": "function",
+   "name": "test_out_of_range_values_are_rejected",
+   "filePath": "backend/tests/test_settings.py",
+   "lineRange": [
+    62,
+    66
+   ],
+   "summary": "Verifies out-of-range concurrency, threshold, and timeout values raise validation errors.",
+   "tags": [
+    "test",
+    "settings",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_settings.py:test_env_example_lists_every_setting",
+   "type": "function",
+   "name": "test_env_example_lists_every_setting",
+   "filePath": "backend/tests/test_settings.py",
+   "lineRange": [
+    69,
+    76
+   ],
+   "summary": "Verifies .env.example variable names match the settings fields exactly.",
+   "tags": [
+    "test",
+    "settings",
+    "documentation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/tests/test_shell_support.py",
+   "type": "file",
+   "name": "test_shell_support.py",
+   "filePath": "backend/tests/test_shell_support.py",
+   "summary": "Tests the CORS allow-list for the configured frontend origin and that provider status reports readiness without revealing API keys.",
+   "tags": [
+    "test",
+    "cors",
+    "provider-status",
+    "security"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_shell_support.py:preflight",
+   "type": "function",
+   "name": "preflight",
+   "filePath": "backend/tests/test_shell_support.py",
+   "lineRange": [
+    6,
+    10
+   ],
+   "summary": "Helper that sends a CORS preflight request to the tickets endpoint from a given origin.",
+   "tags": [
+    "test",
+    "helper",
+    "cors"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_shell_support.py:test_cors_allows_only_the_configured_frontend_origin",
+   "type": "function",
+   "name": "test_cors_allows_only_the_configured_frontend_origin",
+   "filePath": "backend/tests/test_shell_support.py",
+   "lineRange": [
+    13,
+    19
+   ],
+   "summary": "Verifies CORS approves the configured frontend origin and no other.",
+   "tags": [
+    "test",
+    "cors",
+    "security"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_shell_support.py:test_provider_status_reports_configured_without_revealing_keys",
+   "type": "function",
+   "name": "test_provider_status_reports_configured_without_revealing_keys",
+   "filePath": "backend/tests/test_shell_support.py",
+   "lineRange": [
+    22,
+    37
+   ],
+   "summary": "Verifies provider status and labels reflect configuration while the key value stays out of the response.",
+   "tags": [
+    "test",
+    "provider-status",
+    "security"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:backend/tests/test_taxonomy.py",
+   "type": "file",
+   "name": "test_taxonomy.py",
+   "filePath": "backend/tests/test_taxonomy.py",
+   "summary": "Tests that the canonical taxonomy matches the specification exactly, including enum values, valid category-subcategory pairs, and the taxonomy endpoint response.",
+   "tags": [
+    "test",
+    "taxonomy",
+    "validation",
+    "specification"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/tests/test_taxonomy.py:test_taxonomy_matches_the_spec_exactly",
+   "type": "function",
+   "name": "test_taxonomy_matches_the_spec_exactly",
+   "filePath": "backend/tests/test_taxonomy.py",
+   "lineRange": [
+    53,
+    56
+   ],
+   "summary": "Verifies the taxonomy version, categories, and subcategories match the specification.",
+   "tags": [
+    "test",
+    "taxonomy",
+    "specification"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_taxonomy.py:test_subcategory_names_are_unique_across_categories",
+   "type": "function",
+   "name": "test_subcategory_names_are_unique_across_categories",
+   "filePath": "backend/tests/test_taxonomy.py",
+   "lineRange": [
+    59,
+    61
+   ],
+   "summary": "Verifies all 36 subcategory names are unique across categories.",
+   "tags": [
+    "test",
+    "taxonomy",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_taxonomy.py:test_enums_hold_the_canonical_values",
+   "type": "function",
+   "name": "test_enums_hold_the_canonical_values",
+   "filePath": "backend/tests/test_taxonomy.py",
+   "lineRange": [
+    83,
+    84
+   ],
+   "summary": "Parametrized check that each taxonomy enum holds its canonical values in order.",
+   "tags": [
+    "test",
+    "taxonomy",
+    "enums"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_taxonomy.py:test_every_spec_pair_is_valid",
+   "type": "function",
+   "name": "test_every_spec_pair_is_valid",
+   "filePath": "backend/tests/test_taxonomy.py",
+   "lineRange": [
+    91,
+    92
+   ],
+   "summary": "Parametrized check that every specified category-subcategory pair is accepted.",
+   "tags": [
+    "test",
+    "taxonomy",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_taxonomy.py:test_inconsistent_or_unknown_pairs_are_invalid",
+   "type": "function",
+   "name": "test_inconsistent_or_unknown_pairs_are_invalid",
+   "filePath": "backend/tests/test_taxonomy.py",
+   "lineRange": [
+    105,
+    106
+   ],
+   "summary": "Parametrized check that mismatched, unknown, or wrongly cased pairs are rejected.",
+   "tags": [
+    "test",
+    "taxonomy",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_taxonomy.py:test_taxonomy_endpoint_serves_the_same_values",
+   "type": "function",
+   "name": "test_taxonomy_endpoint_serves_the_same_values",
+   "filePath": "backend/tests/test_taxonomy.py",
+   "lineRange": [
+    109,
+    117
+   ],
+   "summary": "Verifies the taxonomy endpoint returns the specified version, categories, and enum lists.",
+   "tags": [
+    "test",
+    "taxonomy",
+    "api-test"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/tests/test_tickets.py",
+   "type": "file",
+   "name": "test_tickets.py",
+   "filePath": "backend/tests/test_tickets.py",
+   "summary": "End-to-end API tests for ticket creation, updates, notes, classification, search, filtering, sorting, pagination, dependent-safe deletion, and database outage responses.",
+   "tags": [
+    "test",
+    "tickets",
+    "api-test",
+    "crud",
+    "search"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:api",
+   "type": "function",
+   "name": "api",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    32,
+    34
+   ],
+   "summary": "Fixture yielding a test client backed by the test database.",
+   "tags": [
+    "test",
+    "fixture",
+    "tickets"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:create",
+   "type": "function",
+   "name": "create",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    37,
+    40
+   ],
+   "summary": "Helper that creates a ticket, asserts a 201 response, and returns its body.",
+   "tags": [
+    "test",
+    "helper",
+    "tickets"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:classify",
+   "type": "function",
+   "name": "classify",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    43,
+    48
+   ],
+   "summary": "Helper that saves a final classification and asserts success.",
+   "tags": [
+    "test",
+    "helper",
+    "classification"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:ids",
+   "type": "function",
+   "name": "ids",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    51,
+    52
+   ],
+   "summary": "Helper that extracts ticket ids from a list response.",
+   "tags": [
+    "test",
+    "helper",
+    "tickets"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:test_create_assigns_sequential_ids_and_defaults",
+   "type": "function",
+   "name": "test_create_assigns_sequential_ids_and_defaults",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    58,
+    67
+   ],
+   "summary": "Verifies new tickets get sequential ids, default status, nested fields, and manual source.",
+   "tags": [
+    "test",
+    "tickets",
+    "creation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:test_ids_stay_unique_under_concurrent_creation",
+   "type": "function",
+   "name": "test_ids_stay_unique_under_concurrent_creation",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    70,
+    75
+   ],
+   "summary": "Verifies concurrent id allocation yields unique sequential ticket ids.",
+   "tags": [
+    "test",
+    "tickets",
+    "concurrency"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:test_get_returns_ticket_or_404",
+   "type": "function",
+   "name": "test_get_returns_ticket_or_404",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    78,
+    82
+   ],
+   "summary": "Verifies fetching returns an existing ticket or 404.",
+   "tags": [
+    "test",
+    "tickets",
+    "api-test"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:test_invalid_input_is_rejected",
+   "type": "function",
+   "name": "test_invalid_input_is_rejected",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    85,
+    86
+   ],
+   "summary": "Verifies a malformed customer email is rejected with 422.",
+   "tags": [
+    "test",
+    "tickets",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:test_ticket_text_is_kept_exactly",
+   "type": "function",
+   "name": "test_ticket_text_is_kept_exactly",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    89,
+    94
+   ],
+   "summary": "Verifies a description keeps its line breaks and surrounding spaces exactly as typed.",
+   "tags": [
+    "test",
+    "tickets",
+    "data-integrity"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:test_update_changes_only_given_fields",
+   "type": "function",
+   "name": "test_update_changes_only_given_fields",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    100,
+    115
+   ],
+   "summary": "Verifies a partial update changes only supplied fields and advances updated_at.",
+   "tags": [
+    "test",
+    "tickets",
+    "update"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:test_invalid_updates_are_rejected",
+   "type": "function",
+   "name": "test_invalid_updates_are_rejected",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    121,
+    124
+   ],
+   "summary": "Parametrized check that null titles, unknown statuses, bad emails, and empty updates return 422.",
+   "tags": [
+    "test",
+    "tickets",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:test_update_unknown_ticket_is_404",
+   "type": "function",
+   "name": "test_update_unknown_ticket_is_404",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    127,
+    128
+   ],
+   "summary": "Verifies updating an unknown ticket returns 404.",
+   "tags": [
+    "test",
+    "tickets",
+    "error-handling"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:test_notes_are_appended",
+   "type": "function",
+   "name": "test_notes_are_appended",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    131,
+    143
+   ],
+   "summary": "Verifies notes append in order with distinct ids and that blank notes are rejected.",
+   "tags": [
+    "test",
+    "tickets",
+    "notes"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:test_manual_classification_is_stored_with_version",
+   "type": "function",
+   "name": "test_manual_classification_is_stored_with_version",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    146,
+    154
+   ],
+   "summary": "Verifies a manual classification is stored as manually edited, with no source run and the taxonomy version.",
+   "tags": [
+    "test",
+    "tickets",
+    "classification"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:test_inconsistent_classification_is_rejected",
+   "type": "function",
+   "name": "test_inconsistent_classification_is_rejected",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    157,
+    166
+   ],
+   "summary": "Verifies a mismatched category-subcategory pair returns 422 and leaves the final classification unset.",
+   "tags": [
+    "test",
+    "tickets",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:test_search_matches_each_searchable_field",
+   "type": "function",
+   "name": "test_search_matches_each_searchable_field",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    175,
+    185
+   ],
+   "summary": "Parametrized check that case-insensitive search finds a ticket by id, title, customer name, email, or order id.",
+   "tags": [
+    "test",
+    "tickets",
+    "search"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:test_search_treats_input_as_plain_text",
+   "type": "function",
+   "name": "test_search_treats_input_as_plain_text",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    188,
+    194
+   ],
+   "summary": "Verifies regex-like search input succeeds as plain text and matches nothing.",
+   "tags": [
+    "test",
+    "tickets",
+    "search"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:test_filters_by_status_category_and_priority",
+   "type": "function",
+   "name": "test_filters_by_status_category_and_priority",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    197,
+    214
+   ],
+   "summary": "Verifies list filters by status, category, and priority, and rejects an unknown priority.",
+   "tags": [
+    "test",
+    "tickets",
+    "filtering"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:test_sorts_by_created_date",
+   "type": "function",
+   "name": "test_sorts_by_created_date",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    217,
+    226
+   ],
+   "summary": "Verifies tickets sort newest first by default and oldest first on request.",
+   "tags": [
+    "test",
+    "tickets",
+    "sorting"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:test_sorts_by_priority_most_urgent_first_unclassified_last",
+   "type": "function",
+   "name": "test_sorts_by_priority_most_urgent_first_unclassified_last",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    229,
+    246
+   ],
+   "summary": "Verifies priority sorting orders most urgent first and places unclassified tickets last.",
+   "tags": [
+    "test",
+    "tickets",
+    "sorting"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:test_pagination_is_bounded",
+   "type": "function",
+   "name": "test_pagination_is_bounded",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    249,
+    258
+   ],
+   "summary": "Verifies pagination returns the right page and rejects out-of-range page parameters.",
+   "tags": [
+    "test",
+    "tickets",
+    "pagination"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:seed_dependents",
+   "type": "function",
+   "name": "seed_dependents",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    264,
+    267
+   ],
+   "summary": "Helper that inserts a comparison, execution, and evaluation label for a ticket.",
+   "tags": [
+    "test",
+    "helper",
+    "database"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:test_delete_removes_ticket_and_its_dependents_only",
+   "type": "function",
+   "name": "test_delete_removes_ticket_and_its_dependents_only",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    270,
+    282
+   ],
+   "summary": "Verifies deletion removes one ticket and its dependents while another ticket's records remain.",
+   "tags": [
+    "test",
+    "tickets",
+    "deletion"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:test_repeated_delete_is_safe",
+   "type": "function",
+   "name": "test_repeated_delete_is_safe",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    285,
+    289
+   ],
+   "summary": "Verifies deleting the same ticket twice returns 204 both times.",
+   "tags": [
+    "test",
+    "tickets",
+    "idempotent"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:test_failed_dependent_delete_keeps_the_ticket",
+   "type": "function",
+   "name": "test_failed_dependent_delete_keeps_the_ticket",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    292,
+    311
+   ],
+   "summary": "Verifies a simulated dependent-delete failure keeps the ticket and that a retry completes the deletion.",
+   "tags": [
+    "test",
+    "tickets",
+    "deletion",
+    "failure-handling"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/tests/test_tickets.py:test_ticket_endpoints_explain_when_database_is_down",
+   "type": "function",
+   "name": "test_ticket_endpoints_explain_when_database_is_down",
+   "filePath": "backend/tests/test_tickets.py",
+   "lineRange": [
+    314,
+    323
+   ],
+   "summary": "Verifies ticket endpoints return 503 with README guidance when MongoDB is unreachable.",
+   "tags": [
+    "test",
+    "tickets",
+    "error-handling"
+   ],
+   "complexity": "simple"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:api",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:api",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:new_ticket",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:new_ticket",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:run",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:run",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:compare",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:compare",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_run_endpoint_records_and_returns_the_execution",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_run_endpoint_records_and_returns_the_execution",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_run_unknown_ticket_or_provider",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_run_unknown_ticket_or_provider",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_run_without_mock_or_key_is_recorded_as_not_configured",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_run_without_mock_or_key_is_recorded_as_not_configured",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_comparison_counts_agreement_and_links_both_runs",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_comparison_counts_agreement_and_links_both_runs",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_comparison_is_partial_when_one_provider_fails",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_comparison_is_partial_when_one_provider_fails",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_comparison_is_unavailable_when_both_fail",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_comparison_is_unavailable_when_both_fail",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_comparison_rejects_mismatched_runs",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_comparison_rejects_mismatched_runs",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_comparison_waits_for_running_executions",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_comparison_waits_for_running_executions",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:answer_of",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:answer_of",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:choose",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:choose",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_final_answer_taken_unchanged_from_a_run_is_not_marked_edited",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_final_answer_taken_unchanged_from_a_run_is_not_marked_edited",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_final_answer_changed_after_choosing_a_run_is_marked_edited",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_final_answer_changed_after_choosing_a_run_is_marked_edited",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_final_answer_rejects_a_run_it_cannot_come_from",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_final_answer_rejects_a_run_it_cannot_come_from",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_running_and_comparing_never_set_the_final_answer",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_running_and_comparing_never_set_the_final_answer",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_the_chosen_final_answer_is_never_sent_to_a_model",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "function:backend/tests/test_runs_and_comparisons.py:test_the_chosen_final_answer_is_never_sent_to_a_model",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "file:backend/app/main.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_settings.py",
+   "target": "function:backend/tests/test_settings.py:test_defaults_need_no_env_file_or_api_keys",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_settings.py",
+   "target": "function:backend/tests/test_settings.py:test_defaults_need_no_env_file_or_api_keys",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_settings.py",
+   "target": "function:backend/tests/test_settings.py:test_environment_overrides_defaults",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_settings.py",
+   "target": "function:backend/tests/test_settings.py:test_environment_overrides_defaults",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_settings.py",
+   "target": "function:backend/tests/test_settings.py:test_empty_values_count_as_unset",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_settings.py",
+   "target": "function:backend/tests/test_settings.py:test_empty_values_count_as_unset",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_settings.py",
+   "target": "function:backend/tests/test_settings.py:test_api_keys_never_appear_in_repr",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_settings.py",
+   "target": "function:backend/tests/test_settings.py:test_api_keys_never_appear_in_repr",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_settings.py",
+   "target": "function:backend/tests/test_settings.py:test_out_of_range_values_are_rejected",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_settings.py",
+   "target": "function:backend/tests/test_settings.py:test_out_of_range_values_are_rejected",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_settings.py",
+   "target": "function:backend/tests/test_settings.py:test_env_example_lists_every_setting",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_settings.py",
+   "target": "function:backend/tests/test_settings.py:test_env_example_lists_every_setting",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_settings.py",
+   "target": "file:backend/app/core/settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_shell_support.py",
+   "target": "function:backend/tests/test_shell_support.py:preflight",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_shell_support.py",
+   "target": "function:backend/tests/test_shell_support.py:preflight",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_shell_support.py",
+   "target": "function:backend/tests/test_shell_support.py:test_cors_allows_only_the_configured_frontend_origin",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_shell_support.py",
+   "target": "function:backend/tests/test_shell_support.py:test_cors_allows_only_the_configured_frontend_origin",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_shell_support.py",
+   "target": "function:backend/tests/test_shell_support.py:test_provider_status_reports_configured_without_revealing_keys",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_shell_support.py",
+   "target": "function:backend/tests/test_shell_support.py:test_provider_status_reports_configured_without_revealing_keys",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_shell_support.py",
+   "target": "file:backend/app/main.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_taxonomy.py",
+   "target": "function:backend/tests/test_taxonomy.py:test_taxonomy_matches_the_spec_exactly",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_taxonomy.py",
+   "target": "function:backend/tests/test_taxonomy.py:test_taxonomy_matches_the_spec_exactly",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_taxonomy.py",
+   "target": "function:backend/tests/test_taxonomy.py:test_subcategory_names_are_unique_across_categories",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_taxonomy.py",
+   "target": "function:backend/tests/test_taxonomy.py:test_subcategory_names_are_unique_across_categories",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_taxonomy.py",
+   "target": "function:backend/tests/test_taxonomy.py:test_enums_hold_the_canonical_values",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_taxonomy.py",
+   "target": "function:backend/tests/test_taxonomy.py:test_enums_hold_the_canonical_values",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_taxonomy.py",
+   "target": "function:backend/tests/test_taxonomy.py:test_every_spec_pair_is_valid",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_taxonomy.py",
+   "target": "function:backend/tests/test_taxonomy.py:test_every_spec_pair_is_valid",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_taxonomy.py",
+   "target": "function:backend/tests/test_taxonomy.py:test_inconsistent_or_unknown_pairs_are_invalid",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_taxonomy.py",
+   "target": "function:backend/tests/test_taxonomy.py:test_inconsistent_or_unknown_pairs_are_invalid",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_taxonomy.py",
+   "target": "function:backend/tests/test_taxonomy.py:test_taxonomy_endpoint_serves_the_same_values",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_taxonomy.py",
+   "target": "function:backend/tests/test_taxonomy.py:test_taxonomy_endpoint_serves_the_same_values",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_taxonomy.py",
+   "target": "file:backend/app/core/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_taxonomy.py",
+   "target": "file:backend/app/main.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:api",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:api",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:create",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:create",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:classify",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:classify",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:ids",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:ids",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_create_assigns_sequential_ids_and_defaults",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_create_assigns_sequential_ids_and_defaults",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_ids_stay_unique_under_concurrent_creation",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_ids_stay_unique_under_concurrent_creation",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_get_returns_ticket_or_404",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_get_returns_ticket_or_404",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_invalid_input_is_rejected",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_invalid_input_is_rejected",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_ticket_text_is_kept_exactly",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_ticket_text_is_kept_exactly",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_update_changes_only_given_fields",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_update_changes_only_given_fields",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_invalid_updates_are_rejected",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_invalid_updates_are_rejected",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_update_unknown_ticket_is_404",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_update_unknown_ticket_is_404",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_notes_are_appended",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_notes_are_appended",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_manual_classification_is_stored_with_version",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_manual_classification_is_stored_with_version",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_inconsistent_classification_is_rejected",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_inconsistent_classification_is_rejected",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_search_matches_each_searchable_field",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_search_matches_each_searchable_field",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_search_treats_input_as_plain_text",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_search_treats_input_as_plain_text",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_filters_by_status_category_and_priority",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_filters_by_status_category_and_priority",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_sorts_by_created_date",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_sorts_by_created_date",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_sorts_by_priority_most_urgent_first_unclassified_last",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_sorts_by_priority_most_urgent_first_unclassified_last",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_pagination_is_bounded",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_pagination_is_bounded",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:seed_dependents",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:seed_dependents",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_delete_removes_ticket_and_its_dependents_only",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_delete_removes_ticket_and_its_dependents_only",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_repeated_delete_is_safe",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_repeated_delete_is_safe",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_failed_dependent_delete_keeps_the_ticket",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_failed_dependent_delete_keeps_the_ticket",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_ticket_endpoints_explain_when_database_is_down",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "function:backend/tests/test_tickets.py:test_ticket_endpoints_explain_when_database_is_down",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "file:backend/app/core/settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "file:backend/app/main.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "file:backend/app/repositories/tickets.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_tickets.py",
+   "target": "file:backend/tests/conftest.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "function:backend/tests/test_runs_and_comparisons.py:api",
+   "target": "function:backend/app/main.py:create_app",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_runs_and_comparisons.py:test_run_without_mock_or_key_is_recorded_as_not_configured",
+   "target": "function:backend/app/main.py:create_app",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_tickets.py:api",
+   "target": "function:backend/app/main.py:create_app",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_tickets.py:test_ticket_endpoints_explain_when_database_is_down",
+   "target": "function:backend/app/main.py:create_app",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_tickets.py:test_ids_stay_unique_under_concurrent_creation",
+   "target": "function:backend/app/repositories/tickets.py:next_ticket_id",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_shell_support.py:test_cors_allows_only_the_configured_frontend_origin",
+   "target": "function:backend/app/main.py:create_app",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_shell_support.py:test_provider_status_reports_configured_without_revealing_keys",
+   "target": "function:backend/app/main.py:create_app",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_taxonomy.py:test_taxonomy_endpoint_serves_the_same_values",
+   "target": "function:backend/app/main.py:create_app",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_taxonomy.py:test_every_spec_pair_is_valid",
+   "target": "function:backend/app/core/taxonomy.py:is_valid_pair",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_taxonomy.py:test_inconsistent_or_unknown_pairs_are_invalid",
+   "target": "function:backend/app/core/taxonomy.py:is_valid_pair",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_runs_and_comparisons.py",
+   "target": "file:backend/tests/conftest.py",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:backend/tests/test_shell_support.py",
+   "target": "file:backend/tests/conftest.py",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:backend/tests/test_taxonomy.py",
+   "target": "file:backend/tests/conftest.py",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:backend/app/core/taxonomy.py",
+   "target": "file:backend/tests/test_taxonomy.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/api/runs.py",
+   "target": "file:backend/tests/test_runs_and_comparisons.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "file:backend/tests/test_tickets.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "file:backend/tests/test_tickets.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  }
+ ]
+}

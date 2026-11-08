@@ -1,3 +1,4 @@
+from pathlib import Path
 from typing import Literal
 
 from fastapi import APIRouter, HTTPException, Request
@@ -11,6 +12,7 @@ from app.services.csv_import import COLUMNS, CsvFileError, import_csv
 
 router = APIRouter(tags=["imports and exports"])
 MAX_BYTES = 5 * 1024 * 1024
+SAMPLE_DATASET = Path(__file__).parents[3] / ".context" / "sample_tickets_100_v2.csv"
 
 
 def csv_download(text: str, filename: str) -> Response:
@@ -25,6 +27,13 @@ def csv_download(text: str, filename: str) -> Response:
 def import_template() -> Response:
     """An empty CSV with the import columns (sample_tickets_template.csv)."""
     return csv_download(",".join(COLUMNS) + "\n", "ticketlens_import_template.csv")
+
+
+@router.get("/api/imports/sample-dataset")
+def sample_dataset() -> Response:
+    """The 100 labelled synthetic tickets. Downloading never adds them to the database."""
+    text = SAMPLE_DATASET.read_text(encoding="utf-8")
+    return csv_download(text, "ticketlens_sample_tickets_100.csv")
 
 
 @router.post(

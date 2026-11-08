@@ -6,7 +6,7 @@ from typing import Literal
 from pymongo import ReturnDocument
 from pymongo.database import Database
 
-from app.core.taxonomy import Priority
+from app.core.taxonomy import Priority, TicketStatus
 
 FIRST_TICKET_NUMBER = 1001  # SK-1001 (requirements.md section 4)
 PRIORITY_ORDER = [p.value for p in Priority]  # most urgent first
@@ -33,6 +33,12 @@ def insert(db: Database, doc: dict) -> None:
 
 def get(db: Database, ticket_id: str) -> dict | None:
     return db.tickets.find_one({"ticket_id": ticket_id}, NO_ID)
+
+
+def eligible_ids(db: Database) -> list[str]:
+    """Tickets a bulk "all eligible" run covers, oldest first: those still being worked on."""
+    query = {"status": {"$in": [TicketStatus.OPEN, TicketStatus.IN_PROGRESS]}}
+    return [t["ticket_id"] for t in db.tickets.find(query, {"ticket_id": 1}).sort("created_at", 1)]
 
 
 def fingerprint_exists(db: Database, fingerprint: str) -> bool:
@@ -93,3 +99,10 @@ def search(
         {"$project": {"_id": 0, "_rank": 0, "_unranked": 0}},
     ]
     return list(db.tickets.aggregate(stages)), db.tickets.count_documents(query)
+
+
+def counts(db: Database) -> dict:
+    """Total tickets and how many are in each status."""
+    groups = db.tickets.aggregate([{"$group": {"_id": "$status", "n": {"$sum": 1}}}])
+    by_status = {g["_id"]: g["n"] for g in groups}
+    return {"total": sum(by_status.values()), "by_status": by_status}

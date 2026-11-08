@@ -10,6 +10,7 @@ from pydantic import BaseModel
 
 from app.core import taxonomy
 from app.core.taxonomy import ExecutionStatus
+from app.providers.definitions import INSTRUCTIONS
 from app.schemas.executions import Usage
 
 PROMPT_VERSION = "1.0"
@@ -42,9 +43,10 @@ class ProviderInput(BaseModel):
     categories: dict[str, list[str]]
     priorities: list[str]
     sentiments: list[str]
+    instructions: str = INSTRUCTIONS
 
 
-def build_input(ticket: dict) -> ProviderInput:
+def build_input(ticket: dict, instructions: str = INSTRUCTIONS) -> ProviderInput:
     """Pick the allowed ticket fields. Labels, earlier results, the final classification, notes and
     customer contact details never reach a provider (AGENTS.md section 3)."""
     canon = taxonomy.as_dict()
@@ -59,6 +61,7 @@ def build_input(ticket: dict) -> ProviderInput:
         categories=canon["categories"],
         priorities=canon["priorities"],
         sentiments=canon["sentiments"],
+        instructions=instructions,
     )
 
 

@@ -1,0 +1,9 @@
+{
+  "projectRoot": "/Users/shloktilokani/Projects/TicketLens_Jev_vs_LLM",
+  "batchFiles": [
+    {"path": "backend/.env.example", "language": "config", "sizeLines": 38, "fileCategory": "config"},
+    {"path": "backend/pyproject.toml", "language": "toml", "sizeLines": 19, "fileCategory": "config"},
+    {"path": "backend/requirements.txt", "language": "txt", "sizeLines": 10, "fileCategory": "docs"}
+  ],
+  "batchImportData": {"backend/.env.example": [], "backend/pyproject.toml": [], "backend/requirements.txt": []}
+}

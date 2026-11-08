@@ -1,0 +1,74 @@
+{
+  "nodes": [
+    {
+      "id": "document:e2e/personas/customers/angry-impatient.md",
+      "type": "document",
+      "name": "angry-impatient.md",
+      "filePath": "e2e/personas/customers/angry-impatient.md",
+      "summary": "E2E test persona for a frustrated repeat-contact customer who writes short, heated tickets with capitals and threats to leave, but no insults. Checks that classification finds the underlying issue rather than just 'Complaint' and that sentiment is Negative.",
+      "tags": ["documentation", "test-persona", "e2e-testing", "sentiment", "classification"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:e2e/personas/customers/casual-typos.md",
+      "type": "document",
+      "name": "casual-typos.md",
+      "filePath": "e2e/personas/customers/casual-typos.md",
+      "summary": "E2E test persona for a hurried phone user writing lowercase text with abbreviations, typos, emoji and everyday words instead of taxonomy terms. Checks that classification copes with noisy text and that the UI stores and shows emoji correctly.",
+      "tags": ["documentation", "test-persona", "e2e-testing", "noisy-input", "classification"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:e2e/personas/customers/non-native-english.md",
+      "type": "document",
+      "name": "non-native-english.md",
+      "filePath": "e2e/personas/customers/non-native-english.md",
+      "summary": "E2E test persona for a ShopKart customer writing understandable but imperfect English, with dropped articles and literal phrasing, and no other languages or transliteration. Checks that classification is robust to grammar variation.",
+      "tags": ["documentation", "test-persona", "e2e-testing", "grammar-variation", "classification"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:e2e/personas/customers/rambling-multi-issue.md",
+      "type": "document",
+      "name": "rambling-multi-issue.md",
+      "filePath": "e2e/personas/customers/rambling-multi-issue.md",
+      "summary": "E2E test persona for a customer who writes long, tangential tickets where the main ask arrives late alongside one minor issue from a different category. Checks that models pick the primary issue and handle long input, up to the 10,000-character description limit.",
+      "tags": ["documentation", "test-persona", "e2e-testing", "long-input", "classification"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:e2e/personas/customers/terse.md",
+      "type": "document",
+      "name": "terse.md",
+      "filePath": "e2e/personas/customers/terse.md",
+      "summary": "E2E test persona for a customer who writes one line or a fragment plus an order number, under about 12 words while staying classifiable. Checks classification with very little context and how confidence and priority behave.",
+      "tags": ["documentation", "test-persona", "e2e-testing", "minimal-input", "classification"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:e2e/personas/customers/vague.md",
+      "type": "document",
+      "name": "vague.md",
+      "filePath": "e2e/personas/customers/vague.md",
+      "summary": "E2E test persona for a polite, hedging customer whose ticket leaves out exactly one key detail, such as which order or what went wrong. Checks that models still land in the right category and that confidence drops sensibly.",
+      "tags": ["documentation", "test-persona", "e2e-testing", "ambiguous-input", "classification"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:e2e/personas/customers/terse.md",
+      "target": "document:e2e/personas/customers/vague.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:e2e/personas/customers/casual-typos.md",
+      "target": "document:e2e/personas/customers/non-native-english.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

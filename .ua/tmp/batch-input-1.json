@@ -1,0 +1,690 @@
+{
+ "batchIndex": 1,
+ "files": [
+  {
+   "path": "backend/app/api/dashboard.py",
+   "language": "python",
+   "sizeLines": 31,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/api/deps.py",
+   "language": "python",
+   "sizeLines": 11,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/api/executions.py",
+   "language": "python",
+   "sizeLines": 43,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/api/imports.py",
+   "language": "python",
+   "sizeLines": 54,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/api/runs.py",
+   "language": "python",
+   "sizeLines": 31,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/api/tickets.py",
+   "language": "python",
+   "sizeLines": 98,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/core/clock.py",
+   "language": "python",
+   "sizeLines": 10,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/repositories/__init__.py",
+   "language": "python",
+   "sizeLines": 0,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/repositories/comparisons.py",
+   "language": "python",
+   "sizeLines": 22,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/repositories/executions.py",
+   "language": "python",
+   "sizeLines": 80,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/repositories/labels.py",
+   "language": "python",
+   "sizeLines": 10,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/repositories/tickets.py",
+   "language": "python",
+   "sizeLines": 102,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/schemas/comparisons.py",
+   "language": "python",
+   "sizeLines": 32,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/schemas/imports.py",
+   "language": "python",
+   "sizeLines": 19,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/services/__init__.py",
+   "language": "python",
+   "sizeLines": 0,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/services/comparisons.py",
+   "language": "python",
+   "sizeLines": 77,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/services/csv_export.py",
+   "language": "python",
+   "sizeLines": 114,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/services/csv_import.py",
+   "language": "python",
+   "sizeLines": 189,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/services/dashboard.py",
+   "language": "python",
+   "sizeLines": 86,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/services/run_metrics.py",
+   "language": "python",
+   "sizeLines": 178,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/services/run_report.py",
+   "language": "python",
+   "sizeLines": 335,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/scripts/run_report.py",
+   "language": "python",
+   "sizeLines": 77,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/tests/test_csv.py",
+   "language": "python",
+   "sizeLines": 249,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/tests/test_run_metrics.py",
+   "language": "python",
+   "sizeLines": 110,
+   "fileCategory": "code"
+  }
+ ],
+ "batchImportData": {
+  "backend/app/api/dashboard.py": [
+   "backend/app/api/deps.py",
+   "backend/app/services/__init__.py",
+   "backend/app/services/dashboard.py"
+  ],
+  "backend/app/api/deps.py": [],
+  "backend/app/api/executions.py": [
+   "backend/app/api/deps.py",
+   "backend/app/core/taxonomy.py",
+   "backend/app/repositories/__init__.py",
+   "backend/app/repositories/executions.py",
+   "backend/app/schemas/executions.py"
+  ],
+  "backend/app/api/imports.py": [
+   "backend/app/api/deps.py",
+   "backend/app/schemas/imports.py",
+   "backend/app/services/__init__.py",
+   "backend/app/services/csv_export.py",
+   "backend/app/services/csv_import.py"
+  ],
+  "backend/app/api/runs.py": [
+   "backend/app/api/deps.py",
+   "backend/app/core/taxonomy.py",
+   "backend/app/repositories/__init__.py",
+   "backend/app/repositories/tickets.py",
+   "backend/app/schemas/comparisons.py",
+   "backend/app/schemas/executions.py",
+   "backend/app/services/__init__.py",
+   "backend/app/services/comparisons.py",
+   "backend/app/services/executions.py"
+  ],
+  "backend/app/api/tickets.py": [
+   "backend/app/api/deps.py",
+   "backend/app/core/taxonomy.py",
+   "backend/app/repositories/__init__.py",
+   "backend/app/repositories/executions.py",
+   "backend/app/repositories/tickets.py",
+   "backend/app/schemas/classification.py",
+   "backend/app/schemas/tickets.py",
+   "backend/app/services/__init__.py"
+  ],
+  "backend/app/core/clock.py": [],
+  "backend/app/repositories/__init__.py": [],
+  "backend/app/repositories/comparisons.py": [],
+  "backend/app/repositories/executions.py": [],
+  "backend/app/repositories/labels.py": [],
+  "backend/app/repositories/tickets.py": [
+   "backend/app/core/taxonomy.py"
+  ],
+  "backend/app/schemas/comparisons.py": [
+   "backend/app/core/taxonomy.py"
+  ],
+  "backend/app/schemas/imports.py": [],
+  "backend/app/services/__init__.py": [],
+  "backend/app/services/comparisons.py": [
+   "backend/app/core/clock.py",
+   "backend/app/core/taxonomy.py",
+   "backend/app/repositories/__init__.py",
+   "backend/app/repositories/comparisons.py",
+   "backend/app/repositories/executions.py"
+  ],
+  "backend/app/services/csv_export.py": [
+   "backend/app/repositories/database.py",
+   "backend/app/services/csv_import.py"
+  ],
+  "backend/app/services/csv_import.py": [
+   "backend/app/core/clock.py",
+   "backend/app/core/taxonomy.py",
+   "backend/app/repositories/__init__.py",
+   "backend/app/repositories/labels.py",
+   "backend/app/schemas/classification.py",
+   "backend/app/schemas/imports.py",
+   "backend/app/schemas/tickets.py",
+   "backend/app/services/__init__.py"
+  ],
+  "backend/app/services/dashboard.py": [
+   "backend/app/repositories/__init__.py",
+   "backend/app/repositories/comparisons.py",
+   "backend/app/repositories/database.py",
+   "backend/app/repositories/tickets.py",
+   "backend/app/services/run_metrics.py"
+  ],
+  "backend/app/services/run_metrics.py": [],
+  "backend/app/services/run_report.py": [
+   "backend/app/services/run_metrics.py"
+  ],
+  "backend/scripts/run_report.py": [
+   "backend/app/core/clock.py",
+   "backend/app/core/settings.py",
+   "backend/app/repositories/database.py",
+   "backend/app/services/dashboard.py",
+   "backend/app/services/run_metrics.py",
+   "backend/app/services/run_report.py"
+  ],
+  "backend/tests/test_csv.py": [
+   "backend/app/main.py",
+   "backend/app/services/csv_import.py"
+  ],
+  "backend/tests/test_run_metrics.py": [
+   "backend/app/services/run_metrics.py"
+  ]
+ },
+ "neighborMap": {
+  "backend/app/api/dashboard.py": [
+   {
+    "path": "backend/app/main.py",
+    "batchIndex": 5,
+    "symbols": [
+     "create_app"
+    ]
+   }
+  ],
+  "backend/app/api/executions.py": [
+   {
+    "path": "backend/app/core/taxonomy.py",
+    "batchIndex": 2,
+    "symbols": [
+     "Category",
+     "Priority",
+     "Sentiment",
+     "TicketStatus",
+     "Channel",
+     "Provider",
+     "ExecutionStatus",
+     "ComparisonStatus",
+     "BulkJobStatus",
+     "is_valid_pair",
+     "as_dict"
+    ]
+   },
+   {
+    "path": "backend/app/schemas/executions.py",
+    "batchIndex": 2,
+    "symbols": [
+     "Usage",
+     "PricingSnapshot",
+     "EstimatedCost",
+     "ProviderError",
+     "Execution"
+    ]
+   },
+   {
+    "path": "backend/app/main.py",
+    "batchIndex": 5,
+    "symbols": [
+     "create_app"
+    ]
+   }
+  ],
+  "backend/app/api/imports.py": [
+   {
+    "path": "backend/app/main.py",
+    "batchIndex": 5,
+    "symbols": [
+     "create_app"
+    ]
+   }
+  ],
+  "backend/app/api/runs.py": [
+   {
+    "path": "backend/app/core/taxonomy.py",
+    "batchIndex": 2,
+    "symbols": [
+     "Category",
+     "Priority",
+     "Sentiment",
+     "TicketStatus",
+     "Channel",
+     "Provider",
+     "ExecutionStatus",
+     "ComparisonStatus",
+     "BulkJobStatus",
+     "is_valid_pair",
+     "as_dict"
+    ]
+   },
+   {
+    "path": "backend/app/schemas/executions.py",
+    "batchIndex": 2,
+    "symbols": [
+     "Usage",
+     "PricingSnapshot",
+     "EstimatedCost",
+     "ProviderError",
+     "Execution"
+    ]
+   },
+   {
+    "path": "backend/app/services/executions.py",
+    "batchIndex": 2,
+    "symbols": [
+     "failed",
+     "attempt",
+     "cost_fields",
+     "run"
+    ]
+   },
+   {
+    "path": "backend/app/main.py",
+    "batchIndex": 5,
+    "symbols": [
+     "create_app"
+    ]
+   }
+  ],
+  "backend/app/api/tickets.py": [
+   {
+    "path": "backend/app/core/taxonomy.py",
+    "batchIndex": 2,
+    "symbols": [
+     "Category",
+     "Priority",
+     "Sentiment",
+     "TicketStatus",
+     "Channel",
+     "Provider",
+     "ExecutionStatus",
+     "ComparisonStatus",
+     "BulkJobStatus",
+     "is_valid_pair",
+     "as_dict"
+    ]
+   },
+   {
+    "path": "backend/app/schemas/classification.py",
+    "batchIndex": 2,
+    "symbols": [
+     "Classification",
+     "FinalClassificationInput",
+     "FinalClassification",
+     "NormalizedResult"
+    ]
+   },
+   {
+    "path": "backend/app/schemas/tickets.py",
+    "batchIndex": 2,
+    "symbols": [
+     "_not_blank",
+     "_blank_to_none",
+     "TicketCreate",
+     "TicketUpdate",
+     "NoteCreate",
+     "Customer",
+     "OrderInfo",
+     "Note",
+     "Source",
+     "LatestRun",
+     "Ticket",
+     "TicketPage"
+    ]
+   },
+   {
+    "path": "backend/app/main.py",
+    "batchIndex": 5,
+    "symbols": [
+     "create_app"
+    ]
+   }
+  ],
+  "backend/app/core/clock.py": [
+   {
+    "path": "backend/app/services/executions.py",
+    "batchIndex": 2,
+    "symbols": [
+     "failed",
+     "attempt",
+     "cost_fields",
+     "run"
+    ]
+   },
+   {
+    "path": "backend/app/services/tickets.py",
+    "batchIndex": 2,
+    "symbols": [
+     "RunNotUsable",
+     "create",
+     "update",
+     "add_note",
+     "run_result",
+     "set_classification"
+    ]
+   }
+  ],
+  "backend/app/repositories/__init__.py": [
+   {
+    "path": "backend/app/services/executions.py",
+    "batchIndex": 2,
+    "symbols": [
+     "failed",
+     "attempt",
+     "cost_fields",
+     "run"
+    ]
+   },
+   {
+    "path": "backend/app/services/tickets.py",
+    "batchIndex": 2,
+    "symbols": [
+     "RunNotUsable",
+     "create",
+     "update",
+     "add_note",
+     "run_result",
+     "set_classification"
+    ]
+   }
+  ],
+  "backend/app/repositories/executions.py": [
+   {
+    "path": "backend/app/services/executions.py",
+    "batchIndex": 2,
+    "symbols": [
+     "failed",
+     "attempt",
+     "cost_fields",
+     "run"
+    ]
+   },
+   {
+    "path": "backend/app/services/tickets.py",
+    "batchIndex": 2,
+    "symbols": [
+     "RunNotUsable",
+     "create",
+     "update",
+     "add_note",
+     "run_result",
+     "set_classification"
+    ]
+   }
+  ],
+  "backend/app/repositories/tickets.py": [
+   {
+    "path": "backend/app/core/taxonomy.py",
+    "batchIndex": 2,
+    "symbols": [
+     "Category",
+     "Priority",
+     "Sentiment",
+     "TicketStatus",
+     "Channel",
+     "Provider",
+     "ExecutionStatus",
+     "ComparisonStatus",
+     "BulkJobStatus",
+     "is_valid_pair",
+     "as_dict"
+    ]
+   },
+   {
+    "path": "backend/app/services/tickets.py",
+    "batchIndex": 2,
+    "symbols": [
+     "RunNotUsable",
+     "create",
+     "update",
+     "add_note",
+     "run_result",
+     "set_classification"
+    ]
+   },
+   {
+    "path": "backend/tests/test_tickets.py",
+    "batchIndex": 5,
+    "symbols": [
+     "api",
+     "create",
+     "classify",
+     "ids",
+     "test_create_assigns_sequential_ids_and_defaults",
+     "test_ids_stay_unique_under_concurrent_creation",
+     "test_get_returns_ticket_or_404",
+     "test_invalid_input_is_rejected",
+     "test_ticket_text_is_kept_exactly",
+     "test_update_changes_only_given_fields",
+     "test_invalid_updates_are_rejected",
+     "test_update_unknown_ticket_is_404",
+     "test_notes_are_appended",
+     "test_manual_classification_is_stored_with_version",
+     "test_inconsistent_classification_is_rejected",
+     "test_search_matches_each_searchable_field",
+     "test_search_treats_input_as_plain_text",
+     "test_filters_by_status_category_and_priority",
+     "test_sorts_by_created_date",
+     "test_sorts_by_priority_most_urgent_first_unclassified_last",
+     "test_pagination_is_bounded",
+     "seed_dependents",
+     "test_delete_removes_ticket_and_its_dependents_only",
+     "test_repeated_delete_is_safe",
+     "test_failed_dependent_delete_keeps_the_ticket",
+     "test_ticket_endpoints_explain_when_database_is_down"
+    ]
+   }
+  ],
+  "backend/app/schemas/comparisons.py": [
+   {
+    "path": "backend/app/core/taxonomy.py",
+    "batchIndex": 2,
+    "symbols": [
+     "Category",
+     "Priority",
+     "Sentiment",
+     "TicketStatus",
+     "Channel",
+     "Provider",
+     "ExecutionStatus",
+     "ComparisonStatus",
+     "BulkJobStatus",
+     "is_valid_pair",
+     "as_dict"
+    ]
+   }
+  ],
+  "backend/app/services/comparisons.py": [
+   {
+    "path": "backend/app/core/taxonomy.py",
+    "batchIndex": 2,
+    "symbols": [
+     "Category",
+     "Priority",
+     "Sentiment",
+     "TicketStatus",
+     "Channel",
+     "Provider",
+     "ExecutionStatus",
+     "ComparisonStatus",
+     "BulkJobStatus",
+     "is_valid_pair",
+     "as_dict"
+    ]
+   }
+  ],
+  "backend/app/services/csv_export.py": [
+   {
+    "path": "backend/app/repositories/database.py",
+    "batchIndex": 5,
+    "symbols": [
+     "DecimalCodec",
+     "connect",
+     "is_reachable",
+     "ensure_indexes",
+     "find_all",
+     "find_in"
+    ]
+   }
+  ],
+  "backend/app/services/csv_import.py": [
+   {
+    "path": "backend/app/core/taxonomy.py",
+    "batchIndex": 2,
+    "symbols": [
+     "Category",
+     "Priority",
+     "Sentiment",
+     "TicketStatus",
+     "Channel",
+     "Provider",
+     "ExecutionStatus",
+     "ComparisonStatus",
+     "BulkJobStatus",
+     "is_valid_pair",
+     "as_dict"
+    ]
+   },
+   {
+    "path": "backend/app/schemas/classification.py",
+    "batchIndex": 2,
+    "symbols": [
+     "Classification",
+     "FinalClassificationInput",
+     "FinalClassification",
+     "NormalizedResult"
+    ]
+   },
+   {
+    "path": "backend/app/schemas/tickets.py",
+    "batchIndex": 2,
+    "symbols": [
+     "_not_blank",
+     "_blank_to_none",
+     "TicketCreate",
+     "TicketUpdate",
+     "NoteCreate",
+     "Customer",
+     "OrderInfo",
+     "Note",
+     "Source",
+     "LatestRun",
+     "Ticket",
+     "TicketPage"
+    ]
+   }
+  ],
+  "backend/app/services/dashboard.py": [
+   {
+    "path": "backend/app/repositories/database.py",
+    "batchIndex": 5,
+    "symbols": [
+     "DecimalCodec",
+     "connect",
+     "is_reachable",
+     "ensure_indexes",
+     "find_all",
+     "find_in"
+    ]
+   }
+  ],
+  "backend/scripts/run_report.py": [
+   {
+    "path": "backend/app/core/settings.py",
+    "batchIndex": 5,
+    "symbols": [
+     "Settings",
+     "get_settings",
+     "is_local"
+    ]
+   },
+   {
+    "path": "backend/app/repositories/database.py",
+    "batchIndex": 5,
+    "symbols": [
+     "DecimalCodec",
+     "connect",
+     "is_reachable",
+     "ensure_indexes",
+     "find_all",
+     "find_in"
+    ]
+   }
+  ],
+  "backend/tests/test_csv.py": [
+   {
+    "path": "backend/app/main.py",
+    "batchIndex": 5,
+    "symbols": [
+     "create_app"
+    ]
+   }
+  ]
+ }
+}

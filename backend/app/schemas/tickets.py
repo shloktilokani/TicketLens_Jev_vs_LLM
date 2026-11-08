@@ -99,6 +99,12 @@ class Source(BaseModel):
     source_fingerprint: str | None = None
 
 
+class LatestRun(BaseModel):
+    provider: str
+    status: str
+    started_at: datetime
+
+
 class Ticket(BaseModel):
     """A stored ticket, as returned by the API (data-model.md section 1)."""
 
@@ -110,6 +116,7 @@ class Ticket(BaseModel):
     submission_channel: Channel
     status: TicketStatus
     final_classification: FinalClassification | None = None
+    latest_run: LatestRun | None = None
     operator_notes: list[Note] = []
     source: Source = Source()
     is_sample: bool = False

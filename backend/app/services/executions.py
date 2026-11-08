@@ -12,13 +12,16 @@ from pydantic import ValidationError
 from pymongo.database import Database
 
 from app.core.clock import utc_now
+from app.core.pricing import estimate
 from app.core.redaction import redact
 from app.core.settings import Settings
 from app.core.taxonomy import ExecutionStatus, Provider
-from app.providers.base import PROMPT_VERSION, ProviderFailure, ProviderInput, build_input
+from app.providers.base import ProviderFailure, ProviderInput, build_input
 from app.providers.registry import get_adapter, requested_model
 from app.repositories import executions
 from app.schemas.classification import NormalizedResult
+from app.schemas.executions import Usage
+from app.services import app_settings
 
 log = logging.getLogger("ticketlens")
 
@@ -71,6 +74,16 @@ def attempt(provider: Provider, data: ProviderInput, settings: Settings) -> dict
     }
 
 
+def cost_fields(db: Database, provider: Provider, settings: Settings, usage: dict | None) -> dict:
+    """The rates in force now and the estimated cost, stored so history never changes."""
+    rates = app_settings.rates_for(db, provider, settings)
+    cost = estimate(Usage(**usage), rates) if usage else None
+    return {
+        "pricing_snapshot": rates.model_dump() if rates else None,
+        "estimated_cost": cost.model_dump() if cost else None,
+    }
+
+
 def run(
     db: Database,
     ticket: dict,
@@ -80,7 +93,9 @@ def run(
     comparison_id: str | None = None,
 ) -> dict:
     provider = Provider(provider)
-    data = build_input(ticket)
+    settings = app_settings.effective(db, settings)
+    prompt_version, instructions = app_settings.active_prompt(db)
+    data = build_input(ticket, instructions)
     started, clock = utc_now(), time.perf_counter()
     execution_id = f"exec_{uuid4().hex}"
     executions.insert(
@@ -101,15 +116,16 @@ def run(
             "response_payload_redacted": None,
             "normalized_result": None,
             "usage": None,
-            "pricing_snapshot": None,  # costs arrive in Phase 11
+            "pricing_snapshot": None,
             "estimated_cost": None,
             "error": None,
-            "prompt_version": PROMPT_VERSION,
+            "prompt_version": prompt_version,
             "taxonomy_version": data.taxonomy_version,
             "created_at": started,
         },
     )
     outcome = attempt(provider, data, settings)
+    outcome |= cost_fields(db, provider, settings, outcome.get("usage"))
     outcome["completed_at"] = utc_now()
     outcome["duration_ms"] = round((time.perf_counter() - clock) * 1000)
     return executions.update(db, execution_id, outcome)

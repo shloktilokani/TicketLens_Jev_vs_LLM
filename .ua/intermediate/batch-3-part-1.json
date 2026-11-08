@@ -1,0 +1,830 @@
+{
+ "nodes": [
+  {
+   "id": "file:frontend/src/app/AppShell.tsx",
+   "type": "file",
+   "name": "AppShell.tsx",
+   "filePath": "frontend/src/app/AppShell.tsx",
+   "summary": "Application layout route that renders the responsive sidebar and mobile navigation sheet, header with provider status badges and global ticket search, and the routed page outlet; it also keeps the document title in sync with the matched route.",
+   "tags": [
+    "component",
+    "layout",
+    "navigation",
+    "entry-point",
+    "accessibility"
+   ],
+   "complexity": "complex",
+   "languageNotes": "Reads the page title from React Router's `useMatches` and each route's `handle.title`, keeping titles declared beside the routes."
+  },
+  {
+   "id": "function:frontend/src/app/AppShell.tsx:NavList",
+   "type": "function",
+   "name": "NavList",
+   "filePath": "frontend/src/app/AppShell.tsx",
+   "lineRange": [
+    36,
+    58
+   ],
+   "summary": "Renders the main navigation links from the NAV table, highlighting the active route and notifying the caller on navigation.",
+   "tags": [
+    "component",
+    "navigation",
+    "accessibility"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/app/AppShell.tsx:ThemeToggle",
+   "type": "function",
+   "name": "ThemeToggle",
+   "filePath": "frontend/src/app/AppShell.tsx",
+   "lineRange": [
+    60,
+    74
+   ],
+   "summary": "Button that switches between light and dark themes through next-themes.",
+   "tags": [
+    "component",
+    "theme",
+    "ui-control"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/app/AppShell.tsx:Sidebar",
+   "type": "function",
+   "name": "Sidebar",
+   "filePath": "frontend/src/app/AppShell.tsx",
+   "lineRange": [
+    76,
+    95
+   ],
+   "summary": "Sidebar content with the brand link, navigation list, theme toggle, and version label, shared by desktop and mobile layouts.",
+   "tags": [
+    "component",
+    "navigation",
+    "layout"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/app/AppShell.tsx:ProviderBadges",
+   "type": "function",
+   "name": "ProviderBadges",
+   "filePath": "frontend/src/app/AppShell.tsx",
+   "lineRange": [
+    97,
+    126
+   ],
+   "summary": "Header badges showing whether the Jev and LLM providers are configured, based on the provider status query.",
+   "tags": [
+    "component",
+    "provider-status",
+    "status-indicator"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/app/AppShell.tsx:GlobalSearch",
+   "type": "function",
+   "name": "GlobalSearch",
+   "filePath": "frontend/src/app/AppShell.tsx",
+   "lineRange": [
+    128,
+    155
+   ],
+   "summary": "Header search form that navigates to the ticket list with the trimmed query in the URL.",
+   "tags": [
+    "component",
+    "search",
+    "navigation",
+    "form"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/app/AppShell.tsx:AppShell",
+   "type": "function",
+   "name": "AppShell",
+   "filePath": "frontend/src/app/AppShell.tsx",
+   "lineRange": [
+    157,
+    218
+   ],
+   "summary": "Layout route component combining a skip link, desktop sidebar, mobile sheet, header, and routed outlet while syncing the document title from route handles.",
+   "tags": [
+    "component",
+    "layout",
+    "navigation",
+    "accessibility"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:frontend/src/app/PlaceholderPage.tsx",
+   "type": "file",
+   "name": "PlaceholderPage.tsx",
+   "filePath": "frontend/src/app/PlaceholderPage.tsx",
+   "summary": "Provides the honest stand-in page for features a later build phase delivers and the catch-all not-found page, both built on the shared empty state.",
+   "tags": [
+    "component",
+    "placeholder",
+    "error-page",
+    "routing"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/app/PlaceholderPage.tsx:PlaceholderPage",
+   "type": "function",
+   "name": "PlaceholderPage",
+   "filePath": "frontend/src/app/PlaceholderPage.tsx",
+   "lineRange": [
+    6,
+    18
+   ],
+   "summary": "Shows a Not built yet empty state naming the feature and the build phase that delivers it, without fake data.",
+   "tags": [
+    "component",
+    "placeholder",
+    "empty-state"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/app/PlaceholderPage.tsx:NotFoundPage",
+   "type": "function",
+   "name": "NotFoundPage",
+   "filePath": "frontend/src/app/PlaceholderPage.tsx",
+   "lineRange": [
+    20,
+    31
+   ],
+   "summary": "Catch-all page showing a Page not found empty state with a link back to the overview.",
+   "tags": [
+    "component",
+    "error-page",
+    "routing"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:frontend/src/app/router.tsx",
+   "type": "file",
+   "name": "router.tsx",
+   "filePath": "frontend/src/app/router.tsx",
+   "summary": "Declares the browser router: AppShell as the layout route with child routes for the overview dashboard, tickets, compare, comparisons, executions, a placeholder settings page, and a not-found fallback.",
+   "tags": [
+    "routing",
+    "entry-point",
+    "configuration",
+    "navigation"
+   ],
+   "complexity": "moderate",
+   "languageNotes": "Uses the React Router `handle` field to attach a title to each route, which AppShell consumes."
+  },
+  {
+   "id": "file:frontend/src/components/ConfirmDialog.tsx",
+   "type": "file",
+   "name": "ConfirmDialog.tsx",
+   "filePath": "frontend/src/components/ConfirmDialog.tsx",
+   "summary": "Reusable confirmation dialog for destructive actions that stays open with a pending label until the caller closes it after the request succeeds.",
+   "tags": [
+    "component",
+    "dialog",
+    "confirmation",
+    "reusable"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:frontend/src/components/ConfirmDialog.tsx:ConfirmDialog",
+   "type": "function",
+   "name": "ConfirmDialog",
+   "filePath": "frontend/src/components/ConfirmDialog.tsx",
+   "lineRange": [
+    23,
+    55
+   ],
+   "summary": "Controlled alert dialog for destructive actions that prevents auto-close on confirm and disables its buttons while pending.",
+   "tags": [
+    "component",
+    "dialog",
+    "confirmation",
+    "reusable"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:frontend/src/components/Detail.tsx",
+   "type": "file",
+   "name": "Detail.tsx",
+   "filePath": "frontend/src/components/Detail.tsx",
+   "summary": "Tiny presentational component rendering one labelled value inside a definition list, with a dash for missing values.",
+   "tags": [
+    "component",
+    "presentational",
+    "reusable",
+    "utility"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/Detail.tsx:Detail",
+   "type": "function",
+   "name": "Detail",
+   "filePath": "frontend/src/components/Detail.tsx",
+   "lineRange": [
+    4,
+    11
+   ],
+   "summary": "Renders a dt and dd pair for one labelled value, showing a dash when the value is missing.",
+   "tags": [
+    "component",
+    "presentational",
+    "reusable"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:frontend/src/components/ListControls.tsx",
+   "type": "file",
+   "name": "ListControls.tsx",
+   "filePath": "frontend/src/components/ListControls.tsx",
+   "summary": "Shared list-page controls: a dropdown filter with an All option and a pager showing the total, current page, and previous and next buttons.",
+   "tags": [
+    "component",
+    "filtering",
+    "pagination",
+    "reusable"
+   ],
+   "complexity": "moderate",
+   "languageNotes": "Maps an \"all\" sentinel to an empty string because a Radix Select item cannot hold an empty value."
+  },
+  {
+   "id": "function:frontend/src/components/ListControls.tsx:FilterSelect",
+   "type": "function",
+   "name": "FilterSelect",
+   "filePath": "frontend/src/components/ListControls.tsx",
+   "lineRange": [
+    13,
+    44
+   ],
+   "summary": "Dropdown filter with an All option that reports an empty string when All is chosen, with optional display labels for options.",
+   "tags": [
+    "component",
+    "filtering",
+    "form",
+    "reusable"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ListControls.tsx:Pager",
+   "type": "function",
+   "name": "Pager",
+   "filePath": "frontend/src/components/ListControls.tsx",
+   "lineRange": [
+    46,
+    86
+   ],
+   "summary": "Shows the item total and page position with previous and next buttons disabled at the range limits.",
+   "tags": [
+    "component",
+    "pagination",
+    "reusable"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:frontend/src/components/states.tsx",
+   "type": "file",
+   "name": "states.tsx",
+   "filePath": "frontend/src/components/states.tsx",
+   "summary": "Shared loading, error, and empty state components that give every page consistent async feedback, using status and alert ARIA roles.",
+   "tags": [
+    "component",
+    "loading-state",
+    "error-handling",
+    "accessibility",
+    "reusable"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:frontend/src/components/states.tsx:LoadingState",
+   "type": "function",
+   "name": "LoadingState",
+   "filePath": "frontend/src/components/states.tsx",
+   "lineRange": [
+    6,
+    16
+   ],
+   "summary": "Spinner with a label in a status live region for pending data.",
+   "tags": [
+    "component",
+    "loading-state",
+    "accessibility"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/states.tsx:ErrorState",
+   "type": "function",
+   "name": "ErrorState",
+   "filePath": "frontend/src/components/states.tsx",
+   "lineRange": [
+    18,
+    43
+   ],
+   "summary": "Alert-role error message taken from an Error instance, with an optional Try again button.",
+   "tags": [
+    "component",
+    "error-handling",
+    "accessibility"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/states.tsx:EmptyState",
+   "type": "function",
+   "name": "EmptyState",
+   "filePath": "frontend/src/components/states.tsx",
+   "lineRange": [
+    45,
+    64
+   ],
+   "summary": "Dashed-border panel with an icon, title, optional explanation, and optional action for pages with nothing to show.",
+   "tags": [
+    "component",
+    "empty-state",
+    "reusable"
+   ],
+   "complexity": "simple"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "function:frontend/src/app/AppShell.tsx:NavList",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "function:frontend/src/app/AppShell.tsx:ThemeToggle",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "function:frontend/src/app/AppShell.tsx:Sidebar",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "function:frontend/src/app/AppShell.tsx:ProviderBadges",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "function:frontend/src/app/AppShell.tsx:GlobalSearch",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "function:frontend/src/app/AppShell.tsx:AppShell",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "function:frontend/src/app/AppShell.tsx:AppShell",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "file:frontend/src/components/ui/badge.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "file:frontend/src/components/ui/button.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "file:frontend/src/components/ui/input.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "file:frontend/src/components/ui/sheet.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "file:frontend/src/lib/utils.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "file:frontend/src/services/queries.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/PlaceholderPage.tsx",
+   "target": "function:frontend/src/app/PlaceholderPage.tsx:PlaceholderPage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/app/PlaceholderPage.tsx",
+   "target": "function:frontend/src/app/PlaceholderPage.tsx:PlaceholderPage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/app/PlaceholderPage.tsx",
+   "target": "function:frontend/src/app/PlaceholderPage.tsx:NotFoundPage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/app/PlaceholderPage.tsx",
+   "target": "function:frontend/src/app/PlaceholderPage.tsx:NotFoundPage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/app/PlaceholderPage.tsx",
+   "target": "file:frontend/src/components/states.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/router.tsx",
+   "target": "file:frontend/src/app/AppShell.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/router.tsx",
+   "target": "file:frontend/src/app/PlaceholderPage.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/router.tsx",
+   "target": "file:frontend/src/features/compare/ComparePage.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/router.tsx",
+   "target": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/router.tsx",
+   "target": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/router.tsx",
+   "target": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/router.tsx",
+   "target": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/router.tsx",
+   "target": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/router.tsx",
+   "target": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/router.tsx",
+   "target": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/router.tsx",
+   "target": "file:frontend/src/features/tickets/TicketListPage.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/components/ConfirmDialog.tsx",
+   "target": "function:frontend/src/components/ConfirmDialog.tsx:ConfirmDialog",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ConfirmDialog.tsx",
+   "target": "function:frontend/src/components/ConfirmDialog.tsx:ConfirmDialog",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ConfirmDialog.tsx",
+   "target": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/components/Detail.tsx",
+   "target": "function:frontend/src/components/Detail.tsx:Detail",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/Detail.tsx",
+   "target": "function:frontend/src/components/Detail.tsx:Detail",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ListControls.tsx",
+   "target": "function:frontend/src/components/ListControls.tsx:FilterSelect",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ListControls.tsx",
+   "target": "function:frontend/src/components/ListControls.tsx:FilterSelect",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ListControls.tsx",
+   "target": "function:frontend/src/components/ListControls.tsx:Pager",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ListControls.tsx",
+   "target": "function:frontend/src/components/ListControls.tsx:Pager",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ListControls.tsx",
+   "target": "file:frontend/src/components/ui/button.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/components/ListControls.tsx",
+   "target": "file:frontend/src/components/ui/select.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/components/states.tsx",
+   "target": "function:frontend/src/components/states.tsx:LoadingState",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/states.tsx",
+   "target": "function:frontend/src/components/states.tsx:LoadingState",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/states.tsx",
+   "target": "function:frontend/src/components/states.tsx:ErrorState",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/states.tsx",
+   "target": "function:frontend/src/components/states.tsx:ErrorState",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/states.tsx",
+   "target": "function:frontend/src/components/states.tsx:EmptyState",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/states.tsx",
+   "target": "function:frontend/src/components/states.tsx:EmptyState",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/states.tsx",
+   "target": "file:frontend/src/components/ui/button.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "function:frontend/src/app/AppShell.tsx:NavList",
+   "target": "function:frontend/src/lib/utils.ts:cn",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/app/AppShell.tsx:ProviderBadges",
+   "target": "function:frontend/src/lib/utils.ts:cn",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/app/AppShell.tsx:ProviderBadges",
+   "target": "function:frontend/src/services/queries.ts:useProviderStatus",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "file:frontend/src/services/queries.ts",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "function:frontend/src/app/AppShell.tsx:Sidebar",
+   "target": "function:frontend/src/app/AppShell.tsx:NavList",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/app/AppShell.tsx:Sidebar",
+   "target": "function:frontend/src/app/AppShell.tsx:ThemeToggle",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/app/AppShell.tsx:AppShell",
+   "target": "function:frontend/src/app/AppShell.tsx:Sidebar",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/app/AppShell.tsx:AppShell",
+   "target": "function:frontend/src/app/AppShell.tsx:ProviderBadges",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/app/AppShell.tsx:AppShell",
+   "target": "function:frontend/src/app/AppShell.tsx:GlobalSearch",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/app/AppShell.tsx:AppShell",
+   "target": "function:frontend/src/components/ui/sheet.tsx:SheetContent",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/app/PlaceholderPage.tsx:PlaceholderPage",
+   "target": "function:frontend/src/components/states.tsx:EmptyState",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/app/PlaceholderPage.tsx:NotFoundPage",
+   "target": "function:frontend/src/components/states.tsx:EmptyState",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/components/ConfirmDialog.tsx:ConfirmDialog",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogContent",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/components/ConfirmDialog.tsx:ConfirmDialog",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogAction",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/components/ConfirmDialog.tsx:ConfirmDialog",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogCancel",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/components/ListControls.tsx:FilterSelect",
+   "target": "function:frontend/src/components/ui/select.tsx:SelectContent",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/components/ListControls.tsx:FilterSelect",
+   "target": "function:frontend/src/components/ui/select.tsx:SelectTrigger",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/components/ListControls.tsx:Pager",
+   "target": "function:frontend/src/components/ui/button.tsx:Button",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/components/states.tsx:ErrorState",
+   "target": "function:frontend/src/components/ui/button.tsx:Button",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  }
+ ]
+}

@@ -1,0 +1,1109 @@
+{
+ "nodes": [
+  {
+   "id": "file:backend/app/api/dashboard.py",
+   "type": "file",
+   "name": "dashboard.py",
+   "filePath": "backend/app/api/dashboard.py",
+   "summary": "FastAPI routes for the Overview metrics and for listing and reading stored Jev-vs-LLM comparisons, delegating all work to the dashboard service.",
+   "tags": [
+    "api-handler",
+    "dashboard",
+    "fastapi",
+    "comparisons"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/dashboard.py:get_dashboard",
+   "type": "function",
+   "name": "get_dashboard",
+   "filePath": "backend/app/api/dashboard.py",
+   "lineRange": [
+    12,
+    14
+   ],
+   "summary": "GET /api/dashboard route returning ticket counts and metrics from stored real runs.",
+   "tags": [
+    "api-handler",
+    "dashboard",
+    "metrics"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/dashboard.py:list_comparisons",
+   "type": "function",
+   "name": "list_comparisons",
+   "filePath": "backend/app/api/dashboard.py",
+   "lineRange": [
+    18,
+    22
+   ],
+   "summary": "GET /api/comparisons route listing stored comparisons newest first, with a bounded limit and an optional ticket filter.",
+   "tags": [
+    "api-handler",
+    "comparisons",
+    "listing"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/dashboard.py:get_comparison",
+   "type": "function",
+   "name": "get_comparison",
+   "filePath": "backend/app/api/dashboard.py",
+   "lineRange": [
+    26,
+    31
+   ],
+   "summary": "GET /api/comparisons/{comparison_id} route returning one comparison with its ticket and both runs, or a 404.",
+   "tags": [
+    "api-handler",
+    "comparisons",
+    "detail"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/api/deps.py",
+   "type": "file",
+   "name": "deps.py",
+   "filePath": "backend/app/api/deps.py",
+   "summary": "Shared FastAPI dependency that exposes the MongoDB database held on application state as the injectable `Db` type used by every route module.",
+   "tags": [
+    "middleware",
+    "dependency-injection",
+    "fastapi",
+    "database"
+   ],
+   "complexity": "simple",
+   "languageNotes": "`Annotated[Database, Depends(get_db)]` packages the dependency into a reusable type alias, so routes declare `db: Db` instead of repeating `Depends`."
+  },
+  {
+   "id": "function:backend/app/api/deps.py:get_db",
+   "type": "function",
+   "name": "get_db",
+   "filePath": "backend/app/api/deps.py",
+   "lineRange": [
+    7,
+    8
+   ],
+   "summary": "Returns the MongoDB database stored on the FastAPI application state for the current request.",
+   "tags": [
+    "dependency-injection",
+    "database",
+    "fastapi"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/api/executions.py",
+   "type": "file",
+   "name": "executions.py",
+   "filePath": "backend/app/api/executions.py",
+   "summary": "FastAPI routes for the execution log: a filtered, paginated list of every AI attempt without payloads, and a detail route returning one attempt in full.",
+   "tags": [
+    "api-handler",
+    "execution-log",
+    "fastapi",
+    "pagination"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/executions.py:list_executions",
+   "type": "function",
+   "name": "list_executions",
+   "filePath": "backend/app/api/executions.py",
+   "lineRange": [
+    15,
+    34
+   ],
+   "summary": "GET /api/executions route that filters attempts by provider, status, ticket and date range and returns one page without payloads.",
+   "tags": [
+    "api-handler",
+    "execution-log",
+    "pagination"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/executions.py:get_execution",
+   "type": "function",
+   "name": "get_execution",
+   "filePath": "backend/app/api/executions.py",
+   "lineRange": [
+    38,
+    43
+   ],
+   "summary": "GET /api/executions/{execution_id} route returning one attempt in full with redacted payloads, or a 404.",
+   "tags": [
+    "api-handler",
+    "execution-log",
+    "detail"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/api/imports.py",
+   "type": "file",
+   "name": "imports.py",
+   "filePath": "backend/app/api/imports.py",
+   "summary": "FastAPI routes for the CSV import template, ticket imports with a dry-run mode and a 5 MB size limit, and CSV downloads of tickets, executions and comparisons.",
+   "tags": [
+    "api-handler",
+    "csv",
+    "import-export",
+    "fastapi",
+    "validation"
+   ],
+   "complexity": "simple",
+   "languageNotes": "The async import route hands synchronous PyMongo work to `run_in_threadpool` so it does not block the event loop."
+  },
+  {
+   "id": "function:backend/app/api/imports.py:csv_download",
+   "type": "function",
+   "name": "csv_download",
+   "filePath": "backend/app/api/imports.py",
+   "lineRange": [
+    16,
+    21
+   ],
+   "summary": "Wraps CSV text in a UTF-8 attachment response with the given filename.",
+   "tags": [
+    "utility",
+    "csv",
+    "http-response"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/imports.py:import_template",
+   "type": "function",
+   "name": "import_template",
+   "filePath": "backend/app/api/imports.py",
+   "lineRange": [
+    25,
+    27
+   ],
+   "summary": "GET /api/imports/template route that downloads an empty CSV containing the import columns.",
+   "tags": [
+    "api-handler",
+    "csv",
+    "template"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/imports.py:import_tickets",
+   "type": "function",
+   "name": "import_tickets",
+   "filePath": "backend/app/api/imports.py",
+   "lineRange": [
+    37,
+    48
+   ],
+   "summary": "POST /api/imports/tickets route that enforces the 5 MB limit, runs the import off the event loop and maps whole-file CSV errors to a 400.",
+   "tags": [
+    "api-handler",
+    "csv",
+    "validation",
+    "import-export"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/api/imports.py:export_csv",
+   "type": "function",
+   "name": "export_csv",
+   "filePath": "backend/app/api/imports.py",
+   "lineRange": [
+    52,
+    54
+   ],
+   "summary": "GET /api/exports/{name}.csv route that downloads tickets, executions or comparisons as CSV.",
+   "tags": [
+    "api-handler",
+    "csv",
+    "import-export"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/api/runs.py",
+   "type": "file",
+   "name": "runs.py",
+   "filePath": "backend/app/api/runs.py",
+   "summary": "FastAPI routes that run one provider on one ticket and record a comparison between finished Jev and GPT runs, without ever choosing a winner.",
+   "tags": [
+    "api-handler",
+    "provider-runs",
+    "comparisons",
+    "fastapi"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/runs.py:run_provider",
+   "type": "function",
+   "name": "run_provider",
+   "filePath": "backend/app/api/runs.py",
+   "lineRange": [
+    16,
+    22
+   ],
+   "summary": "POST route that runs one provider on an existing ticket in a worker thread, so Jev and GPT can run side by side, and returns the recorded execution.",
+   "tags": [
+    "api-handler",
+    "provider-runs",
+    "concurrency"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/runs.py:create_comparison",
+   "type": "function",
+   "name": "create_comparison",
+   "filePath": "backend/app/api/runs.py",
+   "lineRange": [
+    26,
+    31
+   ],
+   "summary": "POST /api/comparisons route that creates a comparison from two runs and maps comparison errors to their HTTP status.",
+   "tags": [
+    "api-handler",
+    "comparisons",
+    "error-handling"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/api/tickets.py",
+   "type": "file",
+   "name": "tickets.py",
+   "filePath": "backend/app/api/tickets.py",
+   "summary": "FastAPI CRUD routes for tickets, covering search, filtering, sorting, pagination, notes, the operator's final classification and cascading deletion.",
+   "tags": [
+    "api-handler",
+    "tickets",
+    "crud",
+    "fastapi",
+    "pagination"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/api/tickets.py:found",
+   "type": "function",
+   "name": "found",
+   "filePath": "backend/app/api/tickets.py",
+   "lineRange": [
+    18,
+    21
+   ],
+   "summary": "Returns the ticket, or raises a 404 when it is missing.",
+   "tags": [
+    "utility",
+    "error-handling",
+    "tickets"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/tickets.py:create_ticket",
+   "type": "function",
+   "name": "create_ticket",
+   "filePath": "backend/app/api/tickets.py",
+   "lineRange": [
+    25,
+    27
+   ],
+   "summary": "POST route that creates a ticket with status Open and never triggers AI.",
+   "tags": [
+    "api-handler",
+    "tickets",
+    "crud"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/tickets.py:list_tickets",
+   "type": "function",
+   "name": "list_tickets",
+   "filePath": "backend/app/api/tickets.py",
+   "lineRange": [
+    31,
+    60
+   ],
+   "summary": "GET route that searches, filters, sorts and paginates tickets and attaches each ticket's latest run.",
+   "tags": [
+    "api-handler",
+    "tickets",
+    "pagination",
+    "search"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/api/tickets.py:get_ticket",
+   "type": "function",
+   "name": "get_ticket",
+   "filePath": "backend/app/api/tickets.py",
+   "lineRange": [
+    64,
+    65
+   ],
+   "summary": "GET route returning one ticket, or a 404.",
+   "tags": [
+    "api-handler",
+    "tickets",
+    "crud"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/tickets.py:update_ticket",
+   "type": "function",
+   "name": "update_ticket",
+   "filePath": "backend/app/api/tickets.py",
+   "lineRange": [
+    69,
+    70
+   ],
+   "summary": "PATCH route applying a partial ticket update, or returning a 404.",
+   "tags": [
+    "api-handler",
+    "tickets",
+    "crud"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/tickets.py:add_note",
+   "type": "function",
+   "name": "add_note",
+   "filePath": "backend/app/api/tickets.py",
+   "lineRange": [
+    74,
+    75
+   ],
+   "summary": "POST route appending a note to a ticket, or returning a 404.",
+   "tags": [
+    "api-handler",
+    "tickets",
+    "notes"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/tickets.py:set_final_classification",
+   "type": "function",
+   "name": "set_final_classification",
+   "filePath": "backend/app/api/tickets.py",
+   "lineRange": [
+    79,
+    84
+   ],
+   "summary": "PUT route saving the operator's final answer, by hand or from one of the ticket's runs, and returning a 422 when the run is unusable.",
+   "tags": [
+    "api-handler",
+    "tickets",
+    "classification"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/tickets.py:delete_ticket",
+   "type": "function",
+   "name": "delete_ticket",
+   "filePath": "backend/app/api/tickets.py",
+   "lineRange": [
+    88,
+    98
+   ],
+   "summary": "DELETE route removing a ticket with its runs, comparisons and labels, logging database failures and returning a safe 500 when the delete is incomplete.",
+   "tags": [
+    "api-handler",
+    "tickets",
+    "deletion",
+    "error-handling"
+   ],
+   "complexity": "simple"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:backend/app/api/dashboard.py",
+   "target": "function:backend/app/api/dashboard.py:get_dashboard",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/dashboard.py",
+   "target": "function:backend/app/api/dashboard.py:get_dashboard",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/dashboard.py",
+   "target": "function:backend/app/api/dashboard.py:list_comparisons",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/dashboard.py",
+   "target": "function:backend/app/api/dashboard.py:list_comparisons",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/dashboard.py",
+   "target": "function:backend/app/api/dashboard.py:get_comparison",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/dashboard.py",
+   "target": "function:backend/app/api/dashboard.py:get_comparison",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/dashboard.py",
+   "target": "file:backend/app/api/deps.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/dashboard.py",
+   "target": "file:backend/app/services/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/dashboard.py",
+   "target": "file:backend/app/services/dashboard.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/deps.py",
+   "target": "function:backend/app/api/deps.py:get_db",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/deps.py",
+   "target": "function:backend/app/api/deps.py:get_db",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/executions.py",
+   "target": "function:backend/app/api/executions.py:list_executions",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/executions.py",
+   "target": "function:backend/app/api/executions.py:list_executions",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/executions.py",
+   "target": "function:backend/app/api/executions.py:get_execution",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/executions.py",
+   "target": "function:backend/app/api/executions.py:get_execution",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/executions.py",
+   "target": "file:backend/app/api/deps.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/executions.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/executions.py",
+   "target": "file:backend/app/repositories/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/executions.py",
+   "target": "file:backend/app/repositories/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/executions.py",
+   "target": "file:backend/app/schemas/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "function:backend/app/api/imports.py:csv_download",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "function:backend/app/api/imports.py:csv_download",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "function:backend/app/api/imports.py:import_template",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "function:backend/app/api/imports.py:import_template",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "function:backend/app/api/imports.py:import_tickets",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "function:backend/app/api/imports.py:import_tickets",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "function:backend/app/api/imports.py:export_csv",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "function:backend/app/api/imports.py:export_csv",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "file:backend/app/api/deps.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "file:backend/app/schemas/imports.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "file:backend/app/services/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "file:backend/app/services/csv_export.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "file:backend/app/services/csv_import.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/runs.py",
+   "target": "function:backend/app/api/runs.py:run_provider",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/runs.py",
+   "target": "function:backend/app/api/runs.py:run_provider",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/runs.py",
+   "target": "function:backend/app/api/runs.py:create_comparison",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/runs.py",
+   "target": "function:backend/app/api/runs.py:create_comparison",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/runs.py",
+   "target": "file:backend/app/api/deps.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/runs.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/runs.py",
+   "target": "file:backend/app/repositories/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/runs.py",
+   "target": "file:backend/app/repositories/tickets.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/runs.py",
+   "target": "file:backend/app/schemas/comparisons.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/runs.py",
+   "target": "file:backend/app/schemas/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/runs.py",
+   "target": "file:backend/app/services/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/runs.py",
+   "target": "file:backend/app/services/comparisons.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/runs.py",
+   "target": "file:backend/app/services/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "function:backend/app/api/tickets.py:found",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "function:backend/app/api/tickets.py:found",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "function:backend/app/api/tickets.py:create_ticket",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "function:backend/app/api/tickets.py:create_ticket",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "function:backend/app/api/tickets.py:list_tickets",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "function:backend/app/api/tickets.py:list_tickets",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "function:backend/app/api/tickets.py:get_ticket",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "function:backend/app/api/tickets.py:get_ticket",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "function:backend/app/api/tickets.py:update_ticket",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "function:backend/app/api/tickets.py:update_ticket",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "function:backend/app/api/tickets.py:add_note",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "function:backend/app/api/tickets.py:add_note",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "function:backend/app/api/tickets.py:set_final_classification",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "function:backend/app/api/tickets.py:set_final_classification",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "function:backend/app/api/tickets.py:delete_ticket",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "function:backend/app/api/tickets.py:delete_ticket",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "file:backend/app/api/deps.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "file:backend/app/repositories/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "file:backend/app/repositories/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "file:backend/app/repositories/tickets.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "file:backend/app/schemas/classification.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "file:backend/app/schemas/tickets.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "file:backend/app/services/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "function:backend/app/api/dashboard.py:get_dashboard",
+   "target": "function:backend/app/services/dashboard.py:summary",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/dashboard.py:list_comparisons",
+   "target": "function:backend/app/services/dashboard.py:list_comparisons",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/dashboard.py:get_comparison",
+   "target": "function:backend/app/services/dashboard.py:detail",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/executions.py:list_executions",
+   "target": "function:backend/app/repositories/executions.py:search",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/executions.py:get_execution",
+   "target": "function:backend/app/repositories/executions.py:get",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/imports.py:import_template",
+   "target": "function:backend/app/api/imports.py:csv_download",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/imports.py:import_tickets",
+   "target": "function:backend/app/services/csv_import.py:import_csv",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/imports.py:export_csv",
+   "target": "function:backend/app/api/imports.py:csv_download",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/imports.py:export_csv",
+   "target": "function:backend/app/services/csv_export.py:export",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/runs.py:run_provider",
+   "target": "function:backend/app/repositories/tickets.py:get",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/runs.py:run_provider",
+   "target": "function:backend/app/services/executions.py:run",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/runs.py:create_comparison",
+   "target": "function:backend/app/services/comparisons.py:create",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/tickets.py:create_ticket",
+   "target": "function:backend/app/services/tickets.py:create",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/tickets.py:list_tickets",
+   "target": "function:backend/app/repositories/tickets.py:search",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/tickets.py:list_tickets",
+   "target": "function:backend/app/repositories/executions.py:latest_by_ticket",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/tickets.py:get_ticket",
+   "target": "function:backend/app/api/tickets.py:found",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/tickets.py:get_ticket",
+   "target": "function:backend/app/repositories/tickets.py:get",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/tickets.py:update_ticket",
+   "target": "function:backend/app/api/tickets.py:found",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/tickets.py:update_ticket",
+   "target": "function:backend/app/services/tickets.py:update",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/tickets.py:add_note",
+   "target": "function:backend/app/api/tickets.py:found",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/tickets.py:add_note",
+   "target": "function:backend/app/services/tickets.py:add_note",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/tickets.py:set_final_classification",
+   "target": "function:backend/app/api/tickets.py:found",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/tickets.py:set_final_classification",
+   "target": "function:backend/app/services/tickets.py:set_classification",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/tickets.py:delete_ticket",
+   "target": "function:backend/app/repositories/tickets.py:delete_with_dependents",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/tickets.py",
+   "target": "file:backend/app/services/tickets.py",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "file:backend/tests/test_csv.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  }
+ ]
+}

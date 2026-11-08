@@ -5,6 +5,7 @@ import json
 import httpx
 import pytest
 
+from app.core.taxonomy import SUBCATEGORIES
 from app.providers.base import ProviderFailure, build_input
 from app.providers.jev import JevAdapter
 from app.providers.ollama import OllamaAdapter
@@ -53,38 +54,83 @@ JEV_REPLY = {
 }
 
 
-def test_jev_sends_system_one_request_and_parses_answers():
-    seen = {}
+def two_step(seen: list):
+    """Answers whichever step is asked: the main questions, or the subcategory follow-up."""
 
     def handler(request):
-        seen["url"] = str(request.url)
-        seen["auth"] = request.headers.get("authorization")
-        seen["body"] = json.loads(request.content)
+        seen.append(
+            (str(request.url), request.headers.get("authorization"), json.loads(request.content))
+        )
         return httpx.Response(200, json=JEV_REPLY)
 
-    result = jev(handler).classify(DATA)
+    return handler
 
-    assert seen["url"] == "http://127.0.0.1:11434/v1/systemone"
-    assert seen["auth"] is None  # local AutoTrust needs no key
-    body = seen["body"]
-    assert set(body["questions"]) == {
-        "category",
-        "subcategory",
-        "priority",
-        "sentiment",
-        "escalation",
-    }
-    assert body["questions"]["escalation"]["type"] == "noul"
-    assert "final_classification" not in json.dumps(body)
+
+def test_jev_asks_category_first_then_only_that_categorys_subcategories():
+    seen = []
+
+    result = jev(two_step(seen)).classify(DATA)
+
+    assert len(seen) == 2
+    (url, auth, first), (_, _, second) = seen
+    assert url == "http://127.0.0.1:11434/v1/systemone"
+    assert auth is None  # local AutoTrust needs no key
+    assert set(first["questions"]) == {"category", "priority", "sentiment", "escalation"}
+    assert first["questions"]["escalation"]["type"] == "noul"
+    assert set(second["questions"]) == {"subcategory"}
+    options = second["questions"]["subcategory"]["criteria"]
+    assert set(options) == set(SUBCATEGORIES["Returns & Refunds"])  # the category Jev chose
+    assert 2 <= len(options) <= 16  # AutoTrust's limit for a choice question
+    assert first["state"] == second["state"]
+    assert "final_classification" not in json.dumps(seen)
+
     normalized = NormalizedResult(**result.output)
     assert (normalized.subcategory, normalized.escalation_required) == ("Refund Delay", False)
     assert normalized.confidence["category"] == 0.93
-    assert normalized.summary is None and normalized.unsupported_fields == [
-        "summary",
-        "suggested_resolution",
-    ]
-    assert (result.usage.input_tokens, result.usage.total_tokens) == (900, 912)
+    assert normalized.confidence["subcategory"] == 0.81
+    assert normalized.summary is None
+    assert normalized.unsupported_fields == ["summary", "suggested_resolution"]
     assert result.actual_model == "autotrust-jev:9b"
+
+
+def test_jev_counts_tokens_from_both_steps_and_stores_both_payloads():
+    seen = []
+
+    result = jev(two_step(seen)).classify(DATA)
+
+    assert (result.usage.input_tokens, result.usage.output_tokens) == (1800, 24)
+    assert result.usage.total_tokens == 1824
+    assert result.usage.usage_source == "provider_reported"
+    assert [len(step["questions"]) for step in result.request_payload["steps"]] == [4, 1]
+    assert len(result.response_payload["steps"]) == 2
+
+
+def test_jev_rejects_an_unknown_category_without_a_second_call():
+    calls = []
+    reply = {"answers": {"category": choice("Not A Category", 0.5)}, "usage": {}}
+
+    def handler(request):
+        calls.append(request)
+        return httpx.Response(200, json=reply)
+
+    with pytest.raises(ProviderFailure) as raised:
+        jev(handler).classify(DATA)
+
+    assert raised.value.kind == "invalid_response"
+    assert len(calls) == 1
+    assert raised.value.request_payload is not None
+
+
+def test_jev_failure_in_the_second_step_keeps_the_first_steps_payload():
+    first_step = iter([httpx.Response(200, json=JEV_REPLY)])
+    broken = httpx.Response(500, json={"error": "boom"})  # stays broken through every retry
+
+    with pytest.raises(ProviderFailure) as raised:
+        jev(lambda request: next(first_step, broken)).classify(DATA)
+
+    assert raised.value.kind == "server_error"
+    assert len(raised.value.request_payload["steps"]) == 2
+    assert len(raised.value.response_payload["steps"]) == 1
 
 
 def test_jev_sends_the_key_when_one_is_configured():

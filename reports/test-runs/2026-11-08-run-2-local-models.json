@@ -1,0 +1,20 @@
+{
+  "run_id": "2026-11-08-run-2-local-models",
+  "name": "Local Models Run 2",
+  "created_at": "2026-11-08T10:49:13.990000+00:00",
+  "jev_label": "autotrust-jev:9b",
+  "llm_label": "qwen3:8b",
+  "note": "Run 2 used real models running locally through Ollama: AutoTrust JEV (an open model, not TypeSafe's hosted Jev) and qwen3:8b, on 10 synthetic English tickets, a small sample. The first tickets include loading the models into memory, so medians are fairer than means.",
+  "comparisons": [
+    "cmp_0b15ad17fd9b4af3aa4a18e38aa449a0",
+    "cmp_8a494de3ebf34ff5bd3efba09ae6a983",
+    "cmp_0332aea5154f4e66bde8f74c36847303",
+    "cmp_e506d62eb73543bca8d77fb772264506",
+    "cmp_329805f7cb0a4e2d8e78be9dd79e440b",
+    "cmp_a2c52c4bfe654d13be196807080c4de2",
+    "cmp_5c3fc0224e6d47d9b96f5bbbf9f58d01",
+    "cmp_d3c2a7156b714368b0b03103d75a6188",
+    "cmp_538102ab3ee74449889afe3af0a91c4e",
+    "cmp_41b5b496af474191bfeefb2dffc6d34a"
+  ]
+}

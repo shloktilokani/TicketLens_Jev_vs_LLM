@@ -1,0 +1,922 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 10,
+  "filesSkipped": [
+    ".context/sample_tickets_100.csv",
+    ".context/sample_tickets_template.csv"
+  ],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 10,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 10
+    }
+  },
+  "results": [
+    {
+      "path": ".context/DEPLOYMENT_DECISIONS.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 20,
+      "nonEmptyLines": 15,
+      "sections": [
+        {
+          "heading": "Deployment Decisions — Pending",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Non-negotiable constraints",
+          "level": 2,
+          "line": 14
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 2
+      }
+    },
+    {
+      "path": ".context/PROGRESS.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 361,
+      "nonEmptyLines": 276,
+      "sections": [
+        {
+          "heading": "Progress",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Status",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Phases",
+          "level": 2,
+          "line": 11
+        },
+        {
+          "heading": "Blockers",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "Required fix before any paid evaluation (Phase 14)",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Assumptions and spec gaps",
+          "level": 2,
+          "line": 48
+        },
+        {
+          "heading": "Phase 1 notes",
+          "level": 2,
+          "line": 62
+        },
+        {
+          "heading": "Phase 2 notes (2026-11-07)",
+          "level": 2,
+          "line": 80
+        },
+        {
+          "heading": "Phase 3 notes (2026-11-07)",
+          "level": 2,
+          "line": 104
+        },
+        {
+          "heading": "Phase 4 notes (2026-11-07)",
+          "level": 2,
+          "line": 124
+        },
+        {
+          "heading": "Phase 5 notes (2026-11-07)",
+          "level": 2,
+          "line": 153
+        },
+        {
+          "heading": "Phase 6 notes (2026-11-07)",
+          "level": 2,
+          "line": 178
+        },
+        {
+          "heading": "Phase 7 notes (2026-11-07)",
+          "level": 2,
+          "line": 192
+        },
+        {
+          "heading": "Phase 8 notes (2026-11-07)",
+          "level": 2,
+          "line": 218
+        },
+        {
+          "heading": "Compare workbench, brought forward from Phase 12 (2026-11-07)",
+          "level": 2,
+          "line": 240
+        },
+        {
+          "heading": "Visual check with Playwright (2026-11-07)",
+          "level": 2,
+          "line": 270
+        },
+        {
+          "heading": "Local models and test-run reports (2026-11-07)",
+          "level": 2,
+          "line": 290
+        },
+        {
+          "heading": "Phase 11 notes (2026-11-08)",
+          "level": 2,
+          "line": 323
+        },
+        {
+          "heading": "Phase 12 notes (2026-11-08)",
+          "level": 2,
+          "line": 338
+        },
+        {
+          "heading": "Code size requirement (2026-11-07)",
+          "level": 2,
+          "line": 353
+        },
+        {
+          "heading": "Skills",
+          "level": 2,
+          "line": 357
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 21
+      }
+    },
+    {
+      "path": ".context/ROADMAP.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 104,
+      "nonEmptyLines": 74,
+      "sections": [
+        {
+          "heading": "Roadmap: remaining phases and owner inputs",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Phase sequence",
+          "level": 2,
+          "line": 8
+        },
+        {
+          "heading": "Owner input plans",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "A. MongoDB (done)",
+          "level": 3,
+          "line": 37
+        },
+        {
+          "heading": "B. Add API keys (before Phases 9 and 10)",
+          "level": 3,
+          "line": 44
+        },
+        {
+          "heading": "C. Choose the GPT model and prices (before Phase 10)",
+          "level": 3,
+          "line": 58
+        },
+        {
+          "heading": "D. Approve spending on real AI calls",
+          "level": 3,
+          "line": 69
+        },
+        {
+          "heading": "E. Review the corrected sample dataset (Phase 14)",
+          "level": 3,
+          "line": 77
+        },
+        {
+          "heading": "F. Try the setup guide (Phase 17)",
+          "level": 3,
+          "line": 85
+        },
+        {
+          "heading": "G. Deployment decisions (only before going online)",
+          "level": 3,
+          "line": 92
+        },
+        {
+          "heading": "Open items from earlier",
+          "level": 2,
+          "line": 99
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 11
+      }
+    },
+    {
+      "path": ".context/ai-evaluation.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 221,
+      "nonEmptyLines": 166,
+      "sections": [
+        {
+          "heading": "AI Integration, Classification, Evaluation, and Cost Logging",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. Purpose",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "2. Shared classification contract",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "3. Taxonomy",
+          "level": 2,
+          "line": 23
+        },
+        {
+          "heading": "Categories and subcategories",
+          "level": 3,
+          "line": 25
+        },
+        {
+          "heading": "Priority definitions",
+          "level": 3,
+          "line": 29
+        },
+        {
+          "heading": "Sentiment definitions",
+          "level": 3,
+          "line": 36
+        },
+        {
+          "heading": "Escalation definition",
+          "level": 3,
+          "line": 42
+        },
+        {
+          "heading": "4. Language handling",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "5. Canonical provider input",
+          "level": 2,
+          "line": 56
+        },
+        {
+          "heading": "6. Jev / TypeSafe adapter",
+          "level": 2,
+          "line": 73
+        },
+        {
+          "heading": "7. GPT adapter",
+          "level": 2,
+          "line": 112
+        },
+        {
+          "heading": "8. Fair comparison rules",
+          "level": 2,
+          "line": 135
+        },
+        {
+          "heading": "9. Labelled sample dataset",
+          "level": 2,
+          "line": 148
+        },
+        {
+          "heading": "10. Execution logging",
+          "level": 2,
+          "line": 171
+        },
+        {
+          "heading": "11. Cost calculation",
+          "level": 2,
+          "line": 192
+        },
+        {
+          "heading": "12. Errors and retries",
+          "level": 2,
+          "line": 206
+        },
+        {
+          "heading": "13. Privacy and data handling",
+          "level": 2,
+          "line": 217
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 18
+      }
+    },
+    {
+      "path": ".context/architecture.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 216,
+      "nonEmptyLines": 168,
+      "sections": [
+        {
+          "heading": "System Architecture",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. Overview",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "2. Technology choices",
+          "level": 2,
+          "line": 25
+        },
+        {
+          "heading": "Frontend",
+          "level": 3,
+          "line": 27
+        },
+        {
+          "heading": "Backend",
+          "level": 3,
+          "line": 35
+        },
+        {
+          "heading": "3. Provider adapter boundary",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "4. Jev-specific behavior",
+          "level": 2,
+          "line": 75
+        },
+        {
+          "heading": "5. GPT-specific behavior",
+          "level": 2,
+          "line": 100
+        },
+        {
+          "heading": "6. Canonical provider input",
+          "level": 2,
+          "line": 116
+        },
+        {
+          "heading": "7. Request flows",
+          "level": 2,
+          "line": 137
+        },
+        {
+          "heading": "Single provider execution",
+          "level": 3,
+          "line": 139
+        },
+        {
+          "heading": "Run both / compare",
+          "level": 3,
+          "line": 150
+        },
+        {
+          "heading": "Bulk processing",
+          "level": 3,
+          "line": 159
+        },
+        {
+          "heading": "CSV import",
+          "level": 3,
+          "line": 168
+        },
+        {
+          "heading": "Ticket deletion",
+          "level": 3,
+          "line": 177
+        },
+        {
+          "heading": "8. MongoDB collections",
+          "level": 2,
+          "line": 180
+        },
+        {
+          "heading": "9. Local runtime and CORS",
+          "level": 2,
+          "line": 192
+        },
+        {
+          "heading": "10. Deployment boundary",
+          "level": 2,
+          "line": 203
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 18
+      }
+    },
+    {
+      "path": ".context/code-size-standards.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 101,
+      "nonEmptyLines": 81,
+      "sections": [
+        {
+          "heading": "Code size and reuse standards",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. Summary",
+          "level": 2,
+          "line": 10
+        },
+        {
+          "heading": "2. What the research says",
+          "level": 2,
+          "line": 20
+        },
+        {
+          "heading": "3. Standards applied",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "4. Where shared code lives",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "5. Rules for every coding task",
+          "level": 2,
+          "line": 71
+        },
+        {
+          "heading": "6. How it is enforced",
+          "level": 2,
+          "line": 86
+        },
+        {
+          "heading": "7. Precedence",
+          "level": 2,
+          "line": 98
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": ".context/data-model.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 246,
+      "nonEmptyLines": 211,
+      "sections": [
+        {
+          "heading": "MongoDB Data Model",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. `tickets`",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "2. `evaluation_labels`",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "3. `ai_executions`",
+          "level": 2,
+          "line": 78
+        },
+        {
+          "heading": "4. `comparisons`",
+          "level": 2,
+          "line": 148
+        },
+        {
+          "heading": "5. `bulk_jobs`",
+          "level": 2,
+          "line": 176
+        },
+        {
+          "heading": "6. `app_settings`",
+          "level": 2,
+          "line": 191
+        },
+        {
+          "heading": "7. `counters`",
+          "level": 2,
+          "line": 204
+        },
+        {
+          "heading": "8. Required indexes",
+          "level": 2,
+          "line": 217
+        },
+        {
+          "heading": "9. Deletion behavior",
+          "level": 2,
+          "line": 235
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    },
+    {
+      "path": ".context/design.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 280,
+      "nonEmptyLines": 219,
+      "sections": [
+        {
+          "heading": "Frontend Design Document",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. Design direction",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "2. Application shell",
+          "level": 2,
+          "line": 17
+        },
+        {
+          "heading": "Sidebar navigation",
+          "level": 3,
+          "line": 19
+        },
+        {
+          "heading": "Top header",
+          "level": 3,
+          "line": 31
+        },
+        {
+          "heading": "3. Routes",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "4. Dashboard (`/`)",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "Metric cards",
+          "level": 3,
+          "line": 56
+        },
+        {
+          "heading": "Charts",
+          "level": 3,
+          "line": 63
+        },
+        {
+          "heading": "Recent activity",
+          "level": 3,
+          "line": 69
+        },
+        {
+          "heading": "5. Ticket list (`/tickets`)",
+          "level": 2,
+          "line": 76
+        },
+        {
+          "heading": "6. Create ticket (`/tickets/new`)",
+          "level": 2,
+          "line": 104
+        },
+        {
+          "heading": "7. Ticket detail (`/tickets/:ticketId`)",
+          "level": 2,
+          "line": 123
+        },
+        {
+          "heading": "8. Comparison detail (`/comparisons/:comparisonId`)",
+          "level": 2,
+          "line": 154
+        },
+        {
+          "heading": "9. AI execution log pages",
+          "level": 2,
+          "line": 184
+        },
+        {
+          "heading": "10. Settings page",
+          "level": 2,
+          "line": 212
+        },
+        {
+          "heading": "11. CSV import/export UX",
+          "level": 2,
+          "line": 226
+        },
+        {
+          "heading": "12. Theme and design tokens",
+          "level": 2,
+          "line": 244
+        },
+        {
+          "heading": "13. Interaction and accessibility",
+          "level": 2,
+          "line": 268
+        },
+        {
+          "heading": "14. Frontend non-goals",
+          "level": 2,
+          "line": 278
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 20
+      }
+    },
+    {
+      "path": ".context/implementation.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 402,
+      "nonEmptyLines": 337,
+      "sections": [
+        {
+          "heading": "End-to-End Implementation Plan",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Phase 0 — Repository and agent setup",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "Phase 1 — Scaffold the frontend and backend",
+          "level": 2,
+          "line": 21
+        },
+        {
+          "heading": "Phase 2 — Local configuration and MongoDB connectivity",
+          "level": 2,
+          "line": 86
+        },
+        {
+          "heading": "Phase 3 — Domain schemas and taxonomy",
+          "level": 2,
+          "line": 105
+        },
+        {
+          "heading": "Phase 4 — Ticket CRUD and sequential IDs",
+          "level": 2,
+          "line": 119
+        },
+        {
+          "heading": "Phase 5 — Frontend shell and design system",
+          "level": 2,
+          "line": 139
+        },
+        {
+          "heading": "Phase 6 — Ticket screens",
+          "level": 2,
+          "line": 156
+        },
+        {
+          "heading": "Phase 7 — CSV template, import, and export",
+          "level": 2,
+          "line": 173
+        },
+        {
+          "heading": "Phase 8 — Provider adapter contracts and mock mode",
+          "level": 2,
+          "line": 193
+        },
+        {
+          "heading": "Phase 9 — Jev integration",
+          "level": 2,
+          "line": 206
+        },
+        {
+          "heading": "Phase 10 — GPT integration",
+          "level": 2,
+          "line": 227
+        },
+        {
+          "heading": "Phase 11 — Execution history and cost logging",
+          "level": 2,
+          "line": 244
+        },
+        {
+          "heading": "Phase 12 — Comparison workflow",
+          "level": 2,
+          "line": 262
+        },
+        {
+          "heading": "Phase 13 — Bulk processing",
+          "level": 2,
+          "line": 280
+        },
+        {
+          "heading": "Phase 14 — Evaluation dataset and analytics",
+          "level": 2,
+          "line": 297
+        },
+        {
+          "heading": "Phase 15 — Settings page",
+          "level": 2,
+          "line": 316
+        },
+        {
+          "heading": "Phase 16 — Testing, reliability, and security review",
+          "level": 2,
+          "line": 334
+        },
+        {
+          "heading": "Phase 17 — Local release and documentation",
+          "level": 2,
+          "line": 351
+        },
+        {
+          "heading": "Phase 18 — Deployment readiness (platform intentionally undecided)",
+          "level": 2,
+          "line": 365
+        },
+        {
+          "heading": "Final definition of done",
+          "level": 2,
+          "line": 392
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 21
+      }
+    },
+    {
+      "path": ".context/requirements.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 236,
+      "nonEmptyLines": 184,
+      "sections": [
+        {
+          "heading": "Product and Technical Requirements",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. Product identity",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "2. Intended operator",
+          "level": 2,
+          "line": 10
+        },
+        {
+          "heading": "3. Business context",
+          "level": 2,
+          "line": 16
+        },
+        {
+          "heading": "4. Ticket lifecycle and data",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Ticket fields",
+          "level": 3,
+          "line": 24
+        },
+        {
+          "heading": "Ticket categories",
+          "level": 3,
+          "line": 42
+        },
+        {
+          "heading": "Initial subcategory taxonomy",
+          "level": 3,
+          "line": 54
+        },
+        {
+          "heading": "Other classification fields",
+          "level": 3,
+          "line": 65
+        },
+        {
+          "heading": "5. AI provider behavior",
+          "level": 2,
+          "line": 75
+        },
+        {
+          "heading": "6. Execution history and cost logging",
+          "level": 2,
+          "line": 89
+        },
+        {
+          "heading": "7. Comparison and evaluation",
+          "level": 2,
+          "line": 115
+        },
+        {
+          "heading": "8. Ticket management",
+          "level": 2,
+          "line": 127
+        },
+        {
+          "heading": "9. CSV import/export",
+          "level": 2,
+          "line": 139
+        },
+        {
+          "heading": "10. Dashboard",
+          "level": 2,
+          "line": 151
+        },
+        {
+          "heading": "11. Search and ticket history",
+          "level": 2,
+          "line": 171
+        },
+        {
+          "heading": "12. Settings page",
+          "level": 2,
+          "line": 188
+        },
+        {
+          "heading": "13. Technical stack",
+          "level": 2,
+          "line": 198
+        },
+        {
+          "heading": "14. Non-functional requirements",
+          "level": 2,
+          "line": 225
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 19
+      }
+    }
+  ]
+}

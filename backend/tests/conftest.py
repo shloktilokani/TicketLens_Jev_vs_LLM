@@ -1,9 +1,25 @@
 import pytest
 from pymongo import MongoClient
 
+from app.core import taxonomy
 from app.core.settings import Settings
+from app.providers import http
 
 TEST_DB = "ticketlens_test"
+
+
+@pytest.fixture(autouse=True)
+def default_taxonomy():
+    """The active taxonomy lives in the process, so no test may leak its changes to another."""
+    taxonomy.reset()
+    yield
+    taxonomy.reset()
+
+
+@pytest.fixture(autouse=True)
+def no_retry_waits(monkeypatch):
+    """Retries still happen in tests; only the waiting between them is skipped."""
+    monkeypatch.setattr(http, "pause", lambda seconds: None)
 
 
 @pytest.fixture

@@ -1,0 +1,120 @@
+{
+  "nodes": [
+    {
+      "id": "config:frontend/.prettierrc.json",
+      "type": "config",
+      "name": ".prettierrc.json",
+      "filePath": "frontend/.prettierrc.json",
+      "summary": "Prettier configuration for the frontend that disables semicolons and otherwise keeps Prettier's default formatting rules.",
+      "tags": ["configuration", "formatting", "prettier", "code-style"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:frontend/components.json",
+      "type": "config",
+      "name": "components.json",
+      "filePath": "frontend/components.json",
+      "summary": "shadcn/ui CLI configuration selecting the radix-nova style, neutral base color with CSS variables, lucide icons, and the @/ alias locations where generated TSX components, hooks, and utilities are placed.",
+      "tags": ["configuration", "shadcn-ui", "tailwind", "design-system", "path-alias"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "frontend/index.html",
+      "summary": "Vite HTML entry page for the TicketLens single-page app, providing the #root mount element and loading /src/main.tsx as an ES module.",
+      "tags": ["entry-point", "html", "vite", "spa-shell"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:frontend/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "frontend/package.json",
+      "summary": "Private ES-module package manifest for the TicketLens frontend, defining Vite dev, build, and preview scripts plus ESLint and Prettier commands, with dependencies on React 19, React Router, TanStack Query, Radix UI, Recharts, and Zod.",
+      "tags": ["configuration", "build-system", "dependencies", "npm-scripts", "vite"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:frontend/tsconfig.app.json",
+      "type": "config",
+      "name": "tsconfig.app.json",
+      "filePath": "frontend/tsconfig.app.json",
+      "summary": "TypeScript project configuration for browser application code under src, targeting ES2023 and the DOM with bundler module resolution, react-jsx, no emit, unused-code checks, and the @/* path alias.",
+      "tags": ["configuration", "typescript", "build-system", "react", "path-alias"],
+      "complexity": "simple",
+      "languageNotes": "erasableSyntaxOnly and verbatimModuleSyntax restrict source to TypeScript syntax that can be stripped without transformation, which suits a bundler-driven build with noEmit."
+    },
+    {
+      "id": "config:frontend/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "frontend/tsconfig.json",
+      "summary": "Root TypeScript solution file that compiles no files itself and references the separate app and node projects while declaring the @/* path alias for tooling.",
+      "tags": ["configuration", "typescript", "build-system", "project-references"],
+      "complexity": "simple",
+      "languageNotes": "An empty files array with references makes this a solution-style tsconfig, built with tsc -b."
+    },
+    {
+      "id": "config:frontend/tsconfig.node.json",
+      "type": "config",
+      "name": "tsconfig.node.json",
+      "filePath": "frontend/tsconfig.node.json",
+      "summary": "TypeScript project configuration for Node-side build tooling, type-checking only vite.config.ts with nodenext modules, Node types, no emit, and unused-code checks.",
+      "tags": ["configuration", "typescript", "build-system", "node", "vite"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "config:frontend/tsconfig.json",
+      "target": "config:frontend/tsconfig.app.json",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:frontend/tsconfig.json",
+      "target": "config:frontend/tsconfig.node.json",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:frontend/package.json",
+      "target": "config:frontend/tsconfig.json",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:frontend/package.json",
+      "target": "config:frontend/.prettierrc.json",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:frontend/package.json",
+      "target": "file:frontend/index.html",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:frontend/package.json",
+      "target": "config:frontend/components.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:frontend/components.json",
+      "target": "config:frontend/tsconfig.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

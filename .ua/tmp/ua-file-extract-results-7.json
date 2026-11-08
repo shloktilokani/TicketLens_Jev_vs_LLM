@@ -1,0 +1,178 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 4,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 4,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 4
+    }
+  },
+  "results": [
+    {
+      "path": ".mcp.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 36,
+      "nonEmptyLines": 36,
+      "sections": [
+        {
+          "heading": "mcpServers",
+          "level": 1,
+          "line": 2
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    },
+    {
+      "path": "AGENTS.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 70,
+      "nonEmptyLines": 56,
+      "sections": [
+        {
+          "heading": "Coding Agent Instructions",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. Read before coding",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "2. Autonomy expectations",
+          "level": 2,
+          "line": 19
+        },
+        {
+          "heading": "3. Technical guardrails",
+          "level": 2,
+          "line": 28
+        },
+        {
+          "heading": "4. Definition of done for each phase",
+          "level": 2,
+          "line": 48
+        },
+        {
+          "heading": "5. Required developer experience",
+          "level": 2,
+          "line": 57
+        },
+        {
+          "heading": "6. Scope exclusions",
+          "level": 2,
+          "line": 68
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "CLAUDE.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 34,
+      "nonEmptyLines": 23,
+      "sections": [
+        {
+          "heading": "CLAUDE.md",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Commands (from the repository root)",
+          "level": 2,
+          "line": 11
+        },
+        {
+          "heading": "Engineering skills library",
+          "level": 2,
+          "line": 23
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 3
+      }
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 86,
+      "nonEmptyLines": 58,
+      "sections": [
+        {
+          "heading": "TicketLens_Jev_vs_LLM",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Documentation map",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Product summary",
+          "level": 2,
+          "line": 20
+        },
+        {
+          "heading": "Local-first development",
+          "level": 2,
+          "line": 24
+        },
+        {
+          "heading": "Important scope boundary",
+          "level": 2,
+          "line": 34
+        },
+        {
+          "heading": "Run locally",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Architecture",
+          "level": 2,
+          "line": 80
+        },
+        {
+          "heading": "Getting started",
+          "level": 2,
+          "line": 84
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    }
+  ]
+}

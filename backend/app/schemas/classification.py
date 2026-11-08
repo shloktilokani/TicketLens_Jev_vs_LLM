@@ -2,13 +2,13 @@ from datetime import datetime
 
 from pydantic import BaseModel, model_validator
 
-from app.core.taxonomy import TAXONOMY_VERSION, Category, Priority, Sentiment, is_valid_pair
+from app.core.taxonomy import TAXONOMY_VERSION, Priority, Sentiment, is_valid_pair
 
 
 class Classification(BaseModel):
     """The five fields both providers are compared on."""
 
-    category: Category
+    category: str
     subcategory: str
     priority: Priority
     sentiment: Sentiment
@@ -20,6 +20,12 @@ class Classification(BaseModel):
         if not is_valid_pair(self.category, self.subcategory):
             raise ValueError(f"'{self.subcategory}' is not a subcategory of '{self.category}'")
         return self
+
+
+class FinalClassificationInput(Classification):
+    """What the operator saves. Naming a run records where the answer came from."""
+
+    selected_from_execution_id: str | None = None
 
 
 class FinalClassification(Classification):

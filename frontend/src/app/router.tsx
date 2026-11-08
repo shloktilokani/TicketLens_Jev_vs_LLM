@@ -1,8 +1,15 @@
 import { createBrowserRouter } from "react-router"
 
 import { AppShell } from "@/app/AppShell"
-import { NotFoundPage, PlaceholderPage } from "@/app/PlaceholderPage"
+import { NotFoundPage } from "@/app/PlaceholderPage"
+import { BulkRunDetailPage, BulkRunsPage } from "@/features/bulk/BulkRunsPage"
 import { ComparePage } from "@/features/compare/ComparePage"
+import { ComparisonDetailPage } from "@/features/comparisons/ComparisonDetailPage"
+import { ComparisonsPage } from "@/features/comparisons/ComparisonsPage"
+import { DashboardPage } from "@/features/dashboard/DashboardPage"
+import { ExecutionDetailPage } from "@/features/executions/ExecutionDetailPage"
+import { ExecutionsPage } from "@/features/executions/ExecutionsPage"
+import { SettingsPage } from "@/features/settings/SettingsPage"
 import { NewTicketPage } from "@/features/tickets/NewTicketPage"
 import { TicketDetailPage } from "@/features/tickets/TicketDetailPage"
 import { TicketListPage } from "@/features/tickets/TicketListPage"
@@ -15,7 +22,7 @@ export const router = createBrowserRouter([
       {
         index: true,
         handle: { title: "Overview" },
-        element: <PlaceholderPage phase={14} what="The dashboard" />,
+        element: <DashboardPage />,
       },
       {
         path: "tickets",
@@ -40,27 +47,37 @@ export const router = createBrowserRouter([
       {
         path: "comparisons",
         handle: { title: "Comparisons" },
-        element: <PlaceholderPage phase={12} what="Comparison history" />,
+        element: <ComparisonsPage />,
       },
       {
         path: "comparisons/:comparisonId",
         handle: { title: "Comparison" },
-        element: <PlaceholderPage phase={12} what="Comparison detail" />,
+        element: <ComparisonDetailPage />,
       },
       {
         path: "executions",
         handle: { title: "AI Executions" },
-        element: <PlaceholderPage phase={11} what="The execution log" />,
+        element: <ExecutionsPage />,
       },
       {
         path: "executions/:executionId",
         handle: { title: "Execution" },
-        element: <PlaceholderPage phase={11} what="Execution detail" />,
+        element: <ExecutionDetailPage />,
+      },
+      {
+        path: "bulk-runs",
+        handle: { title: "Bulk Runs" },
+        element: <BulkRunsPage />,
+      },
+      {
+        path: "bulk-runs/:jobId",
+        handle: { title: "Bulk Run" },
+        element: <BulkRunDetailPage />,
       },
       {
         path: "settings",
         handle: { title: "Settings" },
-        element: <PlaceholderPage phase={15} what="The settings page" />,
+        element: <SettingsPage />,
       },
       { path: "*", handle: { title: "Not found" }, element: <NotFoundPage /> },
     ],

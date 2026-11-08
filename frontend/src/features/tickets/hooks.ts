@@ -7,6 +7,9 @@ import {
 
 import { api, send } from "@/services/api"
 import type {
+  Execution,
+  ExecutionPage,
+  FinalClassificationInput,
   ImportSummary,
   Ticket,
   TicketInput,
@@ -66,6 +69,33 @@ export const useAddNote = (ticketId: string) =>
   useTicketWrite((text: string) =>
     send<Ticket>("POST", `${path(ticketId)}/notes`, { text }),
   )
+
+export const useSetFinal = (ticketId: string) =>
+  useTicketWrite((input: FinalClassificationInput) =>
+    send<Ticket>("PUT", `${path(ticketId)}/final-classification`, input),
+  )
+
+export const useTicketRuns = (ticketId: string) =>
+  useQuery({
+    queryKey: ["executions", "ticket", ticketId],
+    queryFn: () =>
+      api<ExecutionPage>(
+        `/api/executions?ticket_id=${encodeURIComponent(ticketId)}&page_size=100`,
+      ),
+  })
+
+/** One provider on one ticket. Paid calls are never retried automatically (AGENTS.md section 3). */
+export function useRunProvider(ticketId: string, provider: "jev" | "gpt") {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: () =>
+      send<Execution>("POST", `${path(ticketId)}/runs/${provider}`),
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["executions"] })
+      queryClient.invalidateQueries({ queryKey: ["tickets", "list"] })
+    },
+  })
+}
 
 export const useDeleteTicket = (ticketId: string) =>
   useTicketWrite(() => send<undefined>("DELETE", path(ticketId)))

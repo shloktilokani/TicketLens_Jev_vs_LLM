@@ -4,6 +4,7 @@ import {
   CircleCheck,
   CircleX,
   GitCompare,
+  Layers,
   LayoutDashboard,
   Menu,
   Moon,
@@ -21,6 +22,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet"
+import { BulkBanner } from "@/features/bulk/BulkBanner"
 import { cn } from "@/lib/utils"
 import { useProviderStatus } from "@/services/queries"
 
@@ -30,6 +32,7 @@ const NAV = [
   { to: "/compare", label: "Compare", icon: Columns2 },
   { to: "/comparisons", label: "Comparisons", icon: GitCompare },
   { to: "/executions", label: "AI Executions", icon: Activity },
+  { to: "/bulk-runs", label: "Bulk Runs", icon: Layers },
   { to: "/settings", label: "Settings", icon: Settings },
 ]
 
@@ -103,7 +106,12 @@ function ProviderBadges() {
         const { configured, label } = data[provider]
         const Icon = configured ? CircleCheck : CircleX
         return (
-          <Badge key={provider} variant="outline" className="gap-1">
+          <Badge
+            key={provider}
+            variant="outline"
+            className="gap-1"
+            title={label}
+          >
             <Icon
               className={cn(
                 "size-3",
@@ -112,7 +120,7 @@ function ProviderBadges() {
               aria-hidden
             />
             {provider === "jev" ? "Jev" : "LLM"}:{" "}
-            {configured ? label : "Not configured"}
+            {configured ? label.split(" · ").at(-1) : "Not configured"}
           </Badge>
         )
       })}
@@ -191,9 +199,14 @@ export function AppShell() {
           >
             <Menu aria-hidden />
           </Button>
-          <h1 className="mr-auto truncate text-lg font-semibold">{title}</h1>
+          <h1 className="mr-auto truncate text-lg font-semibold whitespace-nowrap sm:shrink-0">
+            {title}
+          </h1>
           <ProviderBadges />
-          <GlobalSearch />
+          {/* On a phone it squeezes the page title to a few letters; Tickets has its own search. */}
+          <div className="hidden sm:block">
+            <GlobalSearch />
+          </div>
           <Button asChild size="sm">
             <Link to="/tickets/new">
               <Plus aria-hidden />
@@ -203,6 +216,7 @@ export function AppShell() {
           </Button>
         </header>
         <main id="main" className="min-w-0 flex-1 p-4 md:p-6">
+          <BulkBanner />
           <Outlet />
         </main>
       </div>

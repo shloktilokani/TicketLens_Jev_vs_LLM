@@ -1,6 +1,8 @@
 import { Search } from "lucide-react"
+import { useState } from "react"
 import { Link, useNavigate, useSearchParams } from "react-router"
 
+import { FilterSelect, Pager } from "@/components/ListControls"
 import { EmptyState, ErrorState, LoadingState } from "@/components/states"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -20,13 +22,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { BulkToolbar } from "@/features/tickets/BulkToolbar"
 import { ExportLinks, ImportDialog } from "@/features/tickets/ImportExport"
 import { type TicketQuery, useTickets } from "@/features/tickets/hooks"
-import { formatDateTime } from "@/lib/format"
+import { formatDateTime, SIDE_LABELS } from "@/lib/format"
 import { useTaxonomy } from "@/services/queries"
 import type { Ticket, TicketPage } from "@/types/api"
 
-const ALL = "all" // Radix Select cannot hold an empty value
 const SORTS = [
   { value: "created_at:desc", label: "Newest first" },
   { value: "created_at:asc", label: "Oldest first" },
@@ -42,41 +44,13 @@ function useListParams() {
   const update = (changes: TicketQuery) => {
     const next = new URLSearchParams(params)
     for (const [key, value] of Object.entries(changes)) {
-      if (value && value !== ALL) next.set(key, value)
+      if (value) next.set(key, value)
       else next.delete(key)
     }
     if (!("page" in changes)) next.delete("page") // a new filter starts at page 1
     setParams(next)
   }
   return { query, update }
-}
-
-function FilterSelect({
-  label,
-  value,
-  options,
-  onChange,
-}: {
-  label: string
-  value?: string
-  options: string[]
-  onChange: (value: string) => void
-}) {
-  return (
-    <Select value={value ?? ALL} onValueChange={onChange}>
-      <SelectTrigger className="w-44" aria-label={label}>
-        <SelectValue />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectItem value={ALL}>All {label.toLowerCase()}</SelectItem>
-        {options.map((option) => (
-          <SelectItem key={option} value={option}>
-            {option}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
-  )
 }
 
 function Filters({ query, update }: ReturnType<typeof useListParams>) {
@@ -151,7 +125,19 @@ function Filters({ query, update }: ReturnType<typeof useListParams>) {
   )
 }
 
-function TicketRow({ ticket }: { ticket: Ticket }) {
+type Selection = {
+  selected: Set<string>
+  disabled: boolean
+  onChange: (ticketIds: string[], checked: boolean) => void
+}
+
+function TicketRow({
+  ticket,
+  selection,
+}: {
+  ticket: Ticket
+  selection: Selection
+}) {
   const navigate = useNavigate()
   const final = ticket.final_classification
   return (
@@ -159,6 +145,19 @@ function TicketRow({ ticket }: { ticket: Ticket }) {
       className="cursor-pointer"
       onClick={() => navigate(`/tickets/${ticket.ticket_id}`)}
     >
+      {/* Clicks here select the row; everywhere else opens the ticket. */}
+      <TableCell onClick={(e) => e.stopPropagation()}>
+        <input
+          type="checkbox"
+          className="size-4 accent-primary"
+          aria-label={`Select ${ticket.ticket_id}`}
+          disabled={selection.disabled}
+          checked={selection.selected.has(ticket.ticket_id)}
+          onChange={(e) =>
+            selection.onChange([ticket.ticket_id], e.target.checked)
+          }
+        />
+      </TableCell>
       <TableCell className="font-mono text-xs">
         <Link
           to={`/tickets/${ticket.ticket_id}`}
@@ -178,44 +177,12 @@ function TicketRow({ ticket }: { ticket: Ticket }) {
       <TableCell className="whitespace-nowrap">
         {formatDateTime(ticket.created_at)}
       </TableCell>
-      <TableCell className="text-muted-foreground">Not run</TableCell>
+      <TableCell className="text-muted-foreground">
+        {ticket.latest_run
+          ? `${SIDE_LABELS[ticket.latest_run.provider]}: ${ticket.latest_run.status}`
+          : "Not run"}
+      </TableCell>
     </TableRow>
-  )
-}
-
-function Pager({
-  data,
-  onPage,
-}: {
-  data: TicketPage
-  onPage: (page: number) => void
-}) {
-  const pages = Math.max(1, Math.ceil(data.total / data.page_size))
-  return (
-    <div className="flex items-center justify-between text-sm text-muted-foreground">
-      <span>
-        {data.total} ticket{data.total === 1 ? "" : "s"} · page {data.page} of{" "}
-        {pages}
-      </span>
-      <div className="flex gap-2">
-        <Button
-          variant="outline"
-          size="sm"
-          disabled={data.page <= 1}
-          onClick={() => onPage(data.page - 1)}
-        >
-          Previous
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          disabled={data.page >= pages}
-          onClick={() => onPage(data.page + 1)}
-        >
-          Next
-        </Button>
-      </div>
-    </div>
   )
 }
 
@@ -252,12 +219,29 @@ function NoTickets({
   )
 }
 
-function TicketTable({ data }: { data: TicketPage }) {
+function TicketTable({
+  data,
+  selection,
+}: {
+  data: TicketPage
+  selection: Selection
+}) {
+  const pageIds = data.items.map((t) => t.ticket_id)
   return (
     <div className="overflow-x-auto rounded-lg border">
       <Table>
         <TableHeader>
           <TableRow>
+            <TableHead>
+              <input
+                type="checkbox"
+                className="size-4 accent-primary"
+                aria-label="Select all tickets on this page"
+                disabled={selection.disabled}
+                checked={pageIds.every((id) => selection.selected.has(id))}
+                onChange={(e) => selection.onChange(pageIds, e.target.checked)}
+              />
+            </TableHead>
             {[
               "Ticket ID",
               "Title",
@@ -274,7 +258,11 @@ function TicketTable({ data }: { data: TicketPage }) {
         </TableHeader>
         <TableBody>
           {data.items.map((ticket) => (
-            <TicketRow key={ticket.ticket_id} ticket={ticket} />
+            <TicketRow
+              key={ticket.ticket_id}
+              ticket={ticket}
+              selection={selection}
+            />
           ))}
         </TableBody>
       </Table>
@@ -286,6 +274,21 @@ export function TicketListPage() {
   const params = useListParams()
   const tickets = useTickets(params.query)
   const filtered = FILTER_KEYS.some((key) => params.query[key])
+  const [selected, setSelected] = useState<Set<string>>(new Set())
+  const [allEligible, setAllEligible] = useState(false)
+  const selection: Selection = {
+    selected,
+    disabled: allEligible,
+    onChange: (ticketIds, checked) =>
+      setSelected((current) => {
+        const next = new Set(current)
+        for (const id of ticketIds) {
+          if (checked) next.add(id)
+          else next.delete(id)
+        }
+        return next
+      }),
+  }
 
   let body
   if (tickets.isPending) body = <LoadingState label="Loading tickets…" />
@@ -303,9 +306,12 @@ export function TicketListPage() {
   else
     body = (
       <>
-        <TicketTable data={tickets.data} />
+        <TicketTable data={tickets.data} selection={selection} />
         <Pager
-          data={tickets.data}
+          total={tickets.data.total}
+          page={tickets.data.page}
+          pageSize={tickets.data.page_size}
+          noun="ticket"
           onPage={(page) => params.update({ page: String(page) })}
         />
       </>
@@ -318,6 +324,18 @@ export function TicketListPage() {
         <ExportLinks />
       </div>
       <Filters {...params} />
+      <BulkToolbar
+        selected={[...selected]}
+        allEligible={allEligible}
+        onAllEligible={() => {
+          setAllEligible((on) => !on)
+          setSelected(new Set())
+        }}
+        onClear={() => {
+          setAllEligible(false)
+          setSelected(new Set())
+        }}
+      />
       {body}
     </div>
   )

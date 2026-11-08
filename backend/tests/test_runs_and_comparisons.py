@@ -135,3 +135,77 @@ def test_comparison_waits_for_running_executions(api, test_db):
     )
 
     assert compare(api, ticket_id, jev, gpt).status_code == 409
+
+
+def answer_of(execution: dict) -> dict:
+    result = execution["normalized_result"]
+    fields = ("category", "subcategory", "priority", "sentiment", "escalation_required")
+    return {field: result[field] for field in fields}
+
+
+def choose(api, ticket_id: str, answer: dict, run_id: str | None = None):
+    return api.put(
+        f"/api/tickets/{ticket_id}/final-classification",
+        json=answer | {"selected_from_execution_id": run_id},
+    )
+
+
+def test_final_answer_taken_unchanged_from_a_run_is_not_marked_edited(api):
+    ticket_id = new_ticket(api)
+    execution = run(api, ticket_id, "jev")
+
+    response = choose(api, ticket_id, answer_of(execution), execution["execution_id"])
+
+    assert response.status_code == 200, response.text
+    final = response.json()["final_classification"]
+    assert final["selected_from_execution_id"] == execution["execution_id"]
+    assert final["manually_edited"] is False
+
+
+def test_final_answer_changed_after_choosing_a_run_is_marked_edited(api):
+    ticket_id = new_ticket(api)
+    execution = run(api, ticket_id, "gpt")
+    changed = answer_of(execution) | {"priority": "Critical"}
+
+    final = choose(api, ticket_id, changed, execution["execution_id"]).json()[
+        "final_classification"
+    ]
+
+    assert final["priority"] == "Critical"
+    assert final["selected_from_execution_id"] == execution["execution_id"]
+    assert final["manually_edited"] is True
+
+
+def test_final_answer_rejects_a_run_it_cannot_come_from(api, test_db):
+    ticket_id, other_ticket = new_ticket(api), new_ticket(api)
+    mine = run(api, ticket_id, "jev")
+    theirs = run(api, other_ticket, "jev")
+    failed = run(api, ticket_id, "gpt")
+    test_db.ai_executions.update_one(
+        {"execution_id": failed["execution_id"]},
+        {"$set": {"status": "Failed", "normalized_result": None}},
+    )
+
+    for run_id in ("exe_missing", theirs["execution_id"], failed["execution_id"]):
+        assert choose(api, ticket_id, answer_of(mine), run_id).status_code == 422
+
+    assert api.get(f"/api/tickets/{ticket_id}").json()["final_classification"] is None
+
+
+def test_running_and_comparing_never_set_the_final_answer(api):
+    ticket_id = new_ticket(api)
+    assert compare(api, ticket_id, run(api, ticket_id, "jev"), run(api, ticket_id, "gpt"))
+
+    assert api.get(f"/api/tickets/{ticket_id}").json()["final_classification"] is None
+
+
+def test_the_chosen_final_answer_is_never_sent_to_a_model(api):
+    ticket_id = new_ticket(api)
+    first = run(api, ticket_id, "jev")
+    assert choose(api, ticket_id, answer_of(first), first["execution_id"]).status_code == 200
+
+    sent = run(api, ticket_id, "gpt")
+
+    payloads = str([sent["input_snapshot"], sent["request_payload_redacted"]])
+    for marker in ("final_classification", "selected_from_execution_id", "manually_edited"):
+        assert marker not in payloads

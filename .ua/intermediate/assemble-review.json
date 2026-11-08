@@ -1,0 +1,16 @@
+{
+  "fixedSectionOk": true,
+  "nodesRecovered": 0,
+  "edgesRestored": 0,
+  "crossBatchEdgesAdded": 7,
+  "typesRemapped": 0,
+  "complexityRemapped": 0,
+  "notes": [
+    "Fixed section is small and sane: 1 tested_by edge flipped, 1 dropped, no ID or complexity corrections across 637 nodes.",
+    "importMap and the graph agree exactly: all 326 importMap pairs have imports edges and no imports edge falls outside the map before this review. All 165 scanned files have nodes.",
+    "Not restored: 2 calls edges from AppShell NavList and ProviderBadges to function:frontend/src/lib/utils.ts:cn. utils.ts only re-exports cn from the external cn npm package (frontend/package.json), so no local function exists. The file-level imports edge AppShell.tsx -> utils.ts already keeps the link.",
+    "Added 7 source-verified edges: index.html -> src/main.tsx (depends_on, script tag); tsconfig.node.json -> vite.config.ts (configures, include); components.json -> src/index.css (configures, tailwind.css); e2e/scripts/reset_db.py -> backend/app/core/settings.py (imports); e2e/scripts/stack.sh -> backend/app/main.py (depends_on, uvicorn app.main:app); backend/.env.example -> backend/app/core/settings.py (configures, keys match Settings fields); backend/pyproject.toml -> backend/app/services/run_report.py (configures, per-file-ignores).",
+    "reset_db.py -> settings.py is the one imports edge not in importMap: the scanner missed it because the script resolves app.* through sys.path.insert. A regex check of Python and TS sources found no other scanned-time gap apart from the item below.",
+    "Stale by concurrent work, left out on purpose: backend/app/repositories/executions.py was modified at 17:37, after the 17:28 scan. It now imports app.core.taxonomy, while the scan has no imports for it, so its node and edges reflect the scanned version."
+  ]
+}

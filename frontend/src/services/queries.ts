@@ -7,7 +7,7 @@ export const useTaxonomy = () =>
   useQuery({
     queryKey: ["taxonomy"],
     queryFn: () => api<Taxonomy>("/api/taxonomy"),
-    staleTime: Infinity, // fixed per backend version
+    staleTime: Infinity, // refreshed when Settings saves a new version
   })
 
 export const useProviderStatus = () =>

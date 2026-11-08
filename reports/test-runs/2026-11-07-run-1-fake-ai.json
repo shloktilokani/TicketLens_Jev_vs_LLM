@@ -1,7 +1,7 @@
 {
   "run_id": "2026-11-07-run-1-fake-ai",
   "name": "Fake AI Run 1",
-  "created_at": "2026-11-07T14:57:59.098000+00:00",
+  "created_at": "2026-11-08T10:49:14.649000+00:00",
   "jev_label": "mock-jev",
   "llm_label": "mock-gpt",
   "note": "Run 1 used the built-in fake Jev and fake LLM (MOCK_PROVIDERS), so it tests the app, not the models: both fakes use the same keyword rules and are expected to agree.",

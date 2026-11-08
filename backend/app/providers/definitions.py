@@ -1,7 +1,7 @@
 """Task definitions given identically to both providers (ai-evaluation.md section 3), so the
 comparison is fair: same categories, same priority, sentiment and escalation meanings."""
 
-from app.core.taxonomy import SUBCATEGORIES
+from app.core.taxonomy import active_categories
 
 PRIORITY = {
     "Critical": "Immediate risk, safety/security concern, severe service failure, or high-impact "
@@ -22,12 +22,16 @@ ESCALATION = (
     "critical/high-impact situation requiring a human specialist. Do not escalate merely "
     "because a ticket is negative."
 )
-CATEGORY = {
-    category.value: "Covers: " + ", ".join(subs) + "." for category, subs in SUBCATEGORIES.items()
-}
-SUBCATEGORY = {
-    sub: f"Part of {category.value}." for category, subs in SUBCATEGORIES.items() for sub in subs
-}
+
+
+def category_criteria() -> dict[str, str]:
+    return {c: "Covers: " + ", ".join(subs) + "." for c, subs in active_categories().items()}
+
+
+def subcategory_criteria() -> dict[str, str]:
+    return {sub: f"Part of {c}." for c, subs in active_categories().items() for sub in subs}
+
+
 INSTRUCTIONS = (
     "You classify customer-support tickets for ShopKart, an Indian e-commerce marketplace. "
     "Classify only from the ticket's own evidence; do not invent order facts or company policy. "

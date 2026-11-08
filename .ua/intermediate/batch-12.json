@@ -1,0 +1,542 @@
+{
+  "nodes": [
+    {
+      "id": "config:.claude/settings.json",
+      "type": "config",
+      "name": "settings.json",
+      "filePath": ".claude/settings.json",
+      "summary": "Project Claude Code settings that allow read-only git and test commands, deny secret-file reads, docker and every git write, and add a prompt hook enforcing skill routing.",
+      "tags": [
+        "configuration",
+        "security",
+        "agent-tooling",
+        "permissions",
+        "hooks"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.gitattributes",
+      "type": "file",
+      "name": ".gitattributes",
+      "filePath": ".gitattributes",
+      "summary": "Git attributes that normalize text to LF, keep CSV spec data byte-for-byte (BOM and CRLF preserved), and mark images and fonts as binary.",
+      "tags": [
+        "configuration",
+        "git",
+        "line-endings",
+        "build-system"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/app/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "backend/app/__init__.py",
+      "summary": "Empty marker that makes the backend `app` directory a Python package.",
+      "tags": [
+        "python-package",
+        "package-marker",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/app/jobs/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "backend/app/jobs/__init__.py",
+      "summary": "Empty marker that makes the backend `app.jobs` directory a Python package.",
+      "tags": [
+        "python-package",
+        "package-marker",
+        "jobs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/app/schemas/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "backend/app/schemas/__init__.py",
+      "summary": "Empty marker that makes the backend `app.schemas` directory a Python package.",
+      "tags": [
+        "python-package",
+        "package-marker",
+        "schemas"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/tests/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "backend/tests/__init__.py",
+      "summary": "Empty marker that makes the backend test directory a Python package.",
+      "tags": [
+        "python-package",
+        "package-marker",
+        "test"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:e2e/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "e2e/README.md",
+      "summary": "Guide to UI testing through the real interface, covering the isolated test stack, what each browser tool is for, commands, how to write test cases and personas, the unbuilt real-provider mode, and tool data-risk settings.",
+      "tags": [
+        "documentation",
+        "testing",
+        "e2e",
+        "playwright",
+        "development"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:e2e/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "e2e/package.json",
+      "summary": "Standalone npm package for UI testing that pins `@playwright/test` and `agent-browser` and defines scripts for the test stack, tests, baseline updates, reports, and a visible Chrome for Testing browser.",
+      "tags": [
+        "configuration",
+        "testing",
+        "e2e",
+        "npm-scripts",
+        "build-system"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:e2e/personas/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "e2e/personas/README.md",
+      "summary": "Explains how a persona run pairs a customer voice (how the ticket is written) with an analyst (how the app is used), and sets rules for synthetic data, taxonomy limits, and never typing expected labels.",
+      "tags": [
+        "documentation",
+        "testing",
+        "personas",
+        "synthetic-data"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:e2e/playwright.config.ts",
+      "type": "file",
+      "name": "playwright.config.ts",
+      "filePath": "e2e/playwright.config.ts",
+      "summary": "Playwright configuration that runs tests serially against the isolated stack on port 5174, on desktop and Pixel 7 Chromium projects, with a 1% screenshot diff tolerance and traces kept on failure.",
+      "tags": [
+        "config",
+        "testing",
+        "e2e",
+        "playwright",
+        "visual-regression"
+      ],
+      "complexity": "simple",
+      "languageNotes": "`workers: 1` is deliberate because every test shares one database, and `reuseExistingServer: false` guarantees a freshly reset stack per run."
+    },
+    {
+      "id": "file:e2e/scripts/reset_db.py",
+      "type": "file",
+      "name": "reset_db.py",
+      "filePath": "e2e/scripts/reset_db.py",
+      "summary": "Safety-guarded script that drops the UI-test MongoDB database so each stack start is clean, refusing any database name not ending in `_e2e`.",
+      "tags": [
+        "script",
+        "testing",
+        "database",
+        "safety-guard",
+        "e2e"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:e2e/scripts/stack.sh",
+      "type": "file",
+      "name": "stack.sh",
+      "filePath": "e2e/scripts/stack.sh",
+      "summary": "Starts the isolated UI-test stack: resets `ticketlens_e2e`, launches the backend with mock providers on port 8001, waits for the database readiness check, then starts Vite on port 5174, and refuses real-provider mode.",
+      "tags": [
+        "script",
+        "testing",
+        "e2e",
+        "process-management",
+        "entry-point"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "The servers `exec` inside subshells and run without a reloader, so the EXIT trap's `kill` really stops them rather than leaving child processes behind."
+    },
+    {
+      "id": "document:e2e/test-cases/TC-001-create-ticket.md",
+      "type": "document",
+      "name": "TC-001-create-ticket.md",
+      "filePath": "e2e/test-cases/TC-001-create-ticket.md",
+      "summary": "Test case for creating a duplicate-charge ticket and finding it again by search, with expected labels, field-validation outcomes, and visual checkpoints for desktop and mobile.",
+      "tags": [
+        "documentation",
+        "testing",
+        "test-case",
+        "tickets"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:e2e/test-cases/TEMPLATE.md",
+      "type": "document",
+      "name": "TEMPLATE.md",
+      "filePath": "e2e/test-cases/TEMPLATE.md",
+      "summary": "Copyable template for persona test cases, with sections for mode, personas, preconditions, ticket intent, expected labels, steps, expected results, and visual checkpoints.",
+      "tags": [
+        "documentation",
+        "testing",
+        "template",
+        "test-case"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:e2e/tests/smoke.spec.ts",
+      "type": "file",
+      "name": "smoke.spec.ts",
+      "filePath": "e2e/tests/smoke.spec.ts",
+      "summary": "End-to-end smoke test that creates a ticket through the form, finds it in the list and on its detail page, and checks pixel baselines with changing rows and totals masked.",
+      "tags": [
+        "test",
+        "e2e",
+        "playwright",
+        "visual-regression",
+        "tickets"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/.prettierignore",
+      "type": "file",
+      "name": ".prettierignore",
+      "filePath": "frontend/.prettierignore",
+      "summary": "Prettier ignore list that excludes build output, dependencies, the lockfile, and generated shadcn components so their updates diff cleanly.",
+      "tags": [
+        "configuration",
+        "formatting",
+        "frontend",
+        "shadcn"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/eslint.config.js",
+      "type": "file",
+      "name": "eslint.config.js",
+      "filePath": "frontend/eslint.config.js",
+      "summary": "ESLint flat config for TypeScript and React that combines the recommended rule sets with Prettier, enforces a maximum complexity of 10, and relaxes the fast-refresh export rule for shadcn files.",
+      "tags": [
+        "config",
+        "linting",
+        "code-quality",
+        "frontend",
+        "build-system"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/components/ui/sonner.tsx",
+      "type": "file",
+      "name": "sonner.tsx",
+      "filePath": "frontend/src/components/ui/sonner.tsx",
+      "summary": "shadcn wrapper around the Sonner toaster that follows the active theme, sets the status icons, and maps toast colors and radius to the app's design tokens.",
+      "tags": [
+        "component",
+        "ui",
+        "notifications",
+        "theming",
+        "shadcn"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/features/settings/.gitkeep",
+      "type": "file",
+      "name": ".gitkeep",
+      "filePath": "frontend/src/features/settings/.gitkeep",
+      "summary": "Empty placeholder that keeps the settings feature directory in git.",
+      "tags": [
+        "placeholder",
+        "git",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/index.css",
+      "type": "file",
+      "name": "index.css",
+      "filePath": "frontend/src/index.css",
+      "summary": "Global stylesheet that imports Tailwind and shadcn styles, defines the light and dark theme tokens, maps them into the Tailwind theme, and sets base element styles.",
+      "tags": [
+        "styles",
+        "theming",
+        "design-tokens",
+        "tailwind",
+        "frontend"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Tailwind v4 is configured in CSS: `@theme inline` exposes the `:root` and `.dark` custom properties as utilities, and `@custom-variant dark` ties dark mode to the `.dark` class."
+    },
+    {
+      "id": "file:frontend/src/main.tsx",
+      "type": "file",
+      "name": "main.tsx",
+      "filePath": "frontend/src/main.tsx",
+      "summary": "React entry point that mounts the app under StrictMode with the theme provider (light by default, remembered per browser), TanStack Query client, router, and global toaster.",
+      "tags": [
+        "entry-point",
+        "bootstrap",
+        "providers",
+        "react",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/services/.gitkeep",
+      "type": "file",
+      "name": ".gitkeep",
+      "filePath": "frontend/src/services/.gitkeep",
+      "summary": "Empty placeholder that keeps the frontend services directory in git.",
+      "tags": [
+        "placeholder",
+        "git",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/types/.gitkeep",
+      "type": "file",
+      "name": ".gitkeep",
+      "filePath": "frontend/src/types/.gitkeep",
+      "summary": "Empty placeholder that keeps the frontend types directory in git.",
+      "tags": [
+        "placeholder",
+        "git",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/vite.config.ts",
+      "type": "file",
+      "name": "vite.config.ts",
+      "filePath": "frontend/vite.config.ts",
+      "summary": "Vite configuration with the React and Tailwind plugins, the `@` alias for `src`, and a dev server fixed to localhost:5173 because the backend allows exactly that CORS origin.",
+      "tags": [
+        "config",
+        "build-system",
+        "vite",
+        "frontend",
+        "dev-server"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:frontend/src/components/ui/sonner.tsx:Toaster",
+      "type": "function",
+      "name": "Toaster",
+      "filePath": "frontend/src/components/ui/sonner.tsx",
+      "lineRange": [
+        5,
+        45
+      ],
+      "summary": "Renders the Sonner toaster with the current theme, custom status icons, and design-token colors, passing other props through.",
+      "tags": [
+        "component",
+        "notifications",
+        "theming"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:frontend/src/main.tsx",
+      "target": "file:frontend/src/app/router.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:frontend/src/main.tsx",
+      "target": "file:frontend/src/components/ui/sonner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:frontend/src/main.tsx",
+      "target": "file:frontend/src/index.css",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:frontend/src/components/ui/sonner.tsx",
+      "target": "function:frontend/src/components/ui/sonner.tsx:Toaster",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/ui/sonner.tsx",
+      "target": "function:frontend/src/components/ui/sonner.tsx:Toaster",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:frontend/src/components/ui/sonner.tsx",
+      "target": "file:frontend/src/index.css",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:e2e/scripts/stack.sh",
+      "target": "file:e2e/scripts/reset_db.py",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:e2e/scripts/stack.sh",
+      "target": "file:frontend/vite.config.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:e2e/playwright.config.ts",
+      "target": "file:e2e/scripts/stack.sh",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:e2e/playwright.config.ts",
+      "target": "file:e2e/tests/smoke.spec.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:e2e/package.json",
+      "target": "file:e2e/playwright.config.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:e2e/package.json",
+      "target": "file:e2e/scripts/stack.sh",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:e2e/README.md",
+      "target": "file:e2e/scripts/stack.sh",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:e2e/README.md",
+      "target": "file:e2e/scripts/reset_db.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:e2e/README.md",
+      "target": "config:e2e/package.json",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:e2e/README.md",
+      "target": "document:e2e/test-cases/TEMPLATE.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:e2e/README.md",
+      "target": "document:e2e/personas/README.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:e2e/test-cases/TC-001-create-ticket.md",
+      "target": "document:e2e/test-cases/TEMPLATE.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:e2e/test-cases/TC-001-create-ticket.md",
+      "target": "file:e2e/tests/smoke.spec.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:e2e/personas/README.md",
+      "target": "document:e2e/test-cases/TEMPLATE.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:frontend/vite.config.ts",
+      "target": "file:frontend/src/main.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:frontend/eslint.config.js",
+      "target": "file:frontend/src/main.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:frontend/eslint.config.js",
+      "target": "file:frontend/src/components/ui/sonner.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:frontend/.prettierignore",
+      "target": "file:frontend/src/components/ui/sonner.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:.gitattributes",
+      "target": "file:e2e/scripts/stack.sh",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

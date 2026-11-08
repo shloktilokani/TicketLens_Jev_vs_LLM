@@ -1,0 +1,1381 @@
+{
+ "nodes": [
+  {
+   "id": "file:frontend/src/features/compare/useCompareRun.ts",
+   "type": "file",
+   "name": "useCompareRun.ts",
+   "filePath": "frontend/src/features/compare/useCompareRun.ts",
+   "summary": "Drives the live Compare workbench: runs Jev and GPT concurrently as separate requests so each column finishes independently, then asks the backend to save a comparison. Also provides the elapsed-time timer hook and its formatter.",
+   "tags": [
+    "hook",
+    "concurrency",
+    "comparison",
+    "timer"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+   "type": "file",
+   "name": "ComparisonDetailPage.tsx",
+   "filePath": "frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+   "summary": "Page that shows one saved comparison, reusing the live provider columns with timers frozen at each run's stored duration. States how many fields agree and that agreement is not accuracy.",
+   "tags": [
+    "component",
+    "page",
+    "comparison",
+    "read-only"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+   "type": "file",
+   "name": "ComparisonsPage.tsx",
+   "filePath": "frontend/src/features/comparisons/ComparisonsPage.tsx",
+   "summary": "Page listing saved comparisons newest first, and the shared comparison table that the dashboard and ticket detail views also render. Flags fake-AI runs with a badge.",
+   "tags": [
+    "component",
+    "page",
+    "comparison",
+    "table"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:frontend/src/features/comparisons/hooks.ts",
+   "type": "file",
+   "name": "hooks.ts",
+   "filePath": "frontend/src/features/comparisons/hooks.ts",
+   "summary": "Single React Query hook that fetches saved comparisons, optionally for one ticket, and polls every 5 seconds so new runs appear during a test.",
+   "tags": [
+    "hook",
+    "data-fetching",
+    "comparison",
+    "polling"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+   "type": "file",
+   "name": "DashboardPage.tsx",
+   "filePath": "frontend/src/features/dashboard/DashboardPage.tsx",
+   "summary": "Dashboard page summarising real comparison runs: ticket counts, agreement rates, side-by-side distribution charts, latency, success and estimated cost. It polls every 5 seconds, excludes fake-AI comparisons and states that agreement is not accuracy.",
+   "tags": [
+    "component",
+    "page",
+    "dashboard",
+    "charts",
+    "metrics"
+   ],
+   "complexity": "complex",
+   "languageNotes": "Chart colours use CSS variables so Recharts follows the app's theme tokens."
+  },
+  {
+   "id": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+   "type": "file",
+   "name": "ExecutionDetailPage.tsx",
+   "filePath": "frontend/src/features/executions/ExecutionDetailPage.tsx",
+   "summary": "Page for one AI run: status, models, versions, token usage, the pricing snapshot saved with the run and any error. Collapsible, copyable JSON blocks expose the validated result, input snapshot and redacted request and response payloads.",
+   "tags": [
+    "component",
+    "page",
+    "execution-log",
+    "debugging",
+    "cost"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+   "type": "file",
+   "name": "ExecutionsPage.tsx",
+   "filePath": "frontend/src/features/executions/ExecutionsPage.tsx",
+   "summary": "Paginated log of every AI run, including failures, with provider, status, ticket and UTC date filters kept in the URL so a filtered view can be bookmarked. Also links to the executions CSV export.",
+   "tags": [
+    "component",
+    "page",
+    "execution-log",
+    "filtering",
+    "pagination"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:frontend/src/features/compare/useCompareRun.ts:useCompareRun",
+   "type": "function",
+   "name": "useCompareRun",
+   "filePath": "frontend/src/features/compare/useCompareRun.ts",
+   "lineRange": [
+    31,
+    94
+   ],
+   "summary": "Starts both providers in parallel, tracks each run's state and timing, and creates the comparison only when both requests return an execution.",
+   "tags": [
+    "hook",
+    "concurrency",
+    "comparison"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:frontend/src/features/compare/useCompareRun.ts:useElapsed",
+   "type": "function",
+   "name": "useElapsed",
+   "filePath": "frontend/src/features/compare/useCompareRun.ts",
+   "lineRange": [
+    97,
+    106
+   ],
+   "summary": "Returns milliseconds since a run started, ticking while it runs and frozen once it finishes.",
+   "tags": [
+    "hook",
+    "timer",
+    "ui-state"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/compare/useCompareRun.ts:formatElapsed",
+   "type": "function",
+   "name": "formatElapsed",
+   "filePath": "frontend/src/features/compare/useCompareRun.ts",
+   "lineRange": [
+    108,
+    113
+   ],
+   "summary": "Formats milliseconds as an MM:SS.hh stopwatch string.",
+   "tags": [
+    "utility",
+    "formatting",
+    "timer"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/comparisons/ComparisonDetailPage.tsx:ComparisonDetailPage",
+   "type": "function",
+   "name": "ComparisonDetailPage",
+   "filePath": "frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+   "lineRange": [
+    32,
+    103
+   ],
+   "summary": "Loads one comparison and renders its ticket, both provider columns and the agreement verdict, with a not-found state on 404.",
+   "tags": [
+    "component",
+    "page",
+    "comparison"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:frontend/src/features/comparisons/ComparisonsPage.tsx:ComparisonTable",
+   "type": "function",
+   "name": "ComparisonTable",
+   "filePath": "frontend/src/features/comparisons/ComparisonsPage.tsx",
+   "lineRange": [
+    24,
+    72
+   ],
+   "summary": "Table of comparisons showing ticket, agreement, each side's time and a fake-AI badge, linking to the comparison detail page.",
+   "tags": [
+    "component",
+    "table",
+    "comparison"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/comparisons/ComparisonsPage.tsx:ComparisonsPage",
+   "type": "function",
+   "name": "ComparisonsPage",
+   "filePath": "frontend/src/features/comparisons/ComparisonsPage.tsx",
+   "lineRange": [
+    74,
+    103
+   ],
+   "summary": "Fetches up to 200 comparisons and renders loading, error, empty or table states.",
+   "tags": [
+    "component",
+    "page",
+    "comparison"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/comparisons/hooks.ts:useComparisons",
+   "type": "function",
+   "name": "useComparisons",
+   "filePath": "frontend/src/features/comparisons/hooks.ts",
+   "lineRange": [
+    6,
+    14
+   ],
+   "summary": "Queries saved comparisons by limit and optional ticket ID, refetching every 5 seconds.",
+   "tags": [
+    "hook",
+    "data-fetching",
+    "polling"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/dashboard/DashboardPage.tsx:Stats",
+   "type": "function",
+   "name": "Stats",
+   "filePath": "frontend/src/features/dashboard/DashboardPage.tsx",
+   "lineRange": [
+    55,
+    72
+   ],
+   "summary": "Grid of headline numbers: ticket counts, real comparisons, mean agreement, full matches and median times per side.",
+   "tags": [
+    "component",
+    "metrics",
+    "dashboard"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/dashboard/DashboardPage.tsx:ChartCard",
+   "type": "function",
+   "name": "ChartCard",
+   "filePath": "frontend/src/features/dashboard/DashboardPage.tsx",
+   "lineRange": [
+    74,
+    97
+   ],
+   "summary": "Card wrapper giving a chart a title, fixed height and responsive container.",
+   "tags": [
+    "component",
+    "charts",
+    "layout"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/dashboard/DashboardPage.tsx:AgreementChart",
+   "type": "function",
+   "name": "AgreementChart",
+   "filePath": "frontend/src/features/dashboard/DashboardPage.tsx",
+   "lineRange": [
+    99,
+    139
+   ],
+   "summary": "Horizontal bar chart of agreement percentage per classification field, with counts in the tooltip.",
+   "tags": [
+    "component",
+    "charts",
+    "metrics"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/dashboard/DashboardPage.tsx:SideBySideChart",
+   "type": "function",
+   "name": "SideBySideChart",
+   "filePath": "frontend/src/features/dashboard/DashboardPage.tsx",
+   "lineRange": [
+    141,
+    194
+   ],
+   "summary": "Paired bar chart comparing how often Jev and the LLM chose each value of a field, ordered by severity where applicable.",
+   "tags": [
+    "component",
+    "charts",
+    "comparison"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:frontend/src/features/dashboard/DashboardPage.tsx:Reliability",
+   "type": "function",
+   "name": "Reliability",
+   "filePath": "frontend/src/features/dashboard/DashboardPage.tsx",
+   "lineRange": [
+    196,
+    214
+   ],
+   "summary": "Lists each side's success count, slowest run and estimated cost with the number of priced runs.",
+   "tags": [
+    "component",
+    "metrics",
+    "cost"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/dashboard/DashboardPage.tsx:Recent",
+   "type": "function",
+   "name": "Recent",
+   "filePath": "frontend/src/features/dashboard/DashboardPage.tsx",
+   "lineRange": [
+    216,
+    233
+   ],
+   "summary": "Shows the ten latest comparisons with a link to the full list, or nothing when there are none.",
+   "tags": [
+    "component",
+    "comparison",
+    "dashboard"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/dashboard/DashboardPage.tsx:NoRealRuns",
+   "type": "function",
+   "name": "NoRealRuns",
+   "filePath": "frontend/src/features/dashboard/DashboardPage.tsx",
+   "lineRange": [
+    235,
+    250
+   ],
+   "summary": "Empty state shown when no real runs exist, noting how many fake-AI comparisons were left out.",
+   "tags": [
+    "component",
+    "empty-state",
+    "dashboard"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/dashboard/DashboardPage.tsx:DashboardPage",
+   "type": "function",
+   "name": "DashboardPage",
+   "filePath": "frontend/src/features/dashboard/DashboardPage.tsx",
+   "lineRange": [
+    252,
+    291
+   ],
+   "summary": "Polls dashboard data every 5 seconds and composes the stats, reliability line, charts and latest comparisons.",
+   "tags": [
+    "component",
+    "page",
+    "dashboard",
+    "polling"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:frontend/src/features/executions/ExecutionDetailPage.tsx:JsonBlock",
+   "type": "function",
+   "name": "JsonBlock",
+   "filePath": "frontend/src/features/executions/ExecutionDetailPage.tsx",
+   "lineRange": [
+    14,
+    57
+   ],
+   "summary": "Collapsible block showing a value as formatted JSON with a copy-to-clipboard button.",
+   "tags": [
+    "component",
+    "debugging",
+    "clipboard"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/executions/ExecutionDetailPage.tsx:UsageAndCost",
+   "type": "function",
+   "name": "UsageAndCost",
+   "filePath": "frontend/src/features/executions/ExecutionDetailPage.tsx",
+   "lineRange": [
+    69,
+    102
+   ],
+   "summary": "Card showing token usage, estimated cost and the rates saved with the run.",
+   "tags": [
+    "component",
+    "cost",
+    "execution-log"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/executions/ExecutionDetailPage.tsx:Summary",
+   "type": "function",
+   "name": "Summary",
+   "filePath": "frontend/src/features/executions/ExecutionDetailPage.tsx",
+   "lineRange": [
+    104,
+    146
+   ],
+   "summary": "Card with the run's status, models, timing, versions and links to its ticket and comparison.",
+   "tags": [
+    "component",
+    "execution-log",
+    "detail-view"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/executions/ExecutionDetailPage.tsx:ExecutionDetailPage",
+   "type": "function",
+   "name": "ExecutionDetailPage",
+   "filePath": "frontend/src/features/executions/ExecutionDetailPage.tsx",
+   "lineRange": [
+    148,
+    207
+   ],
+   "summary": "Loads one execution and renders its summary, any error, usage, and validated and redacted payloads, with a not-found state on 404.",
+   "tags": [
+    "component",
+    "page",
+    "execution-log"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:frontend/src/features/executions/ExecutionsPage.tsx:useLogParams",
+   "type": "function",
+   "name": "useLogParams",
+   "filePath": "frontend/src/features/executions/ExecutionsPage.tsx",
+   "lineRange": [
+    31,
+    43
+   ],
+   "summary": "Reads log filters from the URL and updates them, resetting to page 1 when a filter changes.",
+   "tags": [
+    "hook",
+    "url-state",
+    "filtering"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/executions/ExecutionsPage.tsx:DateFilter",
+   "type": "function",
+   "name": "DateFilter",
+   "filePath": "frontend/src/features/executions/ExecutionsPage.tsx",
+   "lineRange": [
+    45,
+    70
+   ],
+   "summary": "Labelled date input used for the UTC from and to filters.",
+   "tags": [
+    "component",
+    "filtering",
+    "form"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/executions/ExecutionsPage.tsx:Filters",
+   "type": "function",
+   "name": "Filters",
+   "filePath": "frontend/src/features/executions/ExecutionsPage.tsx",
+   "lineRange": [
+    72,
+    123
+   ],
+   "summary": "Filter bar for side, status, ticket ID and UTC date range, with statuses taken from the taxonomy.",
+   "tags": [
+    "component",
+    "filtering",
+    "url-state"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/executions/ExecutionsPage.tsx:LogTable",
+   "type": "function",
+   "name": "LogTable",
+   "filePath": "frontend/src/features/executions/ExecutionsPage.tsx",
+   "lineRange": [
+    125,
+    177
+   ],
+   "summary": "Table of runs with time, ticket, side, model, status, tokens, estimated cost and duration, linking to each run.",
+   "tags": [
+    "component",
+    "table",
+    "execution-log"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/executions/ExecutionsPage.tsx:Body",
+   "type": "function",
+   "name": "Body",
+   "filePath": "frontend/src/features/executions/ExecutionsPage.tsx",
+   "lineRange": [
+    179,
+    228
+   ],
+   "summary": "Chooses between loading, error, empty, filtered-empty and table-with-pager states for the log.",
+   "tags": [
+    "component",
+    "state-handling",
+    "pagination"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/executions/ExecutionsPage.tsx:ExecutionsPage",
+   "type": "function",
+   "name": "ExecutionsPage",
+   "filePath": "frontend/src/features/executions/ExecutionsPage.tsx",
+   "lineRange": [
+    238,
+    265
+   ],
+   "summary": "Wires URL filters to the log query and renders the filters, cost note, CSV download link and results.",
+   "tags": [
+    "component",
+    "page",
+    "execution-log"
+   ],
+   "complexity": "simple"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:frontend/src/features/compare/useCompareRun.ts",
+   "target": "file:frontend/src/services/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/useCompareRun.ts",
+   "target": "file:frontend/src/types/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+   "target": "file:frontend/src/components/states.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+   "target": "file:frontend/src/features/compare/ProviderColumn.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+   "target": "file:frontend/src/features/compare/useCompareRun.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+   "target": "file:frontend/src/lib/format.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+   "target": "file:frontend/src/services/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+   "target": "file:frontend/src/types/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+   "target": "file:frontend/src/components/states.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+   "target": "file:frontend/src/components/ui/badge.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+   "target": "file:frontend/src/components/ui/button.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+   "target": "file:frontend/src/components/ui/table.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+   "target": "file:frontend/src/features/comparisons/hooks.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+   "target": "file:frontend/src/lib/format.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+   "target": "file:frontend/src/types/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/comparisons/hooks.ts",
+   "target": "file:frontend/src/services/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/comparisons/hooks.ts",
+   "target": "file:frontend/src/types/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+   "target": "file:frontend/src/components/states.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+   "target": "file:frontend/src/components/ui/button.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+   "target": "file:frontend/src/components/ui/card.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+   "target": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+   "target": "file:frontend/src/features/comparisons/hooks.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+   "target": "file:frontend/src/lib/format.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+   "target": "file:frontend/src/services/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+   "target": "file:frontend/src/types/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+   "target": "file:frontend/src/components/Detail.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+   "target": "file:frontend/src/components/states.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+   "target": "file:frontend/src/components/ui/button.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+   "target": "file:frontend/src/components/ui/card.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+   "target": "file:frontend/src/lib/format.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+   "target": "file:frontend/src/services/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+   "target": "file:frontend/src/types/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+   "target": "file:frontend/src/components/ListControls.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+   "target": "file:frontend/src/components/states.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+   "target": "file:frontend/src/components/ui/button.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+   "target": "file:frontend/src/components/ui/input.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+   "target": "file:frontend/src/components/ui/label.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+   "target": "file:frontend/src/components/ui/table.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+   "target": "file:frontend/src/lib/format.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+   "target": "file:frontend/src/services/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+   "target": "file:frontend/src/services/queries.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+   "target": "file:frontend/src/types/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/useCompareRun.ts",
+   "target": "function:frontend/src/features/compare/useCompareRun.ts:useCompareRun",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/compare/useCompareRun.ts",
+   "target": "function:frontend/src/features/compare/useCompareRun.ts:useCompareRun",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/compare/useCompareRun.ts",
+   "target": "function:frontend/src/features/compare/useCompareRun.ts:useElapsed",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/compare/useCompareRun.ts",
+   "target": "function:frontend/src/features/compare/useCompareRun.ts:useElapsed",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/compare/useCompareRun.ts",
+   "target": "function:frontend/src/features/compare/useCompareRun.ts:formatElapsed",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/compare/useCompareRun.ts",
+   "target": "function:frontend/src/features/compare/useCompareRun.ts:formatElapsed",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+   "target": "function:frontend/src/features/comparisons/ComparisonDetailPage.tsx:ComparisonDetailPage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+   "target": "function:frontend/src/features/comparisons/ComparisonDetailPage.tsx:ComparisonDetailPage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+   "target": "function:frontend/src/features/comparisons/ComparisonsPage.tsx:ComparisonTable",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+   "target": "function:frontend/src/features/comparisons/ComparisonsPage.tsx:ComparisonTable",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+   "target": "function:frontend/src/features/comparisons/ComparisonsPage.tsx:ComparisonsPage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+   "target": "function:frontend/src/features/comparisons/ComparisonsPage.tsx:ComparisonsPage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/comparisons/hooks.ts",
+   "target": "function:frontend/src/features/comparisons/hooks.ts:useComparisons",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/comparisons/hooks.ts",
+   "target": "function:frontend/src/features/comparisons/hooks.ts:useComparisons",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+   "target": "function:frontend/src/features/dashboard/DashboardPage.tsx:Stats",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+   "target": "function:frontend/src/features/dashboard/DashboardPage.tsx:ChartCard",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+   "target": "function:frontend/src/features/dashboard/DashboardPage.tsx:AgreementChart",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+   "target": "function:frontend/src/features/dashboard/DashboardPage.tsx:SideBySideChart",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+   "target": "function:frontend/src/features/dashboard/DashboardPage.tsx:Reliability",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+   "target": "function:frontend/src/features/dashboard/DashboardPage.tsx:Recent",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+   "target": "function:frontend/src/features/dashboard/DashboardPage.tsx:NoRealRuns",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+   "target": "function:frontend/src/features/dashboard/DashboardPage.tsx:DashboardPage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+   "target": "function:frontend/src/features/dashboard/DashboardPage.tsx:DashboardPage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+   "target": "function:frontend/src/features/executions/ExecutionDetailPage.tsx:JsonBlock",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+   "target": "function:frontend/src/features/executions/ExecutionDetailPage.tsx:UsageAndCost",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+   "target": "function:frontend/src/features/executions/ExecutionDetailPage.tsx:Summary",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+   "target": "function:frontend/src/features/executions/ExecutionDetailPage.tsx:ExecutionDetailPage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+   "target": "function:frontend/src/features/executions/ExecutionDetailPage.tsx:ExecutionDetailPage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+   "target": "function:frontend/src/features/executions/ExecutionsPage.tsx:useLogParams",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+   "target": "function:frontend/src/features/executions/ExecutionsPage.tsx:DateFilter",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+   "target": "function:frontend/src/features/executions/ExecutionsPage.tsx:Filters",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+   "target": "function:frontend/src/features/executions/ExecutionsPage.tsx:LogTable",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+   "target": "function:frontend/src/features/executions/ExecutionsPage.tsx:Body",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+   "target": "function:frontend/src/features/executions/ExecutionsPage.tsx:ExecutionsPage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+   "target": "function:frontend/src/features/executions/ExecutionsPage.tsx:ExecutionsPage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/compare/useCompareRun.ts:useCompareRun",
+   "target": "function:frontend/src/services/api.ts:send",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/comparisons/ComparisonDetailPage.tsx:ComparisonDetailPage",
+   "target": "function:frontend/src/services/api.ts:api",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/comparisons/ComparisonDetailPage.tsx:ComparisonDetailPage",
+   "target": "function:frontend/src/lib/format.ts:formatDateTime",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/comparisons/ComparisonsPage.tsx:ComparisonTable",
+   "target": "function:frontend/src/lib/format.ts:formatDateTime",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/comparisons/ComparisonsPage.tsx:ComparisonTable",
+   "target": "function:frontend/src/lib/format.ts:seconds",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/comparisons/ComparisonsPage.tsx:ComparisonsPage",
+   "target": "function:frontend/src/features/comparisons/hooks.ts:useComparisons",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/comparisons/hooks.ts:useComparisons",
+   "target": "function:frontend/src/services/api.ts:api",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/dashboard/DashboardPage.tsx:Stats",
+   "target": "function:frontend/src/lib/format.ts:seconds",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/dashboard/DashboardPage.tsx:Reliability",
+   "target": "function:frontend/src/lib/format.ts:seconds",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/dashboard/DashboardPage.tsx:Reliability",
+   "target": "function:frontend/src/lib/format.ts:formatCost",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/dashboard/DashboardPage.tsx:Recent",
+   "target": "function:frontend/src/features/comparisons/hooks.ts:useComparisons",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/dashboard/DashboardPage.tsx:DashboardPage",
+   "target": "function:frontend/src/services/api.ts:api",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/executions/ExecutionDetailPage.tsx:UsageAndCost",
+   "target": "function:frontend/src/lib/format.ts:formatCost",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/executions/ExecutionDetailPage.tsx:Summary",
+   "target": "function:frontend/src/lib/format.ts:formatDateTime",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/executions/ExecutionDetailPage.tsx:Summary",
+   "target": "function:frontend/src/lib/format.ts:seconds",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/executions/ExecutionDetailPage.tsx:ExecutionDetailPage",
+   "target": "function:frontend/src/services/api.ts:api",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/executions/ExecutionsPage.tsx:Filters",
+   "target": "function:frontend/src/services/queries.ts:useTaxonomy",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/executions/ExecutionsPage.tsx:LogTable",
+   "target": "function:frontend/src/lib/format.ts:formatDateTime",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/executions/ExecutionsPage.tsx:LogTable",
+   "target": "function:frontend/src/lib/format.ts:formatTokens",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/executions/ExecutionsPage.tsx:LogTable",
+   "target": "function:frontend/src/lib/format.ts:formatCost",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/executions/ExecutionsPage.tsx:LogTable",
+   "target": "function:frontend/src/lib/format.ts:seconds",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/comparisons/ComparisonDetailPage.tsx:ComparisonDetailPage",
+   "target": "function:frontend/src/features/compare/ProviderColumn.tsx:ProviderColumn",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/comparisons/ComparisonsPage.tsx:ComparisonsPage",
+   "target": "function:frontend/src/features/comparisons/ComparisonsPage.tsx:ComparisonTable",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/dashboard/DashboardPage.tsx:AgreementChart",
+   "target": "function:frontend/src/features/dashboard/DashboardPage.tsx:ChartCard",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/dashboard/DashboardPage.tsx:SideBySideChart",
+   "target": "function:frontend/src/features/dashboard/DashboardPage.tsx:ChartCard",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/dashboard/DashboardPage.tsx:Recent",
+   "target": "function:frontend/src/features/comparisons/ComparisonsPage.tsx:ComparisonTable",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/dashboard/DashboardPage.tsx:DashboardPage",
+   "target": "function:frontend/src/features/dashboard/DashboardPage.tsx:NoRealRuns",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/dashboard/DashboardPage.tsx:DashboardPage",
+   "target": "function:frontend/src/features/dashboard/DashboardPage.tsx:Stats",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/dashboard/DashboardPage.tsx:DashboardPage",
+   "target": "function:frontend/src/features/dashboard/DashboardPage.tsx:Reliability",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/dashboard/DashboardPage.tsx:DashboardPage",
+   "target": "function:frontend/src/features/dashboard/DashboardPage.tsx:AgreementChart",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/dashboard/DashboardPage.tsx:DashboardPage",
+   "target": "function:frontend/src/features/dashboard/DashboardPage.tsx:SideBySideChart",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/dashboard/DashboardPage.tsx:DashboardPage",
+   "target": "function:frontend/src/features/dashboard/DashboardPage.tsx:Recent",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/executions/ExecutionDetailPage.tsx:ExecutionDetailPage",
+   "target": "function:frontend/src/features/executions/ExecutionDetailPage.tsx:Summary",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/executions/ExecutionDetailPage.tsx:ExecutionDetailPage",
+   "target": "function:frontend/src/features/executions/ExecutionDetailPage.tsx:UsageAndCost",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/executions/ExecutionDetailPage.tsx:ExecutionDetailPage",
+   "target": "function:frontend/src/features/executions/ExecutionDetailPage.tsx:JsonBlock",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/executions/ExecutionsPage.tsx:Filters",
+   "target": "function:frontend/src/features/executions/ExecutionsPage.tsx:DateFilter",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/executions/ExecutionsPage.tsx:Filters",
+   "target": "function:frontend/src/components/ListControls.tsx:FilterSelect",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/executions/ExecutionsPage.tsx:Body",
+   "target": "function:frontend/src/features/executions/ExecutionsPage.tsx:LogTable",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/executions/ExecutionsPage.tsx:Body",
+   "target": "function:frontend/src/components/ListControls.tsx:Pager",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/executions/ExecutionsPage.tsx:ExecutionsPage",
+   "target": "function:frontend/src/features/executions/ExecutionsPage.tsx:Filters",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/executions/ExecutionsPage.tsx:ExecutionsPage",
+   "target": "function:frontend/src/features/executions/ExecutionsPage.tsx:Body",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+   "target": "file:frontend/src/features/comparisons/hooks.ts",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+   "target": "file:frontend/src/features/comparisons/hooks.ts",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+   "target": "file:frontend/src/services/queries.ts",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  }
+ ]
+}

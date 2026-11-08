@@ -200,8 +200,57 @@ def side(key: str) -> str:
     return f'<span class="key"><span class="swatch" style="background:var(--{key})"></span>'
 
 
-def render(meta: dict, m: dict, rows: list[dict]) -> str:
-    """`meta`: run_id, name, created_at, jev_label, llm_label, note."""
+def accuracy_section(accuracy: dict) -> str:
+    """Scores against labelled answers, each with its denominator."""
+    jev, llm = accuracy["sides"]["jev"], accuracy["sides"]["llm"]
+    duel = accuracy["head_to_head"]["per_field"]
+
+    def score(side: dict, field: str) -> str:
+        s = side["per_field"][field]
+        return f"{pct(s['accuracy'])} ({s['correct']}/{s['scored']})"
+
+    def exact(side: dict) -> str:
+        s = side["exact_match"]
+        return f"{pct(s['accuracy'])} ({s['correct']}/{s['scored']})"
+
+    fields = [
+        [
+            LABELS[f],
+            score(jev, f),
+            score(llm, f),
+            fmt(jev["per_field"][f]["macro_f1"], 2),
+            fmt(llm["per_field"][f]["macro_f1"], 2),
+            str(duel[f]["both_correct"]),
+            str(duel[f]["jev_only"]),
+            str(duel[f]["llm_only"]),
+            str(duel[f]["both_wrong"]),
+        ]
+        for f in LABELS
+    ]
+    headers = [
+        "Field",
+        "Jev",
+        "LLM",
+        "Jev F1",
+        "LLM F1",
+        "Both right",
+        "Jev only",
+        "LLM only",
+        "Both wrong",
+    ]
+    return f"""<section><h2>Accuracy against labelled answers</h2>
+  <p>{accuracy["labelled_tickets"]} labelled synthetic tickets, scored on each side's latest finished run. All 5 fields right: Jev {exact(jev)}, LLM {exact(llm)}. Failed runs are not counted as wrong: Jev {jev["failed"]} failed, LLM {llm["failed"]} failed. The last four columns cover the {accuracy["head_to_head"]["compared_tickets"]} tickets both sides answered. Synthetic tickets, so this is not real-world accuracy.</p>
+  {table(headers, fields, set(range(1, 9)))}
+</section>"""
+
+
+def render(meta: dict, m: dict, rows: list[dict], accuracy: dict | None = None) -> str:
+    """`meta`: run_id, name, created_at, jev_label, llm_label, note. `accuracy` is optional."""
+    agreement_note = (
+        "Agreement shows how often the two sides gave the same answer. Accuracy is reported separately below."
+        if accuracy
+        else "Agreement shows how often the two sides gave the same answer. It is not accuracy: these tickets have no human-verified answers, so nothing here says which side is right."
+    )
     done = m["comparisons"].get("Completed", 0)
     lat, tok, out, cost = m["latency"], m["tokens"], m["outcomes"], m["cost"]
     stats = [
@@ -284,7 +333,7 @@ def render(meta: dict, m: dict, rows: list[dict]) -> str:
         ]
         for d in m["disagreements"]
     ]
-    created = datetime.fromisoformat(meta["created_at"]).strftime("%d %b %Y, %H:%M")
+    created = datetime.fromisoformat(meta["created_at"]).strftime("%d %b %Y, %H:%M UTC")
     return f"""<title>{escape(meta["name"])}</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -295,9 +344,10 @@ def render(meta: dict, m: dict, rows: list[dict]) -> str:
   <span class="eyebrow">TicketLens test run · {escape(meta["run_id"])} · {created}</span>
   <h1>{escape(meta["name"])}</h1>
   <div class="sides">{side("jev")}Jev: {escape(meta["jev_label"])}</span>{side("llm")}LLM: {escape(meta["llm_label"])}</span></div>
-  <p class="note">{escape(meta["note"])} Agreement shows how often the two sides gave the same answer. It is not accuracy: these tickets have no human-verified answers, so nothing here says which side is right.</p>
+  <p class="note">{escape(meta["note"])} {agreement_note}</p>
 </header>
 <section aria-label="Summary"><div class="stats">{"".join(f'<div class="stat"><b>{v}</b><span>{label}</span></div>' for v, label in stats)}</div></section>
+{accuracy_section(accuracy) if accuracy else ""}
 <section><h2>Agreement by field</h2>
   <p>Share of completed comparisons where Jev and the LLM chose the same value. Kappa corrects for agreement expected by chance (1 = perfect, 0 = chance level, — = undefined because one side always gave the same value).</p>
   {agreement_chart(m["per_field"])}
@@ -311,7 +361,7 @@ def render(meta: dict, m: dict, rows: list[dict]) -> str:
 </section>
 <section><h2>Reliability</h2>{table(["Side", "Runs", "Succeeded", "Outcomes"], reliability, {1, 2})}</section>
 <section><h2>Tokens and cost</h2>
-  <p>Tokens as reported by each provider; never estimated. Local models have no per-call price, and pricing is not configured yet, so cost shows — where nothing was charged or priced.</p>
+  <p>Tokens as reported by each provider; never estimated. Local models have no per-call price, so they cost $0. Cost shows — for runs with no saved price, such as runs from before cost logging.</p>
   {table(["Side", "Mean in", "Mean out", "Total in", "Total out", "Out tokens/s", "Reported", "Cost"], usage, {1, 2, 3, 4, 5})}
   <p>LLM summaries averaged {fmt(m["summary_words"])} words. Jev returns typed decisions only and writes no summaries.</p>
 </section>

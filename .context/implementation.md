@@ -66,6 +66,7 @@ TicketLens_Jev_vs_LLM/
     DEPLOYMENT_DECISIONS.md
     sample_tickets_template.csv
     sample_tickets_100.csv
+    sample_tickets_100_v2.csv
     PROGRESS.md
 ```
 

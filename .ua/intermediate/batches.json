@@ -1,0 +1,4553 @@
+{
+  "schemaVersion": 1,
+  "algorithm": "louvain",
+  "totalFiles": 165,
+  "totalBatches": 12,
+  "exportsByPath": {
+    ".gitattributes": [],
+    "backend/app/__init__.py": [],
+    "backend/app/api/__init__.py": [],
+    "backend/app/api/dashboard.py": [
+      "get_dashboard",
+      "list_comparisons",
+      "get_comparison"
+    ],
+    "backend/app/api/deps.py": [
+      "get_db"
+    ],
+    "backend/app/api/executions.py": [
+      "list_executions",
+      "get_execution"
+    ],
+    "backend/app/api/health.py": [
+      "health",
+      "ready"
+    ],
+    "backend/app/api/imports.py": [
+      "csv_download",
+      "import_template",
+      "import_tickets",
+      "export_csv"
+    ],
+    "backend/app/api/providers.py": [
+      "provider_status"
+    ],
+    "backend/app/api/runs.py": [
+      "run_provider",
+      "create_comparison"
+    ],
+    "backend/app/api/taxonomy.py": [
+      "get_taxonomy"
+    ],
+    "backend/app/api/tickets.py": [
+      "found",
+      "create_ticket",
+      "list_tickets",
+      "get_ticket",
+      "update_ticket",
+      "add_note",
+      "set_final_classification",
+      "delete_ticket"
+    ],
+    "backend/app/core/__init__.py": [],
+    "backend/app/core/clock.py": [
+      "utc_now"
+    ],
+    "backend/app/core/pricing.py": [
+      "local_rates",
+      "snapshot_for",
+      "estimate"
+    ],
+    "backend/app/core/redaction.py": [
+      "redact"
+    ],
+    "backend/app/core/settings.py": [
+      "Settings",
+      "get_settings",
+      "is_local"
+    ],
+    "backend/app/core/taxonomy.py": [
+      "Category",
+      "Priority",
+      "Sentiment",
+      "TicketStatus",
+      "Channel",
+      "Provider",
+      "ExecutionStatus",
+      "ComparisonStatus",
+      "BulkJobStatus",
+      "is_valid_pair",
+      "as_dict"
+    ],
+    "backend/app/jobs/__init__.py": [],
+    "backend/app/main.py": [
+      "create_app"
+    ],
+    "backend/app/providers/__init__.py": [],
+    "backend/app/providers/base.py": [
+      "ProviderInput",
+      "build_input",
+      "ProviderResult",
+      "ProviderFailure",
+      "failure_for_status",
+      "Adapter"
+    ],
+    "backend/app/providers/definitions.py": [],
+    "backend/app/providers/http.py": [
+      "post_json"
+    ],
+    "backend/app/providers/jev.py": [
+      "choice",
+      "build_request",
+      "build_subcategory_request",
+      "parse_output",
+      "total_usage",
+      "JevAdapter"
+    ],
+    "backend/app/providers/mock.py": [
+      "MockProvider"
+    ],
+    "backend/app/providers/ollama.py": [
+      "system_prompt",
+      "build_request",
+      "OllamaAdapter"
+    ],
+    "backend/app/providers/registry.py": [
+      "provider_labels",
+      "requested_model",
+      "jev_adapter",
+      "llm_adapter",
+      "get_adapter"
+    ],
+    "backend/app/repositories/__init__.py": [],
+    "backend/app/repositories/comparisons.py": [
+      "insert",
+      "newest_first",
+      "count",
+      "get"
+    ],
+    "backend/app/repositories/database.py": [
+      "DecimalCodec",
+      "connect",
+      "is_reachable",
+      "ensure_indexes",
+      "find_all",
+      "find_in"
+    ],
+    "backend/app/repositories/executions.py": [
+      "insert",
+      "update",
+      "get",
+      "link_comparison",
+      "latest_by_ticket",
+      "search"
+    ],
+    "backend/app/repositories/labels.py": [
+      "insert"
+    ],
+    "backend/app/repositories/tickets.py": [
+      "next_ticket_id",
+      "insert",
+      "get",
+      "fingerprint_exists",
+      "update",
+      "delete_with_dependents",
+      "search",
+      "counts"
+    ],
+    "backend/app/schemas/__init__.py": [],
+    "backend/app/schemas/bulk_jobs.py": [
+      "BulkJobCreate",
+      "BulkOutcome",
+      "BulkJob"
+    ],
+    "backend/app/schemas/classification.py": [
+      "Classification",
+      "FinalClassificationInput",
+      "FinalClassification",
+      "NormalizedResult"
+    ],
+    "backend/app/schemas/comparisons.py": [
+      "FieldComparison",
+      "Comparison",
+      "ComparisonCreate"
+    ],
+    "backend/app/schemas/executions.py": [
+      "Usage",
+      "PricingSnapshot",
+      "EstimatedCost",
+      "ProviderError",
+      "Execution"
+    ],
+    "backend/app/schemas/imports.py": [
+      "ImportRowError",
+      "ImportSummary"
+    ],
+    "backend/app/schemas/tickets.py": [
+      "_not_blank",
+      "_blank_to_none",
+      "TicketCreate",
+      "TicketUpdate",
+      "NoteCreate",
+      "Customer",
+      "OrderInfo",
+      "Note",
+      "Source",
+      "LatestRun",
+      "Ticket",
+      "TicketPage"
+    ],
+    "backend/app/services/__init__.py": [],
+    "backend/app/services/comparisons.py": [
+      "ComparisonError",
+      "field_comparison",
+      "status_of",
+      "load",
+      "create"
+    ],
+    "backend/app/services/csv_export.py": [
+      "value_at",
+      "cell",
+      "to_csv",
+      "export"
+    ],
+    "backend/app/services/csv_import.py": [
+      "CsvFileError",
+      "normalize",
+      "fingerprint",
+      "read_rows",
+      "row_errors",
+      "validate_row",
+      "save",
+      "import_csv"
+    ],
+    "backend/app/services/dashboard.py": [
+      "load_rows",
+      "is_fake",
+      "model_of",
+      "summary",
+      "list_item",
+      "list_comparisons",
+      "detail"
+    ],
+    "backend/app/services/executions.py": [
+      "failed",
+      "attempt",
+      "cost_fields",
+      "run"
+    ],
+    "backend/app/services/run_metrics.py": [
+      "percentile",
+      "kappa",
+      "latency",
+      "tokens",
+      "outcomes",
+      "cost",
+      "jev_confidence",
+      "compute"
+    ],
+    "backend/app/services/run_report.py": [
+      "fmt",
+      "pct",
+      "secs",
+      "table",
+      "agreement_chart",
+      "speed_chart",
+      "word",
+      "mark",
+      "ticket_rows",
+      "side",
+      "render"
+    ],
+    "backend/app/services/tickets.py": [
+      "RunNotUsable",
+      "create",
+      "update",
+      "add_note",
+      "run_result",
+      "set_classification"
+    ],
+    "backend/scripts/init_db.py": [
+      "main"
+    ],
+    "backend/scripts/run_report.py": [
+      "load_run",
+      "main"
+    ],
+    "backend/tests/__init__.py": [],
+    "backend/tests/conftest.py": [
+      "test_settings",
+      "test_db"
+    ],
+    "backend/tests/test_app_starts.py": [
+      "test_swagger_ui_is_served",
+      "test_openapi_schema_names_the_app"
+    ],
+    "backend/tests/test_csv.py": [
+      "api",
+      "upload",
+      "csv_of",
+      "errors_by_row",
+      "test_template_matches_the_spec_file",
+      "test_mixed_file_reports_accurate_counts",
+      "test_valid_rows_are_stored_with_import_source_and_normalised_values",
+      "test_labels_are_stored_separately_from_tickets",
+      "test_reimporting_the_same_file_skips_every_row",
+      "test_dry_run_reports_without_writing",
+      "test_import_never_runs_ai",
+      "test_bom_crlf_and_quoted_multiline_description",
+      "test_unreadable_files_are_rejected_whole",
+      "test_oversized_file_is_rejected",
+      "test_supplied_100_ticket_sample_is_valid",
+      "read_csv",
+      "test_ticket_export_is_valid_csv_and_neutralises_formulas",
+      "test_execution_export_leaves_out_payloads",
+      "test_comparison_export_has_per_field_columns",
+      "test_unknown_export_is_404"
+    ],
+    "backend/tests/test_dashboard.py": [
+      "api",
+      "compared",
+      "make_real",
+      "test_dashboard_is_empty_before_any_runs",
+      "test_dashboard_counts_real_runs_and_excludes_fake_ones",
+      "test_comparison_list_is_newest_first_and_flags_fake_runs",
+      "test_comparison_detail_returns_both_stored_runs",
+      "test_ticket_list_shows_each_tickets_latest_run",
+      "test_comparisons_can_be_listed_for_one_ticket"
+    ],
+    "backend/tests/test_execution_log.py": [
+      "test_cost_formula",
+      "test_missing_usage_gives_no_cost",
+      "test_no_rates_gives_no_cost",
+      "test_local_models_cost_nothing",
+      "test_hosted_jev_uses_the_published_rate",
+      "test_openai_and_fake_providers_are_not_priced",
+      "api",
+      "ticket",
+      "run",
+      "priced",
+      "test_run_stores_rates_and_cost_as_exact_decimals",
+      "test_old_runs_keep_their_rates_when_rates_change",
+      "test_stored_records_hold_no_secrets",
+      "test_list_filters_by_provider_status_ticket_and_date",
+      "test_list_is_newest_first_paged_and_leaves_out_payloads",
+      "test_detail_includes_payloads_and_failed_runs_stay_inspectable"
+    ],
+    "backend/tests/test_health.py": [
+      "test_health_reports_process_up",
+      "test_ready_when_database_is_reachable",
+      "test_not_ready_when_database_is_unreachable"
+    ],
+    "backend/tests/test_indexes.py": [
+      "keys_of",
+      "test_indexes_are_created_and_safe_to_rerun",
+      "test_tickets_without_fingerprint_do_not_collide",
+      "init_db_settings",
+      "test_init_db_script_is_repeatable",
+      "test_init_db_script_explains_when_database_is_down"
+    ],
+    "backend/tests/test_live_adapters.py": [
+      "client",
+      "jev",
+      "choice",
+      "two_step",
+      "test_jev_asks_category_first_then_only_that_categorys_subcategories",
+      "test_jev_counts_tokens_from_both_steps_and_stores_both_payloads",
+      "test_jev_rejects_an_unknown_category_without_a_second_call",
+      "test_jev_failure_in_the_second_step_keeps_the_first_steps_payload",
+      "test_jev_sends_the_key_when_one_is_configured",
+      "test_jev_escalation_uses_the_threshold",
+      "test_jev_failures_are_safe",
+      "test_unreachable_and_slow_servers",
+      "test_ollama_requests_structured_json_and_parses_it",
+      "test_ollama_non_json_reply_is_an_invalid_response",
+      "test_registry_picks_local_models_and_needs_no_key",
+      "test_registry_needs_a_key_for_hosted_jev",
+      "test_mock_mode_labels"
+    ],
+    "backend/tests/test_providers.py": [
+      "ticket",
+      "test_input_holds_only_ticket_content_and_taxonomy",
+      "test_http_status_maps_to_a_safe_failure",
+      "test_redaction_removes_credentials_at_any_depth",
+      "test_mock_output_follows_the_normalized_schema",
+      "test_mock_jev_marks_free_text_unsupported_and_gpt_writes_it",
+      "test_mock_is_deterministic",
+      "test_mock_failures_can_be_triggered_from_the_title",
+      "mock_settings",
+      "test_successful_run_is_recorded",
+      "test_record_exists_before_the_provider_answers",
+      "test_failed_runs_are_still_recorded",
+      "test_missing_key_is_recorded_as_not_configured",
+      "test_unexpected_crash_is_recorded_not_raised",
+      "test_payloads_are_redacted_before_saving"
+    ],
+    "backend/tests/test_run_metrics.py": [
+      "execution",
+      "result",
+      "comparison",
+      "row",
+      "test_percentile_and_kappa",
+      "test_agreement_metrics_use_completed_comparisons_only",
+      "test_latency_tokens_and_outcomes",
+      "test_jev_confidence_split_by_agreement"
+    ],
+    "backend/tests/test_runs_and_comparisons.py": [
+      "api",
+      "new_ticket",
+      "run",
+      "compare",
+      "test_run_endpoint_records_and_returns_the_execution",
+      "test_run_unknown_ticket_or_provider",
+      "test_run_without_mock_or_key_is_recorded_as_not_configured",
+      "test_comparison_counts_agreement_and_links_both_runs",
+      "test_comparison_is_partial_when_one_provider_fails",
+      "test_comparison_is_unavailable_when_both_fail",
+      "test_comparison_rejects_mismatched_runs",
+      "test_comparison_waits_for_running_executions",
+      "answer_of",
+      "choose",
+      "test_final_answer_taken_unchanged_from_a_run_is_not_marked_edited",
+      "test_final_answer_changed_after_choosing_a_run_is_marked_edited",
+      "test_final_answer_rejects_a_run_it_cannot_come_from",
+      "test_running_and_comparing_never_set_the_final_answer",
+      "test_the_chosen_final_answer_is_never_sent_to_a_model"
+    ],
+    "backend/tests/test_schemas.py": [
+      "test_valid_classification_is_accepted",
+      "test_invalid_classification_is_rejected",
+      "test_final_classification_records_taxonomy_version",
+      "test_jev_result_can_mark_free_text_unsupported",
+      "test_execution_records_taxonomy_version",
+      "test_ticket_create_trims_short_fields_and_keeps_description_exactly",
+      "test_invalid_ticket_input_is_rejected",
+      "test_ticket_create_rejects_missing_required_field",
+      "test_bulk_job_needs_exactly_one_selection",
+      "test_bulk_job_needs_a_provider"
+    ],
+    "backend/tests/test_settings.py": [
+      "test_defaults_need_no_env_file_or_api_keys",
+      "test_environment_overrides_defaults",
+      "test_empty_values_count_as_unset",
+      "test_api_keys_never_appear_in_repr",
+      "test_out_of_range_values_are_rejected",
+      "test_env_example_lists_every_setting"
+    ],
+    "backend/tests/test_shell_support.py": [
+      "preflight",
+      "test_cors_allows_only_the_configured_frontend_origin",
+      "test_provider_status_reports_configured_without_revealing_keys"
+    ],
+    "backend/tests/test_taxonomy.py": [
+      "test_taxonomy_matches_the_spec_exactly",
+      "test_subcategory_names_are_unique_across_categories",
+      "test_enums_hold_the_canonical_values",
+      "test_every_spec_pair_is_valid",
+      "test_inconsistent_or_unknown_pairs_are_invalid",
+      "test_taxonomy_endpoint_serves_the_same_values"
+    ],
+    "backend/tests/test_tickets.py": [
+      "api",
+      "create",
+      "classify",
+      "ids",
+      "test_create_assigns_sequential_ids_and_defaults",
+      "test_ids_stay_unique_under_concurrent_creation",
+      "test_get_returns_ticket_or_404",
+      "test_invalid_input_is_rejected",
+      "test_ticket_text_is_kept_exactly",
+      "test_update_changes_only_given_fields",
+      "test_invalid_updates_are_rejected",
+      "test_update_unknown_ticket_is_404",
+      "test_notes_are_appended",
+      "test_manual_classification_is_stored_with_version",
+      "test_inconsistent_classification_is_rejected",
+      "test_search_matches_each_searchable_field",
+      "test_search_treats_input_as_plain_text",
+      "test_filters_by_status_category_and_priority",
+      "test_sorts_by_created_date",
+      "test_sorts_by_priority_most_urgent_first_unclassified_last",
+      "test_pagination_is_bounded",
+      "seed_dependents",
+      "test_delete_removes_ticket_and_its_dependents_only",
+      "test_repeated_delete_is_safe",
+      "test_failed_dependent_delete_keeps_the_ticket",
+      "test_ticket_endpoints_explain_when_database_is_down"
+    ],
+    "e2e/playwright.config.ts": [],
+    "e2e/scripts/reset_db.py": [],
+    "e2e/tests/smoke.spec.ts": [],
+    "frontend/.prettierignore": [],
+    "frontend/eslint.config.js": [],
+    "frontend/src/app/AppShell.tsx": [
+      "AppShell"
+    ],
+    "frontend/src/app/PlaceholderPage.tsx": [
+      "PlaceholderPage",
+      "NotFoundPage"
+    ],
+    "frontend/src/app/router.tsx": [
+      "router"
+    ],
+    "frontend/src/components/ConfirmDialog.tsx": [
+      "ConfirmDialog"
+    ],
+    "frontend/src/components/Detail.tsx": [
+      "Detail"
+    ],
+    "frontend/src/components/ListControls.tsx": [
+      "FilterSelect",
+      "Pager"
+    ],
+    "frontend/src/components/states.tsx": [
+      "LoadingState",
+      "ErrorState",
+      "EmptyState"
+    ],
+    "frontend/src/components/ui/alert-dialog.tsx": [
+      "AlertDialog",
+      "AlertDialogAction",
+      "AlertDialogCancel",
+      "AlertDialogContent",
+      "AlertDialogDescription",
+      "AlertDialogFooter",
+      "AlertDialogHeader",
+      "AlertDialogMedia",
+      "AlertDialogOverlay",
+      "AlertDialogPortal",
+      "AlertDialogTitle",
+      "AlertDialogTrigger"
+    ],
+    "frontend/src/components/ui/badge.tsx": [
+      "Badge",
+      "badgeVariants"
+    ],
+    "frontend/src/components/ui/button.tsx": [
+      "Button",
+      "buttonVariants"
+    ],
+    "frontend/src/components/ui/card.tsx": [
+      "Card",
+      "CardHeader",
+      "CardFooter",
+      "CardTitle",
+      "CardAction",
+      "CardDescription",
+      "CardContent"
+    ],
+    "frontend/src/components/ui/dialog.tsx": [
+      "Dialog",
+      "DialogClose",
+      "DialogContent",
+      "DialogDescription",
+      "DialogFooter",
+      "DialogHeader",
+      "DialogOverlay",
+      "DialogPortal",
+      "DialogTitle",
+      "DialogTrigger"
+    ],
+    "frontend/src/components/ui/input.tsx": [
+      "Input"
+    ],
+    "frontend/src/components/ui/label.tsx": [
+      "Label"
+    ],
+    "frontend/src/components/ui/select.tsx": [
+      "Select",
+      "SelectContent",
+      "SelectGroup",
+      "SelectItem",
+      "SelectLabel",
+      "SelectScrollDownButton",
+      "SelectScrollUpButton",
+      "SelectSeparator",
+      "SelectTrigger",
+      "SelectValue"
+    ],
+    "frontend/src/components/ui/sheet.tsx": [
+      "Sheet",
+      "SheetTrigger",
+      "SheetClose",
+      "SheetContent",
+      "SheetHeader",
+      "SheetFooter",
+      "SheetTitle",
+      "SheetDescription"
+    ],
+    "frontend/src/components/ui/sonner.tsx": [
+      "Toaster"
+    ],
+    "frontend/src/components/ui/table.tsx": [
+      "Table",
+      "TableHeader",
+      "TableBody",
+      "TableFooter",
+      "TableHead",
+      "TableRow",
+      "TableCell",
+      "TableCaption"
+    ],
+    "frontend/src/components/ui/textarea.tsx": [
+      "Textarea"
+    ],
+    "frontend/src/features/compare/ComparePage.tsx": [
+      "ComparePage"
+    ],
+    "frontend/src/features/compare/ProviderColumn.tsx": [
+      "ProviderColumn"
+    ],
+    "frontend/src/features/compare/useCompareRun.ts": [
+      "useCompareRun",
+      "useElapsed",
+      "formatElapsed"
+    ],
+    "frontend/src/features/comparisons/ComparisonDetailPage.tsx": [
+      "ComparisonDetailPage"
+    ],
+    "frontend/src/features/comparisons/ComparisonsPage.tsx": [
+      "ComparisonTable",
+      "ComparisonsPage"
+    ],
+    "frontend/src/features/comparisons/hooks.ts": [
+      "useComparisons"
+    ],
+    "frontend/src/features/dashboard/DashboardPage.tsx": [
+      "DashboardPage"
+    ],
+    "frontend/src/features/executions/ExecutionDetailPage.tsx": [
+      "ExecutionDetailPage"
+    ],
+    "frontend/src/features/executions/ExecutionsPage.tsx": [
+      "ExecutionsPage"
+    ],
+    "frontend/src/features/settings/.gitkeep": [],
+    "frontend/src/features/tickets/AiResults.tsx": [
+      "AiResults"
+    ],
+    "frontend/src/features/tickets/FinalClassification.tsx": [
+      "FinalClassificationPanel"
+    ],
+    "frontend/src/features/tickets/ImportExport.tsx": [
+      "ImportDialog",
+      "ExportLinks"
+    ],
+    "frontend/src/features/tickets/NewTicketPage.tsx": [
+      "NewTicketPage"
+    ],
+    "frontend/src/features/tickets/TicketDetailPage.tsx": [
+      "TicketDetailPage"
+    ],
+    "frontend/src/features/tickets/TicketForm.tsx": [
+      "TicketForm"
+    ],
+    "frontend/src/features/tickets/TicketListPage.tsx": [
+      "TicketListPage"
+    ],
+    "frontend/src/features/tickets/hooks.ts": [
+      "useTickets",
+      "useTicket",
+      "useCreateTicket",
+      "useUpdateTicket",
+      "useAddNote",
+      "useSetFinal",
+      "useTicketRuns",
+      "useRunProvider",
+      "useDeleteTicket",
+      "useImportTickets"
+    ],
+    "frontend/src/lib/format.ts": [
+      "formatDateTime",
+      "seconds",
+      "SIDE_LABELS",
+      "formatEscalation",
+      "formatTokens",
+      "formatCost"
+    ],
+    "frontend/src/lib/utils.ts": [
+      "cn"
+    ],
+    "frontend/src/main.tsx": [],
+    "frontend/src/services/.gitkeep": [],
+    "frontend/src/services/api.ts": [
+      "BASE_URL",
+      "ApiError",
+      "api",
+      "send"
+    ],
+    "frontend/src/services/queries.ts": [
+      "useTaxonomy",
+      "useProviderStatus"
+    ],
+    "frontend/src/types/.gitkeep": [],
+    "frontend/src/types/api.ts": [],
+    "frontend/vite.config.ts": []
+  },
+  "batches": [
+    {
+      "batchIndex": 1,
+      "files": [
+        {
+          "path": "backend/app/api/dashboard.py",
+          "language": "python",
+          "sizeLines": 31,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/api/deps.py",
+          "language": "python",
+          "sizeLines": 11,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/api/executions.py",
+          "language": "python",
+          "sizeLines": 43,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/api/imports.py",
+          "language": "python",
+          "sizeLines": 54,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/api/runs.py",
+          "language": "python",
+          "sizeLines": 31,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/api/tickets.py",
+          "language": "python",
+          "sizeLines": 98,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/core/clock.py",
+          "language": "python",
+          "sizeLines": 10,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/repositories/__init__.py",
+          "language": "python",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/repositories/comparisons.py",
+          "language": "python",
+          "sizeLines": 22,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/repositories/executions.py",
+          "language": "python",
+          "sizeLines": 80,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/repositories/labels.py",
+          "language": "python",
+          "sizeLines": 10,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/repositories/tickets.py",
+          "language": "python",
+          "sizeLines": 102,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/schemas/comparisons.py",
+          "language": "python",
+          "sizeLines": 32,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/schemas/imports.py",
+          "language": "python",
+          "sizeLines": 19,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/services/__init__.py",
+          "language": "python",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/services/comparisons.py",
+          "language": "python",
+          "sizeLines": 77,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/services/csv_export.py",
+          "language": "python",
+          "sizeLines": 114,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/services/csv_import.py",
+          "language": "python",
+          "sizeLines": 189,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/services/dashboard.py",
+          "language": "python",
+          "sizeLines": 86,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/services/run_metrics.py",
+          "language": "python",
+          "sizeLines": 178,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/services/run_report.py",
+          "language": "python",
+          "sizeLines": 335,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/scripts/run_report.py",
+          "language": "python",
+          "sizeLines": 77,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/tests/test_csv.py",
+          "language": "python",
+          "sizeLines": 249,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/tests/test_run_metrics.py",
+          "language": "python",
+          "sizeLines": 110,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "backend/app/api/dashboard.py": [
+          "backend/app/api/deps.py",
+          "backend/app/services/__init__.py",
+          "backend/app/services/dashboard.py"
+        ],
+        "backend/app/api/deps.py": [],
+        "backend/app/api/executions.py": [
+          "backend/app/api/deps.py",
+          "backend/app/core/taxonomy.py",
+          "backend/app/repositories/__init__.py",
+          "backend/app/repositories/executions.py",
+          "backend/app/schemas/executions.py"
+        ],
+        "backend/app/api/imports.py": [
+          "backend/app/api/deps.py",
+          "backend/app/schemas/imports.py",
+          "backend/app/services/__init__.py",
+          "backend/app/services/csv_export.py",
+          "backend/app/services/csv_import.py"
+        ],
+        "backend/app/api/runs.py": [
+          "backend/app/api/deps.py",
+          "backend/app/core/taxonomy.py",
+          "backend/app/repositories/__init__.py",
+          "backend/app/repositories/tickets.py",
+          "backend/app/schemas/comparisons.py",
+          "backend/app/schemas/executions.py",
+          "backend/app/services/__init__.py",
+          "backend/app/services/comparisons.py",
+          "backend/app/services/executions.py"
+        ],
+        "backend/app/api/tickets.py": [
+          "backend/app/api/deps.py",
+          "backend/app/core/taxonomy.py",
+          "backend/app/repositories/__init__.py",
+          "backend/app/repositories/executions.py",
+          "backend/app/repositories/tickets.py",
+          "backend/app/schemas/classification.py",
+          "backend/app/schemas/tickets.py",
+          "backend/app/services/__init__.py"
+        ],
+        "backend/app/core/clock.py": [],
+        "backend/app/repositories/__init__.py": [],
+        "backend/app/repositories/comparisons.py": [],
+        "backend/app/repositories/executions.py": [],
+        "backend/app/repositories/labels.py": [],
+        "backend/app/repositories/tickets.py": [
+          "backend/app/core/taxonomy.py"
+        ],
+        "backend/app/schemas/comparisons.py": [
+          "backend/app/core/taxonomy.py"
+        ],
+        "backend/app/schemas/imports.py": [],
+        "backend/app/services/__init__.py": [],
+        "backend/app/services/comparisons.py": [
+          "backend/app/core/clock.py",
+          "backend/app/core/taxonomy.py",
+          "backend/app/repositories/__init__.py",
+          "backend/app/repositories/comparisons.py",
+          "backend/app/repositories/executions.py"
+        ],
+        "backend/app/services/csv_export.py": [
+          "backend/app/repositories/database.py",
+          "backend/app/services/csv_import.py"
+        ],
+        "backend/app/services/csv_import.py": [
+          "backend/app/core/clock.py",
+          "backend/app/core/taxonomy.py",
+          "backend/app/repositories/__init__.py",
+          "backend/app/repositories/labels.py",
+          "backend/app/schemas/classification.py",
+          "backend/app/schemas/imports.py",
+          "backend/app/schemas/tickets.py",
+          "backend/app/services/__init__.py"
+        ],
+        "backend/app/services/dashboard.py": [
+          "backend/app/repositories/__init__.py",
+          "backend/app/repositories/comparisons.py",
+          "backend/app/repositories/database.py",
+          "backend/app/repositories/tickets.py",
+          "backend/app/services/run_metrics.py"
+        ],
+        "backend/app/services/run_metrics.py": [],
+        "backend/app/services/run_report.py": [
+          "backend/app/services/run_metrics.py"
+        ],
+        "backend/scripts/run_report.py": [
+          "backend/app/core/clock.py",
+          "backend/app/core/settings.py",
+          "backend/app/repositories/database.py",
+          "backend/app/services/dashboard.py",
+          "backend/app/services/run_metrics.py",
+          "backend/app/services/run_report.py"
+        ],
+        "backend/tests/test_csv.py": [
+          "backend/app/main.py",
+          "backend/app/services/csv_import.py"
+        ],
+        "backend/tests/test_run_metrics.py": [
+          "backend/app/services/run_metrics.py"
+        ]
+      },
+      "neighborMap": {
+        "backend/app/api/dashboard.py": [
+          {
+            "path": "backend/app/main.py",
+            "batchIndex": 5,
+            "symbols": [
+              "create_app"
+            ]
+          }
+        ],
+        "backend/app/api/executions.py": [
+          {
+            "path": "backend/app/core/taxonomy.py",
+            "batchIndex": 2,
+            "symbols": [
+              "Category",
+              "Priority",
+              "Sentiment",
+              "TicketStatus",
+              "Channel",
+              "Provider",
+              "ExecutionStatus",
+              "ComparisonStatus",
+              "BulkJobStatus",
+              "is_valid_pair",
+              "as_dict"
+            ]
+          },
+          {
+            "path": "backend/app/schemas/executions.py",
+            "batchIndex": 2,
+            "symbols": [
+              "Usage",
+              "PricingSnapshot",
+              "EstimatedCost",
+              "ProviderError",
+              "Execution"
+            ]
+          },
+          {
+            "path": "backend/app/main.py",
+            "batchIndex": 5,
+            "symbols": [
+              "create_app"
+            ]
+          }
+        ],
+        "backend/app/api/imports.py": [
+          {
+            "path": "backend/app/main.py",
+            "batchIndex": 5,
+            "symbols": [
+              "create_app"
+            ]
+          }
+        ],
+        "backend/app/api/runs.py": [
+          {
+            "path": "backend/app/core/taxonomy.py",
+            "batchIndex": 2,
+            "symbols": [
+              "Category",
+              "Priority",
+              "Sentiment",
+              "TicketStatus",
+              "Channel",
+              "Provider",
+              "ExecutionStatus",
+              "ComparisonStatus",
+              "BulkJobStatus",
+              "is_valid_pair",
+              "as_dict"
+            ]
+          },
+          {
+            "path": "backend/app/schemas/executions.py",
+            "batchIndex": 2,
+            "symbols": [
+              "Usage",
+              "PricingSnapshot",
+              "EstimatedCost",
+              "ProviderError",
+              "Execution"
+            ]
+          },
+          {
+            "path": "backend/app/services/executions.py",
+            "batchIndex": 2,
+            "symbols": [
+              "failed",
+              "attempt",
+              "cost_fields",
+              "run"
+            ]
+          },
+          {
+            "path": "backend/app/main.py",
+            "batchIndex": 5,
+            "symbols": [
+              "create_app"
+            ]
+          }
+        ],
+        "backend/app/api/tickets.py": [
+          {
+            "path": "backend/app/core/taxonomy.py",
+            "batchIndex": 2,
+            "symbols": [
+              "Category",
+              "Priority",
+              "Sentiment",
+              "TicketStatus",
+              "Channel",
+              "Provider",
+              "ExecutionStatus",
+              "ComparisonStatus",
+              "BulkJobStatus",
+              "is_valid_pair",
+              "as_dict"
+            ]
+          },
+          {
+            "path": "backend/app/schemas/classification.py",
+            "batchIndex": 2,
+            "symbols": [
+              "Classification",
+              "FinalClassificationInput",
+              "FinalClassification",
+              "NormalizedResult"
+            ]
+          },
+          {
+            "path": "backend/app/schemas/tickets.py",
+            "batchIndex": 2,
+            "symbols": [
+              "_not_blank",
+              "_blank_to_none",
+              "TicketCreate",
+              "TicketUpdate",
+              "NoteCreate",
+              "Customer",
+              "OrderInfo",
+              "Note",
+              "Source",
+              "LatestRun",
+              "Ticket",
+              "TicketPage"
+            ]
+          },
+          {
+            "path": "backend/app/main.py",
+            "batchIndex": 5,
+            "symbols": [
+              "create_app"
+            ]
+          }
+        ],
+        "backend/app/core/clock.py": [
+          {
+            "path": "backend/app/services/executions.py",
+            "batchIndex": 2,
+            "symbols": [
+              "failed",
+              "attempt",
+              "cost_fields",
+              "run"
+            ]
+          },
+          {
+            "path": "backend/app/services/tickets.py",
+            "batchIndex": 2,
+            "symbols": [
+              "RunNotUsable",
+              "create",
+              "update",
+              "add_note",
+              "run_result",
+              "set_classification"
+            ]
+          }
+        ],
+        "backend/app/repositories/__init__.py": [
+          {
+            "path": "backend/app/services/executions.py",
+            "batchIndex": 2,
+            "symbols": [
+              "failed",
+              "attempt",
+              "cost_fields",
+              "run"
+            ]
+          },
+          {
+            "path": "backend/app/services/tickets.py",
+            "batchIndex": 2,
+            "symbols": [
+              "RunNotUsable",
+              "create",
+              "update",
+              "add_note",
+              "run_result",
+              "set_classification"
+            ]
+          }
+        ],
+        "backend/app/repositories/executions.py": [
+          {
+            "path": "backend/app/services/executions.py",
+            "batchIndex": 2,
+            "symbols": [
+              "failed",
+              "attempt",
+              "cost_fields",
+              "run"
+            ]
+          },
+          {
+            "path": "backend/app/services/tickets.py",
+            "batchIndex": 2,
+            "symbols": [
+              "RunNotUsable",
+              "create",
+              "update",
+              "add_note",
+              "run_result",
+              "set_classification"
+            ]
+          }
+        ],
+        "backend/app/repositories/tickets.py": [
+          {
+            "path": "backend/app/core/taxonomy.py",
+            "batchIndex": 2,
+            "symbols": [
+              "Category",
+              "Priority",
+              "Sentiment",
+              "TicketStatus",
+              "Channel",
+              "Provider",
+              "ExecutionStatus",
+              "ComparisonStatus",
+              "BulkJobStatus",
+              "is_valid_pair",
+              "as_dict"
+            ]
+          },
+          {
+            "path": "backend/app/services/tickets.py",
+            "batchIndex": 2,
+            "symbols": [
+              "RunNotUsable",
+              "create",
+              "update",
+              "add_note",
+              "run_result",
+              "set_classification"
+            ]
+          },
+          {
+            "path": "backend/tests/test_tickets.py",
+            "batchIndex": 5,
+            "symbols": [
+              "api",
+              "create",
+              "classify",
+              "ids",
+              "test_create_assigns_sequential_ids_and_defaults",
+              "test_ids_stay_unique_under_concurrent_creation",
+              "test_get_returns_ticket_or_404",
+              "test_invalid_input_is_rejected",
+              "test_ticket_text_is_kept_exactly",
+              "test_update_changes_only_given_fields",
+              "test_invalid_updates_are_rejected",
+              "test_update_unknown_ticket_is_404",
+              "test_notes_are_appended",
+              "test_manual_classification_is_stored_with_version",
+              "test_inconsistent_classification_is_rejected",
+              "test_search_matches_each_searchable_field",
+              "test_search_treats_input_as_plain_text",
+              "test_filters_by_status_category_and_priority",
+              "test_sorts_by_created_date",
+              "test_sorts_by_priority_most_urgent_first_unclassified_last",
+              "test_pagination_is_bounded",
+              "seed_dependents",
+              "test_delete_removes_ticket_and_its_dependents_only",
+              "test_repeated_delete_is_safe",
+              "test_failed_dependent_delete_keeps_the_ticket",
+              "test_ticket_endpoints_explain_when_database_is_down"
+            ]
+          }
+        ],
+        "backend/app/schemas/comparisons.py": [
+          {
+            "path": "backend/app/core/taxonomy.py",
+            "batchIndex": 2,
+            "symbols": [
+              "Category",
+              "Priority",
+              "Sentiment",
+              "TicketStatus",
+              "Channel",
+              "Provider",
+              "ExecutionStatus",
+              "ComparisonStatus",
+              "BulkJobStatus",
+              "is_valid_pair",
+              "as_dict"
+            ]
+          }
+        ],
+        "backend/app/services/comparisons.py": [
+          {
+            "path": "backend/app/core/taxonomy.py",
+            "batchIndex": 2,
+            "symbols": [
+              "Category",
+              "Priority",
+              "Sentiment",
+              "TicketStatus",
+              "Channel",
+              "Provider",
+              "ExecutionStatus",
+              "ComparisonStatus",
+              "BulkJobStatus",
+              "is_valid_pair",
+              "as_dict"
+            ]
+          }
+        ],
+        "backend/app/services/csv_export.py": [
+          {
+            "path": "backend/app/repositories/database.py",
+            "batchIndex": 5,
+            "symbols": [
+              "DecimalCodec",
+              "connect",
+              "is_reachable",
+              "ensure_indexes",
+              "find_all",
+              "find_in"
+            ]
+          }
+        ],
+        "backend/app/services/csv_import.py": [
+          {
+            "path": "backend/app/core/taxonomy.py",
+            "batchIndex": 2,
+            "symbols": [
+              "Category",
+              "Priority",
+              "Sentiment",
+              "TicketStatus",
+              "Channel",
+              "Provider",
+              "ExecutionStatus",
+              "ComparisonStatus",
+              "BulkJobStatus",
+              "is_valid_pair",
+              "as_dict"
+            ]
+          },
+          {
+            "path": "backend/app/schemas/classification.py",
+            "batchIndex": 2,
+            "symbols": [
+              "Classification",
+              "FinalClassificationInput",
+              "FinalClassification",
+              "NormalizedResult"
+            ]
+          },
+          {
+            "path": "backend/app/schemas/tickets.py",
+            "batchIndex": 2,
+            "symbols": [
+              "_not_blank",
+              "_blank_to_none",
+              "TicketCreate",
+              "TicketUpdate",
+              "NoteCreate",
+              "Customer",
+              "OrderInfo",
+              "Note",
+              "Source",
+              "LatestRun",
+              "Ticket",
+              "TicketPage"
+            ]
+          }
+        ],
+        "backend/app/services/dashboard.py": [
+          {
+            "path": "backend/app/repositories/database.py",
+            "batchIndex": 5,
+            "symbols": [
+              "DecimalCodec",
+              "connect",
+              "is_reachable",
+              "ensure_indexes",
+              "find_all",
+              "find_in"
+            ]
+          }
+        ],
+        "backend/scripts/run_report.py": [
+          {
+            "path": "backend/app/core/settings.py",
+            "batchIndex": 5,
+            "symbols": [
+              "Settings",
+              "get_settings",
+              "is_local"
+            ]
+          },
+          {
+            "path": "backend/app/repositories/database.py",
+            "batchIndex": 5,
+            "symbols": [
+              "DecimalCodec",
+              "connect",
+              "is_reachable",
+              "ensure_indexes",
+              "find_all",
+              "find_in"
+            ]
+          }
+        ],
+        "backend/tests/test_csv.py": [
+          {
+            "path": "backend/app/main.py",
+            "batchIndex": 5,
+            "symbols": [
+              "create_app"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 2,
+      "files": [
+        {
+          "path": "backend/app/core/pricing.py",
+          "language": "python",
+          "sizeLines": 47,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/core/redaction.py",
+          "language": "python",
+          "sizeLines": 29,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/core/taxonomy.py",
+          "language": "python",
+          "sizeLines": 145,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/providers/__init__.py",
+          "language": "python",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/providers/base.py",
+          "language": "python",
+          "sizeLines": 136,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/providers/definitions.py",
+          "language": "python",
+          "sizeLines": 35,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/providers/http.py",
+          "language": "python",
+          "sizeLines": 51,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/providers/jev.py",
+          "language": "python",
+          "sizeLines": 150,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/providers/mock.py",
+          "language": "python",
+          "sizeLines": 84,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/providers/ollama.py",
+          "language": "python",
+          "sizeLines": 118,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/providers/registry.py",
+          "language": "python",
+          "sizeLines": 75,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/schemas/bulk_jobs.py",
+          "language": "python",
+          "sizeLines": 46,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/schemas/classification.py",
+          "language": "python",
+          "sizeLines": 47,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/schemas/executions.py",
+          "language": "python",
+          "sizeLines": 66,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/schemas/tickets.py",
+          "language": "python",
+          "sizeLines": 132,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/services/executions.py",
+          "language": "python",
+          "sizeLines": 128,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/services/tickets.py",
+          "language": "python",
+          "sizeLines": 85,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/tests/test_execution_log.py",
+          "language": "python",
+          "sizeLines": 218,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/tests/test_live_adapters.py",
+          "language": "python",
+          "sizeLines": 277,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/tests/test_providers.py",
+          "language": "python",
+          "sizeLines": 217,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/tests/test_schemas.py",
+          "language": "python",
+          "sizeLines": 135,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "backend/app/core/pricing.py": [
+          "backend/app/core/settings.py",
+          "backend/app/core/taxonomy.py",
+          "backend/app/schemas/executions.py"
+        ],
+        "backend/app/core/redaction.py": [],
+        "backend/app/core/taxonomy.py": [],
+        "backend/app/providers/__init__.py": [],
+        "backend/app/providers/base.py": [
+          "backend/app/core/__init__.py",
+          "backend/app/core/taxonomy.py",
+          "backend/app/schemas/executions.py"
+        ],
+        "backend/app/providers/definitions.py": [
+          "backend/app/core/taxonomy.py"
+        ],
+        "backend/app/providers/http.py": [
+          "backend/app/providers/base.py"
+        ],
+        "backend/app/providers/jev.py": [
+          "backend/app/core/taxonomy.py",
+          "backend/app/providers/__init__.py",
+          "backend/app/providers/base.py",
+          "backend/app/providers/http.py",
+          "backend/app/schemas/executions.py"
+        ],
+        "backend/app/providers/mock.py": [
+          "backend/app/core/taxonomy.py",
+          "backend/app/providers/base.py",
+          "backend/app/schemas/executions.py"
+        ],
+        "backend/app/providers/ollama.py": [
+          "backend/app/core/taxonomy.py",
+          "backend/app/providers/__init__.py",
+          "backend/app/providers/base.py",
+          "backend/app/providers/http.py",
+          "backend/app/schemas/executions.py"
+        ],
+        "backend/app/providers/registry.py": [
+          "backend/app/core/settings.py",
+          "backend/app/core/taxonomy.py",
+          "backend/app/providers/base.py",
+          "backend/app/providers/jev.py",
+          "backend/app/providers/mock.py",
+          "backend/app/providers/ollama.py"
+        ],
+        "backend/app/schemas/bulk_jobs.py": [
+          "backend/app/core/taxonomy.py"
+        ],
+        "backend/app/schemas/classification.py": [
+          "backend/app/core/taxonomy.py"
+        ],
+        "backend/app/schemas/executions.py": [
+          "backend/app/core/taxonomy.py",
+          "backend/app/schemas/classification.py"
+        ],
+        "backend/app/schemas/tickets.py": [
+          "backend/app/core/taxonomy.py",
+          "backend/app/schemas/classification.py"
+        ],
+        "backend/app/services/executions.py": [
+          "backend/app/core/clock.py",
+          "backend/app/core/pricing.py",
+          "backend/app/core/redaction.py",
+          "backend/app/core/settings.py",
+          "backend/app/core/taxonomy.py",
+          "backend/app/providers/base.py",
+          "backend/app/providers/registry.py",
+          "backend/app/repositories/__init__.py",
+          "backend/app/repositories/executions.py",
+          "backend/app/schemas/classification.py",
+          "backend/app/schemas/executions.py"
+        ],
+        "backend/app/services/tickets.py": [
+          "backend/app/core/clock.py",
+          "backend/app/core/taxonomy.py",
+          "backend/app/repositories/__init__.py",
+          "backend/app/repositories/executions.py",
+          "backend/app/repositories/tickets.py",
+          "backend/app/schemas/classification.py",
+          "backend/app/schemas/tickets.py"
+        ],
+        "backend/tests/test_execution_log.py": [
+          "backend/app/core/pricing.py",
+          "backend/app/core/taxonomy.py",
+          "backend/app/main.py",
+          "backend/app/providers/base.py",
+          "backend/app/providers/mock.py",
+          "backend/app/schemas/executions.py"
+        ],
+        "backend/tests/test_live_adapters.py": [
+          "backend/app/core/taxonomy.py",
+          "backend/app/providers/base.py",
+          "backend/app/providers/jev.py",
+          "backend/app/providers/ollama.py",
+          "backend/app/providers/registry.py",
+          "backend/app/schemas/classification.py",
+          "backend/tests/test_providers.py"
+        ],
+        "backend/tests/test_providers.py": [
+          "backend/app/core/redaction.py",
+          "backend/app/providers/base.py",
+          "backend/app/providers/mock.py",
+          "backend/app/schemas/classification.py",
+          "backend/app/schemas/executions.py",
+          "backend/app/services/executions.py"
+        ],
+        "backend/tests/test_schemas.py": [
+          "backend/app/core/taxonomy.py",
+          "backend/app/schemas/bulk_jobs.py",
+          "backend/app/schemas/classification.py",
+          "backend/app/schemas/executions.py",
+          "backend/app/schemas/tickets.py"
+        ]
+      },
+      "neighborMap": {
+        "backend/app/core/pricing.py": [
+          {
+            "path": "backend/app/core/settings.py",
+            "batchIndex": 5,
+            "symbols": [
+              "Settings",
+              "get_settings",
+              "is_local"
+            ]
+          }
+        ],
+        "backend/app/core/taxonomy.py": [
+          {
+            "path": "backend/app/api/executions.py",
+            "batchIndex": 1,
+            "symbols": [
+              "list_executions",
+              "get_execution"
+            ]
+          },
+          {
+            "path": "backend/app/api/runs.py",
+            "batchIndex": 1,
+            "symbols": [
+              "run_provider",
+              "create_comparison"
+            ]
+          },
+          {
+            "path": "backend/app/api/taxonomy.py",
+            "batchIndex": 5,
+            "symbols": [
+              "get_taxonomy"
+            ]
+          },
+          {
+            "path": "backend/app/api/tickets.py",
+            "batchIndex": 1,
+            "symbols": [
+              "found",
+              "create_ticket",
+              "list_tickets",
+              "get_ticket",
+              "update_ticket",
+              "add_note",
+              "set_final_classification",
+              "delete_ticket"
+            ]
+          },
+          {
+            "path": "backend/app/repositories/tickets.py",
+            "batchIndex": 1,
+            "symbols": [
+              "next_ticket_id",
+              "insert",
+              "get",
+              "fingerprint_exists",
+              "update",
+              "delete_with_dependents",
+              "search",
+              "counts"
+            ]
+          },
+          {
+            "path": "backend/app/schemas/comparisons.py",
+            "batchIndex": 1,
+            "symbols": [
+              "FieldComparison",
+              "Comparison",
+              "ComparisonCreate"
+            ]
+          },
+          {
+            "path": "backend/app/services/comparisons.py",
+            "batchIndex": 1,
+            "symbols": [
+              "ComparisonError",
+              "field_comparison",
+              "status_of",
+              "load",
+              "create"
+            ]
+          },
+          {
+            "path": "backend/app/services/csv_import.py",
+            "batchIndex": 1,
+            "symbols": [
+              "CsvFileError",
+              "normalize",
+              "fingerprint",
+              "read_rows",
+              "row_errors",
+              "validate_row",
+              "save",
+              "import_csv"
+            ]
+          }
+        ],
+        "backend/app/providers/base.py": [
+          {
+            "path": "backend/app/core/__init__.py",
+            "batchIndex": 5,
+            "symbols": []
+          }
+        ],
+        "backend/app/providers/registry.py": [
+          {
+            "path": "backend/app/core/settings.py",
+            "batchIndex": 5,
+            "symbols": [
+              "Settings",
+              "get_settings",
+              "is_local"
+            ]
+          },
+          {
+            "path": "backend/app/api/providers.py",
+            "batchIndex": 5,
+            "symbols": [
+              "provider_status"
+            ]
+          }
+        ],
+        "backend/app/schemas/classification.py": [
+          {
+            "path": "backend/app/api/tickets.py",
+            "batchIndex": 1,
+            "symbols": [
+              "found",
+              "create_ticket",
+              "list_tickets",
+              "get_ticket",
+              "update_ticket",
+              "add_note",
+              "set_final_classification",
+              "delete_ticket"
+            ]
+          },
+          {
+            "path": "backend/app/services/csv_import.py",
+            "batchIndex": 1,
+            "symbols": [
+              "CsvFileError",
+              "normalize",
+              "fingerprint",
+              "read_rows",
+              "row_errors",
+              "validate_row",
+              "save",
+              "import_csv"
+            ]
+          }
+        ],
+        "backend/app/schemas/executions.py": [
+          {
+            "path": "backend/app/api/executions.py",
+            "batchIndex": 1,
+            "symbols": [
+              "list_executions",
+              "get_execution"
+            ]
+          },
+          {
+            "path": "backend/app/api/runs.py",
+            "batchIndex": 1,
+            "symbols": [
+              "run_provider",
+              "create_comparison"
+            ]
+          }
+        ],
+        "backend/app/schemas/tickets.py": [
+          {
+            "path": "backend/app/api/tickets.py",
+            "batchIndex": 1,
+            "symbols": [
+              "found",
+              "create_ticket",
+              "list_tickets",
+              "get_ticket",
+              "update_ticket",
+              "add_note",
+              "set_final_classification",
+              "delete_ticket"
+            ]
+          },
+          {
+            "path": "backend/app/services/csv_import.py",
+            "batchIndex": 1,
+            "symbols": [
+              "CsvFileError",
+              "normalize",
+              "fingerprint",
+              "read_rows",
+              "row_errors",
+              "validate_row",
+              "save",
+              "import_csv"
+            ]
+          }
+        ],
+        "backend/app/services/executions.py": [
+          {
+            "path": "backend/app/core/clock.py",
+            "batchIndex": 1,
+            "symbols": [
+              "utc_now"
+            ]
+          },
+          {
+            "path": "backend/app/core/settings.py",
+            "batchIndex": 5,
+            "symbols": [
+              "Settings",
+              "get_settings",
+              "is_local"
+            ]
+          },
+          {
+            "path": "backend/app/repositories/__init__.py",
+            "batchIndex": 1,
+            "symbols": []
+          },
+          {
+            "path": "backend/app/repositories/executions.py",
+            "batchIndex": 1,
+            "symbols": [
+              "insert",
+              "update",
+              "get",
+              "link_comparison",
+              "latest_by_ticket",
+              "search"
+            ]
+          },
+          {
+            "path": "backend/app/api/runs.py",
+            "batchIndex": 1,
+            "symbols": [
+              "run_provider",
+              "create_comparison"
+            ]
+          }
+        ],
+        "backend/app/services/tickets.py": [
+          {
+            "path": "backend/app/core/clock.py",
+            "batchIndex": 1,
+            "symbols": [
+              "utc_now"
+            ]
+          },
+          {
+            "path": "backend/app/repositories/__init__.py",
+            "batchIndex": 1,
+            "symbols": []
+          },
+          {
+            "path": "backend/app/repositories/executions.py",
+            "batchIndex": 1,
+            "symbols": [
+              "insert",
+              "update",
+              "get",
+              "link_comparison",
+              "latest_by_ticket",
+              "search"
+            ]
+          },
+          {
+            "path": "backend/app/repositories/tickets.py",
+            "batchIndex": 1,
+            "symbols": [
+              "next_ticket_id",
+              "insert",
+              "get",
+              "fingerprint_exists",
+              "update",
+              "delete_with_dependents",
+              "search",
+              "counts"
+            ]
+          }
+        ],
+        "backend/tests/test_execution_log.py": [
+          {
+            "path": "backend/app/main.py",
+            "batchIndex": 5,
+            "symbols": [
+              "create_app"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 3,
+      "files": [
+        {
+          "path": "frontend/src/app/AppShell.tsx",
+          "language": "typescript",
+          "sizeLines": 218,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/app/PlaceholderPage.tsx",
+          "language": "typescript",
+          "sizeLines": 31,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/app/router.tsx",
+          "language": "typescript",
+          "sizeLines": 73,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/components/ConfirmDialog.tsx",
+          "language": "typescript",
+          "sizeLines": 55,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/components/Detail.tsx",
+          "language": "typescript",
+          "sizeLines": 11,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/components/ListControls.tsx",
+          "language": "typescript",
+          "sizeLines": 86,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/components/states.tsx",
+          "language": "typescript",
+          "sizeLines": 64,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/components/ui/alert-dialog.tsx",
+          "language": "typescript",
+          "sizeLines": 199,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/components/ui/badge.tsx",
+          "language": "typescript",
+          "sizeLines": 48,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/components/ui/button.tsx",
+          "language": "typescript",
+          "sizeLines": 66,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/components/ui/card.tsx",
+          "language": "typescript",
+          "sizeLines": 102,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/components/ui/dialog.tsx",
+          "language": "typescript",
+          "sizeLines": 166,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/components/ui/input.tsx",
+          "language": "typescript",
+          "sizeLines": 18,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/components/ui/label.tsx",
+          "language": "typescript",
+          "sizeLines": 23,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/components/ui/select.tsx",
+          "language": "typescript",
+          "sizeLines": 189,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/components/ui/sheet.tsx",
+          "language": "typescript",
+          "sizeLines": 145,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/components/ui/table.tsx",
+          "language": "typescript",
+          "sizeLines": 115,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/components/ui/textarea.tsx",
+          "language": "typescript",
+          "sizeLines": 17,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/features/compare/ComparePage.tsx",
+          "language": "typescript",
+          "sizeLines": 199,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/features/compare/ProviderColumn.tsx",
+          "language": "typescript",
+          "sizeLines": 234,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "frontend/src/app/AppShell.tsx": [
+          "frontend/src/components/ui/badge.tsx",
+          "frontend/src/components/ui/button.tsx",
+          "frontend/src/components/ui/input.tsx",
+          "frontend/src/components/ui/sheet.tsx",
+          "frontend/src/lib/utils.ts",
+          "frontend/src/services/queries.ts"
+        ],
+        "frontend/src/app/PlaceholderPage.tsx": [
+          "frontend/src/components/states.tsx"
+        ],
+        "frontend/src/app/router.tsx": [
+          "frontend/src/app/AppShell.tsx",
+          "frontend/src/app/PlaceholderPage.tsx",
+          "frontend/src/features/compare/ComparePage.tsx",
+          "frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+          "frontend/src/features/comparisons/ComparisonsPage.tsx",
+          "frontend/src/features/dashboard/DashboardPage.tsx",
+          "frontend/src/features/executions/ExecutionDetailPage.tsx",
+          "frontend/src/features/executions/ExecutionsPage.tsx",
+          "frontend/src/features/tickets/NewTicketPage.tsx",
+          "frontend/src/features/tickets/TicketDetailPage.tsx",
+          "frontend/src/features/tickets/TicketListPage.tsx"
+        ],
+        "frontend/src/components/ConfirmDialog.tsx": [
+          "frontend/src/components/ui/alert-dialog.tsx"
+        ],
+        "frontend/src/components/Detail.tsx": [],
+        "frontend/src/components/ListControls.tsx": [
+          "frontend/src/components/ui/button.tsx",
+          "frontend/src/components/ui/select.tsx"
+        ],
+        "frontend/src/components/states.tsx": [
+          "frontend/src/components/ui/button.tsx"
+        ],
+        "frontend/src/components/ui/alert-dialog.tsx": [
+          "frontend/src/components/ui/button.tsx"
+        ],
+        "frontend/src/components/ui/badge.tsx": [],
+        "frontend/src/components/ui/button.tsx": [],
+        "frontend/src/components/ui/card.tsx": [],
+        "frontend/src/components/ui/dialog.tsx": [
+          "frontend/src/components/ui/button.tsx"
+        ],
+        "frontend/src/components/ui/input.tsx": [],
+        "frontend/src/components/ui/label.tsx": [],
+        "frontend/src/components/ui/select.tsx": [],
+        "frontend/src/components/ui/sheet.tsx": [
+          "frontend/src/components/ui/button.tsx"
+        ],
+        "frontend/src/components/ui/table.tsx": [],
+        "frontend/src/components/ui/textarea.tsx": [],
+        "frontend/src/features/compare/ComparePage.tsx": [
+          "frontend/src/components/states.tsx",
+          "frontend/src/components/ui/button.tsx",
+          "frontend/src/components/ui/card.tsx",
+          "frontend/src/components/ui/input.tsx",
+          "frontend/src/features/compare/ProviderColumn.tsx",
+          "frontend/src/features/compare/useCompareRun.ts",
+          "frontend/src/features/tickets/TicketForm.tsx",
+          "frontend/src/features/tickets/hooks.ts",
+          "frontend/src/services/queries.ts",
+          "frontend/src/types/api.ts"
+        ],
+        "frontend/src/features/compare/ProviderColumn.tsx": [
+          "frontend/src/components/ui/badge.tsx",
+          "frontend/src/components/ui/card.tsx",
+          "frontend/src/features/compare/useCompareRun.ts",
+          "frontend/src/lib/format.ts",
+          "frontend/src/types/api.ts"
+        ]
+      },
+      "neighborMap": {
+        "frontend/src/app/AppShell.tsx": [
+          {
+            "path": "frontend/src/lib/utils.ts",
+            "batchIndex": 4,
+            "symbols": [
+              "cn"
+            ]
+          },
+          {
+            "path": "frontend/src/services/queries.ts",
+            "batchIndex": 4,
+            "symbols": [
+              "useTaxonomy",
+              "useProviderStatus"
+            ]
+          }
+        ],
+        "frontend/src/app/router.tsx": [
+          {
+            "path": "frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ComparisonDetailPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/comparisons/ComparisonsPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ComparisonTable",
+              "ComparisonsPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/dashboard/DashboardPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "DashboardPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/executions/ExecutionDetailPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ExecutionDetailPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/executions/ExecutionsPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ExecutionsPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/NewTicketPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "NewTicketPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/TicketDetailPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "TicketDetailPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/TicketListPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "TicketListPage"
+            ]
+          },
+          {
+            "path": "frontend/src/main.tsx",
+            "batchIndex": 12,
+            "symbols": []
+          }
+        ],
+        "frontend/src/components/ConfirmDialog.tsx": [
+          {
+            "path": "frontend/src/features/tickets/TicketDetailPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "TicketDetailPage"
+            ]
+          }
+        ],
+        "frontend/src/components/Detail.tsx": [
+          {
+            "path": "frontend/src/features/executions/ExecutionDetailPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ExecutionDetailPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/FinalClassification.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "FinalClassificationPanel"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/TicketDetailPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "TicketDetailPage"
+            ]
+          }
+        ],
+        "frontend/src/components/ListControls.tsx": [
+          {
+            "path": "frontend/src/features/executions/ExecutionsPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ExecutionsPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/TicketListPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "TicketListPage"
+            ]
+          }
+        ],
+        "frontend/src/components/states.tsx": [
+          {
+            "path": "frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ComparisonDetailPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/comparisons/ComparisonsPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ComparisonTable",
+              "ComparisonsPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/dashboard/DashboardPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "DashboardPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/executions/ExecutionDetailPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ExecutionDetailPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/executions/ExecutionsPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ExecutionsPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/AiResults.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "AiResults"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/FinalClassification.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "FinalClassificationPanel"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/NewTicketPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "NewTicketPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/TicketDetailPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "TicketDetailPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/TicketListPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "TicketListPage"
+            ]
+          }
+        ],
+        "frontend/src/components/ui/badge.tsx": [
+          {
+            "path": "frontend/src/features/comparisons/ComparisonsPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ComparisonTable",
+              "ComparisonsPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/TicketListPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "TicketListPage"
+            ]
+          }
+        ],
+        "frontend/src/components/ui/button.tsx": [
+          {
+            "path": "frontend/src/features/comparisons/ComparisonsPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ComparisonTable",
+              "ComparisonsPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/dashboard/DashboardPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "DashboardPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/executions/ExecutionDetailPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ExecutionDetailPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/executions/ExecutionsPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ExecutionsPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/AiResults.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "AiResults"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/FinalClassification.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "FinalClassificationPanel"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/ImportExport.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ImportDialog",
+              "ExportLinks"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/NewTicketPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "NewTicketPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/TicketDetailPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "TicketDetailPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/TicketForm.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "TicketForm"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/TicketListPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "TicketListPage"
+            ]
+          }
+        ],
+        "frontend/src/components/ui/card.tsx": [
+          {
+            "path": "frontend/src/features/dashboard/DashboardPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "DashboardPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/executions/ExecutionDetailPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ExecutionDetailPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/AiResults.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "AiResults"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/FinalClassification.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "FinalClassificationPanel"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/TicketDetailPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "TicketDetailPage"
+            ]
+          }
+        ],
+        "frontend/src/components/ui/dialog.tsx": [
+          {
+            "path": "frontend/src/features/tickets/ImportExport.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ImportDialog",
+              "ExportLinks"
+            ]
+          }
+        ],
+        "frontend/src/components/ui/input.tsx": [
+          {
+            "path": "frontend/src/features/executions/ExecutionsPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ExecutionsPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/ImportExport.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ImportDialog",
+              "ExportLinks"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/TicketForm.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "TicketForm"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/TicketListPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "TicketListPage"
+            ]
+          }
+        ],
+        "frontend/src/components/ui/label.tsx": [
+          {
+            "path": "frontend/src/features/executions/ExecutionsPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ExecutionsPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/FinalClassification.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "FinalClassificationPanel"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/TicketForm.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "TicketForm"
+            ]
+          }
+        ],
+        "frontend/src/components/ui/select.tsx": [
+          {
+            "path": "frontend/src/features/tickets/FinalClassification.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "FinalClassificationPanel"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/TicketDetailPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "TicketDetailPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/TicketForm.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "TicketForm"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/TicketListPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "TicketListPage"
+            ]
+          }
+        ],
+        "frontend/src/components/ui/table.tsx": [
+          {
+            "path": "frontend/src/features/comparisons/ComparisonsPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ComparisonTable",
+              "ComparisonsPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/executions/ExecutionsPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ExecutionsPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/ImportExport.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ImportDialog",
+              "ExportLinks"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/TicketListPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "TicketListPage"
+            ]
+          }
+        ],
+        "frontend/src/components/ui/textarea.tsx": [
+          {
+            "path": "frontend/src/features/tickets/TicketDetailPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "TicketDetailPage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/TicketForm.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "TicketForm"
+            ]
+          }
+        ],
+        "frontend/src/features/compare/ComparePage.tsx": [
+          {
+            "path": "frontend/src/features/compare/useCompareRun.ts",
+            "batchIndex": 4,
+            "symbols": [
+              "useCompareRun",
+              "useElapsed",
+              "formatElapsed"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/TicketForm.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "TicketForm"
+            ]
+          },
+          {
+            "path": "frontend/src/features/tickets/hooks.ts",
+            "batchIndex": 4,
+            "symbols": [
+              "useTickets",
+              "useTicket",
+              "useCreateTicket",
+              "useUpdateTicket",
+              "useAddNote",
+              "useSetFinal",
+              "useTicketRuns",
+              "useRunProvider",
+              "useDeleteTicket",
+              "useImportTickets"
+            ]
+          },
+          {
+            "path": "frontend/src/services/queries.ts",
+            "batchIndex": 4,
+            "symbols": [
+              "useTaxonomy",
+              "useProviderStatus"
+            ]
+          },
+          {
+            "path": "frontend/src/types/api.ts",
+            "batchIndex": 4,
+            "symbols": []
+          }
+        ],
+        "frontend/src/features/compare/ProviderColumn.tsx": [
+          {
+            "path": "frontend/src/features/compare/useCompareRun.ts",
+            "batchIndex": 4,
+            "symbols": [
+              "useCompareRun",
+              "useElapsed",
+              "formatElapsed"
+            ]
+          },
+          {
+            "path": "frontend/src/lib/format.ts",
+            "batchIndex": 4,
+            "symbols": [
+              "formatDateTime",
+              "seconds",
+              "SIDE_LABELS",
+              "formatEscalation",
+              "formatTokens",
+              "formatCost"
+            ]
+          },
+          {
+            "path": "frontend/src/types/api.ts",
+            "batchIndex": 4,
+            "symbols": []
+          },
+          {
+            "path": "frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ComparisonDetailPage"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 4,
+      "files": [
+        {
+          "path": "frontend/src/features/compare/useCompareRun.ts",
+          "language": "typescript",
+          "sizeLines": 113,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+          "language": "typescript",
+          "sizeLines": 103,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/features/comparisons/ComparisonsPage.tsx",
+          "language": "typescript",
+          "sizeLines": 103,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/features/comparisons/hooks.ts",
+          "language": "typescript",
+          "sizeLines": 14,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/features/dashboard/DashboardPage.tsx",
+          "language": "typescript",
+          "sizeLines": 291,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/features/executions/ExecutionDetailPage.tsx",
+          "language": "typescript",
+          "sizeLines": 207,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/features/executions/ExecutionsPage.tsx",
+          "language": "typescript",
+          "sizeLines": 265,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/features/tickets/AiResults.tsx",
+          "language": "typescript",
+          "sizeLines": 179,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/features/tickets/FinalClassification.tsx",
+          "language": "typescript",
+          "sizeLines": 280,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/features/tickets/ImportExport.tsx",
+          "language": "typescript",
+          "sizeLines": 199,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/features/tickets/NewTicketPage.tsx",
+          "language": "typescript",
+          "sizeLines": 56,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/features/tickets/TicketDetailPage.tsx",
+          "language": "typescript",
+          "sizeLines": 267,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/features/tickets/TicketForm.tsx",
+          "language": "typescript",
+          "sizeLines": 200,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/features/tickets/TicketListPage.tsx",
+          "language": "typescript",
+          "sizeLines": 267,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/features/tickets/hooks.ts",
+          "language": "typescript",
+          "sizeLines": 118,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/lib/format.ts",
+          "language": "typescript",
+          "sizeLines": 33,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/lib/utils.ts",
+          "language": "typescript",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/services/api.ts",
+          "language": "typescript",
+          "sizeLines": 52,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/services/queries.ts",
+          "language": "typescript",
+          "sizeLines": 18,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/types/api.ts",
+          "language": "typescript",
+          "sizeLines": 250,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "frontend/src/features/compare/useCompareRun.ts": [
+          "frontend/src/services/api.ts",
+          "frontend/src/types/api.ts"
+        ],
+        "frontend/src/features/comparisons/ComparisonDetailPage.tsx": [
+          "frontend/src/components/states.tsx",
+          "frontend/src/features/compare/ProviderColumn.tsx",
+          "frontend/src/features/compare/useCompareRun.ts",
+          "frontend/src/lib/format.ts",
+          "frontend/src/services/api.ts",
+          "frontend/src/types/api.ts"
+        ],
+        "frontend/src/features/comparisons/ComparisonsPage.tsx": [
+          "frontend/src/components/states.tsx",
+          "frontend/src/components/ui/badge.tsx",
+          "frontend/src/components/ui/button.tsx",
+          "frontend/src/components/ui/table.tsx",
+          "frontend/src/features/comparisons/hooks.ts",
+          "frontend/src/lib/format.ts",
+          "frontend/src/types/api.ts"
+        ],
+        "frontend/src/features/comparisons/hooks.ts": [
+          "frontend/src/services/api.ts",
+          "frontend/src/types/api.ts"
+        ],
+        "frontend/src/features/dashboard/DashboardPage.tsx": [
+          "frontend/src/components/states.tsx",
+          "frontend/src/components/ui/button.tsx",
+          "frontend/src/components/ui/card.tsx",
+          "frontend/src/features/comparisons/ComparisonsPage.tsx",
+          "frontend/src/features/comparisons/hooks.ts",
+          "frontend/src/lib/format.ts",
+          "frontend/src/services/api.ts",
+          "frontend/src/types/api.ts"
+        ],
+        "frontend/src/features/executions/ExecutionDetailPage.tsx": [
+          "frontend/src/components/Detail.tsx",
+          "frontend/src/components/states.tsx",
+          "frontend/src/components/ui/button.tsx",
+          "frontend/src/components/ui/card.tsx",
+          "frontend/src/lib/format.ts",
+          "frontend/src/services/api.ts",
+          "frontend/src/types/api.ts"
+        ],
+        "frontend/src/features/executions/ExecutionsPage.tsx": [
+          "frontend/src/components/ListControls.tsx",
+          "frontend/src/components/states.tsx",
+          "frontend/src/components/ui/button.tsx",
+          "frontend/src/components/ui/input.tsx",
+          "frontend/src/components/ui/label.tsx",
+          "frontend/src/components/ui/table.tsx",
+          "frontend/src/lib/format.ts",
+          "frontend/src/services/api.ts",
+          "frontend/src/services/queries.ts",
+          "frontend/src/types/api.ts"
+        ],
+        "frontend/src/features/tickets/AiResults.tsx": [
+          "frontend/src/components/states.tsx",
+          "frontend/src/components/ui/button.tsx",
+          "frontend/src/components/ui/card.tsx",
+          "frontend/src/features/comparisons/ComparisonsPage.tsx",
+          "frontend/src/features/comparisons/hooks.ts",
+          "frontend/src/features/tickets/hooks.ts",
+          "frontend/src/lib/format.ts",
+          "frontend/src/types/api.ts"
+        ],
+        "frontend/src/features/tickets/FinalClassification.tsx": [
+          "frontend/src/components/Detail.tsx",
+          "frontend/src/components/states.tsx",
+          "frontend/src/components/ui/button.tsx",
+          "frontend/src/components/ui/card.tsx",
+          "frontend/src/components/ui/label.tsx",
+          "frontend/src/components/ui/select.tsx",
+          "frontend/src/features/tickets/hooks.ts",
+          "frontend/src/lib/format.ts",
+          "frontend/src/services/queries.ts",
+          "frontend/src/types/api.ts"
+        ],
+        "frontend/src/features/tickets/ImportExport.tsx": [
+          "frontend/src/components/ui/button.tsx",
+          "frontend/src/components/ui/dialog.tsx",
+          "frontend/src/components/ui/input.tsx",
+          "frontend/src/components/ui/table.tsx",
+          "frontend/src/features/tickets/hooks.ts",
+          "frontend/src/services/api.ts",
+          "frontend/src/types/api.ts"
+        ],
+        "frontend/src/features/tickets/NewTicketPage.tsx": [
+          "frontend/src/components/states.tsx",
+          "frontend/src/components/ui/button.tsx",
+          "frontend/src/features/tickets/TicketForm.tsx",
+          "frontend/src/features/tickets/hooks.ts",
+          "frontend/src/services/queries.ts"
+        ],
+        "frontend/src/features/tickets/TicketDetailPage.tsx": [
+          "frontend/src/components/ConfirmDialog.tsx",
+          "frontend/src/components/Detail.tsx",
+          "frontend/src/components/states.tsx",
+          "frontend/src/components/ui/button.tsx",
+          "frontend/src/components/ui/card.tsx",
+          "frontend/src/components/ui/select.tsx",
+          "frontend/src/components/ui/textarea.tsx",
+          "frontend/src/features/tickets/AiResults.tsx",
+          "frontend/src/features/tickets/FinalClassification.tsx",
+          "frontend/src/features/tickets/TicketForm.tsx",
+          "frontend/src/features/tickets/hooks.ts",
+          "frontend/src/lib/format.ts",
+          "frontend/src/services/api.ts",
+          "frontend/src/services/queries.ts",
+          "frontend/src/types/api.ts"
+        ],
+        "frontend/src/features/tickets/TicketForm.tsx": [
+          "frontend/src/components/ui/button.tsx",
+          "frontend/src/components/ui/input.tsx",
+          "frontend/src/components/ui/label.tsx",
+          "frontend/src/components/ui/select.tsx",
+          "frontend/src/components/ui/textarea.tsx",
+          "frontend/src/types/api.ts"
+        ],
+        "frontend/src/features/tickets/TicketListPage.tsx": [
+          "frontend/src/components/ListControls.tsx",
+          "frontend/src/components/states.tsx",
+          "frontend/src/components/ui/badge.tsx",
+          "frontend/src/components/ui/button.tsx",
+          "frontend/src/components/ui/input.tsx",
+          "frontend/src/components/ui/select.tsx",
+          "frontend/src/components/ui/table.tsx",
+          "frontend/src/features/tickets/ImportExport.tsx",
+          "frontend/src/features/tickets/hooks.ts",
+          "frontend/src/lib/format.ts",
+          "frontend/src/services/queries.ts",
+          "frontend/src/types/api.ts"
+        ],
+        "frontend/src/features/tickets/hooks.ts": [
+          "frontend/src/services/api.ts",
+          "frontend/src/types/api.ts"
+        ],
+        "frontend/src/lib/format.ts": [],
+        "frontend/src/lib/utils.ts": [],
+        "frontend/src/services/api.ts": [],
+        "frontend/src/services/queries.ts": [
+          "frontend/src/services/api.ts",
+          "frontend/src/types/api.ts"
+        ],
+        "frontend/src/types/api.ts": []
+      },
+      "neighborMap": {
+        "frontend/src/features/compare/useCompareRun.ts": [
+          {
+            "path": "frontend/src/features/compare/ComparePage.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "ComparePage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/compare/ProviderColumn.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "ProviderColumn"
+            ]
+          }
+        ],
+        "frontend/src/features/comparisons/ComparisonDetailPage.tsx": [
+          {
+            "path": "frontend/src/components/states.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "LoadingState",
+              "ErrorState",
+              "EmptyState"
+            ]
+          },
+          {
+            "path": "frontend/src/features/compare/ProviderColumn.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "ProviderColumn"
+            ]
+          },
+          {
+            "path": "frontend/src/app/router.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "router"
+            ]
+          }
+        ],
+        "frontend/src/features/comparisons/ComparisonsPage.tsx": [
+          {
+            "path": "frontend/src/components/states.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "LoadingState",
+              "ErrorState",
+              "EmptyState"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/badge.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Badge",
+              "badgeVariants"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/button.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/table.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Table",
+              "TableHeader",
+              "TableBody",
+              "TableFooter",
+              "TableHead",
+              "TableRow",
+              "TableCell",
+              "TableCaption"
+            ]
+          },
+          {
+            "path": "frontend/src/app/router.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "router"
+            ]
+          }
+        ],
+        "frontend/src/features/dashboard/DashboardPage.tsx": [
+          {
+            "path": "frontend/src/components/states.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "LoadingState",
+              "ErrorState",
+              "EmptyState"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/button.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/card.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Card",
+              "CardHeader",
+              "CardFooter",
+              "CardTitle",
+              "CardAction",
+              "CardDescription",
+              "CardContent"
+            ]
+          },
+          {
+            "path": "frontend/src/app/router.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "router"
+            ]
+          }
+        ],
+        "frontend/src/features/executions/ExecutionDetailPage.tsx": [
+          {
+            "path": "frontend/src/components/Detail.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Detail"
+            ]
+          },
+          {
+            "path": "frontend/src/components/states.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "LoadingState",
+              "ErrorState",
+              "EmptyState"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/button.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/card.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Card",
+              "CardHeader",
+              "CardFooter",
+              "CardTitle",
+              "CardAction",
+              "CardDescription",
+              "CardContent"
+            ]
+          },
+          {
+            "path": "frontend/src/app/router.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "router"
+            ]
+          }
+        ],
+        "frontend/src/features/executions/ExecutionsPage.tsx": [
+          {
+            "path": "frontend/src/components/ListControls.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "FilterSelect",
+              "Pager"
+            ]
+          },
+          {
+            "path": "frontend/src/components/states.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "LoadingState",
+              "ErrorState",
+              "EmptyState"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/button.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/input.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Input"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/label.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Label"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/table.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Table",
+              "TableHeader",
+              "TableBody",
+              "TableFooter",
+              "TableHead",
+              "TableRow",
+              "TableCell",
+              "TableCaption"
+            ]
+          },
+          {
+            "path": "frontend/src/app/router.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "router"
+            ]
+          }
+        ],
+        "frontend/src/features/tickets/AiResults.tsx": [
+          {
+            "path": "frontend/src/components/states.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "LoadingState",
+              "ErrorState",
+              "EmptyState"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/button.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/card.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Card",
+              "CardHeader",
+              "CardFooter",
+              "CardTitle",
+              "CardAction",
+              "CardDescription",
+              "CardContent"
+            ]
+          }
+        ],
+        "frontend/src/features/tickets/FinalClassification.tsx": [
+          {
+            "path": "frontend/src/components/Detail.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Detail"
+            ]
+          },
+          {
+            "path": "frontend/src/components/states.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "LoadingState",
+              "ErrorState",
+              "EmptyState"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/button.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/card.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Card",
+              "CardHeader",
+              "CardFooter",
+              "CardTitle",
+              "CardAction",
+              "CardDescription",
+              "CardContent"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/label.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Label"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/select.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Select",
+              "SelectContent",
+              "SelectGroup",
+              "SelectItem",
+              "SelectLabel",
+              "SelectScrollDownButton",
+              "SelectScrollUpButton",
+              "SelectSeparator",
+              "SelectTrigger",
+              "SelectValue"
+            ]
+          }
+        ],
+        "frontend/src/features/tickets/ImportExport.tsx": [
+          {
+            "path": "frontend/src/components/ui/button.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/dialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Dialog",
+              "DialogClose",
+              "DialogContent",
+              "DialogDescription",
+              "DialogFooter",
+              "DialogHeader",
+              "DialogOverlay",
+              "DialogPortal",
+              "DialogTitle",
+              "DialogTrigger"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/input.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Input"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/table.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Table",
+              "TableHeader",
+              "TableBody",
+              "TableFooter",
+              "TableHead",
+              "TableRow",
+              "TableCell",
+              "TableCaption"
+            ]
+          }
+        ],
+        "frontend/src/features/tickets/NewTicketPage.tsx": [
+          {
+            "path": "frontend/src/components/states.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "LoadingState",
+              "ErrorState",
+              "EmptyState"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/button.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "frontend/src/app/router.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "router"
+            ]
+          }
+        ],
+        "frontend/src/features/tickets/TicketDetailPage.tsx": [
+          {
+            "path": "frontend/src/components/ConfirmDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "ConfirmDialog"
+            ]
+          },
+          {
+            "path": "frontend/src/components/Detail.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Detail"
+            ]
+          },
+          {
+            "path": "frontend/src/components/states.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "LoadingState",
+              "ErrorState",
+              "EmptyState"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/button.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/card.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Card",
+              "CardHeader",
+              "CardFooter",
+              "CardTitle",
+              "CardAction",
+              "CardDescription",
+              "CardContent"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/select.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Select",
+              "SelectContent",
+              "SelectGroup",
+              "SelectItem",
+              "SelectLabel",
+              "SelectScrollDownButton",
+              "SelectScrollUpButton",
+              "SelectSeparator",
+              "SelectTrigger",
+              "SelectValue"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/textarea.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Textarea"
+            ]
+          },
+          {
+            "path": "frontend/src/app/router.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "router"
+            ]
+          }
+        ],
+        "frontend/src/features/tickets/TicketForm.tsx": [
+          {
+            "path": "frontend/src/components/ui/button.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/input.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Input"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/label.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Label"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/select.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Select",
+              "SelectContent",
+              "SelectGroup",
+              "SelectItem",
+              "SelectLabel",
+              "SelectScrollDownButton",
+              "SelectScrollUpButton",
+              "SelectSeparator",
+              "SelectTrigger",
+              "SelectValue"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/textarea.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Textarea"
+            ]
+          },
+          {
+            "path": "frontend/src/features/compare/ComparePage.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "ComparePage"
+            ]
+          }
+        ],
+        "frontend/src/features/tickets/TicketListPage.tsx": [
+          {
+            "path": "frontend/src/components/ListControls.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "FilterSelect",
+              "Pager"
+            ]
+          },
+          {
+            "path": "frontend/src/components/states.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "LoadingState",
+              "ErrorState",
+              "EmptyState"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/badge.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Badge",
+              "badgeVariants"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/button.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/input.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Input"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/select.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Select",
+              "SelectContent",
+              "SelectGroup",
+              "SelectItem",
+              "SelectLabel",
+              "SelectScrollDownButton",
+              "SelectScrollUpButton",
+              "SelectSeparator",
+              "SelectTrigger",
+              "SelectValue"
+            ]
+          },
+          {
+            "path": "frontend/src/components/ui/table.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Table",
+              "TableHeader",
+              "TableBody",
+              "TableFooter",
+              "TableHead",
+              "TableRow",
+              "TableCell",
+              "TableCaption"
+            ]
+          },
+          {
+            "path": "frontend/src/app/router.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "router"
+            ]
+          }
+        ],
+        "frontend/src/features/tickets/hooks.ts": [
+          {
+            "path": "frontend/src/features/compare/ComparePage.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "ComparePage"
+            ]
+          }
+        ],
+        "frontend/src/lib/format.ts": [
+          {
+            "path": "frontend/src/features/compare/ProviderColumn.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "ProviderColumn"
+            ]
+          }
+        ],
+        "frontend/src/lib/utils.ts": [
+          {
+            "path": "frontend/src/app/AppShell.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "AppShell"
+            ]
+          }
+        ],
+        "frontend/src/services/queries.ts": [
+          {
+            "path": "frontend/src/app/AppShell.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "AppShell"
+            ]
+          },
+          {
+            "path": "frontend/src/features/compare/ComparePage.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "ComparePage"
+            ]
+          }
+        ],
+        "frontend/src/types/api.ts": [
+          {
+            "path": "frontend/src/features/compare/ComparePage.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "ComparePage"
+            ]
+          },
+          {
+            "path": "frontend/src/features/compare/ProviderColumn.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "ProviderColumn"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 5,
+      "files": [
+        {
+          "path": "backend/app/api/__init__.py",
+          "language": "python",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/api/health.py",
+          "language": "python",
+          "sizeLines": 27,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/api/providers.py",
+          "language": "python",
+          "sizeLines": 20,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/api/taxonomy.py",
+          "language": "python",
+          "sizeLines": 11,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/core/__init__.py",
+          "language": "python",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/core/settings.py",
+          "language": "python",
+          "sizeLines": 60,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/main.py",
+          "language": "python",
+          "sizeLines": 63,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/repositories/database.py",
+          "language": "python",
+          "sizeLines": 97,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/scripts/init_db.py",
+          "language": "python",
+          "sizeLines": 29,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/tests/conftest.py",
+          "language": "python",
+          "sizeLines": 27,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/tests/test_app_starts.py",
+          "language": "python",
+          "sizeLines": 17,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/tests/test_dashboard.py",
+          "language": "python",
+          "sizeLines": 122,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/tests/test_health.py",
+          "language": "python",
+          "sizeLines": 43,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/tests/test_indexes.py",
+          "language": "python",
+          "sizeLines": 65,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/tests/test_runs_and_comparisons.py",
+          "language": "python",
+          "sizeLines": 211,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/tests/test_settings.py",
+          "language": "python",
+          "sizeLines": 76,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/tests/test_shell_support.py",
+          "language": "python",
+          "sizeLines": 37,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/tests/test_taxonomy.py",
+          "language": "python",
+          "sizeLines": 117,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/tests/test_tickets.py",
+          "language": "python",
+          "sizeLines": 323,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "backend/app/api/__init__.py": [],
+        "backend/app/api/health.py": [
+          "backend/app/repositories/database.py"
+        ],
+        "backend/app/api/providers.py": [
+          "backend/app/core/settings.py",
+          "backend/app/providers/registry.py"
+        ],
+        "backend/app/api/taxonomy.py": [
+          "backend/app/core/__init__.py",
+          "backend/app/core/taxonomy.py"
+        ],
+        "backend/app/core/__init__.py": [],
+        "backend/app/core/settings.py": [],
+        "backend/app/main.py": [
+          "backend/app/api/__init__.py",
+          "backend/app/api/dashboard.py",
+          "backend/app/api/executions.py",
+          "backend/app/api/health.py",
+          "backend/app/api/imports.py",
+          "backend/app/api/providers.py",
+          "backend/app/api/runs.py",
+          "backend/app/api/taxonomy.py",
+          "backend/app/api/tickets.py",
+          "backend/app/core/settings.py",
+          "backend/app/repositories/database.py"
+        ],
+        "backend/app/repositories/database.py": [
+          "backend/app/core/settings.py"
+        ],
+        "backend/scripts/init_db.py": [
+          "backend/app/core/settings.py",
+          "backend/app/repositories/database.py"
+        ],
+        "backend/tests/conftest.py": [
+          "backend/app/core/settings.py"
+        ],
+        "backend/tests/test_app_starts.py": [
+          "backend/app/main.py"
+        ],
+        "backend/tests/test_dashboard.py": [
+          "backend/app/main.py"
+        ],
+        "backend/tests/test_health.py": [
+          "backend/app/core/settings.py",
+          "backend/app/main.py",
+          "backend/tests/conftest.py"
+        ],
+        "backend/tests/test_indexes.py": [
+          "backend/app/core/settings.py",
+          "backend/app/repositories/database.py",
+          "backend/tests/conftest.py"
+        ],
+        "backend/tests/test_runs_and_comparisons.py": [
+          "backend/app/main.py"
+        ],
+        "backend/tests/test_settings.py": [
+          "backend/app/core/settings.py"
+        ],
+        "backend/tests/test_shell_support.py": [
+          "backend/app/main.py"
+        ],
+        "backend/tests/test_taxonomy.py": [
+          "backend/app/core/__init__.py",
+          "backend/app/main.py"
+        ],
+        "backend/tests/test_tickets.py": [
+          "backend/app/core/settings.py",
+          "backend/app/main.py",
+          "backend/app/repositories/tickets.py",
+          "backend/tests/conftest.py"
+        ]
+      },
+      "neighborMap": {
+        "backend/app/api/providers.py": [
+          {
+            "path": "backend/app/providers/registry.py",
+            "batchIndex": 2,
+            "symbols": [
+              "provider_labels",
+              "requested_model",
+              "jev_adapter",
+              "llm_adapter",
+              "get_adapter"
+            ]
+          }
+        ],
+        "backend/app/api/taxonomy.py": [
+          {
+            "path": "backend/app/core/taxonomy.py",
+            "batchIndex": 2,
+            "symbols": [
+              "Category",
+              "Priority",
+              "Sentiment",
+              "TicketStatus",
+              "Channel",
+              "Provider",
+              "ExecutionStatus",
+              "ComparisonStatus",
+              "BulkJobStatus",
+              "is_valid_pair",
+              "as_dict"
+            ]
+          }
+        ],
+        "backend/app/core/__init__.py": [
+          {
+            "path": "backend/app/providers/base.py",
+            "batchIndex": 2,
+            "symbols": [
+              "ProviderInput",
+              "build_input",
+              "ProviderResult",
+              "ProviderFailure",
+              "failure_for_status",
+              "Adapter"
+            ]
+          }
+        ],
+        "backend/app/core/settings.py": [
+          {
+            "path": "backend/app/core/pricing.py",
+            "batchIndex": 2,
+            "symbols": [
+              "local_rates",
+              "snapshot_for",
+              "estimate"
+            ]
+          },
+          {
+            "path": "backend/app/providers/registry.py",
+            "batchIndex": 2,
+            "symbols": [
+              "provider_labels",
+              "requested_model",
+              "jev_adapter",
+              "llm_adapter",
+              "get_adapter"
+            ]
+          },
+          {
+            "path": "backend/app/services/executions.py",
+            "batchIndex": 2,
+            "symbols": [
+              "failed",
+              "attempt",
+              "cost_fields",
+              "run"
+            ]
+          },
+          {
+            "path": "backend/scripts/run_report.py",
+            "batchIndex": 1,
+            "symbols": [
+              "load_run",
+              "main"
+            ]
+          }
+        ],
+        "backend/app/main.py": [
+          {
+            "path": "backend/app/api/dashboard.py",
+            "batchIndex": 1,
+            "symbols": [
+              "get_dashboard",
+              "list_comparisons",
+              "get_comparison"
+            ]
+          },
+          {
+            "path": "backend/app/api/executions.py",
+            "batchIndex": 1,
+            "symbols": [
+              "list_executions",
+              "get_execution"
+            ]
+          },
+          {
+            "path": "backend/app/api/imports.py",
+            "batchIndex": 1,
+            "symbols": [
+              "csv_download",
+              "import_template",
+              "import_tickets",
+              "export_csv"
+            ]
+          },
+          {
+            "path": "backend/app/api/runs.py",
+            "batchIndex": 1,
+            "symbols": [
+              "run_provider",
+              "create_comparison"
+            ]
+          },
+          {
+            "path": "backend/app/api/tickets.py",
+            "batchIndex": 1,
+            "symbols": [
+              "found",
+              "create_ticket",
+              "list_tickets",
+              "get_ticket",
+              "update_ticket",
+              "add_note",
+              "set_final_classification",
+              "delete_ticket"
+            ]
+          },
+          {
+            "path": "backend/tests/test_csv.py",
+            "batchIndex": 1,
+            "symbols": [
+              "api",
+              "upload",
+              "csv_of",
+              "errors_by_row",
+              "test_template_matches_the_spec_file",
+              "test_mixed_file_reports_accurate_counts",
+              "test_valid_rows_are_stored_with_import_source_and_normalised_values",
+              "test_labels_are_stored_separately_from_tickets",
+              "test_reimporting_the_same_file_skips_every_row",
+              "test_dry_run_reports_without_writing",
+              "test_import_never_runs_ai",
+              "test_bom_crlf_and_quoted_multiline_description",
+              "test_unreadable_files_are_rejected_whole",
+              "test_oversized_file_is_rejected",
+              "test_supplied_100_ticket_sample_is_valid",
+              "read_csv",
+              "test_ticket_export_is_valid_csv_and_neutralises_formulas",
+              "test_execution_export_leaves_out_payloads",
+              "test_comparison_export_has_per_field_columns",
+              "test_unknown_export_is_404"
+            ]
+          },
+          {
+            "path": "backend/tests/test_execution_log.py",
+            "batchIndex": 2,
+            "symbols": [
+              "test_cost_formula",
+              "test_missing_usage_gives_no_cost",
+              "test_no_rates_gives_no_cost",
+              "test_local_models_cost_nothing",
+              "test_hosted_jev_uses_the_published_rate",
+              "test_openai_and_fake_providers_are_not_priced",
+              "api",
+              "ticket",
+              "run",
+              "priced",
+              "test_run_stores_rates_and_cost_as_exact_decimals",
+              "test_old_runs_keep_their_rates_when_rates_change",
+              "test_stored_records_hold_no_secrets",
+              "test_list_filters_by_provider_status_ticket_and_date",
+              "test_list_is_newest_first_paged_and_leaves_out_payloads",
+              "test_detail_includes_payloads_and_failed_runs_stay_inspectable"
+            ]
+          }
+        ],
+        "backend/app/repositories/database.py": [
+          {
+            "path": "backend/app/services/csv_export.py",
+            "batchIndex": 1,
+            "symbols": [
+              "value_at",
+              "cell",
+              "to_csv",
+              "export"
+            ]
+          },
+          {
+            "path": "backend/app/services/dashboard.py",
+            "batchIndex": 1,
+            "symbols": [
+              "load_rows",
+              "is_fake",
+              "model_of",
+              "summary",
+              "list_item",
+              "list_comparisons",
+              "detail"
+            ]
+          },
+          {
+            "path": "backend/scripts/run_report.py",
+            "batchIndex": 1,
+            "symbols": [
+              "load_run",
+              "main"
+            ]
+          }
+        ],
+        "backend/tests/test_tickets.py": [
+          {
+            "path": "backend/app/repositories/tickets.py",
+            "batchIndex": 1,
+            "symbols": [
+              "next_ticket_id",
+              "insert",
+              "get",
+              "fingerprint_exists",
+              "update",
+              "delete_with_dependents",
+              "search",
+              "counts"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 6,
+      "files": [
+        {
+          "path": ".context/DEPLOYMENT_DECISIONS.md",
+          "language": "markdown",
+          "sizeLines": 20,
+          "fileCategory": "docs"
+        },
+        {
+          "path": ".context/PROGRESS.md",
+          "language": "markdown",
+          "sizeLines": 361,
+          "fileCategory": "docs"
+        },
+        {
+          "path": ".context/ROADMAP.md",
+          "language": "markdown",
+          "sizeLines": 104,
+          "fileCategory": "docs"
+        },
+        {
+          "path": ".context/ai-evaluation.md",
+          "language": "markdown",
+          "sizeLines": 221,
+          "fileCategory": "docs"
+        },
+        {
+          "path": ".context/architecture.md",
+          "language": "markdown",
+          "sizeLines": 216,
+          "fileCategory": "docs"
+        },
+        {
+          "path": ".context/code-size-standards.md",
+          "language": "markdown",
+          "sizeLines": 101,
+          "fileCategory": "docs"
+        },
+        {
+          "path": ".context/data-model.md",
+          "language": "markdown",
+          "sizeLines": 246,
+          "fileCategory": "docs"
+        },
+        {
+          "path": ".context/design.md",
+          "language": "markdown",
+          "sizeLines": 280,
+          "fileCategory": "docs"
+        },
+        {
+          "path": ".context/implementation.md",
+          "language": "markdown",
+          "sizeLines": 402,
+          "fileCategory": "docs"
+        },
+        {
+          "path": ".context/requirements.md",
+          "language": "markdown",
+          "sizeLines": 236,
+          "fileCategory": "docs"
+        },
+        {
+          "path": ".context/sample_tickets_100.csv",
+          "language": "csv",
+          "sizeLines": 101,
+          "fileCategory": "data"
+        },
+        {
+          "path": ".context/sample_tickets_template.csv",
+          "language": "csv",
+          "sizeLines": 1,
+          "fileCategory": "data"
+        }
+      ],
+      "batchImportData": {
+        ".context/DEPLOYMENT_DECISIONS.md": [],
+        ".context/PROGRESS.md": [],
+        ".context/ROADMAP.md": [],
+        ".context/ai-evaluation.md": [],
+        ".context/architecture.md": [],
+        ".context/code-size-standards.md": [],
+        ".context/data-model.md": [],
+        ".context/design.md": [],
+        ".context/implementation.md": [],
+        ".context/requirements.md": [],
+        ".context/sample_tickets_100.csv": [],
+        ".context/sample_tickets_template.csv": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 7,
+      "files": [
+        {
+          "path": ".mcp.json",
+          "language": "json",
+          "sizeLines": 36,
+          "fileCategory": "config"
+        },
+        {
+          "path": "AGENTS.md",
+          "language": "markdown",
+          "sizeLines": 70,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "CLAUDE.md",
+          "language": "markdown",
+          "sizeLines": 34,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "README.md",
+          "language": "markdown",
+          "sizeLines": 86,
+          "fileCategory": "docs"
+        }
+      ],
+      "batchImportData": {
+        ".mcp.json": [],
+        "AGENTS.md": [],
+        "CLAUDE.md": [],
+        "README.md": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 8,
+      "files": [
+        {
+          "path": "backend/.env.example",
+          "language": "config",
+          "sizeLines": 38,
+          "fileCategory": "config"
+        },
+        {
+          "path": "backend/pyproject.toml",
+          "language": "toml",
+          "sizeLines": 19,
+          "fileCategory": "config"
+        },
+        {
+          "path": "backend/requirements.txt",
+          "language": "txt",
+          "sizeLines": 10,
+          "fileCategory": "docs"
+        }
+      ],
+      "batchImportData": {
+        "backend/.env.example": [],
+        "backend/pyproject.toml": [],
+        "backend/requirements.txt": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 9,
+      "files": [
+        {
+          "path": "e2e/personas/analysts/adversarial-input-tester.md",
+          "language": "markdown",
+          "sizeLines": 12,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "e2e/personas/analysts/careful-power-user.md",
+          "language": "markdown",
+          "sizeLines": 7,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "e2e/personas/analysts/first-time-user.md",
+          "language": "markdown",
+          "sizeLines": 7,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "e2e/personas/analysts/keyboard-screen-reader.md",
+          "language": "markdown",
+          "sizeLines": 7,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "e2e/personas/analysts/rushed-operator.md",
+          "language": "markdown",
+          "sizeLines": 7,
+          "fileCategory": "docs"
+        }
+      ],
+      "batchImportData": {
+        "e2e/personas/analysts/adversarial-input-tester.md": [],
+        "e2e/personas/analysts/careful-power-user.md": [],
+        "e2e/personas/analysts/first-time-user.md": [],
+        "e2e/personas/analysts/keyboard-screen-reader.md": [],
+        "e2e/personas/analysts/rushed-operator.md": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 10,
+      "files": [
+        {
+          "path": "e2e/personas/customers/angry-impatient.md",
+          "language": "markdown",
+          "sizeLines": 7,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "e2e/personas/customers/casual-typos.md",
+          "language": "markdown",
+          "sizeLines": 7,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "e2e/personas/customers/non-native-english.md",
+          "language": "markdown",
+          "sizeLines": 7,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "e2e/personas/customers/rambling-multi-issue.md",
+          "language": "markdown",
+          "sizeLines": 7,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "e2e/personas/customers/terse.md",
+          "language": "markdown",
+          "sizeLines": 7,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "e2e/personas/customers/vague.md",
+          "language": "markdown",
+          "sizeLines": 7,
+          "fileCategory": "docs"
+        }
+      ],
+      "batchImportData": {
+        "e2e/personas/customers/angry-impatient.md": [],
+        "e2e/personas/customers/casual-typos.md": [],
+        "e2e/personas/customers/non-native-english.md": [],
+        "e2e/personas/customers/rambling-multi-issue.md": [],
+        "e2e/personas/customers/terse.md": [],
+        "e2e/personas/customers/vague.md": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 11,
+      "files": [
+        {
+          "path": "frontend/.prettierrc.json",
+          "language": "json",
+          "sizeLines": 3,
+          "fileCategory": "config"
+        },
+        {
+          "path": "frontend/components.json",
+          "language": "json",
+          "sizeLines": 25,
+          "fileCategory": "config"
+        },
+        {
+          "path": "frontend/index.html",
+          "language": "html",
+          "sizeLines": 13,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "frontend/package.json",
+          "language": "json",
+          "sizeLines": 50,
+          "fileCategory": "config"
+        },
+        {
+          "path": "frontend/tsconfig.app.json",
+          "language": "json",
+          "sizeLines": 29,
+          "fileCategory": "config"
+        },
+        {
+          "path": "frontend/tsconfig.json",
+          "language": "json",
+          "sizeLines": 10,
+          "fileCategory": "config"
+        },
+        {
+          "path": "frontend/tsconfig.node.json",
+          "language": "json",
+          "sizeLines": 23,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "frontend/.prettierrc.json": [],
+        "frontend/components.json": [],
+        "frontend/index.html": [],
+        "frontend/package.json": [],
+        "frontend/tsconfig.app.json": [],
+        "frontend/tsconfig.json": [],
+        "frontend/tsconfig.node.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 12,
+      "files": [
+        {
+          "path": ".claude/settings.json",
+          "language": "json",
+          "sizeLines": 58,
+          "fileCategory": "config"
+        },
+        {
+          "path": ".gitattributes",
+          "language": "unknown",
+          "sizeLines": 10,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/__init__.py",
+          "language": "python",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/jobs/__init__.py",
+          "language": "python",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/app/schemas/__init__.py",
+          "language": "python",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "backend/tests/__init__.py",
+          "language": "python",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "e2e/README.md",
+          "language": "markdown",
+          "sizeLines": 51,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "e2e/package.json",
+          "language": "json",
+          "sizeLines": 16,
+          "fileCategory": "config"
+        },
+        {
+          "path": "e2e/personas/README.md",
+          "language": "markdown",
+          "sizeLines": 13,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "e2e/playwright.config.ts",
+          "language": "typescript",
+          "sizeLines": 30,
+          "fileCategory": "code"
+        },
+        {
+          "path": "e2e/scripts/reset_db.py",
+          "language": "python",
+          "sizeLines": 22,
+          "fileCategory": "code"
+        },
+        {
+          "path": "e2e/scripts/stack.sh",
+          "language": "shell",
+          "sizeLines": 43,
+          "fileCategory": "script"
+        },
+        {
+          "path": "e2e/test-cases/TC-001-create-ticket.md",
+          "language": "markdown",
+          "sizeLines": 39,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "e2e/test-cases/TEMPLATE.md",
+          "language": "markdown",
+          "sizeLines": 33,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "e2e/tests/smoke.spec.ts",
+          "language": "typescript",
+          "sizeLines": 36,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/.prettierignore",
+          "language": "unknown",
+          "sizeLines": 5,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/eslint.config.js",
+          "language": "javascript",
+          "sizeLines": 31,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/components/ui/sonner.tsx",
+          "language": "typescript",
+          "sizeLines": 47,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/features/settings/.gitkeep",
+          "language": "unknown",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/index.css",
+          "language": "css",
+          "sizeLines": 135,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "frontend/src/main.tsx",
+          "language": "typescript",
+          "sizeLines": 31,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/services/.gitkeep",
+          "language": "unknown",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/src/types/.gitkeep",
+          "language": "unknown",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "frontend/vite.config.ts",
+          "language": "typescript",
+          "sizeLines": 17,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        ".claude/settings.json": [],
+        ".gitattributes": [],
+        "backend/app/__init__.py": [],
+        "backend/app/jobs/__init__.py": [],
+        "backend/app/schemas/__init__.py": [],
+        "backend/tests/__init__.py": [],
+        "e2e/README.md": [],
+        "e2e/package.json": [],
+        "e2e/personas/README.md": [],
+        "e2e/playwright.config.ts": [],
+        "e2e/scripts/reset_db.py": [],
+        "e2e/scripts/stack.sh": [],
+        "e2e/test-cases/TC-001-create-ticket.md": [],
+        "e2e/test-cases/TEMPLATE.md": [],
+        "e2e/tests/smoke.spec.ts": [],
+        "frontend/.prettierignore": [],
+        "frontend/eslint.config.js": [],
+        "frontend/src/components/ui/sonner.tsx": [],
+        "frontend/src/features/settings/.gitkeep": [],
+        "frontend/src/index.css": [],
+        "frontend/src/main.tsx": [
+          "frontend/src/app/router.tsx",
+          "frontend/src/components/ui/sonner.tsx",
+          "frontend/src/index.css"
+        ],
+        "frontend/src/services/.gitkeep": [],
+        "frontend/src/types/.gitkeep": [],
+        "frontend/vite.config.ts": []
+      },
+      "neighborMap": {
+        "frontend/src/main.tsx": [
+          {
+            "path": "frontend/src/app/router.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "router"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

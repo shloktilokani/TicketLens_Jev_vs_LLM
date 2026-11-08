@@ -11,9 +11,23 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pymongo.errors import ConnectionFailure, PyMongoError
 
-from app.api import health, imports, providers, runs, taxonomy, tickets
+from app.api import (
+    app_settings,
+    bulk_jobs,
+    dashboard,
+    evaluation,
+    executions,
+    health,
+    imports,
+    providers,
+    runs,
+    taxonomy,
+    tickets,
+)
 from app.core.settings import Settings, get_settings
+from app.jobs.bulk import mark_interrupted
 from app.repositories.database import DB_UNAVAILABLE_MESSAGE, connect, ensure_indexes
+from app.services.app_settings import load_taxonomy
 
 log = logging.getLogger("ticketlens")
 
@@ -30,12 +44,17 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         app.state.db = client[settings.mongodb_database]
         try:
             ensure_indexes(app.state.db)
+            mark_interrupted(app.state.db)
+            load_taxonomy(app.state.db)
         except PyMongoError:
             log.warning("Indexes not created. %s", DB_UNAVAILABLE_MESSAGE)
         yield
         client.close()
 
-    app = FastAPI(title="TicketLens API", version="0.1.0", lifespan=lifespan)
+    # Interactive API docs are for local development; production does not advertise its API.
+    docs = {"docs_url": None, "redoc_url": None, "openapi_url": None}
+    extra = docs if settings.app_env == "production" else {}
+    app = FastAPI(title="TicketLens API", version="0.1.0", lifespan=lifespan, **extra)
     # Only the local frontend may call the API from a browser (architecture.md section 9).
     app.add_middleware(
         CORSMiddleware,
@@ -49,6 +68,11 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(tickets.router)
     app.include_router(imports.router)
     app.include_router(runs.router)
+    app.include_router(dashboard.router)
+    app.include_router(executions.router)
+    app.include_router(bulk_jobs.router)
+    app.include_router(evaluation.router)
+    app.include_router(app_settings.router)
 
     @app.exception_handler(ConnectionFailure)
     async def database_unavailable(request: Request, exc: ConnectionFailure) -> JSONResponse:

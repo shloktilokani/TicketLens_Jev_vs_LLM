@@ -1,0 +1,49 @@
+{
+ "projectRoot": "/Users/shloktilokani/Projects/TicketLens_Jev_vs_LLM",
+ "batchFiles": [
+  {
+   "path": "e2e/personas/customers/angry-impatient.md",
+   "language": "markdown",
+   "sizeLines": 7,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "e2e/personas/customers/casual-typos.md",
+   "language": "markdown",
+   "sizeLines": 7,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "e2e/personas/customers/non-native-english.md",
+   "language": "markdown",
+   "sizeLines": 7,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "e2e/personas/customers/rambling-multi-issue.md",
+   "language": "markdown",
+   "sizeLines": 7,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "e2e/personas/customers/terse.md",
+   "language": "markdown",
+   "sizeLines": 7,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "e2e/personas/customers/vague.md",
+   "language": "markdown",
+   "sizeLines": 7,
+   "fileCategory": "docs"
+  }
+ ],
+ "batchImportData": {
+  "e2e/personas/customers/angry-impatient.md": [],
+  "e2e/personas/customers/casual-typos.md": [],
+  "e2e/personas/customers/non-native-english.md": [],
+  "e2e/personas/customers/rambling-multi-issue.md": [],
+  "e2e/personas/customers/terse.md": [],
+  "e2e/personas/customers/vague.md": []
+ }
+}

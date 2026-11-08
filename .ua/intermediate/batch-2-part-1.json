@@ -1,0 +1,906 @@
+{
+ "nodes": [
+  {
+   "id": "file:backend/app/core/pricing.py",
+   "type": "file",
+   "name": "pricing.py",
+   "filePath": "backend/app/core/pricing.py",
+   "summary": "Default provider rates and token-cost estimation: picks a pricing snapshot per provider and computes exact Decimal costs, returning None rather than guessing when a price or token count is missing.",
+   "tags": [
+    "utility",
+    "pricing",
+    "cost-estimation",
+    "decimal"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/core/pricing.py:local_rates",
+   "type": "function",
+   "name": "local_rates",
+   "filePath": "backend/app/core/pricing.py",
+   "lineRange": [
+    19,
+    22
+   ],
+   "summary": "Returns a zero-rate pricing snapshot for models running locally.",
+   "tags": [
+    "utility",
+    "pricing",
+    "local-models"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/core/pricing.py:snapshot_for",
+   "type": "function",
+   "name": "snapshot_for",
+   "filePath": "backend/app/core/pricing.py",
+   "lineRange": [
+    25,
+    38
+   ],
+   "summary": "Selects the rates for one provider from settings: none for mock mode or unpriced backends, zero for local, the published rate for hosted Jev.",
+   "tags": [
+    "pricing",
+    "provider-selection",
+    "business-logic"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/core/pricing.py:estimate",
+   "type": "function",
+   "name": "estimate",
+   "filePath": "backend/app/core/pricing.py",
+   "lineRange": [
+    41,
+    47
+   ],
+   "summary": "Computes token cost from usage and rates using exact Decimals, returning None if rates or token counts are missing.",
+   "tags": [
+    "pricing",
+    "cost-estimation",
+    "calculation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/core/redaction.py",
+   "type": "file",
+   "name": "redaction.py",
+   "filePath": "backend/app/core/redaction.py",
+   "summary": "Recursively strips credentials from provider payloads by replacing the values of secret-looking keys, so stored and displayed request and response data never holds secrets.",
+   "tags": [
+    "utility",
+    "security",
+    "redaction",
+    "sanitization"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/core/redaction.py:redact",
+   "type": "function",
+   "name": "redact",
+   "filePath": "backend/app/core/redaction.py",
+   "lineRange": [
+    21,
+    29
+   ],
+   "summary": "Returns a deep copy of a value with every secret-looking key's value replaced, leaving the input untouched.",
+   "tags": [
+    "security",
+    "redaction",
+    "recursive"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/core/taxonomy.py",
+   "type": "file",
+   "name": "taxonomy.py",
+   "filePath": "backend/app/core/taxonomy.py",
+   "summary": "Canonical taxonomy shared by validation, providers, evaluation and the UI: enums for categories, priorities, sentiments and statuses, the category-to-subcategory map, and the version constant.",
+   "tags": [
+    "data-model",
+    "taxonomy",
+    "enums",
+    "single-source-of-truth"
+   ],
+   "complexity": "moderate",
+   "languageNotes": "StrEnum members compare equal to plain strings, so the same values serialize directly to JSON and to MongoDB."
+  },
+  {
+   "id": "class:backend/app/core/taxonomy.py:Category",
+   "type": "class",
+   "name": "Category",
+   "filePath": "backend/app/core/taxonomy.py",
+   "lineRange": [
+    11,
+    17
+   ],
+   "summary": "Enum of the six top-level support categories.",
+   "tags": [
+    "taxonomy",
+    "enum",
+    "data-model"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/core/taxonomy.py:Priority",
+   "type": "class",
+   "name": "Priority",
+   "filePath": "backend/app/core/taxonomy.py",
+   "lineRange": [
+    72,
+    76
+   ],
+   "summary": "Enum of allowed ticket priority levels.",
+   "tags": [
+    "taxonomy",
+    "enum",
+    "data-model"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/core/taxonomy.py:Sentiment",
+   "type": "class",
+   "name": "Sentiment",
+   "filePath": "backend/app/core/taxonomy.py",
+   "lineRange": [
+    79,
+    82
+   ],
+   "summary": "Enum of allowed customer sentiment values.",
+   "tags": [
+    "taxonomy",
+    "enum",
+    "data-model"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/core/taxonomy.py:TicketStatus",
+   "type": "class",
+   "name": "TicketStatus",
+   "filePath": "backend/app/core/taxonomy.py",
+   "lineRange": [
+    85,
+    89
+   ],
+   "summary": "Enum of ticket lifecycle states.",
+   "tags": [
+    "taxonomy",
+    "enum",
+    "tickets"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/core/taxonomy.py:Channel",
+   "type": "class",
+   "name": "Channel",
+   "filePath": "backend/app/core/taxonomy.py",
+   "lineRange": [
+    92,
+    96
+   ],
+   "summary": "Enum of channels a ticket can be submitted through.",
+   "tags": [
+    "taxonomy",
+    "enum",
+    "tickets"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/core/taxonomy.py:Provider",
+   "type": "class",
+   "name": "Provider",
+   "filePath": "backend/app/core/taxonomy.py",
+   "lineRange": [
+    99,
+    101
+   ],
+   "summary": "Enum naming the two compared sides, Jev and GPT.",
+   "tags": [
+    "taxonomy",
+    "enum",
+    "providers"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/core/taxonomy.py:ExecutionStatus",
+   "type": "class",
+   "name": "ExecutionStatus",
+   "filePath": "backend/app/core/taxonomy.py",
+   "lineRange": [
+    104,
+    110
+   ],
+   "summary": "Enum of states a provider attempt can end in, including running, timed out and invalid response.",
+   "tags": [
+    "taxonomy",
+    "enum",
+    "execution-log"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/core/taxonomy.py:ComparisonStatus",
+   "type": "class",
+   "name": "ComparisonStatus",
+   "filePath": "backend/app/core/taxonomy.py",
+   "lineRange": [
+    113,
+    116
+   ],
+   "summary": "Enum of states for a side-by-side comparison.",
+   "tags": [
+    "taxonomy",
+    "enum",
+    "comparisons"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/core/taxonomy.py:BulkJobStatus",
+   "type": "class",
+   "name": "BulkJobStatus",
+   "filePath": "backend/app/core/taxonomy.py",
+   "lineRange": [
+    119,
+    125
+   ],
+   "summary": "Enum of states for a bulk classification job.",
+   "tags": [
+    "taxonomy",
+    "enum",
+    "bulk-jobs"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/core/taxonomy.py:is_valid_pair",
+   "type": "function",
+   "name": "is_valid_pair",
+   "filePath": "backend/app/core/taxonomy.py",
+   "lineRange": [
+    128,
+    131
+   ],
+   "summary": "Checks with an exact match that a subcategory belongs to a category.",
+   "tags": [
+    "validation",
+    "taxonomy",
+    "utility"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/core/taxonomy.py:as_dict",
+   "type": "function",
+   "name": "as_dict",
+   "filePath": "backend/app/core/taxonomy.py",
+   "lineRange": [
+    134,
+    145
+   ],
+   "summary": "Returns every canonical taxonomy value in display order for the frontend and provider input.",
+   "tags": [
+    "serialization",
+    "taxonomy",
+    "utility"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/providers/__init__.py",
+   "type": "file",
+   "name": "__init__.py",
+   "filePath": "backend/app/providers/__init__.py",
+   "summary": "Empty package marker that makes the provider adapters importable as app.providers.",
+   "tags": [
+    "package-marker",
+    "providers",
+    "python-package"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/providers/base.py",
+   "type": "file",
+   "name": "base.py",
+   "filePath": "backend/app/providers/base.py",
+   "summary": "The contract every provider adapter follows: the fixed input both models see, the raw result shape, the safe ProviderFailure exception, HTTP status mapping and the Adapter protocol.",
+   "tags": [
+    "provider-contract",
+    "type-definition",
+    "error-handling",
+    "fairness",
+    "service"
+   ],
+   "complexity": "moderate",
+   "languageNotes": "Adapter is a typing.Protocol, so adapters satisfy it structurally without inheriting from it."
+  },
+  {
+   "id": "class:backend/app/providers/base.py:ProviderInput",
+   "type": "class",
+   "name": "ProviderInput",
+   "filePath": "backend/app/providers/base.py",
+   "lineRange": [
+    31,
+    44
+   ],
+   "summary": "The exact ticket fields and taxonomy both providers are allowed to see.",
+   "tags": [
+    "data-model",
+    "provider-contract",
+    "fairness"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/providers/base.py:build_input",
+   "type": "function",
+   "name": "build_input",
+   "filePath": "backend/app/providers/base.py",
+   "lineRange": [
+    47,
+    62
+   ],
+   "summary": "Builds ProviderInput from a ticket, keeping labels, earlier results, notes and customer contact details away from providers.",
+   "tags": [
+    "factory",
+    "fairness",
+    "security"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/providers/base.py:ProviderResult",
+   "type": "class",
+   "name": "ProviderResult",
+   "filePath": "backend/app/providers/base.py",
+   "lineRange": [
+    65,
+    73
+   ],
+   "summary": "An adapter's raw answer with models, payloads, output and usage, before normalized validation.",
+   "tags": [
+    "data-model",
+    "provider-contract"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/providers/base.py:ProviderFailure",
+   "type": "class",
+   "name": "ProviderFailure",
+   "filePath": "backend/app/providers/base.py",
+   "lineRange": [
+    76,
+    103
+   ],
+   "summary": "Exception for a failed provider attempt, carrying a safe message, retry flag, payloads and the derived execution status.",
+   "tags": [
+    "error-handling",
+    "provider-contract",
+    "exception"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/providers/base.py:failure_for_status",
+   "type": "function",
+   "name": "failure_for_status",
+   "filePath": "backend/app/providers/base.py",
+   "lineRange": [
+    115,
+    132
+   ],
+   "summary": "Maps an HTTP error status to a safe ProviderFailure, marking only 429 and 5xx as retryable.",
+   "tags": [
+    "error-handling",
+    "http-status",
+    "mapping"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/providers/base.py:Adapter",
+   "type": "class",
+   "name": "Adapter",
+   "filePath": "backend/app/providers/base.py",
+   "lineRange": [
+    135,
+    136
+   ],
+   "summary": "Protocol requiring a classify method, implemented structurally by every provider adapter.",
+   "tags": [
+    "type-definition",
+    "protocol",
+    "provider-contract"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/providers/definitions.py",
+   "type": "file",
+   "name": "definitions.py",
+   "filePath": "backend/app/providers/definitions.py",
+   "summary": "Task definitions given identically to Jev and the LLM (priority, sentiment, escalation, category and subcategory meanings plus base instructions), keeping the comparison fair.",
+   "tags": [
+    "configuration",
+    "prompt-definitions",
+    "fairness",
+    "providers"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/providers/http.py",
+   "type": "file",
+   "name": "http.py",
+   "filePath": "backend/app/providers/http.py",
+   "summary": "The single HTTP helper both real adapters use: posts JSON with a timeout, maps transport and status errors to safe ProviderFailure objects, and deliberately never retries because calls can cost money.",
+   "tags": [
+    "utility",
+    "http-client",
+    "error-handling",
+    "providers"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/providers/http.py:post_json",
+   "type": "function",
+   "name": "post_json",
+   "filePath": "backend/app/providers/http.py",
+   "lineRange": [
+    11,
+    51
+   ],
+   "summary": "Posts JSON and returns the parsed reply, converting timeouts, network errors, error statuses and non-JSON bodies into ProviderFailure.",
+   "tags": [
+    "http-client",
+    "error-handling",
+    "utility"
+   ],
+   "complexity": "moderate"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:backend/app/core/pricing.py",
+   "target": "function:backend/app/core/pricing.py:local_rates",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/core/pricing.py",
+   "target": "function:backend/app/core/pricing.py:local_rates",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/core/pricing.py",
+   "target": "function:backend/app/core/pricing.py:snapshot_for",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/core/pricing.py",
+   "target": "function:backend/app/core/pricing.py:snapshot_for",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/core/pricing.py",
+   "target": "function:backend/app/core/pricing.py:estimate",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/core/pricing.py",
+   "target": "function:backend/app/core/pricing.py:estimate",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/core/pricing.py",
+   "target": "file:backend/app/core/settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/core/pricing.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/core/pricing.py",
+   "target": "file:backend/app/schemas/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/core/redaction.py",
+   "target": "function:backend/app/core/redaction.py:redact",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/core/redaction.py",
+   "target": "function:backend/app/core/redaction.py:redact",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/core/taxonomy.py",
+   "target": "class:backend/app/core/taxonomy.py:Category",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/core/taxonomy.py",
+   "target": "class:backend/app/core/taxonomy.py:Category",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/core/taxonomy.py",
+   "target": "class:backend/app/core/taxonomy.py:Priority",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/core/taxonomy.py",
+   "target": "class:backend/app/core/taxonomy.py:Priority",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/core/taxonomy.py",
+   "target": "class:backend/app/core/taxonomy.py:Sentiment",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/core/taxonomy.py",
+   "target": "class:backend/app/core/taxonomy.py:Sentiment",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/core/taxonomy.py",
+   "target": "class:backend/app/core/taxonomy.py:TicketStatus",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/core/taxonomy.py",
+   "target": "class:backend/app/core/taxonomy.py:TicketStatus",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/core/taxonomy.py",
+   "target": "class:backend/app/core/taxonomy.py:Channel",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/core/taxonomy.py",
+   "target": "class:backend/app/core/taxonomy.py:Channel",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/core/taxonomy.py",
+   "target": "class:backend/app/core/taxonomy.py:Provider",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/core/taxonomy.py",
+   "target": "class:backend/app/core/taxonomy.py:Provider",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/core/taxonomy.py",
+   "target": "class:backend/app/core/taxonomy.py:ExecutionStatus",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/core/taxonomy.py",
+   "target": "class:backend/app/core/taxonomy.py:ExecutionStatus",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/core/taxonomy.py",
+   "target": "class:backend/app/core/taxonomy.py:ComparisonStatus",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/core/taxonomy.py",
+   "target": "class:backend/app/core/taxonomy.py:ComparisonStatus",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/core/taxonomy.py",
+   "target": "class:backend/app/core/taxonomy.py:BulkJobStatus",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/core/taxonomy.py",
+   "target": "class:backend/app/core/taxonomy.py:BulkJobStatus",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/core/taxonomy.py",
+   "target": "function:backend/app/core/taxonomy.py:is_valid_pair",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/core/taxonomy.py",
+   "target": "function:backend/app/core/taxonomy.py:is_valid_pair",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/core/taxonomy.py",
+   "target": "function:backend/app/core/taxonomy.py:as_dict",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/core/taxonomy.py",
+   "target": "function:backend/app/core/taxonomy.py:as_dict",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/providers/base.py",
+   "target": "class:backend/app/providers/base.py:ProviderInput",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/providers/base.py",
+   "target": "class:backend/app/providers/base.py:ProviderInput",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/providers/base.py",
+   "target": "function:backend/app/providers/base.py:build_input",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/providers/base.py",
+   "target": "function:backend/app/providers/base.py:build_input",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/providers/base.py",
+   "target": "class:backend/app/providers/base.py:ProviderResult",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/providers/base.py",
+   "target": "class:backend/app/providers/base.py:ProviderResult",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/providers/base.py",
+   "target": "class:backend/app/providers/base.py:ProviderFailure",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/providers/base.py",
+   "target": "class:backend/app/providers/base.py:ProviderFailure",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/providers/base.py",
+   "target": "function:backend/app/providers/base.py:failure_for_status",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/providers/base.py",
+   "target": "function:backend/app/providers/base.py:failure_for_status",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/providers/base.py",
+   "target": "class:backend/app/providers/base.py:Adapter",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/providers/base.py",
+   "target": "class:backend/app/providers/base.py:Adapter",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/providers/base.py",
+   "target": "file:backend/app/core/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/providers/base.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/providers/base.py",
+   "target": "file:backend/app/schemas/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/providers/definitions.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/providers/http.py",
+   "target": "function:backend/app/providers/http.py:post_json",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/providers/http.py",
+   "target": "function:backend/app/providers/http.py:post_json",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/providers/http.py",
+   "target": "file:backend/app/providers/base.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "function:backend/app/core/pricing.py:snapshot_for",
+   "target": "function:backend/app/core/pricing.py:local_rates",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/core/pricing.py:snapshot_for",
+   "target": "function:backend/app/core/settings.py:is_local",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/providers/base.py:build_input",
+   "target": "function:backend/app/core/taxonomy.py:as_dict",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/providers/http.py:post_json",
+   "target": "function:backend/app/providers/base.py:failure_for_status",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/core/pricing.py",
+   "target": "file:backend/tests/test_execution_log.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/providers/base.py",
+   "target": "file:backend/tests/test_live_adapters.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/providers/http.py",
+   "target": "file:backend/tests/test_live_adapters.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/core/redaction.py",
+   "target": "file:backend/tests/test_providers.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/providers/base.py",
+   "target": "file:backend/tests/test_providers.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  }
+ ]
+}

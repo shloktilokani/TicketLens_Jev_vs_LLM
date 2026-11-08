@@ -1,0 +1,1330 @@
+{
+ "nodes": [
+  {
+   "id": "file:backend/app/providers/jev.py",
+   "type": "file",
+   "name": "jev.py",
+   "filePath": "backend/app/providers/jev.py",
+   "summary": "Jev adapter over the System One decision API, for hosted TypeSafe or local AutoTrust models: runs a two-step classification (category and other fields, then that category's subcategories) and marks free text as unsupported.",
+   "tags": [
+    "service",
+    "provider-adapter",
+    "jev",
+    "two-step-classification",
+    "api-client"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/providers/jev.py:choice",
+   "type": "function",
+   "name": "choice",
+   "filePath": "backend/app/providers/jev.py",
+   "lineRange": [
+    35,
+    36
+   ],
+   "summary": "Builds one System One choice question using the shared instructions.",
+   "tags": [
+    "utility",
+    "request-building",
+    "jev"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/providers/jev.py:build_request",
+   "type": "function",
+   "name": "build_request",
+   "filePath": "backend/app/providers/jev.py",
+   "lineRange": [
+    39,
+    47
+   ],
+   "summary": "Builds step one of the Jev request: category, priority, sentiment and an escalation yes/no question.",
+   "tags": [
+    "request-building",
+    "jev",
+    "two-step-classification"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/providers/jev.py:build_subcategory_request",
+   "type": "function",
+   "name": "build_subcategory_request",
+   "filePath": "backend/app/providers/jev.py",
+   "lineRange": [
+    50,
+    58
+   ],
+   "summary": "Builds step two of the Jev request, offering only the subcategories of the chosen category.",
+   "tags": [
+    "request-building",
+    "jev",
+    "two-step-classification"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/providers/jev.py:parse_output",
+   "type": "function",
+   "name": "parse_output",
+   "filePath": "backend/app/providers/jev.py",
+   "lineRange": [
+    61,
+    76
+   ],
+   "summary": "Maps System One answers to normalized fields, applies the escalation threshold and marks summary and resolution as unsupported.",
+   "tags": [
+    "parsing",
+    "normalization",
+    "jev"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/providers/jev.py:total_usage",
+   "type": "function",
+   "name": "total_usage",
+   "filePath": "backend/app/providers/jev.py",
+   "lineRange": [
+    79,
+    91
+   ],
+   "summary": "Sums tokens across both steps, reporting usage only when every step reported it.",
+   "tags": [
+    "usage-tracking",
+    "calculation",
+    "jev"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/providers/jev.py:JevAdapter",
+   "type": "class",
+   "name": "JevAdapter",
+   "filePath": "backend/app/providers/jev.py",
+   "lineRange": [
+    94,
+    150
+   ],
+   "summary": "Adapter that calls the System One endpoint in two steps with optional bearer auth, keeping both steps' payloads even when a step fails.",
+   "tags": [
+    "provider-adapter",
+    "jev",
+    "api-client",
+    "service"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:backend/app/providers/mock.py",
+   "type": "file",
+   "name": "mock.py",
+   "filePath": "backend/app/providers/mock.py",
+   "summary": "Deterministic fake Jev and GPT provider for tests and UI work: keyword rules produce classifications with no network or cost, and title markers simulate failures, timeouts and invalid answers.",
+   "tags": [
+    "test-double",
+    "provider-adapter",
+    "mock",
+    "deterministic"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:backend/app/providers/mock.py:MockProvider",
+   "type": "class",
+   "name": "MockProvider",
+   "filePath": "backend/app/providers/mock.py",
+   "lineRange": [
+    32,
+    84
+   ],
+   "summary": "Fake adapter that classifies by keyword rules, sleeps a configurable delay, simulates failures from title markers and reports usage as unavailable.",
+   "tags": [
+    "test-double",
+    "provider-adapter",
+    "mock"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:backend/app/providers/ollama.py",
+   "type": "file",
+   "name": "ollama.py",
+   "filePath": "backend/app/providers/ollama.py",
+   "summary": "LLM adapter through a local Ollama chat model: builds a system prompt from the shared definitions, forces valid enum values with a JSON schema, and parses the structured reply and token counts.",
+   "tags": [
+    "service",
+    "provider-adapter",
+    "ollama",
+    "structured-output",
+    "api-client"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/providers/ollama.py:system_prompt",
+   "type": "function",
+   "name": "system_prompt",
+   "filePath": "backend/app/providers/ollama.py",
+   "lineRange": [
+    39,
+    50
+   ],
+   "summary": "Assembles the system prompt from the shared definitions, requiring English text and forbidding claims that actions were taken.",
+   "tags": [
+    "prompt-building",
+    "ollama",
+    "fairness"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/providers/ollama.py:build_request",
+   "type": "function",
+   "name": "build_request",
+   "filePath": "backend/app/providers/ollama.py",
+   "lineRange": [
+    53,
+    74
+   ],
+   "summary": "Builds the Ollama chat request with the ticket as user content, the JSON schema, no streaming and temperature zero.",
+   "tags": [
+    "request-building",
+    "ollama",
+    "structured-output"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/providers/ollama.py:OllamaAdapter",
+   "type": "class",
+   "name": "OllamaAdapter",
+   "filePath": "backend/app/providers/ollama.py",
+   "lineRange": [
+    77,
+    118
+   ],
+   "summary": "Adapter that calls Ollama's chat endpoint, parses the JSON answer and reports provider token counts.",
+   "tags": [
+    "provider-adapter",
+    "ollama",
+    "api-client",
+    "service"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:backend/app/providers/registry.py",
+   "type": "file",
+   "name": "registry.py",
+   "filePath": "backend/app/providers/registry.py",
+   "summary": "Chooses the provider adapter from settings: mock, Jev (hosted or local) or the LLM backend, supplies UI labels and requested model names, and raises not_configured failures when something is missing.",
+   "tags": [
+    "factory",
+    "provider-registry",
+    "configuration",
+    "service"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/providers/registry.py:provider_labels",
+   "type": "function",
+   "name": "provider_labels",
+   "filePath": "backend/app/providers/registry.py",
+   "lineRange": [
+    17,
+    26
+   ],
+   "summary": "Returns human-readable provider names for the UI, never including secrets.",
+   "tags": [
+    "ui-labels",
+    "configuration",
+    "utility"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/providers/registry.py:requested_model",
+   "type": "function",
+   "name": "requested_model",
+   "filePath": "backend/app/providers/registry.py",
+   "lineRange": [
+    29,
+    36
+   ],
+   "summary": "Resolves the model name to record for a provider from settings.",
+   "tags": [
+    "configuration",
+    "utility",
+    "provider-selection"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/providers/registry.py:jev_adapter",
+   "type": "function",
+   "name": "jev_adapter",
+   "filePath": "backend/app/providers/registry.py",
+   "lineRange": [
+    39,
+    52
+   ],
+   "summary": "Builds a JevAdapter from settings, requiring an API key only for a non-local base URL.",
+   "tags": [
+    "factory",
+    "jev",
+    "configuration"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/providers/registry.py:llm_adapter",
+   "type": "function",
+   "name": "llm_adapter",
+   "filePath": "backend/app/providers/registry.py",
+   "lineRange": [
+    55,
+    67
+   ],
+   "summary": "Builds the Ollama adapter, or raises not_configured for the OpenAI backend, which has no adapter yet.",
+   "tags": [
+    "factory",
+    "ollama",
+    "configuration"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/providers/registry.py:get_adapter",
+   "type": "function",
+   "name": "get_adapter",
+   "filePath": "backend/app/providers/registry.py",
+   "lineRange": [
+    70,
+    75
+   ],
+   "summary": "Returns the adapter to call for a provider, using the mock when mock mode is on.",
+   "tags": [
+    "factory",
+    "provider-selection",
+    "entry-point"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/schemas/bulk_jobs.py",
+   "type": "file",
+   "name": "bulk_jobs.py",
+   "filePath": "backend/app/schemas/bulk_jobs.py",
+   "summary": "Pydantic models for bulk classification jobs: the create request that needs exactly one ticket selection mode, per-ticket outcomes, and persisted job progress.",
+   "tags": [
+    "data-model",
+    "validation",
+    "bulk-jobs",
+    "schema-definition"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/bulk_jobs.py:BulkJobCreate",
+   "type": "class",
+   "name": "BulkJobCreate",
+   "filePath": "backend/app/schemas/bulk_jobs.py",
+   "lineRange": [
+    9,
+    20
+   ],
+   "summary": "Bulk job request that must name either explicit tickets or all eligible tickets, plus at least one provider.",
+   "tags": [
+    "data-model",
+    "validation",
+    "bulk-jobs"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/bulk_jobs.py:BulkOutcome",
+   "type": "class",
+   "name": "BulkOutcome",
+   "filePath": "backend/app/schemas/bulk_jobs.py",
+   "lineRange": [
+    23,
+    27
+   ],
+   "summary": "Result of one ticket and provider pair in a bulk job.",
+   "tags": [
+    "data-model",
+    "bulk-jobs"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/bulk_jobs.py:BulkJob",
+   "type": "class",
+   "name": "BulkJob",
+   "filePath": "backend/app/schemas/bulk_jobs.py",
+   "lineRange": [
+    30,
+    46
+   ],
+   "summary": "Persisted progress of one bulk run with counters, outcomes and timestamps.",
+   "tags": [
+    "data-model",
+    "bulk-jobs"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/schemas/classification.py",
+   "type": "file",
+   "name": "classification.py",
+   "filePath": "backend/app/schemas/classification.py",
+   "summary": "Pydantic models for the five compared classification fields, the operator's final answer and a provider's normalized result, rejecting any category and subcategory pair that does not belong together.",
+   "tags": [
+    "data-model",
+    "validation",
+    "classification",
+    "schema-definition"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/classification.py:Classification",
+   "type": "class",
+   "name": "Classification",
+   "filePath": "backend/app/schemas/classification.py",
+   "lineRange": [
+    8,
+    22
+   ],
+   "summary": "The five compared fields, rejecting rather than rewriting a mismatched category and subcategory.",
+   "tags": [
+    "data-model",
+    "validation",
+    "classification"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/classification.py:FinalClassificationInput",
+   "type": "class",
+   "name": "FinalClassificationInput",
+   "filePath": "backend/app/schemas/classification.py",
+   "lineRange": [
+    25,
+    28
+   ],
+   "summary": "What the operator saves, optionally naming the run the answer came from.",
+   "tags": [
+    "data-model",
+    "classification",
+    "api-input"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/classification.py:FinalClassification",
+   "type": "class",
+   "name": "FinalClassification",
+   "filePath": "backend/app/schemas/classification.py",
+   "lineRange": [
+    31,
+    37
+   ],
+   "summary": "The operator's stored answer with source run, edit flag, taxonomy version and timestamp.",
+   "tags": [
+    "data-model",
+    "classification",
+    "final-classification"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/classification.py:NormalizedResult",
+   "type": "class",
+   "name": "NormalizedResult",
+   "filePath": "backend/app/schemas/classification.py",
+   "lineRange": [
+    40,
+    47
+   ],
+   "summary": "One provider's validated output with confidence, optional free text, unsupported fields and warnings.",
+   "tags": [
+    "data-model",
+    "provider-contract",
+    "classification"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/schemas/executions.py",
+   "type": "file",
+   "name": "executions.py",
+   "filePath": "backend/app/schemas/executions.py",
+   "summary": "Pydantic models for a provider attempt record: token usage, the pricing snapshot, estimated Decimal cost, a user-safe error and the full execution document including failures.",
+   "tags": [
+    "data-model",
+    "execution-log",
+    "pricing",
+    "schema-definition"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:backend/app/schemas/executions.py:Usage",
+   "type": "class",
+   "name": "Usage",
+   "filePath": "backend/app/schemas/executions.py",
+   "lineRange": [
+    11,
+    17
+   ],
+   "summary": "Token counts and their source, where None means the provider did not report them.",
+   "tags": [
+    "data-model",
+    "usage-tracking"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/executions.py:PricingSnapshot",
+   "type": "class",
+   "name": "PricingSnapshot",
+   "filePath": "backend/app/schemas/executions.py",
+   "lineRange": [
+    20,
+    26
+   ],
+   "summary": "The rates in force when a call ran, so old costs never change.",
+   "tags": [
+    "data-model",
+    "pricing"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/executions.py:EstimatedCost",
+   "type": "class",
+   "name": "EstimatedCost",
+   "filePath": "backend/app/schemas/executions.py",
+   "lineRange": [
+    29,
+    33
+   ],
+   "summary": "An estimated cost held as an exact Decimal with its currency.",
+   "tags": [
+    "data-model",
+    "pricing"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/executions.py:ProviderError",
+   "type": "class",
+   "name": "ProviderError",
+   "filePath": "backend/app/schemas/executions.py",
+   "lineRange": [
+    36,
+    41
+   ],
+   "summary": "User-safe error details stored with a failed attempt.",
+   "tags": [
+    "data-model",
+    "error-handling"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/executions.py:Execution",
+   "type": "class",
+   "name": "Execution",
+   "filePath": "backend/app/schemas/executions.py",
+   "lineRange": [
+    44,
+    66
+   ],
+   "summary": "The record of one provider attempt, including failures, with payloads, result, usage and cost.",
+   "tags": [
+    "data-model",
+    "execution-log"
+   ],
+   "complexity": "simple"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:backend/app/providers/jev.py",
+   "target": "function:backend/app/providers/jev.py:choice",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/providers/jev.py",
+   "target": "function:backend/app/providers/jev.py:choice",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/providers/jev.py",
+   "target": "function:backend/app/providers/jev.py:build_request",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/providers/jev.py",
+   "target": "function:backend/app/providers/jev.py:build_request",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/providers/jev.py",
+   "target": "function:backend/app/providers/jev.py:build_subcategory_request",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/providers/jev.py",
+   "target": "function:backend/app/providers/jev.py:build_subcategory_request",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/providers/jev.py",
+   "target": "function:backend/app/providers/jev.py:parse_output",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/providers/jev.py",
+   "target": "function:backend/app/providers/jev.py:parse_output",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/providers/jev.py",
+   "target": "function:backend/app/providers/jev.py:total_usage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/providers/jev.py",
+   "target": "function:backend/app/providers/jev.py:total_usage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/providers/jev.py",
+   "target": "class:backend/app/providers/jev.py:JevAdapter",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/providers/jev.py",
+   "target": "class:backend/app/providers/jev.py:JevAdapter",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/providers/jev.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/providers/jev.py",
+   "target": "file:backend/app/providers/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/providers/jev.py",
+   "target": "file:backend/app/providers/base.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/providers/jev.py",
+   "target": "file:backend/app/providers/http.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/providers/jev.py",
+   "target": "file:backend/app/schemas/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/providers/mock.py",
+   "target": "class:backend/app/providers/mock.py:MockProvider",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/providers/mock.py",
+   "target": "class:backend/app/providers/mock.py:MockProvider",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/providers/mock.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/providers/mock.py",
+   "target": "file:backend/app/providers/base.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/providers/mock.py",
+   "target": "file:backend/app/schemas/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/providers/ollama.py",
+   "target": "function:backend/app/providers/ollama.py:system_prompt",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/providers/ollama.py",
+   "target": "function:backend/app/providers/ollama.py:system_prompt",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/providers/ollama.py",
+   "target": "function:backend/app/providers/ollama.py:build_request",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/providers/ollama.py",
+   "target": "function:backend/app/providers/ollama.py:build_request",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/providers/ollama.py",
+   "target": "class:backend/app/providers/ollama.py:OllamaAdapter",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/providers/ollama.py",
+   "target": "class:backend/app/providers/ollama.py:OllamaAdapter",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/providers/ollama.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/providers/ollama.py",
+   "target": "file:backend/app/providers/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/providers/ollama.py",
+   "target": "file:backend/app/providers/base.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/providers/ollama.py",
+   "target": "file:backend/app/providers/http.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/providers/ollama.py",
+   "target": "file:backend/app/schemas/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/providers/registry.py",
+   "target": "function:backend/app/providers/registry.py:provider_labels",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/providers/registry.py",
+   "target": "function:backend/app/providers/registry.py:provider_labels",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/providers/registry.py",
+   "target": "function:backend/app/providers/registry.py:requested_model",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/providers/registry.py",
+   "target": "function:backend/app/providers/registry.py:requested_model",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/providers/registry.py",
+   "target": "function:backend/app/providers/registry.py:jev_adapter",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/providers/registry.py",
+   "target": "function:backend/app/providers/registry.py:jev_adapter",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/providers/registry.py",
+   "target": "function:backend/app/providers/registry.py:llm_adapter",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/providers/registry.py",
+   "target": "function:backend/app/providers/registry.py:llm_adapter",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/providers/registry.py",
+   "target": "function:backend/app/providers/registry.py:get_adapter",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/providers/registry.py",
+   "target": "function:backend/app/providers/registry.py:get_adapter",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/providers/registry.py",
+   "target": "file:backend/app/core/settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/providers/registry.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/providers/registry.py",
+   "target": "file:backend/app/providers/base.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/providers/registry.py",
+   "target": "file:backend/app/providers/jev.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/providers/registry.py",
+   "target": "file:backend/app/providers/mock.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/providers/registry.py",
+   "target": "file:backend/app/providers/ollama.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/schemas/bulk_jobs.py",
+   "target": "class:backend/app/schemas/bulk_jobs.py:BulkJobCreate",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/bulk_jobs.py",
+   "target": "class:backend/app/schemas/bulk_jobs.py:BulkJobCreate",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/bulk_jobs.py",
+   "target": "class:backend/app/schemas/bulk_jobs.py:BulkOutcome",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/bulk_jobs.py",
+   "target": "class:backend/app/schemas/bulk_jobs.py:BulkOutcome",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/bulk_jobs.py",
+   "target": "class:backend/app/schemas/bulk_jobs.py:BulkJob",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/bulk_jobs.py",
+   "target": "class:backend/app/schemas/bulk_jobs.py:BulkJob",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/bulk_jobs.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/schemas/classification.py",
+   "target": "class:backend/app/schemas/classification.py:Classification",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/classification.py",
+   "target": "class:backend/app/schemas/classification.py:Classification",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/classification.py",
+   "target": "class:backend/app/schemas/classification.py:FinalClassificationInput",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/classification.py",
+   "target": "class:backend/app/schemas/classification.py:FinalClassificationInput",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/classification.py",
+   "target": "class:backend/app/schemas/classification.py:FinalClassification",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/classification.py",
+   "target": "class:backend/app/schemas/classification.py:FinalClassification",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/classification.py",
+   "target": "class:backend/app/schemas/classification.py:NormalizedResult",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/classification.py",
+   "target": "class:backend/app/schemas/classification.py:NormalizedResult",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/classification.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/schemas/executions.py",
+   "target": "class:backend/app/schemas/executions.py:Usage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/executions.py",
+   "target": "class:backend/app/schemas/executions.py:Usage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/executions.py",
+   "target": "class:backend/app/schemas/executions.py:PricingSnapshot",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/executions.py",
+   "target": "class:backend/app/schemas/executions.py:PricingSnapshot",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/executions.py",
+   "target": "class:backend/app/schemas/executions.py:EstimatedCost",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/executions.py",
+   "target": "class:backend/app/schemas/executions.py:EstimatedCost",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/executions.py",
+   "target": "class:backend/app/schemas/executions.py:ProviderError",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/executions.py",
+   "target": "class:backend/app/schemas/executions.py:ProviderError",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/executions.py",
+   "target": "class:backend/app/schemas/executions.py:Execution",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/executions.py",
+   "target": "class:backend/app/schemas/executions.py:Execution",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/executions.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/schemas/executions.py",
+   "target": "file:backend/app/schemas/classification.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/providers/jev.py",
+   "target": "file:backend/app/providers/definitions.py",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:backend/app/providers/ollama.py",
+   "target": "file:backend/app/providers/definitions.py",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "function:backend/app/providers/jev.py:build_request",
+   "target": "function:backend/app/providers/jev.py:choice",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/providers/jev.py:build_subcategory_request",
+   "target": "function:backend/app/providers/jev.py:choice",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "class:backend/app/providers/jev.py:JevAdapter",
+   "target": "function:backend/app/providers/http.py:post_json",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "class:backend/app/providers/jev.py:JevAdapter",
+   "target": "function:backend/app/providers/jev.py:build_request",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "class:backend/app/providers/jev.py:JevAdapter",
+   "target": "function:backend/app/providers/jev.py:build_subcategory_request",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "class:backend/app/providers/jev.py:JevAdapter",
+   "target": "function:backend/app/providers/jev.py:parse_output",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "class:backend/app/providers/jev.py:JevAdapter",
+   "target": "function:backend/app/providers/jev.py:total_usage",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/providers/ollama.py:build_request",
+   "target": "function:backend/app/providers/ollama.py:system_prompt",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "class:backend/app/providers/ollama.py:OllamaAdapter",
+   "target": "function:backend/app/providers/ollama.py:build_request",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "class:backend/app/providers/ollama.py:OllamaAdapter",
+   "target": "function:backend/app/providers/http.py:post_json",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/providers/registry.py:provider_labels",
+   "target": "function:backend/app/core/settings.py:is_local",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/providers/registry.py:jev_adapter",
+   "target": "function:backend/app/core/settings.py:is_local",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/providers/registry.py:jev_adapter",
+   "target": "function:backend/app/providers/registry.py:provider_labels",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/providers/registry.py:get_adapter",
+   "target": "function:backend/app/providers/registry.py:jev_adapter",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/providers/registry.py:get_adapter",
+   "target": "function:backend/app/providers/registry.py:llm_adapter",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "class:backend/app/schemas/classification.py:FinalClassificationInput",
+   "target": "class:backend/app/schemas/classification.py:Classification",
+   "type": "inherits",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:backend/app/schemas/classification.py:FinalClassification",
+   "target": "class:backend/app/schemas/classification.py:Classification",
+   "type": "inherits",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:backend/app/schemas/classification.py:NormalizedResult",
+   "target": "class:backend/app/schemas/classification.py:Classification",
+   "type": "inherits",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:backend/app/providers/jev.py:JevAdapter",
+   "target": "class:backend/app/providers/base.py:Adapter",
+   "type": "implements",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:backend/app/providers/ollama.py:OllamaAdapter",
+   "target": "class:backend/app/providers/base.py:Adapter",
+   "type": "implements",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:backend/app/providers/mock.py:MockProvider",
+   "target": "class:backend/app/providers/base.py:Adapter",
+   "type": "implements",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:backend/app/schemas/executions.py",
+   "target": "file:backend/tests/test_execution_log.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/providers/mock.py",
+   "target": "file:backend/tests/test_execution_log.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/providers/jev.py",
+   "target": "file:backend/tests/test_live_adapters.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/providers/ollama.py",
+   "target": "file:backend/tests/test_live_adapters.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/providers/registry.py",
+   "target": "file:backend/tests/test_live_adapters.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/providers/mock.py",
+   "target": "file:backend/tests/test_providers.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/schemas/classification.py",
+   "target": "file:backend/tests/test_providers.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/schemas/bulk_jobs.py",
+   "target": "file:backend/tests/test_schemas.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/schemas/classification.py",
+   "target": "file:backend/tests/test_schemas.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/schemas/executions.py",
+   "target": "file:backend/tests/test_schemas.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  }
+ ]
+}

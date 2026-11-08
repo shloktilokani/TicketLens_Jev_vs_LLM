@@ -1,0 +1,1242 @@
+{
+ "nodes": [
+  {
+   "id": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "type": "file",
+   "name": "alert-dialog.tsx",
+   "filePath": "frontend/src/components/ui/alert-dialog.tsx",
+   "summary": "shadcn/ui alert dialog primitives wrapping Radix AlertDialog with project styling, including size variants plus action and cancel buttons built on Button.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog",
+    "accessibility"
+   ],
+   "complexity": "moderate",
+   "languageNotes": "Imports `cn` from the external npm package \"cn\" rather than the local \"@/lib/utils\" helper, so no project-internal import edge exists for it."
+  },
+  {
+   "id": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialog",
+   "type": "function",
+   "name": "AlertDialog",
+   "filePath": "frontend/src/components/ui/alert-dialog.tsx",
+   "lineRange": [
+    9,
+    13
+   ],
+   "summary": "Root wrapper of the Radix AlertDialog primitive that adds the data-slot attribute.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogTrigger",
+   "type": "function",
+   "name": "AlertDialogTrigger",
+   "filePath": "frontend/src/components/ui/alert-dialog.tsx",
+   "lineRange": [
+    15,
+    21
+   ],
+   "summary": "Wraps the Radix trigger element that opens the alert dialog.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogPortal",
+   "type": "function",
+   "name": "AlertDialogPortal",
+   "filePath": "frontend/src/components/ui/alert-dialog.tsx",
+   "lineRange": [
+    23,
+    29
+   ],
+   "summary": "Wraps the Radix portal that renders alert dialog content outside the parent DOM tree.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogOverlay",
+   "type": "function",
+   "name": "AlertDialogOverlay",
+   "filePath": "frontend/src/components/ui/alert-dialog.tsx",
+   "lineRange": [
+    31,
+    45
+   ],
+   "summary": "Styled backdrop displayed behind the alert dialog.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogContent",
+   "type": "function",
+   "name": "AlertDialogContent",
+   "filePath": "frontend/src/components/ui/alert-dialog.tsx",
+   "lineRange": [
+    47,
+    68
+   ],
+   "summary": "Centered alert dialog panel with default and small sizes, rendered in a portal above the overlay.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogHeader",
+   "type": "function",
+   "name": "AlertDialogHeader",
+   "filePath": "frontend/src/components/ui/alert-dialog.tsx",
+   "lineRange": [
+    70,
+    84
+   ],
+   "summary": "Layout container for the alert dialog title and description.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogFooter",
+   "type": "function",
+   "name": "AlertDialogFooter",
+   "filePath": "frontend/src/components/ui/alert-dialog.tsx",
+   "lineRange": [
+    86,
+    100
+   ],
+   "summary": "Layout container for the alert dialog action buttons.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogMedia",
+   "type": "function",
+   "name": "AlertDialogMedia",
+   "filePath": "frontend/src/components/ui/alert-dialog.tsx",
+   "lineRange": [
+    102,
+    116
+   ],
+   "summary": "Styled container for an icon or media element in the alert dialog.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogTitle",
+   "type": "function",
+   "name": "AlertDialogTitle",
+   "filePath": "frontend/src/components/ui/alert-dialog.tsx",
+   "lineRange": [
+    118,
+    132
+   ],
+   "summary": "Styled Radix title element that names the alert dialog.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogDescription",
+   "type": "function",
+   "name": "AlertDialogDescription",
+   "filePath": "frontend/src/components/ui/alert-dialog.tsx",
+   "lineRange": [
+    134,
+    148
+   ],
+   "summary": "Styled Radix description element for the alert dialog body text.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogAction",
+   "type": "function",
+   "name": "AlertDialogAction",
+   "filePath": "frontend/src/components/ui/alert-dialog.tsx",
+   "lineRange": [
+    150,
+    166
+   ],
+   "summary": "Radix confirm action rendered through Button so it accepts Button variants and sizes.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog",
+    "button"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogCancel",
+   "type": "function",
+   "name": "AlertDialogCancel",
+   "filePath": "frontend/src/components/ui/alert-dialog.tsx",
+   "lineRange": [
+    168,
+    184
+   ],
+   "summary": "Radix cancel action rendered through Button, defaulting to the outline variant.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog",
+    "button"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:frontend/src/components/ui/badge.tsx",
+   "type": "file",
+   "name": "badge.tsx",
+   "filePath": "frontend/src/components/ui/badge.tsx",
+   "summary": "shadcn/ui badge component with class-variance-authority variants and optional rendering through a Radix Slot.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "variants"
+   ],
+   "complexity": "simple",
+   "languageNotes": "Imports `cn` from the external npm package \"cn\" rather than the local \"@/lib/utils\" helper, so no project-internal import edge exists for it."
+  },
+  {
+   "id": "function:frontend/src/components/ui/badge.tsx:Badge",
+   "type": "function",
+   "name": "Badge",
+   "filePath": "frontend/src/components/ui/badge.tsx",
+   "lineRange": [
+    29,
+    46
+   ],
+   "summary": "Span-based badge applying a badgeVariants style, optionally rendering its child through a Radix Slot.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "variants"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:frontend/src/components/ui/button.tsx",
+   "type": "file",
+   "name": "button.tsx",
+   "filePath": "frontend/src/components/ui/button.tsx",
+   "summary": "shadcn/ui button defining the project's variant and size styles with class-variance-authority, with optional Radix Slot rendering; other UI primitives build on it.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "variants"
+   ],
+   "complexity": "moderate",
+   "languageNotes": "Imports `cn` from the external npm package \"cn\" rather than the local \"@/lib/utils\" helper, so no project-internal import edge exists for it."
+  },
+  {
+   "id": "function:frontend/src/components/ui/button.tsx:Button",
+   "type": "function",
+   "name": "Button",
+   "filePath": "frontend/src/components/ui/button.tsx",
+   "lineRange": [
+    43,
+    64
+   ],
+   "summary": "Button applying buttonVariants variant and size styles, optionally rendering its child through a Radix Slot.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "variants"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:frontend/src/components/ui/card.tsx",
+   "type": "file",
+   "name": "card.tsx",
+   "filePath": "frontend/src/components/ui/card.tsx",
+   "summary": "shadcn/ui card family of styled div wrappers for the header, title, description, action, content, and footer regions of a card.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "layout"
+   ],
+   "complexity": "moderate",
+   "languageNotes": "Imports `cn` from the external npm package \"cn\" rather than the local \"@/lib/utils\" helper, so no project-internal import edge exists for it."
+  },
+  {
+   "id": "function:frontend/src/components/ui/card.tsx:Card",
+   "type": "function",
+   "name": "Card",
+   "filePath": "frontend/src/components/ui/card.tsx",
+   "lineRange": [
+    4,
+    20
+   ],
+   "summary": "Outer styled container of the card family.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "layout"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/card.tsx:CardHeader",
+   "type": "function",
+   "name": "CardHeader",
+   "filePath": "frontend/src/components/ui/card.tsx",
+   "lineRange": [
+    22,
+    33
+   ],
+   "summary": "Layout region for a card's title, description, and action.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "layout"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/card.tsx:CardTitle",
+   "type": "function",
+   "name": "CardTitle",
+   "filePath": "frontend/src/components/ui/card.tsx",
+   "lineRange": [
+    35,
+    46
+   ],
+   "summary": "Styled element for a card's heading text.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "layout"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/card.tsx:CardDescription",
+   "type": "function",
+   "name": "CardDescription",
+   "filePath": "frontend/src/components/ui/card.tsx",
+   "lineRange": [
+    48,
+    56
+   ],
+   "summary": "Styled element for a card's muted supporting text.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "layout"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/card.tsx:CardAction",
+   "type": "function",
+   "name": "CardAction",
+   "filePath": "frontend/src/components/ui/card.tsx",
+   "lineRange": [
+    58,
+    69
+   ],
+   "summary": "Region positioning an action control in the card header.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "layout"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/card.tsx:CardContent",
+   "type": "function",
+   "name": "CardContent",
+   "filePath": "frontend/src/components/ui/card.tsx",
+   "lineRange": [
+    71,
+    79
+   ],
+   "summary": "Main body region of a card.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "layout"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/card.tsx:CardFooter",
+   "type": "function",
+   "name": "CardFooter",
+   "filePath": "frontend/src/components/ui/card.tsx",
+   "lineRange": [
+    81,
+    92
+   ],
+   "summary": "Bottom region of a card for actions or secondary content.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "layout"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:frontend/src/components/ui/dialog.tsx",
+   "type": "file",
+   "name": "dialog.tsx",
+   "filePath": "frontend/src/components/ui/dialog.tsx",
+   "summary": "shadcn/ui modal dialog primitives wrapping Radix Dialog, with an overlay, optional close buttons, and header and footer layout helpers.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog",
+    "accessibility"
+   ],
+   "complexity": "moderate",
+   "languageNotes": "Imports `cn` from the external npm package \"cn\" rather than the local \"@/lib/utils\" helper, so no project-internal import edge exists for it."
+  },
+  {
+   "id": "function:frontend/src/components/ui/dialog.tsx:Dialog",
+   "type": "function",
+   "name": "Dialog",
+   "filePath": "frontend/src/components/ui/dialog.tsx",
+   "lineRange": [
+    8,
+    12
+   ],
+   "summary": "Root wrapper of the Radix Dialog primitive that adds the data-slot attribute.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/dialog.tsx:DialogTrigger",
+   "type": "function",
+   "name": "DialogTrigger",
+   "filePath": "frontend/src/components/ui/dialog.tsx",
+   "lineRange": [
+    14,
+    18
+   ],
+   "summary": "Wraps the Radix trigger element that opens the dialog.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/dialog.tsx:DialogPortal",
+   "type": "function",
+   "name": "DialogPortal",
+   "filePath": "frontend/src/components/ui/dialog.tsx",
+   "lineRange": [
+    20,
+    24
+   ],
+   "summary": "Wraps the Radix portal that renders dialog content outside the parent DOM tree.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/dialog.tsx:DialogClose",
+   "type": "function",
+   "name": "DialogClose",
+   "filePath": "frontend/src/components/ui/dialog.tsx",
+   "lineRange": [
+    26,
+    30
+   ],
+   "summary": "Wraps the Radix close control for the dialog.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/dialog.tsx:DialogOverlay",
+   "type": "function",
+   "name": "DialogOverlay",
+   "filePath": "frontend/src/components/ui/dialog.tsx",
+   "lineRange": [
+    32,
+    46
+   ],
+   "summary": "Styled backdrop displayed behind the dialog.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/dialog.tsx:DialogContent",
+   "type": "function",
+   "name": "DialogContent",
+   "filePath": "frontend/src/components/ui/dialog.tsx",
+   "lineRange": [
+    48,
+    84
+   ],
+   "summary": "Dialog panel rendered in a portal above the overlay, with a close button shown by default.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/dialog.tsx:DialogHeader",
+   "type": "function",
+   "name": "DialogHeader",
+   "filePath": "frontend/src/components/ui/dialog.tsx",
+   "lineRange": [
+    86,
+    94
+   ],
+   "summary": "Layout container for the dialog title and description.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/dialog.tsx:DialogFooter",
+   "type": "function",
+   "name": "DialogFooter",
+   "filePath": "frontend/src/components/ui/dialog.tsx",
+   "lineRange": [
+    96,
+    121
+   ],
+   "summary": "Layout container for dialog actions with an optional outline Close button.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/dialog.tsx:DialogTitle",
+   "type": "function",
+   "name": "DialogTitle",
+   "filePath": "frontend/src/components/ui/dialog.tsx",
+   "lineRange": [
+    123,
+    137
+   ],
+   "summary": "Styled Radix title element that names the dialog.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/dialog.tsx:DialogDescription",
+   "type": "function",
+   "name": "DialogDescription",
+   "filePath": "frontend/src/components/ui/dialog.tsx",
+   "lineRange": [
+    139,
+    153
+   ],
+   "summary": "Styled Radix description element for the dialog body text.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:frontend/src/components/ui/input.tsx",
+   "type": "file",
+   "name": "input.tsx",
+   "filePath": "frontend/src/components/ui/input.tsx",
+   "summary": "shadcn/ui styled single-line text input wrapping the native input element.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "form"
+   ],
+   "complexity": "simple",
+   "languageNotes": "Imports `cn` from the external npm package \"cn\" rather than the local \"@/lib/utils\" helper, so no project-internal import edge exists for it."
+  },
+  {
+   "id": "function:frontend/src/components/ui/input.tsx:Input",
+   "type": "function",
+   "name": "Input",
+   "filePath": "frontend/src/components/ui/input.tsx",
+   "lineRange": [
+    4,
+    16
+   ],
+   "summary": "Native input element with project styling and passed-through props.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "form"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:frontend/src/components/ui/label.tsx",
+   "type": "file",
+   "name": "label.tsx",
+   "filePath": "frontend/src/components/ui/label.tsx",
+   "summary": "shadcn/ui form label wrapping the Radix Label primitive with project styling.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "form",
+    "accessibility"
+   ],
+   "complexity": "simple",
+   "languageNotes": "Imports `cn` from the external npm package \"cn\" rather than the local \"@/lib/utils\" helper, so no project-internal import edge exists for it."
+  },
+  {
+   "id": "function:frontend/src/components/ui/label.tsx:Label",
+   "type": "function",
+   "name": "Label",
+   "filePath": "frontend/src/components/ui/label.tsx",
+   "lineRange": [
+    7,
+    21
+   ],
+   "summary": "Radix Label primitive with project styling for form fields.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "form"
+   ],
+   "complexity": "simple"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialog",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialog",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogTrigger",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogTrigger",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogPortal",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogPortal",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogOverlay",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogOverlay",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogContent",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogContent",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogHeader",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogHeader",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogFooter",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogFooter",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogMedia",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogMedia",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogTitle",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogTitle",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogDescription",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogDescription",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogAction",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogAction",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogCancel",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogCancel",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "target": "file:frontend/src/components/ui/button.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/components/ui/badge.tsx",
+   "target": "function:frontend/src/components/ui/badge.tsx:Badge",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/badge.tsx",
+   "target": "function:frontend/src/components/ui/badge.tsx:Badge",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/button.tsx",
+   "target": "function:frontend/src/components/ui/button.tsx:Button",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/button.tsx",
+   "target": "function:frontend/src/components/ui/button.tsx:Button",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/card.tsx",
+   "target": "function:frontend/src/components/ui/card.tsx:Card",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/card.tsx",
+   "target": "function:frontend/src/components/ui/card.tsx:Card",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/card.tsx",
+   "target": "function:frontend/src/components/ui/card.tsx:CardHeader",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/card.tsx",
+   "target": "function:frontend/src/components/ui/card.tsx:CardHeader",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/card.tsx",
+   "target": "function:frontend/src/components/ui/card.tsx:CardTitle",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/card.tsx",
+   "target": "function:frontend/src/components/ui/card.tsx:CardTitle",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/card.tsx",
+   "target": "function:frontend/src/components/ui/card.tsx:CardDescription",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/card.tsx",
+   "target": "function:frontend/src/components/ui/card.tsx:CardDescription",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/card.tsx",
+   "target": "function:frontend/src/components/ui/card.tsx:CardAction",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/card.tsx",
+   "target": "function:frontend/src/components/ui/card.tsx:CardAction",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/card.tsx",
+   "target": "function:frontend/src/components/ui/card.tsx:CardContent",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/card.tsx",
+   "target": "function:frontend/src/components/ui/card.tsx:CardContent",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/card.tsx",
+   "target": "function:frontend/src/components/ui/card.tsx:CardFooter",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/card.tsx",
+   "target": "function:frontend/src/components/ui/card.tsx:CardFooter",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/dialog.tsx",
+   "target": "function:frontend/src/components/ui/dialog.tsx:Dialog",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/dialog.tsx",
+   "target": "function:frontend/src/components/ui/dialog.tsx:Dialog",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/dialog.tsx",
+   "target": "function:frontend/src/components/ui/dialog.tsx:DialogTrigger",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/dialog.tsx",
+   "target": "function:frontend/src/components/ui/dialog.tsx:DialogTrigger",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/dialog.tsx",
+   "target": "function:frontend/src/components/ui/dialog.tsx:DialogPortal",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/dialog.tsx",
+   "target": "function:frontend/src/components/ui/dialog.tsx:DialogPortal",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/dialog.tsx",
+   "target": "function:frontend/src/components/ui/dialog.tsx:DialogClose",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/dialog.tsx",
+   "target": "function:frontend/src/components/ui/dialog.tsx:DialogClose",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/dialog.tsx",
+   "target": "function:frontend/src/components/ui/dialog.tsx:DialogOverlay",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/dialog.tsx",
+   "target": "function:frontend/src/components/ui/dialog.tsx:DialogOverlay",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/dialog.tsx",
+   "target": "function:frontend/src/components/ui/dialog.tsx:DialogContent",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/dialog.tsx",
+   "target": "function:frontend/src/components/ui/dialog.tsx:DialogContent",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/dialog.tsx",
+   "target": "function:frontend/src/components/ui/dialog.tsx:DialogHeader",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/dialog.tsx",
+   "target": "function:frontend/src/components/ui/dialog.tsx:DialogHeader",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/dialog.tsx",
+   "target": "function:frontend/src/components/ui/dialog.tsx:DialogFooter",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/dialog.tsx",
+   "target": "function:frontend/src/components/ui/dialog.tsx:DialogFooter",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/dialog.tsx",
+   "target": "function:frontend/src/components/ui/dialog.tsx:DialogTitle",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/dialog.tsx",
+   "target": "function:frontend/src/components/ui/dialog.tsx:DialogTitle",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/dialog.tsx",
+   "target": "function:frontend/src/components/ui/dialog.tsx:DialogDescription",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/dialog.tsx",
+   "target": "function:frontend/src/components/ui/dialog.tsx:DialogDescription",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/dialog.tsx",
+   "target": "file:frontend/src/components/ui/button.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/components/ui/input.tsx",
+   "target": "function:frontend/src/components/ui/input.tsx:Input",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/input.tsx",
+   "target": "function:frontend/src/components/ui/input.tsx:Input",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/label.tsx",
+   "target": "function:frontend/src/components/ui/label.tsx:Label",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/label.tsx",
+   "target": "function:frontend/src/components/ui/label.tsx:Label",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogContent",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogPortal",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogContent",
+   "target": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogOverlay",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogAction",
+   "target": "function:frontend/src/components/ui/button.tsx:Button",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/components/ui/alert-dialog.tsx:AlertDialogCancel",
+   "target": "function:frontend/src/components/ui/button.tsx:Button",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/components/ui/dialog.tsx:DialogContent",
+   "target": "function:frontend/src/components/ui/dialog.tsx:DialogPortal",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/components/ui/dialog.tsx:DialogContent",
+   "target": "function:frontend/src/components/ui/dialog.tsx:DialogOverlay",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/components/ui/dialog.tsx:DialogContent",
+   "target": "function:frontend/src/components/ui/button.tsx:Button",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/components/ui/dialog.tsx:DialogFooter",
+   "target": "function:frontend/src/components/ui/button.tsx:Button",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  }
+ ]
+}

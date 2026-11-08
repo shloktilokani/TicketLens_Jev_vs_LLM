@@ -5,6 +5,7 @@ import { Link, useNavigate, useParams } from "react-router"
 import { toast } from "sonner"
 
 import { ConfirmDialog } from "@/components/ConfirmDialog"
+import { Detail } from "@/components/Detail"
 import { EmptyState, ErrorState, LoadingState } from "@/components/states"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -16,6 +17,8 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
+import { AiResults } from "@/features/tickets/AiResults"
+import { FinalClassificationPanel } from "@/features/tickets/FinalClassification"
 import { TicketForm } from "@/features/tickets/TicketForm"
 import {
   useAddNote,
@@ -26,9 +29,10 @@ import {
 import { formatDateTime } from "@/lib/format"
 import { ApiError } from "@/services/api"
 import { useTaxonomy } from "@/services/queries"
-import type { Ticket } from "@/types/api"
+import type { ExecutionSummary, Ticket } from "@/types/api"
 
 const fail = (error: Error) => toast.error(error.message)
+const FINAL_PANEL_ID = "final-classification"
 
 function StatusSelect({ ticket }: { ticket: Ticket }) {
   const statuses = useTaxonomy().data?.statuses ?? []
@@ -62,15 +66,6 @@ function StatusSelect({ ticket }: { ticket: Ticket }) {
   )
 }
 
-function Detail({ label, value }: { label: string; value: string | null }) {
-  return (
-    <div>
-      <dt className="text-xs text-muted-foreground">{label}</dt>
-      <dd className="text-sm">{value ?? "—"}</dd>
-    </div>
-  )
-}
-
 function TicketInfo({ ticket }: { ticket: Ticket }) {
   return (
     <Card>
@@ -90,42 +85,6 @@ function TicketInfo({ ticket }: { ticket: Ticket }) {
           <Detail label="Product" value={ticket.order.product_name} />
           <Detail label="Created" value={formatDateTime(ticket.created_at)} />
         </dl>
-      </CardContent>
-    </Card>
-  )
-}
-
-function FinalClassificationPanel({ ticket }: { ticket: Ticket }) {
-  const final = ticket.final_classification
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Final classification</CardTitle>
-      </CardHeader>
-      <CardContent>
-        {final ? (
-          <dl className="grid gap-3 sm:grid-cols-3">
-            <Detail label="Category" value={final.category} />
-            <Detail label="Subcategory" value={final.subcategory} />
-            <Detail label="Priority" value={final.priority} />
-            <Detail label="Sentiment" value={final.sentiment} />
-            <Detail
-              label="Escalation"
-              value={final.escalation_required ? "Required" : "Not required"}
-            />
-            <Detail
-              label="Source"
-              value={
-                final.manually_edited ? "Set by hand" : "From an AI result"
-              }
-            />
-          </dl>
-        ) : (
-          <p className="text-sm text-muted-foreground">
-            Not chosen yet. You will pick it from the AI results (Phase 12); it
-            is never set automatically.
-          </p>
-        )}
       </CardContent>
     </Card>
   )
@@ -183,32 +142,10 @@ function Notes({ ticket }: { ticket: Ticket }) {
   )
 }
 
-function AiResults({ ticketId }: { ticketId: string }) {
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle>AI results</CardTitle>
-      </CardHeader>
-      <CardContent className="grid gap-2 text-sm text-muted-foreground">
-        <p>Run history on this page arrives with Phases 11 and 12.</p>
-        <Button
-          asChild
-          variant="outline"
-          size="sm"
-          className="justify-self-start"
-        >
-          <Link to={`/compare?ticket=${encodeURIComponent(ticketId)}`}>
-            Run Jev + LLM in Compare
-          </Link>
-        </Button>
-      </CardContent>
-    </Card>
-  )
-}
-
 function TicketView({ ticket }: { ticket: Ticket }) {
   const [editing, setEditing] = useState(false)
   const [confirming, setConfirming] = useState(false)
+  const [chosenRun, setChosenRun] = useState<ExecutionSummary | null>(null)
   const channels = useTaxonomy().data?.channels ?? []
   const update = useUpdateTicket(ticket.ticket_id)
   const remove = useDeleteTicket(ticket.ticket_id)
@@ -279,8 +216,20 @@ function TicketView({ ticket }: { ticket: Ticket }) {
       ) : (
         <TicketInfo ticket={ticket} />
       )}
-      <FinalClassificationPanel ticket={ticket} />
-      <AiResults ticketId={ticket.ticket_id} />
+      <FinalClassificationPanel
+        id={FINAL_PANEL_ID}
+        ticket={ticket}
+        run={chosenRun}
+        onDone={() => setChosenRun(null)}
+      />
+      <AiResults
+        ticketId={ticket.ticket_id}
+        onUse={(run) => {
+          setChosenRun(run)
+          // The form is above the run list: bring it into view, for keyboard users too.
+          document.getElementById(FINAL_PANEL_ID)?.focus()
+        }}
+      />
       <Notes ticket={ticket} />
       <ConfirmDialog
         open={confirming}

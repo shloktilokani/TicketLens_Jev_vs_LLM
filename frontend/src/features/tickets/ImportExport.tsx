@@ -143,6 +143,12 @@ export function ImportDialog() {
         >
           Download the template
         </a>
+        <a
+          className="text-sm underline underline-offset-4"
+          href={`${BASE_URL}/api/imports/sample-dataset`}
+        >
+          Download the 100 labelled sample tickets
+        </a>
         <Input
           type="file"
           accept=".csv,text/csv"

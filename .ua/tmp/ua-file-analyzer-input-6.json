@@ -1,0 +1,91 @@
+{
+ "projectRoot": "/Users/shloktilokani/Projects/TicketLens_Jev_vs_LLM",
+ "batchFiles": [
+  {
+   "path": ".context/DEPLOYMENT_DECISIONS.md",
+   "language": "markdown",
+   "sizeLines": 20,
+   "fileCategory": "docs"
+  },
+  {
+   "path": ".context/PROGRESS.md",
+   "language": "markdown",
+   "sizeLines": 361,
+   "fileCategory": "docs"
+  },
+  {
+   "path": ".context/ROADMAP.md",
+   "language": "markdown",
+   "sizeLines": 104,
+   "fileCategory": "docs"
+  },
+  {
+   "path": ".context/ai-evaluation.md",
+   "language": "markdown",
+   "sizeLines": 221,
+   "fileCategory": "docs"
+  },
+  {
+   "path": ".context/architecture.md",
+   "language": "markdown",
+   "sizeLines": 216,
+   "fileCategory": "docs"
+  },
+  {
+   "path": ".context/code-size-standards.md",
+   "language": "markdown",
+   "sizeLines": 101,
+   "fileCategory": "docs"
+  },
+  {
+   "path": ".context/data-model.md",
+   "language": "markdown",
+   "sizeLines": 246,
+   "fileCategory": "docs"
+  },
+  {
+   "path": ".context/design.md",
+   "language": "markdown",
+   "sizeLines": 280,
+   "fileCategory": "docs"
+  },
+  {
+   "path": ".context/implementation.md",
+   "language": "markdown",
+   "sizeLines": 402,
+   "fileCategory": "docs"
+  },
+  {
+   "path": ".context/requirements.md",
+   "language": "markdown",
+   "sizeLines": 236,
+   "fileCategory": "docs"
+  },
+  {
+   "path": ".context/sample_tickets_100.csv",
+   "language": "csv",
+   "sizeLines": 101,
+   "fileCategory": "data"
+  },
+  {
+   "path": ".context/sample_tickets_template.csv",
+   "language": "csv",
+   "sizeLines": 1,
+   "fileCategory": "data"
+  }
+ ],
+ "batchImportData": {
+  ".context/DEPLOYMENT_DECISIONS.md": [],
+  ".context/PROGRESS.md": [],
+  ".context/ROADMAP.md": [],
+  ".context/ai-evaluation.md": [],
+  ".context/architecture.md": [],
+  ".context/code-size-standards.md": [],
+  ".context/data-model.md": [],
+  ".context/design.md": [],
+  ".context/implementation.md": [],
+  ".context/requirements.md": [],
+  ".context/sample_tickets_100.csv": [],
+  ".context/sample_tickets_template.csv": []
+ }
+}
