@@ -8,9 +8,9 @@ Phases 0 to 8 and 11 to 18 are complete on local models. **Phases 9 and 10 stay 
 
 Plain-language phase order and every step that needs the owner: `ROADMAP.md`.
 
-**Next session (planned 2026-11-09):** all work since commit `d6fb162` is uncommitted on `shlok-ai-dev`, and its commit message is still to be drafted from the real diff. The owner's steps are listed in the completion report below.
+**Next session:** the Phase 11 to 18 work was committed as `dbdf828` on `shlok-ai-dev`. The owner's open steps are listed in the completion report below.
 
-Separate side task: the Understand-Anything knowledge graph is at Phase 5 of 7, tracked in `.ua/RESUME.md`. Do not re-run the command from scratch.
+Separate side task, finished 2026-11-08: the Understand-Anything knowledge graph is saved in `.ua/knowledge-graph.json` (details and gaps in `.ua/RESUME.md`). Run `/understand-anything:understand` for an incremental update; it does not cover files added after its scan until then.
 
 ## Phases
 
@@ -469,7 +469,7 @@ disagreements, and a per-ticket table. There is no accuracy figure without human
 3. Follow the README once.
 4. Add the local-model settings to `backend/.env`. That file does not exist yet, so the dev server has them only as process settings; a plain restart falls back to the hosted Jev default.
 5. Deployment decisions, only if going online.
-6. Resume the knowledge graph from `.ua/RESUME.md`.
+6. Optional: open the knowledge graph with `/understand-anything:understand-dashboard` (stop the frontend first; the dashboard uses port 5173).
 
 **Final checks:** `pytest` 335 passed; ruff clean; frontend lint and build pass. A real `mongodump` and `mongorestore` round trip worked on a throwaway database. The real `ticketlens` database still has no saved settings and no labels; these phases only added the runs on SK-1023 and SK-1024 described above.
 
