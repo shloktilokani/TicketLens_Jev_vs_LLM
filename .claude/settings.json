@@ -40,7 +40,7 @@
       "Bash(git revert*)",
       "Bash(git tag*)",
       "Bash(git rm*)",
-      "Bash(git mv*)",
+      "Bash(git mv*)"
     ]
   },
   "hooks": {
