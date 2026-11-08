@@ -1,0 +1,485 @@
+{
+ "batchIndex": 22,
+ "files": [
+  {
+   "path": "frontend/src/features/tickets/ImportExport.tsx",
+   "language": "typescript",
+   "sizeLines": 205,
+   "fileCategory": "code"
+  },
+  {
+   "path": "frontend/src/features/tickets/TicketListPage.tsx",
+   "language": "typescript",
+   "sizeLines": 342,
+   "fileCategory": "code"
+  },
+  {
+   "path": "frontend/src/services/queries.ts",
+   "language": "typescript",
+   "sizeLines": 18,
+   "fileCategory": "code"
+  },
+  {
+   "path": "frontend/src/types/api.ts",
+   "language": "typescript",
+   "sizeLines": 346,
+   "fileCategory": "code"
+  }
+ ],
+ "batchImportData": {
+  "frontend/src/features/tickets/ImportExport.tsx": [
+   "frontend/src/components/ui/button.tsx",
+   "frontend/src/components/ui/dialog.tsx",
+   "frontend/src/components/ui/input.tsx",
+   "frontend/src/components/ui/table.tsx",
+   "frontend/src/features/tickets/hooks.ts",
+   "frontend/src/services/api.ts",
+   "frontend/src/types/api.ts"
+  ],
+  "frontend/src/features/tickets/TicketListPage.tsx": [
+   "frontend/src/components/ListControls.tsx",
+   "frontend/src/components/states.tsx",
+   "frontend/src/components/ui/badge.tsx",
+   "frontend/src/components/ui/button.tsx",
+   "frontend/src/components/ui/input.tsx",
+   "frontend/src/components/ui/select.tsx",
+   "frontend/src/components/ui/table.tsx",
+   "frontend/src/features/tickets/BulkToolbar.tsx",
+   "frontend/src/features/tickets/ImportExport.tsx",
+   "frontend/src/features/tickets/hooks.ts",
+   "frontend/src/lib/format.ts",
+   "frontend/src/services/queries.ts",
+   "frontend/src/types/api.ts"
+  ],
+  "frontend/src/services/queries.ts": [
+   "frontend/src/services/api.ts",
+   "frontend/src/types/api.ts"
+  ],
+  "frontend/src/types/api.ts": []
+ },
+ "neighborMap": {
+  "frontend/src/features/tickets/ImportExport.tsx": [
+   {
+    "path": "frontend/src/components/ui/button.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "Button",
+     "buttonVariants"
+    ]
+   },
+   {
+    "path": "frontend/src/components/ui/dialog.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "Dialog",
+     "DialogClose",
+     "DialogContent",
+     "DialogDescription",
+     "DialogFooter",
+     "DialogHeader",
+     "DialogOverlay",
+     "DialogPortal",
+     "DialogTitle",
+     "DialogTrigger"
+    ]
+   },
+   {
+    "path": "frontend/src/components/ui/input.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "Input"
+    ]
+   },
+   {
+    "path": "frontend/src/components/ui/table.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "Table",
+     "TableHeader",
+     "TableBody",
+     "TableFooter",
+     "TableHead",
+     "TableRow",
+     "TableCell",
+     "TableCaption"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/hooks.ts",
+    "batchIndex": 2,
+    "symbols": [
+     "useTickets",
+     "useTicket",
+     "useCreateTicket",
+     "useUpdateTicket",
+     "useAddNote",
+     "useSetFinal",
+     "useTicketRuns",
+     "useRunProvider",
+     "useDeleteTicket",
+     "useImportTickets"
+    ]
+   },
+   {
+    "path": "frontend/src/services/api.ts",
+    "batchIndex": 2,
+    "symbols": [
+     "BASE_URL",
+     "ApiError",
+     "api",
+     "send"
+    ]
+   }
+  ],
+  "frontend/src/features/tickets/TicketListPage.tsx": [
+   {
+    "path": "frontend/src/components/ListControls.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "FilterSelect",
+     "Pager"
+    ]
+   },
+   {
+    "path": "frontend/src/components/states.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "LoadingState",
+     "ErrorState",
+     "EmptyState"
+    ]
+   },
+   {
+    "path": "frontend/src/components/ui/badge.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "Badge",
+     "badgeVariants"
+    ]
+   },
+   {
+    "path": "frontend/src/components/ui/button.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "Button",
+     "buttonVariants"
+    ]
+   },
+   {
+    "path": "frontend/src/components/ui/input.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "Input"
+    ]
+   },
+   {
+    "path": "frontend/src/components/ui/select.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "Select",
+     "SelectContent",
+     "SelectGroup",
+     "SelectItem",
+     "SelectLabel",
+     "SelectScrollDownButton",
+     "SelectScrollUpButton",
+     "SelectSeparator",
+     "SelectTrigger",
+     "SelectValue"
+    ]
+   },
+   {
+    "path": "frontend/src/components/ui/table.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "Table",
+     "TableHeader",
+     "TableBody",
+     "TableFooter",
+     "TableHead",
+     "TableRow",
+     "TableCell",
+     "TableCaption"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/BulkToolbar.tsx",
+    "batchIndex": 2,
+    "symbols": [
+     "BulkToolbar"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/hooks.ts",
+    "batchIndex": 2,
+    "symbols": [
+     "useTickets",
+     "useTicket",
+     "useCreateTicket",
+     "useUpdateTicket",
+     "useAddNote",
+     "useSetFinal",
+     "useTicketRuns",
+     "useRunProvider",
+     "useDeleteTicket",
+     "useImportTickets"
+    ]
+   },
+   {
+    "path": "frontend/src/lib/format.ts",
+    "batchIndex": 2,
+    "symbols": [
+     "formatDateTime",
+     "seconds",
+     "SIDE_LABELS",
+     "formatEscalation",
+     "formatTokens",
+     "formatCost"
+    ]
+   },
+   {
+    "path": "frontend/src/app/router.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "router"
+    ]
+   }
+  ],
+  "frontend/src/services/queries.ts": [
+   {
+    "path": "frontend/src/services/api.ts",
+    "batchIndex": 2,
+    "symbols": [
+     "BASE_URL",
+     "ApiError",
+     "api",
+     "send"
+    ]
+   },
+   {
+    "path": "frontend/src/app/AppShell.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "AppShell"
+    ]
+   },
+   {
+    "path": "frontend/src/features/compare/ComparePage.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "ComparePage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/executions/ExecutionsPage.tsx",
+    "batchIndex": 2,
+    "symbols": [
+     "ExecutionsPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/FinalClassification.tsx",
+    "batchIndex": 2,
+    "symbols": [
+     "FinalClassificationPanel"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/NewTicketPage.tsx",
+    "batchIndex": 2,
+    "symbols": [
+     "NewTicketPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/TicketDetailPage.tsx",
+    "batchIndex": 2,
+    "symbols": [
+     "TicketDetailPage"
+    ]
+   }
+  ],
+  "frontend/src/types/api.ts": [
+   {
+    "path": "frontend/src/features/bulk/BulkBanner.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "BulkBanner"
+    ]
+   },
+   {
+    "path": "frontend/src/features/bulk/BulkRunsPage.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "BulkRunsPage",
+     "BulkRunDetailPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/bulk/hooks.ts",
+    "batchIndex": 1,
+    "symbols": [
+     "isActive",
+     "attemptsDone",
+     "useBulkJobs",
+     "useBulkJob",
+     "useStartBulk"
+    ]
+   },
+   {
+    "path": "frontend/src/features/compare/ComparePage.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "ComparePage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/compare/ProviderColumn.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "ProviderColumn"
+    ]
+   },
+   {
+    "path": "frontend/src/features/compare/useCompareRun.ts",
+    "batchIndex": 1,
+    "symbols": [
+     "useCompareRun",
+     "useElapsed",
+     "formatElapsed"
+    ]
+   },
+   {
+    "path": "frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "ComparisonDetailPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/comparisons/ComparisonsPage.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "ComparisonTable",
+     "ComparisonsPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/comparisons/hooks.ts",
+    "batchIndex": 2,
+    "symbols": [
+     "useComparisons"
+    ]
+   },
+   {
+    "path": "frontend/src/features/dashboard/DashboardPage.tsx",
+    "batchIndex": 2,
+    "symbols": [
+     "DashboardPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/dashboard/EvaluationSection.tsx",
+    "batchIndex": 2,
+    "symbols": [
+     "EvaluationSection"
+    ]
+   },
+   {
+    "path": "frontend/src/features/executions/ExecutionDetailPage.tsx",
+    "batchIndex": 2,
+    "symbols": [
+     "ExecutionDetailPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/executions/ExecutionsPage.tsx",
+    "batchIndex": 2,
+    "symbols": [
+     "ExecutionsPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/settings/PricingCard.tsx",
+    "batchIndex": 2,
+    "symbols": [
+     "PricingCard"
+    ]
+   },
+   {
+    "path": "frontend/src/features/settings/SettingsPage.tsx",
+    "batchIndex": 2,
+    "symbols": [
+     "SettingsPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/settings/TaxonomyCard.tsx",
+    "batchIndex": 2,
+    "symbols": [
+     "TaxonomyCard"
+    ]
+   },
+   {
+    "path": "frontend/src/features/settings/hooks.ts",
+    "batchIndex": 2,
+    "symbols": [
+     "useSettings",
+     "useSaveSettings",
+     "useModelList"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/AiResults.tsx",
+    "batchIndex": 2,
+    "symbols": [
+     "AiResults"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/BulkToolbar.tsx",
+    "batchIndex": 2,
+    "symbols": [
+     "BulkToolbar"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/FinalClassification.tsx",
+    "batchIndex": 2,
+    "symbols": [
+     "FinalClassificationPanel"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/TicketDetailPage.tsx",
+    "batchIndex": 2,
+    "symbols": [
+     "TicketDetailPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/TicketForm.tsx",
+    "batchIndex": 2,
+    "symbols": [
+     "TicketForm"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/hooks.ts",
+    "batchIndex": 2,
+    "symbols": [
+     "useTickets",
+     "useTicket",
+     "useCreateTicket",
+     "useUpdateTicket",
+     "useAddNote",
+     "useSetFinal",
+     "useTicketRuns",
+     "useRunProvider",
+     "useDeleteTicket",
+     "useImportTickets"
+    ]
+   }
+  ]
+ }
+}

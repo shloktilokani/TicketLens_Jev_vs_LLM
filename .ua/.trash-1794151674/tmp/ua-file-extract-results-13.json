@@ -1,0 +1,149 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 2,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 2,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 2,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "backend/app/repositories/app_settings.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 33,
+      "nonEmptyLines": 25,
+      "functions": [
+        {
+          "name": "get",
+          "startLine": 9,
+          "endLine": 10,
+          "params": [
+            "db"
+          ]
+        },
+        {
+          "name": "update",
+          "startLine": 13,
+          "endLine": 16,
+          "params": [
+            "db",
+            "operations"
+          ]
+        },
+        {
+          "name": "labels_in_use",
+          "startLine": 19,
+          "endLine": 33,
+          "params": [
+            "db"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "get",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "update",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "labels_in_use",
+          "line": 19,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "get",
+          "callee": "db.app_settings.find_one",
+          "lineNumber": 10
+        },
+        {
+          "caller": "update",
+          "callee": "db.app_settings.find_one_and_update",
+          "lineNumber": 14
+        },
+        {
+          "caller": "labels_in_use",
+          "callee": "set",
+          "lineNumber": 26
+        },
+        {
+          "caller": "labels_in_use",
+          "callee": "db[collection].aggregate",
+          "lineNumber": 32
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "e2e/tests/workflow.spec.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 109,
+      "nonEmptyLines": 88,
+      "functions": [
+        {
+          "name": "createTicket",
+          "startLine": 7,
+          "endLine": 19,
+          "params": [
+            "page",
+            "title"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "createTicket",
+          "callee": "page.request.post",
+          "lineNumber": 8
+        },
+        {
+          "caller": "createTicket",
+          "callee": "expect(response.ok()).toBeTruthy",
+          "lineNumber": 17
+        },
+        {
+          "caller": "createTicket",
+          "callee": "expect",
+          "lineNumber": 17
+        },
+        {
+          "caller": "createTicket",
+          "callee": "response.ok",
+          "lineNumber": 17
+        },
+        {
+          "caller": "createTicket",
+          "callee": "response.json",
+          "lineNumber": 18
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,1080 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 2,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 2,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 2,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "backend/tests/test_evaluation.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 286,
+      "nonEmptyLines": 212,
+      "functions": [
+        {
+          "name": "rows",
+          "startLine": 36,
+          "endLine": 37,
+          "params": [
+            "path"
+          ]
+        },
+        {
+          "name": "test_v2_keeps_every_label_in_order",
+          "startLine": 43,
+          "endLine": 48,
+          "params": []
+        },
+        {
+          "name": "test_v2_titles_no_longer_give_away_the_answer",
+          "startLine": 51,
+          "endLine": 57,
+          "params": []
+        },
+        {
+          "name": "test_v2_titles_are_unique_and_text_is_english",
+          "startLine": 60,
+          "endLine": 66,
+          "params": []
+        },
+        {
+          "name": "test_v2_covers_all_six_categories_without_severe_imbalance",
+          "startLine": 69,
+          "endLine": 74,
+          "params": []
+        },
+        {
+          "name": "test_v2_passes_the_real_import_checks",
+          "startLine": 77,
+          "endLine": 86,
+          "params": [
+            "api"
+          ]
+        },
+        {
+          "name": "run",
+          "startLine": 92,
+          "endLine": 93,
+          "params": [
+            "answer",
+            "status",
+            "model"
+          ]
+        },
+        {
+          "name": "test_macro_f1_matches_a_hand_calculation",
+          "startLine": 96,
+          "endLine": 100,
+          "params": []
+        },
+        {
+          "name": "test_accuracy_uses_only_scored_runs_and_reports_every_denominator",
+          "startLine": 103,
+          "endLine": 129,
+          "params": []
+        },
+        {
+          "name": "test_head_to_head_counts_only_tickets_both_sides_answered",
+          "startLine": 132,
+          "endLine": 158,
+          "params": []
+        },
+        {
+          "name": "test_confusion_matrix_rows_are_expected_and_columns_are_predicted",
+          "startLine": 161,
+          "endLine": 173,
+          "params": []
+        },
+        {
+          "name": "test_escalation_is_labelled_in_words_in_the_matrix",
+          "startLine": 176,
+          "endLine": 182,
+          "params": []
+        },
+        {
+          "name": "test_macro_f1_appears_once_there_are_enough_samples",
+          "startLine": 185,
+          "endLine": 189,
+          "params": []
+        },
+        {
+          "name": "test_results_are_reproducible",
+          "startLine": 192,
+          "endLine": 196,
+          "params": []
+        },
+        {
+          "name": "test_report_section_shows_scores_with_denominators",
+          "startLine": 199,
+          "endLine": 211,
+          "params": []
+        },
+        {
+          "name": "api",
+          "startLine": 218,
+          "endLine": 221,
+          "params": [
+            "test_settings",
+            "test_db"
+          ]
+        },
+        {
+          "name": "import_labelled",
+          "startLine": 224,
+          "endLine": 236,
+          "params": [
+            "api",
+            "count"
+          ]
+        },
+        {
+          "name": "test_no_labels_is_an_empty_state_not_zero_percent",
+          "startLine": 239,
+          "endLine": 240,
+          "params": [
+            "api"
+          ]
+        },
+        {
+          "name": "test_fake_runs_are_never_scored",
+          "startLine": 243,
+          "endLine": 250,
+          "params": [
+            "api"
+          ]
+        },
+        {
+          "name": "test_real_runs_are_scored_using_the_latest_finished_attempt",
+          "startLine": 253,
+          "endLine": 265,
+          "params": [
+            "api",
+            "test_db"
+          ]
+        },
+        {
+          "name": "test_labels_never_reach_a_model",
+          "startLine": 268,
+          "endLine": 276,
+          "params": [
+            "api"
+          ]
+        },
+        {
+          "name": "test_the_dataset_downloads_and_does_not_seed_the_database",
+          "startLine": 279,
+          "endLine": 286,
+          "params": [
+            "api",
+            "test_db"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "rows",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "test_v2_keeps_every_label_in_order",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "test_v2_titles_no_longer_give_away_the_answer",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "test_v2_titles_are_unique_and_text_is_english",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "test_v2_covers_all_six_categories_without_severe_imbalance",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "test_v2_passes_the_real_import_checks",
+          "line": 77,
+          "isDefault": false
+        },
+        {
+          "name": "run",
+          "line": 92,
+          "isDefault": false
+        },
+        {
+          "name": "test_macro_f1_matches_a_hand_calculation",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "test_accuracy_uses_only_scored_runs_and_reports_every_denominator",
+          "line": 103,
+          "isDefault": false
+        },
+        {
+          "name": "test_head_to_head_counts_only_tickets_both_sides_answered",
+          "line": 132,
+          "isDefault": false
+        },
+        {
+          "name": "test_confusion_matrix_rows_are_expected_and_columns_are_predicted",
+          "line": 161,
+          "isDefault": false
+        },
+        {
+          "name": "test_escalation_is_labelled_in_words_in_the_matrix",
+          "line": 176,
+          "isDefault": false
+        },
+        {
+          "name": "test_macro_f1_appears_once_there_are_enough_samples",
+          "line": 185,
+          "isDefault": false
+        },
+        {
+          "name": "test_results_are_reproducible",
+          "line": 192,
+          "isDefault": false
+        },
+        {
+          "name": "test_report_section_shows_scores_with_denominators",
+          "line": 199,
+          "isDefault": false
+        },
+        {
+          "name": "api",
+          "line": 217,
+          "isDefault": false
+        },
+        {
+          "name": "import_labelled",
+          "line": 224,
+          "isDefault": false
+        },
+        {
+          "name": "test_no_labels_is_an_empty_state_not_zero_percent",
+          "line": 239,
+          "isDefault": false
+        },
+        {
+          "name": "test_fake_runs_are_never_scored",
+          "line": 243,
+          "isDefault": false
+        },
+        {
+          "name": "test_real_runs_are_scored_using_the_latest_finished_attempt",
+          "line": 253,
+          "isDefault": false
+        },
+        {
+          "name": "test_labels_never_reach_a_model",
+          "line": 268,
+          "isDefault": false
+        },
+        {
+          "name": "test_the_dataset_downloads_and_does_not_seed_the_database",
+          "line": 279,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "rows",
+          "callee": "list",
+          "lineNumber": 37
+        },
+        {
+          "caller": "rows",
+          "callee": "csv.DictReader",
+          "lineNumber": 37
+        },
+        {
+          "caller": "rows",
+          "callee": "io.StringIO",
+          "lineNumber": 37
+        },
+        {
+          "caller": "rows",
+          "callee": "path.read_text",
+          "lineNumber": 37
+        },
+        {
+          "caller": "test_v2_keeps_every_label_in_order",
+          "callee": "rows",
+          "lineNumber": 44
+        },
+        {
+          "caller": "test_v2_keeps_every_label_in_order",
+          "callee": "rows",
+          "lineNumber": 44
+        },
+        {
+          "caller": "test_v2_keeps_every_label_in_order",
+          "callee": "len",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_v2_keeps_every_label_in_order",
+          "callee": "zip",
+          "lineNumber": 47
+        },
+        {
+          "caller": "test_v2_titles_no_longer_give_away_the_answer",
+          "callee": "s.lower",
+          "lineNumber": 52
+        },
+        {
+          "caller": "test_v2_titles_no_longer_give_away_the_answer",
+          "callee": "SUBCATEGORIES.values",
+          "lineNumber": 52
+        },
+        {
+          "caller": "test_v2_titles_no_longer_give_away_the_answer",
+          "callee": "rows",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_v2_titles_no_longer_give_away_the_answer",
+          "callee": "row[\"title\"].lower",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_v2_titles_no_longer_give_away_the_answer",
+          "callee": "row[\"expected_subcategory\"].lower",
+          "lineNumber": 56
+        },
+        {
+          "caller": "test_v2_titles_no_longer_give_away_the_answer",
+          "callee": "row[\"expected_category\"].lower",
+          "lineNumber": 57
+        },
+        {
+          "caller": "test_v2_titles_are_unique_and_text_is_english",
+          "callee": "rows",
+          "lineNumber": 61
+        },
+        {
+          "caller": "test_v2_titles_are_unique_and_text_is_english",
+          "callee": "len",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_v2_titles_are_unique_and_text_is_english",
+          "callee": "ROMANISED_HINDI.search",
+          "lineNumber": 64
+        },
+        {
+          "caller": "test_v2_titles_are_unique_and_text_is_english",
+          "callee": "ROMANISED_HINDI.search",
+          "lineNumber": 65
+        },
+        {
+          "caller": "test_v2_titles_are_unique_and_text_is_english",
+          "callee": "row[\"customer_email\"].endswith",
+          "lineNumber": 66
+        },
+        {
+          "caller": "test_v2_covers_all_six_categories_without_severe_imbalance",
+          "callee": "rows",
+          "lineNumber": 71
+        },
+        {
+          "caller": "test_v2_covers_all_six_categories_without_severe_imbalance",
+          "callee": "counts.get",
+          "lineNumber": 72
+        },
+        {
+          "caller": "test_v2_covers_all_six_categories_without_severe_imbalance",
+          "callee": "len",
+          "lineNumber": 73
+        },
+        {
+          "caller": "test_v2_covers_all_six_categories_without_severe_imbalance",
+          "callee": "min",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_v2_covers_all_six_categories_without_severe_imbalance",
+          "callee": "counts.values",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_v2_passes_the_real_import_checks",
+          "callee": "api.post",
+          "lineNumber": 78
+        },
+        {
+          "caller": "test_v2_passes_the_real_import_checks",
+          "callee": "V2.read_bytes",
+          "lineNumber": 80
+        },
+        {
+          "caller": "test_v2_passes_the_real_import_checks",
+          "callee": "response.json",
+          "lineNumber": 84
+        },
+        {
+          "caller": "test_v2_passes_the_real_import_checks",
+          "callee": "all",
+          "lineNumber": 86
+        },
+        {
+          "caller": "test_macro_f1_matches_a_hand_calculation",
+          "callee": "macro_f1",
+          "lineNumber": 98
+        },
+        {
+          "caller": "test_macro_f1_matches_a_hand_calculation",
+          "callee": "pytest.approx",
+          "lineNumber": 98
+        },
+        {
+          "caller": "test_macro_f1_matches_a_hand_calculation",
+          "callee": "macro_f1",
+          "lineNumber": 99
+        },
+        {
+          "caller": "test_macro_f1_matches_a_hand_calculation",
+          "callee": "macro_f1",
+          "lineNumber": 100
+        },
+        {
+          "caller": "test_accuracy_uses_only_scored_runs_and_reports_every_denominator",
+          "callee": "run",
+          "lineNumber": 107
+        },
+        {
+          "caller": "test_accuracy_uses_only_scored_runs_and_reports_every_denominator",
+          "callee": "run",
+          "lineNumber": 108
+        },
+        {
+          "caller": "test_accuracy_uses_only_scored_runs_and_reports_every_denominator",
+          "callee": "run",
+          "lineNumber": 109
+        },
+        {
+          "caller": "test_accuracy_uses_only_scored_runs_and_reports_every_denominator",
+          "callee": "run",
+          "lineNumber": 110
+        },
+        {
+          "caller": "test_accuracy_uses_only_scored_runs_and_reports_every_denominator",
+          "callee": "run",
+          "lineNumber": 111
+        },
+        {
+          "caller": "test_accuracy_uses_only_scored_runs_and_reports_every_denominator",
+          "callee": "compute",
+          "lineNumber": 114
+        },
+        {
+          "caller": "test_head_to_head_counts_only_tickets_both_sides_answered",
+          "callee": "run",
+          "lineNumber": 137
+        },
+        {
+          "caller": "test_head_to_head_counts_only_tickets_both_sides_answered",
+          "callee": "run",
+          "lineNumber": 138
+        },
+        {
+          "caller": "test_head_to_head_counts_only_tickets_both_sides_answered",
+          "callee": "run",
+          "lineNumber": 139
+        },
+        {
+          "caller": "test_head_to_head_counts_only_tickets_both_sides_answered",
+          "callee": "run",
+          "lineNumber": 140
+        },
+        {
+          "caller": "test_head_to_head_counts_only_tickets_both_sides_answered",
+          "callee": "run",
+          "lineNumber": 141
+        },
+        {
+          "caller": "test_head_to_head_counts_only_tickets_both_sides_answered",
+          "callee": "run",
+          "lineNumber": 142
+        },
+        {
+          "caller": "test_head_to_head_counts_only_tickets_both_sides_answered",
+          "callee": "run",
+          "lineNumber": 143
+        },
+        {
+          "caller": "test_head_to_head_counts_only_tickets_both_sides_answered",
+          "callee": "run",
+          "lineNumber": 144
+        },
+        {
+          "caller": "test_head_to_head_counts_only_tickets_both_sides_answered",
+          "callee": "run",
+          "lineNumber": 145
+        },
+        {
+          "caller": "test_head_to_head_counts_only_tickets_both_sides_answered",
+          "callee": "compute",
+          "lineNumber": 148
+        },
+        {
+          "caller": "test_confusion_matrix_rows_are_expected_and_columns_are_predicted",
+          "callee": "run",
+          "lineNumber": 164
+        },
+        {
+          "caller": "test_confusion_matrix_rows_are_expected_and_columns_are_predicted",
+          "callee": "run",
+          "lineNumber": 165
+        },
+        {
+          "caller": "test_confusion_matrix_rows_are_expected_and_columns_are_predicted",
+          "callee": "compute",
+          "lineNumber": 168
+        },
+        {
+          "caller": "test_confusion_matrix_rows_are_expected_and_columns_are_predicted",
+          "callee": "matrix[\"labels\"].index",
+          "lineNumber": 170
+        },
+        {
+          "caller": "test_confusion_matrix_rows_are_expected_and_columns_are_predicted",
+          "callee": "matrix[\"labels\"].index",
+          "lineNumber": 170
+        },
+        {
+          "caller": "test_confusion_matrix_rows_are_expected_and_columns_are_predicted",
+          "callee": "sum",
+          "lineNumber": 173
+        },
+        {
+          "caller": "test_confusion_matrix_rows_are_expected_and_columns_are_predicted",
+          "callee": "map",
+          "lineNumber": 173
+        },
+        {
+          "caller": "test_escalation_is_labelled_in_words_in_the_matrix",
+          "callee": "run",
+          "lineNumber": 177
+        },
+        {
+          "caller": "test_escalation_is_labelled_in_words_in_the_matrix",
+          "callee": "compute",
+          "lineNumber": 179
+        },
+        {
+          "caller": "test_macro_f1_appears_once_there_are_enough_samples",
+          "callee": "range",
+          "lineNumber": 186
+        },
+        {
+          "caller": "test_macro_f1_appears_once_there_are_enough_samples",
+          "callee": "run",
+          "lineNumber": 187
+        },
+        {
+          "caller": "test_macro_f1_appears_once_there_are_enough_samples",
+          "callee": "compute",
+          "lineNumber": 189
+        },
+        {
+          "caller": "test_results_are_reproducible",
+          "callee": "run",
+          "lineNumber": 194
+        },
+        {
+          "caller": "test_results_are_reproducible",
+          "callee": "run",
+          "lineNumber": 194
+        },
+        {
+          "caller": "test_results_are_reproducible",
+          "callee": "compute",
+          "lineNumber": 196
+        },
+        {
+          "caller": "test_results_are_reproducible",
+          "callee": "compute",
+          "lineNumber": 196
+        },
+        {
+          "caller": "test_results_are_reproducible",
+          "callee": "dict",
+          "lineNumber": 196
+        },
+        {
+          "caller": "test_results_are_reproducible",
+          "callee": "dict",
+          "lineNumber": 196
+        },
+        {
+          "caller": "test_report_section_shows_scores_with_denominators",
+          "callee": "run",
+          "lineNumber": 202
+        },
+        {
+          "caller": "test_report_section_shows_scores_with_denominators",
+          "callee": "run",
+          "lineNumber": 203
+        },
+        {
+          "caller": "test_report_section_shows_scores_with_denominators",
+          "callee": "run",
+          "lineNumber": 204
+        },
+        {
+          "caller": "test_report_section_shows_scores_with_denominators",
+          "callee": "accuracy_section",
+          "lineNumber": 207
+        },
+        {
+          "caller": "test_report_section_shows_scores_with_denominators",
+          "callee": "compute",
+          "lineNumber": 207
+        },
+        {
+          "caller": "api",
+          "callee": "test_settings.model_copy",
+          "lineNumber": 219
+        },
+        {
+          "caller": "api",
+          "callee": "TestClient",
+          "lineNumber": 220
+        },
+        {
+          "caller": "api",
+          "callee": "create_app",
+          "lineNumber": 220
+        },
+        {
+          "caller": "import_labelled",
+          "callee": "rows",
+          "lineNumber": 225
+        },
+        {
+          "caller": "import_labelled",
+          "callee": "io.StringIO",
+          "lineNumber": 226
+        },
+        {
+          "caller": "import_labelled",
+          "callee": "csv.DictWriter",
+          "lineNumber": 227
+        },
+        {
+          "caller": "import_labelled",
+          "callee": "list",
+          "lineNumber": 227
+        },
+        {
+          "caller": "import_labelled",
+          "callee": "writer.writeheader",
+          "lineNumber": 228
+        },
+        {
+          "caller": "import_labelled",
+          "callee": "writer.writerows",
+          "lineNumber": 229
+        },
+        {
+          "caller": "import_labelled",
+          "callee": "api.post",
+          "lineNumber": 230
+        },
+        {
+          "caller": "import_labelled",
+          "callee": "out.getvalue().encode",
+          "lineNumber": 232
+        },
+        {
+          "caller": "import_labelled",
+          "callee": "out.getvalue",
+          "lineNumber": 232
+        },
+        {
+          "caller": "import_labelled",
+          "callee": "response.json",
+          "lineNumber": 236
+        },
+        {
+          "caller": "test_no_labels_is_an_empty_state_not_zero_percent",
+          "callee": "api.get(\"/api/evaluation\").json",
+          "lineNumber": 240
+        },
+        {
+          "caller": "test_no_labels_is_an_empty_state_not_zero_percent",
+          "callee": "api.get",
+          "lineNumber": 240
+        },
+        {
+          "caller": "test_fake_runs_are_never_scored",
+          "callee": "import_labelled",
+          "lineNumber": 244
+        },
+        {
+          "caller": "test_fake_runs_are_never_scored",
+          "callee": "api.post",
+          "lineNumber": 245
+        },
+        {
+          "caller": "test_fake_runs_are_never_scored",
+          "callee": "api.get(\"/api/evaluation\").json",
+          "lineNumber": 247
+        },
+        {
+          "caller": "test_fake_runs_are_never_scored",
+          "callee": "api.get",
+          "lineNumber": 247
+        },
+        {
+          "caller": "test_real_runs_are_scored_using_the_latest_finished_attempt",
+          "callee": "import_labelled",
+          "lineNumber": 254
+        },
+        {
+          "caller": "test_real_runs_are_scored_using_the_latest_finished_attempt",
+          "callee": "range",
+          "lineNumber": 255
+        },
+        {
+          "caller": "test_real_runs_are_scored_using_the_latest_finished_attempt",
+          "callee": "api.post",
+          "lineNumber": 256
+        },
+        {
+          "caller": "test_real_runs_are_scored_using_the_latest_finished_attempt",
+          "callee": "test_db.ai_executions.update_many",
+          "lineNumber": 257
+        },
+        {
+          "caller": "test_real_runs_are_scored_using_the_latest_finished_attempt",
+          "callee": "test_db.ai_executions.find_one",
+          "lineNumber": 258
+        },
+        {
+          "caller": "test_real_runs_are_scored_using_the_latest_finished_attempt",
+          "callee": "test_db.ai_executions.update_one",
+          "lineNumber": 259
+        },
+        {
+          "caller": "test_real_runs_are_scored_using_the_latest_finished_attempt",
+          "callee": "api.get(\"/api/evaluation\").json",
+          "lineNumber": 263
+        },
+        {
+          "caller": "test_real_runs_are_scored_using_the_latest_finished_attempt",
+          "callee": "api.get",
+          "lineNumber": 263
+        },
+        {
+          "caller": "test_labels_never_reach_a_model",
+          "callee": "import_labelled",
+          "lineNumber": 269
+        },
+        {
+          "caller": "test_labels_never_reach_a_model",
+          "callee": "api.post(f\"/api/tickets/{ticket_id}/runs/gpt\").json",
+          "lineNumber": 271
+        },
+        {
+          "caller": "test_labels_never_reach_a_model",
+          "callee": "api.post",
+          "lineNumber": 271
+        },
+        {
+          "caller": "test_labels_never_reach_a_model",
+          "callee": "str",
+          "lineNumber": 273
+        },
+        {
+          "caller": "test_the_dataset_downloads_and_does_not_seed_the_database",
+          "callee": "api.get",
+          "lineNumber": 280
+        },
+        {
+          "caller": "test_the_dataset_downloads_and_does_not_seed_the_database",
+          "callee": "response.text.lstrip(\"﻿\").startswith",
+          "lineNumber": 284
+        },
+        {
+          "caller": "test_the_dataset_downloads_and_does_not_seed_the_database",
+          "callee": "response.text.lstrip",
+          "lineNumber": 284
+        },
+        {
+          "caller": "test_the_dataset_downloads_and_does_not_seed_the_database",
+          "callee": "len",
+          "lineNumber": 285
+        },
+        {
+          "caller": "test_the_dataset_downloads_and_does_not_seed_the_database",
+          "callee": "list",
+          "lineNumber": 285
+        },
+        {
+          "caller": "test_the_dataset_downloads_and_does_not_seed_the_database",
+          "callee": "csv.DictReader",
+          "lineNumber": 285
+        },
+        {
+          "caller": "test_the_dataset_downloads_and_does_not_seed_the_database",
+          "callee": "io.StringIO",
+          "lineNumber": 285
+        },
+        {
+          "caller": "test_the_dataset_downloads_and_does_not_seed_the_database",
+          "callee": "response.text.lstrip",
+          "lineNumber": 285
+        },
+        {
+          "caller": "test_the_dataset_downloads_and_does_not_seed_the_database",
+          "callee": "test_db.tickets.count_documents",
+          "lineNumber": 286
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 22,
+        "functionCount": 22,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "backend/tests/test_production_config.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 78,
+      "nonEmptyLines": 59,
+      "functions": [
+        {
+          "name": "production",
+          "startLine": 17,
+          "endLine": 18,
+          "params": [
+            "**changes"
+          ]
+        },
+        {
+          "name": "test_a_safe_production_configuration_is_accepted",
+          "startLine": 21,
+          "endLine": 22,
+          "params": []
+        },
+        {
+          "name": "test_unsafe_production_settings_stop_the_app_starting",
+          "startLine": 36,
+          "endLine": 40,
+          "params": [
+            "changes",
+            "reason"
+          ]
+        },
+        {
+          "name": "test_the_demo_is_refused_in_production_by_default",
+          "startLine": 43,
+          "endLine": 53,
+          "params": []
+        },
+        {
+          "name": "test_development_keeps_its_local_defaults",
+          "startLine": 56,
+          "endLine": 61,
+          "params": []
+        },
+        {
+          "name": "test_database_credentials_never_appear_in_output_or_errors",
+          "startLine": 64,
+          "endLine": 68,
+          "params": []
+        },
+        {
+          "name": "test_interactive_api_docs_are_off_in_production_only",
+          "startLine": 71,
+          "endLine": 78,
+          "params": [
+            "test_settings",
+            "monkeypatch"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "production",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "test_a_safe_production_configuration_is_accepted",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "test_unsafe_production_settings_stop_the_app_starting",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "test_the_demo_is_refused_in_production_by_default",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "test_development_keeps_its_local_defaults",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "test_database_credentials_never_appear_in_output_or_errors",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "test_interactive_api_docs_are_off_in_production_only",
+          "line": 71,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "production",
+          "callee": "Settings",
+          "lineNumber": 18
+        },
+        {
+          "caller": "test_a_safe_production_configuration_is_accepted",
+          "callee": "production",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_unsafe_production_settings_stop_the_app_starting",
+          "callee": "pytest.raises",
+          "lineNumber": 37
+        },
+        {
+          "caller": "test_unsafe_production_settings_stop_the_app_starting",
+          "callee": "production",
+          "lineNumber": 38
+        },
+        {
+          "caller": "test_unsafe_production_settings_stop_the_app_starting",
+          "callee": "str",
+          "lineNumber": 40
+        },
+        {
+          "caller": "test_the_demo_is_refused_in_production_by_default",
+          "callee": "pytest.raises",
+          "lineNumber": 45
+        },
+        {
+          "caller": "test_the_demo_is_refused_in_production_by_default",
+          "callee": "Settings",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_the_demo_is_refused_in_production_by_default",
+          "callee": "str",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_development_keeps_its_local_defaults",
+          "callee": "Settings",
+          "lineNumber": 57
+        },
+        {
+          "caller": "test_database_credentials_never_appear_in_output_or_errors",
+          "callee": "repr",
+          "lineNumber": 65
+        },
+        {
+          "caller": "test_database_credentials_never_appear_in_output_or_errors",
+          "callee": "production",
+          "lineNumber": 65
+        },
+        {
+          "caller": "test_database_credentials_never_appear_in_output_or_errors",
+          "callee": "pytest.raises",
+          "lineNumber": 66
+        },
+        {
+          "caller": "test_database_credentials_never_appear_in_output_or_errors",
+          "callee": "production",
+          "lineNumber": 67
+        },
+        {
+          "caller": "test_database_credentials_never_appear_in_output_or_errors",
+          "callee": "str",
+          "lineNumber": 68
+        },
+        {
+          "caller": "test_interactive_api_docs_are_off_in_production_only",
+          "callee": "test_settings.model_copy",
+          "lineNumber": 72
+        },
+        {
+          "caller": "test_interactive_api_docs_are_off_in_production_only",
+          "callee": "TestClient",
+          "lineNumber": 73
+        },
+        {
+          "caller": "test_interactive_api_docs_are_off_in_production_only",
+          "callee": "create_app",
+          "lineNumber": 73
+        },
+        {
+          "caller": "test_interactive_api_docs_are_off_in_production_only",
+          "callee": "client.get",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_interactive_api_docs_are_off_in_production_only",
+          "callee": "client.get",
+          "lineNumber": 75
+        },
+        {
+          "caller": "test_interactive_api_docs_are_off_in_production_only",
+          "callee": "client.get",
+          "lineNumber": 76
+        },
+        {
+          "caller": "test_interactive_api_docs_are_off_in_production_only",
+          "callee": "TestClient",
+          "lineNumber": 77
+        },
+        {
+          "caller": "test_interactive_api_docs_are_off_in_production_only",
+          "callee": "create_app",
+          "lineNumber": 77
+        },
+        {
+          "caller": "test_interactive_api_docs_are_off_in_production_only",
+          "callee": "client.get",
+          "lineNumber": 78
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    }
+  ]
+}

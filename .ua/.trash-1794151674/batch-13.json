@@ -1,0 +1,151 @@
+{
+ "nodes": [
+  {
+   "id": "file:backend/app/repositories/app_settings.py",
+   "type": "file",
+   "name": "app_settings.py",
+   "filePath": "backend/app/repositories/app_settings.py",
+   "summary": "MongoDB repository for the single active application settings document, plus a query listing every category/subcategory pair still used by stored records. API keys are never stored here.",
+   "tags": [
+    "repository",
+    "database",
+    "settings",
+    "mongodb"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/app_settings.py:get",
+   "type": "function",
+   "name": "get",
+   "filePath": "backend/app/repositories/app_settings.py",
+   "lineRange": [
+    9,
+    10
+   ],
+   "summary": "Returns the active settings document or an empty dict.",
+   "tags": [
+    "repository",
+    "settings",
+    "read"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/app_settings.py:update",
+   "type": "function",
+   "name": "update",
+   "filePath": "backend/app/repositories/app_settings.py",
+   "lineRange": [
+    13,
+    16
+   ],
+   "summary": "Applies update operations to the active settings document, upserting and returning the updated document.",
+   "tags": [
+    "repository",
+    "settings",
+    "upsert"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/app_settings.py:labels_in_use",
+   "type": "function",
+   "name": "labels_in_use",
+   "filePath": "backend/app/repositories/app_settings.py",
+   "lineRange": [
+    19,
+    33
+   ],
+   "summary": "Aggregates tickets, AI executions and evaluation labels to collect every category/subcategory pair in use, so taxonomy edits can be guarded.",
+   "tags": [
+    "repository",
+    "aggregation",
+    "taxonomy"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:e2e/tests/workflow.spec.ts",
+   "type": "file",
+   "name": "workflow.spec.ts",
+   "filePath": "e2e/tests/workflow.spec.ts",
+   "summary": "Playwright end-to-end tests covering the full ticket journey, partial provider failure, form validation, URL-driven filters, backend-down retry states, and absence of API key fields in settings.",
+   "tags": [
+    "test",
+    "e2e",
+    "playwright",
+    "workflow"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:e2e/tests/workflow.spec.ts:createTicket",
+   "type": "function",
+   "name": "createTicket",
+   "filePath": "e2e/tests/workflow.spec.ts",
+   "lineRange": [
+    7,
+    19
+   ],
+   "summary": "Test helper that creates a ticket through the backend API and returns its ID.",
+   "tags": [
+    "test",
+    "helper",
+    "e2e"
+   ],
+   "complexity": "simple"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:backend/app/repositories/app_settings.py",
+   "target": "function:backend/app/repositories/app_settings.py:get",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/app_settings.py",
+   "target": "function:backend/app/repositories/app_settings.py:update",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/app_settings.py",
+   "target": "function:backend/app/repositories/app_settings.py:labels_in_use",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/app_settings.py",
+   "target": "function:backend/app/repositories/app_settings.py:get",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/app_settings.py",
+   "target": "function:backend/app/repositories/app_settings.py:update",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/app_settings.py",
+   "target": "function:backend/app/repositories/app_settings.py:labels_in_use",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:e2e/tests/workflow.spec.ts",
+   "target": "function:e2e/tests/workflow.spec.ts:createTicket",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  }
+ ]
+}

@@ -1,0 +1,1180 @@
+{
+ "nodes": [
+  {
+   "id": "file:backend/app/repositories/bulk_jobs.py",
+   "type": "file",
+   "name": "bulk_jobs.py",
+   "filePath": "backend/app/repositories/bulk_jobs.py",
+   "summary": "MongoDB repository for bulk job documents: insert, fetch, list newest first, count, active check, update, outcome recording and marking active jobs interrupted.",
+   "tags": [
+    "repository",
+    "database",
+    "bulk-jobs",
+    "mongodb"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/bulk_jobs.py:insert",
+   "type": "function",
+   "name": "insert",
+   "filePath": "backend/app/repositories/bulk_jobs.py",
+   "lineRange": [
+    12,
+    13
+   ],
+   "summary": "Inserts a new bulk job document.",
+   "tags": [
+    "repository",
+    "bulk-jobs",
+    "database"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/bulk_jobs.py:get",
+   "type": "function",
+   "name": "get",
+   "filePath": "backend/app/repositories/bulk_jobs.py",
+   "lineRange": [
+    16,
+    17
+   ],
+   "summary": "Fetches one bulk job by id.",
+   "tags": [
+    "repository",
+    "bulk-jobs",
+    "database"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/bulk_jobs.py:newest_first",
+   "type": "function",
+   "name": "newest_first",
+   "filePath": "backend/app/repositories/bulk_jobs.py",
+   "lineRange": [
+    20,
+    21
+   ],
+   "summary": "Lists bulk jobs sorted newest first.",
+   "tags": [
+    "repository",
+    "bulk-jobs",
+    "database"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/bulk_jobs.py:count",
+   "type": "function",
+   "name": "count",
+   "filePath": "backend/app/repositories/bulk_jobs.py",
+   "lineRange": [
+    24,
+    25
+   ],
+   "summary": "Counts stored bulk jobs.",
+   "tags": [
+    "repository",
+    "bulk-jobs",
+    "database"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/bulk_jobs.py:has_active",
+   "type": "function",
+   "name": "has_active",
+   "filePath": "backend/app/repositories/bulk_jobs.py",
+   "lineRange": [
+    28,
+    29
+   ],
+   "summary": "Reports whether a bulk job is currently active.",
+   "tags": [
+    "repository",
+    "bulk-jobs",
+    "database"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/bulk_jobs.py:update",
+   "type": "function",
+   "name": "update",
+   "filePath": "backend/app/repositories/bulk_jobs.py",
+   "lineRange": [
+    32,
+    38
+   ],
+   "summary": "Applies field updates to a bulk job.",
+   "tags": [
+    "repository",
+    "bulk-jobs",
+    "database"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/bulk_jobs.py:record_outcome",
+   "type": "function",
+   "name": "record_outcome",
+   "filePath": "backend/app/repositories/bulk_jobs.py",
+   "lineRange": [
+    41,
+    45
+   ],
+   "summary": "Records a per-ticket outcome counter on a job.",
+   "tags": [
+    "repository",
+    "bulk-jobs",
+    "database"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/bulk_jobs.py:mark_active_interrupted",
+   "type": "function",
+   "name": "mark_active_interrupted",
+   "filePath": "backend/app/repositories/bulk_jobs.py",
+   "lineRange": [
+    48,
+    51
+   ],
+   "summary": "Marks unfinished jobs as interrupted, used on restart.",
+   "tags": [
+    "repository",
+    "bulk-jobs",
+    "database"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/schemas/app_settings.py",
+   "type": "file",
+   "name": "app_settings.py",
+   "filePath": "backend/app/schemas/app_settings.py",
+   "summary": "Pydantic request models for updating settings, prompt, taxonomy and pricing, with validation of ranges, limits and uniqueness.",
+   "tags": [
+    "schema",
+    "validation",
+    "pydantic",
+    "settings"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/app_settings.py:Strict",
+   "type": "class",
+   "name": "Strict",
+   "filePath": "backend/app/schemas/app_settings.py",
+   "lineRange": [
+    16,
+    18
+   ],
+   "summary": "Base model forbidding extra fields.",
+   "tags": [
+    "schema",
+    "pydantic",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/app_settings.py:SettingsUpdate",
+   "type": "class",
+   "name": "SettingsUpdate",
+   "filePath": "backend/app/schemas/app_settings.py",
+   "lineRange": [
+    21,
+    31
+   ],
+   "summary": "Validated update of thresholds, concurrency and model names.",
+   "tags": [
+    "schema",
+    "pydantic",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/app_settings.py:PromptUpdate",
+   "type": "class",
+   "name": "PromptUpdate",
+   "filePath": "backend/app/schemas/app_settings.py",
+   "lineRange": [
+    34,
+    37
+   ],
+   "summary": "Request body for saving a new prompt.",
+   "tags": [
+    "schema",
+    "pydantic",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/app_settings.py:TaxonomyUpdate",
+   "type": "class",
+   "name": "TaxonomyUpdate",
+   "filePath": "backend/app/schemas/app_settings.py",
+   "lineRange": [
+    40,
+    55
+   ],
+   "summary": "Validated taxonomy update with label count limits.",
+   "tags": [
+    "schema",
+    "pydantic",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/app_settings.py:PricingEntry",
+   "type": "class",
+   "name": "PricingEntry",
+   "filePath": "backend/app/schemas/app_settings.py",
+   "lineRange": [
+    58,
+    62
+   ],
+   "summary": "One model price rate entry.",
+   "tags": [
+    "schema",
+    "pydantic",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/app_settings.py:PricingUpdate",
+   "type": "class",
+   "name": "PricingUpdate",
+   "filePath": "backend/app/schemas/app_settings.py",
+   "lineRange": [
+    65,
+    73
+   ],
+   "summary": "Pricing list update ensuring each model appears once.",
+   "tags": [
+    "schema",
+    "pydantic",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/services/app_settings.py",
+   "type": "file",
+   "name": "app_settings.py",
+   "filePath": "backend/app/services/app_settings.py",
+   "summary": "Service layer for saved app settings: versioned prompt, taxonomy and pricing storage, effective-settings resolution, model availability checks and validation of changes against data in use.",
+   "tags": [
+    "service",
+    "settings",
+    "taxonomy",
+    "pricing"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:backend/app/services/app_settings.py:SettingsError",
+   "type": "class",
+   "name": "SettingsError",
+   "filePath": "backend/app/services/app_settings.py",
+   "lineRange": [
+    27,
+    30
+   ],
+   "summary": "Domain error raised for invalid settings changes.",
+   "tags": [
+    "error",
+    "settings"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/app_settings.py:next_version",
+   "type": "function",
+   "name": "next_version",
+   "filePath": "backend/app/services/app_settings.py",
+   "lineRange": [
+    33,
+    35
+   ],
+   "summary": "Computes the next version number for a saved setting.",
+   "tags": [
+    "service",
+    "settings"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/app_settings.py:load_taxonomy",
+   "type": "function",
+   "name": "load_taxonomy",
+   "filePath": "backend/app/services/app_settings.py",
+   "lineRange": [
+    38,
+    44
+   ],
+   "summary": "Loads the saved taxonomy and activates it.",
+   "tags": [
+    "service",
+    "settings"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/app_settings.py:effective",
+   "type": "function",
+   "name": "effective",
+   "filePath": "backend/app/services/app_settings.py",
+   "lineRange": [
+    47,
+    58
+   ],
+   "summary": "Merges saved values over defaults.",
+   "tags": [
+    "service",
+    "settings"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/app_settings.py:active_prompt",
+   "type": "function",
+   "name": "active_prompt",
+   "filePath": "backend/app/services/app_settings.py",
+   "lineRange": [
+    61,
+    66
+   ],
+   "summary": "Returns the current prompt and version.",
+   "tags": [
+    "service",
+    "settings"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/app_settings.py:rates_for",
+   "type": "function",
+   "name": "rates_for",
+   "filePath": "backend/app/services/app_settings.py",
+   "lineRange": [
+    69,
+    81
+   ],
+   "summary": "Resolves price rates for a model, preferring saved rates.",
+   "tags": [
+    "service",
+    "settings"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/app_settings.py:available_models",
+   "type": "function",
+   "name": "available_models",
+   "filePath": "backend/app/services/app_settings.py",
+   "lineRange": [
+    84,
+    109
+   ],
+   "summary": "Lists models from the provider server with safe error handling.",
+   "tags": [
+    "service",
+    "settings"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/app_settings.py:check_model",
+   "type": "function",
+   "name": "check_model",
+   "filePath": "backend/app/services/app_settings.py",
+   "lineRange": [
+    112,
+    121
+   ],
+   "summary": "Validates a model name against format and server availability.",
+   "tags": [
+    "service",
+    "settings"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/app_settings.py:view",
+   "type": "function",
+   "name": "view",
+   "filePath": "backend/app/services/app_settings.py",
+   "lineRange": [
+    124,
+    147
+   ],
+   "summary": "Builds the settings view without exposing secrets.",
+   "tags": [
+    "service",
+    "settings"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/app_settings.py:update_values",
+   "type": "function",
+   "name": "update_values",
+   "filePath": "backend/app/services/app_settings.py",
+   "lineRange": [
+    150,
+    156
+   ],
+   "summary": "Persists threshold, concurrency and model values.",
+   "tags": [
+    "service",
+    "settings"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/app_settings.py:save_prompt",
+   "type": "function",
+   "name": "save_prompt",
+   "filePath": "backend/app/services/app_settings.py",
+   "lineRange": [
+    159,
+    179
+   ],
+   "summary": "Saves a new prompt version.",
+   "tags": [
+    "service",
+    "settings"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/app_settings.py:save_taxonomy",
+   "type": "function",
+   "name": "save_taxonomy",
+   "filePath": "backend/app/services/app_settings.py",
+   "lineRange": [
+    182,
+    207
+   ],
+   "summary": "Saves a taxonomy, refusing removal of labels in use.",
+   "tags": [
+    "service",
+    "settings"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/app_settings.py:save_pricing",
+   "type": "function",
+   "name": "save_pricing",
+   "filePath": "backend/app/services/app_settings.py",
+   "lineRange": [
+    210,
+    214
+   ],
+   "summary": "Saves pricing rates.",
+   "tags": [
+    "service",
+    "settings"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/tests/test_app_settings.py",
+   "type": "file",
+   "name": "test_app_settings.py",
+   "filePath": "backend/tests/test_app_settings.py",
+   "summary": "Tests for settings API: defaults, secret protection, validation, model selection, prompt versioning, taxonomy changes and pricing rates.",
+   "tags": [
+    "test",
+    "settings",
+    "api",
+    "validation"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:backend/tests/test_bulk_jobs.py",
+   "type": "file",
+   "name": "test_bulk_jobs.py",
+   "filePath": "backend/tests/test_bulk_jobs.py",
+   "summary": "Tests for bulk runs: selection, comparison counting, failure isolation, concurrency limits, single active job and restart interruption.",
+   "tags": [
+    "test",
+    "bulk-jobs",
+    "concurrency",
+    "api"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:backend/tests/test_retries.py",
+   "type": "file",
+   "name": "test_retries.py",
+   "filePath": "backend/tests/test_retries.py",
+   "summary": "Tests for provider HTTP retry policy: transient retry, bounded attempts, backoff with jitter, Retry-After and no retry of permanent errors.",
+   "tags": [
+    "test",
+    "retries",
+    "providers",
+    "http"
+   ],
+   "complexity": "moderate"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:backend/app/repositories/bulk_jobs.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/repositories/bulk_jobs.py",
+   "target": "function:backend/app/repositories/bulk_jobs.py:insert",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/bulk_jobs.py",
+   "target": "function:backend/app/repositories/bulk_jobs.py:insert",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/bulk_jobs.py",
+   "target": "function:backend/app/repositories/bulk_jobs.py:get",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/bulk_jobs.py",
+   "target": "function:backend/app/repositories/bulk_jobs.py:get",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/bulk_jobs.py",
+   "target": "function:backend/app/repositories/bulk_jobs.py:newest_first",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/bulk_jobs.py",
+   "target": "function:backend/app/repositories/bulk_jobs.py:newest_first",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/bulk_jobs.py",
+   "target": "function:backend/app/repositories/bulk_jobs.py:count",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/bulk_jobs.py",
+   "target": "function:backend/app/repositories/bulk_jobs.py:count",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/bulk_jobs.py",
+   "target": "function:backend/app/repositories/bulk_jobs.py:has_active",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/bulk_jobs.py",
+   "target": "function:backend/app/repositories/bulk_jobs.py:has_active",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/bulk_jobs.py",
+   "target": "function:backend/app/repositories/bulk_jobs.py:update",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/bulk_jobs.py",
+   "target": "function:backend/app/repositories/bulk_jobs.py:update",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/bulk_jobs.py",
+   "target": "function:backend/app/repositories/bulk_jobs.py:record_outcome",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/bulk_jobs.py",
+   "target": "function:backend/app/repositories/bulk_jobs.py:record_outcome",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/bulk_jobs.py",
+   "target": "function:backend/app/repositories/bulk_jobs.py:mark_active_interrupted",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/bulk_jobs.py",
+   "target": "function:backend/app/repositories/bulk_jobs.py:mark_active_interrupted",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/app_settings.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/schemas/app_settings.py",
+   "target": "class:backend/app/schemas/app_settings.py:Strict",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/app_settings.py",
+   "target": "class:backend/app/schemas/app_settings.py:Strict",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/app_settings.py",
+   "target": "class:backend/app/schemas/app_settings.py:SettingsUpdate",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/app_settings.py",
+   "target": "class:backend/app/schemas/app_settings.py:SettingsUpdate",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/app_settings.py",
+   "target": "class:backend/app/schemas/app_settings.py:PromptUpdate",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/app_settings.py",
+   "target": "class:backend/app/schemas/app_settings.py:PromptUpdate",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/app_settings.py",
+   "target": "class:backend/app/schemas/app_settings.py:TaxonomyUpdate",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/app_settings.py",
+   "target": "class:backend/app/schemas/app_settings.py:TaxonomyUpdate",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/app_settings.py",
+   "target": "class:backend/app/schemas/app_settings.py:PricingEntry",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/app_settings.py",
+   "target": "class:backend/app/schemas/app_settings.py:PricingEntry",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/app_settings.py",
+   "target": "class:backend/app/schemas/app_settings.py:PricingUpdate",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/app_settings.py",
+   "target": "class:backend/app/schemas/app_settings.py:PricingUpdate",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "file:backend/app/core/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "file:backend/app/core/clock.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "file:backend/app/core/pricing.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "file:backend/app/core/settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "file:backend/app/providers/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "file:backend/app/providers/base.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "file:backend/app/providers/definitions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "file:backend/app/providers/http.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "file:backend/app/providers/registry.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "file:backend/app/repositories/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "file:backend/app/schemas/app_settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "file:backend/app/schemas/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "class:backend/app/services/app_settings.py:SettingsError",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "class:backend/app/services/app_settings.py:SettingsError",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "function:backend/app/services/app_settings.py:next_version",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "function:backend/app/services/app_settings.py:next_version",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "function:backend/app/services/app_settings.py:load_taxonomy",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "function:backend/app/services/app_settings.py:load_taxonomy",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "function:backend/app/services/app_settings.py:effective",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "function:backend/app/services/app_settings.py:effective",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "function:backend/app/services/app_settings.py:active_prompt",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "function:backend/app/services/app_settings.py:active_prompt",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "function:backend/app/services/app_settings.py:rates_for",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "function:backend/app/services/app_settings.py:rates_for",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "function:backend/app/services/app_settings.py:available_models",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "function:backend/app/services/app_settings.py:available_models",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "function:backend/app/services/app_settings.py:check_model",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "function:backend/app/services/app_settings.py:check_model",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "function:backend/app/services/app_settings.py:view",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "function:backend/app/services/app_settings.py:view",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "function:backend/app/services/app_settings.py:update_values",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "function:backend/app/services/app_settings.py:update_values",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "function:backend/app/services/app_settings.py:save_prompt",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "function:backend/app/services/app_settings.py:save_prompt",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "function:backend/app/services/app_settings.py:save_taxonomy",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "function:backend/app/services/app_settings.py:save_taxonomy",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "function:backend/app/services/app_settings.py:save_pricing",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "function:backend/app/services/app_settings.py:save_pricing",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_app_settings.py",
+   "target": "file:backend/app/core/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_app_settings.py",
+   "target": "file:backend/app/core/settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_app_settings.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_app_settings.py",
+   "target": "file:backend/app/jobs/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_app_settings.py",
+   "target": "file:backend/app/jobs/bulk.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_app_settings.py",
+   "target": "file:backend/app/main.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_app_settings.py",
+   "target": "file:backend/app/providers/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_app_settings.py",
+   "target": "file:backend/app/providers/base.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_app_settings.py",
+   "target": "file:backend/app/providers/jev.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_app_settings.py",
+   "target": "file:backend/app/providers/ollama.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_app_settings.py",
+   "target": "file:backend/app/services/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_app_settings.py",
+   "target": "file:backend/app/services/app_settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_bulk_jobs.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_bulk_jobs.py",
+   "target": "file:backend/app/jobs/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_bulk_jobs.py",
+   "target": "file:backend/app/jobs/bulk.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_bulk_jobs.py",
+   "target": "file:backend/app/main.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_retries.py",
+   "target": "file:backend/app/core/settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_retries.py",
+   "target": "file:backend/app/providers/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_retries.py",
+   "target": "file:backend/app/providers/base.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_retries.py",
+   "target": "file:backend/app/providers/http.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/app_settings.py",
+   "target": "file:backend/tests/test_app_settings.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "file:backend/tests/test_bulk_jobs.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/providers/http.py",
+   "target": "file:backend/tests/test_retries.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  }
+ ]
+}

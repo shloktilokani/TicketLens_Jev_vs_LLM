@@ -1,0 +1,22 @@
+{
+ "batchIndex": 7,
+ "files": [
+  {
+   "path": ".context/PROGRESS.md",
+   "language": "markdown",
+   "sizeLines": 488,
+   "fileCategory": "docs"
+  },
+  {
+   "path": ".context/sample_tickets_100_v2.csv",
+   "language": "csv",
+   "sizeLines": 101,
+   "fileCategory": "data"
+  }
+ ],
+ "batchImportData": {
+  ".context/PROGRESS.md": [],
+  ".context/sample_tickets_100_v2.csv": []
+ },
+ "neighborMap": {}
+}

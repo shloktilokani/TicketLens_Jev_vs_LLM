@@ -1,0 +1,1694 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 8,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 8,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 8,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "backend/app/api/tickets.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 98,
+      "nonEmptyLines": 79,
+      "functions": [
+        {
+          "name": "found",
+          "startLine": 18,
+          "endLine": 21,
+          "params": [
+            "ticket"
+          ]
+        },
+        {
+          "name": "create_ticket",
+          "startLine": 25,
+          "endLine": 27,
+          "params": [
+            "data",
+            "db"
+          ]
+        },
+        {
+          "name": "list_tickets",
+          "startLine": 31,
+          "endLine": 60,
+          "params": [
+            "db",
+            "q",
+            "category",
+            "priority",
+            "status",
+            "sort",
+            "order",
+            "page",
+            "page_size"
+          ]
+        },
+        {
+          "name": "get_ticket",
+          "startLine": 64,
+          "endLine": 65,
+          "params": [
+            "ticket_id",
+            "db"
+          ]
+        },
+        {
+          "name": "update_ticket",
+          "startLine": 69,
+          "endLine": 70,
+          "params": [
+            "ticket_id",
+            "data",
+            "db"
+          ]
+        },
+        {
+          "name": "add_note",
+          "startLine": 74,
+          "endLine": 75,
+          "params": [
+            "ticket_id",
+            "data",
+            "db"
+          ]
+        },
+        {
+          "name": "set_final_classification",
+          "startLine": 79,
+          "endLine": 84,
+          "params": [
+            "ticket_id",
+            "data",
+            "db"
+          ]
+        },
+        {
+          "name": "delete_ticket",
+          "startLine": 88,
+          "endLine": 98,
+          "params": [
+            "ticket_id",
+            "db"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "found",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "create_ticket",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "list_tickets",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "get_ticket",
+          "line": 63,
+          "isDefault": false
+        },
+        {
+          "name": "update_ticket",
+          "line": 68,
+          "isDefault": false
+        },
+        {
+          "name": "add_note",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "set_final_classification",
+          "line": 78,
+          "isDefault": false
+        },
+        {
+          "name": "delete_ticket",
+          "line": 87,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "found",
+          "callee": "HTTPException",
+          "lineNumber": 20
+        },
+        {
+          "caller": "create_ticket",
+          "callee": "service.create",
+          "lineNumber": 27
+        },
+        {
+          "caller": "list_tickets",
+          "callee": "Query",
+          "lineNumber": 34
+        },
+        {
+          "caller": "list_tickets",
+          "callee": "Query",
+          "lineNumber": 36
+        },
+        {
+          "caller": "list_tickets",
+          "callee": "Query",
+          "lineNumber": 41
+        },
+        {
+          "caller": "list_tickets",
+          "callee": "Query",
+          "lineNumber": 42
+        },
+        {
+          "caller": "list_tickets",
+          "callee": "tickets.search",
+          "lineNumber": 44
+        },
+        {
+          "caller": "list_tickets",
+          "callee": "executions.latest_by_ticket",
+          "lineNumber": 57
+        },
+        {
+          "caller": "list_tickets",
+          "callee": "latest.get",
+          "lineNumber": 59
+        },
+        {
+          "caller": "get_ticket",
+          "callee": "found",
+          "lineNumber": 65
+        },
+        {
+          "caller": "get_ticket",
+          "callee": "tickets.get",
+          "lineNumber": 65
+        },
+        {
+          "caller": "update_ticket",
+          "callee": "found",
+          "lineNumber": 70
+        },
+        {
+          "caller": "update_ticket",
+          "callee": "service.update",
+          "lineNumber": 70
+        },
+        {
+          "caller": "add_note",
+          "callee": "found",
+          "lineNumber": 75
+        },
+        {
+          "caller": "add_note",
+          "callee": "service.add_note",
+          "lineNumber": 75
+        },
+        {
+          "caller": "set_final_classification",
+          "callee": "found",
+          "lineNumber": 82
+        },
+        {
+          "caller": "set_final_classification",
+          "callee": "service.set_classification",
+          "lineNumber": 82
+        },
+        {
+          "caller": "set_final_classification",
+          "callee": "HTTPException",
+          "lineNumber": 84
+        },
+        {
+          "caller": "set_final_classification",
+          "callee": "str",
+          "lineNumber": 84
+        },
+        {
+          "caller": "delete_ticket",
+          "callee": "tickets.delete_with_dependents",
+          "lineNumber": 91
+        },
+        {
+          "caller": "delete_ticket",
+          "callee": "log.exception",
+          "lineNumber": 93
+        },
+        {
+          "caller": "delete_ticket",
+          "callee": "HTTPException",
+          "lineNumber": 94
+        }
+      ],
+      "metrics": {
+        "importCount": 8,
+        "exportCount": 8,
+        "functionCount": 8,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "backend/app/core/taxonomy.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 169,
+      "nonEmptyLines": 132,
+      "functions": [
+        {
+          "name": "set_active",
+          "startLine": 137,
+          "endLine": 138,
+          "params": [
+            "version",
+            "categories"
+          ]
+        },
+        {
+          "name": "reset",
+          "startLine": 141,
+          "endLine": 142,
+          "params": []
+        },
+        {
+          "name": "active_version",
+          "startLine": 145,
+          "endLine": 146,
+          "params": []
+        },
+        {
+          "name": "active_categories",
+          "startLine": 149,
+          "endLine": 150,
+          "params": []
+        },
+        {
+          "name": "is_valid_pair",
+          "startLine": 153,
+          "endLine": 155,
+          "params": [
+            "category",
+            "subcategory"
+          ]
+        },
+        {
+          "name": "as_dict",
+          "startLine": 158,
+          "endLine": 169,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "Category",
+          "startLine": 11,
+          "endLine": 17,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "Priority",
+          "startLine": 72,
+          "endLine": 76,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "Sentiment",
+          "startLine": 79,
+          "endLine": 82,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "TicketStatus",
+          "startLine": 85,
+          "endLine": 89,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "Channel",
+          "startLine": 92,
+          "endLine": 96,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "Provider",
+          "startLine": 99,
+          "endLine": 101,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "ExecutionStatus",
+          "startLine": 104,
+          "endLine": 110,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "ComparisonStatus",
+          "startLine": 113,
+          "endLine": 116,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "BulkJobStatus",
+          "startLine": 119,
+          "endLine": 125,
+          "methods": [],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Category",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "Priority",
+          "line": 72,
+          "isDefault": false
+        },
+        {
+          "name": "Sentiment",
+          "line": 79,
+          "isDefault": false
+        },
+        {
+          "name": "TicketStatus",
+          "line": 85,
+          "isDefault": false
+        },
+        {
+          "name": "Channel",
+          "line": 92,
+          "isDefault": false
+        },
+        {
+          "name": "Provider",
+          "line": 99,
+          "isDefault": false
+        },
+        {
+          "name": "ExecutionStatus",
+          "line": 104,
+          "isDefault": false
+        },
+        {
+          "name": "ComparisonStatus",
+          "line": 113,
+          "isDefault": false
+        },
+        {
+          "name": "BulkJobStatus",
+          "line": 119,
+          "isDefault": false
+        },
+        {
+          "name": "set_active",
+          "line": 137,
+          "isDefault": false
+        },
+        {
+          "name": "reset",
+          "line": 141,
+          "isDefault": false
+        },
+        {
+          "name": "active_version",
+          "line": 145,
+          "isDefault": false
+        },
+        {
+          "name": "active_categories",
+          "line": 149,
+          "isDefault": false
+        },
+        {
+          "name": "is_valid_pair",
+          "line": 153,
+          "isDefault": false
+        },
+        {
+          "name": "as_dict",
+          "line": 158,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "set_active",
+          "callee": "_active.update",
+          "lineNumber": 138
+        },
+        {
+          "caller": "set_active",
+          "callee": "tuple",
+          "lineNumber": 138
+        },
+        {
+          "caller": "set_active",
+          "callee": "categories.items",
+          "lineNumber": 138
+        },
+        {
+          "caller": "reset",
+          "callee": "set_active",
+          "lineNumber": 142
+        },
+        {
+          "caller": "reset",
+          "callee": "list",
+          "lineNumber": 142
+        },
+        {
+          "caller": "reset",
+          "callee": "SUBCATEGORIES.items",
+          "lineNumber": 142
+        },
+        {
+          "caller": "is_valid_pair",
+          "callee": "active_categories().get",
+          "lineNumber": 155
+        },
+        {
+          "caller": "is_valid_pair",
+          "callee": "active_categories",
+          "lineNumber": 155
+        },
+        {
+          "caller": "as_dict",
+          "callee": "active_version",
+          "lineNumber": 161
+        },
+        {
+          "caller": "as_dict",
+          "callee": "list",
+          "lineNumber": 162
+        },
+        {
+          "caller": "as_dict",
+          "callee": "active_categories().items",
+          "lineNumber": 162
+        },
+        {
+          "caller": "as_dict",
+          "callee": "active_categories",
+          "lineNumber": 162
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 15,
+        "functionCount": 6,
+        "classCount": 9
+      }
+    },
+    {
+      "path": "backend/app/providers/base.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 139,
+      "nonEmptyLines": 115,
+      "functions": [
+        {
+          "name": "build_input",
+          "startLine": 49,
+          "endLine": 65,
+          "params": [
+            "ticket",
+            "instructions"
+          ]
+        },
+        {
+          "name": "failure_for_status",
+          "startLine": 118,
+          "endLine": 135,
+          "params": [
+            "provider_label",
+            "status"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "ProviderInput",
+          "startLine": 32,
+          "endLine": 46,
+          "methods": [],
+          "properties": [
+            "ticket_id",
+            "title",
+            "description",
+            "order_id",
+            "product_name",
+            "submission_channel",
+            "language",
+            "taxonomy_version",
+            "categories",
+            "priorities",
+            "sentiments",
+            "instructions"
+          ]
+        },
+        {
+          "name": "ProviderResult",
+          "startLine": 68,
+          "endLine": 76,
+          "methods": [],
+          "properties": [
+            "requested_model",
+            "actual_model",
+            "request_payload",
+            "response_payload",
+            "output",
+            "usage"
+          ]
+        },
+        {
+          "name": "ProviderFailure",
+          "startLine": 79,
+          "endLine": 106,
+          "methods": [
+            "__init__",
+            "status"
+          ],
+          "properties": []
+        },
+        {
+          "name": "Adapter",
+          "startLine": 138,
+          "endLine": 139,
+          "methods": [
+            "classify"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ProviderInput",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "build_input",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "ProviderResult",
+          "line": 68,
+          "isDefault": false
+        },
+        {
+          "name": "ProviderFailure",
+          "line": 79,
+          "isDefault": false
+        },
+        {
+          "name": "failure_for_status",
+          "line": 118,
+          "isDefault": false
+        },
+        {
+          "name": "Adapter",
+          "line": 138,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "build_input",
+          "callee": "taxonomy.as_dict",
+          "lineNumber": 52
+        },
+        {
+          "caller": "build_input",
+          "callee": "ProviderInput",
+          "lineNumber": 53
+        },
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 92
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 92
+        },
+        {
+          "caller": "failure_for_status",
+          "callee": "ProviderFailure",
+          "lineNumber": 130
+        },
+        {
+          "caller": "failure_for_status",
+          "callee": "MESSAGES[kind].format",
+          "lineNumber": 132
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 6,
+        "functionCount": 2,
+        "classCount": 4
+      }
+    },
+    {
+      "path": "backend/app/providers/definitions.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 39,
+      "nonEmptyLines": 31,
+      "functions": [
+        {
+          "name": "category_criteria",
+          "startLine": 27,
+          "endLine": 28,
+          "params": []
+        },
+        {
+          "name": "subcategory_criteria",
+          "startLine": 31,
+          "endLine": 32,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "category_criteria",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "subcategory_criteria",
+          "line": 31,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "category_criteria",
+          "callee": "\", \".join",
+          "lineNumber": 28
+        },
+        {
+          "caller": "category_criteria",
+          "callee": "active_categories().items",
+          "lineNumber": 28
+        },
+        {
+          "caller": "category_criteria",
+          "callee": "active_categories",
+          "lineNumber": 28
+        },
+        {
+          "caller": "subcategory_criteria",
+          "callee": "active_categories().items",
+          "lineNumber": 32
+        },
+        {
+          "caller": "subcategory_criteria",
+          "callee": "active_categories",
+          "lineNumber": 32
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "backend/app/providers/http.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 147,
+      "nonEmptyLines": 127,
+      "functions": [
+        {
+          "name": "get_json",
+          "startLine": 23,
+          "endLine": 32,
+          "params": [
+            "url",
+            "label",
+            "timeout",
+            "headers",
+            "client"
+          ]
+        },
+        {
+          "name": "post_json",
+          "startLine": 35,
+          "endLine": 45,
+          "params": [
+            "url",
+            "body",
+            "label",
+            "timeout",
+            "headers",
+            "client"
+          ]
+        },
+        {
+          "name": "pause",
+          "startLine": 48,
+          "endLine": 49,
+          "params": [
+            "seconds"
+          ]
+        },
+        {
+          "name": "retry_wait",
+          "startLine": 52,
+          "endLine": 59,
+          "params": [
+            "response",
+            "delay"
+          ]
+        },
+        {
+          "name": "send_once",
+          "startLine": 62,
+          "endLine": 82,
+          "params": [
+            "client",
+            "method",
+            "url",
+            "body",
+            "label",
+            "timeout",
+            "headers"
+          ]
+        },
+        {
+          "name": "send_with_retries",
+          "startLine": 85,
+          "endLine": 113,
+          "params": [
+            "client",
+            "method",
+            "url",
+            "body",
+            "label",
+            "timeout",
+            "headers"
+          ]
+        },
+        {
+          "name": "request_json",
+          "startLine": 116,
+          "endLine": 147,
+          "params": [
+            "method",
+            "url",
+            "body",
+            "label",
+            "timeout",
+            "headers",
+            "client"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "get_json",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "post_json",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "pause",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "retry_wait",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "send_once",
+          "line": 62,
+          "isDefault": false
+        },
+        {
+          "name": "send_with_retries",
+          "line": 85,
+          "isDefault": false
+        },
+        {
+          "name": "request_json",
+          "line": 116,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "get_json",
+          "callee": "request_json",
+          "lineNumber": 32
+        },
+        {
+          "caller": "post_json",
+          "callee": "request_json",
+          "lineNumber": 45
+        },
+        {
+          "caller": "pause",
+          "callee": "time.sleep",
+          "lineNumber": 49
+        },
+        {
+          "caller": "retry_wait",
+          "callee": "min",
+          "lineNumber": 56
+        },
+        {
+          "caller": "retry_wait",
+          "callee": "float",
+          "lineNumber": 56
+        },
+        {
+          "caller": "retry_wait",
+          "callee": "random.uniform",
+          "lineNumber": 59
+        },
+        {
+          "caller": "send_once",
+          "callee": "client.request",
+          "lineNumber": 72
+        },
+        {
+          "caller": "send_once",
+          "callee": "ProviderFailure",
+          "lineNumber": 74
+        },
+        {
+          "caller": "send_once",
+          "callee": "ProviderFailure",
+          "lineNumber": 80
+        },
+        {
+          "caller": "send_with_retries",
+          "callee": "send_once",
+          "lineNumber": 97
+        },
+        {
+          "caller": "send_with_retries",
+          "callee": "log.warning",
+          "lineNumber": 106
+        },
+        {
+          "caller": "send_with_retries",
+          "callee": "pause",
+          "lineNumber": 107
+        },
+        {
+          "caller": "send_with_retries",
+          "callee": "retry_wait",
+          "lineNumber": 107
+        },
+        {
+          "caller": "send_with_retries",
+          "callee": "send_once",
+          "lineNumber": 109
+        },
+        {
+          "caller": "send_with_retries",
+          "callee": "ProviderFailure",
+          "lineNumber": 111
+        },
+        {
+          "caller": "request_json",
+          "callee": "httpx.Client",
+          "lineNumber": 126
+        },
+        {
+          "caller": "request_json",
+          "callee": "send_with_retries",
+          "lineNumber": 128
+        },
+        {
+          "caller": "request_json",
+          "callee": "client.close",
+          "lineNumber": 131
+        },
+        {
+          "caller": "request_json",
+          "callee": "response.json",
+          "lineNumber": 133
+        },
+        {
+          "caller": "request_json",
+          "callee": "failure_for_status",
+          "lineNumber": 137
+        },
+        {
+          "caller": "request_json",
+          "callee": "isinstance",
+          "lineNumber": 139
+        },
+        {
+          "caller": "request_json",
+          "callee": "isinstance",
+          "lineNumber": 141
+        },
+        {
+          "caller": "request_json",
+          "callee": "ProviderFailure",
+          "lineNumber": 142
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "backend/app/providers/jev.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 160,
+      "nonEmptyLines": 140,
+      "functions": [
+        {
+          "name": "choice",
+          "startLine": 35,
+          "endLine": 36,
+          "params": [
+            "text",
+            "criteria",
+            "instructions"
+          ]
+        },
+        {
+          "name": "build_request",
+          "startLine": 39,
+          "endLine": 54,
+          "params": [
+            "model",
+            "data"
+          ]
+        },
+        {
+          "name": "build_subcategory_request",
+          "startLine": 57,
+          "endLine": 68,
+          "params": [
+            "model",
+            "data",
+            "category"
+          ]
+        },
+        {
+          "name": "parse_output",
+          "startLine": 71,
+          "endLine": 86,
+          "params": [
+            "answers",
+            "threshold"
+          ]
+        },
+        {
+          "name": "total_usage",
+          "startLine": 89,
+          "endLine": 101,
+          "params": [
+            "responses"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "JevAdapter",
+          "startLine": 104,
+          "endLine": 160,
+          "methods": [
+            "__init__",
+            "post",
+            "run_steps",
+            "classify"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "choice",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "build_request",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "build_subcategory_request",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "parse_output",
+          "line": 71,
+          "isDefault": false
+        },
+        {
+          "name": "total_usage",
+          "line": 89,
+          "isDefault": false
+        },
+        {
+          "name": "JevAdapter",
+          "line": 104,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "build_request",
+          "callee": "choice",
+          "lineNumber": 43
+        },
+        {
+          "caller": "build_request",
+          "callee": "d.category_criteria",
+          "lineNumber": 44
+        },
+        {
+          "caller": "build_request",
+          "callee": "FIXED_QUESTIONS.items",
+          "lineNumber": 47
+        },
+        {
+          "caller": "build_request",
+          "callee": "choice",
+          "lineNumber": 48
+        },
+        {
+          "caller": "build_request",
+          "callee": "data.model_dump",
+          "lineNumber": 54
+        },
+        {
+          "caller": "build_subcategory_request",
+          "callee": "d.subcategory_criteria",
+          "lineNumber": 59
+        },
+        {
+          "caller": "build_subcategory_request",
+          "callee": "active_categories",
+          "lineNumber": 60
+        },
+        {
+          "caller": "build_subcategory_request",
+          "callee": "choice",
+          "lineNumber": 61
+        },
+        {
+          "caller": "build_subcategory_request",
+          "callee": "data.model_dump",
+          "lineNumber": 66
+        },
+        {
+          "caller": "parse_output",
+          "callee": "float",
+          "lineNumber": 77
+        },
+        {
+          "caller": "parse_output",
+          "callee": "ProviderFailure",
+          "lineNumber": 79
+        },
+        {
+          "caller": "parse_output",
+          "callee": "max",
+          "lineNumber": 84
+        },
+        {
+          "caller": "total_usage",
+          "callee": "r.get",
+          "lineNumber": 91
+        },
+        {
+          "caller": "total_usage",
+          "callee": "u.get",
+          "lineNumber": 92
+        },
+        {
+          "caller": "total_usage",
+          "callee": "u.get",
+          "lineNumber": 93
+        },
+        {
+          "caller": "total_usage",
+          "callee": "Usage",
+          "lineNumber": 95
+        },
+        {
+          "caller": "total_usage",
+          "callee": "Usage",
+          "lineNumber": 96
+        },
+        {
+          "caller": "total_usage",
+          "callee": "sum",
+          "lineNumber": 97
+        },
+        {
+          "caller": "total_usage",
+          "callee": "sum",
+          "lineNumber": 98
+        },
+        {
+          "caller": "total_usage",
+          "callee": "sum",
+          "lineNumber": 99
+        },
+        {
+          "caller": "total_usage",
+          "callee": "sum",
+          "lineNumber": 99
+        },
+        {
+          "caller": "__init__",
+          "callee": "base_url.rstrip",
+          "lineNumber": 116
+        },
+        {
+          "caller": "post",
+          "callee": "post_json",
+          "lineNumber": 122
+        },
+        {
+          "caller": "run_steps",
+          "callee": "requests.append",
+          "lineNumber": 133
+        },
+        {
+          "caller": "run_steps",
+          "callee": "build_request",
+          "lineNumber": 133
+        },
+        {
+          "caller": "run_steps",
+          "callee": "responses.append",
+          "lineNumber": 134
+        },
+        {
+          "caller": "run_steps",
+          "callee": "self.post",
+          "lineNumber": 134
+        },
+        {
+          "caller": "run_steps",
+          "callee": "responses[0].get",
+          "lineNumber": 135
+        },
+        {
+          "caller": "run_steps",
+          "callee": "(answers.get(\"category\") or {}).get",
+          "lineNumber": 136
+        },
+        {
+          "caller": "run_steps",
+          "callee": "answers.get",
+          "lineNumber": 136
+        },
+        {
+          "caller": "run_steps",
+          "callee": "active_categories",
+          "lineNumber": 137
+        },
+        {
+          "caller": "run_steps",
+          "callee": "ProviderFailure",
+          "lineNumber": 138
+        },
+        {
+          "caller": "run_steps",
+          "callee": "requests.append",
+          "lineNumber": 139
+        },
+        {
+          "caller": "run_steps",
+          "callee": "build_subcategory_request",
+          "lineNumber": 139
+        },
+        {
+          "caller": "run_steps",
+          "callee": "responses.append",
+          "lineNumber": 140
+        },
+        {
+          "caller": "run_steps",
+          "callee": "self.post",
+          "lineNumber": 140
+        },
+        {
+          "caller": "classify",
+          "callee": "self.run_steps",
+          "lineNumber": 146
+        },
+        {
+          "caller": "classify",
+          "callee": "responses[0].get",
+          "lineNumber": 147
+        },
+        {
+          "caller": "classify",
+          "callee": "responses[1].get",
+          "lineNumber": 147
+        },
+        {
+          "caller": "classify",
+          "callee": "parse_output",
+          "lineNumber": 148
+        },
+        {
+          "caller": "classify",
+          "callee": "ProviderResult",
+          "lineNumber": 153
+        },
+        {
+          "caller": "classify",
+          "callee": "responses[0].get",
+          "lineNumber": 155
+        },
+        {
+          "caller": "classify",
+          "callee": "total_usage",
+          "lineNumber": 159
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 6,
+        "functionCount": 5,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "backend/app/providers/ollama.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 121,
+      "nonEmptyLines": 108,
+      "functions": [
+        {
+          "name": "schema",
+          "startLine": 17,
+          "endLine": 39,
+          "params": []
+        },
+        {
+          "name": "system_prompt",
+          "startLine": 42,
+          "endLine": 53,
+          "params": [
+            "instructions"
+          ]
+        },
+        {
+          "name": "build_request",
+          "startLine": 56,
+          "endLine": 77,
+          "params": [
+            "model",
+            "data"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "OllamaAdapter",
+          "startLine": 80,
+          "endLine": 121,
+          "methods": [
+            "__init__",
+            "classify"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "schema",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "system_prompt",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "build_request",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "OllamaAdapter",
+          "line": 80,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "schema",
+          "callee": "list",
+          "lineNumber": 22
+        },
+        {
+          "caller": "schema",
+          "callee": "active_categories",
+          "lineNumber": 22
+        },
+        {
+          "caller": "schema",
+          "callee": "list",
+          "lineNumber": 23
+        },
+        {
+          "caller": "schema",
+          "callee": "d.subcategory_criteria",
+          "lineNumber": 23
+        },
+        {
+          "caller": "system_prompt",
+          "callee": "json.dumps",
+          "lineNumber": 47
+        },
+        {
+          "caller": "system_prompt",
+          "callee": "d.category_criteria",
+          "lineNumber": 47
+        },
+        {
+          "caller": "system_prompt",
+          "callee": "json.dumps",
+          "lineNumber": 48
+        },
+        {
+          "caller": "system_prompt",
+          "callee": "json.dumps",
+          "lineNumber": 49
+        },
+        {
+          "caller": "system_prompt",
+          "callee": "\"\\n\".join",
+          "lineNumber": 53
+        },
+        {
+          "caller": "build_request",
+          "callee": "data.model_dump",
+          "lineNumber": 57
+        },
+        {
+          "caller": "build_request",
+          "callee": "system_prompt",
+          "lineNumber": 70
+        },
+        {
+          "caller": "build_request",
+          "callee": "json.dumps",
+          "lineNumber": 71
+        },
+        {
+          "caller": "build_request",
+          "callee": "schema",
+          "lineNumber": 73
+        },
+        {
+          "caller": "__init__",
+          "callee": "base_url.rstrip",
+          "lineNumber": 89
+        },
+        {
+          "caller": "classify",
+          "callee": "build_request",
+          "lineNumber": 94
+        },
+        {
+          "caller": "classify",
+          "callee": "post_json",
+          "lineNumber": 95
+        },
+        {
+          "caller": "classify",
+          "callee": "json.loads",
+          "lineNumber": 99
+        },
+        {
+          "caller": "classify",
+          "callee": "ProviderFailure",
+          "lineNumber": 101
+        },
+        {
+          "caller": "classify",
+          "callee": "response.get",
+          "lineNumber": 107
+        },
+        {
+          "caller": "classify",
+          "callee": "response.get",
+          "lineNumber": 107
+        },
+        {
+          "caller": "classify",
+          "callee": "ProviderResult",
+          "lineNumber": 109
+        },
+        {
+          "caller": "classify",
+          "callee": "response.get",
+          "lineNumber": 111
+        },
+        {
+          "caller": "classify",
+          "callee": "isinstance",
+          "lineNumber": 114
+        },
+        {
+          "caller": "classify",
+          "callee": "Usage",
+          "lineNumber": 115
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 4,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "backend/app/providers/registry.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 84,
+      "nonEmptyLines": 70,
+      "functions": [
+        {
+          "name": "provider_labels",
+          "startLine": 17,
+          "endLine": 26,
+          "params": [
+            "settings"
+          ]
+        },
+        {
+          "name": "provider_ready",
+          "startLine": 29,
+          "endLine": 35,
+          "params": [
+            "key",
+            "settings"
+          ]
+        },
+        {
+          "name": "requested_model",
+          "startLine": 38,
+          "endLine": 45,
+          "params": [
+            "provider",
+            "settings"
+          ]
+        },
+        {
+          "name": "jev_adapter",
+          "startLine": 48,
+          "endLine": 61,
+          "params": [
+            "settings"
+          ]
+        },
+        {
+          "name": "llm_adapter",
+          "startLine": 64,
+          "endLine": 76,
+          "params": [
+            "settings"
+          ]
+        },
+        {
+          "name": "get_adapter",
+          "startLine": 79,
+          "endLine": 84,
+          "params": [
+            "provider",
+            "settings"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "provider_labels",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "provider_ready",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "requested_model",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "jev_adapter",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "llm_adapter",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "get_adapter",
+          "line": 79,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "provider_labels",
+          "callee": "is_local",
+          "lineNumber": 21
+        },
+        {
+          "caller": "provider_ready",
+          "callee": "is_local",
+          "lineNumber": 34
+        },
+        {
+          "caller": "jev_adapter",
+          "callee": "is_local",
+          "lineNumber": 50
+        },
+        {
+          "caller": "jev_adapter",
+          "callee": "ProviderFailure",
+          "lineNumber": 51
+        },
+        {
+          "caller": "jev_adapter",
+          "callee": "JevAdapter",
+          "lineNumber": 54
+        },
+        {
+          "caller": "jev_adapter",
+          "callee": "key.get_secret_value",
+          "lineNumber": 57
+        },
+        {
+          "caller": "jev_adapter",
+          "callee": "provider_labels(settings)[\"jev\"].split",
+          "lineNumber": 60
+        },
+        {
+          "caller": "jev_adapter",
+          "callee": "provider_labels",
+          "lineNumber": 60
+        },
+        {
+          "caller": "llm_adapter",
+          "callee": "OllamaAdapter",
+          "lineNumber": 66
+        },
+        {
+          "caller": "llm_adapter",
+          "callee": "ProviderFailure",
+          "lineNumber": 72
+        },
+        {
+          "caller": "llm_adapter",
+          "callee": "ProviderFailure",
+          "lineNumber": 76
+        },
+        {
+          "caller": "get_adapter",
+          "callee": "Provider",
+          "lineNumber": 81
+        },
+        {
+          "caller": "get_adapter",
+          "callee": "MockProvider",
+          "lineNumber": 83
+        },
+        {
+          "caller": "get_adapter",
+          "callee": "jev_adapter",
+          "lineNumber": 84
+        },
+        {
+          "caller": "get_adapter",
+          "callee": "llm_adapter",
+          "lineNumber": 84
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    }
+  ]
+}

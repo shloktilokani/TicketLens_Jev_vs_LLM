@@ -1,0 +1,799 @@
+{
+ "nodes": [
+  {
+   "id": "file:backend/app/api/app_settings.py",
+   "type": "file",
+   "name": "app_settings.py",
+   "filePath": "backend/app/api/app_settings.py",
+   "summary": "FastAPI router for reading and updating runtime settings, the prompt, taxonomy and pricing, and for listing available models.",
+   "tags": [
+    "api-handler",
+    "settings",
+    "fastapi",
+    "configuration"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/app_settings.py:saved",
+   "type": "function",
+   "name": "saved",
+   "filePath": "backend/app/api/app_settings.py",
+   "lineRange": [
+    14,
+    20
+   ],
+   "summary": "Helper that runs a settings mutation and returns the freshly saved effective settings, mapping failures to HTTP errors.",
+   "tags": [
+    "api-handler",
+    "settings"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/app_settings.py:get_settings",
+   "type": "function",
+   "name": "get_settings",
+   "filePath": "backend/app/api/app_settings.py",
+   "lineRange": [
+    24,
+    26
+   ],
+   "summary": "GET handler returning current effective settings.",
+   "tags": [
+    "api-handler",
+    "settings"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/app_settings.py:update_settings",
+   "type": "function",
+   "name": "update_settings",
+   "filePath": "backend/app/api/app_settings.py",
+   "lineRange": [
+    30,
+    32
+   ],
+   "summary": "PUT handler applying general settings changes.",
+   "tags": [
+    "api-handler",
+    "settings"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/app_settings.py:update_prompt",
+   "type": "function",
+   "name": "update_prompt",
+   "filePath": "backend/app/api/app_settings.py",
+   "lineRange": [
+    36,
+    38
+   ],
+   "summary": "PUT handler updating the classification prompt.",
+   "tags": [
+    "api-handler",
+    "settings"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/app_settings.py:update_taxonomy",
+   "type": "function",
+   "name": "update_taxonomy",
+   "filePath": "backend/app/api/app_settings.py",
+   "lineRange": [
+    42,
+    44
+   ],
+   "summary": "PUT handler updating the active taxonomy.",
+   "tags": [
+    "api-handler",
+    "settings"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/app_settings.py:update_pricing",
+   "type": "function",
+   "name": "update_pricing",
+   "filePath": "backend/app/api/app_settings.py",
+   "lineRange": [
+    48,
+    50
+   ],
+   "summary": "PUT handler updating model pricing entries.",
+   "tags": [
+    "api-handler",
+    "settings"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/app_settings.py:list_models",
+   "type": "function",
+   "name": "list_models",
+   "filePath": "backend/app/api/app_settings.py",
+   "lineRange": [
+    54,
+    59
+   ],
+   "summary": "GET handler listing models available from provider adapters.",
+   "tags": [
+    "api-handler",
+    "settings"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/api/bulk_jobs.py",
+   "type": "file",
+   "name": "bulk_jobs.py",
+   "filePath": "backend/app/api/bulk_jobs.py",
+   "summary": "FastAPI router for starting bulk runs in the background, listing them newest first, and polling a single job's progress.",
+   "tags": [
+    "api-handler",
+    "bulk-run",
+    "fastapi",
+    "background-task"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/bulk_jobs.py:create_bulk_job",
+   "type": "function",
+   "name": "create_bulk_job",
+   "filePath": "backend/app/api/bulk_jobs.py",
+   "lineRange": [
+    14,
+    21
+   ],
+   "summary": "Creates a bulk job, returns 202, and schedules the run in a background task; maps BulkError to HTTP errors.",
+   "tags": [
+    "api-handler",
+    "bulk-run"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/bulk_jobs.py:list_bulk_jobs",
+   "type": "function",
+   "name": "list_bulk_jobs",
+   "filePath": "backend/app/api/bulk_jobs.py",
+   "lineRange": [
+    25,
+    27
+   ],
+   "summary": "Lists bulk jobs newest first with a total count.",
+   "tags": [
+    "api-handler",
+    "bulk-run"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/bulk_jobs.py:get_bulk_job",
+   "type": "function",
+   "name": "get_bulk_job",
+   "filePath": "backend/app/api/bulk_jobs.py",
+   "lineRange": [
+    31,
+    35
+   ],
+   "summary": "Returns one bulk job or 404 if missing.",
+   "tags": [
+    "api-handler",
+    "bulk-run"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/jobs/bulk.py",
+   "type": "file",
+   "name": "bulk.py",
+   "filePath": "backend/app/jobs/bulk.py",
+   "summary": "In-process bulk run engine: validates and creates jobs, runs tickets with bounded concurrency through both providers, records per-attempt outcomes, and marks unfinished jobs interrupted on restart.",
+   "tags": [
+    "bulk-run",
+    "service",
+    "concurrency",
+    "job-runner"
+   ],
+   "complexity": "moderate",
+   "languageNotes": "Uses ThreadPoolExecutor for bounded concurrency; never resumes interrupted work to avoid repeating paid calls."
+  },
+  {
+   "id": "class:backend/app/jobs/bulk.py:BulkError",
+   "type": "class",
+   "name": "BulkError",
+   "filePath": "backend/app/jobs/bulk.py",
+   "lineRange": [
+    29,
+    32
+   ],
+   "summary": "Domain error carrying an HTTP status code for bulk job validation failures.",
+   "tags": [
+    "error",
+    "bulk-run"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/jobs/bulk.py:select_tickets",
+   "type": "function",
+   "name": "select_tickets",
+   "filePath": "backend/app/jobs/bulk.py",
+   "lineRange": [
+    35,
+    45
+   ],
+   "summary": "Resolves the ticket IDs for a job, either all eligible tickets or a validated explicit selection.",
+   "tags": [
+    "bulk-run",
+    "service"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/jobs/bulk.py:create",
+   "type": "function",
+   "name": "create",
+   "filePath": "backend/app/jobs/bulk.py",
+   "lineRange": [
+    48,
+    71
+   ],
+   "summary": "Creates and stores a queued bulk job, rejecting it when another is active.",
+   "tags": [
+    "bulk-run",
+    "service"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/jobs/bulk.py:already_succeeded",
+   "type": "function",
+   "name": "already_succeeded",
+   "filePath": "backend/app/jobs/bulk.py",
+   "lineRange": [
+    74,
+    84
+   ],
+   "summary": "Computes per-provider ticket IDs to skip because the same model already succeeded.",
+   "tags": [
+    "bulk-run",
+    "service"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/jobs/bulk.py:process_ticket",
+   "type": "function",
+   "name": "process_ticket",
+   "filePath": "backend/app/jobs/bulk.py",
+   "lineRange": [
+    87,
+    108
+   ],
+   "summary": "Runs every requested provider for one ticket, records outcomes, and creates a comparison when both sides ran.",
+   "tags": [
+    "bulk-run",
+    "service"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/jobs/bulk.py:finish",
+   "type": "function",
+   "name": "finish",
+   "filePath": "backend/app/jobs/bulk.py",
+   "lineRange": [
+    111,
+    122
+   ],
+   "summary": "Sets final job status and error summary based on failure count.",
+   "tags": [
+    "bulk-run",
+    "service"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/jobs/bulk.py:run_job",
+   "type": "function",
+   "name": "run_job",
+   "filePath": "backend/app/jobs/bulk.py",
+   "lineRange": [
+    125,
+    148
+   ],
+   "summary": "Executes a job with a thread pool, handling worker errors by marking the job failed.",
+   "tags": [
+    "bulk-run",
+    "service"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/jobs/bulk.py:mark_interrupted",
+   "type": "function",
+   "name": "mark_interrupted",
+   "filePath": "backend/app/jobs/bulk.py",
+   "lineRange": [
+    151,
+    157
+   ],
+   "summary": "On startup marks active jobs and running executions as interrupted.",
+   "tags": [
+    "bulk-run",
+    "service"
+   ],
+   "complexity": "simple"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:backend/app/api/app_settings.py",
+   "target": "function:backend/app/api/app_settings.py:saved",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/app_settings.py",
+   "target": "function:backend/app/api/app_settings.py:saved",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/app_settings.py",
+   "target": "function:backend/app/api/app_settings.py:get_settings",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/app_settings.py",
+   "target": "function:backend/app/api/app_settings.py:get_settings",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/app_settings.py",
+   "target": "function:backend/app/api/app_settings.py:update_settings",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/app_settings.py",
+   "target": "function:backend/app/api/app_settings.py:update_settings",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/app_settings.py",
+   "target": "function:backend/app/api/app_settings.py:update_prompt",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/app_settings.py",
+   "target": "function:backend/app/api/app_settings.py:update_prompt",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/app_settings.py",
+   "target": "function:backend/app/api/app_settings.py:update_taxonomy",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/app_settings.py",
+   "target": "function:backend/app/api/app_settings.py:update_taxonomy",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/app_settings.py",
+   "target": "function:backend/app/api/app_settings.py:update_pricing",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/app_settings.py",
+   "target": "function:backend/app/api/app_settings.py:update_pricing",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/app_settings.py",
+   "target": "function:backend/app/api/app_settings.py:list_models",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/app_settings.py",
+   "target": "function:backend/app/api/app_settings.py:list_models",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/bulk_jobs.py",
+   "target": "function:backend/app/api/bulk_jobs.py:create_bulk_job",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/bulk_jobs.py",
+   "target": "function:backend/app/api/bulk_jobs.py:create_bulk_job",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/bulk_jobs.py",
+   "target": "function:backend/app/api/bulk_jobs.py:list_bulk_jobs",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/bulk_jobs.py",
+   "target": "function:backend/app/api/bulk_jobs.py:list_bulk_jobs",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/bulk_jobs.py",
+   "target": "function:backend/app/api/bulk_jobs.py:get_bulk_job",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/bulk_jobs.py",
+   "target": "function:backend/app/api/bulk_jobs.py:get_bulk_job",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "class:backend/app/jobs/bulk.py:BulkError",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "class:backend/app/jobs/bulk.py:BulkError",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "function:backend/app/jobs/bulk.py:select_tickets",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "function:backend/app/jobs/bulk.py:select_tickets",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "function:backend/app/jobs/bulk.py:create",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "function:backend/app/jobs/bulk.py:create",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "function:backend/app/jobs/bulk.py:already_succeeded",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "function:backend/app/jobs/bulk.py:already_succeeded",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "function:backend/app/jobs/bulk.py:process_ticket",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "function:backend/app/jobs/bulk.py:process_ticket",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "function:backend/app/jobs/bulk.py:finish",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "function:backend/app/jobs/bulk.py:finish",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "function:backend/app/jobs/bulk.py:run_job",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "function:backend/app/jobs/bulk.py:run_job",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "function:backend/app/jobs/bulk.py:mark_interrupted",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "function:backend/app/jobs/bulk.py:mark_interrupted",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/app_settings.py",
+   "target": "file:backend/app/api/deps.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/app_settings.py",
+   "target": "file:backend/app/providers/base.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/app_settings.py",
+   "target": "file:backend/app/schemas/app_settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/app_settings.py",
+   "target": "file:backend/app/services/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/bulk_jobs.py",
+   "target": "file:backend/app/api/deps.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/bulk_jobs.py",
+   "target": "file:backend/app/jobs/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/bulk_jobs.py",
+   "target": "file:backend/app/jobs/bulk.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/bulk_jobs.py",
+   "target": "file:backend/app/repositories/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/bulk_jobs.py",
+   "target": "file:backend/app/repositories/bulk_jobs.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/bulk_jobs.py",
+   "target": "file:backend/app/schemas/bulk_jobs.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "file:backend/app/core/clock.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "file:backend/app/core/settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "file:backend/app/providers/registry.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "file:backend/app/repositories/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "file:backend/app/repositories/bulk_jobs.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "file:backend/app/repositories/database.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "file:backend/app/repositories/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "file:backend/app/repositories/tickets.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "file:backend/app/schemas/bulk_jobs.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "file:backend/app/services/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "file:backend/app/services/app_settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "file:backend/app/services/comparisons.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/jobs/bulk.py",
+   "target": "file:backend/app/services/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "function:backend/app/jobs/bulk.py:create",
+   "target": "function:backend/app/jobs/bulk.py:select_tickets",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/jobs/bulk.py:run_job",
+   "target": "function:backend/app/jobs/bulk.py:already_succeeded",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/jobs/bulk.py:run_job",
+   "target": "function:backend/app/jobs/bulk.py:process_ticket",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/jobs/bulk.py:run_job",
+   "target": "function:backend/app/jobs/bulk.py:finish",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/bulk_jobs.py:create_bulk_job",
+   "target": "function:backend/app/jobs/bulk.py:create",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/bulk_jobs.py:create_bulk_job",
+   "target": "function:backend/app/jobs/bulk.py:run_job",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  }
+ ]
+}

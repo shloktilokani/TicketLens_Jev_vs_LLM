@@ -1,0 +1,15 @@
+{
+ "batchIndex": 28,
+ "files": [
+  {
+   "path": "README.md",
+   "language": "markdown",
+   "sizeLines": 179,
+   "fileCategory": "docs"
+  }
+ ],
+ "batchImportData": {
+  "README.md": []
+ },
+ "neighborMap": {}
+}

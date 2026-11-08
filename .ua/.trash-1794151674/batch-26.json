@@ -1,0 +1,585 @@
+{
+ "nodes": [
+  {
+   "id": "file:backend/app/services/run_report.py",
+   "type": "file",
+   "name": "run_report.py",
+   "filePath": "backend/app/services/run_report.py",
+   "summary": "Renders a run report from computed metrics, with formatting helpers, agreement and speed charts, per-ticket rows and an accuracy section.",
+   "tags": [
+    "report",
+    "rendering",
+    "service",
+    "charts"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:backend/app/services/run_report.py:fmt",
+   "type": "function",
+   "name": "fmt",
+   "filePath": "backend/app/services/run_report.py",
+   "lineRange": [
+    68,
+    71
+   ],
+   "summary": "Formats a value for display in the report.",
+   "tags": [
+    "function",
+    "report",
+    "helper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/run_report.py:pct",
+   "type": "function",
+   "name": "pct",
+   "filePath": "backend/app/services/run_report.py",
+   "lineRange": [
+    74,
+    75
+   ],
+   "summary": "Formats a ratio as a percentage string.",
+   "tags": [
+    "function",
+    "report",
+    "helper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/run_report.py:secs",
+   "type": "function",
+   "name": "secs",
+   "filePath": "backend/app/services/run_report.py",
+   "lineRange": [
+    78,
+    79
+   ],
+   "summary": "Formats a duration in seconds for display.",
+   "tags": [
+    "function",
+    "report",
+    "helper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/run_report.py:table",
+   "type": "function",
+   "name": "table",
+   "filePath": "backend/app/services/run_report.py",
+   "lineRange": [
+    82,
+    96
+   ],
+   "summary": "Builds a table block for the report.",
+   "tags": [
+    "function",
+    "report",
+    "helper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/run_report.py:agreement_chart",
+   "type": "function",
+   "name": "agreement_chart",
+   "filePath": "backend/app/services/run_report.py",
+   "lineRange": [
+    99,
+    117
+   ],
+   "summary": "Builds the Jev versus LLM agreement chart.",
+   "tags": [
+    "function",
+    "report",
+    "helper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/run_report.py:speed_chart",
+   "type": "function",
+   "name": "speed_chart",
+   "filePath": "backend/app/services/run_report.py",
+   "lineRange": [
+    120,
+    160
+   ],
+   "summary": "Builds the latency/speed comparison chart.",
+   "tags": [
+    "function",
+    "report",
+    "helper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/run_report.py:word",
+   "type": "function",
+   "name": "word",
+   "filePath": "backend/app/services/run_report.py",
+   "lineRange": [
+    163,
+    167
+   ],
+   "summary": "Converts a value into a short descriptive word for the report.",
+   "tags": [
+    "function",
+    "report",
+    "helper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/run_report.py:mark",
+   "type": "function",
+   "name": "mark",
+   "filePath": "backend/app/services/run_report.py",
+   "lineRange": [
+    170,
+    173
+   ],
+   "summary": "Produces a marker for a ticket row outcome.",
+   "tags": [
+    "function",
+    "report",
+    "helper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/run_report.py:ticket_rows",
+   "type": "function",
+   "name": "ticket_rows",
+   "filePath": "backend/app/services/run_report.py",
+   "lineRange": [
+    176,
+    195
+   ],
+   "summary": "Builds the per-ticket result rows.",
+   "tags": [
+    "function",
+    "report",
+    "helper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/run_report.py:side",
+   "type": "function",
+   "name": "side",
+   "filePath": "backend/app/services/run_report.py",
+   "lineRange": [
+    198,
+    200
+   ],
+   "summary": "Formats one provider's side of a ticket row.",
+   "tags": [
+    "function",
+    "report",
+    "helper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/run_report.py:accuracy_section",
+   "type": "function",
+   "name": "accuracy_section",
+   "filePath": "backend/app/services/run_report.py",
+   "lineRange": [
+    203,
+    244
+   ],
+   "summary": "Builds the accuracy section of the report from evaluation scores.",
+   "tags": [
+    "function",
+    "report",
+    "helper"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/services/run_report.py:render",
+   "type": "function",
+   "name": "render",
+   "filePath": "backend/app/services/run_report.py",
+   "lineRange": [
+    247,
+    385
+   ],
+   "summary": "Renders the complete run report from run data and metrics.",
+   "tags": [
+    "function",
+    "report",
+    "helper"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:backend/scripts/run_report.py",
+   "type": "file",
+   "name": "run_report.py",
+   "filePath": "backend/scripts/run_report.py",
+   "summary": "Command-line script that loads a finished run from the database and writes its report using the dashboard, evaluation and run-metrics services.",
+   "tags": [
+    "script",
+    "entry-point",
+    "report",
+    "cli"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/scripts/run_report.py:load_run",
+   "type": "function",
+   "name": "load_run",
+   "filePath": "backend/scripts/run_report.py",
+   "lineRange": [
+    27,
+    34
+   ],
+   "summary": "Loads a run and its related data from the database for reporting.",
+   "tags": [
+    "function",
+    "script",
+    "helper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/scripts/run_report.py:main",
+   "type": "function",
+   "name": "main",
+   "filePath": "backend/scripts/run_report.py",
+   "lineRange": [
+    37,
+    79
+   ],
+   "summary": "Script entry point that parses arguments, loads the run and writes the report.",
+   "tags": [
+    "function",
+    "script",
+    "helper"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:backend/tests/conftest.py",
+   "type": "file",
+   "name": "conftest.py",
+   "filePath": "backend/tests/conftest.py",
+   "summary": "Shared pytest fixtures providing the default taxonomy, no-wait retries, test settings and an isolated test database.",
+   "tags": [
+    "test",
+    "fixtures",
+    "pytest",
+    "configuration"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/conftest.py:default_taxonomy",
+   "type": "function",
+   "name": "default_taxonomy",
+   "filePath": "backend/tests/conftest.py",
+   "lineRange": [
+    12,
+    16
+   ],
+   "summary": "Fixture that sets up the default taxonomy for tests.",
+   "tags": [
+    "function",
+    "test",
+    "helper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/conftest.py:no_retry_waits",
+   "type": "function",
+   "name": "no_retry_waits",
+   "filePath": "backend/tests/conftest.py",
+   "lineRange": [
+    20,
+    22
+   ],
+   "summary": "Fixture that disables retry backoff waits so tests run fast.",
+   "tags": [
+    "function",
+    "test",
+    "helper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/conftest.py:test_settings",
+   "type": "function",
+   "name": "test_settings",
+   "filePath": "backend/tests/conftest.py",
+   "lineRange": [
+    26,
+    28
+   ],
+   "summary": "Fixture providing test application settings.",
+   "tags": [
+    "function",
+    "test",
+    "helper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/conftest.py:test_db",
+   "type": "function",
+   "name": "test_db",
+   "filePath": "backend/tests/conftest.py",
+   "lineRange": [
+    32,
+    43
+   ],
+   "summary": "Fixture providing an isolated test database.",
+   "tags": [
+    "function",
+    "test",
+    "helper"
+   ],
+   "complexity": "simple"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:fmt",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:pct",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:secs",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:table",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:agreement_chart",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:speed_chart",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:word",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:mark",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:ticket_rows",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:side",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:accuracy_section",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:render",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "file:backend/app/services/run_metrics.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/scripts/run_report.py",
+   "target": "function:backend/scripts/run_report.py:load_run",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/scripts/run_report.py",
+   "target": "function:backend/scripts/run_report.py:main",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/scripts/run_report.py",
+   "target": "file:backend/app/core/clock.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/scripts/run_report.py",
+   "target": "file:backend/app/core/settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/scripts/run_report.py",
+   "target": "file:backend/app/repositories/database.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/scripts/run_report.py",
+   "target": "file:backend/app/services/dashboard.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/scripts/run_report.py",
+   "target": "file:backend/app/services/evaluation.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/scripts/run_report.py",
+   "target": "file:backend/app/services/run_metrics.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/scripts/run_report.py",
+   "target": "file:backend/app/services/run_report.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/conftest.py",
+   "target": "function:backend/tests/conftest.py:default_taxonomy",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/conftest.py",
+   "target": "function:backend/tests/conftest.py:no_retry_waits",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/conftest.py",
+   "target": "function:backend/tests/conftest.py:test_settings",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/conftest.py",
+   "target": "function:backend/tests/conftest.py:test_db",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/conftest.py",
+   "target": "file:backend/app/core/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/conftest.py",
+   "target": "file:backend/app/core/settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/conftest.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/conftest.py",
+   "target": "file:backend/app/providers/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/conftest.py",
+   "target": "file:backend/app/providers/http.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "function:backend/scripts/run_report.py:main",
+   "target": "function:backend/app/services/run_report.py:render",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/run_report.py:render",
+   "target": "function:backend/app/services/run_metrics.py:compute",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  }
+ ]
+}

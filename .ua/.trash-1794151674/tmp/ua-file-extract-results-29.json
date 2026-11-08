@@ -1,0 +1,189 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 1,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 1,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 1
+    }
+  },
+  "results": [
+    {
+      "path": "backend/.env.example",
+      "language": "config",
+      "fileCategory": "config",
+      "totalLines": 42,
+      "nonEmptyLines": 34,
+      "definitions": [
+        {
+          "name": "APP_ENV",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 2,
+          "endLine": 2
+        },
+        {
+          "name": "APP_NAME",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 3,
+          "endLine": 3
+        },
+        {
+          "name": "API_HOST",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 4,
+          "endLine": 4
+        },
+        {
+          "name": "API_PORT",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 5,
+          "endLine": 5
+        },
+        {
+          "name": "FRONTEND_ORIGIN",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 6,
+          "endLine": 6
+        },
+        {
+          "name": "MONGODB_URI",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 9,
+          "endLine": 9
+        },
+        {
+          "name": "MONGODB_DATABASE",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 10,
+          "endLine": 10
+        },
+        {
+          "name": "TYPESAFE_API_KEY",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 13,
+          "endLine": 13
+        },
+        {
+          "name": "OPENAI_API_KEY",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 14,
+          "endLine": 14
+        },
+        {
+          "name": "JEV_BASE_URL",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 18,
+          "endLine": 18
+        },
+        {
+          "name": "JEV_MODEL",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 19,
+          "endLine": 19
+        },
+        {
+          "name": "LLM_BACKEND",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 22,
+          "endLine": 22
+        },
+        {
+          "name": "OLLAMA_BASE_URL",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 23,
+          "endLine": 23
+        },
+        {
+          "name": "OLLAMA_MODEL",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 24,
+          "endLine": 24
+        },
+        {
+          "name": "OPENAI_MODEL",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 25,
+          "endLine": 25
+        },
+        {
+          "name": "PROVIDER_TIMEOUT_SECONDS",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 28,
+          "endLine": 28
+        },
+        {
+          "name": "BULK_CONCURRENCY",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 29,
+          "endLine": 29
+        },
+        {
+          "name": "JEV_ESCALATION_THRESHOLD",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 30,
+          "endLine": 30
+        },
+        {
+          "name": "MOCK_PROVIDERS",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 33,
+          "endLine": 33
+        },
+        {
+          "name": "MOCK_DELAY_SECONDS",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 35,
+          "endLine": 35
+        },
+        {
+          "name": "LOG_LEVEL",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 38,
+          "endLine": 38
+        },
+        {
+          "name": "ACCESS_CONTROL_CONFIRMED",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 42,
+          "endLine": 42
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 22
+      }
+    }
+  ]
+}

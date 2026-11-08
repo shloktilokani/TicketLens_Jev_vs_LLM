@@ -1,0 +1,41 @@
+{
+ "nodes": [
+  {
+   "id": "document:.context/DEPLOYMENT_DECISIONS.md",
+   "type": "document",
+   "name": "DEPLOYMENT_DECISIONS.md",
+   "filePath": ".context/DEPLOYMENT_DECISIONS.md",
+   "summary": "Deployment-readiness notes listing non-negotiable constraints, owner decisions still open, what the app already enforces, dev vs production settings, build/run steps, MongoDB, backup and restore, logging, and a readiness checklist for a platform-neutral release.",
+   "tags": [
+    "documentation",
+    "deployment",
+    "configuration",
+    "checklist"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "document:.context/implementation.md",
+   "type": "document",
+   "name": "implementation.md",
+   "filePath": ".context/implementation.md",
+   "summary": "End-to-end phased build plan (Phases 0-18) with scope and acceptance criteria for each phase, from repo setup and scaffolding through providers, comparison, bulk runs, analytics, settings and deployment readiness, closing with a final definition of done.",
+   "tags": [
+    "documentation",
+    "implementation-plan",
+    "phases",
+    "acceptance-criteria"
+   ],
+   "complexity": "complex"
+  }
+ ],
+ "edges": [
+  {
+   "source": "document:.context/DEPLOYMENT_DECISIONS.md",
+   "target": "document:.context/implementation.md",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  }
+ ]
+}

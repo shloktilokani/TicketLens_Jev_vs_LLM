@@ -1,0 +1,1140 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 8,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 8,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 8,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "frontend/src/features/dashboard/EvaluationSection.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 373,
+      "nonEmptyLines": 358,
+      "functions": [
+        {
+          "name": "score",
+          "startLine": 43,
+          "endLine": 44,
+          "params": [
+            "s"
+          ]
+        },
+        {
+          "name": "f1",
+          "startLine": 45,
+          "endLine": 45,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "coverage",
+          "startLine": 47,
+          "endLine": 49,
+          "params": [
+            "side"
+          ]
+        },
+        {
+          "name": "Tiles",
+          "startLine": 51,
+          "endLine": 73,
+          "params": [
+            "{ data }"
+          ]
+        },
+        {
+          "name": "AccuracyChart",
+          "startLine": 75,
+          "endLine": 132,
+          "params": [
+            "{ data }"
+          ]
+        },
+        {
+          "name": "ScoreTable",
+          "startLine": 134,
+          "endLine": 192,
+          "params": [
+            "{ data }"
+          ]
+        },
+        {
+          "name": "Toggle",
+          "startLine": 194,
+          "endLine": 220,
+          "params": [
+            "{\n  label,\n  options,\n  value,\n  onChange,\n}"
+          ]
+        },
+        {
+          "name": "Matrix",
+          "startLine": 229,
+          "endLine": 297,
+          "params": [
+            "{ data }"
+          ]
+        },
+        {
+          "name": "Scored",
+          "startLine": 299,
+          "endLine": 319,
+          "params": [
+            "{ data }"
+          ]
+        },
+        {
+          "name": "EvaluationSection",
+          "startLine": 322,
+          "endLine": 373,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "EvaluationSection",
+          "line": 322,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "score",
+          "callee": "percent",
+          "lineNumber": 44
+        },
+        {
+          "caller": "f1",
+          "callee": "value.toFixed",
+          "lineNumber": 45
+        },
+        {
+          "caller": "Tiles",
+          "callee": "([\"jev\", \"llm\"] as const).map",
+          "lineNumber": 54
+        },
+        {
+          "caller": "Tiles",
+          "callee": "percent",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Tiles",
+          "callee": "([\"jev\", \"llm\"] as const).map",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Tiles",
+          "callee": "coverage",
+          "lineNumber": 68
+        },
+        {
+          "caller": "AccuracyChart",
+          "callee": "Object.keys(FIELD_LABELS).map",
+          "lineNumber": 76
+        },
+        {
+          "caller": "AccuracyChart",
+          "callee": "Object.keys",
+          "lineNumber": 76
+        },
+        {
+          "caller": "AccuracyChart",
+          "callee": "Math.round",
+          "lineNumber": 81
+        },
+        {
+          "caller": "AccuracyChart",
+          "callee": "Math.round",
+          "lineNumber": 82
+        },
+        {
+          "caller": "AccuracyChart",
+          "callee": "score",
+          "lineNumber": 83
+        },
+        {
+          "caller": "AccuracyChart",
+          "callee": "score",
+          "lineNumber": 83
+        },
+        {
+          "caller": "ScoreTable",
+          "callee": "[\n                \"Field\",\n                \"Jev accuracy\",\n                \"LLM accuracy\",\n                \"Jev F1\",\n                \"LLM F1\",\n                \"Both right\",\n                \"Jev only\",\n                \"LLM only\",\n                \"Both wrong\",\n                \"Agree\",\n              ].map",
+          "lineNumber": 142
+        },
+        {
+          "caller": "ScoreTable",
+          "callee": "Object.entries(FIELD_LABELS).map",
+          "lineNumber": 159
+        },
+        {
+          "caller": "ScoreTable",
+          "callee": "Object.entries",
+          "lineNumber": 159
+        },
+        {
+          "caller": "ScoreTable",
+          "callee": "score",
+          "lineNumber": 167
+        },
+        {
+          "caller": "ScoreTable",
+          "callee": "score",
+          "lineNumber": 170
+        },
+        {
+          "caller": "ScoreTable",
+          "callee": "f1",
+          "lineNumber": 172
+        },
+        {
+          "caller": "ScoreTable",
+          "callee": "f1",
+          "lineNumber": 173
+        },
+        {
+          "caller": "ScoreTable",
+          "callee": "percent",
+          "lineNumber": 178
+        },
+        {
+          "caller": "Toggle",
+          "callee": "(Object.keys(options) as T[]).map",
+          "lineNumber": 207
+        },
+        {
+          "caller": "Toggle",
+          "callee": "Object.keys",
+          "lineNumber": 207
+        },
+        {
+          "caller": "Toggle",
+          "callee": "onChange",
+          "lineNumber": 213
+        },
+        {
+          "caller": "Matrix",
+          "callee": "useState",
+          "lineNumber": 230
+        },
+        {
+          "caller": "Matrix",
+          "callee": "useState",
+          "lineNumber": 231
+        },
+        {
+          "caller": "Matrix",
+          "callee": "Math.max",
+          "lineNumber": 233
+        },
+        {
+          "caller": "Matrix",
+          "callee": "counts.flat",
+          "lineNumber": 233
+        },
+        {
+          "caller": "Matrix",
+          "callee": "labels.map",
+          "lineNumber": 262
+        },
+        {
+          "caller": "Matrix",
+          "callee": "labels.map",
+          "lineNumber": 271
+        },
+        {
+          "caller": "Matrix",
+          "callee": "counts[row].map",
+          "lineNumber": 274
+        },
+        {
+          "caller": "Matrix",
+          "callee": "Math.round",
+          "lineNumber": 280
+        },
+        {
+          "caller": "Matrix",
+          "callee": "counts[row].reduce",
+          "lineNumber": 288
+        },
+        {
+          "caller": "Scored",
+          "callee": "([\"jev\", \"llm\"] as const)\n    .map(\n      (name) =>\n        `${SIDE_NAMES[name]}: ${data.sides[name].models.join(\", \") || \"—\"}`,\n    )\n    .join",
+          "lineNumber": 300
+        },
+        {
+          "caller": "Scored",
+          "callee": "([\"jev\", \"llm\"] as const)\n    .map",
+          "lineNumber": 300
+        },
+        {
+          "caller": "Scored",
+          "callee": "data.sides[name].models.join",
+          "lineNumber": 303
+        },
+        {
+          "caller": "EvaluationSection",
+          "callee": "useQuery",
+          "lineNumber": 323
+        },
+        {
+          "caller": "EvaluationSection",
+          "callee": "api",
+          "lineNumber": 325
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 1,
+        "functionCount": 10,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/features/dashboard/chartStyles.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 22,
+      "nonEmptyLines": 19,
+      "functions": [
+        {
+          "name": "percent",
+          "startLine": 21,
+          "endLine": 22,
+          "params": [
+            "rate"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "FIELD_LABELS",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "TOOLTIP",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "AXIS",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "percent",
+          "line": 21,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "percent",
+          "callee": "Math.round",
+          "lineNumber": 22
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/features/dashboard/parts.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 43,
+      "nonEmptyLines": 40,
+      "functions": [
+        {
+          "name": "Stat",
+          "startLine": 5,
+          "endLine": 18,
+          "params": [
+            "{\n  value,\n  label,\n}"
+          ]
+        },
+        {
+          "name": "ChartCard",
+          "startLine": 20,
+          "endLine": 43,
+          "params": [
+            "{\n  title,\n  height,\n  children,\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Stat",
+          "line": 5,
+          "isDefault": false
+        },
+        {
+          "name": "ChartCard",
+          "line": 20,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/features/settings/PricingCard.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 181,
+      "nonEmptyLines": 177,
+      "functions": [
+        {
+          "name": "PricingCard",
+          "startLine": 34,
+          "endLine": 181,
+          "params": [
+            "{ pricing }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "PricingCard",
+          "line": 34,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "PricingCard",
+          "callee": "useState",
+          "lineNumber": 35
+        },
+        {
+          "caller": "PricingCard",
+          "callee": "pricing.map",
+          "lineNumber": 36
+        },
+        {
+          "caller": "PricingCard",
+          "callee": "String",
+          "lineNumber": 40
+        },
+        {
+          "caller": "PricingCard",
+          "callee": "String",
+          "lineNumber": 41
+        },
+        {
+          "caller": "PricingCard",
+          "callee": "useSaveSettings",
+          "lineNumber": 44
+        },
+        {
+          "caller": "change",
+          "callee": "setRows",
+          "lineNumber": 46
+        },
+        {
+          "caller": "change",
+          "callee": "all.map",
+          "lineNumber": 47
+        },
+        {
+          "caller": "PricingCard",
+          "callee": "[\"Side\", \"Model\", \"Input (USD)\", \"Output (USD)\", \"\"].map",
+          "lineNumber": 68
+        },
+        {
+          "caller": "PricingCard",
+          "callee": "rows.map",
+          "lineNumber": 76
+        },
+        {
+          "caller": "PricingCard",
+          "callee": "change",
+          "lineNumber": 81
+        },
+        {
+          "caller": "PricingCard",
+          "callee": "Object.entries(SIDE_LABELS).map",
+          "lineNumber": 87
+        },
+        {
+          "caller": "PricingCard",
+          "callee": "Object.entries",
+          "lineNumber": 87
+        },
+        {
+          "caller": "PricingCard",
+          "callee": "change",
+          "lineNumber": 100
+        },
+        {
+          "caller": "PricingCard",
+          "callee": "change",
+          "lineNumber": 111
+        },
+        {
+          "caller": "PricingCard",
+          "callee": "change",
+          "lineNumber": 122
+        },
+        {
+          "caller": "PricingCard",
+          "callee": "setRows",
+          "lineNumber": 132
+        },
+        {
+          "caller": "PricingCard",
+          "callee": "all.filter",
+          "lineNumber": 132
+        },
+        {
+          "caller": "PricingCard",
+          "callee": "setRows",
+          "lineNumber": 148
+        },
+        {
+          "caller": "PricingCard",
+          "callee": "Date.now",
+          "lineNumber": 151
+        },
+        {
+          "caller": "PricingCard",
+          "callee": "save.mutate",
+          "lineNumber": 165
+        },
+        {
+          "caller": "PricingCard",
+          "callee": "rows.map",
+          "lineNumber": 166
+        }
+      ],
+      "metrics": {
+        "importCount": 8,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/features/settings/SettingsPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 242,
+      "nonEmptyLines": 235,
+      "functions": [
+        {
+          "name": "ProviderStatus",
+          "startLine": 20,
+          "endLine": 48,
+          "params": [
+            "{ settings }"
+          ]
+        },
+        {
+          "name": "listNote",
+          "startLine": 50,
+          "endLine": 56,
+          "params": [
+            "list"
+          ]
+        },
+        {
+          "name": "ModelField",
+          "startLine": 58,
+          "endLine": 106,
+          "params": [
+            "{\n  side,\n  label,\n  saved,\n}"
+          ]
+        },
+        {
+          "name": "Tuning",
+          "startLine": 108,
+          "endLine": 164,
+          "params": [
+            "{ settings }"
+          ]
+        },
+        {
+          "name": "PromptCard",
+          "startLine": 166,
+          "endLine": 212,
+          "params": [
+            "{ prompt }"
+          ]
+        },
+        {
+          "name": "SettingsPage",
+          "startLine": 214,
+          "endLine": 242,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "SettingsPage",
+          "line": 214,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ProviderStatus",
+          "callee": "([\"jev\", \"gpt\"] as const).map",
+          "lineNumber": 27
+        },
+        {
+          "caller": "ModelField",
+          "callee": "useId",
+          "lineNumber": 67
+        },
+        {
+          "caller": "ModelField",
+          "callee": "useState",
+          "lineNumber": 68
+        },
+        {
+          "caller": "ModelField",
+          "callee": "useModelList",
+          "lineNumber": 69
+        },
+        {
+          "caller": "ModelField",
+          "callee": "useSaveSettings",
+          "lineNumber": 70
+        },
+        {
+          "caller": "ModelField",
+          "callee": "setValue",
+          "lineNumber": 81
+        },
+        {
+          "caller": "ModelField",
+          "callee": "list.data?.models.map",
+          "lineNumber": 84
+        },
+        {
+          "caller": "ModelField",
+          "callee": "list.refetch",
+          "lineNumber": 92
+        },
+        {
+          "caller": "ModelField",
+          "callee": "save.mutate",
+          "lineNumber": 98
+        },
+        {
+          "caller": "ModelField",
+          "callee": "value.trim",
+          "lineNumber": 98
+        },
+        {
+          "caller": "ModelField",
+          "callee": "listNote",
+          "lineNumber": 103
+        },
+        {
+          "caller": "Tuning",
+          "callee": "useState",
+          "lineNumber": 109
+        },
+        {
+          "caller": "Tuning",
+          "callee": "String",
+          "lineNumber": 110
+        },
+        {
+          "caller": "Tuning",
+          "callee": "useState",
+          "lineNumber": 112
+        },
+        {
+          "caller": "Tuning",
+          "callee": "String",
+          "lineNumber": 113
+        },
+        {
+          "caller": "Tuning",
+          "callee": "useSaveSettings",
+          "lineNumber": 115
+        },
+        {
+          "caller": "Tuning",
+          "callee": "setThreshold",
+          "lineNumber": 133
+        },
+        {
+          "caller": "Tuning",
+          "callee": "setConcurrency",
+          "lineNumber": 145
+        },
+        {
+          "caller": "Tuning",
+          "callee": "save.mutate",
+          "lineNumber": 153
+        },
+        {
+          "caller": "Tuning",
+          "callee": "Number",
+          "lineNumber": 154
+        },
+        {
+          "caller": "Tuning",
+          "callee": "Number",
+          "lineNumber": 155
+        },
+        {
+          "caller": "PromptCard",
+          "callee": "useState",
+          "lineNumber": 167
+        },
+        {
+          "caller": "PromptCard",
+          "callee": "useSaveSettings",
+          "lineNumber": 168
+        },
+        {
+          "caller": "PromptCard",
+          "callee": "setText",
+          "lineNumber": 183
+        },
+        {
+          "caller": "PromptCard",
+          "callee": "text.trim",
+          "lineNumber": 187
+        },
+        {
+          "caller": "PromptCard",
+          "callee": "save.mutate",
+          "lineNumber": 188
+        },
+        {
+          "caller": "PromptCard",
+          "callee": "prompt.history.map",
+          "lineNumber": 198
+        },
+        {
+          "caller": "PromptCard",
+          "callee": "formatDateTime",
+          "lineNumber": 201
+        },
+        {
+          "caller": "SettingsPage",
+          "callee": "useSettings",
+          "lineNumber": 215
+        }
+      ],
+      "metrics": {
+        "importCount": 11,
+        "exportCount": 1,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/features/settings/TaxonomyCard.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 114,
+      "nonEmptyLines": 108,
+      "functions": [
+        {
+          "name": "toRows",
+          "startLine": 13,
+          "endLine": 18,
+          "params": [
+            "categories"
+          ]
+        },
+        {
+          "name": "toBody",
+          "startLine": 20,
+          "endLine": 30,
+          "params": [
+            "rows"
+          ]
+        },
+        {
+          "name": "TaxonomyCard",
+          "startLine": 32,
+          "endLine": 114,
+          "params": [
+            "{\n  taxonomy,\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "TaxonomyCard",
+          "line": 32,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "toRows",
+          "callee": "Object.entries(categories).map",
+          "lineNumber": 14
+        },
+        {
+          "caller": "toRows",
+          "callee": "Object.entries",
+          "lineNumber": 14
+        },
+        {
+          "caller": "toRows",
+          "callee": "subs.join",
+          "lineNumber": 17
+        },
+        {
+          "caller": "toBody",
+          "callee": "Object.fromEntries",
+          "lineNumber": 21
+        },
+        {
+          "caller": "toBody",
+          "callee": "rows.map",
+          "lineNumber": 22
+        },
+        {
+          "caller": "toBody",
+          "callee": "row.name.trim",
+          "lineNumber": 23
+        },
+        {
+          "caller": "toBody",
+          "callee": "row.subcategories\n        .split(\"\\n\")\n        .map((line) => line.trim())\n        .filter",
+          "lineNumber": 24
+        },
+        {
+          "caller": "toBody",
+          "callee": "row.subcategories\n        .split(\"\\n\")\n        .map",
+          "lineNumber": 24
+        },
+        {
+          "caller": "toBody",
+          "callee": "row.subcategories\n        .split",
+          "lineNumber": 24
+        },
+        {
+          "caller": "toBody",
+          "callee": "line.trim",
+          "lineNumber": 26
+        },
+        {
+          "caller": "TaxonomyCard",
+          "callee": "useState",
+          "lineNumber": 37
+        },
+        {
+          "caller": "TaxonomyCard",
+          "callee": "toRows",
+          "lineNumber": 37
+        },
+        {
+          "caller": "TaxonomyCard",
+          "callee": "useSaveSettings",
+          "lineNumber": 38
+        },
+        {
+          "caller": "change",
+          "callee": "setRows",
+          "lineNumber": 40
+        },
+        {
+          "caller": "change",
+          "callee": "all.map",
+          "lineNumber": 41
+        },
+        {
+          "caller": "TaxonomyCard",
+          "callee": "rows.map",
+          "lineNumber": 59
+        },
+        {
+          "caller": "TaxonomyCard",
+          "callee": "change",
+          "lineNumber": 68
+        },
+        {
+          "caller": "TaxonomyCard",
+          "callee": "setRows",
+          "lineNumber": 75
+        },
+        {
+          "caller": "TaxonomyCard",
+          "callee": "all.filter",
+          "lineNumber": 75
+        },
+        {
+          "caller": "TaxonomyCard",
+          "callee": "change",
+          "lineNumber": 86
+        },
+        {
+          "caller": "TaxonomyCard",
+          "callee": "setRows",
+          "lineNumber": 96
+        },
+        {
+          "caller": "TaxonomyCard",
+          "callee": "Date.now",
+          "lineNumber": 98
+        },
+        {
+          "caller": "TaxonomyCard",
+          "callee": "save.mutate",
+          "lineNumber": 106
+        },
+        {
+          "caller": "TaxonomyCard",
+          "callee": "toBody",
+          "lineNumber": 106
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 1,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/features/settings/hooks.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 36,
+      "nonEmptyLines": 32,
+      "functions": [
+        {
+          "name": "useSettings",
+          "startLine": 7,
+          "endLine": 11,
+          "params": []
+        },
+        {
+          "name": "useSaveSettings",
+          "startLine": 14,
+          "endLine": 27,
+          "params": [
+            "method",
+            "path"
+          ]
+        },
+        {
+          "name": "useModelList",
+          "startLine": 29,
+          "endLine": 36,
+          "params": [
+            "side"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "useSettings",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "useSaveSettings",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "useModelList",
+          "line": 29,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useSettings",
+          "callee": "useQuery",
+          "lineNumber": 8
+        },
+        {
+          "caller": "useSettings",
+          "callee": "api",
+          "lineNumber": 10
+        },
+        {
+          "caller": "useSaveSettings",
+          "callee": "useQueryClient",
+          "lineNumber": 15
+        },
+        {
+          "caller": "useSaveSettings",
+          "callee": "useMutation",
+          "lineNumber": 16
+        },
+        {
+          "caller": "useSaveSettings",
+          "callee": "send",
+          "lineNumber": 18
+        },
+        {
+          "caller": "useSaveSettings",
+          "callee": "queryClient.setQueryData",
+          "lineNumber": 20
+        },
+        {
+          "caller": "useSaveSettings",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 21
+        },
+        {
+          "caller": "useSaveSettings",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 22
+        },
+        {
+          "caller": "useSaveSettings",
+          "callee": "toast.success",
+          "lineNumber": 23
+        },
+        {
+          "caller": "useSaveSettings",
+          "callee": "toast.error",
+          "lineNumber": 25
+        },
+        {
+          "caller": "useModelList",
+          "callee": "useQuery",
+          "lineNumber": 30
+        },
+        {
+          "caller": "useModelList",
+          "callee": "api",
+          "lineNumber": 33
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/features/tickets/BulkToolbar.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 107,
+      "nonEmptyLines": 100,
+      "functions": [
+        {
+          "name": "confirmText",
+          "startLine": 17,
+          "endLine": 23,
+          "params": [
+            "mode",
+            "selected",
+            "allEligible"
+          ]
+        },
+        {
+          "name": "BulkToolbar",
+          "startLine": 26,
+          "endLine": 107,
+          "params": [
+            "{\n  selected,\n  allEligible,\n  onAllEligible,\n  onClear,\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "BulkToolbar",
+          "line": 26,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "BulkToolbar",
+          "callee": "useState",
+          "lineNumber": 37
+        },
+        {
+          "caller": "BulkToolbar",
+          "callee": "useStartBulk",
+          "lineNumber": 38
+        },
+        {
+          "caller": "confirm",
+          "callee": "start.mutate",
+          "lineNumber": 46
+        },
+        {
+          "caller": "confirm",
+          "callee": "toast.success",
+          "lineNumber": 50
+        },
+        {
+          "caller": "confirm",
+          "callee": "setMode",
+          "lineNumber": 51
+        },
+        {
+          "caller": "confirm",
+          "callee": "onClear",
+          "lineNumber": 52
+        },
+        {
+          "caller": "confirm",
+          "callee": "toast.error",
+          "lineNumber": 55
+        },
+        {
+          "caller": "confirm",
+          "callee": "setMode",
+          "lineNumber": 56
+        },
+        {
+          "caller": "BulkToolbar",
+          "callee": "MODES.map",
+          "lineNumber": 71
+        },
+        {
+          "caller": "BulkToolbar",
+          "callee": "setMode",
+          "lineNumber": 77
+        },
+        {
+          "caller": "BulkToolbar",
+          "callee": "setMode",
+          "lineNumber": 95
+        },
+        {
+          "caller": "BulkToolbar",
+          "callee": "confirmText",
+          "lineNumber": 98
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    }
+  ]
+}

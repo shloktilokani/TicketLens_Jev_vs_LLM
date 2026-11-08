@@ -1,0 +1,92 @@
+[
+  {
+    "order": 1,
+    "title": "Project Overview",
+    "description": "TicketLens is a single-user demo that manages fictional ShopKart support tickets and classifies them with Jev and an LLM side by side. An operator creates or imports tickets, runs either model or both, inspects the results, and chooses the final classification by hand. Start with the README for the stack and how to run it, then the requirements for the ticket lifecycle, taxonomy and provider behaviour the rest of the tour implements.",
+    "nodeIds": ["document:README.md", "document:.context/requirements.md"]
+  },
+  {
+    "order": 2,
+    "title": "Architecture and Ground Rules",
+    "description": "The architecture document lays out the local-first shape: a React UI, a FastAPI backend, a local MongoDB, and a provider adapter boundary between the backend and the models. AGENTS.md then fixes the rules the code must keep, such as server-side secrets, one shared taxonomy, and never showing ground-truth labels to a model. Keep these rules in mind, because most of the design choices in later steps exist to enforce them.",
+    "nodeIds": ["document:.context/architecture.md", "document:AGENTS.md"]
+  },
+  {
+    "order": 3,
+    "title": "Backend Entry Point",
+    "description": "main.py is where the backend comes together: its application factory wires the MongoDB lifespan, CORS for the local frontend, every router, and a 503 handler for database connection failures. settings.py is the only module that reads environment variables or backend/.env, and .env.example documents those settings with blank API keys. The health router shows the same safety habit from Step 2 in small form, returning a safe setup message when MongoDB is unreachable.",
+    "nodeIds": ["file:backend/app/main.py", "file:backend/app/core/settings.py", "config:backend/.env.example", "file:backend/app/api/health.py"],
+    "languageLesson": "A FastAPI lifespan handler runs setup code before the app accepts requests and cleanup code after it stops, which makes it a natural home for opening and closing a database client. An application factory also lets tests build the app with their own settings."
+  },
+  {
+    "order": 4,
+    "title": "The Shared Vocabulary",
+    "description": "taxonomy.py is the most depended-upon file in the project, holding the categories, priorities, sentiments, statuses and the category-to-subcategory map. The classification schema builds on it to define the five compared fields and rejects any category and subcategory pair that does not belong together. The taxonomy router serves the same values to the frontend, so the UI reads the taxonomy rather than keeping its own copy.",
+    "nodeIds": ["file:backend/app/core/taxonomy.py", "file:backend/app/schemas/classification.py", "file:backend/app/api/taxonomy.py"],
+    "languageLesson": "Pydantic validates more than single fields: a model-level validator can check rules that span fields, such as whether a subcategory belongs to the chosen category. Invalid combinations then fail at the boundary instead of reaching storage."
+  },
+  {
+    "order": 5,
+    "title": "Tickets and MongoDB",
+    "description": "Tickets show the backend's layering at its clearest: the API router handles search, filtering, pagination and cascading deletion, the service turns input into stored documents, and the repository talks to MongoDB. database.py supplies the shared foundation, including the client factory, index specifications and an exact Decimal128 money codec. The data model document describes the collections these modules read and write, along with their indexes and deletion behaviour.",
+    "nodeIds": ["file:backend/app/api/tickets.py", "file:backend/app/services/tickets.py", "file:backend/app/repositories/tickets.py", "file:backend/app/repositories/database.py", "document:.context/data-model.md"]
+  },
+  {
+    "order": 6,
+    "title": "CSV Import and Labels",
+    "description": "The importer brings tickets in with row-level validation, fingerprint-based duplicate detection and a dry-run mode, using the ticket layer from Step 5. Expected answers from the CSV go into a separate labels repository that is write-only and never read when building provider requests, which keeps the Step 2 rule about ground truth. The sample dataset carries a known flaw worth knowing early: every title equals its expected subcategory, which leaks a label, so PROGRESS.md bars it from evaluation until corrected.",
+    "nodeIds": ["file:backend/app/services/csv_import.py", "file:backend/app/repositories/labels.py", "table:.context/sample_tickets_100.csv:sample_tickets_100", "table:.context/sample_tickets_template.csv:sample_tickets_template"]
+  },
+  {
+    "order": 7,
+    "title": "The Provider Contract",
+    "description": "This is the heart of the comparison's fairness. base.py defines the fixed input both models see, the raw result shape and the safe ProviderFailure exception, while definitions.py gives Jev and the LLM identical task definitions. http.py is the single HTTP helper for real adapters and deliberately never retries because calls can cost money, and registry.py chooses an adapter from settings. The AI evaluation document is the specification behind all of these decisions.",
+    "nodeIds": ["file:backend/app/providers/base.py", "file:backend/app/providers/definitions.py", "file:backend/app/providers/http.py", "file:backend/app/providers/registry.py", "document:.context/ai-evaluation.md"],
+    "languageLesson": "A Python Protocol describes the methods a class must have without requiring it to inherit from anything. Each adapter stays independent, and a type checker can still confirm that it fits the contract."
+  },
+  {
+    "order": 8,
+    "title": "Jev, LLM and Mock Adapters",
+    "description": "With the contract from Step 7 in place, three adapters implement it in very different ways. Jev uses a typed decision API in two steps, first category and other fields and then that category's subcategories, and it marks free text as unsupported because it returns decisions rather than prose. The Ollama adapter builds a system prompt from the shared definitions and forces valid enum values with a JSON schema. The mock provider uses keyword rules with no network or cost, and title markers simulate failures, timeouts and invalid answers for tests and UI work.",
+    "nodeIds": ["file:backend/app/providers/jev.py", "file:backend/app/providers/ollama.py", "file:backend/app/providers/mock.py"]
+  },
+  {
+    "order": 9,
+    "title": "Recording Every Run",
+    "description": "Calling an adapter is only half the job, because every attempt must leave a record. The execution service writes a Running record first, then stores the validated outcome, redacted payloads and cost, and returns failures rather than raising them, so one provider failing cannot undo the other's result. redaction.py strips secret-looking values from payloads, and pricing.py computes exact Decimal costs, returning None rather than guessing when a price or token count is missing. The runs router exposes this workflow per provider and per ticket.",
+    "nodeIds": ["file:backend/app/services/executions.py", "file:backend/app/schemas/executions.py", "file:backend/app/core/redaction.py", "file:backend/app/core/pricing.py", "file:backend/app/api/runs.py"],
+    "languageLesson": "Binary floats cannot represent many decimal amounts exactly, so small rounding errors can build up across token costs. Python's Decimal keeps exact values, and MongoDB's Decimal128 stores them without that loss."
+  },
+  {
+    "order": 10,
+    "title": "Comparisons and Metrics",
+    "description": "Once both runs from Step 9 exist, the comparison service checks the two executions and stores agreement on the five shared fields while leaving the final answer to the operator. run_metrics.py computes agreement, Cohen's kappa, latency, tokens, outcomes and cost as pure functions, and the dashboard service joins stored data while keeping fake-provider runs out of the figures. The report modules turn a test run into self-contained HTML and JSON files that state plainly that agreement is not accuracy, a distinction that recurs across the product.",
+    "nodeIds": ["file:backend/app/services/comparisons.py", "file:backend/app/services/run_metrics.py", "file:backend/app/services/dashboard.py", "file:backend/app/services/run_report.py", "file:backend/scripts/run_report.py"],
+    "languageLesson": "Cohen's kappa adjusts raw agreement for the agreement two raters would reach by chance. Two models can agree often simply because one label is common, and kappa makes that visible."
+  },
+  {
+    "order": 11,
+    "title": "Frontend Foundations",
+    "description": "Now the tour crosses to the browser. main.tsx mounts the app with its theme provider, TanStack Query client, router and toaster, router.tsx declares the routes, and AppShell provides the navigation, provider status badges and global ticket search. services/api.ts is the single HTTP client for the backend, so the browser never calls a model provider directly, which keeps secrets on the server as Step 2 requires. types/api.ts mirrors the API shapes and leaves enum-like values as plain strings because the allowed values come from the taxonomy endpoint in Step 4.",
+    "nodeIds": ["file:frontend/src/main.tsx", "file:frontend/src/app/router.tsx", "file:frontend/src/app/AppShell.tsx", "file:frontend/src/services/api.ts", "file:frontend/src/types/api.ts"]
+  },
+  {
+    "order": 12,
+    "title": "The Ticket Workflow UI",
+    "description": "These pages put the backend from Steps 5 and 9 in the operator's hands. The list page keeps search, filters, sort and pagination in the URL, and the detail page composes ticket information, AI results and the final classification, showing edits only after the API confirms them. AiResults runs a model on demand and offers 'Use this answer', which only seeds the FinalClassification form, so nothing changes until the operator saves. The hooks file holds the matching rule for writes and never automatically retries paid provider runs.",
+    "nodeIds": ["file:frontend/src/features/tickets/TicketListPage.tsx", "file:frontend/src/features/tickets/TicketDetailPage.tsx", "file:frontend/src/features/tickets/AiResults.tsx", "file:frontend/src/features/tickets/FinalClassification.tsx", "file:frontend/src/features/tickets/hooks.ts"],
+    "languageLesson": "React Query separates reading server data from changing it. Updating the cache only after a mutation succeeds, instead of optimistically, means the screen never shows a change the server has not accepted."
+  },
+  {
+    "order": 13,
+    "title": "Compare Workbench and Dashboard",
+    "description": "The Compare page is where the project's purpose becomes visible. useCompareRun runs Jev and the LLM as separate concurrent requests so each column finishes independently, then asks the backend to save the comparison from Step 10, and ProviderColumn renders each side with status, a timer, agreement markers and usage. The Comparisons page lists saved results and flags fake-AI runs, while the dashboard summarises real runs only. No page picks a winner, and the dashboard repeats that agreement is not accuracy.",
+    "nodeIds": ["file:frontend/src/features/compare/ComparePage.tsx", "file:frontend/src/features/compare/useCompareRun.ts", "file:frontend/src/features/compare/ProviderColumn.tsx", "file:frontend/src/features/comparisons/ComparisonsPage.tsx", "file:frontend/src/features/dashboard/DashboardPage.tsx"]
+  },
+  {
+    "order": 14,
+    "title": "Testing the Whole System",
+    "description": "The tests lock in the promises made along this tour. conftest.py gives pytest settings isolated from backend/.env and a throwaway MongoDB database, test_providers.py checks input fairness and that every attempt is logged including failures, and test_runs_and_comparisons.py keeps the chosen answer out of model input. For the real interface, stack.sh starts an isolated stack with mock providers and refuses real-provider mode, and the e2e README explains how test cases and personas drive it. Together they let you change the code without paying for a model call.",
+    "nodeIds": ["file:backend/tests/conftest.py", "file:backend/tests/test_providers.py", "file:backend/tests/test_runs_and_comparisons.py", "file:e2e/scripts/stack.sh", "document:e2e/README.md"]
+  }
+]

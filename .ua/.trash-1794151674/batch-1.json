@@ -1,0 +1,510 @@
+{
+ "nodes": [
+  {
+   "id": "file:frontend/src/features/bulk/BulkBanner.tsx",
+   "type": "file",
+   "name": "BulkBanner.tsx",
+   "filePath": "frontend/src/features/bulk/BulkBanner.tsx",
+   "summary": "Banner component that tracks active and recently finished bulk jobs, refreshing cached queries when a job completes.",
+   "tags": [
+    "component",
+    "bulk-run",
+    "polling",
+    "banner"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:frontend/src/features/bulk/BulkRunsPage.tsx",
+   "type": "file",
+   "name": "BulkRunsPage.tsx",
+   "filePath": "frontend/src/features/bulk/BulkRunsPage.tsx",
+   "summary": "Bulk run list page and run detail page showing job status, providers, attempt progress and per-outcome results.",
+   "tags": [
+    "component",
+    "page",
+    "bulk-run",
+    "table"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:frontend/src/features/bulk/hooks.ts",
+   "type": "file",
+   "name": "hooks.ts",
+   "filePath": "frontend/src/features/bulk/hooks.ts",
+   "summary": "React Query hooks for listing, fetching and starting bulk jobs, with polling while jobs are active.",
+   "tags": [
+    "hook",
+    "react-query",
+    "bulk-run",
+    "api-client"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/bulk/BulkBanner.tsx:isRecent",
+   "type": "function",
+   "name": "isRecent",
+   "filePath": "frontend/src/features/bulk/BulkBanner.tsx",
+   "lineRange": [
+    10,
+    15
+   ],
+   "summary": "Checks whether a job completed within a recent time window.",
+   "tags": [
+    "utility",
+    "time"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/bulk/BulkBanner.tsx:BulkBanner",
+   "type": "function",
+   "name": "BulkBanner",
+   "filePath": "frontend/src/features/bulk/BulkBanner.tsx",
+   "lineRange": [
+    18,
+    62
+   ],
+   "summary": "Renders a status banner for running or just-finished bulk jobs and invalidates queries on completion.",
+   "tags": [
+    "component",
+    "banner",
+    "polling"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:frontend/src/features/bulk/BulkRunsPage.tsx:Header",
+   "type": "function",
+   "name": "Header",
+   "filePath": "frontend/src/features/bulk/BulkRunsPage.tsx",
+   "lineRange": [
+    23,
+    33
+   ],
+   "summary": "Table header row built from provider side labels.",
+   "tags": [
+    "component",
+    "table"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/bulk/BulkRunsPage.tsx:BulkRunsPage",
+   "type": "function",
+   "name": "BulkRunsPage",
+   "filePath": "frontend/src/features/bulk/BulkRunsPage.tsx",
+   "lineRange": [
+    35,
+    96
+   ],
+   "summary": "Lists bulk runs in a table with loading, error and empty states.",
+   "tags": [
+    "component",
+    "page",
+    "table"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:frontend/src/features/bulk/BulkRunsPage.tsx:Outcomes",
+   "type": "function",
+   "name": "Outcomes",
+   "filePath": "frontend/src/features/bulk/BulkRunsPage.tsx",
+   "lineRange": [
+    98,
+    136
+   ],
+   "summary": "Renders per-ticket outcomes for a bulk job.",
+   "tags": [
+    "component",
+    "table"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:frontend/src/features/bulk/BulkRunsPage.tsx:BulkRunDetailPage",
+   "type": "function",
+   "name": "BulkRunDetailPage",
+   "filePath": "frontend/src/features/bulk/BulkRunsPage.tsx",
+   "lineRange": [
+    138,
+    192
+   ],
+   "summary": "Detail page for one bulk run with timestamps, progress and outcomes.",
+   "tags": [
+    "component",
+    "page",
+    "detail"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:frontend/src/features/bulk/hooks.ts:isActive",
+   "type": "function",
+   "name": "isActive",
+   "filePath": "frontend/src/features/bulk/hooks.ts",
+   "lineRange": [
+    8,
+    9
+   ],
+   "summary": "Tells whether a bulk job is still running.",
+   "tags": [
+    "utility",
+    "bulk-run"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/bulk/hooks.ts:attemptsDone",
+   "type": "function",
+   "name": "attemptsDone",
+   "filePath": "frontend/src/features/bulk/hooks.ts",
+   "lineRange": [
+    11,
+    12
+   ],
+   "summary": "Counts completed attempts for a bulk job.",
+   "tags": [
+    "utility",
+    "bulk-run"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/bulk/hooks.ts:useBulkJobs",
+   "type": "function",
+   "name": "useBulkJobs",
+   "filePath": "frontend/src/features/bulk/hooks.ts",
+   "lineRange": [
+    14,
+    20
+   ],
+   "summary": "Query hook listing bulk jobs, polling while any is active.",
+   "tags": [
+    "hook",
+    "react-query",
+    "polling"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/bulk/hooks.ts:useBulkJob",
+   "type": "function",
+   "name": "useBulkJob",
+   "filePath": "frontend/src/features/bulk/hooks.ts",
+   "lineRange": [
+    22,
+    29
+   ],
+   "summary": "Query hook fetching a single bulk job, polling while active.",
+   "tags": [
+    "hook",
+    "react-query",
+    "polling"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/bulk/hooks.ts:useStartBulk",
+   "type": "function",
+   "name": "useStartBulk",
+   "filePath": "frontend/src/features/bulk/hooks.ts",
+   "lineRange": [
+    31,
+    38
+   ],
+   "summary": "Mutation hook that starts a bulk run and invalidates cached job queries.",
+   "tags": [
+    "hook",
+    "mutation",
+    "react-query"
+   ],
+   "complexity": "simple"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:frontend/src/features/bulk/BulkBanner.tsx",
+   "target": "function:frontend/src/features/bulk/BulkBanner.tsx:isRecent",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/bulk/BulkBanner.tsx",
+   "target": "function:frontend/src/features/bulk/BulkBanner.tsx:BulkBanner",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/bulk/BulkRunsPage.tsx",
+   "target": "function:frontend/src/features/bulk/BulkRunsPage.tsx:Header",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/bulk/BulkRunsPage.tsx",
+   "target": "function:frontend/src/features/bulk/BulkRunsPage.tsx:BulkRunsPage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/bulk/BulkRunsPage.tsx",
+   "target": "function:frontend/src/features/bulk/BulkRunsPage.tsx:Outcomes",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/bulk/BulkRunsPage.tsx",
+   "target": "function:frontend/src/features/bulk/BulkRunsPage.tsx:BulkRunDetailPage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/bulk/hooks.ts",
+   "target": "function:frontend/src/features/bulk/hooks.ts:isActive",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/bulk/hooks.ts",
+   "target": "function:frontend/src/features/bulk/hooks.ts:attemptsDone",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/bulk/hooks.ts",
+   "target": "function:frontend/src/features/bulk/hooks.ts:useBulkJobs",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/bulk/hooks.ts",
+   "target": "function:frontend/src/features/bulk/hooks.ts:useBulkJob",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/bulk/hooks.ts",
+   "target": "function:frontend/src/features/bulk/hooks.ts:useStartBulk",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/bulk/BulkBanner.tsx",
+   "target": "file:frontend/src/features/bulk/hooks.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/bulk/BulkBanner.tsx",
+   "target": "file:frontend/src/types/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/bulk/BulkRunsPage.tsx",
+   "target": "file:frontend/src/components/Detail.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/bulk/BulkRunsPage.tsx",
+   "target": "file:frontend/src/components/states.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/bulk/BulkRunsPage.tsx",
+   "target": "file:frontend/src/components/ui/button.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/bulk/BulkRunsPage.tsx",
+   "target": "file:frontend/src/components/ui/card.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/bulk/BulkRunsPage.tsx",
+   "target": "file:frontend/src/components/ui/table.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/bulk/BulkRunsPage.tsx",
+   "target": "file:frontend/src/features/bulk/hooks.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/bulk/BulkRunsPage.tsx",
+   "target": "file:frontend/src/lib/format.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/bulk/BulkRunsPage.tsx",
+   "target": "file:frontend/src/services/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/bulk/BulkRunsPage.tsx",
+   "target": "file:frontend/src/types/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/bulk/hooks.ts",
+   "target": "file:frontend/src/services/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/bulk/hooks.ts",
+   "target": "file:frontend/src/types/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/bulk/BulkBanner.tsx",
+   "target": "function:frontend/src/features/bulk/BulkBanner.tsx:BulkBanner",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/bulk/BulkRunsPage.tsx",
+   "target": "function:frontend/src/features/bulk/BulkRunsPage.tsx:BulkRunsPage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/bulk/BulkRunsPage.tsx",
+   "target": "function:frontend/src/features/bulk/BulkRunsPage.tsx:BulkRunDetailPage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/bulk/hooks.ts",
+   "target": "function:frontend/src/features/bulk/hooks.ts:isActive",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/bulk/hooks.ts",
+   "target": "function:frontend/src/features/bulk/hooks.ts:attemptsDone",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/bulk/hooks.ts",
+   "target": "function:frontend/src/features/bulk/hooks.ts:useBulkJobs",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/bulk/hooks.ts",
+   "target": "function:frontend/src/features/bulk/hooks.ts:useBulkJob",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/bulk/hooks.ts",
+   "target": "function:frontend/src/features/bulk/hooks.ts:useStartBulk",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/bulk/BulkBanner.tsx:BulkBanner",
+   "target": "function:frontend/src/features/bulk/hooks.ts:useBulkJobs",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/bulk/BulkRunsPage.tsx:BulkRunsPage",
+   "target": "function:frontend/src/features/bulk/hooks.ts:useBulkJobs",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/bulk/BulkRunsPage.tsx:BulkRunDetailPage",
+   "target": "function:frontend/src/features/bulk/hooks.ts:useBulkJob",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/bulk/BulkRunsPage.tsx:BulkRunsPage",
+   "target": "function:frontend/src/features/bulk/hooks.ts:attemptsDone",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/bulk/BulkBanner.tsx:BulkBanner",
+   "target": "function:frontend/src/features/bulk/hooks.ts:isActive",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/bulk/BulkRunsPage.tsx:BulkRunsPage",
+   "target": "function:frontend/src/lib/format.ts:formatDateTime",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/bulk/hooks.ts:useBulkJobs",
+   "target": "function:frontend/src/services/api.ts:api",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/bulk/hooks.ts:useStartBulk",
+   "target": "function:frontend/src/services/api.ts:send",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  }
+ ]
+}

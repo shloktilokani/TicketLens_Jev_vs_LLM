@@ -1,0 +1,6 @@
+{"nodes":[
+{"id":"document:.context/PROGRESS.md","type":"document","name":"PROGRESS.md","filePath":".context/PROGRESS.md","summary":"Running progress log for the project: status, phase checklist, blockers, assumptions, per-phase notes for Phases 1-18, test-run reports, and the final completion report.","tags":["documentation","progress-tracking","project-status","phases"],"complexity":"complex"},
+{"id":"table:.context/sample_tickets_100_v2.csv:sample_tickets","type":"table","name":"sample_tickets_100_v2.csv","filePath":".context/sample_tickets_100_v2.csv","summary":"Synthetic sample of 100 ShopKart support tickets with customer fields and expected category, subcategory, priority, sentiment and escalation labels, used for CSV import and evaluation.","tags":["sample-data","csv","tickets","ground-truth","database"],"complexity":"moderate"}
+],"edges":[
+{"source":"document:.context/PROGRESS.md","target":"table:.context/sample_tickets_100_v2.csv:sample_tickets","type":"documents","direction":"forward","weight":0.5}
+]}

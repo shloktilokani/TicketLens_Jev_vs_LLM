@@ -1,0 +1,557 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 2,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 2,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 2,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "backend/app/api/evaluation.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 12,
+      "nonEmptyLines": 8,
+      "functions": [
+        {
+          "name": "get_evaluation",
+          "startLine": 10,
+          "endLine": 12,
+          "params": [
+            "db"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "get_evaluation",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "get_evaluation",
+          "callee": "evaluation.summary",
+          "lineNumber": 12
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "backend/app/services/evaluation.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 147,
+      "nonEmptyLines": 122,
+      "functions": [
+        {
+          "name": "rate",
+          "startLine": 27,
+          "endLine": 28,
+          "params": [
+            "part",
+            "whole"
+          ]
+        },
+        {
+          "name": "macro_f1",
+          "startLine": 31,
+          "endLine": 38,
+          "params": [
+            "expected",
+            "predicted"
+          ]
+        },
+        {
+          "name": "is_scored",
+          "startLine": 41,
+          "endLine": 42,
+          "params": [
+            "run"
+          ]
+        },
+        {
+          "name": "as_label",
+          "startLine": 45,
+          "endLine": 48,
+          "params": [
+            "field",
+            "value"
+          ]
+        },
+        {
+          "name": "confusion",
+          "startLine": 51,
+          "endLine": 60,
+          "params": [
+            "field",
+            "pairs"
+          ]
+        },
+        {
+          "name": "field_score",
+          "startLine": 63,
+          "endLine": 73,
+          "params": [
+            "pairs"
+          ]
+        },
+        {
+          "name": "side_summary",
+          "startLine": 76,
+          "endLine": 94,
+          "params": [
+            "label_map",
+            "runs",
+            "provider"
+          ]
+        },
+        {
+          "name": "head_to_head_field",
+          "startLine": 97,
+          "endLine": 111,
+          "params": [
+            "triples"
+          ]
+        },
+        {
+          "name": "compute",
+          "startLine": 114,
+          "endLine": 140,
+          "params": [
+            "label_map",
+            "runs"
+          ]
+        },
+        {
+          "name": "summary",
+          "startLine": 143,
+          "endLine": 147,
+          "params": [
+            "db"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "rate",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "macro_f1",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "is_scored",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "as_label",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "confusion",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "field_score",
+          "line": 63,
+          "isDefault": false
+        },
+        {
+          "name": "side_summary",
+          "line": 76,
+          "isDefault": false
+        },
+        {
+          "name": "head_to_head_field",
+          "line": 97,
+          "isDefault": false
+        },
+        {
+          "name": "compute",
+          "line": 114,
+          "isDefault": false
+        },
+        {
+          "name": "summary",
+          "line": 143,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "macro_f1",
+          "callee": "Counter",
+          "lineNumber": 35
+        },
+        {
+          "caller": "macro_f1",
+          "callee": "zip",
+          "lineNumber": 35
+        },
+        {
+          "caller": "macro_f1",
+          "callee": "Counter",
+          "lineNumber": 36
+        },
+        {
+          "caller": "macro_f1",
+          "callee": "Counter",
+          "lineNumber": 36
+        },
+        {
+          "caller": "macro_f1",
+          "callee": "actual.keys",
+          "lineNumber": 37
+        },
+        {
+          "caller": "macro_f1",
+          "callee": "guessed.keys",
+          "lineNumber": 37
+        },
+        {
+          "caller": "macro_f1",
+          "callee": "mean",
+          "lineNumber": 38
+        },
+        {
+          "caller": "is_scored",
+          "callee": "bool",
+          "lineNumber": 42
+        },
+        {
+          "caller": "confusion",
+          "callee": "as_label",
+          "lineNumber": 53
+        },
+        {
+          "caller": "confusion",
+          "callee": "as_label",
+          "lineNumber": 53
+        },
+        {
+          "caller": "confusion",
+          "callee": "FIXED_MATRIX_LABELS.get",
+          "lineNumber": 54
+        },
+        {
+          "caller": "confusion",
+          "callee": "list",
+          "lineNumber": 54
+        },
+        {
+          "caller": "confusion",
+          "callee": "active_categories",
+          "lineNumber": 54
+        },
+        {
+          "caller": "confusion",
+          "callee": "sorted",
+          "lineNumber": 56
+        },
+        {
+          "caller": "confusion",
+          "callee": "set",
+          "lineNumber": 56
+        },
+        {
+          "caller": "confusion",
+          "callee": "names.index",
+          "lineNumber": 59
+        },
+        {
+          "caller": "confusion",
+          "callee": "names.index",
+          "lineNumber": 59
+        },
+        {
+          "caller": "field_score",
+          "callee": "sum",
+          "lineNumber": 64
+        },
+        {
+          "caller": "field_score",
+          "callee": "len",
+          "lineNumber": 66
+        },
+        {
+          "caller": "field_score",
+          "callee": "macro_f1",
+          "lineNumber": 67
+        },
+        {
+          "caller": "field_score",
+          "callee": "len",
+          "lineNumber": 70
+        },
+        {
+          "caller": "field_score",
+          "callee": "rate",
+          "lineNumber": 71
+        },
+        {
+          "caller": "field_score",
+          "callee": "len",
+          "lineNumber": 71
+        },
+        {
+          "caller": "side_summary",
+          "callee": "runs.get",
+          "lineNumber": 77
+        },
+        {
+          "caller": "side_summary",
+          "callee": "attempts.items",
+          "lineNumber": 78
+        },
+        {
+          "caller": "side_summary",
+          "callee": "is_scored",
+          "lineNumber": 78
+        },
+        {
+          "caller": "side_summary",
+          "callee": "scored.items",
+          "lineNumber": 79
+        },
+        {
+          "caller": "side_summary",
+          "callee": "sum",
+          "lineNumber": 80
+        },
+        {
+          "caller": "side_summary",
+          "callee": "all",
+          "lineNumber": 80
+        },
+        {
+          "caller": "side_summary",
+          "callee": "scored.items",
+          "lineNumber": 80
+        },
+        {
+          "caller": "side_summary",
+          "callee": "len",
+          "lineNumber": 82
+        },
+        {
+          "caller": "side_summary",
+          "callee": "len",
+          "lineNumber": 83
+        },
+        {
+          "caller": "side_summary",
+          "callee": "sum",
+          "lineNumber": 84
+        },
+        {
+          "caller": "side_summary",
+          "callee": "attempts.values",
+          "lineNumber": 84
+        },
+        {
+          "caller": "side_summary",
+          "callee": "is_scored",
+          "lineNumber": 84
+        },
+        {
+          "caller": "side_summary",
+          "callee": "sum",
+          "lineNumber": 85
+        },
+        {
+          "caller": "side_summary",
+          "callee": "attempts.values",
+          "lineNumber": 85
+        },
+        {
+          "caller": "side_summary",
+          "callee": "sorted",
+          "lineNumber": 86
+        },
+        {
+          "caller": "side_summary",
+          "callee": "attempts.values",
+          "lineNumber": 86
+        },
+        {
+          "caller": "side_summary",
+          "callee": "field_score",
+          "lineNumber": 87
+        },
+        {
+          "caller": "side_summary",
+          "callee": "len",
+          "lineNumber": 90
+        },
+        {
+          "caller": "side_summary",
+          "callee": "rate",
+          "lineNumber": 91
+        },
+        {
+          "caller": "side_summary",
+          "callee": "len",
+          "lineNumber": 91
+        },
+        {
+          "caller": "side_summary",
+          "callee": "confusion",
+          "lineNumber": 93
+        },
+        {
+          "caller": "head_to_head_field",
+          "callee": "list",
+          "lineNumber": 101
+        },
+        {
+          "caller": "head_to_head_field",
+          "callee": "zip",
+          "lineNumber": 101
+        },
+        {
+          "caller": "head_to_head_field",
+          "callee": "sum",
+          "lineNumber": 102
+        },
+        {
+          "caller": "head_to_head_field",
+          "callee": "len",
+          "lineNumber": 104
+        },
+        {
+          "caller": "head_to_head_field",
+          "callee": "both.count",
+          "lineNumber": 105
+        },
+        {
+          "caller": "head_to_head_field",
+          "callee": "both.count",
+          "lineNumber": 106
+        },
+        {
+          "caller": "head_to_head_field",
+          "callee": "both.count",
+          "lineNumber": 107
+        },
+        {
+          "caller": "head_to_head_field",
+          "callee": "both.count",
+          "lineNumber": 108
+        },
+        {
+          "caller": "head_to_head_field",
+          "callee": "rate",
+          "lineNumber": 110
+        },
+        {
+          "caller": "head_to_head_field",
+          "callee": "len",
+          "lineNumber": 110
+        },
+        {
+          "caller": "compute",
+          "callee": "side_summary",
+          "lineNumber": 116
+        },
+        {
+          "caller": "compute",
+          "callee": "SIDES.items",
+          "lineNumber": 116
+        },
+        {
+          "caller": "compute",
+          "callee": "is_scored",
+          "lineNumber": 120
+        },
+        {
+          "caller": "compute",
+          "callee": "runs.get",
+          "lineNumber": 120
+        },
+        {
+          "caller": "compute",
+          "callee": "is_scored",
+          "lineNumber": 120
+        },
+        {
+          "caller": "compute",
+          "callee": "runs.get",
+          "lineNumber": 120
+        },
+        {
+          "caller": "compute",
+          "callee": "head_to_head_field",
+          "lineNumber": 123
+        },
+        {
+          "caller": "compute",
+          "callee": "len",
+          "lineNumber": 136
+        },
+        {
+          "caller": "compute",
+          "callee": "any",
+          "lineNumber": 137
+        },
+        {
+          "caller": "compute",
+          "callee": "sides.values",
+          "lineNumber": 137
+        },
+        {
+          "caller": "compute",
+          "callee": "len",
+          "lineNumber": 139
+        },
+        {
+          "caller": "summary",
+          "callee": "labels.expected_by_ticket",
+          "lineNumber": 144
+        },
+        {
+          "caller": "summary",
+          "callee": "compute",
+          "lineNumber": 147
+        },
+        {
+          "caller": "summary",
+          "callee": "executions.latest_finished_real",
+          "lineNumber": 147
+        },
+        {
+          "caller": "summary",
+          "callee": "list",
+          "lineNumber": 147
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 10,
+        "functionCount": 10,
+        "classCount": 0
+      }
+    }
+  ]
+}

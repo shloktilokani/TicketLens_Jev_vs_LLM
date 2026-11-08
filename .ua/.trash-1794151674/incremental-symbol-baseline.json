@@ -1,0 +1,162 @@
+{
+  "version": 1,
+  "baseCommit": "d6fb162c8d5a6a2e48a1637049312b28a4da59dd",
+  "headCommit": "0e90f7417dc7bba32dfa566ce281e1babcc87877",
+  "files": [
+    {
+      "filePath": ".context/PROGRESS.md",
+      "nodes": [
+        {
+          "id": "document:.context/PROGRESS.md",
+          "type": "document",
+          "name": "PROGRESS.md",
+          "filePath": ".context/PROGRESS.md",
+          "summary": "Living status log of the 19-phase build: phase checklist, blockers, spec gaps and assumptions, and dated notes per phase. It also records the required fix to the sample dataset before any paid evaluation.",
+          "tags": [
+            "documentation",
+            "project-status",
+            "changelog",
+            "development"
+          ],
+          "complexity": "complex"
+        }
+      ],
+      "edges": []
+    },
+    {
+      "filePath": ".context/sample_tickets_100_v2.csv",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "backend/app/api/app_settings.py",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "backend/app/api/bulk_jobs.py",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "backend/app/api/evaluation.py",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "backend/app/jobs/bulk.py",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "backend/app/repositories/app_settings.py",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "backend/app/repositories/bulk_jobs.py",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "backend/app/schemas/app_settings.py",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "backend/app/services/app_settings.py",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "backend/app/services/evaluation.py",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "backend/tests/test_app_settings.py",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "backend/tests/test_bulk_jobs.py",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "backend/tests/test_evaluation.py",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "backend/tests/test_production_config.py",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "backend/tests/test_retries.py",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "e2e/tests/workflow.spec.ts",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "frontend/src/features/bulk/BulkBanner.tsx",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "frontend/src/features/bulk/BulkRunsPage.tsx",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "frontend/src/features/bulk/hooks.ts",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "frontend/src/features/dashboard/EvaluationSection.tsx",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "frontend/src/features/dashboard/chartStyles.ts",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "frontend/src/features/dashboard/parts.tsx",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "frontend/src/features/settings/PricingCard.tsx",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "frontend/src/features/settings/SettingsPage.tsx",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "frontend/src/features/settings/TaxonomyCard.tsx",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "frontend/src/features/settings/hooks.ts",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "frontend/src/features/tickets/BulkToolbar.tsx",
+      "nodes": [],
+      "edges": []
+    }
+  ]
+}

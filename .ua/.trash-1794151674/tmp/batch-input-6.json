@@ -1,0 +1,113 @@
+{
+ "batchIndex": 6,
+ "files": [
+  {
+   "path": "backend/tests/test_evaluation.py",
+   "language": "python",
+   "sizeLines": 286,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/tests/test_production_config.py",
+   "language": "python",
+   "sizeLines": 78,
+   "fileCategory": "code"
+  }
+ ],
+ "batchImportData": {
+  "backend/tests/test_evaluation.py": [
+   "backend/app/core/taxonomy.py",
+   "backend/app/main.py",
+   "backend/app/services/evaluation.py",
+   "backend/app/services/run_report.py"
+  ],
+  "backend/tests/test_production_config.py": [
+   "backend/app/core/settings.py",
+   "backend/app/main.py"
+  ]
+ },
+ "neighborMap": {
+  "backend/tests/test_evaluation.py": [
+   {
+    "path": "backend/app/core/taxonomy.py",
+    "batchIndex": 3,
+    "symbols": [
+     "Category",
+     "Priority",
+     "Sentiment",
+     "TicketStatus",
+     "Channel",
+     "Provider",
+     "ExecutionStatus",
+     "ComparisonStatus",
+     "BulkJobStatus",
+     "set_active",
+     "reset",
+     "active_version",
+     "active_categories",
+     "is_valid_pair",
+     "as_dict"
+    ]
+   },
+   {
+    "path": "backend/app/main.py",
+    "batchIndex": 5,
+    "symbols": [
+     "create_app"
+    ]
+   },
+   {
+    "path": "backend/app/services/evaluation.py",
+    "batchIndex": 5,
+    "symbols": [
+     "rate",
+     "macro_f1",
+     "is_scored",
+     "as_label",
+     "confusion",
+     "field_score",
+     "side_summary",
+     "head_to_head_field",
+     "compute",
+     "summary"
+    ]
+   },
+   {
+    "path": "backend/app/services/run_report.py",
+    "batchIndex": 6,
+    "symbols": [
+     "fmt",
+     "pct",
+     "secs",
+     "table",
+     "agreement_chart",
+     "speed_chart",
+     "word",
+     "mark",
+     "ticket_rows",
+     "side",
+     "accuracy_section",
+     "render"
+    ]
+   }
+  ],
+  "backend/tests/test_production_config.py": [
+   {
+    "path": "backend/app/core/settings.py",
+    "batchIndex": 5,
+    "symbols": [
+     "Settings",
+     "get_settings",
+     "is_local"
+    ]
+   },
+   {
+    "path": "backend/app/main.py",
+    "batchIndex": 5,
+    "symbols": [
+     "create_app"
+    ]
+   }
+  ]
+ }
+}

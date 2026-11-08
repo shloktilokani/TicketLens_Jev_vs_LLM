@@ -1,0 +1,771 @@
+{
+ "batchIndex": 24,
+ "files": [
+  {
+   "path": "backend/app/repositories/executions.py",
+   "language": "python",
+   "sizeLines": 138,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/repositories/tickets.py",
+   "language": "python",
+   "sizeLines": 108,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/schemas/bulk_jobs.py",
+   "language": "python",
+   "sizeLines": 57,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/schemas/classification.py",
+   "language": "python",
+   "sizeLines": 47,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/services/executions.py",
+   "language": "python",
+   "sizeLines": 131,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/services/tickets.py",
+   "language": "python",
+   "sizeLines": 89,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/tests/test_live_adapters.py",
+   "language": "python",
+   "sizeLines": 276,
+   "fileCategory": "code"
+  }
+ ],
+ "batchImportData": {
+  "backend/app/repositories/executions.py": [
+   "backend/app/core/taxonomy.py"
+  ],
+  "backend/app/repositories/tickets.py": [
+   "backend/app/core/taxonomy.py"
+  ],
+  "backend/app/schemas/bulk_jobs.py": [
+   "backend/app/core/taxonomy.py"
+  ],
+  "backend/app/schemas/classification.py": [
+   "backend/app/core/taxonomy.py"
+  ],
+  "backend/app/services/executions.py": [
+   "backend/app/core/clock.py",
+   "backend/app/core/pricing.py",
+   "backend/app/core/redaction.py",
+   "backend/app/core/settings.py",
+   "backend/app/core/taxonomy.py",
+   "backend/app/providers/base.py",
+   "backend/app/providers/registry.py",
+   "backend/app/repositories/__init__.py",
+   "backend/app/repositories/executions.py",
+   "backend/app/schemas/classification.py",
+   "backend/app/schemas/executions.py",
+   "backend/app/services/__init__.py",
+   "backend/app/services/app_settings.py"
+  ],
+  "backend/app/services/tickets.py": [
+   "backend/app/core/clock.py",
+   "backend/app/core/taxonomy.py",
+   "backend/app/repositories/__init__.py",
+   "backend/app/repositories/executions.py",
+   "backend/app/repositories/tickets.py",
+   "backend/app/schemas/classification.py",
+   "backend/app/schemas/tickets.py"
+  ],
+  "backend/tests/test_live_adapters.py": [
+   "backend/app/core/taxonomy.py",
+   "backend/app/providers/base.py",
+   "backend/app/providers/jev.py",
+   "backend/app/providers/ollama.py",
+   "backend/app/providers/registry.py",
+   "backend/app/schemas/classification.py",
+   "backend/tests/test_providers.py"
+  ]
+ },
+ "neighborMap": {
+  "backend/app/repositories/executions.py": [
+   {
+    "path": "backend/app/core/taxonomy.py",
+    "batchIndex": 3,
+    "symbols": [
+     "Category",
+     "Priority",
+     "Sentiment",
+     "TicketStatus",
+     "Channel",
+     "Provider",
+     "ExecutionStatus",
+     "ComparisonStatus",
+     "BulkJobStatus",
+     "set_active",
+     "reset",
+     "active_version",
+     "active_categories",
+     "is_valid_pair",
+     "as_dict"
+    ]
+   },
+   {
+    "path": "backend/app/api/executions.py",
+    "batchIndex": 3,
+    "symbols": [
+     "list_executions",
+     "get_execution"
+    ]
+   },
+   {
+    "path": "backend/app/api/tickets.py",
+    "batchIndex": 3,
+    "symbols": [
+     "found",
+     "create_ticket",
+     "list_tickets",
+     "get_ticket",
+     "update_ticket",
+     "add_note",
+     "set_final_classification",
+     "delete_ticket"
+    ]
+   },
+   {
+    "path": "backend/app/jobs/bulk.py",
+    "batchIndex": 3,
+    "symbols": [
+     "BulkError",
+     "select_tickets",
+     "create",
+     "already_succeeded",
+     "process_ticket",
+     "finish",
+     "run_job",
+     "mark_interrupted"
+    ]
+   },
+   {
+    "path": "backend/app/services/comparisons.py",
+    "batchIndex": 4,
+    "symbols": [
+     "ComparisonError",
+     "field_comparison",
+     "status_of",
+     "load",
+     "create"
+    ]
+   },
+   {
+    "path": "backend/app/services/evaluation.py",
+    "batchIndex": 5,
+    "symbols": [
+     "rate",
+     "macro_f1",
+     "is_scored",
+     "as_label",
+     "confusion",
+     "field_score",
+     "side_summary",
+     "head_to_head_field",
+     "compute",
+     "summary"
+    ]
+   }
+  ],
+  "backend/app/repositories/tickets.py": [
+   {
+    "path": "backend/app/core/taxonomy.py",
+    "batchIndex": 3,
+    "symbols": [
+     "Category",
+     "Priority",
+     "Sentiment",
+     "TicketStatus",
+     "Channel",
+     "Provider",
+     "ExecutionStatus",
+     "ComparisonStatus",
+     "BulkJobStatus",
+     "set_active",
+     "reset",
+     "active_version",
+     "active_categories",
+     "is_valid_pair",
+     "as_dict"
+    ]
+   },
+   {
+    "path": "backend/app/api/runs.py",
+    "batchIndex": 3,
+    "symbols": [
+     "run_provider",
+     "create_comparison"
+    ]
+   },
+   {
+    "path": "backend/app/api/tickets.py",
+    "batchIndex": 3,
+    "symbols": [
+     "found",
+     "create_ticket",
+     "list_tickets",
+     "get_ticket",
+     "update_ticket",
+     "add_note",
+     "set_final_classification",
+     "delete_ticket"
+    ]
+   },
+   {
+    "path": "backend/app/jobs/bulk.py",
+    "batchIndex": 3,
+    "symbols": [
+     "BulkError",
+     "select_tickets",
+     "create",
+     "already_succeeded",
+     "process_ticket",
+     "finish",
+     "run_job",
+     "mark_interrupted"
+    ]
+   },
+   {
+    "path": "backend/app/services/dashboard.py",
+    "batchIndex": 5,
+    "symbols": [
+     "load_rows",
+     "is_fake",
+     "model_of",
+     "summary",
+     "list_item",
+     "list_comparisons",
+     "detail"
+    ]
+   },
+   {
+    "path": "backend/tests/test_tickets.py",
+    "batchIndex": 6,
+    "symbols": [
+     "api",
+     "create",
+     "classify",
+     "ids",
+     "test_create_assigns_sequential_ids_and_defaults",
+     "test_ids_stay_unique_under_concurrent_creation",
+     "test_get_returns_ticket_or_404",
+     "test_invalid_input_is_rejected",
+     "test_ticket_text_is_kept_exactly",
+     "test_update_changes_only_given_fields",
+     "test_invalid_updates_are_rejected",
+     "test_update_unknown_ticket_is_404",
+     "test_notes_are_appended",
+     "test_manual_classification_is_stored_with_version",
+     "test_inconsistent_classification_is_rejected",
+     "test_search_matches_each_searchable_field",
+     "test_search_treats_input_as_plain_text",
+     "test_filters_by_status_category_and_priority",
+     "test_sorts_by_created_date",
+     "test_sorts_by_priority_most_urgent_first_unclassified_last",
+     "test_pagination_is_bounded",
+     "seed_dependents",
+     "test_delete_removes_ticket_and_its_dependents_only",
+     "test_repeated_delete_is_safe",
+     "test_failed_dependent_delete_keeps_the_ticket",
+     "test_ticket_endpoints_explain_when_database_is_down"
+    ]
+   }
+  ],
+  "backend/app/schemas/bulk_jobs.py": [
+   {
+    "path": "backend/app/core/taxonomy.py",
+    "batchIndex": 3,
+    "symbols": [
+     "Category",
+     "Priority",
+     "Sentiment",
+     "TicketStatus",
+     "Channel",
+     "Provider",
+     "ExecutionStatus",
+     "ComparisonStatus",
+     "BulkJobStatus",
+     "set_active",
+     "reset",
+     "active_version",
+     "active_categories",
+     "is_valid_pair",
+     "as_dict"
+    ]
+   },
+   {
+    "path": "backend/app/api/bulk_jobs.py",
+    "batchIndex": 3,
+    "symbols": [
+     "create_bulk_job",
+     "list_bulk_jobs",
+     "get_bulk_job"
+    ]
+   },
+   {
+    "path": "backend/app/jobs/bulk.py",
+    "batchIndex": 3,
+    "symbols": [
+     "BulkError",
+     "select_tickets",
+     "create",
+     "already_succeeded",
+     "process_ticket",
+     "finish",
+     "run_job",
+     "mark_interrupted"
+    ]
+   },
+   {
+    "path": "backend/tests/test_schemas.py",
+    "batchIndex": 4,
+    "symbols": [
+     "test_valid_classification_is_accepted",
+     "test_invalid_classification_is_rejected",
+     "test_final_classification_records_taxonomy_version",
+     "test_jev_result_can_mark_free_text_unsupported",
+     "test_execution_records_taxonomy_version",
+     "test_ticket_create_trims_short_fields_and_keeps_description_exactly",
+     "test_invalid_ticket_input_is_rejected",
+     "test_ticket_create_rejects_missing_required_field",
+     "test_bulk_job_needs_exactly_one_selection",
+     "test_bulk_job_needs_a_provider"
+    ]
+   }
+  ],
+  "backend/app/schemas/classification.py": [
+   {
+    "path": "backend/app/core/taxonomy.py",
+    "batchIndex": 3,
+    "symbols": [
+     "Category",
+     "Priority",
+     "Sentiment",
+     "TicketStatus",
+     "Channel",
+     "Provider",
+     "ExecutionStatus",
+     "ComparisonStatus",
+     "BulkJobStatus",
+     "set_active",
+     "reset",
+     "active_version",
+     "active_categories",
+     "is_valid_pair",
+     "as_dict"
+    ]
+   },
+   {
+    "path": "backend/app/api/tickets.py",
+    "batchIndex": 3,
+    "symbols": [
+     "found",
+     "create_ticket",
+     "list_tickets",
+     "get_ticket",
+     "update_ticket",
+     "add_note",
+     "set_final_classification",
+     "delete_ticket"
+    ]
+   },
+   {
+    "path": "backend/app/schemas/executions.py",
+    "batchIndex": 4,
+    "symbols": [
+     "Usage",
+     "PricingSnapshot",
+     "EstimatedCost",
+     "ProviderError",
+     "Execution"
+    ]
+   },
+   {
+    "path": "backend/app/schemas/tickets.py",
+    "batchIndex": 4,
+    "symbols": [
+     "_not_blank",
+     "_blank_to_none",
+     "TicketCreate",
+     "TicketUpdate",
+     "NoteCreate",
+     "Customer",
+     "OrderInfo",
+     "Note",
+     "Source",
+     "LatestRun",
+     "Ticket",
+     "TicketPage"
+    ]
+   },
+   {
+    "path": "backend/app/services/csv_import.py",
+    "batchIndex": 5,
+    "symbols": [
+     "CsvFileError",
+     "canonical_values",
+     "normalize",
+     "fingerprint",
+     "read_rows",
+     "row_errors",
+     "validate_row",
+     "save",
+     "import_csv"
+    ]
+   },
+   {
+    "path": "backend/tests/test_providers.py",
+    "batchIndex": 4,
+    "symbols": [
+     "ticket",
+     "test_input_holds_only_ticket_content_and_taxonomy",
+     "test_http_status_maps_to_a_safe_failure",
+     "test_redaction_removes_credentials_at_any_depth",
+     "test_mock_output_follows_the_normalized_schema",
+     "test_mock_jev_marks_free_text_unsupported_and_gpt_writes_it",
+     "test_mock_is_deterministic",
+     "test_mock_failures_can_be_triggered_from_the_title",
+     "mock_settings",
+     "test_successful_run_is_recorded",
+     "test_record_exists_before_the_provider_answers",
+     "test_failed_runs_are_still_recorded",
+     "test_missing_key_is_recorded_as_not_configured",
+     "test_unexpected_crash_is_recorded_not_raised",
+     "test_payloads_are_redacted_before_saving"
+    ]
+   },
+   {
+    "path": "backend/tests/test_schemas.py",
+    "batchIndex": 4,
+    "symbols": [
+     "test_valid_classification_is_accepted",
+     "test_invalid_classification_is_rejected",
+     "test_final_classification_records_taxonomy_version",
+     "test_jev_result_can_mark_free_text_unsupported",
+     "test_execution_records_taxonomy_version",
+     "test_ticket_create_trims_short_fields_and_keeps_description_exactly",
+     "test_invalid_ticket_input_is_rejected",
+     "test_ticket_create_rejects_missing_required_field",
+     "test_bulk_job_needs_exactly_one_selection",
+     "test_bulk_job_needs_a_provider"
+    ]
+   }
+  ],
+  "backend/app/services/executions.py": [
+   {
+    "path": "backend/app/core/clock.py",
+    "batchIndex": 3,
+    "symbols": [
+     "utc_now"
+    ]
+   },
+   {
+    "path": "backend/app/core/pricing.py",
+    "batchIndex": 3,
+    "symbols": [
+     "local_rates",
+     "snapshot_for",
+     "estimate"
+    ]
+   },
+   {
+    "path": "backend/app/core/redaction.py",
+    "batchIndex": 3,
+    "symbols": [
+     "redact"
+    ]
+   },
+   {
+    "path": "backend/app/core/settings.py",
+    "batchIndex": 5,
+    "symbols": [
+     "Settings",
+     "get_settings",
+     "is_local"
+    ]
+   },
+   {
+    "path": "backend/app/core/taxonomy.py",
+    "batchIndex": 3,
+    "symbols": [
+     "Category",
+     "Priority",
+     "Sentiment",
+     "TicketStatus",
+     "Channel",
+     "Provider",
+     "ExecutionStatus",
+     "ComparisonStatus",
+     "BulkJobStatus",
+     "set_active",
+     "reset",
+     "active_version",
+     "active_categories",
+     "is_valid_pair",
+     "as_dict"
+    ]
+   },
+   {
+    "path": "backend/app/providers/base.py",
+    "batchIndex": 3,
+    "symbols": [
+     "ProviderInput",
+     "build_input",
+     "ProviderResult",
+     "ProviderFailure",
+     "failure_for_status",
+     "Adapter"
+    ]
+   },
+   {
+    "path": "backend/app/providers/registry.py",
+    "batchIndex": 3,
+    "symbols": [
+     "provider_labels",
+     "provider_ready",
+     "requested_model",
+     "jev_adapter",
+     "llm_adapter",
+     "get_adapter"
+    ]
+   },
+   {
+    "path": "backend/app/repositories/__init__.py",
+    "batchIndex": 3,
+    "symbols": []
+   },
+   {
+    "path": "backend/app/schemas/executions.py",
+    "batchIndex": 4,
+    "symbols": [
+     "Usage",
+     "PricingSnapshot",
+     "EstimatedCost",
+     "ProviderError",
+     "Execution"
+    ]
+   },
+   {
+    "path": "backend/app/services/__init__.py",
+    "batchIndex": 5,
+    "symbols": []
+   },
+   {
+    "path": "backend/app/services/app_settings.py",
+    "batchIndex": 4,
+    "symbols": [
+     "SettingsError",
+     "next_version",
+     "load_taxonomy",
+     "effective",
+     "active_prompt",
+     "rates_for",
+     "available_models",
+     "check_model",
+     "view",
+     "update_values",
+     "save_prompt",
+     "save_taxonomy",
+     "save_pricing"
+    ]
+   },
+   {
+    "path": "backend/app/api/runs.py",
+    "batchIndex": 3,
+    "symbols": [
+     "run_provider",
+     "create_comparison"
+    ]
+   },
+   {
+    "path": "backend/app/jobs/bulk.py",
+    "batchIndex": 3,
+    "symbols": [
+     "BulkError",
+     "select_tickets",
+     "create",
+     "already_succeeded",
+     "process_ticket",
+     "finish",
+     "run_job",
+     "mark_interrupted"
+    ]
+   },
+   {
+    "path": "backend/tests/test_providers.py",
+    "batchIndex": 4,
+    "symbols": [
+     "ticket",
+     "test_input_holds_only_ticket_content_and_taxonomy",
+     "test_http_status_maps_to_a_safe_failure",
+     "test_redaction_removes_credentials_at_any_depth",
+     "test_mock_output_follows_the_normalized_schema",
+     "test_mock_jev_marks_free_text_unsupported_and_gpt_writes_it",
+     "test_mock_is_deterministic",
+     "test_mock_failures_can_be_triggered_from_the_title",
+     "mock_settings",
+     "test_successful_run_is_recorded",
+     "test_record_exists_before_the_provider_answers",
+     "test_failed_runs_are_still_recorded",
+     "test_missing_key_is_recorded_as_not_configured",
+     "test_unexpected_crash_is_recorded_not_raised",
+     "test_payloads_are_redacted_before_saving"
+    ]
+   }
+  ],
+  "backend/app/services/tickets.py": [
+   {
+    "path": "backend/app/core/clock.py",
+    "batchIndex": 3,
+    "symbols": [
+     "utc_now"
+    ]
+   },
+   {
+    "path": "backend/app/core/taxonomy.py",
+    "batchIndex": 3,
+    "symbols": [
+     "Category",
+     "Priority",
+     "Sentiment",
+     "TicketStatus",
+     "Channel",
+     "Provider",
+     "ExecutionStatus",
+     "ComparisonStatus",
+     "BulkJobStatus",
+     "set_active",
+     "reset",
+     "active_version",
+     "active_categories",
+     "is_valid_pair",
+     "as_dict"
+    ]
+   },
+   {
+    "path": "backend/app/repositories/__init__.py",
+    "batchIndex": 3,
+    "symbols": []
+   },
+   {
+    "path": "backend/app/schemas/tickets.py",
+    "batchIndex": 4,
+    "symbols": [
+     "_not_blank",
+     "_blank_to_none",
+     "TicketCreate",
+     "TicketUpdate",
+     "NoteCreate",
+     "Customer",
+     "OrderInfo",
+     "Note",
+     "Source",
+     "LatestRun",
+     "Ticket",
+     "TicketPage"
+    ]
+   }
+  ],
+  "backend/tests/test_live_adapters.py": [
+   {
+    "path": "backend/app/core/taxonomy.py",
+    "batchIndex": 3,
+    "symbols": [
+     "Category",
+     "Priority",
+     "Sentiment",
+     "TicketStatus",
+     "Channel",
+     "Provider",
+     "ExecutionStatus",
+     "ComparisonStatus",
+     "BulkJobStatus",
+     "set_active",
+     "reset",
+     "active_version",
+     "active_categories",
+     "is_valid_pair",
+     "as_dict"
+    ]
+   },
+   {
+    "path": "backend/app/providers/base.py",
+    "batchIndex": 3,
+    "symbols": [
+     "ProviderInput",
+     "build_input",
+     "ProviderResult",
+     "ProviderFailure",
+     "failure_for_status",
+     "Adapter"
+    ]
+   },
+   {
+    "path": "backend/app/providers/jev.py",
+    "batchIndex": 3,
+    "symbols": [
+     "choice",
+     "build_request",
+     "build_subcategory_request",
+     "parse_output",
+     "total_usage",
+     "JevAdapter"
+    ]
+   },
+   {
+    "path": "backend/app/providers/ollama.py",
+    "batchIndex": 3,
+    "symbols": [
+     "schema",
+     "system_prompt",
+     "build_request",
+     "OllamaAdapter"
+    ]
+   },
+   {
+    "path": "backend/app/providers/registry.py",
+    "batchIndex": 3,
+    "symbols": [
+     "provider_labels",
+     "provider_ready",
+     "requested_model",
+     "jev_adapter",
+     "llm_adapter",
+     "get_adapter"
+    ]
+   },
+   {
+    "path": "backend/tests/test_providers.py",
+    "batchIndex": 4,
+    "symbols": [
+     "ticket",
+     "test_input_holds_only_ticket_content_and_taxonomy",
+     "test_http_status_maps_to_a_safe_failure",
+     "test_redaction_removes_credentials_at_any_depth",
+     "test_mock_output_follows_the_normalized_schema",
+     "test_mock_jev_marks_free_text_unsupported_and_gpt_writes_it",
+     "test_mock_is_deterministic",
+     "test_mock_failures_can_be_triggered_from_the_title",
+     "mock_settings",
+     "test_successful_run_is_recorded",
+     "test_record_exists_before_the_provider_answers",
+     "test_failed_runs_are_still_recorded",
+     "test_missing_key_is_recorded_as_not_configured",
+     "test_unexpected_crash_is_recorded_not_raised",
+     "test_payloads_are_redacted_before_saving"
+    ]
+   }
+  ]
+ }
+}

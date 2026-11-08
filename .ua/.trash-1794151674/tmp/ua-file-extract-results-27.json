@@ -1,0 +1,206 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 2,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 2,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 2
+    }
+  },
+  "results": [
+    {
+      "path": ".context/DEPLOYMENT_DECISIONS.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 115,
+      "nonEmptyLines": 83,
+      "sections": [
+        {
+          "heading": "Deployment readiness",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Non-negotiable constraints",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Decisions the owner must make",
+          "level": 2,
+          "line": 13
+        },
+        {
+          "heading": "What the app already enforces",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Development and production settings",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Build and run",
+          "level": 2,
+          "line": 51
+        },
+        {
+          "heading": "Production MongoDB",
+          "level": 2,
+          "line": 74
+        },
+        {
+          "heading": "Backup, restore and migration",
+          "level": 2,
+          "line": 80
+        },
+        {
+          "heading": "Logging and monitoring",
+          "level": 2,
+          "line": 94
+        },
+        {
+          "heading": "Readiness checklist",
+          "level": 2,
+          "line": 100
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    },
+    {
+      "path": ".context/implementation.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 403,
+      "nonEmptyLines": 338,
+      "sections": [
+        {
+          "heading": "End-to-End Implementation Plan",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Phase 0 — Repository and agent setup",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "Phase 1 — Scaffold the frontend and backend",
+          "level": 2,
+          "line": 21
+        },
+        {
+          "heading": "Phase 2 — Local configuration and MongoDB connectivity",
+          "level": 2,
+          "line": 87
+        },
+        {
+          "heading": "Phase 3 — Domain schemas and taxonomy",
+          "level": 2,
+          "line": 106
+        },
+        {
+          "heading": "Phase 4 — Ticket CRUD and sequential IDs",
+          "level": 2,
+          "line": 120
+        },
+        {
+          "heading": "Phase 5 — Frontend shell and design system",
+          "level": 2,
+          "line": 140
+        },
+        {
+          "heading": "Phase 6 — Ticket screens",
+          "level": 2,
+          "line": 157
+        },
+        {
+          "heading": "Phase 7 — CSV template, import, and export",
+          "level": 2,
+          "line": 174
+        },
+        {
+          "heading": "Phase 8 — Provider adapter contracts and mock mode",
+          "level": 2,
+          "line": 194
+        },
+        {
+          "heading": "Phase 9 — Jev integration",
+          "level": 2,
+          "line": 207
+        },
+        {
+          "heading": "Phase 10 — GPT integration",
+          "level": 2,
+          "line": 228
+        },
+        {
+          "heading": "Phase 11 — Execution history and cost logging",
+          "level": 2,
+          "line": 245
+        },
+        {
+          "heading": "Phase 12 — Comparison workflow",
+          "level": 2,
+          "line": 263
+        },
+        {
+          "heading": "Phase 13 — Bulk processing",
+          "level": 2,
+          "line": 281
+        },
+        {
+          "heading": "Phase 14 — Evaluation dataset and analytics",
+          "level": 2,
+          "line": 298
+        },
+        {
+          "heading": "Phase 15 — Settings page",
+          "level": 2,
+          "line": 317
+        },
+        {
+          "heading": "Phase 16 — Testing, reliability, and security review",
+          "level": 2,
+          "line": 335
+        },
+        {
+          "heading": "Phase 17 — Local release and documentation",
+          "level": 2,
+          "line": 352
+        },
+        {
+          "heading": "Phase 18 — Deployment readiness (platform intentionally undecided)",
+          "level": 2,
+          "line": 366
+        },
+        {
+          "heading": "Final definition of done",
+          "level": 2,
+          "line": 393
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 21
+      }
+    }
+  ]
+}

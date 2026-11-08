@@ -1,0 +1,263 @@
+{
+  "version": 1,
+  "ok": true,
+  "files": [
+    {
+      "filePath": ".context/PROGRESS.md",
+      "beforeCount": 1,
+      "afterCount": 1,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 0,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": ".context/sample_tickets_100_v2.csv",
+      "beforeCount": 0,
+      "afterCount": 1,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 0,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "backend/app/api/app_settings.py",
+      "beforeCount": 0,
+      "afterCount": 8,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 7,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "backend/app/api/bulk_jobs.py",
+      "beforeCount": 0,
+      "afterCount": 4,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 3,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "backend/app/api/evaluation.py",
+      "beforeCount": 0,
+      "afterCount": 2,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 1,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "backend/app/jobs/bulk.py",
+      "beforeCount": 0,
+      "afterCount": 9,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 8,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "backend/app/repositories/app_settings.py",
+      "beforeCount": 0,
+      "afterCount": 4,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 3,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "backend/app/repositories/bulk_jobs.py",
+      "beforeCount": 0,
+      "afterCount": 9,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 8,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "backend/app/schemas/app_settings.py",
+      "beforeCount": 0,
+      "afterCount": 7,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 6,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "backend/app/services/app_settings.py",
+      "beforeCount": 0,
+      "afterCount": 14,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 13,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "backend/app/services/evaluation.py",
+      "beforeCount": 0,
+      "afterCount": 11,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 10,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "backend/tests/test_app_settings.py",
+      "beforeCount": 0,
+      "afterCount": 1,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 0,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "backend/tests/test_bulk_jobs.py",
+      "beforeCount": 0,
+      "afterCount": 1,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 0,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "backend/tests/test_evaluation.py",
+      "beforeCount": 0,
+      "afterCount": 8,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 7,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "backend/tests/test_production_config.py",
+      "beforeCount": 0,
+      "afterCount": 2,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 1,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "backend/tests/test_retries.py",
+      "beforeCount": 0,
+      "afterCount": 1,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 0,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "e2e/tests/workflow.spec.ts",
+      "beforeCount": 0,
+      "afterCount": 2,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 1,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "frontend/src/features/bulk/BulkBanner.tsx",
+      "beforeCount": 0,
+      "afterCount": 3,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 2,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "frontend/src/features/bulk/BulkRunsPage.tsx",
+      "beforeCount": 0,
+      "afterCount": 5,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 4,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "frontend/src/features/bulk/hooks.ts",
+      "beforeCount": 0,
+      "afterCount": 6,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 5,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "frontend/src/features/dashboard/EvaluationSection.tsx",
+      "beforeCount": 0,
+      "afterCount": 8,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 7,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "frontend/src/features/dashboard/chartStyles.ts",
+      "beforeCount": 0,
+      "afterCount": 2,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 1,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "frontend/src/features/dashboard/parts.tsx",
+      "beforeCount": 0,
+      "afterCount": 3,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 2,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "frontend/src/features/settings/PricingCard.tsx",
+      "beforeCount": 0,
+      "afterCount": 2,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 1,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "frontend/src/features/settings/SettingsPage.tsx",
+      "beforeCount": 0,
+      "afterCount": 6,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 5,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "frontend/src/features/settings/TaxonomyCard.tsx",
+      "beforeCount": 0,
+      "afterCount": 3,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 2,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "frontend/src/features/settings/hooks.ts",
+      "beforeCount": 0,
+      "afterCount": 4,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 3,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "frontend/src/features/tickets/BulkToolbar.tsx",
+      "beforeCount": 0,
+      "afterCount": 2,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 1,
+      "missing": [],
+      "replacements": []
+    }
+  ],
+  "unresolvedFiles": [],
+  "errors": [],
+  "baseCommit": "d6fb162c8d5a6a2e48a1637049312b28a4da59dd",
+  "headCommit": "0e90f7417dc7bba32dfa566ce281e1babcc87877",
+  "graphHash": "4c964165a6a67f9b9c8ce51474e86a9c4c6ebd4eaf2789e3bae6bb229261f052"
+}

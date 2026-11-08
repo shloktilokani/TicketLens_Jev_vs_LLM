@@ -1,0 +1,1207 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 3,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 3,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "backend/app/services/run_report.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 385,
+      "nonEmptyLines": 351,
+      "functions": [
+        {
+          "name": "fmt",
+          "startLine": 68,
+          "endLine": 71,
+          "params": [
+            "value",
+            "digits",
+            "suffix"
+          ]
+        },
+        {
+          "name": "pct",
+          "startLine": 74,
+          "endLine": 75,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "secs",
+          "startLine": 78,
+          "endLine": 79,
+          "params": [
+            "ms"
+          ]
+        },
+        {
+          "name": "table",
+          "startLine": 82,
+          "endLine": 96,
+          "params": [
+            "headers",
+            "rows",
+            "numeric"
+          ]
+        },
+        {
+          "name": "agreement_chart",
+          "startLine": 99,
+          "endLine": 117,
+          "params": [
+            "per_field"
+          ]
+        },
+        {
+          "name": "speed_chart",
+          "startLine": 120,
+          "endLine": 160,
+          "params": [
+            "rows"
+          ]
+        },
+        {
+          "name": "word",
+          "startLine": 163,
+          "endLine": 167,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "mark",
+          "startLine": 170,
+          "endLine": 173,
+          "params": [
+            "match"
+          ]
+        },
+        {
+          "name": "ticket_rows",
+          "startLine": 176,
+          "endLine": 195,
+          "params": [
+            "rows"
+          ]
+        },
+        {
+          "name": "side",
+          "startLine": 198,
+          "endLine": 200,
+          "params": [
+            "key"
+          ]
+        },
+        {
+          "name": "accuracy_section",
+          "startLine": 203,
+          "endLine": 244,
+          "params": [
+            "accuracy"
+          ]
+        },
+        {
+          "name": "render",
+          "startLine": 247,
+          "endLine": 385,
+          "params": [
+            "meta",
+            "m",
+            "rows",
+            "accuracy"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "fmt",
+          "line": 68,
+          "isDefault": false
+        },
+        {
+          "name": "pct",
+          "line": 74,
+          "isDefault": false
+        },
+        {
+          "name": "secs",
+          "line": 78,
+          "isDefault": false
+        },
+        {
+          "name": "table",
+          "line": 82,
+          "isDefault": false
+        },
+        {
+          "name": "agreement_chart",
+          "line": 99,
+          "isDefault": false
+        },
+        {
+          "name": "speed_chart",
+          "line": 120,
+          "isDefault": false
+        },
+        {
+          "name": "word",
+          "line": 163,
+          "isDefault": false
+        },
+        {
+          "name": "mark",
+          "line": 170,
+          "isDefault": false
+        },
+        {
+          "name": "ticket_rows",
+          "line": 176,
+          "isDefault": false
+        },
+        {
+          "name": "side",
+          "line": 198,
+          "isDefault": false
+        },
+        {
+          "name": "accuracy_section",
+          "line": 203,
+          "isDefault": false
+        },
+        {
+          "name": "render",
+          "line": 247,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "table",
+          "callee": "frozenset",
+          "lineNumber": 82
+        },
+        {
+          "caller": "table",
+          "callee": "\"\".join",
+          "lineNumber": 83
+        },
+        {
+          "caller": "table",
+          "callee": "enumerate",
+          "lineNumber": 85
+        },
+        {
+          "caller": "table",
+          "callee": "\"\".join",
+          "lineNumber": 87
+        },
+        {
+          "caller": "table",
+          "callee": "\"\".join",
+          "lineNumber": 89
+        },
+        {
+          "caller": "table",
+          "callee": "enumerate",
+          "lineNumber": 91
+        },
+        {
+          "caller": "agreement_chart",
+          "callee": "enumerate",
+          "lineNumber": 104
+        },
+        {
+          "caller": "agreement_chart",
+          "callee": "pct",
+          "lineNumber": 108
+        },
+        {
+          "caller": "agreement_chart",
+          "callee": "parts.append",
+          "lineNumber": 109
+        },
+        {
+          "caller": "agreement_chart",
+          "callee": "max",
+          "lineNumber": 112
+        },
+        {
+          "caller": "agreement_chart",
+          "callee": "len",
+          "lineNumber": 116
+        },
+        {
+          "caller": "agreement_chart",
+          "callee": "\"\".join",
+          "lineNumber": 117
+        },
+        {
+          "caller": "speed_chart",
+          "callee": "(r[\"jev\"] or {}).get",
+          "lineNumber": 125
+        },
+        {
+          "caller": "speed_chart",
+          "callee": "(r[\"llm\"] or {}).get",
+          "lineNumber": 126
+        },
+        {
+          "caller": "speed_chart",
+          "callee": "max",
+          "lineNumber": 130
+        },
+        {
+          "caller": "speed_chart",
+          "callee": "range",
+          "lineNumber": 138
+        },
+        {
+          "caller": "speed_chart",
+          "callee": "parts.append",
+          "lineNumber": 140
+        },
+        {
+          "caller": "speed_chart",
+          "callee": "len",
+          "lineNumber": 141
+        },
+        {
+          "caller": "speed_chart",
+          "callee": "len",
+          "lineNumber": 142
+        },
+        {
+          "caller": "speed_chart",
+          "callee": "enumerate",
+          "lineNumber": 144
+        },
+        {
+          "caller": "speed_chart",
+          "callee": "parts.append",
+          "lineNumber": 146
+        },
+        {
+          "caller": "speed_chart",
+          "callee": "escape",
+          "lineNumber": 147
+        },
+        {
+          "caller": "speed_chart",
+          "callee": "parts.append",
+          "lineNumber": 150
+        },
+        {
+          "caller": "speed_chart",
+          "callee": "x",
+          "lineNumber": 151
+        },
+        {
+          "caller": "speed_chart",
+          "callee": "x",
+          "lineNumber": 151
+        },
+        {
+          "caller": "speed_chart",
+          "callee": "parts.append",
+          "lineNumber": 155
+        },
+        {
+          "caller": "speed_chart",
+          "callee": "x",
+          "lineNumber": 156
+        },
+        {
+          "caller": "speed_chart",
+          "callee": "escape",
+          "lineNumber": 157
+        },
+        {
+          "caller": "speed_chart",
+          "callee": "secs",
+          "lineNumber": 157
+        },
+        {
+          "caller": "speed_chart",
+          "callee": "len",
+          "lineNumber": 159
+        },
+        {
+          "caller": "speed_chart",
+          "callee": "\"\".join",
+          "lineNumber": 160
+        },
+        {
+          "caller": "word",
+          "callee": "isinstance",
+          "lineNumber": 165
+        },
+        {
+          "caller": "word",
+          "callee": "escape",
+          "lineNumber": 167
+        },
+        {
+          "caller": "word",
+          "callee": "str",
+          "lineNumber": 167
+        },
+        {
+          "caller": "ticket_rows",
+          "callee": "(r[\"jev\"] or {}).get",
+          "lineNumber": 180
+        },
+        {
+          "caller": "ticket_rows",
+          "callee": "(r[\"llm\"] or {}).get",
+          "lineNumber": 181
+        },
+        {
+          "caller": "ticket_rows",
+          "callee": "jr.get",
+          "lineNumber": 184
+        },
+        {
+          "caller": "ticket_rows",
+          "callee": "lr.get",
+          "lineNumber": 184
+        },
+        {
+          "caller": "ticket_rows",
+          "callee": "cells.append",
+          "lineNumber": 185
+        },
+        {
+          "caller": "ticket_rows",
+          "callee": "word",
+          "lineNumber": 185
+        },
+        {
+          "caller": "ticket_rows",
+          "callee": "word",
+          "lineNumber": 185
+        },
+        {
+          "caller": "ticket_rows",
+          "callee": "mark",
+          "lineNumber": 185
+        },
+        {
+          "caller": "ticket_rows",
+          "callee": "(fields.get(f) or {}).get",
+          "lineNumber": 185
+        },
+        {
+          "caller": "ticket_rows",
+          "callee": "fields.get",
+          "lineNumber": 185
+        },
+        {
+          "caller": "ticket_rows",
+          "callee": "out.append",
+          "lineNumber": 186
+        },
+        {
+          "caller": "ticket_rows",
+          "callee": "escape",
+          "lineNumber": 188
+        },
+        {
+          "caller": "ticket_rows",
+          "callee": "escape",
+          "lineNumber": 188
+        },
+        {
+          "caller": "ticket_rows",
+          "callee": "secs",
+          "lineNumber": 192
+        },
+        {
+          "caller": "ticket_rows",
+          "callee": "(r['jev'] or {}).get",
+          "lineNumber": 192
+        },
+        {
+          "caller": "ticket_rows",
+          "callee": "secs",
+          "lineNumber": 192
+        },
+        {
+          "caller": "ticket_rows",
+          "callee": "(r['llm'] or {}).get",
+          "lineNumber": 192
+        },
+        {
+          "caller": "score",
+          "callee": "pct",
+          "lineNumber": 210
+        },
+        {
+          "caller": "exact",
+          "callee": "pct",
+          "lineNumber": 214
+        },
+        {
+          "caller": "accuracy_section",
+          "callee": "score",
+          "lineNumber": 219
+        },
+        {
+          "caller": "accuracy_section",
+          "callee": "score",
+          "lineNumber": 220
+        },
+        {
+          "caller": "accuracy_section",
+          "callee": "fmt",
+          "lineNumber": 221
+        },
+        {
+          "caller": "accuracy_section",
+          "callee": "fmt",
+          "lineNumber": 222
+        },
+        {
+          "caller": "accuracy_section",
+          "callee": "str",
+          "lineNumber": 223
+        },
+        {
+          "caller": "accuracy_section",
+          "callee": "str",
+          "lineNumber": 224
+        },
+        {
+          "caller": "accuracy_section",
+          "callee": "str",
+          "lineNumber": 225
+        },
+        {
+          "caller": "accuracy_section",
+          "callee": "str",
+          "lineNumber": 226
+        },
+        {
+          "caller": "accuracy_section",
+          "callee": "exact",
+          "lineNumber": 242
+        },
+        {
+          "caller": "accuracy_section",
+          "callee": "exact",
+          "lineNumber": 242
+        },
+        {
+          "caller": "accuracy_section",
+          "callee": "table",
+          "lineNumber": 243
+        },
+        {
+          "caller": "accuracy_section",
+          "callee": "set",
+          "lineNumber": 243
+        },
+        {
+          "caller": "accuracy_section",
+          "callee": "range",
+          "lineNumber": 243
+        },
+        {
+          "caller": "render",
+          "callee": "m[\"comparisons\"].get",
+          "lineNumber": 254
+        },
+        {
+          "caller": "render",
+          "callee": "str",
+          "lineNumber": 257
+        },
+        {
+          "caller": "render",
+          "callee": "pct",
+          "lineNumber": 260
+        },
+        {
+          "caller": "render",
+          "callee": "secs",
+          "lineNumber": 261
+        },
+        {
+          "caller": "render",
+          "callee": "secs",
+          "lineNumber": 262
+        },
+        {
+          "caller": "render",
+          "callee": "pct",
+          "lineNumber": 266
+        },
+        {
+          "caller": "render",
+          "callee": "fmt",
+          "lineNumber": 266
+        },
+        {
+          "caller": "render",
+          "callee": "m[\"per_field\"].items",
+          "lineNumber": 267
+        },
+        {
+          "caller": "render",
+          "callee": "secs",
+          "lineNumber": 272
+        },
+        {
+          "caller": "render",
+          "callee": "secs",
+          "lineNumber": 273
+        },
+        {
+          "caller": "render",
+          "callee": "secs",
+          "lineNumber": 274
+        },
+        {
+          "caller": "render",
+          "callee": "secs",
+          "lineNumber": 275
+        },
+        {
+          "caller": "render",
+          "callee": "secs",
+          "lineNumber": 276
+        },
+        {
+          "caller": "render",
+          "callee": "secs",
+          "lineNumber": 282
+        },
+        {
+          "caller": "render",
+          "callee": "str",
+          "lineNumber": 288
+        },
+        {
+          "caller": "render",
+          "callee": "pct",
+          "lineNumber": 289
+        },
+        {
+          "caller": "render",
+          "callee": "\", \".join",
+          "lineNumber": 290
+        },
+        {
+          "caller": "render",
+          "callee": "sorted",
+          "lineNumber": 290
+        },
+        {
+          "caller": "render",
+          "callee": "out[k][\"counts\"].items",
+          "lineNumber": 290
+        },
+        {
+          "caller": "render",
+          "callee": "fmt",
+          "lineNumber": 297
+        },
+        {
+          "caller": "render",
+          "callee": "fmt",
+          "lineNumber": 298
+        },
+        {
+          "caller": "render",
+          "callee": "fmt",
+          "lineNumber": 299
+        },
+        {
+          "caller": "render",
+          "callee": "fmt",
+          "lineNumber": 300
+        },
+        {
+          "caller": "render",
+          "callee": "fmt",
+          "lineNumber": 301
+        },
+        {
+          "caller": "render",
+          "callee": "pct",
+          "lineNumber": 308
+        },
+        {
+          "caller": "render",
+          "callee": "pct",
+          "lineNumber": 308
+        },
+        {
+          "caller": "render",
+          "callee": "pct",
+          "lineNumber": 308
+        },
+        {
+          "caller": "render",
+          "callee": "m[\"jev_confidence\"].items",
+          "lineNumber": 309
+        },
+        {
+          "caller": "render",
+          "callee": "sorted",
+          "lineNumber": 314
+        },
+        {
+          "caller": "render",
+          "callee": "set",
+          "lineNumber": 315
+        },
+        {
+          "caller": "render",
+          "callee": "set",
+          "lineNumber": 315
+        },
+        {
+          "caller": "render",
+          "callee": "dist_rows.append",
+          "lineNumber": 318
+        },
+        {
+          "caller": "render",
+          "callee": "word",
+          "lineNumber": 321
+        },
+        {
+          "caller": "render",
+          "callee": "str",
+          "lineNumber": 322
+        },
+        {
+          "caller": "render",
+          "callee": "m[\"distributions\"][\"jev\"][field].get",
+          "lineNumber": 322
+        },
+        {
+          "caller": "render",
+          "callee": "str",
+          "lineNumber": 323
+        },
+        {
+          "caller": "render",
+          "callee": "m[\"distributions\"][\"llm\"][field].get",
+          "lineNumber": 323
+        },
+        {
+          "caller": "render",
+          "callee": "escape",
+          "lineNumber": 328
+        },
+        {
+          "caller": "render",
+          "callee": "escape",
+          "lineNumber": 329
+        },
+        {
+          "caller": "render",
+          "callee": "word",
+          "lineNumber": 331
+        },
+        {
+          "caller": "render",
+          "callee": "word",
+          "lineNumber": 332
+        },
+        {
+          "caller": "render",
+          "callee": "datetime.fromisoformat(meta[\"created_at\"]).strftime",
+          "lineNumber": 336
+        },
+        {
+          "caller": "render",
+          "callee": "datetime.fromisoformat",
+          "lineNumber": 336
+        },
+        {
+          "caller": "render",
+          "callee": "escape",
+          "lineNumber": 337
+        },
+        {
+          "caller": "render",
+          "callee": "escape",
+          "lineNumber": 344
+        },
+        {
+          "caller": "render",
+          "callee": "escape",
+          "lineNumber": 345
+        },
+        {
+          "caller": "render",
+          "callee": "side",
+          "lineNumber": 346
+        },
+        {
+          "caller": "render",
+          "callee": "escape",
+          "lineNumber": 346
+        },
+        {
+          "caller": "render",
+          "callee": "side",
+          "lineNumber": 346
+        },
+        {
+          "caller": "render",
+          "callee": "escape",
+          "lineNumber": 346
+        },
+        {
+          "caller": "render",
+          "callee": "escape",
+          "lineNumber": 347
+        },
+        {
+          "caller": "render",
+          "callee": "\"\".join",
+          "lineNumber": 349
+        },
+        {
+          "caller": "render",
+          "callee": "accuracy_section",
+          "lineNumber": 350
+        },
+        {
+          "caller": "render",
+          "callee": "agreement_chart",
+          "lineNumber": 353
+        },
+        {
+          "caller": "render",
+          "callee": "table",
+          "lineNumber": 354
+        },
+        {
+          "caller": "render",
+          "callee": "side",
+          "lineNumber": 358
+        },
+        {
+          "caller": "render",
+          "callee": "side",
+          "lineNumber": 358
+        },
+        {
+          "caller": "render",
+          "callee": "speed_chart",
+          "lineNumber": 359
+        },
+        {
+          "caller": "render",
+          "callee": "table",
+          "lineNumber": 360
+        },
+        {
+          "caller": "render",
+          "callee": "table",
+          "lineNumber": 362
+        },
+        {
+          "caller": "render",
+          "callee": "table",
+          "lineNumber": 365
+        },
+        {
+          "caller": "render",
+          "callee": "fmt",
+          "lineNumber": 366
+        },
+        {
+          "caller": "render",
+          "callee": "table",
+          "lineNumber": 370
+        },
+        {
+          "caller": "render",
+          "callee": "table",
+          "lineNumber": 372
+        },
+        {
+          "caller": "render",
+          "callee": "len",
+          "lineNumber": 373
+        },
+        {
+          "caller": "render",
+          "callee": "table",
+          "lineNumber": 374
+        },
+        {
+          "caller": "render",
+          "callee": "table",
+          "lineNumber": 378
+        },
+        {
+          "caller": "render",
+          "callee": "ticket_rows",
+          "lineNumber": 378
+        },
+        {
+          "caller": "render",
+          "callee": "\", \".join",
+          "lineNumber": 382
+        },
+        {
+          "caller": "render",
+          "callee": "escape",
+          "lineNumber": 382
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 12,
+        "functionCount": 12,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "backend/scripts/run_report.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 83,
+      "nonEmptyLines": 68,
+      "functions": [
+        {
+          "name": "load_run",
+          "startLine": 27,
+          "endLine": 34,
+          "params": [
+            "db",
+            "comparison_ids"
+          ]
+        },
+        {
+          "name": "main",
+          "startLine": 37,
+          "endLine": 79,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "load_run",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 37,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "load_run",
+          "callee": "find_in",
+          "lineNumber": 29
+        },
+        {
+          "caller": "load_run",
+          "callee": "sys.exit",
+          "lineNumber": 33
+        },
+        {
+          "caller": "load_run",
+          "callee": "', '.join",
+          "lineNumber": 33
+        },
+        {
+          "caller": "load_run",
+          "callee": "load_rows",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "argparse.ArgumentParser",
+          "lineNumber": 38
+        },
+        {
+          "caller": "main",
+          "callee": "__doc__.split",
+          "lineNumber": 38
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 40
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 41
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 42
+        },
+        {
+          "caller": "main",
+          "callee": "parser.parse_args",
+          "lineNumber": 43
+        },
+        {
+          "caller": "main",
+          "callee": "c.strip",
+          "lineNumber": 45
+        },
+        {
+          "caller": "main",
+          "callee": "args.comparisons.split",
+          "lineNumber": 45
+        },
+        {
+          "caller": "main",
+          "callee": "c.strip",
+          "lineNumber": 45
+        },
+        {
+          "caller": "main",
+          "callee": "get_settings",
+          "lineNumber": 46
+        },
+        {
+          "caller": "main",
+          "callee": "connect",
+          "lineNumber": 47
+        },
+        {
+          "caller": "main",
+          "callee": "load_run",
+          "lineNumber": 50
+        },
+        {
+          "caller": "main",
+          "callee": "summary",
+          "lineNumber": 51
+        },
+        {
+          "caller": "main",
+          "callee": "client.close",
+          "lineNumber": 53
+        },
+        {
+          "caller": "model",
+          "callee": "execution.get",
+          "lineNumber": 59
+        },
+        {
+          "caller": "model",
+          "callee": "execution.get",
+          "lineNumber": 59
+        },
+        {
+          "caller": "main",
+          "callee": "utc_now().isoformat",
+          "lineNumber": 64
+        },
+        {
+          "caller": "main",
+          "callee": "utc_now",
+          "lineNumber": 64
+        },
+        {
+          "caller": "main",
+          "callee": "model",
+          "lineNumber": 65
+        },
+        {
+          "caller": "main",
+          "callee": "model",
+          "lineNumber": 66
+        },
+        {
+          "caller": "main",
+          "callee": "REPORTS.mkdir",
+          "lineNumber": 69
+        },
+        {
+          "caller": "main",
+          "callee": "html_path.write_text",
+          "lineNumber": 71
+        },
+        {
+          "caller": "main",
+          "callee": "render",
+          "lineNumber": 72
+        },
+        {
+          "caller": "main",
+          "callee": "compute",
+          "lineNumber": 72
+        },
+        {
+          "caller": "main",
+          "callee": "(REPORTS / f\"{args.run_id}.json\").write_text",
+          "lineNumber": 75
+        },
+        {
+          "caller": "main",
+          "callee": "json.dumps",
+          "lineNumber": 76
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 78
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "backend/tests/conftest.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 43,
+      "nonEmptyLines": 33,
+      "functions": [
+        {
+          "name": "default_taxonomy",
+          "startLine": 12,
+          "endLine": 16,
+          "params": []
+        },
+        {
+          "name": "no_retry_waits",
+          "startLine": 20,
+          "endLine": 22,
+          "params": [
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_settings",
+          "startLine": 26,
+          "endLine": 28,
+          "params": []
+        },
+        {
+          "name": "test_db",
+          "startLine": 32,
+          "endLine": 43,
+          "params": [
+            "test_settings"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "default_taxonomy",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "no_retry_waits",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "test_settings",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "test_db",
+          "line": 31,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "default_taxonomy",
+          "callee": "taxonomy.reset",
+          "lineNumber": 14
+        },
+        {
+          "caller": "default_taxonomy",
+          "callee": "taxonomy.reset",
+          "lineNumber": 16
+        },
+        {
+          "caller": "no_retry_waits",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_settings",
+          "callee": "Settings",
+          "lineNumber": 28
+        },
+        {
+          "caller": "test_db",
+          "callee": "MongoClient",
+          "lineNumber": 34
+        },
+        {
+          "caller": "test_db",
+          "callee": "client.admin.command",
+          "lineNumber": 36
+        },
+        {
+          "caller": "test_db",
+          "callee": "client.close",
+          "lineNumber": 38
+        },
+        {
+          "caller": "test_db",
+          "callee": "pytest.skip",
+          "lineNumber": 39
+        },
+        {
+          "caller": "test_db",
+          "callee": "client.drop_database",
+          "lineNumber": 40
+        },
+        {
+          "caller": "test_db",
+          "callee": "client.drop_database",
+          "lineNumber": 42
+        },
+        {
+          "caller": "test_db",
+          "callee": "client.close",
+          "lineNumber": 43
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    }
+  ]
+}
