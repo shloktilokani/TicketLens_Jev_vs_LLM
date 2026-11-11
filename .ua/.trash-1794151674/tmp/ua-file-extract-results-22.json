@@ -1,0 +1,548 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 4,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 4,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 4,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "frontend/src/features/tickets/ImportExport.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 205,
+      "nonEmptyLines": 196,
+      "functions": [
+        {
+          "name": "Count",
+          "startLine": 26,
+          "endLine": 33,
+          "params": [
+            "{ label, value }"
+          ]
+        },
+        {
+          "name": "SummaryView",
+          "startLine": 35,
+          "endLine": 95,
+          "params": [
+            "{ summary }"
+          ]
+        },
+        {
+          "name": "ImportDialog",
+          "startLine": 97,
+          "endLine": 182,
+          "params": []
+        },
+        {
+          "name": "ExportLinks",
+          "startLine": 190,
+          "endLine": 205,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ImportDialog",
+          "line": 97,
+          "isDefault": false
+        },
+        {
+          "name": "ExportLinks",
+          "line": 190,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SummaryView",
+          "callee": "summary.duplicate_rows.join",
+          "lineNumber": 49
+        },
+        {
+          "caller": "SummaryView",
+          "callee": "summary.errors.map",
+          "lineNumber": 66
+        },
+        {
+          "caller": "SummaryView",
+          "callee": "summary.preview.map",
+          "lineNumber": 84
+        },
+        {
+          "caller": "ImportDialog",
+          "callee": "useState",
+          "lineNumber": 98
+        },
+        {
+          "caller": "ImportDialog",
+          "callee": "useState",
+          "lineNumber": 99
+        },
+        {
+          "caller": "ImportDialog",
+          "callee": "useImportTickets",
+          "lineNumber": 100
+        },
+        {
+          "caller": "run",
+          "callee": "importer.mutate",
+          "lineNumber": 105
+        },
+        {
+          "caller": "run",
+          "callee": "toast.success",
+          "lineNumber": 110
+        },
+        {
+          "caller": "run",
+          "callee": "toast.error",
+          "lineNumber": 114
+        },
+        {
+          "caller": "reset",
+          "callee": "setOpen",
+          "lineNumber": 119
+        },
+        {
+          "caller": "reset",
+          "callee": "setFile",
+          "lineNumber": 121
+        },
+        {
+          "caller": "reset",
+          "callee": "importer.reset",
+          "lineNumber": 122
+        },
+        {
+          "caller": "ImportDialog",
+          "callee": "setOpen",
+          "lineNumber": 129
+        },
+        {
+          "caller": "ImportDialog",
+          "callee": "setFile",
+          "lineNumber": 157
+        },
+        {
+          "caller": "ImportDialog",
+          "callee": "importer.reset",
+          "lineNumber": 158
+        },
+        {
+          "caller": "ImportDialog",
+          "callee": "run",
+          "lineNumber": 166
+        },
+        {
+          "caller": "ImportDialog",
+          "callee": "run",
+          "lineNumber": 172
+        },
+        {
+          "caller": "ExportLinks",
+          "callee": "EXPORTS.map",
+          "lineNumber": 193
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 2,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/features/tickets/TicketListPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 342,
+      "nonEmptyLines": 331,
+      "functions": [
+        {
+          "name": "useListParams",
+          "startLine": 41,
+          "endLine": 54,
+          "params": []
+        },
+        {
+          "name": "Filters",
+          "startLine": 56,
+          "endLine": 126,
+          "params": [
+            "{ query, update }"
+          ]
+        },
+        {
+          "name": "TicketRow",
+          "startLine": 134,
+          "endLine": 187,
+          "params": [
+            "{\n  ticket,\n  selection,\n}"
+          ]
+        },
+        {
+          "name": "NoTickets",
+          "startLine": 189,
+          "endLine": 220,
+          "params": [
+            "{\n  filtered,\n  onClear,\n}"
+          ]
+        },
+        {
+          "name": "TicketTable",
+          "startLine": 222,
+          "endLine": 271,
+          "params": [
+            "{\n  data,\n  selection,\n}"
+          ]
+        },
+        {
+          "name": "TicketListPage",
+          "startLine": 273,
+          "endLine": 342,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "TicketListPage",
+          "line": 273,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useListParams",
+          "callee": "useSearchParams",
+          "lineNumber": 42
+        },
+        {
+          "caller": "useListParams",
+          "callee": "Object.fromEntries",
+          "lineNumber": 43
+        },
+        {
+          "caller": "update",
+          "callee": "Object.entries",
+          "lineNumber": 46
+        },
+        {
+          "caller": "update",
+          "callee": "next.set",
+          "lineNumber": 47
+        },
+        {
+          "caller": "update",
+          "callee": "next.delete",
+          "lineNumber": 48
+        },
+        {
+          "caller": "update",
+          "callee": "next.delete",
+          "lineNumber": 50
+        },
+        {
+          "caller": "update",
+          "callee": "setParams",
+          "lineNumber": 51
+        },
+        {
+          "caller": "Filters",
+          "callee": "useTaxonomy",
+          "lineNumber": 57
+        },
+        {
+          "caller": "Filters",
+          "callee": "event.preventDefault",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Filters",
+          "callee": "update",
+          "lineNumber": 65
+        },
+        {
+          "caller": "Filters",
+          "callee": "String(new FormData(event.currentTarget).get(\"q\") ?? \"\").trim",
+          "lineNumber": 66
+        },
+        {
+          "caller": "Filters",
+          "callee": "String",
+          "lineNumber": 66
+        },
+        {
+          "caller": "Filters",
+          "callee": "new FormData(event.currentTarget).get",
+          "lineNumber": 66
+        },
+        {
+          "caller": "Filters",
+          "callee": "Object.keys",
+          "lineNumber": 89
+        },
+        {
+          "caller": "Filters",
+          "callee": "update",
+          "lineNumber": 90
+        },
+        {
+          "caller": "Filters",
+          "callee": "update",
+          "lineNumber": 96
+        },
+        {
+          "caller": "Filters",
+          "callee": "update",
+          "lineNumber": 102
+        },
+        {
+          "caller": "Filters",
+          "callee": "v.split",
+          "lineNumber": 109
+        },
+        {
+          "caller": "Filters",
+          "callee": "update",
+          "lineNumber": 110
+        },
+        {
+          "caller": "Filters",
+          "callee": "SORTS.map",
+          "lineNumber": 117
+        },
+        {
+          "caller": "TicketRow",
+          "callee": "useNavigate",
+          "lineNumber": 141
+        },
+        {
+          "caller": "TicketRow",
+          "callee": "navigate",
+          "lineNumber": 146
+        },
+        {
+          "caller": "TicketRow",
+          "callee": "e.stopPropagation",
+          "lineNumber": 149
+        },
+        {
+          "caller": "TicketRow",
+          "callee": "selection.selected.has",
+          "lineNumber": 155
+        },
+        {
+          "caller": "TicketRow",
+          "callee": "selection.onChange",
+          "lineNumber": 157
+        },
+        {
+          "caller": "TicketRow",
+          "callee": "e.stopPropagation",
+          "lineNumber": 164
+        },
+        {
+          "caller": "TicketRow",
+          "callee": "formatDateTime",
+          "lineNumber": 178
+        },
+        {
+          "caller": "TicketTable",
+          "callee": "data.items.map",
+          "lineNumber": 229
+        },
+        {
+          "caller": "TicketTable",
+          "callee": "pageIds.every",
+          "lineNumber": 241
+        },
+        {
+          "caller": "TicketTable",
+          "callee": "selection.selected.has",
+          "lineNumber": 241
+        },
+        {
+          "caller": "TicketTable",
+          "callee": "selection.onChange",
+          "lineNumber": 242
+        },
+        {
+          "caller": "TicketTable",
+          "callee": "[\n              \"Ticket ID\",\n              \"Title\",\n              \"Customer\",\n              \"Category\",\n              \"Priority\",\n              \"Status\",\n              \"Created\",\n              \"Latest AI run\",\n            ].map",
+          "lineNumber": 245
+        },
+        {
+          "caller": "TicketTable",
+          "callee": "data.items.map",
+          "lineNumber": 260
+        },
+        {
+          "caller": "TicketListPage",
+          "callee": "useListParams",
+          "lineNumber": 274
+        },
+        {
+          "caller": "TicketListPage",
+          "callee": "useTickets",
+          "lineNumber": 275
+        },
+        {
+          "caller": "TicketListPage",
+          "callee": "FILTER_KEYS.some",
+          "lineNumber": 276
+        },
+        {
+          "caller": "TicketListPage",
+          "callee": "useState",
+          "lineNumber": 277
+        },
+        {
+          "caller": "TicketListPage",
+          "callee": "useState",
+          "lineNumber": 278
+        },
+        {
+          "caller": "TicketListPage",
+          "callee": "setSelected",
+          "lineNumber": 283
+        },
+        {
+          "caller": "TicketListPage",
+          "callee": "next.add",
+          "lineNumber": 286
+        },
+        {
+          "caller": "TicketListPage",
+          "callee": "next.delete",
+          "lineNumber": 287
+        },
+        {
+          "caller": "TicketListPage",
+          "callee": "params.update",
+          "lineNumber": 302
+        },
+        {
+          "caller": "TicketListPage",
+          "callee": "params.update",
+          "lineNumber": 315
+        },
+        {
+          "caller": "TicketListPage",
+          "callee": "String",
+          "lineNumber": 315
+        },
+        {
+          "caller": "TicketListPage",
+          "callee": "setAllEligible",
+          "lineNumber": 331
+        },
+        {
+          "caller": "TicketListPage",
+          "callee": "setSelected",
+          "lineNumber": 332
+        },
+        {
+          "caller": "TicketListPage",
+          "callee": "setAllEligible",
+          "lineNumber": 335
+        },
+        {
+          "caller": "TicketListPage",
+          "callee": "setSelected",
+          "lineNumber": 336
+        }
+      ],
+      "metrics": {
+        "importCount": 13,
+        "exportCount": 1,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/services/queries.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 15,
+      "functions": [
+        {
+          "name": "useTaxonomy",
+          "startLine": 6,
+          "endLine": 11,
+          "params": []
+        },
+        {
+          "name": "useProviderStatus",
+          "startLine": 13,
+          "endLine": 18,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "useTaxonomy",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "useProviderStatus",
+          "line": 13,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useTaxonomy",
+          "callee": "useQuery",
+          "lineNumber": 7
+        },
+        {
+          "caller": "useTaxonomy",
+          "callee": "api",
+          "lineNumber": 9
+        },
+        {
+          "caller": "useProviderStatus",
+          "callee": "useQuery",
+          "lineNumber": 14
+        },
+        {
+          "caller": "useProviderStatus",
+          "callee": "api",
+          "lineNumber": 16
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/types/api.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 346,
+      "nonEmptyLines": 314,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

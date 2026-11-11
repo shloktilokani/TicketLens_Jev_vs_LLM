@@ -1,0 +1,15 @@
+{
+ "issues": [],
+ "warnings": [
+  "orphan document:e2e/personas/customers/angry-impatient.md",
+  "orphan document:e2e/personas/customers/rambling-multi-issue.md",
+  "orphan config:.claude/settings.json",
+  "orphan file:backend/app/__init__.py",
+  "orphan file:backend/app/jobs/__init__.py",
+  "orphan file:backend/app/schemas/__init__.py",
+  "orphan file:backend/tests/__init__.py",
+  "orphan file:frontend/src/features/settings/.gitkeep",
+  "orphan file:frontend/src/services/.gitkeep",
+  "orphan file:frontend/src/types/.gitkeep"
+ ]
+}

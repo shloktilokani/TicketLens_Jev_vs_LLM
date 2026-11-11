@@ -1,0 +1,22 @@
+{
+ "batchIndex": 13,
+ "files": [
+  {
+   "path": "backend/app/repositories/app_settings.py",
+   "language": "python",
+   "sizeLines": 33,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/tests/workflow.spec.ts",
+   "language": "typescript",
+   "sizeLines": 109,
+   "fileCategory": "code"
+  }
+ ],
+ "batchImportData": {
+  "backend/app/repositories/app_settings.py": [],
+  "e2e/tests/workflow.spec.ts": []
+ },
+ "neighborMap": {}
+}

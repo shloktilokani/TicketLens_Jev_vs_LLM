@@ -1,0 +1,780 @@
+{
+ "nodes": [
+  {
+   "id": "document:.context/DEPLOYMENT_DECISIONS.md",
+   "type": "document",
+   "name": "DEPLOYMENT_DECISIONS.md",
+   "filePath": ".context/DEPLOYMENT_DECISIONS.md",
+   "summary": "Lists the hosting, database, authentication, domain, backup and budget decisions the owner must make before any cloud deployment, plus non-negotiable constraints such as never deploying the no-auth demo publicly.",
+   "tags": [
+    "documentation",
+    "deployment",
+    "security",
+    "decision-record"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "document:.context/PROGRESS.md",
+   "type": "document",
+   "name": "PROGRESS.md",
+   "filePath": ".context/PROGRESS.md",
+   "summary": "Living status log of the 19-phase build: phase checklist, blockers, spec gaps and assumptions, and dated notes per phase. It also records the required fix to the sample dataset before any paid evaluation.",
+   "tags": [
+    "documentation",
+    "project-status",
+    "changelog",
+    "development"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "document:.context/ROADMAP.md",
+   "type": "document",
+   "name": "ROADMAP.md",
+   "filePath": ".context/ROADMAP.md",
+   "summary": "Plain-language table of all phases with where the owner's input is needed, followed by step-by-step owner plans for MongoDB, API keys, model and price choice, spend approval, dataset review and deployment decisions.",
+   "tags": [
+    "documentation",
+    "roadmap",
+    "project-planning",
+    "owner-input"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "document:.context/ai-evaluation.md",
+   "type": "document",
+   "name": "ai-evaluation.md",
+   "filePath": ".context/ai-evaluation.md",
+   "summary": "Specifies the shared classification contract and taxonomy, Jev and GPT adapter behaviour, fair comparison rules, the labelled dataset, execution logging, cost calculation, retries and privacy handling.",
+   "tags": [
+    "documentation",
+    "ai-evaluation",
+    "taxonomy",
+    "cost-logging",
+    "provider-contract"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "document:.context/architecture.md",
+   "type": "document",
+   "name": "architecture.md",
+   "filePath": ".context/architecture.md",
+   "summary": "Describes the local-first system: React UI, FastAPI backend and local MongoDB, the provider adapter boundary, canonical provider input, request flows for runs, bulk, import and deletion, and the deployment boundary.",
+   "tags": [
+    "documentation",
+    "architecture",
+    "provider-adapters",
+    "request-flows",
+    "system-design"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "document:.context/code-size-standards.md",
+   "type": "document",
+   "name": "code-size-standards.md",
+   "filePath": ".context/code-size-standards.md",
+   "summary": "Owner-mandated standards for keeping the codebase small without losing functionality or security: research basis, thresholds for sharing code, per-task rules, and enforcement through tools such as Ruff complexity checks.",
+   "tags": [
+    "documentation",
+    "coding-standards",
+    "code-quality",
+    "development"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "document:.context/data-model.md",
+   "type": "document",
+   "name": "data-model.md",
+   "filePath": ".context/data-model.md",
+   "summary": "Defines the `ticketlens` MongoDB collections (tickets, evaluation_labels, ai_executions, comparisons, bulk_jobs, app_settings, counters), their document shapes, required indexes and deletion behaviour.",
+   "tags": [
+    "documentation",
+    "database",
+    "schema-definition",
+    "mongodb"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "document:.context/design.md",
+   "type": "document",
+   "name": "design.md",
+   "filePath": ".context/design.md",
+   "summary": "Frontend design specification for a Linear-inspired dashboard: application shell, routes, each page's layout and states, CSV import/export UX, theme tokens, accessibility rules and non-goals.",
+   "tags": [
+    "documentation",
+    "frontend-design",
+    "ui-spec",
+    "accessibility"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "document:.context/implementation.md",
+   "type": "document",
+   "name": "implementation.md",
+   "filePath": ".context/implementation.md",
+   "summary": "Authoritative sequential build plan from Phase 0 repository setup to Phase 18 deployment readiness, with steps and acceptance criteria per phase and a final definition of done.",
+   "tags": [
+    "documentation",
+    "implementation-plan",
+    "acceptance-criteria",
+    "project-planning"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "document:.context/requirements.md",
+   "type": "document",
+   "name": "requirements.md",
+   "filePath": ".context/requirements.md",
+   "summary": "Product and technical requirements for TicketLens, a single-user demo for fictional marketplace ShopKart: ticket lifecycle and fields, classification taxonomy, provider behaviour, comparison, CSV, dashboard, settings and non-functional needs.",
+   "tags": [
+    "documentation",
+    "requirements",
+    "product-spec",
+    "taxonomy"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "table:.context/sample_tickets_100.csv:sample_tickets_100",
+   "type": "table",
+   "name": "sample_tickets_100.csv",
+   "filePath": ".context/sample_tickets_100.csv",
+   "summary": "100 fictional labelled ShopKart tickets, balanced across six categories and four channels, with expected category, subcategory, priority, sentiment and escalation columns. Every title equals its expected_subcategory, so it leaks a label and PROGRESS.md bars it from evaluation until corrected.",
+   "tags": [
+    "sample-data",
+    "evaluation-dataset",
+    "synthetic-data",
+    "csv-import",
+    "ground-truth"
+   ],
+   "complexity": "moderate",
+   "languageNotes": "The file starts with a UTF-8 byte order mark, so readers need `utf-8-sig` to get a clean first column name."
+  },
+  {
+   "id": "table:.context/sample_tickets_template.csv:sample_tickets_template",
+   "type": "table",
+   "name": "sample_tickets_template.csv",
+   "filePath": ".context/sample_tickets_template.csv",
+   "summary": "Header-only CSV listing the 12 ticket import columns: seven ticket fields and five expected_* label fields. `test_csv.py` compares it to the importer's COLUMNS constant, which the template download endpoint uses to build its response.",
+   "tags": [
+    "csv-import",
+    "template",
+    "schema-definition",
+    "data-format"
+   ],
+   "complexity": "simple"
+  }
+ ],
+ "edges": [
+  {
+   "source": "document:.context/PROGRESS.md",
+   "target": "file:backend/app/main.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/PROGRESS.md",
+   "target": "file:backend/app/core/settings.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/PROGRESS.md",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/PROGRESS.md",
+   "target": "file:backend/app/core/pricing.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/PROGRESS.md",
+   "target": "file:backend/app/repositories/database.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/PROGRESS.md",
+   "target": "file:backend/app/repositories/tickets.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/PROGRESS.md",
+   "target": "file:backend/app/repositories/comparisons.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/PROGRESS.md",
+   "target": "file:backend/app/services/csv_import.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/PROGRESS.md",
+   "target": "file:backend/app/services/csv_export.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/PROGRESS.md",
+   "target": "file:backend/app/services/comparisons.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/PROGRESS.md",
+   "target": "file:backend/app/services/executions.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/PROGRESS.md",
+   "target": "file:backend/app/services/run_report.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/PROGRESS.md",
+   "target": "file:backend/app/providers/registry.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/PROGRESS.md",
+   "target": "file:backend/app/providers/jev.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/PROGRESS.md",
+   "target": "file:backend/app/providers/ollama.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/PROGRESS.md",
+   "target": "file:backend/app/providers/mock.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/PROGRESS.md",
+   "target": "file:frontend/src/app/AppShell.tsx",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/PROGRESS.md",
+   "target": "file:frontend/src/app/router.tsx",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/PROGRESS.md",
+   "target": "file:frontend/src/features/compare/ComparePage.tsx",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/PROGRESS.md",
+   "target": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/PROGRESS.md",
+   "target": "document:.context/implementation.md",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/PROGRESS.md",
+   "target": "document:.context/ROADMAP.md",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/PROGRESS.md",
+   "target": "document:README.md",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/PROGRESS.md",
+   "target": "table:.context/sample_tickets_100.csv:sample_tickets_100",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/ROADMAP.md",
+   "target": "document:.context/implementation.md",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/ROADMAP.md",
+   "target": "document:.context/DEPLOYMENT_DECISIONS.md",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/ROADMAP.md",
+   "target": "config:backend/.env.example",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/ai-evaluation.md",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/ai-evaluation.md",
+   "target": "file:backend/app/core/pricing.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/ai-evaluation.md",
+   "target": "file:backend/app/schemas/classification.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/ai-evaluation.md",
+   "target": "file:backend/app/schemas/executions.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/ai-evaluation.md",
+   "target": "file:backend/app/providers/base.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/ai-evaluation.md",
+   "target": "file:backend/app/providers/jev.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/ai-evaluation.md",
+   "target": "file:backend/app/providers/definitions.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/ai-evaluation.md",
+   "target": "file:backend/app/services/executions.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/ai-evaluation.md",
+   "target": "file:backend/app/services/comparisons.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/ai-evaluation.md",
+   "target": "document:.context/requirements.md",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/ai-evaluation.md",
+   "target": "table:.context/sample_tickets_100.csv:sample_tickets_100",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/architecture.md",
+   "target": "file:backend/app/main.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/architecture.md",
+   "target": "file:backend/app/providers/base.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/architecture.md",
+   "target": "file:backend/app/providers/jev.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/architecture.md",
+   "target": "file:backend/app/providers/definitions.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/architecture.md",
+   "target": "file:backend/app/providers/ollama.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/architecture.md",
+   "target": "file:backend/app/providers/registry.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/architecture.md",
+   "target": "file:backend/app/services/csv_import.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/architecture.md",
+   "target": "document:.context/data-model.md",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/code-size-standards.md",
+   "target": "document:AGENTS.md",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/code-size-standards.md",
+   "target": "document:.context/architecture.md",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/code-size-standards.md",
+   "target": "config:backend/pyproject.toml",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/data-model.md",
+   "target": "file:backend/app/repositories/database.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/data-model.md",
+   "target": "file:backend/app/repositories/tickets.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/data-model.md",
+   "target": "file:backend/app/repositories/executions.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/data-model.md",
+   "target": "file:backend/app/repositories/comparisons.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/data-model.md",
+   "target": "file:backend/app/repositories/labels.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/data-model.md",
+   "target": "file:backend/app/schemas/tickets.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/data-model.md",
+   "target": "file:backend/app/schemas/executions.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/data-model.md",
+   "target": "file:backend/app/schemas/comparisons.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/data-model.md",
+   "target": "file:backend/app/schemas/bulk_jobs.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/design.md",
+   "target": "file:frontend/src/app/AppShell.tsx",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/design.md",
+   "target": "file:frontend/src/app/router.tsx",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/design.md",
+   "target": "file:frontend/src/index.css",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/design.md",
+   "target": "file:frontend/src/features/tickets/TicketListPage.tsx",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/design.md",
+   "target": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/design.md",
+   "target": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/design.md",
+   "target": "file:frontend/src/features/tickets/ImportExport.tsx",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/design.md",
+   "target": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/design.md",
+   "target": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/implementation.md",
+   "target": "file:backend/app/main.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/implementation.md",
+   "target": "file:backend/scripts/init_db.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/implementation.md",
+   "target": "document:.context/requirements.md",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/implementation.md",
+   "target": "document:.context/architecture.md",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/implementation.md",
+   "target": "document:.context/data-model.md",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/implementation.md",
+   "target": "document:.context/ai-evaluation.md",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/implementation.md",
+   "target": "document:.context/design.md",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/implementation.md",
+   "target": "document:.context/DEPLOYMENT_DECISIONS.md",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/implementation.md",
+   "target": "document:AGENTS.md",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/implementation.md",
+   "target": "document:CLAUDE.md",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/implementation.md",
+   "target": "document:README.md",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/implementation.md",
+   "target": "table:.context/sample_tickets_100.csv:sample_tickets_100",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/implementation.md",
+   "target": "table:.context/sample_tickets_template.csv:sample_tickets_template",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/requirements.md",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:.context/requirements.md",
+   "target": "file:backend/app/schemas/tickets.py",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "table:.context/sample_tickets_template.csv:sample_tickets_template",
+   "target": "file:backend/app/services/csv_import.py",
+   "type": "defines_schema",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "table:.context/sample_tickets_template.csv:sample_tickets_template",
+   "target": "file:backend/tests/test_csv.py",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "table:.context/sample_tickets_100.csv:sample_tickets_100",
+   "target": "file:backend/tests/test_csv.py",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "table:.context/sample_tickets_100.csv:sample_tickets_100",
+   "target": "table:.context/sample_tickets_template.csv:sample_tickets_template",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+Found 23 batch files (12 logical batches, 5 multi-part):
+  batch-1-part-1.json: 26 nodes, 96 edges
+  batch-1-part-2.json: 26 nodes, 42 edges
+  batch-1-part-3.json: 28 nodes, 85 edges
+  batch-1-part-4.json: 62 nodes, 196 edges
+  batch-2-part-1.json: 29 nodes, 61 edges
+  batch-2-part-2.json: 34 nodes, 110 edges
+  batch-2-part-3.json: 49 nodes, 141 edges
+  batch-3-part-1.json: 22 nodes, 66 edges
+  batch-3-part-2.json: 40 nodes, 76 edges
+  batch-3-part-3.json: 48 nodes, 118 edges
+  batch-4-part-1.json: 32 nodes, 121 edges
+  batch-4-part-2.json: 35 nodes, 168 edges
+  batch-4-part-3.json: 28 nodes, 58 edges
+  batch-5-part-1.json: 15 nodes, 45 edges
+  batch-5-part-2.json: 36 nodes, 88 edges
+  batch-5-part-3.json: 65 nodes, 146 edges
+  batch-6.json: 12 nodes, 86 edges
+  batch-7.json: 4 nodes, 30 edges
+  batch-8.json: 3 nodes, 1 edges
+  batch-9.json: 5 nodes, 4 edges
+  batch-10.json: 6 nodes, 2 edges
+  batch-11.json: 7 nodes, 7 edges
+  batch-12.json: 25 nodes, 25 edges
+
+Input: 637 nodes, 1772 edges
+
+Fixed (2 corrections):
+     1 × tested_by edges flipped (test → production became production → test)
+     1 × tested_by edges dropped (orphan endpoint or test↔test / prod↔prod pair)
+
+Tested-by linker:
+     0 × tested_by edges produced (path-convention supplement, production → test)
+    30 × production nodes tagged "tested"
+
+Could not fix (2 issues — needs agent review):
+  - Edge function:frontend/src/app/AppShell.tsx:NavList → function:frontend/src/lib/utils.ts:cn (calls): dropped, missing target 'function:frontend/src/lib/utils.ts:cn'
+  - Edge function:frontend/src/app/AppShell.tsx:ProviderBadges → function:frontend/src/lib/utils.ts:cn (calls): dropped, missing target 'function:frontend/src/lib/utils.ts:cn'
+
+Output: 637 nodes, 1769 edges
+
+Imports edge recovery:
+  Recovered 0 `imports` edges from importMap (165 entries scanned)
+
+Written to /Users/shloktilokani/Projects/TicketLens_Jev_vs_LLM/.ua/intermediate/assembled-graph.json (701 KB)

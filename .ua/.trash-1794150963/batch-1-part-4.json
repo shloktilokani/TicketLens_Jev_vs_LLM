@@ -1,0 +1,2417 @@
+{
+ "nodes": [
+  {
+   "id": "file:backend/app/services/dashboard.py",
+   "type": "file",
+   "name": "dashboard.py",
+   "filePath": "backend/app/services/dashboard.py",
+   "summary": "Assembles Overview and Comparisons page data by joining stored comparisons with their runs and tickets, keeping fake-provider runs out of the metrics.",
+   "tags": [
+    "service",
+    "dashboard",
+    "metrics",
+    "comparisons"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/services/dashboard.py:load_rows",
+   "type": "function",
+   "name": "load_rows",
+   "filePath": "backend/app/services/dashboard.py",
+   "lineRange": [
+    13,
+    29
+   ],
+   "summary": "Joins comparison records with their two runs and ticket in the given order, labelling deleted tickets.",
+   "tags": [
+    "dashboard",
+    "data-joining",
+    "comparisons"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/services/dashboard.py:is_fake",
+   "type": "function",
+   "name": "is_fake",
+   "filePath": "backend/app/services/dashboard.py",
+   "lineRange": [
+    32,
+    35
+   ],
+   "summary": "Detects rows where either side used a mock- model.",
+   "tags": [
+    "dashboard",
+    "fake-provider",
+    "filter"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/dashboard.py:model_of",
+   "type": "function",
+   "name": "model_of",
+   "filePath": "backend/app/services/dashboard.py",
+   "lineRange": [
+    38,
+    41
+   ],
+   "summary": "Returns an execution's actual model, falling back to the requested model.",
+   "tags": [
+    "utility",
+    "dashboard",
+    "models"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/dashboard.py:summary",
+   "type": "function",
+   "name": "summary",
+   "filePath": "backend/app/services/dashboard.py",
+   "lineRange": [
+    44,
+    55
+   ],
+   "summary": "Builds the Overview payload of ticket counts, real and excluded comparison counts, models and metrics over real runs only.",
+   "tags": [
+    "dashboard",
+    "metrics",
+    "fake-provider"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/services/dashboard.py:list_item",
+   "type": "function",
+   "name": "list_item",
+   "filePath": "backend/app/services/dashboard.py",
+   "lineRange": [
+    58,
+    73
+   ],
+   "summary": "Flattens a joined row into one Comparisons list entry with models, timings and the fake flag.",
+   "tags": [
+    "dashboard",
+    "comparisons",
+    "serialization"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/dashboard.py:list_comparisons",
+   "type": "function",
+   "name": "list_comparisons",
+   "filePath": "backend/app/services/dashboard.py",
+   "lineRange": [
+    76,
+    81
+   ],
+   "summary": "Returns joined list items for the requested comparisons plus their total count.",
+   "tags": [
+    "dashboard",
+    "comparisons",
+    "listing"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/dashboard.py:detail",
+   "type": "function",
+   "name": "detail",
+   "filePath": "backend/app/services/dashboard.py",
+   "lineRange": [
+    84,
+    86
+   ],
+   "summary": "Returns one comparison joined with its ticket and runs, or None.",
+   "tags": [
+    "dashboard",
+    "comparisons",
+    "detail"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/services/run_metrics.py",
+   "type": "file",
+   "name": "run_metrics.py",
+   "filePath": "backend/app/services/run_metrics.py",
+   "summary": "Computes pure metrics for a set of Jev-vs-LLM comparisons: per-field agreement and Cohen's kappa, latency, tokens, outcomes, cost, Jev confidence, distributions and disagreements.",
+   "tags": [
+    "service",
+    "metrics",
+    "statistics",
+    "evaluation",
+    "pure-functions"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/services/run_metrics.py:percentile",
+   "type": "function",
+   "name": "percentile",
+   "filePath": "backend/app/services/run_metrics.py",
+   "lineRange": [
+    15,
+    20
+   ],
+   "summary": "Computes a nearest-rank percentile, returning None for an empty list.",
+   "tags": [
+    "statistics",
+    "metrics",
+    "utility"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/run_metrics.py:kappa",
+   "type": "function",
+   "name": "kappa",
+   "filePath": "backend/app/services/run_metrics.py",
+   "lineRange": [
+    23,
+    31
+   ],
+   "summary": "Computes Cohen's kappa for label pairs, returning None when there are no pairs or no variety.",
+   "tags": [
+    "statistics",
+    "metrics",
+    "evaluation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/run_metrics.py:latency",
+   "type": "function",
+   "name": "latency",
+   "filePath": "backend/app/services/run_metrics.py",
+   "lineRange": [
+    34,
+    43
+   ],
+   "summary": "Summarizes run durations as count, mean, median, 90th percentile, minimum and maximum.",
+   "tags": [
+    "metrics",
+    "latency",
+    "statistics"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/run_metrics.py:tokens",
+   "type": "function",
+   "name": "tokens",
+   "filePath": "backend/app/services/run_metrics.py",
+   "lineRange": [
+    46,
+    64
+   ],
+   "summary": "Totals and averages provider-reported tokens and output tokens per second, never estimating unreported usage.",
+   "tags": [
+    "metrics",
+    "tokens",
+    "usage"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/services/run_metrics.py:outcomes",
+   "type": "function",
+   "name": "outcomes",
+   "filePath": "backend/app/services/run_metrics.py",
+   "lineRange": [
+    67,
+    74
+   ],
+   "summary": "Counts runs by status and computes the success rate.",
+   "tags": [
+    "metrics",
+    "reliability",
+    "statistics"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/run_metrics.py:cost",
+   "type": "function",
+   "name": "cost",
+   "filePath": "backend/app/services/run_metrics.py",
+   "lineRange": [
+    77,
+    83
+   ],
+   "summary": "Totals the estimated cost of priced runs, returning None when no run has a price.",
+   "tags": [
+    "metrics",
+    "cost",
+    "statistics"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/run_metrics.py:jev_confidence",
+   "type": "function",
+   "name": "jev_confidence",
+   "filePath": "backend/app/services/run_metrics.py",
+   "lineRange": [
+    86,
+    105
+   ],
+   "summary": "Averages Jev's confidence per field, overall and split by whether the LLM agreed.",
+   "tags": [
+    "metrics",
+    "confidence",
+    "evaluation"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/services/run_metrics.py:compute",
+   "type": "function",
+   "name": "compute",
+   "filePath": "backend/app/services/run_metrics.py",
+   "lineRange": [
+    108,
+    178
+   ],
+   "summary": "Produces the full run metrics, using completed comparisons for agreement and every recorded run for latency, tokens, outcomes and cost.",
+   "tags": [
+    "metrics",
+    "evaluation",
+    "orchestration",
+    "statistics"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:backend/app/services/run_report.py",
+   "type": "file",
+   "name": "run_report.py",
+   "filePath": "backend/app/services/run_report.py",
+   "summary": "Renders one test run as a self-contained HTML report with inline CSS, SVG charts and summary tables, escaping stored text and stating that agreement is not accuracy.",
+   "tags": [
+    "service",
+    "report",
+    "html-rendering",
+    "svg-charts",
+    "evaluation"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:backend/app/services/run_report.py:fmt",
+   "type": "function",
+   "name": "fmt",
+   "filePath": "backend/app/services/run_report.py",
+   "lineRange": [
+    68,
+    71
+   ],
+   "summary": "Formats a number with digits and a suffix, or a dash when missing.",
+   "tags": [
+    "formatting",
+    "utility",
+    "report"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/run_report.py:pct",
+   "type": "function",
+   "name": "pct",
+   "filePath": "backend/app/services/run_report.py",
+   "lineRange": [
+    74,
+    75
+   ],
+   "summary": "Formats a ratio as a whole percentage, or a dash when missing.",
+   "tags": [
+    "formatting",
+    "utility",
+    "report"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/run_report.py:secs",
+   "type": "function",
+   "name": "secs",
+   "filePath": "backend/app/services/run_report.py",
+   "lineRange": [
+    78,
+    79
+   ],
+   "summary": "Formats milliseconds as seconds, or a dash when missing.",
+   "tags": [
+    "formatting",
+    "utility",
+    "report"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/run_report.py:table",
+   "type": "function",
+   "name": "table",
+   "filePath": "backend/app/services/run_report.py",
+   "lineRange": [
+    82,
+    96
+   ],
+   "summary": "Renders headers and rows as a horizontally scrollable HTML table with right-aligned numeric columns.",
+   "tags": [
+    "html-rendering",
+    "report",
+    "table"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/run_report.py:agreement_chart",
+   "type": "function",
+   "name": "agreement_chart",
+   "filePath": "backend/app/services/run_report.py",
+   "lineRange": [
+    99,
+    117
+   ],
+   "summary": "Draws an inline SVG of horizontal agreement bars, one per field, on a single 0-100% scale.",
+   "tags": [
+    "svg-charts",
+    "report",
+    "agreement"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/services/run_report.py:speed_chart",
+   "type": "function",
+   "name": "speed_chart",
+   "filePath": "backend/app/services/run_report.py",
+   "lineRange": [
+    120,
+    160
+   ],
+   "summary": "Draws an inline SVG dumbbell chart of Jev and LLM seconds per ticket on one shared scale.",
+   "tags": [
+    "svg-charts",
+    "report",
+    "latency"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/services/run_report.py:word",
+   "type": "function",
+   "name": "word",
+   "filePath": "backend/app/services/run_report.py",
+   "lineRange": [
+    163,
+    167
+   ],
+   "summary": "Returns escaped display text for a field value, showing escalation booleans as words.",
+   "tags": [
+    "formatting",
+    "report",
+    "html-escaping"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/run_report.py:mark",
+   "type": "function",
+   "name": "mark",
+   "filePath": "backend/app/services/run_report.py",
+   "lineRange": [
+    170,
+    173
+   ],
+   "summary": "Returns the HTML marker for agree, differ or not compared.",
+   "tags": [
+    "formatting",
+    "report",
+    "html-rendering"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/run_report.py:ticket_rows",
+   "type": "function",
+   "name": "ticket_rows",
+   "filePath": "backend/app/services/run_report.py",
+   "lineRange": [
+    176,
+    195
+   ],
+   "summary": "Builds one table row per ticket with both sides' answers, agreement marks and timings.",
+   "tags": [
+    "html-rendering",
+    "report",
+    "table"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/services/run_report.py:side",
+   "type": "function",
+   "name": "side",
+   "filePath": "backend/app/services/run_report.py",
+   "lineRange": [
+    198,
+    200
+   ],
+   "summary": "Returns the opening HTML of a legend key with the Jev or LLM color swatch.",
+   "tags": [
+    "html-rendering",
+    "report",
+    "legend"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/run_report.py:render",
+   "type": "function",
+   "name": "render",
+   "filePath": "backend/app/services/run_report.py",
+   "lineRange": [
+    203,
+    335
+   ],
+   "summary": "Assembles the complete report from run metadata, metrics and rows, covering agreement, speed, reliability, usage, confidence, distributions and disagreements.",
+   "tags": [
+    "html-rendering",
+    "report",
+    "orchestration"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:backend/scripts/run_report.py",
+   "type": "file",
+   "name": "run_report.py",
+   "filePath": "backend/scripts/run_report.py",
+   "summary": "Command-line entry point that loads named comparisons from MongoDB and writes a test run's HTML report and JSON record to reports/test-runs.",
+   "tags": [
+    "entry-point",
+    "cli",
+    "report",
+    "script"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/scripts/run_report.py:load_run",
+   "type": "function",
+   "name": "load_run",
+   "filePath": "backend/scripts/run_report.py",
+   "lineRange": [
+    26,
+    33
+   ],
+   "summary": "Loads the named comparisons in the given order and exits with an error when any are missing.",
+   "tags": [
+    "cli",
+    "report",
+    "data-access"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/scripts/run_report.py:main",
+   "type": "function",
+   "name": "main",
+   "filePath": "backend/scripts/run_report.py",
+   "lineRange": [
+    36,
+    73
+   ],
+   "summary": "Parses arguments, loads the run, closes the database client and writes the HTML report and JSON record.",
+   "tags": [
+    "entry-point",
+    "cli",
+    "report"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:backend/tests/test_csv.py",
+   "type": "file",
+   "name": "test_csv.py",
+   "filePath": "backend/tests/test_csv.py",
+   "summary": "API-level tests for CSV import and export, covering row counts, normalization, duplicates, dry runs, label separation, malformed files, formula neutralization and payload exclusion.",
+   "tags": [
+    "test",
+    "csv",
+    "api-test",
+    "import-export"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/tests/test_csv.py:api",
+   "type": "function",
+   "name": "api",
+   "filePath": "backend/tests/test_csv.py",
+   "lineRange": [
+    18,
+    20
+   ],
+   "summary": "Pytest fixture providing a TestClient for an app built with test settings and the test database.",
+   "tags": [
+    "test",
+    "fixture",
+    "api-test"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_csv.py:upload",
+   "type": "function",
+   "name": "upload",
+   "filePath": "backend/tests/test_csv.py",
+   "lineRange": [
+    23,
+    30
+   ],
+   "summary": "Test helper that posts CSV text or bytes to the import route.",
+   "tags": [
+    "test",
+    "helper",
+    "csv"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_csv.py:csv_of",
+   "type": "function",
+   "name": "csv_of",
+   "filePath": "backend/tests/test_csv.py",
+   "lineRange": [
+    33,
+    34
+   ],
+   "summary": "Test helper that joins the import header with the given rows into CSV text.",
+   "tags": [
+    "test",
+    "helper",
+    "csv"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_csv.py:errors_by_row",
+   "type": "function",
+   "name": "errors_by_row",
+   "filePath": "backend/tests/test_csv.py",
+   "lineRange": [
+    37,
+    41
+   ],
+   "summary": "Test helper that groups an import summary's error fields by row number.",
+   "tags": [
+    "test",
+    "helper",
+    "csv"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_csv.py:test_template_matches_the_spec_file",
+   "type": "function",
+   "name": "test_template_matches_the_spec_file",
+   "filePath": "backend/tests/test_csv.py",
+   "lineRange": [
+    47,
+    55
+   ],
+   "summary": "Checks the downloaded template is a CSV attachment whose header matches the specification's template file.",
+   "tags": [
+    "test",
+    "csv",
+    "template"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_csv.py:test_mixed_file_reports_accurate_counts",
+   "type": "function",
+   "name": "test_mixed_file_reports_accurate_counts",
+   "filePath": "backend/tests/test_csv.py",
+   "lineRange": [
+    76,
+    98
+   ],
+   "summary": "Checks a mixed file reports exact imported, invalid and duplicate counts and the fields in error for each row.",
+   "tags": [
+    "test",
+    "csv",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_csv.py:test_valid_rows_are_stored_with_import_source_and_normalised_values",
+   "type": "function",
+   "name": "test_valid_rows_are_stored_with_import_source_and_normalised_values",
+   "filePath": "backend/tests/test_csv.py",
+   "lineRange": [
+    101,
+    111
+   ],
+   "summary": "Checks imported rows keep their import source and fingerprint, normalize the channel and set the sample flag from the label.",
+   "tags": [
+    "test",
+    "csv",
+    "normalization"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_csv.py:test_labels_are_stored_separately_from_tickets",
+   "type": "function",
+   "name": "test_labels_are_stored_separately_from_tickets",
+   "filePath": "backend/tests/test_csv.py",
+   "lineRange": [
+    114,
+    123
+   ],
+   "summary": "Checks expected labels go only to evaluation_labels and do not appear on the ticket document.",
+   "tags": [
+    "test",
+    "csv",
+    "evaluation-labels"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_csv.py:test_reimporting_the_same_file_skips_every_row",
+   "type": "function",
+   "name": "test_reimporting_the_same_file_skips_every_row",
+   "filePath": "backend/tests/test_csv.py",
+   "lineRange": [
+    126,
+    132
+   ],
+   "summary": "Checks re-importing a file adds no tickets and reports its valid rows as duplicates.",
+   "tags": [
+    "test",
+    "csv",
+    "idempotent-import"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_csv.py:test_dry_run_reports_without_writing",
+   "type": "function",
+   "name": "test_dry_run_reports_without_writing",
+   "filePath": "backend/tests/test_csv.py",
+   "lineRange": [
+    135,
+    142
+   ],
+   "summary": "Checks a dry run reports counts and a preview while leaving tickets and counters untouched.",
+   "tags": [
+    "test",
+    "csv",
+    "dry-run"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_csv.py:test_import_never_runs_ai",
+   "type": "function",
+   "name": "test_import_never_runs_ai",
+   "filePath": "backend/tests/test_csv.py",
+   "lineRange": [
+    145,
+    149
+   ],
+   "summary": "Checks an import creates no AI executions or comparisons.",
+   "tags": [
+    "test",
+    "csv",
+    "guardrail"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_csv.py:test_bom_crlf_and_quoted_multiline_description",
+   "type": "function",
+   "name": "test_bom_crlf_and_quoted_multiline_description",
+   "filePath": "backend/tests/test_csv.py",
+   "lineRange": [
+    152,
+    158
+   ],
+   "summary": "Checks a byte-order mark and CRLF line endings are handled and a quoted multi-line description stays exact.",
+   "tags": [
+    "test",
+    "csv",
+    "parsing"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_csv.py:test_unreadable_files_are_rejected_whole",
+   "type": "function",
+   "name": "test_unreadable_files_are_rejected_whole",
+   "filePath": "backend/tests/test_csv.py",
+   "lineRange": [
+    170,
+    171
+   ],
+   "summary": "Checks empty, column-deficient, header-only and non-UTF-8 files are each rejected with a 400.",
+   "tags": [
+    "test",
+    "csv",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_csv.py:test_oversized_file_is_rejected",
+   "type": "function",
+   "name": "test_oversized_file_is_rejected",
+   "filePath": "backend/tests/test_csv.py",
+   "lineRange": [
+    174,
+    177
+   ],
+   "summary": "Checks a body over 5 MB is rejected with a 413.",
+   "tags": [
+    "test",
+    "csv",
+    "limits"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_csv.py:test_supplied_100_ticket_sample_is_valid",
+   "type": "function",
+   "name": "test_supplied_100_ticket_sample_is_valid",
+   "filePath": "backend/tests/test_csv.py",
+   "lineRange": [
+    180,
+    185
+   ],
+   "summary": "Checks the supplied 100-ticket sample passes a dry run with no invalid rows.",
+   "tags": [
+    "test",
+    "csv",
+    "sample-data"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_csv.py:read_csv",
+   "type": "function",
+   "name": "read_csv",
+   "filePath": "backend/tests/test_csv.py",
+   "lineRange": [
+    191,
+    194
+   ],
+   "summary": "Test helper that asserts a successful CSV response and parses it into dictionaries.",
+   "tags": [
+    "test",
+    "helper",
+    "csv"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_csv.py:test_ticket_export_is_valid_csv_and_neutralises_formulas",
+   "type": "function",
+   "name": "test_ticket_export_is_valid_csv_and_neutralises_formulas",
+   "filePath": "backend/tests/test_csv.py",
+   "lineRange": [
+    197,
+    204
+   ],
+   "summary": "Checks the ticket export parses as CSV and prefixes formula-like cells with a quote.",
+   "tags": [
+    "test",
+    "csv",
+    "security"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_csv.py:test_execution_export_leaves_out_payloads",
+   "type": "function",
+   "name": "test_execution_export_leaves_out_payloads",
+   "filePath": "backend/tests/test_csv.py",
+   "lineRange": [
+    207,
+    225
+   ],
+   "summary": "Checks the execution export includes usage and result columns but no stored payload text.",
+   "tags": [
+    "test",
+    "csv",
+    "security"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_csv.py:test_comparison_export_has_per_field_columns",
+   "type": "function",
+   "name": "test_comparison_export_has_per_field_columns",
+   "filePath": "backend/tests/test_csv.py",
+   "lineRange": [
+    228,
+    245
+   ],
+   "summary": "Checks the comparison export flattens field comparisons into Jev, GPT and match columns.",
+   "tags": [
+    "test",
+    "csv",
+    "comparisons"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_csv.py:test_unknown_export_is_404",
+   "type": "function",
+   "name": "test_unknown_export_is_404",
+   "filePath": "backend/tests/test_csv.py",
+   "lineRange": [
+    248,
+    249
+   ],
+   "summary": "Checks an unknown export name is rejected with a 404 or 422.",
+   "tags": [
+    "test",
+    "csv",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/tests/test_run_metrics.py",
+   "type": "file",
+   "name": "test_run_metrics.py",
+   "filePath": "backend/tests/test_run_metrics.py",
+   "summary": "Unit tests for the run metrics, using hand-built rows to check percentile, kappa, completed-only agreement, latency, tokens, outcomes, cost and Jev confidence.",
+   "tags": [
+    "test",
+    "metrics",
+    "unit-test",
+    "statistics"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/tests/test_run_metrics.py:execution",
+   "type": "function",
+   "name": "execution",
+   "filePath": "backend/tests/test_run_metrics.py",
+   "lineRange": [
+    6,
+    12
+   ],
+   "summary": "Test helper that builds an execution dict with a duration, result, status and optional reported tokens.",
+   "tags": [
+    "test",
+    "helper",
+    "fixture-data"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_run_metrics.py:result",
+   "type": "function",
+   "name": "result",
+   "filePath": "backend/tests/test_run_metrics.py",
+   "lineRange": [
+    15,
+    24
+   ],
+   "summary": "Test helper that builds a normalized result with configurable category, priority, confidence and summary.",
+   "tags": [
+    "test",
+    "helper",
+    "fixture-data"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_run_metrics.py:comparison",
+   "type": "function",
+   "name": "comparison",
+   "filePath": "backend/tests/test_run_metrics.py",
+   "lineRange": [
+    27,
+    42
+   ],
+   "summary": "Test helper that builds a Completed comparison when both results exist and a Partial one otherwise.",
+   "tags": [
+    "test",
+    "helper",
+    "fixture-data"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_run_metrics.py:row",
+   "type": "function",
+   "name": "row",
+   "filePath": "backend/tests/test_run_metrics.py",
+   "lineRange": [
+    45,
+    52
+   ],
+   "summary": "Test helper that combines a ticket, both executions and their comparison into one metrics row.",
+   "tags": [
+    "test",
+    "helper",
+    "fixture-data"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_run_metrics.py:test_percentile_and_kappa",
+   "type": "function",
+   "name": "test_percentile_and_kappa",
+   "filePath": "backend/tests/test_run_metrics.py",
+   "lineRange": [
+    70,
+    75
+   ],
+   "summary": "Checks nearest-rank percentile and kappa, including the undefined and perfectly opposed cases.",
+   "tags": [
+    "test",
+    "statistics",
+    "metrics"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_run_metrics.py:test_agreement_metrics_use_completed_comparisons_only",
+   "type": "function",
+   "name": "test_agreement_metrics_use_completed_comparisons_only",
+   "filePath": "backend/tests/test_run_metrics.py",
+   "lineRange": [
+    78,
+    89
+   ],
+   "summary": "Checks agreement figures and disagreements ignore a partial comparison.",
+   "tags": [
+    "test",
+    "metrics",
+    "agreement"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_run_metrics.py:test_latency_tokens_and_outcomes",
+   "type": "function",
+   "name": "test_latency_tokens_and_outcomes",
+   "filePath": "backend/tests/test_run_metrics.py",
+   "lineRange": [
+    92,
+    104
+   ],
+   "summary": "Checks latency, wall-clock, token, outcome and cost metrics against hand-worked values.",
+   "tags": [
+    "test",
+    "metrics",
+    "latency"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_run_metrics.py:test_jev_confidence_split_by_agreement",
+   "type": "function",
+   "name": "test_jev_confidence_split_by_agreement",
+   "filePath": "backend/tests/test_run_metrics.py",
+   "lineRange": [
+    107,
+    110
+   ],
+   "summary": "Checks Jev's confidence is averaged separately for agreeing and differing rows.",
+   "tags": [
+    "test",
+    "metrics",
+    "confidence"
+   ],
+   "complexity": "simple"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:backend/app/services/dashboard.py",
+   "target": "function:backend/app/services/dashboard.py:load_rows",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/dashboard.py",
+   "target": "function:backend/app/services/dashboard.py:load_rows",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/dashboard.py",
+   "target": "function:backend/app/services/dashboard.py:is_fake",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/dashboard.py",
+   "target": "function:backend/app/services/dashboard.py:is_fake",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/dashboard.py",
+   "target": "function:backend/app/services/dashboard.py:model_of",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/dashboard.py",
+   "target": "function:backend/app/services/dashboard.py:model_of",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/dashboard.py",
+   "target": "function:backend/app/services/dashboard.py:summary",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/dashboard.py",
+   "target": "function:backend/app/services/dashboard.py:summary",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/dashboard.py",
+   "target": "function:backend/app/services/dashboard.py:list_item",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/dashboard.py",
+   "target": "function:backend/app/services/dashboard.py:list_item",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/dashboard.py",
+   "target": "function:backend/app/services/dashboard.py:list_comparisons",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/dashboard.py",
+   "target": "function:backend/app/services/dashboard.py:list_comparisons",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/dashboard.py",
+   "target": "function:backend/app/services/dashboard.py:detail",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/dashboard.py",
+   "target": "function:backend/app/services/dashboard.py:detail",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/dashboard.py",
+   "target": "file:backend/app/repositories/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/dashboard.py",
+   "target": "file:backend/app/repositories/comparisons.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/dashboard.py",
+   "target": "file:backend/app/repositories/database.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/dashboard.py",
+   "target": "file:backend/app/repositories/tickets.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/dashboard.py",
+   "target": "file:backend/app/services/run_metrics.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/run_metrics.py",
+   "target": "function:backend/app/services/run_metrics.py:percentile",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_metrics.py",
+   "target": "function:backend/app/services/run_metrics.py:percentile",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/run_metrics.py",
+   "target": "function:backend/app/services/run_metrics.py:kappa",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_metrics.py",
+   "target": "function:backend/app/services/run_metrics.py:kappa",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/run_metrics.py",
+   "target": "function:backend/app/services/run_metrics.py:latency",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_metrics.py",
+   "target": "function:backend/app/services/run_metrics.py:latency",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/run_metrics.py",
+   "target": "function:backend/app/services/run_metrics.py:tokens",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_metrics.py",
+   "target": "function:backend/app/services/run_metrics.py:tokens",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/run_metrics.py",
+   "target": "function:backend/app/services/run_metrics.py:outcomes",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_metrics.py",
+   "target": "function:backend/app/services/run_metrics.py:outcomes",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/run_metrics.py",
+   "target": "function:backend/app/services/run_metrics.py:cost",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_metrics.py",
+   "target": "function:backend/app/services/run_metrics.py:cost",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/run_metrics.py",
+   "target": "function:backend/app/services/run_metrics.py:jev_confidence",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_metrics.py",
+   "target": "function:backend/app/services/run_metrics.py:jev_confidence",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/run_metrics.py",
+   "target": "function:backend/app/services/run_metrics.py:compute",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_metrics.py",
+   "target": "function:backend/app/services/run_metrics.py:compute",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:fmt",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:fmt",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:pct",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:pct",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:secs",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:secs",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:table",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:table",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:agreement_chart",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:agreement_chart",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:speed_chart",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:speed_chart",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:word",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:word",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:mark",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:mark",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:ticket_rows",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:ticket_rows",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:side",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:side",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:render",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "function:backend/app/services/run_report.py:render",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "file:backend/app/services/run_metrics.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/scripts/run_report.py",
+   "target": "function:backend/scripts/run_report.py:load_run",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/scripts/run_report.py",
+   "target": "function:backend/scripts/run_report.py:load_run",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/scripts/run_report.py",
+   "target": "function:backend/scripts/run_report.py:main",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/scripts/run_report.py",
+   "target": "function:backend/scripts/run_report.py:main",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/scripts/run_report.py",
+   "target": "file:backend/app/core/clock.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/scripts/run_report.py",
+   "target": "file:backend/app/core/settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/scripts/run_report.py",
+   "target": "file:backend/app/repositories/database.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/scripts/run_report.py",
+   "target": "file:backend/app/services/dashboard.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/scripts/run_report.py",
+   "target": "file:backend/app/services/run_metrics.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/scripts/run_report.py",
+   "target": "file:backend/app/services/run_report.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:api",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:api",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:upload",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:upload",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:csv_of",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:csv_of",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:errors_by_row",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:errors_by_row",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_template_matches_the_spec_file",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_template_matches_the_spec_file",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_mixed_file_reports_accurate_counts",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_mixed_file_reports_accurate_counts",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_valid_rows_are_stored_with_import_source_and_normalised_values",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_valid_rows_are_stored_with_import_source_and_normalised_values",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_labels_are_stored_separately_from_tickets",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_labels_are_stored_separately_from_tickets",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_reimporting_the_same_file_skips_every_row",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_reimporting_the_same_file_skips_every_row",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_dry_run_reports_without_writing",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_dry_run_reports_without_writing",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_import_never_runs_ai",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_import_never_runs_ai",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_bom_crlf_and_quoted_multiline_description",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_bom_crlf_and_quoted_multiline_description",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_unreadable_files_are_rejected_whole",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_unreadable_files_are_rejected_whole",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_oversized_file_is_rejected",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_oversized_file_is_rejected",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_supplied_100_ticket_sample_is_valid",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_supplied_100_ticket_sample_is_valid",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:read_csv",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:read_csv",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_ticket_export_is_valid_csv_and_neutralises_formulas",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_ticket_export_is_valid_csv_and_neutralises_formulas",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_execution_export_leaves_out_payloads",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_execution_export_leaves_out_payloads",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_comparison_export_has_per_field_columns",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_comparison_export_has_per_field_columns",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_unknown_export_is_404",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "function:backend/tests/test_csv.py:test_unknown_export_is_404",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "file:backend/app/main.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_csv.py",
+   "target": "file:backend/app/services/csv_import.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_run_metrics.py",
+   "target": "function:backend/tests/test_run_metrics.py:execution",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_run_metrics.py",
+   "target": "function:backend/tests/test_run_metrics.py:execution",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_run_metrics.py",
+   "target": "function:backend/tests/test_run_metrics.py:result",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_run_metrics.py",
+   "target": "function:backend/tests/test_run_metrics.py:result",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_run_metrics.py",
+   "target": "function:backend/tests/test_run_metrics.py:comparison",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_run_metrics.py",
+   "target": "function:backend/tests/test_run_metrics.py:comparison",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_run_metrics.py",
+   "target": "function:backend/tests/test_run_metrics.py:row",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_run_metrics.py",
+   "target": "function:backend/tests/test_run_metrics.py:row",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_run_metrics.py",
+   "target": "function:backend/tests/test_run_metrics.py:test_percentile_and_kappa",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_run_metrics.py",
+   "target": "function:backend/tests/test_run_metrics.py:test_percentile_and_kappa",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_run_metrics.py",
+   "target": "function:backend/tests/test_run_metrics.py:test_agreement_metrics_use_completed_comparisons_only",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_run_metrics.py",
+   "target": "function:backend/tests/test_run_metrics.py:test_agreement_metrics_use_completed_comparisons_only",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_run_metrics.py",
+   "target": "function:backend/tests/test_run_metrics.py:test_latency_tokens_and_outcomes",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_run_metrics.py",
+   "target": "function:backend/tests/test_run_metrics.py:test_latency_tokens_and_outcomes",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_run_metrics.py",
+   "target": "function:backend/tests/test_run_metrics.py:test_jev_confidence_split_by_agreement",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_run_metrics.py",
+   "target": "function:backend/tests/test_run_metrics.py:test_jev_confidence_split_by_agreement",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_run_metrics.py",
+   "target": "file:backend/app/services/run_metrics.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "function:backend/app/services/dashboard.py:load_rows",
+   "target": "function:backend/app/repositories/database.py:find_in",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/dashboard.py:summary",
+   "target": "function:backend/app/services/dashboard.py:load_rows",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/dashboard.py:summary",
+   "target": "function:backend/app/services/dashboard.py:is_fake",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/dashboard.py:summary",
+   "target": "function:backend/app/services/dashboard.py:model_of",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/dashboard.py:summary",
+   "target": "function:backend/app/repositories/comparisons.py:newest_first",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/dashboard.py:summary",
+   "target": "function:backend/app/repositories/tickets.py:counts",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/dashboard.py:summary",
+   "target": "function:backend/app/services/run_metrics.py:compute",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/dashboard.py:list_item",
+   "target": "function:backend/app/services/dashboard.py:model_of",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/dashboard.py:list_item",
+   "target": "function:backend/app/services/dashboard.py:is_fake",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/dashboard.py:list_comparisons",
+   "target": "function:backend/app/repositories/comparisons.py:newest_first",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/dashboard.py:list_comparisons",
+   "target": "function:backend/app/repositories/comparisons.py:count",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/dashboard.py:list_comparisons",
+   "target": "function:backend/app/services/dashboard.py:load_rows",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/dashboard.py:list_comparisons",
+   "target": "function:backend/app/services/dashboard.py:list_item",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/dashboard.py:detail",
+   "target": "function:backend/app/repositories/comparisons.py:get",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/dashboard.py:detail",
+   "target": "function:backend/app/services/dashboard.py:load_rows",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/run_metrics.py:latency",
+   "target": "function:backend/app/services/run_metrics.py:percentile",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/run_metrics.py:compute",
+   "target": "function:backend/app/services/run_metrics.py:kappa",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/run_metrics.py:compute",
+   "target": "function:backend/app/services/run_metrics.py:outcomes",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/run_metrics.py:compute",
+   "target": "function:backend/app/services/run_metrics.py:latency",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/run_metrics.py:compute",
+   "target": "function:backend/app/services/run_metrics.py:tokens",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/run_metrics.py:compute",
+   "target": "function:backend/app/services/run_metrics.py:cost",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/run_metrics.py:compute",
+   "target": "function:backend/app/services/run_metrics.py:jev_confidence",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/run_report.py:agreement_chart",
+   "target": "function:backend/app/services/run_report.py:pct",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/run_report.py:speed_chart",
+   "target": "function:backend/app/services/run_report.py:secs",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/run_report.py:ticket_rows",
+   "target": "function:backend/app/services/run_report.py:word",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/run_report.py:ticket_rows",
+   "target": "function:backend/app/services/run_report.py:mark",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/run_report.py:ticket_rows",
+   "target": "function:backend/app/services/run_report.py:secs",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/run_report.py:render",
+   "target": "function:backend/app/services/run_report.py:pct",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/run_report.py:render",
+   "target": "function:backend/app/services/run_report.py:secs",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/run_report.py:render",
+   "target": "function:backend/app/services/run_report.py:fmt",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/run_report.py:render",
+   "target": "function:backend/app/services/run_report.py:word",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/run_report.py:render",
+   "target": "function:backend/app/services/run_report.py:side",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/run_report.py:render",
+   "target": "function:backend/app/services/run_report.py:table",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/run_report.py:render",
+   "target": "function:backend/app/services/run_report.py:agreement_chart",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/run_report.py:render",
+   "target": "function:backend/app/services/run_report.py:speed_chart",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/run_report.py:render",
+   "target": "function:backend/app/services/run_report.py:ticket_rows",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/scripts/run_report.py:load_run",
+   "target": "function:backend/app/repositories/database.py:find_in",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/scripts/run_report.py:load_run",
+   "target": "function:backend/app/services/dashboard.py:load_rows",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/scripts/run_report.py:main",
+   "target": "function:backend/app/core/settings.py:get_settings",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/scripts/run_report.py:main",
+   "target": "function:backend/app/repositories/database.py:connect",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/scripts/run_report.py:main",
+   "target": "function:backend/scripts/run_report.py:load_run",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/scripts/run_report.py:main",
+   "target": "function:backend/app/core/clock.py:utc_now",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/scripts/run_report.py:main",
+   "target": "function:backend/app/services/run_report.py:render",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/scripts/run_report.py:main",
+   "target": "function:backend/app/services/run_metrics.py:compute",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_csv.py:api",
+   "target": "function:backend/app/main.py:create_app",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_csv.py:test_mixed_file_reports_accurate_counts",
+   "target": "function:backend/tests/test_csv.py:upload",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_csv.py:test_mixed_file_reports_accurate_counts",
+   "target": "function:backend/tests/test_csv.py:errors_by_row",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_csv.py:test_valid_rows_are_stored_with_import_source_and_normalised_values",
+   "target": "function:backend/tests/test_csv.py:upload",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_csv.py:test_labels_are_stored_separately_from_tickets",
+   "target": "function:backend/tests/test_csv.py:upload",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_csv.py:test_reimporting_the_same_file_skips_every_row",
+   "target": "function:backend/tests/test_csv.py:upload",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_csv.py:test_dry_run_reports_without_writing",
+   "target": "function:backend/tests/test_csv.py:upload",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_csv.py:test_import_never_runs_ai",
+   "target": "function:backend/tests/test_csv.py:upload",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_csv.py:test_bom_crlf_and_quoted_multiline_description",
+   "target": "function:backend/tests/test_csv.py:upload",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_csv.py:test_unreadable_files_are_rejected_whole",
+   "target": "function:backend/tests/test_csv.py:upload",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_csv.py:test_oversized_file_is_rejected",
+   "target": "function:backend/tests/test_csv.py:csv_of",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_csv.py:test_oversized_file_is_rejected",
+   "target": "function:backend/tests/test_csv.py:upload",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_csv.py:test_supplied_100_ticket_sample_is_valid",
+   "target": "function:backend/tests/test_csv.py:upload",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_csv.py:test_ticket_export_is_valid_csv_and_neutralises_formulas",
+   "target": "function:backend/tests/test_csv.py:upload",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_csv.py:test_ticket_export_is_valid_csv_and_neutralises_formulas",
+   "target": "function:backend/tests/test_csv.py:csv_of",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_csv.py:test_ticket_export_is_valid_csv_and_neutralises_formulas",
+   "target": "function:backend/tests/test_csv.py:read_csv",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_csv.py:test_execution_export_leaves_out_payloads",
+   "target": "function:backend/tests/test_csv.py:read_csv",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_csv.py:test_comparison_export_has_per_field_columns",
+   "target": "function:backend/tests/test_csv.py:read_csv",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_run_metrics.py:row",
+   "target": "function:backend/tests/test_run_metrics.py:comparison",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_run_metrics.py:test_percentile_and_kappa",
+   "target": "function:backend/app/services/run_metrics.py:percentile",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_run_metrics.py:test_percentile_and_kappa",
+   "target": "function:backend/app/services/run_metrics.py:kappa",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_run_metrics.py:test_agreement_metrics_use_completed_comparisons_only",
+   "target": "function:backend/app/services/run_metrics.py:compute",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_run_metrics.py:test_latency_tokens_and_outcomes",
+   "target": "function:backend/app/services/run_metrics.py:compute",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_run_metrics.py:test_jev_confidence_split_by_agreement",
+   "target": "function:backend/app/services/run_metrics.py:compute",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/run_metrics.py",
+   "target": "file:backend/tests/test_run_metrics.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  }
+ ]
+}

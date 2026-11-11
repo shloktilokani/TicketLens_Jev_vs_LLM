@@ -1,0 +1,1084 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 6,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 6,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 6,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "backend/app/api/imports.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 63,
+      "nonEmptyLines": 50,
+      "functions": [
+        {
+          "name": "csv_download",
+          "startLine": 18,
+          "endLine": 23,
+          "params": [
+            "text",
+            "filename"
+          ]
+        },
+        {
+          "name": "import_template",
+          "startLine": 27,
+          "endLine": 29,
+          "params": []
+        },
+        {
+          "name": "sample_dataset",
+          "startLine": 33,
+          "endLine": 36,
+          "params": []
+        },
+        {
+          "name": "import_tickets",
+          "startLine": 46,
+          "endLine": 57,
+          "params": [
+            "request",
+            "db",
+            "dry_run"
+          ]
+        },
+        {
+          "name": "export_csv",
+          "startLine": 61,
+          "endLine": 63,
+          "params": [
+            "name",
+            "db"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "csv_download",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "import_template",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "sample_dataset",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "import_tickets",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "export_csv",
+          "line": 60,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "csv_download",
+          "callee": "Response",
+          "lineNumber": 19
+        },
+        {
+          "caller": "import_template",
+          "callee": "csv_download",
+          "lineNumber": 29
+        },
+        {
+          "caller": "import_template",
+          "callee": "\",\".join",
+          "lineNumber": 29
+        },
+        {
+          "caller": "sample_dataset",
+          "callee": "SAMPLE_DATASET.read_text",
+          "lineNumber": 35
+        },
+        {
+          "caller": "sample_dataset",
+          "callee": "csv_download",
+          "lineNumber": 36
+        },
+        {
+          "caller": "import_tickets",
+          "callee": "int",
+          "lineNumber": 48
+        },
+        {
+          "caller": "import_tickets",
+          "callee": "request.headers.get",
+          "lineNumber": 48
+        },
+        {
+          "caller": "import_tickets",
+          "callee": "HTTPException",
+          "lineNumber": 49
+        },
+        {
+          "caller": "import_tickets",
+          "callee": "request.body",
+          "lineNumber": 50
+        },
+        {
+          "caller": "import_tickets",
+          "callee": "len",
+          "lineNumber": 51
+        },
+        {
+          "caller": "import_tickets",
+          "callee": "HTTPException",
+          "lineNumber": 52
+        },
+        {
+          "caller": "import_tickets",
+          "callee": "run_in_threadpool",
+          "lineNumber": 55
+        },
+        {
+          "caller": "import_tickets",
+          "callee": "HTTPException",
+          "lineNumber": 57
+        },
+        {
+          "caller": "import_tickets",
+          "callee": "str",
+          "lineNumber": 57
+        },
+        {
+          "caller": "export_csv",
+          "callee": "csv_download",
+          "lineNumber": 63
+        },
+        {
+          "caller": "export_csv",
+          "callee": "csv_export.export",
+          "lineNumber": 63
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "backend/app/api/providers.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 12,
+      "nonEmptyLines": 8,
+      "functions": [
+        {
+          "name": "provider_status",
+          "startLine": 10,
+          "endLine": 12,
+          "params": [
+            "request",
+            "db"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "provider_status",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "provider_status",
+          "callee": "app_settings.view",
+          "lineNumber": 12
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "backend/app/core/settings.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 88,
+      "nonEmptyLines": 70,
+      "functions": [
+        {
+          "name": "get_settings",
+          "startLine": 83,
+          "endLine": 84,
+          "params": []
+        },
+        {
+          "name": "is_local",
+          "startLine": 87,
+          "endLine": 88,
+          "params": [
+            "url"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "Settings",
+          "startLine": 14,
+          "endLine": 79,
+          "methods": [
+            "_production_is_safe"
+          ],
+          "properties": [
+            "app_env",
+            "app_name",
+            "api_host",
+            "api_port",
+            "frontend_origin",
+            "mongodb_uri",
+            "mongodb_database",
+            "typesafe_api_key",
+            "openai_api_key",
+            "jev_base_url",
+            "jev_model",
+            "llm_backend",
+            "ollama_base_url",
+            "ollama_model",
+            "openai_model",
+            "provider_timeout_seconds",
+            "bulk_concurrency",
+            "jev_escalation_threshold",
+            "mock_providers",
+            "mock_delay_seconds",
+            "log_level",
+            "access_control_confirmed"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Settings",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "get_settings",
+          "line": 82,
+          "isDefault": false
+        },
+        {
+          "name": "is_local",
+          "line": 87,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_production_is_safe",
+          "callee": "is_local",
+          "lineNumber": 65
+        },
+        {
+          "caller": "_production_is_safe",
+          "callee": "problems.append",
+          "lineNumber": 66
+        },
+        {
+          "caller": "_production_is_safe",
+          "callee": "origin.startswith",
+          "lineNumber": 68
+        },
+        {
+          "caller": "_production_is_safe",
+          "callee": "problems.append",
+          "lineNumber": 69
+        },
+        {
+          "caller": "_production_is_safe",
+          "callee": "problems.append",
+          "lineNumber": 71
+        },
+        {
+          "caller": "_production_is_safe",
+          "callee": "problems.append",
+          "lineNumber": 73
+        },
+        {
+          "caller": "_production_is_safe",
+          "callee": "ValueError",
+          "lineNumber": 78
+        },
+        {
+          "caller": "_production_is_safe",
+          "callee": "\" \".join",
+          "lineNumber": 78
+        },
+        {
+          "caller": "get_settings",
+          "callee": "Settings",
+          "lineNumber": 84
+        },
+        {
+          "caller": "is_local",
+          "callee": "urlparse",
+          "lineNumber": 88
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 2,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "backend/app/main.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 85,
+      "nonEmptyLines": 72,
+      "functions": [
+        {
+          "name": "create_app",
+          "startLine": 35,
+          "endLine": 82,
+          "params": [
+            "settings"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "create_app",
+          "line": 35,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "create_app",
+          "callee": "get_settings",
+          "lineNumber": 36
+        },
+        {
+          "caller": "lifespan",
+          "callee": "logging.basicConfig",
+          "lineNumber": 40
+        },
+        {
+          "caller": "lifespan",
+          "callee": "connect",
+          "lineNumber": 41
+        },
+        {
+          "caller": "lifespan",
+          "callee": "ensure_indexes",
+          "lineNumber": 46
+        },
+        {
+          "caller": "lifespan",
+          "callee": "mark_interrupted",
+          "lineNumber": 47
+        },
+        {
+          "caller": "lifespan",
+          "callee": "load_taxonomy",
+          "lineNumber": 48
+        },
+        {
+          "caller": "lifespan",
+          "callee": "log.warning",
+          "lineNumber": 50
+        },
+        {
+          "caller": "lifespan",
+          "callee": "client.close",
+          "lineNumber": 52
+        },
+        {
+          "caller": "create_app",
+          "callee": "FastAPI",
+          "lineNumber": 57
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.add_middleware",
+          "lineNumber": 59
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 65
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 66
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 67
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 68
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 69
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 70
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 71
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 72
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 73
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 74
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 75
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.exception_handler",
+          "lineNumber": 77
+        },
+        {
+          "caller": "database_unavailable",
+          "callee": "log.warning",
+          "lineNumber": 79
+        },
+        {
+          "caller": "database_unavailable",
+          "callee": "JSONResponse",
+          "lineNumber": 80
+        }
+      ],
+      "metrics": {
+        "importCount": 16,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "backend/app/repositories/labels.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 16,
+      "nonEmptyLines": 10,
+      "functions": [
+        {
+          "name": "insert",
+          "startLine": 9,
+          "endLine": 10,
+          "params": [
+            "db",
+            "doc"
+          ]
+        },
+        {
+          "name": "expected_by_ticket",
+          "startLine": 13,
+          "endLine": 16,
+          "params": [
+            "db"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "insert",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "expected_by_ticket",
+          "line": 13,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "insert",
+          "callee": "db.evaluation_labels.insert_one",
+          "lineNumber": 10
+        },
+        {
+          "caller": "insert",
+          "callee": "dict",
+          "lineNumber": 10
+        },
+        {
+          "caller": "expected_by_ticket",
+          "callee": "db.evaluation_labels.find",
+          "lineNumber": 15
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "backend/app/services/csv_import.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 196,
+      "nonEmptyLines": 171,
+      "functions": [
+        {
+          "name": "canonical_values",
+          "startLine": 67,
+          "endLine": 73,
+          "params": [
+            "field"
+          ]
+        },
+        {
+          "name": "normalize",
+          "startLine": 76,
+          "endLine": 86,
+          "params": [
+            "field",
+            "raw"
+          ]
+        },
+        {
+          "name": "fingerprint",
+          "startLine": 89,
+          "endLine": 94,
+          "params": [
+            "ticket"
+          ]
+        },
+        {
+          "name": "read_rows",
+          "startLine": 97,
+          "endLine": 113,
+          "params": [
+            "content"
+          ]
+        },
+        {
+          "name": "row_errors",
+          "startLine": 116,
+          "endLine": 124,
+          "params": [
+            "exc",
+            "row",
+            "prefix",
+            "fallback"
+          ]
+        },
+        {
+          "name": "validate_row",
+          "startLine": 127,
+          "endLine": 149,
+          "params": [
+            "row",
+            "number"
+          ]
+        },
+        {
+          "name": "save",
+          "startLine": 152,
+          "endLine": 168,
+          "params": [
+            "db",
+            "ticket",
+            "label",
+            "fp",
+            "batch"
+          ]
+        },
+        {
+          "name": "import_csv",
+          "startLine": 171,
+          "endLine": 196,
+          "params": [
+            "db",
+            "content",
+            "dry_run"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "CsvFileError",
+          "startLine": 63,
+          "endLine": 64,
+          "methods": [],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CsvFileError",
+          "line": 63,
+          "isDefault": false
+        },
+        {
+          "name": "canonical_values",
+          "line": 67,
+          "isDefault": false
+        },
+        {
+          "name": "normalize",
+          "line": 76,
+          "isDefault": false
+        },
+        {
+          "name": "fingerprint",
+          "line": 89,
+          "isDefault": false
+        },
+        {
+          "name": "read_rows",
+          "line": 97,
+          "isDefault": false
+        },
+        {
+          "name": "row_errors",
+          "line": 116,
+          "isDefault": false
+        },
+        {
+          "name": "validate_row",
+          "line": 127,
+          "isDefault": false
+        },
+        {
+          "name": "save",
+          "line": 152,
+          "isDefault": false
+        },
+        {
+          "name": "import_csv",
+          "line": 171,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "canonical_values",
+          "callee": "c.lower",
+          "lineNumber": 70
+        },
+        {
+          "caller": "canonical_values",
+          "callee": "active_categories",
+          "lineNumber": 70
+        },
+        {
+          "caller": "canonical_values",
+          "callee": "s.lower",
+          "lineNumber": 72
+        },
+        {
+          "caller": "canonical_values",
+          "callee": "active_categories().values",
+          "lineNumber": 72
+        },
+        {
+          "caller": "canonical_values",
+          "callee": "active_categories",
+          "lineNumber": 72
+        },
+        {
+          "caller": "canonical_values",
+          "callee": "CANONICAL.get",
+          "lineNumber": 73
+        },
+        {
+          "caller": "normalize",
+          "callee": "\" \".join",
+          "lineNumber": 80
+        },
+        {
+          "caller": "normalize",
+          "callee": "raw.split",
+          "lineNumber": 80
+        },
+        {
+          "caller": "normalize",
+          "callee": "canonical_values",
+          "lineNumber": 81
+        },
+        {
+          "caller": "normalize",
+          "callee": "known.get",
+          "lineNumber": 83
+        },
+        {
+          "caller": "normalize",
+          "callee": "value.lower",
+          "lineNumber": 83
+        },
+        {
+          "caller": "normalize",
+          "callee": "BOOLEANS.get",
+          "lineNumber": 85
+        },
+        {
+          "caller": "normalize",
+          "callee": "value.lower",
+          "lineNumber": 85
+        },
+        {
+          "caller": "fingerprint",
+          "callee": "hashlib.sha256(\n        \"\\x1f\".join(\" \".join(p.lower().split()) for p in parts).encode()\n    ).hexdigest",
+          "lineNumber": 92
+        },
+        {
+          "caller": "fingerprint",
+          "callee": "hashlib.sha256",
+          "lineNumber": 92
+        },
+        {
+          "caller": "fingerprint",
+          "callee": "\"\\x1f\".join(\" \".join(p.lower().split()) for p in parts).encode",
+          "lineNumber": 93
+        },
+        {
+          "caller": "fingerprint",
+          "callee": "\"\\x1f\".join",
+          "lineNumber": 93
+        },
+        {
+          "caller": "fingerprint",
+          "callee": "\" \".join",
+          "lineNumber": 93
+        },
+        {
+          "caller": "fingerprint",
+          "callee": "p.lower().split",
+          "lineNumber": 93
+        },
+        {
+          "caller": "fingerprint",
+          "callee": "p.lower",
+          "lineNumber": 93
+        },
+        {
+          "caller": "read_rows",
+          "callee": "content.decode",
+          "lineNumber": 99
+        },
+        {
+          "caller": "read_rows",
+          "callee": "CsvFileError",
+          "lineNumber": 101
+        },
+        {
+          "caller": "read_rows",
+          "callee": "csv.DictReader",
+          "lineNumber": 104
+        },
+        {
+          "caller": "read_rows",
+          "callee": "io.StringIO",
+          "lineNumber": 104
+        },
+        {
+          "caller": "read_rows",
+          "callee": "(name or \"\").strip",
+          "lineNumber": 105
+        },
+        {
+          "caller": "read_rows",
+          "callee": "CsvFileError",
+          "lineNumber": 107
+        },
+        {
+          "caller": "read_rows",
+          "callee": "', '.join",
+          "lineNumber": 107
+        },
+        {
+          "caller": "read_rows",
+          "callee": "sorted",
+          "lineNumber": 107
+        },
+        {
+          "caller": "read_rows",
+          "callee": "(k or \"\").strip",
+          "lineNumber": 108
+        },
+        {
+          "caller": "read_rows",
+          "callee": "row.items",
+          "lineNumber": 108
+        },
+        {
+          "caller": "read_rows",
+          "callee": "isinstance",
+          "lineNumber": 108
+        },
+        {
+          "caller": "read_rows",
+          "callee": "CsvFileError",
+          "lineNumber": 110
+        },
+        {
+          "caller": "read_rows",
+          "callee": "len",
+          "lineNumber": 111
+        },
+        {
+          "caller": "read_rows",
+          "callee": "CsvFileError",
+          "lineNumber": 112
+        },
+        {
+          "caller": "read_rows",
+          "callee": "len",
+          "lineNumber": 112
+        },
+        {
+          "caller": "row_errors",
+          "callee": "ImportRowError",
+          "lineNumber": 118
+        },
+        {
+          "caller": "row_errors",
+          "callee": "str",
+          "lineNumber": 120
+        },
+        {
+          "caller": "row_errors",
+          "callee": "FRIENDLY.get",
+          "lineNumber": 121
+        },
+        {
+          "caller": "row_errors",
+          "callee": "e[\"msg\"].removeprefix",
+          "lineNumber": 121
+        },
+        {
+          "caller": "row_errors",
+          "callee": "exc.errors",
+          "lineNumber": 123
+        },
+        {
+          "caller": "validate_row",
+          "callee": "TicketCreate",
+          "lineNumber": 132
+        },
+        {
+          "caller": "validate_row",
+          "callee": "normalize",
+          "lineNumber": 132
+        },
+        {
+          "caller": "validate_row",
+          "callee": "row.get",
+          "lineNumber": 132
+        },
+        {
+          "caller": "validate_row",
+          "callee": "row_errors",
+          "lineNumber": 134
+        },
+        {
+          "caller": "validate_row",
+          "callee": "normalize",
+          "lineNumber": 136
+        },
+        {
+          "caller": "validate_row",
+          "callee": "row.get",
+          "lineNumber": 136
+        },
+        {
+          "caller": "validate_row",
+          "callee": "expected.items",
+          "lineNumber": 137
+        },
+        {
+          "caller": "validate_row",
+          "callee": "len",
+          "lineNumber": 138
+        },
+        {
+          "caller": "validate_row",
+          "callee": "len",
+          "lineNumber": 138
+        },
+        {
+          "caller": "validate_row",
+          "callee": "errors.append",
+          "lineNumber": 139
+        },
+        {
+          "caller": "validate_row",
+          "callee": "ImportRowError",
+          "lineNumber": 140
+        },
+        {
+          "caller": "validate_row",
+          "callee": "Classification",
+          "lineNumber": 146
+        },
+        {
+          "caller": "validate_row",
+          "callee": "row_errors",
+          "lineNumber": 148
+        },
+        {
+          "caller": "save",
+          "callee": "ticket_service.create",
+          "lineNumber": 156
+        },
+        {
+          "caller": "save",
+          "callee": "labels.insert",
+          "lineNumber": 158
+        },
+        {
+          "caller": "save",
+          "callee": "active_version",
+          "lineNumber": 162
+        },
+        {
+          "caller": "save",
+          "callee": "label.model_dump",
+          "lineNumber": 163
+        },
+        {
+          "caller": "save",
+          "callee": "utc_now",
+          "lineNumber": 165
+        },
+        {
+          "caller": "import_csv",
+          "callee": "read_rows",
+          "lineNumber": 172
+        },
+        {
+          "caller": "import_csv",
+          "callee": "ImportSummary",
+          "lineNumber": 173
+        },
+        {
+          "caller": "import_csv",
+          "callee": "len",
+          "lineNumber": 173
+        },
+        {
+          "caller": "import_csv",
+          "callee": "uuid4",
+          "lineNumber": 174
+        },
+        {
+          "caller": "import_csv",
+          "callee": "set",
+          "lineNumber": 174
+        },
+        {
+          "caller": "import_csv",
+          "callee": "enumerate",
+          "lineNumber": 175
+        },
+        {
+          "caller": "import_csv",
+          "callee": "validate_row",
+          "lineNumber": 176
+        },
+        {
+          "caller": "import_csv",
+          "callee": "fingerprint",
+          "lineNumber": 181
+        },
+        {
+          "caller": "import_csv",
+          "callee": "ticket_repo.fingerprint_exists",
+          "lineNumber": 182
+        },
+        {
+          "caller": "import_csv",
+          "callee": "seen.add",
+          "lineNumber": 183
+        },
+        {
+          "caller": "import_csv",
+          "callee": "summary.imported_ticket_ids.append",
+          "lineNumber": 186
+        },
+        {
+          "caller": "import_csv",
+          "callee": "save",
+          "lineNumber": 186
+        },
+        {
+          "caller": "import_csv",
+          "callee": "summary.duplicate_rows.append",
+          "lineNumber": 191
+        },
+        {
+          "caller": "import_csv",
+          "callee": "len",
+          "lineNumber": 194
+        },
+        {
+          "caller": "import_csv",
+          "callee": "summary.preview.append",
+          "lineNumber": 195
+        },
+        {
+          "caller": "import_csv",
+          "callee": "ticket.model_dump",
+          "lineNumber": 195
+        }
+      ],
+      "metrics": {
+        "importCount": 8,
+        "exportCount": 9,
+        "functionCount": 8,
+        "classCount": 1
+      }
+    }
+  ]
+}

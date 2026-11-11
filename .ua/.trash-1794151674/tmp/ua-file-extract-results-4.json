@@ -1,0 +1,3449 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 6,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 6,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 6,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "backend/app/repositories/bulk_jobs.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 51,
+      "nonEmptyLines": 32,
+      "functions": [
+        {
+          "name": "insert",
+          "startLine": 12,
+          "endLine": 13,
+          "params": [
+            "db",
+            "doc"
+          ]
+        },
+        {
+          "name": "get",
+          "startLine": 16,
+          "endLine": 17,
+          "params": [
+            "db",
+            "job_id"
+          ]
+        },
+        {
+          "name": "newest_first",
+          "startLine": 20,
+          "endLine": 21,
+          "params": [
+            "db",
+            "limit"
+          ]
+        },
+        {
+          "name": "count",
+          "startLine": 24,
+          "endLine": 25,
+          "params": [
+            "db"
+          ]
+        },
+        {
+          "name": "has_active",
+          "startLine": 28,
+          "endLine": 29,
+          "params": [
+            "db"
+          ]
+        },
+        {
+          "name": "update",
+          "startLine": 32,
+          "endLine": 38,
+          "params": [
+            "db",
+            "job_id",
+            "changes"
+          ]
+        },
+        {
+          "name": "record_outcome",
+          "startLine": 41,
+          "endLine": 45,
+          "params": [
+            "db",
+            "job_id",
+            "outcome",
+            "counter"
+          ]
+        },
+        {
+          "name": "mark_active_interrupted",
+          "startLine": 48,
+          "endLine": 51,
+          "params": [
+            "db",
+            "changes"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "insert",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "get",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "newest_first",
+          "line": 20,
+          "isDefault": false
+        },
+        {
+          "name": "count",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "has_active",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "update",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "record_outcome",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "mark_active_interrupted",
+          "line": 48,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "insert",
+          "callee": "db.bulk_jobs.insert_one",
+          "lineNumber": 13
+        },
+        {
+          "caller": "insert",
+          "callee": "dict",
+          "lineNumber": 13
+        },
+        {
+          "caller": "get",
+          "callee": "db.bulk_jobs.find_one",
+          "lineNumber": 17
+        },
+        {
+          "caller": "newest_first",
+          "callee": "list",
+          "lineNumber": 21
+        },
+        {
+          "caller": "newest_first",
+          "callee": "db.bulk_jobs.find({}, NO_ID).sort([(\"created_at\", -1), (\"_id\", -1)]).limit",
+          "lineNumber": 21
+        },
+        {
+          "caller": "newest_first",
+          "callee": "db.bulk_jobs.find({}, NO_ID).sort",
+          "lineNumber": 21
+        },
+        {
+          "caller": "newest_first",
+          "callee": "db.bulk_jobs.find",
+          "lineNumber": 21
+        },
+        {
+          "caller": "count",
+          "callee": "db.bulk_jobs.count_documents",
+          "lineNumber": 25
+        },
+        {
+          "caller": "has_active",
+          "callee": "db.bulk_jobs.count_documents",
+          "lineNumber": 29
+        },
+        {
+          "caller": "update",
+          "callee": "db.bulk_jobs.find_one_and_update",
+          "lineNumber": 33
+        },
+        {
+          "caller": "record_outcome",
+          "callee": "db.bulk_jobs.update_one",
+          "lineNumber": 43
+        },
+        {
+          "caller": "mark_active_interrupted",
+          "callee": "db.bulk_jobs.update_many",
+          "lineNumber": 49
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 8,
+        "functionCount": 8,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "backend/app/schemas/app_settings.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 73,
+      "nonEmptyLines": 55,
+      "classes": [
+        {
+          "name": "Strict",
+          "startLine": 16,
+          "endLine": 18,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "SettingsUpdate",
+          "startLine": 21,
+          "endLine": 31,
+          "methods": [
+            "_not_empty"
+          ],
+          "properties": [
+            "jev_model",
+            "llm_model",
+            "jev_escalation_threshold",
+            "bulk_concurrency"
+          ]
+        },
+        {
+          "name": "PromptUpdate",
+          "startLine": 34,
+          "endLine": 37,
+          "methods": [],
+          "properties": [
+            "instructions"
+          ]
+        },
+        {
+          "name": "TaxonomyUpdate",
+          "startLine": 40,
+          "endLine": 55,
+          "methods": [
+            "_within_limits"
+          ],
+          "properties": [
+            "categories"
+          ]
+        },
+        {
+          "name": "PricingEntry",
+          "startLine": 58,
+          "endLine": 62,
+          "methods": [],
+          "properties": [
+            "provider",
+            "model",
+            "input_per_million",
+            "output_per_million"
+          ]
+        },
+        {
+          "name": "PricingUpdate",
+          "startLine": 65,
+          "endLine": 73,
+          "methods": [
+            "_once_each"
+          ],
+          "properties": [
+            "entries"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Strict",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "SettingsUpdate",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "PromptUpdate",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "TaxonomyUpdate",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "PricingEntry",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "PricingUpdate",
+          "line": 65,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_not_empty",
+          "callee": "ValueError",
+          "lineNumber": 30
+        },
+        {
+          "caller": "_within_limits",
+          "callee": "len",
+          "lineNumber": 46
+        },
+        {
+          "caller": "_within_limits",
+          "callee": "ValueError",
+          "lineNumber": 47
+        },
+        {
+          "caller": "_within_limits",
+          "callee": "self.categories.values",
+          "lineNumber": 48
+        },
+        {
+          "caller": "_within_limits",
+          "callee": "self.categories.items",
+          "lineNumber": 49
+        },
+        {
+          "caller": "_within_limits",
+          "callee": "len",
+          "lineNumber": 50
+        },
+        {
+          "caller": "_within_limits",
+          "callee": "ValueError",
+          "lineNumber": 51
+        },
+        {
+          "caller": "_within_limits",
+          "callee": "sorted",
+          "lineNumber": 52
+        },
+        {
+          "caller": "_within_limits",
+          "callee": "names.count",
+          "lineNumber": 52
+        },
+        {
+          "caller": "_within_limits",
+          "callee": "ValueError",
+          "lineNumber": 54
+        },
+        {
+          "caller": "_within_limits",
+          "callee": "', '.join",
+          "lineNumber": 54
+        },
+        {
+          "caller": "_once_each",
+          "callee": "len",
+          "lineNumber": 71
+        },
+        {
+          "caller": "_once_each",
+          "callee": "len",
+          "lineNumber": 71
+        },
+        {
+          "caller": "_once_each",
+          "callee": "set",
+          "lineNumber": 71
+        },
+        {
+          "caller": "_once_each",
+          "callee": "ValueError",
+          "lineNumber": 72
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 6,
+        "functionCount": 0,
+        "classCount": 6
+      }
+    },
+    {
+      "path": "backend/app/services/app_settings.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 214,
+      "nonEmptyLines": 184,
+      "functions": [
+        {
+          "name": "next_version",
+          "startLine": 33,
+          "endLine": 35,
+          "params": [
+            "version"
+          ]
+        },
+        {
+          "name": "load_taxonomy",
+          "startLine": 38,
+          "endLine": 44,
+          "params": [
+            "db"
+          ]
+        },
+        {
+          "name": "effective",
+          "startLine": 47,
+          "endLine": 58,
+          "params": [
+            "db",
+            "settings"
+          ]
+        },
+        {
+          "name": "active_prompt",
+          "startLine": 61,
+          "endLine": 66,
+          "params": [
+            "db"
+          ]
+        },
+        {
+          "name": "rates_for",
+          "startLine": 69,
+          "endLine": 81,
+          "params": [
+            "db",
+            "provider",
+            "settings"
+          ]
+        },
+        {
+          "name": "available_models",
+          "startLine": 84,
+          "endLine": 109,
+          "params": [
+            "settings",
+            "side",
+            "client"
+          ]
+        },
+        {
+          "name": "check_model",
+          "startLine": 112,
+          "endLine": 121,
+          "params": [
+            "settings",
+            "side",
+            "model"
+          ]
+        },
+        {
+          "name": "view",
+          "startLine": 124,
+          "endLine": 147,
+          "params": [
+            "db",
+            "settings"
+          ]
+        },
+        {
+          "name": "update_values",
+          "startLine": 150,
+          "endLine": 156,
+          "params": [
+            "db",
+            "settings",
+            "data"
+          ]
+        },
+        {
+          "name": "save_prompt",
+          "startLine": 159,
+          "endLine": 179,
+          "params": [
+            "db",
+            "instructions"
+          ]
+        },
+        {
+          "name": "save_taxonomy",
+          "startLine": 182,
+          "endLine": 207,
+          "params": [
+            "db",
+            "data"
+          ]
+        },
+        {
+          "name": "save_pricing",
+          "startLine": 210,
+          "endLine": 214,
+          "params": [
+            "db",
+            "data"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "SettingsError",
+          "startLine": 27,
+          "endLine": 30,
+          "methods": [
+            "__init__"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "SettingsError",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "next_version",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "load_taxonomy",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "effective",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "active_prompt",
+          "line": 61,
+          "isDefault": false
+        },
+        {
+          "name": "rates_for",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "available_models",
+          "line": 84,
+          "isDefault": false
+        },
+        {
+          "name": "check_model",
+          "line": 112,
+          "isDefault": false
+        },
+        {
+          "name": "view",
+          "line": 124,
+          "isDefault": false
+        },
+        {
+          "name": "update_values",
+          "line": 150,
+          "isDefault": false
+        },
+        {
+          "name": "save_prompt",
+          "line": 159,
+          "isDefault": false
+        },
+        {
+          "name": "save_taxonomy",
+          "line": 182,
+          "isDefault": false
+        },
+        {
+          "name": "save_pricing",
+          "line": 210,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 29
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 29
+        },
+        {
+          "caller": "next_version",
+          "callee": "version.split",
+          "lineNumber": 34
+        },
+        {
+          "caller": "next_version",
+          "callee": "int",
+          "lineNumber": 35
+        },
+        {
+          "caller": "load_taxonomy",
+          "callee": "store.get(db).get",
+          "lineNumber": 40
+        },
+        {
+          "caller": "load_taxonomy",
+          "callee": "store.get",
+          "lineNumber": 40
+        },
+        {
+          "caller": "load_taxonomy",
+          "callee": "taxonomy.set_active",
+          "lineNumber": 42
+        },
+        {
+          "caller": "load_taxonomy",
+          "callee": "taxonomy.reset",
+          "lineNumber": 44
+        },
+        {
+          "caller": "effective",
+          "callee": "store.get",
+          "lineNumber": 49
+        },
+        {
+          "caller": "effective",
+          "callee": "settings.model_copy",
+          "lineNumber": 58
+        },
+        {
+          "caller": "active_prompt",
+          "callee": "store.get(db).get",
+          "lineNumber": 63
+        },
+        {
+          "caller": "active_prompt",
+          "callee": "store.get",
+          "lineNumber": 63
+        },
+        {
+          "caller": "rates_for",
+          "callee": "requested_model",
+          "lineNumber": 73
+        },
+        {
+          "caller": "rates_for",
+          "callee": "store.get(db).get",
+          "lineNumber": 74
+        },
+        {
+          "caller": "rates_for",
+          "callee": "store.get",
+          "lineNumber": 74
+        },
+        {
+          "caller": "rates_for",
+          "callee": "PricingSnapshot",
+          "lineNumber": 76
+        },
+        {
+          "caller": "rates_for",
+          "callee": "snapshot_for",
+          "lineNumber": 81
+        },
+        {
+          "caller": "available_models",
+          "callee": "requested_model",
+          "lineNumber": 89
+        },
+        {
+          "caller": "available_models",
+          "callee": "is_local",
+          "lineNumber": 93
+        },
+        {
+          "caller": "available_models",
+          "callee": "settings.typesafe_api_key.get_secret_value",
+          "lineNumber": 94
+        },
+        {
+          "caller": "available_models",
+          "callee": "ProviderFailure",
+          "lineNumber": 98
+        },
+        {
+          "caller": "available_models",
+          "callee": "get_json",
+          "lineNumber": 99
+        },
+        {
+          "caller": "available_models",
+          "callee": "base.rstrip",
+          "lineNumber": 100
+        },
+        {
+          "caller": "available_models",
+          "callee": "sorted",
+          "lineNumber": 107
+        },
+        {
+          "caller": "available_models",
+          "callee": "ProviderFailure",
+          "lineNumber": 109
+        },
+        {
+          "caller": "check_model",
+          "callee": "available_models",
+          "lineNumber": 117
+        },
+        {
+          "caller": "check_model",
+          "callee": "SettingsError",
+          "lineNumber": 121
+        },
+        {
+          "caller": "check_model",
+          "callee": "', '.join",
+          "lineNumber": 121
+        },
+        {
+          "caller": "view",
+          "callee": "effective",
+          "lineNumber": 125
+        },
+        {
+          "caller": "view",
+          "callee": "store.get",
+          "lineNumber": 126
+        },
+        {
+          "caller": "view",
+          "callee": "active_prompt",
+          "lineNumber": 127
+        },
+        {
+          "caller": "view",
+          "callee": "taxonomy.as_dict",
+          "lineNumber": 128
+        },
+        {
+          "caller": "view",
+          "callee": "provider_labels",
+          "lineNumber": 129
+        },
+        {
+          "caller": "view",
+          "callee": "provider_ready",
+          "lineNumber": 132
+        },
+        {
+          "caller": "view",
+          "callee": "requested_model",
+          "lineNumber": 135
+        },
+        {
+          "caller": "view",
+          "callee": "requested_model",
+          "lineNumber": 136
+        },
+        {
+          "caller": "view",
+          "callee": "saved.get",
+          "lineNumber": 142
+        },
+        {
+          "caller": "view",
+          "callee": "saved.get",
+          "lineNumber": 145
+        },
+        {
+          "caller": "view",
+          "callee": "saved.get",
+          "lineNumber": 146
+        },
+        {
+          "caller": "update_values",
+          "callee": "data.model_dump",
+          "lineNumber": 151
+        },
+        {
+          "caller": "update_values",
+          "callee": "check_model",
+          "lineNumber": 153
+        },
+        {
+          "caller": "update_values",
+          "callee": "check_model",
+          "lineNumber": 155
+        },
+        {
+          "caller": "update_values",
+          "callee": "store.update",
+          "lineNumber": 156
+        },
+        {
+          "caller": "update_values",
+          "callee": "utc_now",
+          "lineNumber": 156
+        },
+        {
+          "caller": "save_prompt",
+          "callee": "active_prompt",
+          "lineNumber": 160
+        },
+        {
+          "caller": "save_prompt",
+          "callee": "utc_now",
+          "lineNumber": 161
+        },
+        {
+          "caller": "save_prompt",
+          "callee": "store.get(db).get",
+          "lineNumber": 162
+        },
+        {
+          "caller": "save_prompt",
+          "callee": "store.get",
+          "lineNumber": 162
+        },
+        {
+          "caller": "save_prompt",
+          "callee": "store.update",
+          "lineNumber": 163
+        },
+        {
+          "caller": "save_prompt",
+          "callee": "next_version",
+          "lineNumber": 175
+        },
+        {
+          "caller": "save_prompt",
+          "callee": "store.update",
+          "lineNumber": 176
+        },
+        {
+          "caller": "save_taxonomy",
+          "callee": "taxonomy.as_dict",
+          "lineNumber": 183
+        },
+        {
+          "caller": "save_taxonomy",
+          "callee": "current[\"categories\"].items",
+          "lineNumber": 186
+        },
+        {
+          "caller": "save_taxonomy",
+          "callee": "data.categories.get",
+          "lineNumber": 188
+        },
+        {
+          "caller": "save_taxonomy",
+          "callee": "sorted",
+          "lineNumber": 190
+        },
+        {
+          "caller": "save_taxonomy",
+          "callee": "store.labels_in_use",
+          "lineNumber": 190
+        },
+        {
+          "caller": "save_taxonomy",
+          "callee": "SettingsError",
+          "lineNumber": 192
+        },
+        {
+          "caller": "save_taxonomy",
+          "callee": "\", \".join",
+          "lineNumber": 195
+        },
+        {
+          "caller": "save_taxonomy",
+          "callee": "utc_now",
+          "lineNumber": 197
+        },
+        {
+          "caller": "save_taxonomy",
+          "callee": "next_version",
+          "lineNumber": 199
+        },
+        {
+          "caller": "save_taxonomy",
+          "callee": "store.update",
+          "lineNumber": 203
+        },
+        {
+          "caller": "save_taxonomy",
+          "callee": "load_taxonomy",
+          "lineNumber": 207
+        },
+        {
+          "caller": "save_pricing",
+          "callee": "utc_now",
+          "lineNumber": 211
+        },
+        {
+          "caller": "save_pricing",
+          "callee": "now.strftime",
+          "lineNumber": 212
+        },
+        {
+          "caller": "save_pricing",
+          "callee": "entry.model_dump",
+          "lineNumber": 213
+        },
+        {
+          "caller": "save_pricing",
+          "callee": "store.update",
+          "lineNumber": 214
+        }
+      ],
+      "metrics": {
+        "importCount": 13,
+        "exportCount": 13,
+        "functionCount": 12,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "backend/tests/test_app_settings.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 431,
+      "nonEmptyLines": 317,
+      "functions": [
+        {
+          "name": "api",
+          "startLine": 34,
+          "endLine": 37,
+          "params": [
+            "test_settings",
+            "test_db"
+          ]
+        },
+        {
+          "name": "local",
+          "startLine": 41,
+          "endLine": 44,
+          "params": [
+            "test_settings"
+          ]
+        },
+        {
+          "name": "categories",
+          "startLine": 47,
+          "endLine": 48,
+          "params": [
+            "**changes"
+          ]
+        },
+        {
+          "name": "new_ticket",
+          "startLine": 51,
+          "endLine": 52,
+          "params": [
+            "api"
+          ]
+        },
+        {
+          "name": "test_defaults_show_with_no_saved_settings",
+          "startLine": 58,
+          "endLine": 70,
+          "params": [
+            "api"
+          ]
+        },
+        {
+          "name": "test_api_keys_can_never_be_read",
+          "startLine": 73,
+          "endLine": 83,
+          "params": [
+            "test_settings",
+            "test_db"
+          ]
+        },
+        {
+          "name": "test_keys_and_connection_details_cannot_be_changed",
+          "startLine": 89,
+          "endLine": 93,
+          "params": [
+            "api",
+            "test_db",
+            "field"
+          ]
+        },
+        {
+          "name": "test_threshold_and_concurrency_persist_and_take_effect",
+          "startLine": 99,
+          "endLine": 112,
+          "params": [
+            "test_settings",
+            "test_db"
+          ]
+        },
+        {
+          "name": "test_out_of_range_values_are_rejected",
+          "startLine": 125,
+          "endLine": 127,
+          "params": [
+            "api",
+            "test_db",
+            "body"
+          ]
+        },
+        {
+          "name": "test_a_bulk_run_uses_the_saved_concurrency",
+          "startLine": 130,
+          "endLine": 143,
+          "params": [
+            "api",
+            "test_db",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_saved_models_reach_the_right_side",
+          "startLine": 149,
+          "endLine": 160,
+          "params": [
+            "local",
+            "test_db",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_a_badly_formed_model_name_is_rejected",
+          "startLine": 164,
+          "endLine": 165,
+          "params": [
+            "api",
+            "bad"
+          ]
+        },
+        {
+          "name": "test_a_model_the_server_does_not_have_is_rejected",
+          "startLine": 168,
+          "endLine": 174,
+          "params": [
+            "local",
+            "test_db",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_the_documented_jev_alias_is_always_allowed",
+          "startLine": 177,
+          "endLine": 180,
+          "params": [
+            "local",
+            "test_db",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_a_model_can_be_saved_when_the_server_is_unreachable",
+          "startLine": 183,
+          "endLine": 189,
+          "params": [
+            "local",
+            "test_db",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_model_list_parses_the_servers_answer_and_sends_the_key_only_to_it",
+          "startLine": 192,
+          "endLine": 205,
+          "params": [
+            "local"
+          ]
+        },
+        {
+          "name": "test_models_endpoint_reports_a_safe_error",
+          "startLine": 208,
+          "endLine": 216,
+          "params": [
+            "local",
+            "test_db",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_a_new_prompt_gets_a_version_and_old_runs_keep_theirs",
+          "startLine": 222,
+          "endLine": 239,
+          "params": [
+            "api",
+            "test_db"
+          ]
+        },
+        {
+          "name": "test_both_sides_receive_the_same_saved_prompt",
+          "startLine": 242,
+          "endLine": 256,
+          "params": []
+        },
+        {
+          "name": "test_a_blank_or_huge_prompt_is_rejected",
+          "startLine": 260,
+          "endLine": 262,
+          "params": [
+            "api",
+            "text"
+          ]
+        },
+        {
+          "name": "test_adding_labels_bumps_the_version_and_reaches_everything",
+          "startLine": 268,
+          "endLine": 296,
+          "params": [
+            "api",
+            "test_db"
+          ]
+        },
+        {
+          "name": "test_saved_taxonomy_survives_a_restart",
+          "startLine": 299,
+          "endLine": 306,
+          "params": [
+            "test_settings",
+            "test_db"
+          ]
+        },
+        {
+          "name": "test_unused_labels_can_be_removed",
+          "startLine": 309,
+          "endLine": 314,
+          "params": [
+            "api"
+          ]
+        },
+        {
+          "name": "test_a_label_in_use_cannot_be_removed_or_renamed",
+          "startLine": 321,
+          "endLine": 338,
+          "params": [
+            "api",
+            "test_db",
+            "use"
+          ]
+        },
+        {
+          "name": "test_invalid_taxonomies_are_rejected",
+          "startLine": 353,
+          "endLine": 357,
+          "params": [
+            "api",
+            "change"
+          ]
+        },
+        {
+          "name": "test_jev_limit_of_sixteen_categories_is_enforced",
+          "startLine": 360,
+          "endLine": 365,
+          "params": [
+            "api"
+          ]
+        },
+        {
+          "name": "entry",
+          "startLine": 371,
+          "endLine": 377,
+          "params": [
+            "**changes"
+          ]
+        },
+        {
+          "name": "test_saved_rates_are_used_and_old_runs_keep_theirs",
+          "startLine": 380,
+          "endLine": 394,
+          "params": [
+            "local",
+            "test_db"
+          ]
+        },
+        {
+          "name": "test_fake_runs_are_never_priced_even_with_saved_rates",
+          "startLine": 397,
+          "endLine": 402,
+          "params": [
+            "test_settings",
+            "test_db"
+          ]
+        },
+        {
+          "name": "test_invalid_rates_are_rejected",
+          "startLine": 414,
+          "endLine": 416,
+          "params": [
+            "api",
+            "test_db",
+            "bad"
+          ]
+        },
+        {
+          "name": "test_the_same_model_cannot_be_priced_twice",
+          "startLine": 419,
+          "endLine": 422,
+          "params": [
+            "api"
+          ]
+        },
+        {
+          "name": "test_rates_can_be_cleared",
+          "startLine": 425,
+          "endLine": 431,
+          "params": [
+            "api"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "api",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "local",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "categories",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "new_ticket",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "test_defaults_show_with_no_saved_settings",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "test_api_keys_can_never_be_read",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "test_keys_and_connection_details_cannot_be_changed",
+          "line": 86,
+          "isDefault": false
+        },
+        {
+          "name": "test_threshold_and_concurrency_persist_and_take_effect",
+          "line": 99,
+          "isDefault": false
+        },
+        {
+          "name": "test_out_of_range_values_are_rejected",
+          "line": 115,
+          "isDefault": false
+        },
+        {
+          "name": "test_a_bulk_run_uses_the_saved_concurrency",
+          "line": 130,
+          "isDefault": false
+        },
+        {
+          "name": "test_saved_models_reach_the_right_side",
+          "line": 149,
+          "isDefault": false
+        },
+        {
+          "name": "test_a_badly_formed_model_name_is_rejected",
+          "line": 163,
+          "isDefault": false
+        },
+        {
+          "name": "test_a_model_the_server_does_not_have_is_rejected",
+          "line": 168,
+          "isDefault": false
+        },
+        {
+          "name": "test_the_documented_jev_alias_is_always_allowed",
+          "line": 177,
+          "isDefault": false
+        },
+        {
+          "name": "test_a_model_can_be_saved_when_the_server_is_unreachable",
+          "line": 183,
+          "isDefault": false
+        },
+        {
+          "name": "test_model_list_parses_the_servers_answer_and_sends_the_key_only_to_it",
+          "line": 192,
+          "isDefault": false
+        },
+        {
+          "name": "test_models_endpoint_reports_a_safe_error",
+          "line": 208,
+          "isDefault": false
+        },
+        {
+          "name": "test_a_new_prompt_gets_a_version_and_old_runs_keep_theirs",
+          "line": 222,
+          "isDefault": false
+        },
+        {
+          "name": "test_both_sides_receive_the_same_saved_prompt",
+          "line": 242,
+          "isDefault": false
+        },
+        {
+          "name": "test_a_blank_or_huge_prompt_is_rejected",
+          "line": 259,
+          "isDefault": false
+        },
+        {
+          "name": "test_adding_labels_bumps_the_version_and_reaches_everything",
+          "line": 268,
+          "isDefault": false
+        },
+        {
+          "name": "test_saved_taxonomy_survives_a_restart",
+          "line": 299,
+          "isDefault": false
+        },
+        {
+          "name": "test_unused_labels_can_be_removed",
+          "line": 309,
+          "isDefault": false
+        },
+        {
+          "name": "test_a_label_in_use_cannot_be_removed_or_renamed",
+          "line": 317,
+          "isDefault": false
+        },
+        {
+          "name": "test_invalid_taxonomies_are_rejected",
+          "line": 341,
+          "isDefault": false
+        },
+        {
+          "name": "test_jev_limit_of_sixteen_categories_is_enforced",
+          "line": 360,
+          "isDefault": false
+        },
+        {
+          "name": "entry",
+          "line": 371,
+          "isDefault": false
+        },
+        {
+          "name": "test_saved_rates_are_used_and_old_runs_keep_theirs",
+          "line": 380,
+          "isDefault": false
+        },
+        {
+          "name": "test_fake_runs_are_never_priced_even_with_saved_rates",
+          "line": 397,
+          "isDefault": false
+        },
+        {
+          "name": "test_invalid_rates_are_rejected",
+          "line": 405,
+          "isDefault": false
+        },
+        {
+          "name": "test_the_same_model_cannot_be_priced_twice",
+          "line": 419,
+          "isDefault": false
+        },
+        {
+          "name": "test_rates_can_be_cleared",
+          "line": 425,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "api",
+          "callee": "test_settings.model_copy",
+          "lineNumber": 35
+        },
+        {
+          "caller": "api",
+          "callee": "TestClient",
+          "lineNumber": 36
+        },
+        {
+          "caller": "api",
+          "callee": "create_app",
+          "lineNumber": 36
+        },
+        {
+          "caller": "local",
+          "callee": "test_settings.model_copy",
+          "lineNumber": 42
+        },
+        {
+          "caller": "categories",
+          "callee": "list",
+          "lineNumber": 48
+        },
+        {
+          "caller": "categories",
+          "callee": "taxonomy.as_dict()[\"categories\"].items",
+          "lineNumber": 48
+        },
+        {
+          "caller": "categories",
+          "callee": "taxonomy.as_dict",
+          "lineNumber": 48
+        },
+        {
+          "caller": "new_ticket",
+          "callee": "api.post(\"/api/tickets\", json=NEW).json",
+          "lineNumber": 52
+        },
+        {
+          "caller": "new_ticket",
+          "callee": "api.post",
+          "lineNumber": 52
+        },
+        {
+          "caller": "test_defaults_show_with_no_saved_settings",
+          "callee": "api.get(\"/api/settings\").json",
+          "lineNumber": 59
+        },
+        {
+          "caller": "test_defaults_show_with_no_saved_settings",
+          "callee": "api.get",
+          "lineNumber": 59
+        },
+        {
+          "caller": "test_defaults_show_with_no_saved_settings",
+          "callee": "len",
+          "lineNumber": 68
+        },
+        {
+          "caller": "test_api_keys_can_never_be_read",
+          "callee": "test_settings.model_copy",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_api_keys_can_never_be_read",
+          "callee": "SecretStr",
+          "lineNumber": 76
+        },
+        {
+          "caller": "test_api_keys_can_never_be_read",
+          "callee": "SecretStr",
+          "lineNumber": 77
+        },
+        {
+          "caller": "test_api_keys_can_never_be_read",
+          "callee": "TestClient",
+          "lineNumber": 80
+        },
+        {
+          "caller": "test_api_keys_can_never_be_read",
+          "callee": "create_app",
+          "lineNumber": 80
+        },
+        {
+          "caller": "test_api_keys_can_never_be_read",
+          "callee": "client.get",
+          "lineNumber": 81
+        },
+        {
+          "caller": "test_keys_and_connection_details_cannot_be_changed",
+          "callee": "api.patch",
+          "lineNumber": 90
+        },
+        {
+          "caller": "test_keys_and_connection_details_cannot_be_changed",
+          "callee": "test_db.app_settings.count_documents",
+          "lineNumber": 93
+        },
+        {
+          "caller": "test_threshold_and_concurrency_persist_and_take_effect",
+          "callee": "test_settings.model_copy",
+          "lineNumber": 100
+        },
+        {
+          "caller": "test_threshold_and_concurrency_persist_and_take_effect",
+          "callee": "TestClient",
+          "lineNumber": 101
+        },
+        {
+          "caller": "test_threshold_and_concurrency_persist_and_take_effect",
+          "callee": "create_app",
+          "lineNumber": 101
+        },
+        {
+          "caller": "test_threshold_and_concurrency_persist_and_take_effect",
+          "callee": "client.patch",
+          "lineNumber": 102
+        },
+        {
+          "caller": "test_threshold_and_concurrency_persist_and_take_effect",
+          "callee": "TestClient",
+          "lineNumber": 108
+        },
+        {
+          "caller": "test_threshold_and_concurrency_persist_and_take_effect",
+          "callee": "create_app",
+          "lineNumber": 108
+        },
+        {
+          "caller": "test_threshold_and_concurrency_persist_and_take_effect",
+          "callee": "client.get(\"/api/settings\").json",
+          "lineNumber": 109
+        },
+        {
+          "caller": "test_threshold_and_concurrency_persist_and_take_effect",
+          "callee": "client.get",
+          "lineNumber": 109
+        },
+        {
+          "caller": "test_threshold_and_concurrency_persist_and_take_effect",
+          "callee": "app_settings.effective",
+          "lineNumber": 111
+        },
+        {
+          "caller": "test_out_of_range_values_are_rejected",
+          "callee": "api.patch",
+          "lineNumber": 126
+        },
+        {
+          "caller": "test_out_of_range_values_are_rejected",
+          "callee": "test_db.app_settings.count_documents",
+          "lineNumber": 127
+        },
+        {
+          "caller": "pool",
+          "callee": "seen.append",
+          "lineNumber": 135
+        },
+        {
+          "caller": "pool",
+          "callee": "real_pool",
+          "lineNumber": 136
+        },
+        {
+          "caller": "test_a_bulk_run_uses_the_saved_concurrency",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 138
+        },
+        {
+          "caller": "test_a_bulk_run_uses_the_saved_concurrency",
+          "callee": "api.patch",
+          "lineNumber": 139
+        },
+        {
+          "caller": "test_a_bulk_run_uses_the_saved_concurrency",
+          "callee": "api.post",
+          "lineNumber": 141
+        },
+        {
+          "caller": "test_a_bulk_run_uses_the_saved_concurrency",
+          "callee": "new_ticket",
+          "lineNumber": 141
+        },
+        {
+          "caller": "test_saved_models_reach_the_right_side",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 150
+        },
+        {
+          "caller": "test_saved_models_reach_the_right_side",
+          "callee": "TestClient",
+          "lineNumber": 151
+        },
+        {
+          "caller": "test_saved_models_reach_the_right_side",
+          "callee": "create_app",
+          "lineNumber": 151
+        },
+        {
+          "caller": "test_saved_models_reach_the_right_side",
+          "callee": "client.patch",
+          "lineNumber": 152
+        },
+        {
+          "caller": "test_saved_models_reach_the_right_side",
+          "callee": "client.get(\"/api/providers/status\").json",
+          "lineNumber": 156
+        },
+        {
+          "caller": "test_saved_models_reach_the_right_side",
+          "callee": "client.get",
+          "lineNumber": 156
+        },
+        {
+          "caller": "test_saved_models_reach_the_right_side",
+          "callee": "app_settings.effective",
+          "lineNumber": 158
+        },
+        {
+          "caller": "test_a_badly_formed_model_name_is_rejected",
+          "callee": "api.patch",
+          "lineNumber": 165
+        },
+        {
+          "caller": "test_a_model_the_server_does_not_have_is_rejected",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 169
+        },
+        {
+          "caller": "test_a_model_the_server_does_not_have_is_rejected",
+          "callee": "TestClient",
+          "lineNumber": 170
+        },
+        {
+          "caller": "test_a_model_the_server_does_not_have_is_rejected",
+          "callee": "create_app",
+          "lineNumber": 170
+        },
+        {
+          "caller": "test_a_model_the_server_does_not_have_is_rejected",
+          "callee": "client.patch",
+          "lineNumber": 171
+        },
+        {
+          "caller": "test_a_model_the_server_does_not_have_is_rejected",
+          "callee": "response.json",
+          "lineNumber": 174
+        },
+        {
+          "caller": "test_the_documented_jev_alias_is_always_allowed",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 178
+        },
+        {
+          "caller": "test_the_documented_jev_alias_is_always_allowed",
+          "callee": "TestClient",
+          "lineNumber": 179
+        },
+        {
+          "caller": "test_the_documented_jev_alias_is_always_allowed",
+          "callee": "create_app",
+          "lineNumber": 179
+        },
+        {
+          "caller": "test_the_documented_jev_alias_is_always_allowed",
+          "callee": "client.patch",
+          "lineNumber": 180
+        },
+        {
+          "caller": "down",
+          "callee": "app_settings.ProviderFailure",
+          "lineNumber": 185
+        },
+        {
+          "caller": "test_a_model_can_be_saved_when_the_server_is_unreachable",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 187
+        },
+        {
+          "caller": "test_a_model_can_be_saved_when_the_server_is_unreachable",
+          "callee": "TestClient",
+          "lineNumber": 188
+        },
+        {
+          "caller": "test_a_model_can_be_saved_when_the_server_is_unreachable",
+          "callee": "create_app",
+          "lineNumber": 188
+        },
+        {
+          "caller": "test_a_model_can_be_saved_when_the_server_is_unreachable",
+          "callee": "client.patch",
+          "lineNumber": 189
+        },
+        {
+          "caller": "handler",
+          "callee": "str",
+          "lineNumber": 196
+        },
+        {
+          "caller": "handler",
+          "callee": "request.headers.get",
+          "lineNumber": 196
+        },
+        {
+          "caller": "handler",
+          "callee": "httpx.Response",
+          "lineNumber": 197
+        },
+        {
+          "caller": "test_model_list_parses_the_servers_answer_and_sends_the_key_only_to_it",
+          "callee": "local.model_copy",
+          "lineNumber": 199
+        },
+        {
+          "caller": "test_model_list_parses_the_servers_answer_and_sends_the_key_only_to_it",
+          "callee": "SecretStr",
+          "lineNumber": 200
+        },
+        {
+          "caller": "test_model_list_parses_the_servers_answer_and_sends_the_key_only_to_it",
+          "callee": "httpx.Client",
+          "lineNumber": 202
+        },
+        {
+          "caller": "test_model_list_parses_the_servers_answer_and_sends_the_key_only_to_it",
+          "callee": "httpx.MockTransport",
+          "lineNumber": 202
+        },
+        {
+          "caller": "test_model_list_parses_the_servers_answer_and_sends_the_key_only_to_it",
+          "callee": "app_settings.available_models",
+          "lineNumber": 204
+        },
+        {
+          "caller": "down",
+          "callee": "app_settings.ProviderFailure",
+          "lineNumber": 210
+        },
+        {
+          "caller": "test_models_endpoint_reports_a_safe_error",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 212
+        },
+        {
+          "caller": "test_models_endpoint_reports_a_safe_error",
+          "callee": "TestClient",
+          "lineNumber": 213
+        },
+        {
+          "caller": "test_models_endpoint_reports_a_safe_error",
+          "callee": "create_app",
+          "lineNumber": 213
+        },
+        {
+          "caller": "test_models_endpoint_reports_a_safe_error",
+          "callee": "client.get(\"/api/settings/models/llm\").json",
+          "lineNumber": 214
+        },
+        {
+          "caller": "test_models_endpoint_reports_a_safe_error",
+          "callee": "client.get",
+          "lineNumber": 214
+        },
+        {
+          "caller": "test_a_new_prompt_gets_a_version_and_old_runs_keep_theirs",
+          "callee": "new_ticket",
+          "lineNumber": 223
+        },
+        {
+          "caller": "test_a_new_prompt_gets_a_version_and_old_runs_keep_theirs",
+          "callee": "api.post(f\"/api/tickets/{ticket_id}/runs/gpt\").json",
+          "lineNumber": 224
+        },
+        {
+          "caller": "test_a_new_prompt_gets_a_version_and_old_runs_keep_theirs",
+          "callee": "api.post",
+          "lineNumber": 224
+        },
+        {
+          "caller": "test_a_new_prompt_gets_a_version_and_old_runs_keep_theirs",
+          "callee": "api.put",
+          "lineNumber": 227
+        },
+        {
+          "caller": "test_a_new_prompt_gets_a_version_and_old_runs_keep_theirs",
+          "callee": "response.json",
+          "lineNumber": 229
+        },
+        {
+          "caller": "test_a_new_prompt_gets_a_version_and_old_runs_keep_theirs",
+          "callee": "api.post(f\"/api/tickets/{ticket_id}/runs/gpt\").json",
+          "lineNumber": 231
+        },
+        {
+          "caller": "test_a_new_prompt_gets_a_version_and_old_runs_keep_theirs",
+          "callee": "api.post",
+          "lineNumber": 231
+        },
+        {
+          "caller": "test_a_new_prompt_gets_a_version_and_old_runs_keep_theirs",
+          "callee": "api.get(f\"/api/executions/{first['execution_id']}\").json",
+          "lineNumber": 234
+        },
+        {
+          "caller": "test_a_new_prompt_gets_a_version_and_old_runs_keep_theirs",
+          "callee": "api.get",
+          "lineNumber": 234
+        },
+        {
+          "caller": "test_a_new_prompt_gets_a_version_and_old_runs_keep_theirs",
+          "callee": "api.get(\"/api/settings\").json",
+          "lineNumber": 238
+        },
+        {
+          "caller": "test_a_new_prompt_gets_a_version_and_old_runs_keep_theirs",
+          "callee": "api.get",
+          "lineNumber": 238
+        },
+        {
+          "caller": "test_both_sides_receive_the_same_saved_prompt",
+          "callee": "build_input",
+          "lineNumber": 243
+        },
+        {
+          "caller": "test_both_sides_receive_the_same_saved_prompt",
+          "callee": "ollama.build_request",
+          "lineNumber": 254
+        },
+        {
+          "caller": "test_both_sides_receive_the_same_saved_prompt",
+          "callee": "jev.build_request",
+          "lineNumber": 255
+        },
+        {
+          "caller": "test_a_blank_or_huge_prompt_is_rejected",
+          "callee": "api.put",
+          "lineNumber": 261
+        },
+        {
+          "caller": "test_a_blank_or_huge_prompt_is_rejected",
+          "callee": "api.get(\"/api/settings\").json",
+          "lineNumber": 262
+        },
+        {
+          "caller": "test_a_blank_or_huge_prompt_is_rejected",
+          "callee": "api.get",
+          "lineNumber": 262
+        },
+        {
+          "caller": "test_adding_labels_bumps_the_version_and_reaches_everything",
+          "callee": "categories",
+          "lineNumber": 269
+        },
+        {
+          "caller": "test_adding_labels_bumps_the_version_and_reaches_everything",
+          "callee": "api.put",
+          "lineNumber": 276
+        },
+        {
+          "caller": "test_adding_labels_bumps_the_version_and_reaches_everything",
+          "callee": "response.json",
+          "lineNumber": 279
+        },
+        {
+          "caller": "test_adding_labels_bumps_the_version_and_reaches_everything",
+          "callee": "api.get(\"/api/taxonomy\").json",
+          "lineNumber": 280
+        },
+        {
+          "caller": "test_adding_labels_bumps_the_version_and_reaches_everything",
+          "callee": "api.get",
+          "lineNumber": 280
+        },
+        {
+          "caller": "test_adding_labels_bumps_the_version_and_reaches_everything",
+          "callee": "taxonomy.is_valid_pair",
+          "lineNumber": 283
+        },
+        {
+          "caller": "test_adding_labels_bumps_the_version_and_reaches_everything",
+          "callee": "new_ticket",
+          "lineNumber": 285
+        },
+        {
+          "caller": "test_adding_labels_bumps_the_version_and_reaches_everything",
+          "callee": "api.get(f\"/api/tickets/{ticket_id}\").json",
+          "lineNumber": 286
+        },
+        {
+          "caller": "test_adding_labels_bumps_the_version_and_reaches_everything",
+          "callee": "api.get",
+          "lineNumber": 286
+        },
+        {
+          "caller": "test_adding_labels_bumps_the_version_and_reaches_everything",
+          "callee": "api.put",
+          "lineNumber": 287
+        },
+        {
+          "caller": "test_adding_labels_bumps_the_version_and_reaches_everything",
+          "callee": "response.json",
+          "lineNumber": 292
+        },
+        {
+          "caller": "test_adding_labels_bumps_the_version_and_reaches_everything",
+          "callee": "str(ollama.system_prompt()).replace",
+          "lineNumber": 293
+        },
+        {
+          "caller": "test_adding_labels_bumps_the_version_and_reaches_everything",
+          "callee": "str",
+          "lineNumber": 293
+        },
+        {
+          "caller": "test_adding_labels_bumps_the_version_and_reaches_everything",
+          "callee": "ollama.system_prompt",
+          "lineNumber": 293
+        },
+        {
+          "caller": "test_adding_labels_bumps_the_version_and_reaches_everything",
+          "callee": "build_input",
+          "lineNumber": 294
+        },
+        {
+          "caller": "test_adding_labels_bumps_the_version_and_reaches_everything",
+          "callee": "test_db.tickets.find_one",
+          "lineNumber": 294
+        },
+        {
+          "caller": "test_adding_labels_bumps_the_version_and_reaches_everything",
+          "callee": "jev.build_request",
+          "lineNumber": 295
+        },
+        {
+          "caller": "test_adding_labels_bumps_the_version_and_reaches_everything",
+          "callee": "ollama.build_request",
+          "lineNumber": 296
+        },
+        {
+          "caller": "test_saved_taxonomy_survives_a_restart",
+          "callee": "TestClient",
+          "lineNumber": 300
+        },
+        {
+          "caller": "test_saved_taxonomy_survives_a_restart",
+          "callee": "create_app",
+          "lineNumber": 300
+        },
+        {
+          "caller": "test_saved_taxonomy_survives_a_restart",
+          "callee": "categories",
+          "lineNumber": 301
+        },
+        {
+          "caller": "test_saved_taxonomy_survives_a_restart",
+          "callee": "client.put",
+          "lineNumber": 302
+        },
+        {
+          "caller": "test_saved_taxonomy_survives_a_restart",
+          "callee": "taxonomy.reset",
+          "lineNumber": 303
+        },
+        {
+          "caller": "test_saved_taxonomy_survives_a_restart",
+          "callee": "TestClient",
+          "lineNumber": 305
+        },
+        {
+          "caller": "test_saved_taxonomy_survives_a_restart",
+          "callee": "create_app",
+          "lineNumber": 305
+        },
+        {
+          "caller": "test_saved_taxonomy_survives_a_restart",
+          "callee": "client.get(\"/api/taxonomy\").json",
+          "lineNumber": 306
+        },
+        {
+          "caller": "test_saved_taxonomy_survives_a_restart",
+          "callee": "client.get",
+          "lineNumber": 306
+        },
+        {
+          "caller": "test_unused_labels_can_be_removed",
+          "callee": "categories",
+          "lineNumber": 310
+        },
+        {
+          "caller": "test_unused_labels_can_be_removed",
+          "callee": "body[\"General Enquiries\"].remove",
+          "lineNumber": 311
+        },
+        {
+          "caller": "test_unused_labels_can_be_removed",
+          "callee": "api.put",
+          "lineNumber": 313
+        },
+        {
+          "caller": "test_unused_labels_can_be_removed",
+          "callee": "taxonomy.is_valid_pair",
+          "lineNumber": 314
+        },
+        {
+          "caller": "test_a_label_in_use_cannot_be_removed_or_renamed",
+          "callee": "new_ticket",
+          "lineNumber": 322
+        },
+        {
+          "caller": "test_a_label_in_use_cannot_be_removed_or_renamed",
+          "callee": "api.put",
+          "lineNumber": 325
+        },
+        {
+          "caller": "test_a_label_in_use_cannot_be_removed_or_renamed",
+          "callee": "test_db.ai_executions.insert_one",
+          "lineNumber": 327
+        },
+        {
+          "caller": "test_a_label_in_use_cannot_be_removed_or_renamed",
+          "callee": "test_db.evaluation_labels.insert_one",
+          "lineNumber": 329
+        },
+        {
+          "caller": "test_a_label_in_use_cannot_be_removed_or_renamed",
+          "callee": "categories",
+          "lineNumber": 330
+        },
+        {
+          "caller": "test_a_label_in_use_cannot_be_removed_or_renamed",
+          "callee": "body[\"Returns & Refunds\"].remove",
+          "lineNumber": 331
+        },
+        {
+          "caller": "test_a_label_in_use_cannot_be_removed_or_renamed",
+          "callee": "body[\"Returns & Refunds\"].append",
+          "lineNumber": 332
+        },
+        {
+          "caller": "test_a_label_in_use_cannot_be_removed_or_renamed",
+          "callee": "api.put",
+          "lineNumber": 334
+        },
+        {
+          "caller": "test_a_label_in_use_cannot_be_removed_or_renamed",
+          "callee": "response.json",
+          "lineNumber": 337
+        },
+        {
+          "caller": "test_a_label_in_use_cannot_be_removed_or_renamed",
+          "callee": "api.get(\"/api/taxonomy\").json",
+          "lineNumber": 338
+        },
+        {
+          "caller": "test_a_label_in_use_cannot_be_removed_or_renamed",
+          "callee": "api.get",
+          "lineNumber": 338
+        },
+        {
+          "caller": "test_invalid_taxonomies_are_rejected",
+          "callee": "api.put",
+          "lineNumber": 354
+        },
+        {
+          "caller": "test_invalid_taxonomies_are_rejected",
+          "callee": "categories",
+          "lineNumber": 354
+        },
+        {
+          "caller": "test_invalid_taxonomies_are_rejected",
+          "callee": "api.get(\"/api/taxonomy\").json",
+          "lineNumber": 357
+        },
+        {
+          "caller": "test_invalid_taxonomies_are_rejected",
+          "callee": "api.get",
+          "lineNumber": 357
+        },
+        {
+          "caller": "test_jev_limit_of_sixteen_categories_is_enforced",
+          "callee": "range",
+          "lineNumber": 361
+        },
+        {
+          "caller": "test_jev_limit_of_sixteen_categories_is_enforced",
+          "callee": "api.put",
+          "lineNumber": 363
+        },
+        {
+          "caller": "test_jev_limit_of_sixteen_categories_is_enforced",
+          "callee": "categories",
+          "lineNumber": 363
+        },
+        {
+          "caller": "test_saved_rates_are_used_and_old_runs_keep_theirs",
+          "callee": "TestClient",
+          "lineNumber": 381
+        },
+        {
+          "caller": "test_saved_rates_are_used_and_old_runs_keep_theirs",
+          "callee": "create_app",
+          "lineNumber": 381
+        },
+        {
+          "caller": "test_saved_rates_are_used_and_old_runs_keep_theirs",
+          "callee": "app_settings.rates_for",
+          "lineNumber": 383
+        },
+        {
+          "caller": "test_saved_rates_are_used_and_old_runs_keep_theirs",
+          "callee": "client.put",
+          "lineNumber": 385
+        },
+        {
+          "caller": "test_saved_rates_are_used_and_old_runs_keep_theirs",
+          "callee": "entry",
+          "lineNumber": 385
+        },
+        {
+          "caller": "test_saved_rates_are_used_and_old_runs_keep_theirs",
+          "callee": "Decimal",
+          "lineNumber": 387
+        },
+        {
+          "caller": "test_saved_rates_are_used_and_old_runs_keep_theirs",
+          "callee": "response.json",
+          "lineNumber": 387
+        },
+        {
+          "caller": "test_saved_rates_are_used_and_old_runs_keep_theirs",
+          "callee": "Decimal",
+          "lineNumber": 387
+        },
+        {
+          "caller": "test_saved_rates_are_used_and_old_runs_keep_theirs",
+          "callee": "app_settings.rates_for",
+          "lineNumber": 389
+        },
+        {
+          "caller": "test_saved_rates_are_used_and_old_runs_keep_theirs",
+          "callee": "Decimal",
+          "lineNumber": 390
+        },
+        {
+          "caller": "test_saved_rates_are_used_and_old_runs_keep_theirs",
+          "callee": "Decimal",
+          "lineNumber": 391
+        },
+        {
+          "caller": "test_saved_rates_are_used_and_old_runs_keep_theirs",
+          "callee": "rates.pricing_version.startswith",
+          "lineNumber": 392
+        },
+        {
+          "caller": "test_saved_rates_are_used_and_old_runs_keep_theirs",
+          "callee": "app_settings.rates_for",
+          "lineNumber": 394
+        },
+        {
+          "caller": "test_fake_runs_are_never_priced_even_with_saved_rates",
+          "callee": "test_settings.model_copy",
+          "lineNumber": 398
+        },
+        {
+          "caller": "test_fake_runs_are_never_priced_even_with_saved_rates",
+          "callee": "TestClient",
+          "lineNumber": 399
+        },
+        {
+          "caller": "test_fake_runs_are_never_priced_even_with_saved_rates",
+          "callee": "create_app",
+          "lineNumber": 399
+        },
+        {
+          "caller": "test_fake_runs_are_never_priced_even_with_saved_rates",
+          "callee": "client.put",
+          "lineNumber": 400
+        },
+        {
+          "caller": "test_fake_runs_are_never_priced_even_with_saved_rates",
+          "callee": "entry",
+          "lineNumber": 400
+        },
+        {
+          "caller": "test_fake_runs_are_never_priced_even_with_saved_rates",
+          "callee": "app_settings.rates_for",
+          "lineNumber": 402
+        },
+        {
+          "caller": "test_invalid_rates_are_rejected",
+          "callee": "api.put",
+          "lineNumber": 415
+        },
+        {
+          "caller": "test_invalid_rates_are_rejected",
+          "callee": "test_db.app_settings.count_documents",
+          "lineNumber": 416
+        },
+        {
+          "caller": "test_the_same_model_cannot_be_priced_twice",
+          "callee": "api.put",
+          "lineNumber": 420
+        },
+        {
+          "caller": "test_the_same_model_cannot_be_priced_twice",
+          "callee": "entry",
+          "lineNumber": 420
+        },
+        {
+          "caller": "test_the_same_model_cannot_be_priced_twice",
+          "callee": "entry",
+          "lineNumber": 420
+        },
+        {
+          "caller": "test_rates_can_be_cleared",
+          "callee": "api.put",
+          "lineNumber": 426
+        },
+        {
+          "caller": "test_rates_can_be_cleared",
+          "callee": "entry",
+          "lineNumber": 426
+        },
+        {
+          "caller": "test_rates_can_be_cleared",
+          "callee": "api.put",
+          "lineNumber": 428
+        },
+        {
+          "caller": "test_rates_can_be_cleared",
+          "callee": "response.json",
+          "lineNumber": 431
+        }
+      ],
+      "metrics": {
+        "importCount": 12,
+        "exportCount": 32,
+        "functionCount": 32,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "backend/tests/test_bulk_jobs.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 250,
+      "nonEmptyLines": 178,
+      "functions": [
+        {
+          "name": "api",
+          "startLine": 22,
+          "endLine": 25,
+          "params": [
+            "test_settings",
+            "test_db"
+          ]
+        },
+        {
+          "name": "new_ticket",
+          "startLine": 28,
+          "endLine": 29,
+          "params": [
+            "api",
+            "**changes"
+          ]
+        },
+        {
+          "name": "start",
+          "startLine": 32,
+          "endLine": 37,
+          "params": [
+            "api",
+            "**body"
+          ]
+        },
+        {
+          "name": "test_selected_tickets_on_both_sides_are_run_compared_and_counted",
+          "startLine": 40,
+          "endLine": 53,
+          "params": [
+            "api",
+            "test_db"
+          ]
+        },
+        {
+          "name": "test_one_side_runs_alone_with_no_comparison",
+          "startLine": 56,
+          "endLine": 64,
+          "params": [
+            "api",
+            "test_db"
+          ]
+        },
+        {
+          "name": "test_a_failure_does_not_stop_unrelated_tickets",
+          "startLine": 67,
+          "endLine": 78,
+          "params": [
+            "api"
+          ]
+        },
+        {
+          "name": "test_a_partial_ticket_still_gets_a_comparison",
+          "startLine": 81,
+          "endLine": 86,
+          "params": [
+            "api",
+            "test_db"
+          ]
+        },
+        {
+          "name": "test_all_eligible_means_open_or_in_progress",
+          "startLine": 89,
+          "endLine": 99,
+          "params": [
+            "api"
+          ]
+        },
+        {
+          "name": "test_all_eligible_never_repeats_a_side_that_already_succeeded",
+          "startLine": 102,
+          "endLine": 112,
+          "params": [
+            "api",
+            "test_db"
+          ]
+        },
+        {
+          "name": "test_an_earlier_success_on_a_different_model_does_not_cause_a_skip",
+          "startLine": 115,
+          "endLine": 122,
+          "params": [
+            "api",
+            "test_db"
+          ]
+        },
+        {
+          "name": "test_an_explicit_selection_runs_again_because_the_operator_asked",
+          "startLine": 125,
+          "endLine": 131,
+          "params": [
+            "api",
+            "test_db"
+          ]
+        },
+        {
+          "name": "test_a_ticket_deleted_before_its_turn_is_skipped",
+          "startLine": 134,
+          "endLine": 144,
+          "params": [
+            "test_db",
+            "test_settings",
+            "api"
+          ]
+        },
+        {
+          "name": "test_invalid_requests_are_rejected_and_nothing_runs",
+          "startLine": 147,
+          "endLine": 157,
+          "params": [
+            "api",
+            "test_db"
+          ]
+        },
+        {
+          "name": "test_no_eligible_tickets_is_a_clear_error",
+          "startLine": 160,
+          "endLine": 164,
+          "params": [
+            "api"
+          ]
+        },
+        {
+          "name": "test_repeated_values_in_a_request_run_once",
+          "startLine": 167,
+          "endLine": 173,
+          "params": [
+            "api",
+            "test_db"
+          ]
+        },
+        {
+          "name": "test_a_second_job_is_refused_while_one_is_active",
+          "startLine": 176,
+          "endLine": 183,
+          "params": [
+            "api",
+            "test_db"
+          ]
+        },
+        {
+          "name": "test_concurrency_stays_within_the_limit",
+          "startLine": 186,
+          "endLine": 210,
+          "params": [
+            "test_db",
+            "test_settings",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_restart_marks_unfinished_work_interrupted_and_does_not_rerun_it",
+          "startLine": 213,
+          "endLine": 237,
+          "params": [
+            "test_settings",
+            "test_db"
+          ]
+        },
+        {
+          "name": "test_jobs_are_listed_newest_first_and_unknown_is_404",
+          "startLine": 240,
+          "endLine": 250,
+          "params": [
+            "api"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "api",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "new_ticket",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "start",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "test_selected_tickets_on_both_sides_are_run_compared_and_counted",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "test_one_side_runs_alone_with_no_comparison",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "test_a_failure_does_not_stop_unrelated_tickets",
+          "line": 67,
+          "isDefault": false
+        },
+        {
+          "name": "test_a_partial_ticket_still_gets_a_comparison",
+          "line": 81,
+          "isDefault": false
+        },
+        {
+          "name": "test_all_eligible_means_open_or_in_progress",
+          "line": 89,
+          "isDefault": false
+        },
+        {
+          "name": "test_all_eligible_never_repeats_a_side_that_already_succeeded",
+          "line": 102,
+          "isDefault": false
+        },
+        {
+          "name": "test_an_earlier_success_on_a_different_model_does_not_cause_a_skip",
+          "line": 115,
+          "isDefault": false
+        },
+        {
+          "name": "test_an_explicit_selection_runs_again_because_the_operator_asked",
+          "line": 125,
+          "isDefault": false
+        },
+        {
+          "name": "test_a_ticket_deleted_before_its_turn_is_skipped",
+          "line": 134,
+          "isDefault": false
+        },
+        {
+          "name": "test_invalid_requests_are_rejected_and_nothing_runs",
+          "line": 147,
+          "isDefault": false
+        },
+        {
+          "name": "test_no_eligible_tickets_is_a_clear_error",
+          "line": 160,
+          "isDefault": false
+        },
+        {
+          "name": "test_repeated_values_in_a_request_run_once",
+          "line": 167,
+          "isDefault": false
+        },
+        {
+          "name": "test_a_second_job_is_refused_while_one_is_active",
+          "line": 176,
+          "isDefault": false
+        },
+        {
+          "name": "test_concurrency_stays_within_the_limit",
+          "line": 186,
+          "isDefault": false
+        },
+        {
+          "name": "test_restart_marks_unfinished_work_interrupted_and_does_not_rerun_it",
+          "line": 213,
+          "isDefault": false
+        },
+        {
+          "name": "test_jobs_are_listed_newest_first_and_unknown_is_404",
+          "line": 240,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "api",
+          "callee": "test_settings.model_copy",
+          "lineNumber": 23
+        },
+        {
+          "caller": "api",
+          "callee": "TestClient",
+          "lineNumber": 24
+        },
+        {
+          "caller": "api",
+          "callee": "create_app",
+          "lineNumber": 24
+        },
+        {
+          "caller": "new_ticket",
+          "callee": "api.post(\"/api/tickets\", json=NEW | changes).json",
+          "lineNumber": 29
+        },
+        {
+          "caller": "new_ticket",
+          "callee": "api.post",
+          "lineNumber": 29
+        },
+        {
+          "caller": "start",
+          "callee": "api.post",
+          "lineNumber": 34
+        },
+        {
+          "caller": "start",
+          "callee": "api.get",
+          "lineNumber": 37
+        },
+        {
+          "caller": "start",
+          "callee": "response.json",
+          "lineNumber": 37
+        },
+        {
+          "caller": "test_selected_tickets_on_both_sides_are_run_compared_and_counted",
+          "callee": "new_ticket",
+          "lineNumber": 41
+        },
+        {
+          "caller": "test_selected_tickets_on_both_sides_are_run_compared_and_counted",
+          "callee": "new_ticket",
+          "lineNumber": 41
+        },
+        {
+          "caller": "test_selected_tickets_on_both_sides_are_run_compared_and_counted",
+          "callee": "start(api, ticket_ids=ids, providers=[\"jev\", \"gpt\"]).json",
+          "lineNumber": 43
+        },
+        {
+          "caller": "test_selected_tickets_on_both_sides_are_run_compared_and_counted",
+          "callee": "start",
+          "lineNumber": 43
+        },
+        {
+          "caller": "test_selected_tickets_on_both_sides_are_run_compared_and_counted",
+          "callee": "len",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_selected_tickets_on_both_sides_are_run_compared_and_counted",
+          "callee": "test_db.ai_executions.count_documents",
+          "lineNumber": 50
+        },
+        {
+          "caller": "test_selected_tickets_on_both_sides_are_run_compared_and_counted",
+          "callee": "test_db.comparisons.count_documents",
+          "lineNumber": 51
+        },
+        {
+          "caller": "test_selected_tickets_on_both_sides_are_run_compared_and_counted",
+          "callee": "test_db.ai_executions.count_documents",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_selected_tickets_on_both_sides_are_run_compared_and_counted",
+          "callee": "list",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_one_side_runs_alone_with_no_comparison",
+          "callee": "new_ticket",
+          "lineNumber": 57
+        },
+        {
+          "caller": "test_one_side_runs_alone_with_no_comparison",
+          "callee": "start(api, ticket_ids=[ticket_id], providers=[\"gpt\"]).json",
+          "lineNumber": 59
+        },
+        {
+          "caller": "test_one_side_runs_alone_with_no_comparison",
+          "callee": "start",
+          "lineNumber": 59
+        },
+        {
+          "caller": "test_one_side_runs_alone_with_no_comparison",
+          "callee": "test_db.ai_executions.count_documents",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_one_side_runs_alone_with_no_comparison",
+          "callee": "test_db.ai_executions.count_documents",
+          "lineNumber": 63
+        },
+        {
+          "caller": "test_one_side_runs_alone_with_no_comparison",
+          "callee": "test_db.comparisons.count_documents",
+          "lineNumber": 64
+        },
+        {
+          "caller": "test_a_failure_does_not_stop_unrelated_tickets",
+          "callee": "new_ticket",
+          "lineNumber": 68
+        },
+        {
+          "caller": "test_a_failure_does_not_stop_unrelated_tickets",
+          "callee": "new_ticket",
+          "lineNumber": 69
+        },
+        {
+          "caller": "test_a_failure_does_not_stop_unrelated_tickets",
+          "callee": "start(api, ticket_ids=[bad, good], providers=[\"jev\"]).json",
+          "lineNumber": 71
+        },
+        {
+          "caller": "test_a_failure_does_not_stop_unrelated_tickets",
+          "callee": "start",
+          "lineNumber": 71
+        },
+        {
+          "caller": "test_a_partial_ticket_still_gets_a_comparison",
+          "callee": "new_ticket",
+          "lineNumber": 82
+        },
+        {
+          "caller": "test_a_partial_ticket_still_gets_a_comparison",
+          "callee": "start",
+          "lineNumber": 84
+        },
+        {
+          "caller": "test_a_partial_ticket_still_gets_a_comparison",
+          "callee": "test_db.comparisons.find_one",
+          "lineNumber": 86
+        },
+        {
+          "caller": "test_all_eligible_means_open_or_in_progress",
+          "callee": "new_ticket",
+          "lineNumber": 90
+        },
+        {
+          "caller": "test_all_eligible_means_open_or_in_progress",
+          "callee": "new_ticket",
+          "lineNumber": 90
+        },
+        {
+          "caller": "test_all_eligible_means_open_or_in_progress",
+          "callee": "new_ticket",
+          "lineNumber": 91
+        },
+        {
+          "caller": "test_all_eligible_means_open_or_in_progress",
+          "callee": "new_ticket",
+          "lineNumber": 91
+        },
+        {
+          "caller": "test_all_eligible_means_open_or_in_progress",
+          "callee": "api.patch",
+          "lineNumber": 92
+        },
+        {
+          "caller": "test_all_eligible_means_open_or_in_progress",
+          "callee": "api.patch",
+          "lineNumber": 93
+        },
+        {
+          "caller": "test_all_eligible_means_open_or_in_progress",
+          "callee": "api.patch",
+          "lineNumber": 94
+        },
+        {
+          "caller": "test_all_eligible_means_open_or_in_progress",
+          "callee": "start(api, all_eligible=True, providers=[\"jev\"]).json",
+          "lineNumber": 96
+        },
+        {
+          "caller": "test_all_eligible_means_open_or_in_progress",
+          "callee": "start",
+          "lineNumber": 96
+        },
+        {
+          "caller": "test_all_eligible_means_open_or_in_progress",
+          "callee": "sorted",
+          "lineNumber": 98
+        },
+        {
+          "caller": "test_all_eligible_means_open_or_in_progress",
+          "callee": "sorted",
+          "lineNumber": 98
+        },
+        {
+          "caller": "test_all_eligible_never_repeats_a_side_that_already_succeeded",
+          "callee": "new_ticket",
+          "lineNumber": 103
+        },
+        {
+          "caller": "test_all_eligible_never_repeats_a_side_that_already_succeeded",
+          "callee": "api.post",
+          "lineNumber": 104
+        },
+        {
+          "caller": "test_all_eligible_never_repeats_a_side_that_already_succeeded",
+          "callee": "start(api, all_eligible=True, providers=[\"jev\", \"gpt\"]).json",
+          "lineNumber": 106
+        },
+        {
+          "caller": "test_all_eligible_never_repeats_a_side_that_already_succeeded",
+          "callee": "start",
+          "lineNumber": 106
+        },
+        {
+          "caller": "test_all_eligible_never_repeats_a_side_that_already_succeeded",
+          "callee": "test_db.ai_executions.count_documents",
+          "lineNumber": 109
+        },
+        {
+          "caller": "test_all_eligible_never_repeats_a_side_that_already_succeeded",
+          "callee": "next",
+          "lineNumber": 110
+        },
+        {
+          "caller": "test_an_earlier_success_on_a_different_model_does_not_cause_a_skip",
+          "callee": "new_ticket",
+          "lineNumber": 116
+        },
+        {
+          "caller": "test_an_earlier_success_on_a_different_model_does_not_cause_a_skip",
+          "callee": "api.post",
+          "lineNumber": 117
+        },
+        {
+          "caller": "test_an_earlier_success_on_a_different_model_does_not_cause_a_skip",
+          "callee": "test_db.ai_executions.update_one",
+          "lineNumber": 118
+        },
+        {
+          "caller": "test_an_earlier_success_on_a_different_model_does_not_cause_a_skip",
+          "callee": "start(api, all_eligible=True, providers=[\"jev\"]).json",
+          "lineNumber": 120
+        },
+        {
+          "caller": "test_an_earlier_success_on_a_different_model_does_not_cause_a_skip",
+          "callee": "start",
+          "lineNumber": 120
+        },
+        {
+          "caller": "test_an_explicit_selection_runs_again_because_the_operator_asked",
+          "callee": "new_ticket",
+          "lineNumber": 126
+        },
+        {
+          "caller": "test_an_explicit_selection_runs_again_because_the_operator_asked",
+          "callee": "api.post",
+          "lineNumber": 127
+        },
+        {
+          "caller": "test_an_explicit_selection_runs_again_because_the_operator_asked",
+          "callee": "start",
+          "lineNumber": 129
+        },
+        {
+          "caller": "test_an_explicit_selection_runs_again_because_the_operator_asked",
+          "callee": "test_db.ai_executions.count_documents",
+          "lineNumber": 131
+        },
+        {
+          "caller": "test_a_ticket_deleted_before_its_turn_is_skipped",
+          "callee": "new_ticket",
+          "lineNumber": 135
+        },
+        {
+          "caller": "test_a_ticket_deleted_before_its_turn_is_skipped",
+          "callee": "bulk.create",
+          "lineNumber": 136
+        },
+        {
+          "caller": "test_a_ticket_deleted_before_its_turn_is_skipped",
+          "callee": "bulk.BulkJobCreate",
+          "lineNumber": 136
+        },
+        {
+          "caller": "test_a_ticket_deleted_before_its_turn_is_skipped",
+          "callee": "api.delete",
+          "lineNumber": 137
+        },
+        {
+          "caller": "test_a_ticket_deleted_before_its_turn_is_skipped",
+          "callee": "bulk.run_job",
+          "lineNumber": 139
+        },
+        {
+          "caller": "test_a_ticket_deleted_before_its_turn_is_skipped",
+          "callee": "api.get(f\"/api/bulk-jobs/{job['job_id']}\").json",
+          "lineNumber": 141
+        },
+        {
+          "caller": "test_a_ticket_deleted_before_its_turn_is_skipped",
+          "callee": "api.get",
+          "lineNumber": 141
+        },
+        {
+          "caller": "test_a_ticket_deleted_before_its_turn_is_skipped",
+          "callee": "test_db.ai_executions.count_documents",
+          "lineNumber": 144
+        },
+        {
+          "caller": "test_invalid_requests_are_rejected_and_nothing_runs",
+          "callee": "new_ticket",
+          "lineNumber": 148
+        },
+        {
+          "caller": "test_invalid_requests_are_rejected_and_nothing_runs",
+          "callee": "start",
+          "lineNumber": 150
+        },
+        {
+          "caller": "test_invalid_requests_are_rejected_and_nothing_runs",
+          "callee": "start",
+          "lineNumber": 152
+        },
+        {
+          "caller": "test_invalid_requests_are_rejected_and_nothing_runs",
+          "callee": "start",
+          "lineNumber": 154
+        },
+        {
+          "caller": "test_invalid_requests_are_rejected_and_nothing_runs",
+          "callee": "start",
+          "lineNumber": 155
+        },
+        {
+          "caller": "test_invalid_requests_are_rejected_and_nothing_runs",
+          "callee": "test_db.ai_executions.count_documents",
+          "lineNumber": 156
+        },
+        {
+          "caller": "test_invalid_requests_are_rejected_and_nothing_runs",
+          "callee": "test_db.bulk_jobs.count_documents",
+          "lineNumber": 157
+        },
+        {
+          "caller": "test_no_eligible_tickets_is_a_clear_error",
+          "callee": "start",
+          "lineNumber": 161
+        },
+        {
+          "caller": "test_no_eligible_tickets_is_a_clear_error",
+          "callee": "response.json",
+          "lineNumber": 164
+        },
+        {
+          "caller": "test_repeated_values_in_a_request_run_once",
+          "callee": "new_ticket",
+          "lineNumber": 168
+        },
+        {
+          "caller": "test_repeated_values_in_a_request_run_once",
+          "callee": "start(api, ticket_ids=[ticket_id, ticket_id], providers=[\"jev\", \"jev\"]).json",
+          "lineNumber": 170
+        },
+        {
+          "caller": "test_repeated_values_in_a_request_run_once",
+          "callee": "start",
+          "lineNumber": 170
+        },
+        {
+          "caller": "test_repeated_values_in_a_request_run_once",
+          "callee": "test_db.ai_executions.count_documents",
+          "lineNumber": 173
+        },
+        {
+          "caller": "test_a_second_job_is_refused_while_one_is_active",
+          "callee": "new_ticket",
+          "lineNumber": 177
+        },
+        {
+          "caller": "test_a_second_job_is_refused_while_one_is_active",
+          "callee": "test_db.bulk_jobs.insert_one",
+          "lineNumber": 178
+        },
+        {
+          "caller": "test_a_second_job_is_refused_while_one_is_active",
+          "callee": "start",
+          "lineNumber": 180
+        },
+        {
+          "caller": "test_a_second_job_is_refused_while_one_is_active",
+          "callee": "test_db.ai_executions.count_documents",
+          "lineNumber": 183
+        },
+        {
+          "caller": "test_concurrency_stays_within_the_limit",
+          "callee": "test_settings.model_copy",
+          "lineNumber": 187
+        },
+        {
+          "caller": "test_concurrency_stays_within_the_limit",
+          "callee": "threading.Lock",
+          "lineNumber": 190
+        },
+        {
+          "caller": "slow_run",
+          "callee": "max",
+          "lineNumber": 196
+        },
+        {
+          "caller": "slow_run",
+          "callee": "time.sleep",
+          "lineNumber": 197
+        },
+        {
+          "caller": "slow_run",
+          "callee": "real_run",
+          "lineNumber": 199
+        },
+        {
+          "caller": "test_concurrency_stays_within_the_limit",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 204
+        },
+        {
+          "caller": "test_concurrency_stays_within_the_limit",
+          "callee": "TestClient",
+          "lineNumber": 205
+        },
+        {
+          "caller": "test_concurrency_stays_within_the_limit",
+          "callee": "create_app",
+          "lineNumber": 205
+        },
+        {
+          "caller": "test_concurrency_stays_within_the_limit",
+          "callee": "new_ticket",
+          "lineNumber": 206
+        },
+        {
+          "caller": "test_concurrency_stays_within_the_limit",
+          "callee": "range",
+          "lineNumber": 206
+        },
+        {
+          "caller": "test_concurrency_stays_within_the_limit",
+          "callee": "start(client, ticket_ids=ids, providers=[\"jev\"]).json",
+          "lineNumber": 207
+        },
+        {
+          "caller": "test_concurrency_stays_within_the_limit",
+          "callee": "start",
+          "lineNumber": 207
+        },
+        {
+          "caller": "test_restart_marks_unfinished_work_interrupted_and_does_not_rerun_it",
+          "callee": "test_settings.model_copy",
+          "lineNumber": 214
+        },
+        {
+          "caller": "test_restart_marks_unfinished_work_interrupted_and_does_not_rerun_it",
+          "callee": "datetime.now",
+          "lineNumber": 215
+        },
+        {
+          "caller": "test_restart_marks_unfinished_work_interrupted_and_does_not_rerun_it",
+          "callee": "test_db.bulk_jobs.insert_many",
+          "lineNumber": 216
+        },
+        {
+          "caller": "test_restart_marks_unfinished_work_interrupted_and_does_not_rerun_it",
+          "callee": "test_db.ai_executions.insert_one",
+          "lineNumber": 223
+        },
+        {
+          "caller": "test_restart_marks_unfinished_work_interrupted_and_does_not_rerun_it",
+          "callee": "TestClient",
+          "lineNumber": 225
+        },
+        {
+          "caller": "test_restart_marks_unfinished_work_interrupted_and_does_not_rerun_it",
+          "callee": "create_app",
+          "lineNumber": 225
+        },
+        {
+          "caller": "test_restart_marks_unfinished_work_interrupted_and_does_not_rerun_it",
+          "callee": "test_db.bulk_jobs.find",
+          "lineNumber": 228
+        },
+        {
+          "caller": "test_restart_marks_unfinished_work_interrupted_and_does_not_rerun_it",
+          "callee": "test_db.bulk_jobs.find_one",
+          "lineNumber": 231
+        },
+        {
+          "caller": "test_restart_marks_unfinished_work_interrupted_and_does_not_rerun_it",
+          "callee": "test_db.ai_executions.find_one",
+          "lineNumber": 234
+        },
+        {
+          "caller": "test_restart_marks_unfinished_work_interrupted_and_does_not_rerun_it",
+          "callee": "test_db.ai_executions.count_documents",
+          "lineNumber": 237
+        },
+        {
+          "caller": "test_jobs_are_listed_newest_first_and_unknown_is_404",
+          "callee": "new_ticket",
+          "lineNumber": 241
+        },
+        {
+          "caller": "test_jobs_are_listed_newest_first_and_unknown_is_404",
+          "callee": "start(api, ticket_ids=[ticket_id], providers=[\"jev\"]).json",
+          "lineNumber": 242
+        },
+        {
+          "caller": "test_jobs_are_listed_newest_first_and_unknown_is_404",
+          "callee": "start",
+          "lineNumber": 242
+        },
+        {
+          "caller": "test_jobs_are_listed_newest_first_and_unknown_is_404",
+          "callee": "start(api, ticket_ids=[ticket_id], providers=[\"gpt\"]).json",
+          "lineNumber": 243
+        },
+        {
+          "caller": "test_jobs_are_listed_newest_first_and_unknown_is_404",
+          "callee": "start",
+          "lineNumber": 243
+        },
+        {
+          "caller": "test_jobs_are_listed_newest_first_and_unknown_is_404",
+          "callee": "api.get(\"/api/bulk-jobs?limit=1\").json",
+          "lineNumber": 245
+        },
+        {
+          "caller": "test_jobs_are_listed_newest_first_and_unknown_is_404",
+          "callee": "api.get",
+          "lineNumber": 245
+        },
+        {
+          "caller": "test_jobs_are_listed_newest_first_and_unknown_is_404",
+          "callee": "api.get",
+          "lineNumber": 250
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 19,
+        "functionCount": 19,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "backend/tests/test_retries.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 125,
+      "nonEmptyLines": 88,
+      "functions": [
+        {
+          "name": "call",
+          "startLine": 9,
+          "endLine": 25,
+          "params": [
+            "replies"
+          ]
+        },
+        {
+          "name": "pauses",
+          "startLine": 32,
+          "endLine": 35,
+          "params": [
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_temporary_errors_are_retried_and_can_recover",
+          "startLine": 39,
+          "endLine": 44,
+          "params": [
+            "status",
+            "pauses"
+          ]
+        },
+        {
+          "name": "test_a_refused_connection_is_retried_because_nothing_was_sent",
+          "startLine": 47,
+          "endLine": 51,
+          "params": [
+            "pauses"
+          ]
+        },
+        {
+          "name": "test_retries_stop_after_a_fixed_number_of_attempts",
+          "startLine": 54,
+          "endLine": 59,
+          "params": [
+            "pauses"
+          ]
+        },
+        {
+          "name": "test_backoff_grows_and_has_jitter",
+          "startLine": 62,
+          "endLine": 67,
+          "params": [
+            "pauses"
+          ]
+        },
+        {
+          "name": "test_retry_after_is_respected_and_capped",
+          "startLine": 70,
+          "endLine": 77,
+          "params": [
+            "pauses"
+          ]
+        },
+        {
+          "name": "test_permanent_errors_are_never_retried",
+          "startLine": 91,
+          "endLine": 96,
+          "params": [
+            "status",
+            "kind",
+            "pauses"
+          ]
+        },
+        {
+          "name": "test_a_call_that_may_have_reached_the_provider_is_not_repeated",
+          "startLine": 102,
+          "endLine": 108,
+          "params": [
+            "error",
+            "pauses"
+          ]
+        },
+        {
+          "name": "test_get_requests_share_the_same_rules",
+          "startLine": 111,
+          "endLine": 121,
+          "params": [
+            "pauses"
+          ]
+        },
+        {
+          "name": "test_the_api_binds_to_this_computer_only_by_default",
+          "startLine": 124,
+          "endLine": 125,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "call",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "pauses",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "test_temporary_errors_are_retried_and_can_recover",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "test_a_refused_connection_is_retried_because_nothing_was_sent",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "test_retries_stop_after_a_fixed_number_of_attempts",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "test_backoff_grows_and_has_jitter",
+          "line": 62,
+          "isDefault": false
+        },
+        {
+          "name": "test_retry_after_is_respected_and_capped",
+          "line": 70,
+          "isDefault": false
+        },
+        {
+          "name": "test_permanent_errors_are_never_retried",
+          "line": 80,
+          "isDefault": false
+        },
+        {
+          "name": "test_a_call_that_may_have_reached_the_provider_is_not_repeated",
+          "line": 99,
+          "isDefault": false
+        },
+        {
+          "name": "test_get_requests_share_the_same_rules",
+          "line": 111,
+          "isDefault": false
+        },
+        {
+          "name": "test_the_api_binds_to_this_computer_only_by_default",
+          "line": 124,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "handler",
+          "callee": "attempts.append",
+          "lineNumber": 14
+        },
+        {
+          "caller": "handler",
+          "callee": "min",
+          "lineNumber": 15
+        },
+        {
+          "caller": "handler",
+          "callee": "len",
+          "lineNumber": 15
+        },
+        {
+          "caller": "handler",
+          "callee": "len",
+          "lineNumber": 15
+        },
+        {
+          "caller": "handler",
+          "callee": "isinstance",
+          "lineNumber": 16
+        },
+        {
+          "caller": "call",
+          "callee": "httpx.Client",
+          "lineNumber": 20
+        },
+        {
+          "caller": "call",
+          "callee": "httpx.MockTransport",
+          "lineNumber": 20
+        },
+        {
+          "caller": "call",
+          "callee": "http.post_json",
+          "lineNumber": 22
+        },
+        {
+          "caller": "pauses",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 34
+        },
+        {
+          "caller": "test_temporary_errors_are_retried_and_can_recover",
+          "callee": "call",
+          "lineNumber": 40
+        },
+        {
+          "caller": "test_temporary_errors_are_retried_and_can_recover",
+          "callee": "httpx.Response",
+          "lineNumber": 40
+        },
+        {
+          "caller": "test_temporary_errors_are_retried_and_can_recover",
+          "callee": "len",
+          "lineNumber": 42
+        },
+        {
+          "caller": "test_temporary_errors_are_retried_and_can_recover",
+          "callee": "len",
+          "lineNumber": 44
+        },
+        {
+          "caller": "test_a_refused_connection_is_retried_because_nothing_was_sent",
+          "callee": "call",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_a_refused_connection_is_retried_because_nothing_was_sent",
+          "callee": "httpx.ConnectError",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_a_refused_connection_is_retried_because_nothing_was_sent",
+          "callee": "len",
+          "lineNumber": 50
+        },
+        {
+          "caller": "test_retries_stop_after_a_fixed_number_of_attempts",
+          "callee": "call",
+          "lineNumber": 55
+        },
+        {
+          "caller": "test_retries_stop_after_a_fixed_number_of_attempts",
+          "callee": "httpx.Response",
+          "lineNumber": 55
+        },
+        {
+          "caller": "test_retries_stop_after_a_fixed_number_of_attempts",
+          "callee": "len",
+          "lineNumber": 57
+        },
+        {
+          "caller": "test_retries_stop_after_a_fixed_number_of_attempts",
+          "callee": "len",
+          "lineNumber": 57
+        },
+        {
+          "caller": "test_retries_stop_after_a_fixed_number_of_attempts",
+          "callee": "len",
+          "lineNumber": 59
+        },
+        {
+          "caller": "test_retries_stop_after_a_fixed_number_of_attempts",
+          "callee": "len",
+          "lineNumber": 59
+        },
+        {
+          "caller": "test_backoff_grows_and_has_jitter",
+          "callee": "call",
+          "lineNumber": 63
+        },
+        {
+          "caller": "test_backoff_grows_and_has_jitter",
+          "callee": "httpx.Response",
+          "lineNumber": 63
+        },
+        {
+          "caller": "test_retry_after_is_respected_and_capped",
+          "callee": "call",
+          "lineNumber": 71
+        },
+        {
+          "caller": "test_retry_after_is_respected_and_capped",
+          "callee": "httpx.Response",
+          "lineNumber": 71
+        },
+        {
+          "caller": "test_retry_after_is_respected_and_capped",
+          "callee": "call",
+          "lineNumber": 72
+        },
+        {
+          "caller": "test_retry_after_is_respected_and_capped",
+          "callee": "httpx.Response",
+          "lineNumber": 72
+        },
+        {
+          "caller": "test_retry_after_is_respected_and_capped",
+          "callee": "call",
+          "lineNumber": 73
+        },
+        {
+          "caller": "test_retry_after_is_respected_and_capped",
+          "callee": "httpx.Response",
+          "lineNumber": 73
+        },
+        {
+          "caller": "test_permanent_errors_are_never_retried",
+          "callee": "call",
+          "lineNumber": 92
+        },
+        {
+          "caller": "test_permanent_errors_are_never_retried",
+          "callee": "httpx.Response",
+          "lineNumber": 92
+        },
+        {
+          "caller": "test_permanent_errors_are_never_retried",
+          "callee": "len",
+          "lineNumber": 94
+        },
+        {
+          "caller": "test_a_call_that_may_have_reached_the_provider_is_not_repeated",
+          "callee": "call",
+          "lineNumber": 104
+        },
+        {
+          "caller": "test_a_call_that_may_have_reached_the_provider_is_not_repeated",
+          "callee": "len",
+          "lineNumber": 106
+        },
+        {
+          "caller": "test_a_call_that_may_have_reached_the_provider_is_not_repeated",
+          "callee": "isinstance",
+          "lineNumber": 107
+        },
+        {
+          "caller": "handler",
+          "callee": "attempts.append",
+          "lineNumber": 115
+        },
+        {
+          "caller": "handler",
+          "callee": "httpx.Response",
+          "lineNumber": 116
+        },
+        {
+          "caller": "handler",
+          "callee": "len",
+          "lineNumber": 116
+        },
+        {
+          "caller": "test_get_requests_share_the_same_rules",
+          "callee": "httpx.Client",
+          "lineNumber": 118
+        },
+        {
+          "caller": "test_get_requests_share_the_same_rules",
+          "callee": "httpx.MockTransport",
+          "lineNumber": 118
+        },
+        {
+          "caller": "test_get_requests_share_the_same_rules",
+          "callee": "http.get_json",
+          "lineNumber": 120
+        },
+        {
+          "caller": "test_the_api_binds_to_this_computer_only_by_default",
+          "callee": "Settings",
+          "lineNumber": 125
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 11,
+        "functionCount": 11,
+        "classCount": 0
+      }
+    }
+  ]
+}

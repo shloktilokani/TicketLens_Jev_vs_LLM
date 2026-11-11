@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-08",
+  "title": "Understand-Anything plugin",
+  "report_url": "dependency_risk_audits/2026-11-08_understand-anything/index.html",
+  "tools_audited": [
+    "understand-anything@2.9.8",
+    "pnpm@10.34.9",
+    "understand-anything install chain (423 locked packages)",
+    "understand-anything dashboard",
+    "fuse.js, ignore, yaml, zod, tree-sitter grammars (sampled)"
+  ],
+  "verdict_counts": {
+    "no_structural_risk": 1,
+    "low_metadata_only": 3,
+    "content_exposure": 1,
+    "training_risk": 0
+  },
+  "flagged_for_action": [
+    "Plugin sends project files to the AI model through this Claude Code session: same destination as any session; the account's training setting was not checked",
+    ".env and *.pem are not excluded by default: switched on in .ua/.understandignore and to be confirmed against the scan list"
+  ]
+}

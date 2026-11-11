@@ -1,0 +1,385 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 3,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 3,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "frontend/src/features/bulk/BulkBanner.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 62,
+      "nonEmptyLines": 56,
+      "functions": [
+        {
+          "name": "isRecent",
+          "startLine": 10,
+          "endLine": 15,
+          "params": [
+            "job",
+            "now"
+          ]
+        },
+        {
+          "name": "BulkBanner",
+          "startLine": 18,
+          "endLine": 62,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "BulkBanner",
+          "line": 18,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "isRecent",
+          "callee": "new Date(job.completed_at).getTime",
+          "lineNumber": 13
+        },
+        {
+          "caller": "BulkBanner",
+          "callee": "useBulkJobs",
+          "lineNumber": 19
+        },
+        {
+          "caller": "BulkBanner",
+          "callee": "useState",
+          "lineNumber": 20
+        },
+        {
+          "caller": "BulkBanner",
+          "callee": "Date.now",
+          "lineNumber": 20
+        },
+        {
+          "caller": "BulkBanner",
+          "callee": "useQueryClient",
+          "lineNumber": 21
+        },
+        {
+          "caller": "BulkBanner",
+          "callee": "attemptsDone",
+          "lineNumber": 22
+        },
+        {
+          "caller": "BulkBanner",
+          "callee": "useEffect",
+          "lineNumber": 25
+        },
+        {
+          "caller": "BulkBanner",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 32
+        },
+        {
+          "caller": "BulkBanner",
+          "callee": "isActive",
+          "lineNumber": 35
+        },
+        {
+          "caller": "BulkBanner",
+          "callee": "isRecent",
+          "lineNumber": 35
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/features/bulk/BulkRunsPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 192,
+      "nonEmptyLines": 186,
+      "functions": [
+        {
+          "name": "sides",
+          "startLine": 20,
+          "endLine": 21,
+          "params": [
+            "job"
+          ]
+        },
+        {
+          "name": "Header",
+          "startLine": 23,
+          "endLine": 33,
+          "params": [
+            "{ labels }"
+          ]
+        },
+        {
+          "name": "BulkRunsPage",
+          "startLine": 35,
+          "endLine": 96,
+          "params": []
+        },
+        {
+          "name": "Outcomes",
+          "startLine": 98,
+          "endLine": 136,
+          "params": [
+            "{ job }"
+          ]
+        },
+        {
+          "name": "BulkRunDetailPage",
+          "startLine": 138,
+          "endLine": 192,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "BulkRunsPage",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "BulkRunDetailPage",
+          "line": 138,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "sides",
+          "callee": "job.providers.map((p) => SIDE_LABELS[p]).join",
+          "lineNumber": 21
+        },
+        {
+          "caller": "sides",
+          "callee": "job.providers.map",
+          "lineNumber": 21
+        },
+        {
+          "caller": "Header",
+          "callee": "labels.map",
+          "lineNumber": 27
+        },
+        {
+          "caller": "BulkRunsPage",
+          "callee": "useBulkJobs",
+          "lineNumber": 36
+        },
+        {
+          "caller": "BulkRunsPage",
+          "callee": "jobs.data.items.map",
+          "lineNumber": 69
+        },
+        {
+          "caller": "BulkRunsPage",
+          "callee": "formatDateTime",
+          "lineNumber": 76
+        },
+        {
+          "caller": "BulkRunsPage",
+          "callee": "sides",
+          "lineNumber": 79
+        },
+        {
+          "caller": "BulkRunsPage",
+          "callee": "attemptsDone",
+          "lineNumber": 86
+        },
+        {
+          "caller": "Outcomes",
+          "callee": "job.outcomes.map",
+          "lineNumber": 106
+        },
+        {
+          "caller": "BulkRunDetailPage",
+          "callee": "useParams",
+          "lineNumber": 139
+        },
+        {
+          "caller": "BulkRunDetailPage",
+          "callee": "useBulkJob",
+          "lineNumber": 140
+        },
+        {
+          "caller": "BulkRunDetailPage",
+          "callee": "sides",
+          "lineNumber": 167
+        },
+        {
+          "caller": "BulkRunDetailPage",
+          "callee": "attemptsDone",
+          "lineNumber": 170
+        },
+        {
+          "caller": "BulkRunDetailPage",
+          "callee": "formatDateTime",
+          "lineNumber": 176
+        },
+        {
+          "caller": "BulkRunDetailPage",
+          "callee": "formatDateTime",
+          "lineNumber": 179
+        }
+      ],
+      "metrics": {
+        "importCount": 9,
+        "exportCount": 2,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/features/bulk/hooks.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 38,
+      "nonEmptyLines": 31,
+      "functions": [
+        {
+          "name": "isActive",
+          "startLine": 8,
+          "endLine": 9,
+          "params": [
+            "job"
+          ]
+        },
+        {
+          "name": "attemptsDone",
+          "startLine": 11,
+          "endLine": 12,
+          "params": [
+            "job"
+          ]
+        },
+        {
+          "name": "useBulkJobs",
+          "startLine": 14,
+          "endLine": 20,
+          "params": [
+            "limit"
+          ]
+        },
+        {
+          "name": "useBulkJob",
+          "startLine": 22,
+          "endLine": 29,
+          "params": [
+            "jobId"
+          ]
+        },
+        {
+          "name": "useStartBulk",
+          "startLine": 31,
+          "endLine": 38,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "isActive",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "attemptsDone",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "useBulkJobs",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "useBulkJob",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "useStartBulk",
+          "line": 31,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useBulkJobs",
+          "callee": "useQuery",
+          "lineNumber": 15
+        },
+        {
+          "caller": "useBulkJobs",
+          "callee": "api",
+          "lineNumber": 17
+        },
+        {
+          "caller": "useBulkJobs",
+          "callee": "query.state.data?.items.some",
+          "lineNumber": 19
+        },
+        {
+          "caller": "useBulkJob",
+          "callee": "useQuery",
+          "lineNumber": 23
+        },
+        {
+          "caller": "useBulkJob",
+          "callee": "api",
+          "lineNumber": 25
+        },
+        {
+          "caller": "useBulkJob",
+          "callee": "encodeURIComponent",
+          "lineNumber": 25
+        },
+        {
+          "caller": "useBulkJob",
+          "callee": "isActive",
+          "lineNumber": 28
+        },
+        {
+          "caller": "useStartBulk",
+          "callee": "useQueryClient",
+          "lineNumber": 32
+        },
+        {
+          "caller": "useStartBulk",
+          "callee": "useMutation",
+          "lineNumber": 33
+        },
+        {
+          "caller": "useStartBulk",
+          "callee": "send",
+          "lineNumber": 35
+        },
+        {
+          "caller": "useStartBulk",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 36
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    }
+  ]
+}

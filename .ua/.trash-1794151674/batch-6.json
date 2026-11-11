@@ -1,0 +1,289 @@
+{
+ "nodes": [
+  {
+   "id": "file:backend/tests/test_evaluation.py",
+   "type": "file",
+   "name": "test_evaluation.py",
+   "filePath": "backend/tests/test_evaluation.py",
+   "summary": "Tests the accuracy evaluation feature: v2 sample dataset integrity, macro-F1, accuracy denominators, head-to-head counts, confusion matrix, report section, and API behavior including that labels never reach a model.",
+   "tags": [
+    "test",
+    "evaluation",
+    "accuracy",
+    "pytest"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:backend/tests/test_production_config.py",
+   "type": "file",
+   "name": "test_production_config.py",
+   "filePath": "backend/tests/test_production_config.py",
+   "summary": "Tests production settings validation: unsafe database, origin, mock-provider and access-control settings are rejected, secrets stay out of errors, and API docs are disabled in production.",
+   "tags": [
+    "test",
+    "configuration",
+    "security",
+    "pytest"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_evaluation.py:test_v2_passes_the_real_import_checks",
+   "type": "function",
+   "name": "test_v2_passes_the_real_import_checks",
+   "filePath": "backend/tests/test_evaluation.py",
+   "lineRange": [
+    77,
+    86
+   ],
+   "summary": "Checks the v2 sample CSV passes the real import validation.",
+   "tags": [
+    "test",
+    "csv",
+    "import"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_evaluation.py:test_accuracy_uses_only_scored_runs_and_reports_every_denominator",
+   "type": "function",
+   "name": "test_accuracy_uses_only_scored_runs_and_reports_every_denominator",
+   "filePath": "backend/tests/test_evaluation.py",
+   "lineRange": [
+    103,
+    129
+   ],
+   "summary": "Verifies accuracy ignores unscored runs and reports denominators.",
+   "tags": [
+    "test",
+    "accuracy",
+    "evaluation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_evaluation.py:test_head_to_head_counts_only_tickets_both_sides_answered",
+   "type": "function",
+   "name": "test_head_to_head_counts_only_tickets_both_sides_answered",
+   "filePath": "backend/tests/test_evaluation.py",
+   "lineRange": [
+    132,
+    158
+   ],
+   "summary": "Verifies head-to-head comparison counts only tickets both providers answered.",
+   "tags": [
+    "test",
+    "head-to-head",
+    "evaluation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_evaluation.py:test_confusion_matrix_rows_are_expected_and_columns_are_predicted",
+   "type": "function",
+   "name": "test_confusion_matrix_rows_are_expected_and_columns_are_predicted",
+   "filePath": "backend/tests/test_evaluation.py",
+   "lineRange": [
+    161,
+    173
+   ],
+   "summary": "Verifies confusion matrix orientation: rows expected, columns predicted.",
+   "tags": [
+    "test",
+    "confusion-matrix",
+    "evaluation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_evaluation.py:test_report_section_shows_scores_with_denominators",
+   "type": "function",
+   "name": "test_report_section_shows_scores_with_denominators",
+   "filePath": "backend/tests/test_evaluation.py",
+   "lineRange": [
+    199,
+    211
+   ],
+   "summary": "Verifies the run report accuracy section shows scores with denominators.",
+   "tags": [
+    "test",
+    "report",
+    "evaluation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_evaluation.py:import_labelled",
+   "type": "function",
+   "name": "import_labelled",
+   "filePath": "backend/tests/test_evaluation.py",
+   "lineRange": [
+    224,
+    236
+   ],
+   "summary": "Test helper that imports labelled tickets through the API.",
+   "tags": [
+    "test",
+    "helper",
+    "import"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_evaluation.py:test_real_runs_are_scored_using_the_latest_finished_attempt",
+   "type": "function",
+   "name": "test_real_runs_are_scored_using_the_latest_finished_attempt",
+   "filePath": "backend/tests/test_evaluation.py",
+   "lineRange": [
+    253,
+    265
+   ],
+   "summary": "Verifies real runs are scored using the latest finished attempt.",
+   "tags": [
+    "test",
+    "scoring",
+    "api"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_production_config.py:test_the_demo_is_refused_in_production_by_default",
+   "type": "function",
+   "name": "test_the_demo_is_refused_in_production_by_default",
+   "filePath": "backend/tests/test_production_config.py",
+   "lineRange": [
+    43,
+    53
+   ],
+   "summary": "Verifies demo mode is refused in production unless explicitly allowed.",
+   "tags": [
+    "test",
+    "production",
+    "security"
+   ],
+   "complexity": "simple"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:backend/tests/test_evaluation.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_evaluation.py",
+   "target": "file:backend/app/main.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_evaluation.py",
+   "target": "file:backend/app/services/evaluation.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_evaluation.py",
+   "target": "file:backend/app/services/run_report.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_production_config.py",
+   "target": "file:backend/app/core/settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_production_config.py",
+   "target": "file:backend/app/main.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_evaluation.py",
+   "target": "function:backend/tests/test_evaluation.py:test_v2_passes_the_real_import_checks",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_evaluation.py",
+   "target": "function:backend/tests/test_evaluation.py:test_accuracy_uses_only_scored_runs_and_reports_every_denominator",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_evaluation.py",
+   "target": "function:backend/tests/test_evaluation.py:test_head_to_head_counts_only_tickets_both_sides_answered",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_evaluation.py",
+   "target": "function:backend/tests/test_evaluation.py:test_confusion_matrix_rows_are_expected_and_columns_are_predicted",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_evaluation.py",
+   "target": "function:backend/tests/test_evaluation.py:test_report_section_shows_scores_with_denominators",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_evaluation.py",
+   "target": "function:backend/tests/test_evaluation.py:import_labelled",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_evaluation.py",
+   "target": "function:backend/tests/test_evaluation.py:test_real_runs_are_scored_using_the_latest_finished_attempt",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_production_config.py",
+   "target": "function:backend/tests/test_production_config.py:test_the_demo_is_refused_in_production_by_default",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/evaluation.py",
+   "target": "file:backend/tests/test_evaluation.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/services/run_report.py",
+   "target": "file:backend/tests/test_evaluation.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/core/settings.py",
+   "target": "file:backend/tests/test_production_config.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  }
+ ]
+}

@@ -1,0 +1,960 @@
+{
+ "nodes": [
+  {
+   "id": "file:backend/app/api/imports.py",
+   "type": "file",
+   "name": "imports.py",
+   "filePath": "backend/app/api/imports.py",
+   "summary": "FastAPI router for CSV import, template/sample download and ticket export endpoints.",
+   "tags": [
+    "api-handler",
+    "csv",
+    "import-export"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/api/imports.py:csv_download",
+   "type": "function",
+   "name": "csv_download",
+   "filePath": "backend/app/api/imports.py",
+   "lineRange": [
+    18,
+    23
+   ],
+   "summary": "Csv download in imports.py; part of: FastAPI router for CSV import, template/sample download and ticket export endpoints.",
+   "tags": [
+    "api-handler",
+    "csv",
+    "import-export"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/imports.py:import_template",
+   "type": "function",
+   "name": "import_template",
+   "filePath": "backend/app/api/imports.py",
+   "lineRange": [
+    27,
+    29
+   ],
+   "summary": "Import template in imports.py; part of: FastAPI router for CSV import, template/sample download and ticket export endpoints.",
+   "tags": [
+    "api-handler",
+    "csv",
+    "import-export"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/imports.py:sample_dataset",
+   "type": "function",
+   "name": "sample_dataset",
+   "filePath": "backend/app/api/imports.py",
+   "lineRange": [
+    33,
+    36
+   ],
+   "summary": "Sample dataset in imports.py; part of: FastAPI router for CSV import, template/sample download and ticket export endpoints.",
+   "tags": [
+    "api-handler",
+    "csv",
+    "import-export"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/imports.py:import_tickets",
+   "type": "function",
+   "name": "import_tickets",
+   "filePath": "backend/app/api/imports.py",
+   "lineRange": [
+    46,
+    57
+   ],
+   "summary": "Import tickets in imports.py; part of: FastAPI router for CSV import, template/sample download and ticket export endpoints.",
+   "tags": [
+    "api-handler",
+    "csv",
+    "import-export"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/imports.py:export_csv",
+   "type": "function",
+   "name": "export_csv",
+   "filePath": "backend/app/api/imports.py",
+   "lineRange": [
+    61,
+    63
+   ],
+   "summary": "Export csv in imports.py; part of: FastAPI router for CSV import, template/sample download and ticket export endpoints.",
+   "tags": [
+    "api-handler",
+    "csv",
+    "import-export"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/api/providers.py",
+   "type": "file",
+   "name": "providers.py",
+   "filePath": "backend/app/api/providers.py",
+   "summary": "FastAPI route reporting provider status and available models from effective settings.",
+   "tags": [
+    "api-handler",
+    "providers",
+    "status"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/providers.py:provider_status",
+   "type": "function",
+   "name": "provider_status",
+   "filePath": "backend/app/api/providers.py",
+   "lineRange": [
+    10,
+    12
+   ],
+   "summary": "Provider status in providers.py; part of: FastAPI route reporting provider status and available models from effective settings.",
+   "tags": [
+    "api-handler",
+    "providers",
+    "status"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/core/settings.py",
+   "type": "file",
+   "name": "settings.py",
+   "filePath": "backend/app/core/settings.py",
+   "summary": "Pydantic settings class loading environment configuration, with cached accessor and local-mode check.",
+   "tags": [
+    "configuration",
+    "settings",
+    "environment"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/core/settings.py:get_settings",
+   "type": "function",
+   "name": "get_settings",
+   "filePath": "backend/app/core/settings.py",
+   "lineRange": [
+    83,
+    84
+   ],
+   "summary": "Get settings in settings.py; part of: Pydantic settings class loading environment configuration, with cached accessor and local-mode check.",
+   "tags": [
+    "configuration",
+    "settings",
+    "environment"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/core/settings.py:is_local",
+   "type": "function",
+   "name": "is_local",
+   "filePath": "backend/app/core/settings.py",
+   "lineRange": [
+    87,
+    88
+   ],
+   "summary": "Is local in settings.py; part of: Pydantic settings class loading environment configuration, with cached accessor and local-mode check.",
+   "tags": [
+    "configuration",
+    "settings",
+    "environment"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/core/settings.py:Settings",
+   "type": "class",
+   "name": "Settings",
+   "filePath": "backend/app/core/settings.py",
+   "lineRange": [
+    14,
+    79
+   ],
+   "summary": "Settings in settings.py; part of: Pydantic settings class loading environment configuration, with cached accessor and local-mode check.",
+   "tags": [
+    "configuration",
+    "settings",
+    "environment"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:backend/app/main.py",
+   "type": "file",
+   "name": "main.py",
+   "filePath": "backend/app/main.py",
+   "summary": "FastAPI application factory that wires settings, database lifespan, CORS, bulk-job recovery and all API routers.",
+   "tags": [
+    "entry-point",
+    "fastapi",
+    "app-factory"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/main.py:create_app",
+   "type": "function",
+   "name": "create_app",
+   "filePath": "backend/app/main.py",
+   "lineRange": [
+    35,
+    82
+   ],
+   "summary": "Create app in main.py; part of: FastAPI application factory that wires settings, database lifespan, CORS, bulk-job recovery and all API routers.",
+   "tags": [
+    "entry-point",
+    "fastapi",
+    "app-factory"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:backend/app/repositories/labels.py",
+   "type": "file",
+   "name": "labels.py",
+   "filePath": "backend/app/repositories/labels.py",
+   "summary": "Repository helpers to insert expected-label records and fetch expected labels keyed by ticket.",
+   "tags": [
+    "repository",
+    "database",
+    "labels"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/labels.py:insert",
+   "type": "function",
+   "name": "insert",
+   "filePath": "backend/app/repositories/labels.py",
+   "lineRange": [
+    9,
+    10
+   ],
+   "summary": "Inserts an expected-label document.",
+   "tags": [
+    "repository",
+    "database",
+    "labels"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/labels.py:expected_by_ticket",
+   "type": "function",
+   "name": "expected_by_ticket",
+   "filePath": "backend/app/repositories/labels.py",
+   "lineRange": [
+    13,
+    16
+   ],
+   "summary": "Returns expected labels indexed by ticket id.",
+   "tags": [
+    "repository",
+    "database",
+    "labels"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/services/csv_import.py",
+   "type": "file",
+   "name": "csv_import.py",
+   "filePath": "backend/app/services/csv_import.py",
+   "summary": "Idempotent CSV import service that parses, validates, fingerprints and saves tickets, reporting valid, invalid and duplicate rows.",
+   "tags": [
+    "service",
+    "csv",
+    "validation",
+    "import"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:backend/app/services/csv_import.py:canonical_values",
+   "type": "function",
+   "name": "canonical_values",
+   "filePath": "backend/app/services/csv_import.py",
+   "lineRange": [
+    67,
+    73
+   ],
+   "summary": "Canonical values in csv_import.py; part of: Idempotent CSV import service that parses, validates, fingerprints and saves tickets, reporting valid, invalid and duplicate rows.",
+   "tags": [
+    "service",
+    "csv",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/csv_import.py:normalize",
+   "type": "function",
+   "name": "normalize",
+   "filePath": "backend/app/services/csv_import.py",
+   "lineRange": [
+    76,
+    86
+   ],
+   "summary": "Normalize in csv_import.py; part of: Idempotent CSV import service that parses, validates, fingerprints and saves tickets, reporting valid, invalid and duplicate rows.",
+   "tags": [
+    "service",
+    "csv",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/csv_import.py:fingerprint",
+   "type": "function",
+   "name": "fingerprint",
+   "filePath": "backend/app/services/csv_import.py",
+   "lineRange": [
+    89,
+    94
+   ],
+   "summary": "Fingerprint in csv_import.py; part of: Idempotent CSV import service that parses, validates, fingerprints and saves tickets, reporting valid, invalid and duplicate rows.",
+   "tags": [
+    "service",
+    "csv",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/csv_import.py:read_rows",
+   "type": "function",
+   "name": "read_rows",
+   "filePath": "backend/app/services/csv_import.py",
+   "lineRange": [
+    97,
+    113
+   ],
+   "summary": "Read rows in csv_import.py; part of: Idempotent CSV import service that parses, validates, fingerprints and saves tickets, reporting valid, invalid and duplicate rows.",
+   "tags": [
+    "service",
+    "csv",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/csv_import.py:row_errors",
+   "type": "function",
+   "name": "row_errors",
+   "filePath": "backend/app/services/csv_import.py",
+   "lineRange": [
+    116,
+    124
+   ],
+   "summary": "Row errors in csv_import.py; part of: Idempotent CSV import service that parses, validates, fingerprints and saves tickets, reporting valid, invalid and duplicate rows.",
+   "tags": [
+    "service",
+    "csv",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/csv_import.py:validate_row",
+   "type": "function",
+   "name": "validate_row",
+   "filePath": "backend/app/services/csv_import.py",
+   "lineRange": [
+    127,
+    149
+   ],
+   "summary": "Validate row in csv_import.py; part of: Idempotent CSV import service that parses, validates, fingerprints and saves tickets, reporting valid, invalid and duplicate rows.",
+   "tags": [
+    "service",
+    "csv",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/csv_import.py:save",
+   "type": "function",
+   "name": "save",
+   "filePath": "backend/app/services/csv_import.py",
+   "lineRange": [
+    152,
+    168
+   ],
+   "summary": "Save in csv_import.py; part of: Idempotent CSV import service that parses, validates, fingerprints and saves tickets, reporting valid, invalid and duplicate rows.",
+   "tags": [
+    "service",
+    "csv",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/csv_import.py:import_csv",
+   "type": "function",
+   "name": "import_csv",
+   "filePath": "backend/app/services/csv_import.py",
+   "lineRange": [
+    171,
+    196
+   ],
+   "summary": "Import csv in csv_import.py; part of: Idempotent CSV import service that parses, validates, fingerprints and saves tickets, reporting valid, invalid and duplicate rows.",
+   "tags": [
+    "service",
+    "csv",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/services/csv_import.py:CsvFileError",
+   "type": "class",
+   "name": "CsvFileError",
+   "filePath": "backend/app/services/csv_import.py",
+   "lineRange": [
+    63,
+    64
+   ],
+   "summary": "Csvfileerror in csv_import.py; part of: Idempotent CSV import service that parses, validates, fingerprints and saves tickets, reporting valid, invalid and duplicate rows.",
+   "tags": [
+    "service",
+    "csv",
+    "validation"
+   ],
+   "complexity": "simple"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "file:backend/app/api/deps.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "file:backend/app/schemas/imports.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "file:backend/app/services/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "file:backend/app/services/csv_export.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "file:backend/app/services/csv_import.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "function:backend/app/api/imports.py:csv_download",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "function:backend/app/api/imports.py:csv_download",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "function:backend/app/api/imports.py:import_template",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "function:backend/app/api/imports.py:import_template",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "function:backend/app/api/imports.py:sample_dataset",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "function:backend/app/api/imports.py:sample_dataset",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "function:backend/app/api/imports.py:import_tickets",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "function:backend/app/api/imports.py:import_tickets",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "function:backend/app/api/imports.py:export_csv",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/imports.py",
+   "target": "function:backend/app/api/imports.py:export_csv",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/providers.py",
+   "target": "file:backend/app/api/deps.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/providers.py",
+   "target": "file:backend/app/services/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/providers.py",
+   "target": "file:backend/app/services/app_settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/providers.py",
+   "target": "function:backend/app/api/providers.py:provider_status",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/providers.py",
+   "target": "function:backend/app/api/providers.py:provider_status",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/core/settings.py",
+   "target": "function:backend/app/core/settings.py:get_settings",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/core/settings.py",
+   "target": "function:backend/app/core/settings.py:get_settings",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/core/settings.py",
+   "target": "function:backend/app/core/settings.py:is_local",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/core/settings.py",
+   "target": "function:backend/app/core/settings.py:is_local",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/core/settings.py",
+   "target": "class:backend/app/core/settings.py:Settings",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/core/settings.py",
+   "target": "class:backend/app/core/settings.py:Settings",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/api/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/api/app_settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/api/bulk_jobs.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/api/dashboard.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/api/evaluation.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/api/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/api/health.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/api/imports.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/api/providers.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/api/runs.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/api/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/api/tickets.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/core/settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/jobs/bulk.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/repositories/database.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/services/app_settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "function:backend/app/main.py:create_app",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "function:backend/app/main.py:create_app",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/labels.py",
+   "target": "function:backend/app/repositories/labels.py:insert",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/labels.py",
+   "target": "function:backend/app/repositories/labels.py:insert",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/labels.py",
+   "target": "function:backend/app/repositories/labels.py:expected_by_ticket",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/labels.py",
+   "target": "function:backend/app/repositories/labels.py:expected_by_ticket",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "file:backend/app/core/clock.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "file:backend/app/repositories/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "file:backend/app/repositories/labels.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "file:backend/app/schemas/classification.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "file:backend/app/schemas/imports.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "file:backend/app/schemas/tickets.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "file:backend/app/services/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:canonical_values",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:canonical_values",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:normalize",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:normalize",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:fingerprint",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:fingerprint",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:read_rows",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:read_rows",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:row_errors",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:row_errors",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:validate_row",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:validate_row",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:save",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:save",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:import_csv",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "function:backend/app/services/csv_import.py:import_csv",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "class:backend/app/services/csv_import.py:CsvFileError",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/csv_import.py",
+   "target": "class:backend/app/services/csv_import.py:CsvFileError",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  }
+ ]
+}

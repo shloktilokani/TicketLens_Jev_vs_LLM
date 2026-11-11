@@ -1,0 +1,20 @@
+{
+  "run_id": "2026-11-07-run-1-fake-ai",
+  "name": "Fake AI Run 1",
+  "created_at": "2026-11-08T10:49:14.649000+00:00",
+  "jev_label": "mock-jev",
+  "llm_label": "mock-gpt",
+  "note": "Run 1 used the built-in fake Jev and fake LLM (MOCK_PROVIDERS), so it tests the app, not the models: both fakes use the same keyword rules and are expected to agree.",
+  "comparisons": [
+    "cmp_310517ade6764ba2aaae5c70108a7909",
+    "cmp_3650601effc449abb256e05041da7dbc",
+    "cmp_acbbe0935ecb4206a5a51a4261be7bbb",
+    "cmp_57059b951e454e008771a58e04a10071",
+    "cmp_048cb85428ae4bbca4f95f387f9f1f20",
+    "cmp_4ca7230267c94515a02410c81b904dec",
+    "cmp_d7c57d9506af47a297f7645941ede028",
+    "cmp_31dc0b95ca38463ab2093016acbebeb5",
+    "cmp_dc707aa8318f4b669c3dcf75aae6bbfb",
+    "cmp_8c7cb743637a4dc789d5ba20127fde68"
+  ]
+}

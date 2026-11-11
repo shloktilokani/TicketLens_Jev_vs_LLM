@@ -1,0 +1,1768 @@
+{
+ "nodes": [
+  {
+   "id": "file:frontend/src/features/tickets/AiResults.tsx",
+   "type": "file",
+   "name": "AiResults.tsx",
+   "filePath": "frontend/src/features/tickets/AiResults.tsx",
+   "summary": "Ticket-level AI panel with buttons that run Jev or the LLM on demand, the ticket's run history and its comparisons. Each successful run offers a 'Use this answer' action that seeds the final classification form.",
+   "tags": [
+    "component",
+    "ticket",
+    "provider-run",
+    "history"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:frontend/src/features/tickets/FinalClassification.tsx",
+   "type": "file",
+   "name": "FinalClassification.tsx",
+   "filePath": "frontend/src/features/tickets/FinalClassification.tsx",
+   "summary": "Panel where the operator views and sets a ticket's final classification, by hand or starting from an AI answer. The value changes only on Save, escalation has no default, and changing category clears the subcategory.",
+   "tags": [
+    "component",
+    "form",
+    "ticket",
+    "classification",
+    "human-in-the-loop"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:frontend/src/features/tickets/ImportExport.tsx",
+   "type": "file",
+   "name": "ImportExport.tsx",
+   "filePath": "frontend/src/features/tickets/ImportExport.tsx",
+   "summary": "CSV import dialog with a dry-run check that reports valid, invalid and duplicate rows before anything is saved, plus download links for the ticket, execution and comparison CSV exports.",
+   "tags": [
+    "component",
+    "csv-import",
+    "csv-export",
+    "dialog",
+    "validation"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+   "type": "file",
+   "name": "NewTicketPage.tsx",
+   "filePath": "frontend/src/features/tickets/NewTicketPage.tsx",
+   "summary": "Page that loads the taxonomy, renders the ticket form and, once the API confirms creation, shows a success state with a link to the new ticket. No AI runs on creation.",
+   "tags": [
+    "component",
+    "page",
+    "ticket",
+    "form"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "type": "file",
+   "name": "TicketDetailPage.tsx",
+   "filePath": "frontend/src/features/tickets/TicketDetailPage.tsx",
+   "summary": "Ticket detail page composing ticket info, status select, edit form, final classification, AI results, internal notes and confirmed deletion. Status changes and edits appear only after the API confirms them.",
+   "tags": [
+    "component",
+    "page",
+    "ticket",
+    "crud",
+    "composition"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:frontend/src/features/tickets/TicketForm.tsx",
+   "type": "file",
+   "name": "TicketForm.tsx",
+   "filePath": "frontend/src/features/tickets/TicketForm.tsx",
+   "summary": "Shared create and edit form for tickets, validated client-side with a Zod schema that mirrors the backend's schema. Blank optional fields are sent as null, and the description is kept untrimmed.",
+   "tags": [
+    "component",
+    "form",
+    "validation",
+    "ticket",
+    "accessibility"
+   ],
+   "complexity": "moderate",
+   "languageNotes": "Uses react-hook-form with a Zod resolver; the Radix-based select is wired in through Controller because it is not a native input."
+  },
+  {
+   "id": "file:frontend/src/features/tickets/TicketListPage.tsx",
+   "type": "file",
+   "name": "TicketListPage.tsx",
+   "filePath": "frontend/src/features/tickets/TicketListPage.tsx",
+   "summary": "Ticket list page with search, taxonomy filters, sort and pagination kept in the URL, plus import and export actions. Rows navigate to the ticket and show its final classification and latest AI run.",
+   "tags": [
+    "component",
+    "page",
+    "ticket",
+    "filtering",
+    "pagination"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/AiResults.tsx:RunButton",
+   "type": "function",
+   "name": "RunButton",
+   "filePath": "frontend/src/features/tickets/AiResults.tsx",
+   "lineRange": [
+    21,
+    50
+   ],
+   "summary": "Button that runs one provider on the ticket and toasts the outcome, disabled while the run is pending.",
+   "tags": [
+    "component",
+    "provider-run",
+    "mutation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/AiResults.tsx:RunRow",
+   "type": "function",
+   "name": "RunRow",
+   "filePath": "frontend/src/features/tickets/AiResults.tsx",
+   "lineRange": [
+    52,
+    100
+   ],
+   "summary": "One run's model, status, answer, error, timing, tokens and cost, with a 'Use this answer' button when it succeeded.",
+   "tags": [
+    "component",
+    "provider-run",
+    "history"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/AiResults.tsx:RunHistory",
+   "type": "function",
+   "name": "RunHistory",
+   "filePath": "frontend/src/features/tickets/AiResults.tsx",
+   "lineRange": [
+    102,
+    137
+   ],
+   "summary": "Lists the ticket's newest runs with loading, error and empty states and a link to the full log when there are more.",
+   "tags": [
+    "component",
+    "history",
+    "provider-run"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/AiResults.tsx:ComparisonHistory",
+   "type": "function",
+   "name": "ComparisonHistory",
+   "filePath": "frontend/src/features/tickets/AiResults.tsx",
+   "lineRange": [
+    139,
+    150
+   ],
+   "summary": "Shows up to 50 comparisons for the ticket, or nothing when there are none.",
+   "tags": [
+    "component",
+    "comparison",
+    "history"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/AiResults.tsx:AiResults",
+   "type": "function",
+   "name": "AiResults",
+   "filePath": "frontend/src/features/tickets/AiResults.tsx",
+   "lineRange": [
+    152,
+    179
+   ],
+   "summary": "Card combining the Jev and LLM run buttons, the link to Compare, run history and comparison history.",
+   "tags": [
+    "component",
+    "ticket",
+    "composition"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/FinalClassification.tsx:startingValues",
+   "type": "function",
+   "name": "startingValues",
+   "filePath": "frontend/src/features/tickets/FinalClassification.tsx",
+   "lineRange": [
+    37,
+    46
+   ],
+   "summary": "Builds the form's starting values from an AI or saved answer, or empty values when there is none.",
+   "tags": [
+    "utility",
+    "form",
+    "classification"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/FinalClassification.tsx:Field",
+   "type": "function",
+   "name": "Field",
+   "filePath": "frontend/src/features/tickets/FinalClassification.tsx",
+   "lineRange": [
+    48,
+    81
+   ],
+   "summary": "Labelled select used for each classification field, disabled when it has no options.",
+   "tags": [
+    "component",
+    "form",
+    "accessibility"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/FinalClassification.tsx:FinalForm",
+   "type": "function",
+   "name": "FinalForm",
+   "filePath": "frontend/src/features/tickets/FinalClassification.tsx",
+   "lineRange": [
+    83,
+    177
+   ],
+   "summary": "Form editing the five classification fields; it requires all of them and saves the source run ID when an AI answer was used.",
+   "tags": [
+    "component",
+    "form",
+    "classification",
+    "mutation"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/FinalClassification.tsx:SavedFinal",
+   "type": "function",
+   "name": "SavedFinal",
+   "filePath": "frontend/src/features/tickets/FinalClassification.tsx",
+   "lineRange": [
+    179,
+    222
+   ],
+   "summary": "Read-only view of the saved classification and whether it came from an AI answer, an edited one or by hand.",
+   "tags": [
+    "component",
+    "classification",
+    "detail-view"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/FinalClassification.tsx:FormLoader",
+   "type": "function",
+   "name": "FormLoader",
+   "filePath": "frontend/src/features/tickets/FinalClassification.tsx",
+   "lineRange": [
+    224,
+    234
+   ],
+   "summary": "Loads the taxonomy, with loading and error states, before rendering the final classification form.",
+   "tags": [
+    "component",
+    "taxonomy",
+    "state-handling"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/FinalClassification.tsx:FinalClassificationPanel",
+   "type": "function",
+   "name": "FinalClassificationPanel",
+   "filePath": "frontend/src/features/tickets/FinalClassification.tsx",
+   "lineRange": [
+    237,
+    280
+   ],
+   "summary": "Card switching between the saved answer and the form, opening automatically when an AI answer is chosen and restarting the form for a different one.",
+   "tags": [
+    "component",
+    "classification",
+    "human-in-the-loop"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/ImportExport.tsx:SummaryView",
+   "type": "function",
+   "name": "SummaryView",
+   "filePath": "frontend/src/features/tickets/ImportExport.tsx",
+   "lineRange": [
+    35,
+    95
+   ],
+   "summary": "Renders an import summary: counts, duplicate rows, a per-row error table and a preview of the first rows.",
+   "tags": [
+    "component",
+    "csv-import",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/ImportExport.tsx:ImportDialog",
+   "type": "function",
+   "name": "ImportDialog",
+   "filePath": "frontend/src/features/tickets/ImportExport.tsx",
+   "lineRange": [
+    97,
+    176
+   ],
+   "summary": "Dialog that checks a chosen CSV with a dry run and enables the real import only after a successful check with rows to import.",
+   "tags": [
+    "component",
+    "csv-import",
+    "dialog",
+    "mutation"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/ImportExport.tsx:ExportLinks",
+   "type": "function",
+   "name": "ExportLinks",
+   "filePath": "frontend/src/features/tickets/ImportExport.tsx",
+   "lineRange": [
+    184,
+    199
+   ],
+   "summary": "Download links for the tickets, executions and comparisons CSV exports.",
+   "tags": [
+    "component",
+    "csv-export",
+    "links"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/NewTicketPage.tsx:NewTicketPage",
+   "type": "function",
+   "name": "NewTicketPage",
+   "filePath": "frontend/src/features/tickets/NewTicketPage.tsx",
+   "lineRange": [
+    11,
+    56
+   ],
+   "summary": "Loads the taxonomy, submits the ticket form and shows a confirmation with next actions after creation.",
+   "tags": [
+    "component",
+    "page",
+    "ticket",
+    "form"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/TicketDetailPage.tsx:StatusSelect",
+   "type": "function",
+   "name": "StatusSelect",
+   "filePath": "frontend/src/features/tickets/TicketDetailPage.tsx",
+   "lineRange": [
+    37,
+    67
+   ],
+   "summary": "Select controlled by the saved status, so it changes only after the API confirms the update.",
+   "tags": [
+    "component",
+    "ticket",
+    "mutation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/TicketDetailPage.tsx:TicketInfo",
+   "type": "function",
+   "name": "TicketInfo",
+   "filePath": "frontend/src/features/tickets/TicketDetailPage.tsx",
+   "lineRange": [
+    69,
+    91
+   ],
+   "summary": "Card showing the ticket description with line breaks preserved, plus customer, order and channel details.",
+   "tags": [
+    "component",
+    "ticket",
+    "detail-view"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/TicketDetailPage.tsx:Notes",
+   "type": "function",
+   "name": "Notes",
+   "filePath": "frontend/src/features/tickets/TicketDetailPage.tsx",
+   "lineRange": [
+    93,
+    143
+   ],
+   "summary": "Lists internal operator notes and provides a form to add one.",
+   "tags": [
+    "component",
+    "ticket",
+    "form",
+    "mutation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/TicketDetailPage.tsx:TicketView",
+   "type": "function",
+   "name": "TicketView",
+   "filePath": "frontend/src/features/tickets/TicketDetailPage.tsx",
+   "lineRange": [
+    145,
+    245
+   ],
+   "summary": "Composes the ticket's header actions, edit form or info, final classification, AI results, notes and delete confirmation, and passes a chosen AI answer to the final panel.",
+   "tags": [
+    "component",
+    "ticket",
+    "composition",
+    "crud"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/TicketDetailPage.tsx:TicketDetailPage",
+   "type": "function",
+   "name": "TicketDetailPage",
+   "filePath": "frontend/src/features/tickets/TicketDetailPage.tsx",
+   "lineRange": [
+    247,
+    267
+   ],
+   "summary": "Loads the ticket named in the route and renders it, with loading, not-found and error states.",
+   "tags": [
+    "component",
+    "page",
+    "ticket"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/TicketForm.tsx:Field",
+   "type": "function",
+   "name": "Field",
+   "filePath": "frontend/src/features/tickets/TicketForm.tsx",
+   "lineRange": [
+    61,
+    83
+   ],
+   "summary": "Form row with a label, a control and an inline error message linked by ID.",
+   "tags": [
+    "component",
+    "form",
+    "accessibility"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/TicketForm.tsx:TicketForm",
+   "type": "function",
+   "name": "TicketForm",
+   "filePath": "frontend/src/features/tickets/TicketForm.tsx",
+   "lineRange": [
+    86,
+    200
+   ],
+   "summary": "Validated create and edit form with accessible error wiring; converts blank optional fields to null on submit.",
+   "tags": [
+    "component",
+    "form",
+    "validation",
+    "ticket"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/TicketListPage.tsx:useListParams",
+   "type": "function",
+   "name": "useListParams",
+   "filePath": "frontend/src/features/tickets/TicketListPage.tsx",
+   "lineRange": [
+    39,
+    52
+   ],
+   "summary": "Exposes the list's URL search parameters as a ticket query and updates them, resetting to page 1 when a filter changes.",
+   "tags": [
+    "hook",
+    "url-state",
+    "filtering"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/TicketListPage.tsx:Filters",
+   "type": "function",
+   "name": "Filters",
+   "filePath": "frontend/src/features/tickets/TicketListPage.tsx",
+   "lineRange": [
+    54,
+    124
+   ],
+   "summary": "Search box, taxonomy filters and sort select that write to the URL.",
+   "tags": [
+    "component",
+    "filtering",
+    "url-state"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/TicketListPage.tsx:TicketRow",
+   "type": "function",
+   "name": "TicketRow",
+   "filePath": "frontend/src/features/tickets/TicketListPage.tsx",
+   "lineRange": [
+    126,
+    160
+   ],
+   "summary": "Clickable table row showing a ticket's ID, customer, final classification, status, creation time and latest AI run.",
+   "tags": [
+    "component",
+    "table",
+    "ticket"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/TicketListPage.tsx:NoTickets",
+   "type": "function",
+   "name": "NoTickets",
+   "filePath": "frontend/src/features/tickets/TicketListPage.tsx",
+   "lineRange": [
+    162,
+    193
+   ],
+   "summary": "Empty state offering to clear filters when filtered, or to create or import tickets otherwise.",
+   "tags": [
+    "component",
+    "empty-state",
+    "ticket"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/TicketListPage.tsx:TicketTable",
+   "type": "function",
+   "name": "TicketTable",
+   "filePath": "frontend/src/features/tickets/TicketListPage.tsx",
+   "lineRange": [
+    195,
+    223
+   ],
+   "summary": "Ticket table with its column headers and one row per ticket.",
+   "tags": [
+    "component",
+    "table",
+    "ticket"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/tickets/TicketListPage.tsx:TicketListPage",
+   "type": "function",
+   "name": "TicketListPage",
+   "filePath": "frontend/src/features/tickets/TicketListPage.tsx",
+   "lineRange": [
+    225,
+    267
+   ],
+   "summary": "Connects URL parameters to the ticket query and renders import and export actions, filters and the matching list state.",
+   "tags": [
+    "component",
+    "page",
+    "ticket"
+   ],
+   "complexity": "moderate"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:frontend/src/features/tickets/AiResults.tsx",
+   "target": "file:frontend/src/components/states.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/AiResults.tsx",
+   "target": "file:frontend/src/components/ui/button.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/AiResults.tsx",
+   "target": "file:frontend/src/components/ui/card.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/AiResults.tsx",
+   "target": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/AiResults.tsx",
+   "target": "file:frontend/src/features/comparisons/hooks.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/AiResults.tsx",
+   "target": "file:frontend/src/features/tickets/hooks.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/AiResults.tsx",
+   "target": "file:frontend/src/lib/format.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/AiResults.tsx",
+   "target": "file:frontend/src/types/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+   "target": "file:frontend/src/components/Detail.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+   "target": "file:frontend/src/components/states.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+   "target": "file:frontend/src/components/ui/button.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+   "target": "file:frontend/src/components/ui/card.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+   "target": "file:frontend/src/components/ui/label.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+   "target": "file:frontend/src/components/ui/select.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+   "target": "file:frontend/src/features/tickets/hooks.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+   "target": "file:frontend/src/lib/format.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+   "target": "file:frontend/src/services/queries.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+   "target": "file:frontend/src/types/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/ImportExport.tsx",
+   "target": "file:frontend/src/components/ui/button.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/ImportExport.tsx",
+   "target": "file:frontend/src/components/ui/dialog.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/ImportExport.tsx",
+   "target": "file:frontend/src/components/ui/input.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/ImportExport.tsx",
+   "target": "file:frontend/src/components/ui/table.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/ImportExport.tsx",
+   "target": "file:frontend/src/features/tickets/hooks.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/ImportExport.tsx",
+   "target": "file:frontend/src/services/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/ImportExport.tsx",
+   "target": "file:frontend/src/types/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+   "target": "file:frontend/src/components/states.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+   "target": "file:frontend/src/components/ui/button.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+   "target": "file:frontend/src/features/tickets/TicketForm.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+   "target": "file:frontend/src/features/tickets/hooks.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+   "target": "file:frontend/src/services/queries.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "target": "file:frontend/src/components/ConfirmDialog.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "target": "file:frontend/src/components/Detail.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "target": "file:frontend/src/components/states.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "target": "file:frontend/src/components/ui/button.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "target": "file:frontend/src/components/ui/card.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "target": "file:frontend/src/components/ui/select.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "target": "file:frontend/src/components/ui/textarea.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "target": "file:frontend/src/features/tickets/AiResults.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "target": "file:frontend/src/features/tickets/FinalClassification.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "target": "file:frontend/src/features/tickets/TicketForm.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "target": "file:frontend/src/features/tickets/hooks.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "target": "file:frontend/src/lib/format.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "target": "file:frontend/src/services/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "target": "file:frontend/src/services/queries.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "target": "file:frontend/src/types/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketForm.tsx",
+   "target": "file:frontend/src/components/ui/button.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketForm.tsx",
+   "target": "file:frontend/src/components/ui/input.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketForm.tsx",
+   "target": "file:frontend/src/components/ui/label.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketForm.tsx",
+   "target": "file:frontend/src/components/ui/select.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketForm.tsx",
+   "target": "file:frontend/src/components/ui/textarea.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketForm.tsx",
+   "target": "file:frontend/src/types/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+   "target": "file:frontend/src/components/ListControls.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+   "target": "file:frontend/src/components/states.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+   "target": "file:frontend/src/components/ui/badge.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+   "target": "file:frontend/src/components/ui/button.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+   "target": "file:frontend/src/components/ui/input.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+   "target": "file:frontend/src/components/ui/select.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+   "target": "file:frontend/src/components/ui/table.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+   "target": "file:frontend/src/features/tickets/ImportExport.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+   "target": "file:frontend/src/features/tickets/hooks.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+   "target": "file:frontend/src/lib/format.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+   "target": "file:frontend/src/services/queries.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+   "target": "file:frontend/src/types/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/tickets/AiResults.tsx",
+   "target": "function:frontend/src/features/tickets/AiResults.tsx:RunButton",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/AiResults.tsx",
+   "target": "function:frontend/src/features/tickets/AiResults.tsx:RunRow",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/AiResults.tsx",
+   "target": "function:frontend/src/features/tickets/AiResults.tsx:RunHistory",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/AiResults.tsx",
+   "target": "function:frontend/src/features/tickets/AiResults.tsx:ComparisonHistory",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/AiResults.tsx",
+   "target": "function:frontend/src/features/tickets/AiResults.tsx:AiResults",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/AiResults.tsx",
+   "target": "function:frontend/src/features/tickets/AiResults.tsx:AiResults",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+   "target": "function:frontend/src/features/tickets/FinalClassification.tsx:startingValues",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+   "target": "function:frontend/src/features/tickets/FinalClassification.tsx:Field",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+   "target": "function:frontend/src/features/tickets/FinalClassification.tsx:FinalForm",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+   "target": "function:frontend/src/features/tickets/FinalClassification.tsx:SavedFinal",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+   "target": "function:frontend/src/features/tickets/FinalClassification.tsx:FormLoader",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+   "target": "function:frontend/src/features/tickets/FinalClassification.tsx:FinalClassificationPanel",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+   "target": "function:frontend/src/features/tickets/FinalClassification.tsx:FinalClassificationPanel",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/tickets/ImportExport.tsx",
+   "target": "function:frontend/src/features/tickets/ImportExport.tsx:SummaryView",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/ImportExport.tsx",
+   "target": "function:frontend/src/features/tickets/ImportExport.tsx:ImportDialog",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/ImportExport.tsx",
+   "target": "function:frontend/src/features/tickets/ImportExport.tsx:ImportDialog",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/tickets/ImportExport.tsx",
+   "target": "function:frontend/src/features/tickets/ImportExport.tsx:ExportLinks",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/ImportExport.tsx",
+   "target": "function:frontend/src/features/tickets/ImportExport.tsx:ExportLinks",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+   "target": "function:frontend/src/features/tickets/NewTicketPage.tsx:NewTicketPage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+   "target": "function:frontend/src/features/tickets/NewTicketPage.tsx:NewTicketPage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "target": "function:frontend/src/features/tickets/TicketDetailPage.tsx:StatusSelect",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "target": "function:frontend/src/features/tickets/TicketDetailPage.tsx:TicketInfo",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "target": "function:frontend/src/features/tickets/TicketDetailPage.tsx:Notes",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "target": "function:frontend/src/features/tickets/TicketDetailPage.tsx:TicketView",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "target": "function:frontend/src/features/tickets/TicketDetailPage.tsx:TicketDetailPage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "target": "function:frontend/src/features/tickets/TicketDetailPage.tsx:TicketDetailPage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketForm.tsx",
+   "target": "function:frontend/src/features/tickets/TicketForm.tsx:Field",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketForm.tsx",
+   "target": "function:frontend/src/features/tickets/TicketForm.tsx:TicketForm",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketForm.tsx",
+   "target": "function:frontend/src/features/tickets/TicketForm.tsx:TicketForm",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+   "target": "function:frontend/src/features/tickets/TicketListPage.tsx:useListParams",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+   "target": "function:frontend/src/features/tickets/TicketListPage.tsx:Filters",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+   "target": "function:frontend/src/features/tickets/TicketListPage.tsx:TicketRow",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+   "target": "function:frontend/src/features/tickets/TicketListPage.tsx:NoTickets",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+   "target": "function:frontend/src/features/tickets/TicketListPage.tsx:TicketTable",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+   "target": "function:frontend/src/features/tickets/TicketListPage.tsx:TicketListPage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+   "target": "function:frontend/src/features/tickets/TicketListPage.tsx:TicketListPage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/AiResults.tsx:RunButton",
+   "target": "function:frontend/src/features/tickets/hooks.ts:useRunProvider",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/AiResults.tsx:RunRow",
+   "target": "function:frontend/src/lib/format.ts:formatDateTime",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/AiResults.tsx:RunRow",
+   "target": "function:frontend/src/lib/format.ts:formatEscalation",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/AiResults.tsx:RunRow",
+   "target": "function:frontend/src/lib/format.ts:formatTokens",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/AiResults.tsx:RunRow",
+   "target": "function:frontend/src/lib/format.ts:formatCost",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/AiResults.tsx:RunRow",
+   "target": "function:frontend/src/lib/format.ts:seconds",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/AiResults.tsx:RunHistory",
+   "target": "function:frontend/src/features/tickets/hooks.ts:useTicketRuns",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/AiResults.tsx:ComparisonHistory",
+   "target": "function:frontend/src/features/comparisons/hooks.ts:useComparisons",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/FinalClassification.tsx:startingValues",
+   "target": "function:frontend/src/lib/format.ts:formatEscalation",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/FinalClassification.tsx:FinalForm",
+   "target": "function:frontend/src/features/tickets/hooks.ts:useSetFinal",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/FinalClassification.tsx:FinalForm",
+   "target": "function:frontend/src/lib/format.ts:formatEscalation",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/FinalClassification.tsx:FinalForm",
+   "target": "function:frontend/src/lib/format.ts:formatDateTime",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/FinalClassification.tsx:SavedFinal",
+   "target": "function:frontend/src/lib/format.ts:formatEscalation",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/FinalClassification.tsx:SavedFinal",
+   "target": "function:frontend/src/lib/format.ts:formatDateTime",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/FinalClassification.tsx:FormLoader",
+   "target": "function:frontend/src/services/queries.ts:useTaxonomy",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/ImportExport.tsx:ImportDialog",
+   "target": "function:frontend/src/features/tickets/hooks.ts:useImportTickets",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/NewTicketPage.tsx:NewTicketPage",
+   "target": "function:frontend/src/services/queries.ts:useTaxonomy",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/NewTicketPage.tsx:NewTicketPage",
+   "target": "function:frontend/src/features/tickets/hooks.ts:useCreateTicket",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketDetailPage.tsx:StatusSelect",
+   "target": "function:frontend/src/services/queries.ts:useTaxonomy",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketDetailPage.tsx:StatusSelect",
+   "target": "function:frontend/src/features/tickets/hooks.ts:useUpdateTicket",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketDetailPage.tsx:TicketInfo",
+   "target": "function:frontend/src/lib/format.ts:formatDateTime",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketDetailPage.tsx:Notes",
+   "target": "function:frontend/src/features/tickets/hooks.ts:useAddNote",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketDetailPage.tsx:Notes",
+   "target": "function:frontend/src/lib/format.ts:formatDateTime",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketDetailPage.tsx:TicketView",
+   "target": "function:frontend/src/services/queries.ts:useTaxonomy",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketDetailPage.tsx:TicketView",
+   "target": "function:frontend/src/features/tickets/hooks.ts:useUpdateTicket",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketDetailPage.tsx:TicketView",
+   "target": "function:frontend/src/features/tickets/hooks.ts:useDeleteTicket",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketDetailPage.tsx:TicketDetailPage",
+   "target": "function:frontend/src/features/tickets/hooks.ts:useTicket",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketListPage.tsx:Filters",
+   "target": "function:frontend/src/services/queries.ts:useTaxonomy",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketListPage.tsx:TicketRow",
+   "target": "function:frontend/src/lib/format.ts:formatDateTime",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketListPage.tsx:TicketListPage",
+   "target": "function:frontend/src/features/tickets/hooks.ts:useTickets",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/tickets/AiResults.tsx:RunHistory",
+   "target": "function:frontend/src/features/tickets/AiResults.tsx:RunRow",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/AiResults.tsx:ComparisonHistory",
+   "target": "function:frontend/src/features/comparisons/ComparisonsPage.tsx:ComparisonTable",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/AiResults.tsx:AiResults",
+   "target": "function:frontend/src/features/tickets/AiResults.tsx:RunButton",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/AiResults.tsx:AiResults",
+   "target": "function:frontend/src/features/tickets/AiResults.tsx:RunHistory",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/AiResults.tsx:AiResults",
+   "target": "function:frontend/src/features/tickets/AiResults.tsx:ComparisonHistory",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/FinalClassification.tsx:FinalForm",
+   "target": "function:frontend/src/features/tickets/FinalClassification.tsx:Field",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/FinalClassification.tsx:FormLoader",
+   "target": "function:frontend/src/features/tickets/FinalClassification.tsx:FinalForm",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/FinalClassification.tsx:FinalClassificationPanel",
+   "target": "function:frontend/src/features/tickets/FinalClassification.tsx:FormLoader",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/FinalClassification.tsx:FinalClassificationPanel",
+   "target": "function:frontend/src/features/tickets/FinalClassification.tsx:SavedFinal",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/ImportExport.tsx:ImportDialog",
+   "target": "function:frontend/src/features/tickets/ImportExport.tsx:SummaryView",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/NewTicketPage.tsx:NewTicketPage",
+   "target": "function:frontend/src/features/tickets/TicketForm.tsx:TicketForm",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketDetailPage.tsx:TicketView",
+   "target": "function:frontend/src/features/tickets/TicketDetailPage.tsx:StatusSelect",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketDetailPage.tsx:TicketView",
+   "target": "function:frontend/src/features/tickets/TicketDetailPage.tsx:TicketInfo",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketDetailPage.tsx:TicketView",
+   "target": "function:frontend/src/features/tickets/TicketDetailPage.tsx:Notes",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketDetailPage.tsx:TicketView",
+   "target": "function:frontend/src/features/tickets/TicketForm.tsx:TicketForm",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketDetailPage.tsx:TicketView",
+   "target": "function:frontend/src/features/tickets/FinalClassification.tsx:FinalClassificationPanel",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketDetailPage.tsx:TicketView",
+   "target": "function:frontend/src/features/tickets/AiResults.tsx:AiResults",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketDetailPage.tsx:TicketView",
+   "target": "function:frontend/src/components/ConfirmDialog.tsx:ConfirmDialog",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketDetailPage.tsx:TicketDetailPage",
+   "target": "function:frontend/src/features/tickets/TicketDetailPage.tsx:TicketView",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketForm.tsx:TicketForm",
+   "target": "function:frontend/src/features/tickets/TicketForm.tsx:Field",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketListPage.tsx:Filters",
+   "target": "function:frontend/src/components/ListControls.tsx:FilterSelect",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketListPage.tsx:TicketTable",
+   "target": "function:frontend/src/features/tickets/TicketListPage.tsx:TicketRow",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketListPage.tsx:TicketListPage",
+   "target": "function:frontend/src/features/tickets/TicketListPage.tsx:Filters",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketListPage.tsx:TicketListPage",
+   "target": "function:frontend/src/features/tickets/TicketListPage.tsx:NoTickets",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketListPage.tsx:TicketListPage",
+   "target": "function:frontend/src/features/tickets/TicketListPage.tsx:TicketTable",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketListPage.tsx:TicketListPage",
+   "target": "function:frontend/src/components/ListControls.tsx:Pager",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketListPage.tsx:TicketListPage",
+   "target": "function:frontend/src/features/tickets/ImportExport.tsx:ImportDialog",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/tickets/TicketListPage.tsx:TicketListPage",
+   "target": "function:frontend/src/features/tickets/ImportExport.tsx:ExportLinks",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/tickets/AiResults.tsx",
+   "target": "file:frontend/src/features/comparisons/hooks.ts",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:frontend/src/features/tickets/AiResults.tsx",
+   "target": "file:frontend/src/features/tickets/hooks.ts",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+   "target": "file:frontend/src/features/tickets/hooks.ts",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+   "target": "file:frontend/src/services/queries.ts",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:frontend/src/features/tickets/ImportExport.tsx",
+   "target": "file:frontend/src/features/tickets/hooks.ts",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+   "target": "file:frontend/src/features/tickets/hooks.ts",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+   "target": "file:frontend/src/services/queries.ts",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "target": "file:frontend/src/features/tickets/hooks.ts",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "target": "file:frontend/src/services/queries.ts",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+   "target": "file:frontend/src/features/tickets/hooks.ts",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+   "target": "file:frontend/src/services/queries.ts",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  }
+ ]
+}

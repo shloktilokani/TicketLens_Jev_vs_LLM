@@ -1,0 +1,1672 @@
+{
+ "nodes": [
+  {
+   "id": "file:frontend/src/components/ui/select.tsx",
+   "type": "file",
+   "name": "select.tsx",
+   "filePath": "frontend/src/components/ui/select.tsx",
+   "summary": "shadcn/ui dropdown select primitives wrapping Radix Select, with a styled trigger, portalled content, items, separators, and scroll buttons.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "form",
+    "accessibility"
+   ],
+   "complexity": "moderate",
+   "languageNotes": "Imports `cn` from the external npm package \"cn\" rather than the local \"@/lib/utils\" helper, so no project-internal import edge exists for it."
+  },
+  {
+   "id": "function:frontend/src/components/ui/select.tsx:Select",
+   "type": "function",
+   "name": "Select",
+   "filePath": "frontend/src/components/ui/select.tsx",
+   "lineRange": [
+    6,
+    10
+   ],
+   "summary": "Root wrapper of the Radix Select primitive that adds the data-slot attribute.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "form"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/select.tsx:SelectGroup",
+   "type": "function",
+   "name": "SelectGroup",
+   "filePath": "frontend/src/components/ui/select.tsx",
+   "lineRange": [
+    12,
+    23
+   ],
+   "summary": "Styled grouping container for related select items.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "form"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/select.tsx:SelectValue",
+   "type": "function",
+   "name": "SelectValue",
+   "filePath": "frontend/src/components/ui/select.tsx",
+   "lineRange": [
+    25,
+    29
+   ],
+   "summary": "Wraps the Radix element that displays the selected value.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "form"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/select.tsx:SelectTrigger",
+   "type": "function",
+   "name": "SelectTrigger",
+   "filePath": "frontend/src/components/ui/select.tsx",
+   "lineRange": [
+    31,
+    55
+   ],
+   "summary": "Styled control showing the current value with a chevron, which opens the dropdown.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "form"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/select.tsx:SelectContent",
+   "type": "function",
+   "name": "SelectContent",
+   "filePath": "frontend/src/components/ui/select.tsx",
+   "lineRange": [
+    57,
+    88
+   ],
+   "summary": "Portalled dropdown panel with a viewport and scroll buttons, supporting item-aligned and popper positioning.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "form"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/select.tsx:SelectLabel",
+   "type": "function",
+   "name": "SelectLabel",
+   "filePath": "frontend/src/components/ui/select.tsx",
+   "lineRange": [
+    90,
+    101
+   ],
+   "summary": "Styled label for a group of select items.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "form"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/select.tsx:SelectItem",
+   "type": "function",
+   "name": "SelectItem",
+   "filePath": "frontend/src/components/ui/select.tsx",
+   "lineRange": [
+    103,
+    125
+   ],
+   "summary": "Selectable option with a check indicator when chosen.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "form"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/select.tsx:SelectSeparator",
+   "type": "function",
+   "name": "SelectSeparator",
+   "filePath": "frontend/src/components/ui/select.tsx",
+   "lineRange": [
+    127,
+    138
+   ],
+   "summary": "Styled divider between select items or groups.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "form"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/select.tsx:SelectScrollUpButton",
+   "type": "function",
+   "name": "SelectScrollUpButton",
+   "filePath": "frontend/src/components/ui/select.tsx",
+   "lineRange": [
+    140,
+    157
+   ],
+   "summary": "Chevron control that scrolls the select list upward.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "form"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/select.tsx:SelectScrollDownButton",
+   "type": "function",
+   "name": "SelectScrollDownButton",
+   "filePath": "frontend/src/components/ui/select.tsx",
+   "lineRange": [
+    159,
+    176
+   ],
+   "summary": "Chevron control that scrolls the select list downward.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "form"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:frontend/src/components/ui/sheet.tsx",
+   "type": "file",
+   "name": "sheet.tsx",
+   "filePath": "frontend/src/components/ui/sheet.tsx",
+   "summary": "shadcn/ui slide-in side panel built on the Radix Dialog primitive, supporting top, right, bottom, and left placement; AppShell uses it for mobile navigation.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog",
+    "navigation"
+   ],
+   "complexity": "moderate",
+   "languageNotes": "Imports `cn` from the external npm package \"cn\" rather than the local \"@/lib/utils\" helper, so no project-internal import edge exists for it."
+  },
+  {
+   "id": "function:frontend/src/components/ui/sheet.tsx:Sheet",
+   "type": "function",
+   "name": "Sheet",
+   "filePath": "frontend/src/components/ui/sheet.tsx",
+   "lineRange": [
+    8,
+    10
+   ],
+   "summary": "Root of the side panel, wrapping the Radix Dialog primitive.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/sheet.tsx:SheetTrigger",
+   "type": "function",
+   "name": "SheetTrigger",
+   "filePath": "frontend/src/components/ui/sheet.tsx",
+   "lineRange": [
+    12,
+    16
+   ],
+   "summary": "Wraps the Radix trigger element that opens the sheet.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/sheet.tsx:SheetClose",
+   "type": "function",
+   "name": "SheetClose",
+   "filePath": "frontend/src/components/ui/sheet.tsx",
+   "lineRange": [
+    18,
+    22
+   ],
+   "summary": "Wraps the Radix close control for the sheet.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/sheet.tsx:SheetOverlay",
+   "type": "function",
+   "name": "SheetOverlay",
+   "filePath": "frontend/src/components/ui/sheet.tsx",
+   "lineRange": [
+    30,
+    44
+   ],
+   "summary": "Internal styled backdrop displayed behind the sheet.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/sheet.tsx:SheetContent",
+   "type": "function",
+   "name": "SheetContent",
+   "filePath": "frontend/src/components/ui/sheet.tsx",
+   "lineRange": [
+    46,
+    85
+   ],
+   "summary": "Sliding panel with selectable side and an optional close button, rendered in a portal above the overlay.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog",
+    "navigation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/sheet.tsx:SheetHeader",
+   "type": "function",
+   "name": "SheetHeader",
+   "filePath": "frontend/src/components/ui/sheet.tsx",
+   "lineRange": [
+    87,
+    95
+   ],
+   "summary": "Layout container for the sheet title and description.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/sheet.tsx:SheetFooter",
+   "type": "function",
+   "name": "SheetFooter",
+   "filePath": "frontend/src/components/ui/sheet.tsx",
+   "lineRange": [
+    97,
+    105
+   ],
+   "summary": "Layout container pushed to the bottom of the sheet for actions.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/sheet.tsx:SheetTitle",
+   "type": "function",
+   "name": "SheetTitle",
+   "filePath": "frontend/src/components/ui/sheet.tsx",
+   "lineRange": [
+    107,
+    121
+   ],
+   "summary": "Styled Radix title element that names the sheet.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/sheet.tsx:SheetDescription",
+   "type": "function",
+   "name": "SheetDescription",
+   "filePath": "frontend/src/components/ui/sheet.tsx",
+   "lineRange": [
+    123,
+    134
+   ],
+   "summary": "Styled Radix description element for the sheet body text.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:frontend/src/components/ui/table.tsx",
+   "type": "file",
+   "name": "table.tsx",
+   "filePath": "frontend/src/components/ui/table.tsx",
+   "summary": "shadcn/ui table family of styled semantic table elements, with a container that scrolls horizontally on overflow.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "table"
+   ],
+   "complexity": "moderate",
+   "languageNotes": "Imports `cn` from the external npm package \"cn\" rather than the local \"@/lib/utils\" helper, so no project-internal import edge exists for it."
+  },
+  {
+   "id": "function:frontend/src/components/ui/table.tsx:Table",
+   "type": "function",
+   "name": "Table",
+   "filePath": "frontend/src/components/ui/table.tsx",
+   "lineRange": [
+    6,
+    19
+   ],
+   "summary": "Table element inside a container that scrolls horizontally on overflow.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "table"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/table.tsx:TableHeader",
+   "type": "function",
+   "name": "TableHeader",
+   "filePath": "frontend/src/components/ui/table.tsx",
+   "lineRange": [
+    21,
+    29
+   ],
+   "summary": "Styled thead section of a table.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "table"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/table.tsx:TableBody",
+   "type": "function",
+   "name": "TableBody",
+   "filePath": "frontend/src/components/ui/table.tsx",
+   "lineRange": [
+    31,
+    39
+   ],
+   "summary": "Styled tbody section of a table.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "table"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/table.tsx:TableFooter",
+   "type": "function",
+   "name": "TableFooter",
+   "filePath": "frontend/src/components/ui/table.tsx",
+   "lineRange": [
+    41,
+    52
+   ],
+   "summary": "Styled tfoot section of a table.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "table"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/table.tsx:TableRow",
+   "type": "function",
+   "name": "TableRow",
+   "filePath": "frontend/src/components/ui/table.tsx",
+   "lineRange": [
+    54,
+    65
+   ],
+   "summary": "Styled tr element of a table.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "table"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/table.tsx:TableHead",
+   "type": "function",
+   "name": "TableHead",
+   "filePath": "frontend/src/components/ui/table.tsx",
+   "lineRange": [
+    67,
+    78
+   ],
+   "summary": "Styled th header cell of a table.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "table"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/table.tsx:TableCell",
+   "type": "function",
+   "name": "TableCell",
+   "filePath": "frontend/src/components/ui/table.tsx",
+   "lineRange": [
+    80,
+    91
+   ],
+   "summary": "Styled td data cell of a table.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "table"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ui/table.tsx:TableCaption",
+   "type": "function",
+   "name": "TableCaption",
+   "filePath": "frontend/src/components/ui/table.tsx",
+   "lineRange": [
+    93,
+    104
+   ],
+   "summary": "Styled caption element of a table.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "table"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:frontend/src/components/ui/textarea.tsx",
+   "type": "file",
+   "name": "textarea.tsx",
+   "filePath": "frontend/src/components/ui/textarea.tsx",
+   "summary": "shadcn/ui styled multi-line text input wrapping the native textarea element.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "form"
+   ],
+   "complexity": "simple",
+   "languageNotes": "Imports `cn` from the external npm package \"cn\" rather than the local \"@/lib/utils\" helper, so no project-internal import edge exists for it."
+  },
+  {
+   "id": "function:frontend/src/components/ui/textarea.tsx:Textarea",
+   "type": "function",
+   "name": "Textarea",
+   "filePath": "frontend/src/components/ui/textarea.tsx",
+   "lineRange": [
+    4,
+    15
+   ],
+   "summary": "Native textarea element with project styling and passed-through props.",
+   "tags": [
+    "component",
+    "ui-primitive",
+    "shadcn",
+    "form"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:frontend/src/features/compare/ComparePage.tsx",
+   "type": "file",
+   "name": "ComparePage.tsx",
+   "filePath": "frontend/src/features/compare/ComparePage.tsx",
+   "summary": "Compare workbench page where the user loads or creates a ticket, runs Jev and the LLM side by side, and sees the field agreement summary without any winner being chosen.",
+   "tags": [
+    "component",
+    "page",
+    "comparison",
+    "workbench",
+    "entry-point"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:frontend/src/features/compare/ComparePage.tsx:ExistingTicket",
+   "type": "function",
+   "name": "ExistingTicket",
+   "filePath": "frontend/src/features/compare/ComparePage.tsx",
+   "lineRange": [
+    20,
+    43
+   ],
+   "summary": "Form that trims and uppercases a typed ticket ID and passes it to the caller to load.",
+   "tags": [
+    "component",
+    "form",
+    "ticket-selection"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/compare/ComparePage.tsx:NewTicket",
+   "type": "function",
+   "name": "NewTicket",
+   "filePath": "frontend/src/features/compare/ComparePage.tsx",
+   "lineRange": [
+    45,
+    61
+   ],
+   "summary": "Creates a ticket through the shared ticket form and reports the new ID, showing a toast on failure.",
+   "tags": [
+    "component",
+    "form",
+    "ticket-creation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/compare/ComparePage.tsx:TicketPanel",
+   "type": "function",
+   "name": "TicketPanel",
+   "filePath": "frontend/src/features/compare/ComparePage.tsx",
+   "lineRange": [
+    63,
+    80
+   ],
+   "summary": "Displays the loaded ticket's linked ID, title, and scrollable description.",
+   "tags": [
+    "component",
+    "presentational",
+    "ticket-display"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/compare/ComparePage.tsx:Agreement",
+   "type": "function",
+   "name": "Agreement",
+   "filePath": "frontend/src/features/compare/ComparePage.tsx",
+   "lineRange": [
+    82,
+    121
+   ],
+   "summary": "Summarizes the comparison as completed, partial, or failed, and states that agreement is not accuracy and that no winner is chosen.",
+   "tags": [
+    "component",
+    "comparison",
+    "status-indicator",
+    "evaluation"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:frontend/src/features/compare/ComparePage.tsx:TicketChooser",
+   "type": "function",
+   "name": "TicketChooser",
+   "filePath": "frontend/src/features/compare/ComparePage.tsx",
+   "lineRange": [
+    123,
+    152
+   ],
+   "summary": "Toggles between loading an existing ticket and creating a new one, reporting the chosen ticket ID.",
+   "tags": [
+    "component",
+    "ticket-selection",
+    "form"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/compare/ComparePage.tsx:ComparePage",
+   "type": "function",
+   "name": "ComparePage",
+   "filePath": "frontend/src/features/compare/ComparePage.tsx",
+   "lineRange": [
+    154,
+    199
+   ],
+   "summary": "Page component that keeps the selected ticket in URL search params, starts paired provider runs, and lays out both provider columns and the agreement summary.",
+   "tags": [
+    "component",
+    "page",
+    "comparison",
+    "workbench"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:frontend/src/features/compare/ProviderColumn.tsx",
+   "type": "file",
+   "name": "ProviderColumn.tsx",
+   "filePath": "frontend/src/features/compare/ProviderColumn.tsx",
+   "summary": "Renders one provider's side of the compare workbench: live status and elapsed timer, normalized classification fields with agreement markers, free text, and token and cost usage.",
+   "tags": [
+    "component",
+    "comparison",
+    "provider-result",
+    "presentational"
+   ],
+   "complexity": "complex",
+   "languageNotes": "Shows confidence only for Jev and states that Jev does not support summary or resolution text instead of implying it generates free-form output."
+  },
+  {
+   "id": "function:frontend/src/features/compare/ProviderColumn.tsx:StatusLine",
+   "type": "function",
+   "name": "StatusLine",
+   "filePath": "frontend/src/features/compare/ProviderColumn.tsx",
+   "lineRange": [
+    31,
+    53
+   ],
+   "summary": "Shows the provider run as not run, running, or the final execution status with a matching icon.",
+   "tags": [
+    "component",
+    "status-indicator",
+    "provider-result"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/compare/ProviderColumn.tsx:Match",
+   "type": "function",
+   "name": "Match",
+   "filePath": "frontend/src/features/compare/ProviderColumn.tsx",
+   "lineRange": [
+    55,
+    71
+   ],
+   "summary": "Renders an Agree or Differ marker for a compared field, or nothing when no comparison exists.",
+   "tags": [
+    "component",
+    "comparison",
+    "status-indicator"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/compare/ProviderColumn.tsx:Fields",
+   "type": "function",
+   "name": "Fields",
+   "filePath": "frontend/src/features/compare/ProviderColumn.tsx",
+   "lineRange": [
+    78,
+    113
+   ],
+   "summary": "Lists normalized classification fields with Jev-only confidence and per-field agreement markers.",
+   "tags": [
+    "component",
+    "classification",
+    "comparison",
+    "provider-result"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:frontend/src/features/compare/ProviderColumn.tsx:FreeText",
+   "type": "function",
+   "name": "FreeText",
+   "filePath": "frontend/src/features/compare/ProviderColumn.tsx",
+   "lineRange": [
+    115,
+    143
+   ],
+   "summary": "Shows the LLM summary and suggested resolution, and states that Jev does not support them.",
+   "tags": [
+    "component",
+    "provider-result",
+    "free-text"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/compare/ProviderColumn.tsx:Usage",
+   "type": "function",
+   "name": "Usage",
+   "filePath": "frontend/src/features/compare/ProviderColumn.tsx",
+   "lineRange": [
+    145,
+    162
+   ],
+   "summary": "Shows token counts, estimated cost, and server time for an execution, with explicit text when tokens or pricing are unavailable.",
+   "tags": [
+    "component",
+    "usage",
+    "cost",
+    "metrics"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/compare/ProviderColumn.tsx:ColumnHeader",
+   "type": "function",
+   "name": "ColumnHeader",
+   "filePath": "frontend/src/features/compare/ProviderColumn.tsx",
+   "lineRange": [
+    164,
+    192
+   ],
+   "summary": "Column heading with the provider label, a Fake AI badge for mock models, and a live elapsed timer.",
+   "tags": [
+    "component",
+    "provider-result",
+    "timer"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/compare/ProviderColumn.tsx:RunStatus",
+   "type": "function",
+   "name": "RunStatus",
+   "filePath": "frontend/src/features/compare/ProviderColumn.tsx",
+   "lineRange": [
+    194,
+    208
+   ],
+   "summary": "Polite live region combining the status line, the model used, and any run error message.",
+   "tags": [
+    "component",
+    "status-indicator",
+    "accessibility"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/compare/ProviderColumn.tsx:ProviderColumn",
+   "type": "function",
+   "name": "ProviderColumn",
+   "filePath": "frontend/src/features/compare/ProviderColumn.tsx",
+   "lineRange": [
+    210,
+    234
+   ],
+   "summary": "Card composing the header, status, fields, free text, and usage for one provider's run.",
+   "tags": [
+    "component",
+    "comparison",
+    "provider-result",
+    "composition"
+   ],
+   "complexity": "simple"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:frontend/src/components/ui/select.tsx",
+   "target": "function:frontend/src/components/ui/select.tsx:Select",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/select.tsx",
+   "target": "function:frontend/src/components/ui/select.tsx:Select",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/select.tsx",
+   "target": "function:frontend/src/components/ui/select.tsx:SelectGroup",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/select.tsx",
+   "target": "function:frontend/src/components/ui/select.tsx:SelectGroup",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/select.tsx",
+   "target": "function:frontend/src/components/ui/select.tsx:SelectValue",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/select.tsx",
+   "target": "function:frontend/src/components/ui/select.tsx:SelectValue",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/select.tsx",
+   "target": "function:frontend/src/components/ui/select.tsx:SelectTrigger",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/select.tsx",
+   "target": "function:frontend/src/components/ui/select.tsx:SelectTrigger",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/select.tsx",
+   "target": "function:frontend/src/components/ui/select.tsx:SelectContent",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/select.tsx",
+   "target": "function:frontend/src/components/ui/select.tsx:SelectContent",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/select.tsx",
+   "target": "function:frontend/src/components/ui/select.tsx:SelectLabel",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/select.tsx",
+   "target": "function:frontend/src/components/ui/select.tsx:SelectLabel",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/select.tsx",
+   "target": "function:frontend/src/components/ui/select.tsx:SelectItem",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/select.tsx",
+   "target": "function:frontend/src/components/ui/select.tsx:SelectItem",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/select.tsx",
+   "target": "function:frontend/src/components/ui/select.tsx:SelectSeparator",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/select.tsx",
+   "target": "function:frontend/src/components/ui/select.tsx:SelectSeparator",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/select.tsx",
+   "target": "function:frontend/src/components/ui/select.tsx:SelectScrollUpButton",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/select.tsx",
+   "target": "function:frontend/src/components/ui/select.tsx:SelectScrollUpButton",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/select.tsx",
+   "target": "function:frontend/src/components/ui/select.tsx:SelectScrollDownButton",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/select.tsx",
+   "target": "function:frontend/src/components/ui/select.tsx:SelectScrollDownButton",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/sheet.tsx",
+   "target": "function:frontend/src/components/ui/sheet.tsx:Sheet",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/sheet.tsx",
+   "target": "function:frontend/src/components/ui/sheet.tsx:Sheet",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/sheet.tsx",
+   "target": "function:frontend/src/components/ui/sheet.tsx:SheetTrigger",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/sheet.tsx",
+   "target": "function:frontend/src/components/ui/sheet.tsx:SheetTrigger",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/sheet.tsx",
+   "target": "function:frontend/src/components/ui/sheet.tsx:SheetClose",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/sheet.tsx",
+   "target": "function:frontend/src/components/ui/sheet.tsx:SheetClose",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/sheet.tsx",
+   "target": "function:frontend/src/components/ui/sheet.tsx:SheetOverlay",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/sheet.tsx",
+   "target": "function:frontend/src/components/ui/sheet.tsx:SheetContent",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/sheet.tsx",
+   "target": "function:frontend/src/components/ui/sheet.tsx:SheetContent",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/sheet.tsx",
+   "target": "function:frontend/src/components/ui/sheet.tsx:SheetHeader",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/sheet.tsx",
+   "target": "function:frontend/src/components/ui/sheet.tsx:SheetHeader",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/sheet.tsx",
+   "target": "function:frontend/src/components/ui/sheet.tsx:SheetFooter",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/sheet.tsx",
+   "target": "function:frontend/src/components/ui/sheet.tsx:SheetFooter",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/sheet.tsx",
+   "target": "function:frontend/src/components/ui/sheet.tsx:SheetTitle",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/sheet.tsx",
+   "target": "function:frontend/src/components/ui/sheet.tsx:SheetTitle",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/sheet.tsx",
+   "target": "function:frontend/src/components/ui/sheet.tsx:SheetDescription",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/sheet.tsx",
+   "target": "function:frontend/src/components/ui/sheet.tsx:SheetDescription",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/sheet.tsx",
+   "target": "file:frontend/src/components/ui/button.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/components/ui/table.tsx",
+   "target": "function:frontend/src/components/ui/table.tsx:Table",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/table.tsx",
+   "target": "function:frontend/src/components/ui/table.tsx:Table",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/table.tsx",
+   "target": "function:frontend/src/components/ui/table.tsx:TableHeader",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/table.tsx",
+   "target": "function:frontend/src/components/ui/table.tsx:TableHeader",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/table.tsx",
+   "target": "function:frontend/src/components/ui/table.tsx:TableBody",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/table.tsx",
+   "target": "function:frontend/src/components/ui/table.tsx:TableBody",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/table.tsx",
+   "target": "function:frontend/src/components/ui/table.tsx:TableFooter",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/table.tsx",
+   "target": "function:frontend/src/components/ui/table.tsx:TableFooter",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/table.tsx",
+   "target": "function:frontend/src/components/ui/table.tsx:TableRow",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/table.tsx",
+   "target": "function:frontend/src/components/ui/table.tsx:TableRow",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/table.tsx",
+   "target": "function:frontend/src/components/ui/table.tsx:TableHead",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/table.tsx",
+   "target": "function:frontend/src/components/ui/table.tsx:TableHead",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/table.tsx",
+   "target": "function:frontend/src/components/ui/table.tsx:TableCell",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/table.tsx",
+   "target": "function:frontend/src/components/ui/table.tsx:TableCell",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/table.tsx",
+   "target": "function:frontend/src/components/ui/table.tsx:TableCaption",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/table.tsx",
+   "target": "function:frontend/src/components/ui/table.tsx:TableCaption",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ui/textarea.tsx",
+   "target": "function:frontend/src/components/ui/textarea.tsx:Textarea",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ui/textarea.tsx",
+   "target": "function:frontend/src/components/ui/textarea.tsx:Textarea",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "function:frontend/src/features/compare/ComparePage.tsx:ExistingTicket",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "function:frontend/src/features/compare/ComparePage.tsx:NewTicket",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "function:frontend/src/features/compare/ComparePage.tsx:TicketPanel",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "function:frontend/src/features/compare/ComparePage.tsx:Agreement",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "function:frontend/src/features/compare/ComparePage.tsx:TicketChooser",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "function:frontend/src/features/compare/ComparePage.tsx:ComparePage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "function:frontend/src/features/compare/ComparePage.tsx:ComparePage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "file:frontend/src/components/states.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "file:frontend/src/components/ui/button.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "file:frontend/src/components/ui/card.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "file:frontend/src/components/ui/input.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "file:frontend/src/features/compare/ProviderColumn.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "file:frontend/src/features/compare/useCompareRun.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "file:frontend/src/features/tickets/TicketForm.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "file:frontend/src/features/tickets/hooks.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "file:frontend/src/services/queries.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "file:frontend/src/types/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+   "target": "function:frontend/src/features/compare/ProviderColumn.tsx:StatusLine",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+   "target": "function:frontend/src/features/compare/ProviderColumn.tsx:Match",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+   "target": "function:frontend/src/features/compare/ProviderColumn.tsx:Fields",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+   "target": "function:frontend/src/features/compare/ProviderColumn.tsx:FreeText",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+   "target": "function:frontend/src/features/compare/ProviderColumn.tsx:Usage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+   "target": "function:frontend/src/features/compare/ProviderColumn.tsx:ColumnHeader",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+   "target": "function:frontend/src/features/compare/ProviderColumn.tsx:RunStatus",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+   "target": "function:frontend/src/features/compare/ProviderColumn.tsx:ProviderColumn",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+   "target": "function:frontend/src/features/compare/ProviderColumn.tsx:ProviderColumn",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+   "target": "file:frontend/src/components/ui/badge.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+   "target": "file:frontend/src/components/ui/card.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+   "target": "file:frontend/src/features/compare/useCompareRun.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+   "target": "file:frontend/src/lib/format.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+   "target": "file:frontend/src/types/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "function:frontend/src/features/compare/ComparePage.tsx:NewTicket",
+   "target": "function:frontend/src/services/queries.ts:useTaxonomy",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/compare/ComparePage.tsx:NewTicket",
+   "target": "function:frontend/src/features/tickets/hooks.ts:useCreateTicket",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/compare/ComparePage.tsx:ComparePage",
+   "target": "function:frontend/src/features/tickets/hooks.ts:useTicket",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/compare/ComparePage.tsx:ComparePage",
+   "target": "function:frontend/src/features/compare/useCompareRun.ts:useCompareRun",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/compare/ProviderColumn.tsx:ColumnHeader",
+   "target": "function:frontend/src/features/compare/useCompareRun.ts:useElapsed",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/compare/ProviderColumn.tsx:ColumnHeader",
+   "target": "function:frontend/src/features/compare/useCompareRun.ts:formatElapsed",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:frontend/src/features/compare/ProviderColumn.tsx:Usage",
+   "target": "function:frontend/src/lib/format.ts:formatCost",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "file:frontend/src/features/compare/useCompareRun.ts",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "file:frontend/src/features/tickets/hooks.ts",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "file:frontend/src/services/queries.ts",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+   "target": "file:frontend/src/features/compare/useCompareRun.ts",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "function:frontend/src/components/ui/select.tsx:SelectContent",
+   "target": "function:frontend/src/components/ui/select.tsx:SelectScrollUpButton",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/components/ui/select.tsx:SelectContent",
+   "target": "function:frontend/src/components/ui/select.tsx:SelectScrollDownButton",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/components/ui/sheet.tsx:SheetContent",
+   "target": "function:frontend/src/components/ui/sheet.tsx:SheetOverlay",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/components/ui/sheet.tsx:SheetContent",
+   "target": "function:frontend/src/components/ui/button.tsx:Button",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/compare/ComparePage.tsx:NewTicket",
+   "target": "function:frontend/src/features/tickets/TicketForm.tsx:TicketForm",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/compare/ComparePage.tsx:TicketChooser",
+   "target": "function:frontend/src/features/compare/ComparePage.tsx:ExistingTicket",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/compare/ComparePage.tsx:TicketChooser",
+   "target": "function:frontend/src/features/compare/ComparePage.tsx:NewTicket",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/compare/ComparePage.tsx:ComparePage",
+   "target": "function:frontend/src/features/compare/ComparePage.tsx:TicketChooser",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/compare/ComparePage.tsx:ComparePage",
+   "target": "function:frontend/src/features/compare/ComparePage.tsx:TicketPanel",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/compare/ComparePage.tsx:ComparePage",
+   "target": "function:frontend/src/features/compare/ComparePage.tsx:Agreement",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/compare/ComparePage.tsx:ComparePage",
+   "target": "function:frontend/src/features/compare/ProviderColumn.tsx:ProviderColumn",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/compare/ComparePage.tsx:ComparePage",
+   "target": "function:frontend/src/components/states.tsx:LoadingState",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/compare/ComparePage.tsx:ComparePage",
+   "target": "function:frontend/src/components/states.tsx:ErrorState",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/compare/ProviderColumn.tsx:RunStatus",
+   "target": "function:frontend/src/features/compare/ProviderColumn.tsx:StatusLine",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/compare/ProviderColumn.tsx:Fields",
+   "target": "function:frontend/src/features/compare/ProviderColumn.tsx:Match",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/compare/ProviderColumn.tsx:ProviderColumn",
+   "target": "function:frontend/src/features/compare/ProviderColumn.tsx:ColumnHeader",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/compare/ProviderColumn.tsx:ProviderColumn",
+   "target": "function:frontend/src/features/compare/ProviderColumn.tsx:RunStatus",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/compare/ProviderColumn.tsx:ProviderColumn",
+   "target": "function:frontend/src/features/compare/ProviderColumn.tsx:Fields",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/compare/ProviderColumn.tsx:ProviderColumn",
+   "target": "function:frontend/src/features/compare/ProviderColumn.tsx:FreeText",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "function:frontend/src/features/compare/ProviderColumn.tsx:ProviderColumn",
+   "target": "function:frontend/src/features/compare/ProviderColumn.tsx:Usage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  }
+ ]
+}

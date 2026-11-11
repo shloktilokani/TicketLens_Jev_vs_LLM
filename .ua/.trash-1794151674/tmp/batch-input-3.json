@@ -1,0 +1,389 @@
+{
+ "batchIndex": 3,
+ "files": [
+  {
+   "path": "backend/app/api/app_settings.py",
+   "language": "python",
+   "sizeLines": 59,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/api/bulk_jobs.py",
+   "language": "python",
+   "sizeLines": 35,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/jobs/bulk.py",
+   "language": "python",
+   "sizeLines": 157,
+   "fileCategory": "code"
+  }
+ ],
+ "batchImportData": {
+  "backend/app/api/app_settings.py": [
+   "backend/app/api/deps.py",
+   "backend/app/providers/base.py",
+   "backend/app/schemas/app_settings.py",
+   "backend/app/services/__init__.py"
+  ],
+  "backend/app/api/bulk_jobs.py": [
+   "backend/app/api/deps.py",
+   "backend/app/jobs/__init__.py",
+   "backend/app/jobs/bulk.py",
+   "backend/app/repositories/__init__.py",
+   "backend/app/repositories/bulk_jobs.py",
+   "backend/app/schemas/bulk_jobs.py"
+  ],
+  "backend/app/jobs/bulk.py": [
+   "backend/app/core/clock.py",
+   "backend/app/core/settings.py",
+   "backend/app/core/taxonomy.py",
+   "backend/app/providers/registry.py",
+   "backend/app/repositories/__init__.py",
+   "backend/app/repositories/bulk_jobs.py",
+   "backend/app/repositories/database.py",
+   "backend/app/repositories/executions.py",
+   "backend/app/repositories/tickets.py",
+   "backend/app/schemas/bulk_jobs.py",
+   "backend/app/services/__init__.py",
+   "backend/app/services/app_settings.py",
+   "backend/app/services/comparisons.py",
+   "backend/app/services/executions.py"
+  ]
+ },
+ "neighborMap": {
+  "backend/app/api/app_settings.py": [
+   {
+    "path": "backend/app/api/deps.py",
+    "batchIndex": 3,
+    "symbols": [
+     "get_db"
+    ]
+   },
+   {
+    "path": "backend/app/providers/base.py",
+    "batchIndex": 3,
+    "symbols": [
+     "ProviderInput",
+     "build_input",
+     "ProviderResult",
+     "ProviderFailure",
+     "failure_for_status",
+     "Adapter"
+    ]
+   },
+   {
+    "path": "backend/app/schemas/app_settings.py",
+    "batchIndex": 4,
+    "symbols": [
+     "Strict",
+     "SettingsUpdate",
+     "PromptUpdate",
+     "TaxonomyUpdate",
+     "PricingEntry",
+     "PricingUpdate"
+    ]
+   },
+   {
+    "path": "backend/app/services/__init__.py",
+    "batchIndex": 5,
+    "symbols": []
+   },
+   {
+    "path": "backend/app/main.py",
+    "batchIndex": 5,
+    "symbols": [
+     "create_app"
+    ]
+   }
+  ],
+  "backend/app/api/bulk_jobs.py": [
+   {
+    "path": "backend/app/api/deps.py",
+    "batchIndex": 3,
+    "symbols": [
+     "get_db"
+    ]
+   },
+   {
+    "path": "backend/app/jobs/__init__.py",
+    "batchIndex": 3,
+    "symbols": []
+   },
+   {
+    "path": "backend/app/repositories/__init__.py",
+    "batchIndex": 3,
+    "symbols": []
+   },
+   {
+    "path": "backend/app/repositories/bulk_jobs.py",
+    "batchIndex": 4,
+    "symbols": [
+     "insert",
+     "get",
+     "newest_first",
+     "count",
+     "has_active",
+     "update",
+     "record_outcome",
+     "mark_active_interrupted"
+    ]
+   },
+   {
+    "path": "backend/app/schemas/bulk_jobs.py",
+    "batchIndex": 4,
+    "symbols": [
+     "BulkJobCreate",
+     "BulkOutcome",
+     "BulkJob",
+     "BulkJobList"
+    ]
+   },
+   {
+    "path": "backend/app/main.py",
+    "batchIndex": 5,
+    "symbols": [
+     "create_app"
+    ]
+   }
+  ],
+  "backend/app/jobs/bulk.py": [
+   {
+    "path": "backend/app/core/clock.py",
+    "batchIndex": 3,
+    "symbols": [
+     "utc_now"
+    ]
+   },
+   {
+    "path": "backend/app/core/settings.py",
+    "batchIndex": 5,
+    "symbols": [
+     "Settings",
+     "get_settings",
+     "is_local"
+    ]
+   },
+   {
+    "path": "backend/app/core/taxonomy.py",
+    "batchIndex": 3,
+    "symbols": [
+     "Category",
+     "Priority",
+     "Sentiment",
+     "TicketStatus",
+     "Channel",
+     "Provider",
+     "ExecutionStatus",
+     "ComparisonStatus",
+     "BulkJobStatus",
+     "set_active",
+     "reset",
+     "active_version",
+     "active_categories",
+     "is_valid_pair",
+     "as_dict"
+    ]
+   },
+   {
+    "path": "backend/app/providers/registry.py",
+    "batchIndex": 3,
+    "symbols": [
+     "provider_labels",
+     "provider_ready",
+     "requested_model",
+     "jev_adapter",
+     "llm_adapter",
+     "get_adapter"
+    ]
+   },
+   {
+    "path": "backend/app/repositories/__init__.py",
+    "batchIndex": 3,
+    "symbols": []
+   },
+   {
+    "path": "backend/app/repositories/bulk_jobs.py",
+    "batchIndex": 4,
+    "symbols": [
+     "insert",
+     "get",
+     "newest_first",
+     "count",
+     "has_active",
+     "update",
+     "record_outcome",
+     "mark_active_interrupted"
+    ]
+   },
+   {
+    "path": "backend/app/repositories/database.py",
+    "batchIndex": 5,
+    "symbols": [
+     "DecimalCodec",
+     "connect",
+     "is_reachable",
+     "ensure_indexes",
+     "find_all",
+     "find_in"
+    ]
+   },
+   {
+    "path": "backend/app/repositories/executions.py",
+    "batchIndex": 4,
+    "symbols": [
+     "insert",
+     "update",
+     "get",
+     "link_comparison",
+     "succeeded_ticket_ids",
+     "cancel_running",
+     "latest_finished_real",
+     "latest_by_ticket",
+     "search"
+    ]
+   },
+   {
+    "path": "backend/app/repositories/tickets.py",
+    "batchIndex": 4,
+    "symbols": [
+     "next_ticket_id",
+     "insert",
+     "get",
+     "eligible_ids",
+     "fingerprint_exists",
+     "update",
+     "delete_with_dependents",
+     "search",
+     "counts"
+    ]
+   },
+   {
+    "path": "backend/app/schemas/bulk_jobs.py",
+    "batchIndex": 4,
+    "symbols": [
+     "BulkJobCreate",
+     "BulkOutcome",
+     "BulkJob",
+     "BulkJobList"
+    ]
+   },
+   {
+    "path": "backend/app/services/__init__.py",
+    "batchIndex": 5,
+    "symbols": []
+   },
+   {
+    "path": "backend/app/services/app_settings.py",
+    "batchIndex": 4,
+    "symbols": [
+     "SettingsError",
+     "next_version",
+     "load_taxonomy",
+     "effective",
+     "active_prompt",
+     "rates_for",
+     "available_models",
+     "check_model",
+     "view",
+     "update_values",
+     "save_prompt",
+     "save_taxonomy",
+     "save_pricing"
+    ]
+   },
+   {
+    "path": "backend/app/services/comparisons.py",
+    "batchIndex": 4,
+    "symbols": [
+     "ComparisonError",
+     "field_comparison",
+     "status_of",
+     "load",
+     "create"
+    ]
+   },
+   {
+    "path": "backend/app/services/executions.py",
+    "batchIndex": 4,
+    "symbols": [
+     "failed",
+     "attempt",
+     "cost_fields",
+     "run"
+    ]
+   },
+   {
+    "path": "backend/app/main.py",
+    "batchIndex": 5,
+    "symbols": [
+     "create_app"
+    ]
+   },
+   {
+    "path": "backend/tests/test_app_settings.py",
+    "batchIndex": 4,
+    "symbols": [
+     "api",
+     "local",
+     "categories",
+     "new_ticket",
+     "test_defaults_show_with_no_saved_settings",
+     "test_api_keys_can_never_be_read",
+     "test_keys_and_connection_details_cannot_be_changed",
+     "test_threshold_and_concurrency_persist_and_take_effect",
+     "test_out_of_range_values_are_rejected",
+     "test_a_bulk_run_uses_the_saved_concurrency",
+     "test_saved_models_reach_the_right_side",
+     "test_a_badly_formed_model_name_is_rejected",
+     "test_a_model_the_server_does_not_have_is_rejected",
+     "test_the_documented_jev_alias_is_always_allowed",
+     "test_a_model_can_be_saved_when_the_server_is_unreachable",
+     "test_model_list_parses_the_servers_answer_and_sends_the_key_only_to_it",
+     "test_models_endpoint_reports_a_safe_error",
+     "test_a_new_prompt_gets_a_version_and_old_runs_keep_theirs",
+     "test_both_sides_receive_the_same_saved_prompt",
+     "test_a_blank_or_huge_prompt_is_rejected",
+     "test_adding_labels_bumps_the_version_and_reaches_everything",
+     "test_saved_taxonomy_survives_a_restart",
+     "test_unused_labels_can_be_removed",
+     "test_a_label_in_use_cannot_be_removed_or_renamed",
+     "test_invalid_taxonomies_are_rejected",
+     "test_jev_limit_of_sixteen_categories_is_enforced",
+     "entry",
+     "test_saved_rates_are_used_and_old_runs_keep_theirs",
+     "test_fake_runs_are_never_priced_even_with_saved_rates",
+     "test_invalid_rates_are_rejected",
+     "test_the_same_model_cannot_be_priced_twice",
+     "test_rates_can_be_cleared"
+    ]
+   },
+   {
+    "path": "backend/tests/test_bulk_jobs.py",
+    "batchIndex": 4,
+    "symbols": [
+     "api",
+     "new_ticket",
+     "start",
+     "test_selected_tickets_on_both_sides_are_run_compared_and_counted",
+     "test_one_side_runs_alone_with_no_comparison",
+     "test_a_failure_does_not_stop_unrelated_tickets",
+     "test_a_partial_ticket_still_gets_a_comparison",
+     "test_all_eligible_means_open_or_in_progress",
+     "test_all_eligible_never_repeats_a_side_that_already_succeeded",
+     "test_an_earlier_success_on_a_different_model_does_not_cause_a_skip",
+     "test_an_explicit_selection_runs_again_because_the_operator_asked",
+     "test_a_ticket_deleted_before_its_turn_is_skipped",
+     "test_invalid_requests_are_rejected_and_nothing_runs",
+     "test_no_eligible_tickets_is_a_clear_error",
+     "test_repeated_values_in_a_request_run_once",
+     "test_a_second_job_is_refused_while_one_is_active",
+     "test_concurrency_stays_within_the_limit",
+     "test_restart_marks_unfinished_work_interrupted_and_does_not_rerun_it",
+     "test_jobs_are_listed_newest_first_and_unknown_is_404"
+    ]
+   }
+  ]
+ }
+}

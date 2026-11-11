@@ -1,0 +1,42 @@
+{
+  "nodes": [
+    {
+      "id": "config:backend/.env.example",
+      "type": "config",
+      "name": ".env.example",
+      "filePath": "backend/.env.example",
+      "summary": "Template of 21 backend environment variables covering the API host and port, local MongoDB connection, blank provider API keys, Jev and LLM backend selection (hosted or local Ollama), request timeouts and concurrency, mock-provider mode, and log level.",
+      "tags": ["configuration", "environment-variables", "provider-selection", "mongodb", "developer-experience"],
+      "complexity": "simple",
+      "languageNotes": "Credential values are deliberately empty so the template can be committed while real keys stay in an uncommitted .env file on the server side."
+    },
+    {
+      "id": "config:backend/pyproject.toml",
+      "type": "config",
+      "name": "pyproject.toml",
+      "filePath": "backend/pyproject.toml",
+      "summary": "Tool-only backend configuration that sets pytest test paths and Ruff linting for Python 3.13, including a 100-character line length, a McCabe complexity limit of 10, and a long-line exemption for the run-report HTML template.",
+      "tags": ["configuration", "build-system", "linting", "testing", "python"],
+      "complexity": "simple",
+      "languageNotes": "This pyproject.toml holds no project metadata or dependencies; it only uses the [tool.*] tables, and the C90 and SIM lint rules back the project's code-size standards."
+    },
+    {
+      "id": "document:backend/requirements.txt",
+      "type": "document",
+      "name": "requirements.txt",
+      "filePath": "backend/requirements.txt",
+      "summary": "Pinned direct Python dependencies for the backend: FastAPI, Uvicorn, pydantic-settings, PyMongo and httpx at runtime, plus pytest and Ruff for testing and linting.",
+      "tags": ["dependencies", "python", "build-system", "version-pinning"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "config:backend/pyproject.toml",
+      "target": "document:backend/requirements.txt",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

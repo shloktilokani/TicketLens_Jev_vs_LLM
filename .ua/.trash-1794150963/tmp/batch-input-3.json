@@ -1,0 +1,761 @@
+{
+ "batchIndex": 3,
+ "files": [
+  {
+   "path": "frontend/src/app/AppShell.tsx",
+   "language": "typescript",
+   "sizeLines": 218,
+   "fileCategory": "code"
+  },
+  {
+   "path": "frontend/src/app/PlaceholderPage.tsx",
+   "language": "typescript",
+   "sizeLines": 31,
+   "fileCategory": "code"
+  },
+  {
+   "path": "frontend/src/app/router.tsx",
+   "language": "typescript",
+   "sizeLines": 73,
+   "fileCategory": "code"
+  },
+  {
+   "path": "frontend/src/components/ConfirmDialog.tsx",
+   "language": "typescript",
+   "sizeLines": 55,
+   "fileCategory": "code"
+  },
+  {
+   "path": "frontend/src/components/Detail.tsx",
+   "language": "typescript",
+   "sizeLines": 11,
+   "fileCategory": "code"
+  },
+  {
+   "path": "frontend/src/components/ListControls.tsx",
+   "language": "typescript",
+   "sizeLines": 86,
+   "fileCategory": "code"
+  },
+  {
+   "path": "frontend/src/components/states.tsx",
+   "language": "typescript",
+   "sizeLines": 64,
+   "fileCategory": "code"
+  },
+  {
+   "path": "frontend/src/components/ui/alert-dialog.tsx",
+   "language": "typescript",
+   "sizeLines": 199,
+   "fileCategory": "code"
+  },
+  {
+   "path": "frontend/src/components/ui/badge.tsx",
+   "language": "typescript",
+   "sizeLines": 48,
+   "fileCategory": "code"
+  },
+  {
+   "path": "frontend/src/components/ui/button.tsx",
+   "language": "typescript",
+   "sizeLines": 66,
+   "fileCategory": "code"
+  },
+  {
+   "path": "frontend/src/components/ui/card.tsx",
+   "language": "typescript",
+   "sizeLines": 102,
+   "fileCategory": "code"
+  },
+  {
+   "path": "frontend/src/components/ui/dialog.tsx",
+   "language": "typescript",
+   "sizeLines": 166,
+   "fileCategory": "code"
+  },
+  {
+   "path": "frontend/src/components/ui/input.tsx",
+   "language": "typescript",
+   "sizeLines": 18,
+   "fileCategory": "code"
+  },
+  {
+   "path": "frontend/src/components/ui/label.tsx",
+   "language": "typescript",
+   "sizeLines": 23,
+   "fileCategory": "code"
+  },
+  {
+   "path": "frontend/src/components/ui/select.tsx",
+   "language": "typescript",
+   "sizeLines": 189,
+   "fileCategory": "code"
+  },
+  {
+   "path": "frontend/src/components/ui/sheet.tsx",
+   "language": "typescript",
+   "sizeLines": 145,
+   "fileCategory": "code"
+  },
+  {
+   "path": "frontend/src/components/ui/table.tsx",
+   "language": "typescript",
+   "sizeLines": 115,
+   "fileCategory": "code"
+  },
+  {
+   "path": "frontend/src/components/ui/textarea.tsx",
+   "language": "typescript",
+   "sizeLines": 17,
+   "fileCategory": "code"
+  },
+  {
+   "path": "frontend/src/features/compare/ComparePage.tsx",
+   "language": "typescript",
+   "sizeLines": 199,
+   "fileCategory": "code"
+  },
+  {
+   "path": "frontend/src/features/compare/ProviderColumn.tsx",
+   "language": "typescript",
+   "sizeLines": 234,
+   "fileCategory": "code"
+  }
+ ],
+ "batchImportData": {
+  "frontend/src/app/AppShell.tsx": [
+   "frontend/src/components/ui/badge.tsx",
+   "frontend/src/components/ui/button.tsx",
+   "frontend/src/components/ui/input.tsx",
+   "frontend/src/components/ui/sheet.tsx",
+   "frontend/src/lib/utils.ts",
+   "frontend/src/services/queries.ts"
+  ],
+  "frontend/src/app/PlaceholderPage.tsx": [
+   "frontend/src/components/states.tsx"
+  ],
+  "frontend/src/app/router.tsx": [
+   "frontend/src/app/AppShell.tsx",
+   "frontend/src/app/PlaceholderPage.tsx",
+   "frontend/src/features/compare/ComparePage.tsx",
+   "frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+   "frontend/src/features/comparisons/ComparisonsPage.tsx",
+   "frontend/src/features/dashboard/DashboardPage.tsx",
+   "frontend/src/features/executions/ExecutionDetailPage.tsx",
+   "frontend/src/features/executions/ExecutionsPage.tsx",
+   "frontend/src/features/tickets/NewTicketPage.tsx",
+   "frontend/src/features/tickets/TicketDetailPage.tsx",
+   "frontend/src/features/tickets/TicketListPage.tsx"
+  ],
+  "frontend/src/components/ConfirmDialog.tsx": [
+   "frontend/src/components/ui/alert-dialog.tsx"
+  ],
+  "frontend/src/components/Detail.tsx": [],
+  "frontend/src/components/ListControls.tsx": [
+   "frontend/src/components/ui/button.tsx",
+   "frontend/src/components/ui/select.tsx"
+  ],
+  "frontend/src/components/states.tsx": [
+   "frontend/src/components/ui/button.tsx"
+  ],
+  "frontend/src/components/ui/alert-dialog.tsx": [
+   "frontend/src/components/ui/button.tsx"
+  ],
+  "frontend/src/components/ui/badge.tsx": [],
+  "frontend/src/components/ui/button.tsx": [],
+  "frontend/src/components/ui/card.tsx": [],
+  "frontend/src/components/ui/dialog.tsx": [
+   "frontend/src/components/ui/button.tsx"
+  ],
+  "frontend/src/components/ui/input.tsx": [],
+  "frontend/src/components/ui/label.tsx": [],
+  "frontend/src/components/ui/select.tsx": [],
+  "frontend/src/components/ui/sheet.tsx": [
+   "frontend/src/components/ui/button.tsx"
+  ],
+  "frontend/src/components/ui/table.tsx": [],
+  "frontend/src/components/ui/textarea.tsx": [],
+  "frontend/src/features/compare/ComparePage.tsx": [
+   "frontend/src/components/states.tsx",
+   "frontend/src/components/ui/button.tsx",
+   "frontend/src/components/ui/card.tsx",
+   "frontend/src/components/ui/input.tsx",
+   "frontend/src/features/compare/ProviderColumn.tsx",
+   "frontend/src/features/compare/useCompareRun.ts",
+   "frontend/src/features/tickets/TicketForm.tsx",
+   "frontend/src/features/tickets/hooks.ts",
+   "frontend/src/services/queries.ts",
+   "frontend/src/types/api.ts"
+  ],
+  "frontend/src/features/compare/ProviderColumn.tsx": [
+   "frontend/src/components/ui/badge.tsx",
+   "frontend/src/components/ui/card.tsx",
+   "frontend/src/features/compare/useCompareRun.ts",
+   "frontend/src/lib/format.ts",
+   "frontend/src/types/api.ts"
+  ]
+ },
+ "neighborMap": {
+  "frontend/src/app/AppShell.tsx": [
+   {
+    "path": "frontend/src/lib/utils.ts",
+    "batchIndex": 4,
+    "symbols": [
+     "cn"
+    ]
+   },
+   {
+    "path": "frontend/src/services/queries.ts",
+    "batchIndex": 4,
+    "symbols": [
+     "useTaxonomy",
+     "useProviderStatus"
+    ]
+   }
+  ],
+  "frontend/src/app/router.tsx": [
+   {
+    "path": "frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "ComparisonDetailPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/comparisons/ComparisonsPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "ComparisonTable",
+     "ComparisonsPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/dashboard/DashboardPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "DashboardPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/executions/ExecutionDetailPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "ExecutionDetailPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/executions/ExecutionsPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "ExecutionsPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/NewTicketPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "NewTicketPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/TicketDetailPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "TicketDetailPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/TicketListPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "TicketListPage"
+    ]
+   },
+   {
+    "path": "frontend/src/main.tsx",
+    "batchIndex": 12,
+    "symbols": []
+   }
+  ],
+  "frontend/src/components/ConfirmDialog.tsx": [
+   {
+    "path": "frontend/src/features/tickets/TicketDetailPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "TicketDetailPage"
+    ]
+   }
+  ],
+  "frontend/src/components/Detail.tsx": [
+   {
+    "path": "frontend/src/features/executions/ExecutionDetailPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "ExecutionDetailPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/FinalClassification.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "FinalClassificationPanel"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/TicketDetailPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "TicketDetailPage"
+    ]
+   }
+  ],
+  "frontend/src/components/ListControls.tsx": [
+   {
+    "path": "frontend/src/features/executions/ExecutionsPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "ExecutionsPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/TicketListPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "TicketListPage"
+    ]
+   }
+  ],
+  "frontend/src/components/states.tsx": [
+   {
+    "path": "frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "ComparisonDetailPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/comparisons/ComparisonsPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "ComparisonTable",
+     "ComparisonsPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/dashboard/DashboardPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "DashboardPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/executions/ExecutionDetailPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "ExecutionDetailPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/executions/ExecutionsPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "ExecutionsPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/AiResults.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "AiResults"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/FinalClassification.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "FinalClassificationPanel"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/NewTicketPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "NewTicketPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/TicketDetailPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "TicketDetailPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/TicketListPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "TicketListPage"
+    ]
+   }
+  ],
+  "frontend/src/components/ui/badge.tsx": [
+   {
+    "path": "frontend/src/features/comparisons/ComparisonsPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "ComparisonTable",
+     "ComparisonsPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/TicketListPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "TicketListPage"
+    ]
+   }
+  ],
+  "frontend/src/components/ui/button.tsx": [
+   {
+    "path": "frontend/src/features/comparisons/ComparisonsPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "ComparisonTable",
+     "ComparisonsPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/dashboard/DashboardPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "DashboardPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/executions/ExecutionDetailPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "ExecutionDetailPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/executions/ExecutionsPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "ExecutionsPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/AiResults.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "AiResults"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/FinalClassification.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "FinalClassificationPanel"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/ImportExport.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "ImportDialog",
+     "ExportLinks"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/NewTicketPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "NewTicketPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/TicketDetailPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "TicketDetailPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/TicketForm.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "TicketForm"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/TicketListPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "TicketListPage"
+    ]
+   }
+  ],
+  "frontend/src/components/ui/card.tsx": [
+   {
+    "path": "frontend/src/features/dashboard/DashboardPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "DashboardPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/executions/ExecutionDetailPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "ExecutionDetailPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/AiResults.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "AiResults"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/FinalClassification.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "FinalClassificationPanel"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/TicketDetailPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "TicketDetailPage"
+    ]
+   }
+  ],
+  "frontend/src/components/ui/dialog.tsx": [
+   {
+    "path": "frontend/src/features/tickets/ImportExport.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "ImportDialog",
+     "ExportLinks"
+    ]
+   }
+  ],
+  "frontend/src/components/ui/input.tsx": [
+   {
+    "path": "frontend/src/features/executions/ExecutionsPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "ExecutionsPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/ImportExport.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "ImportDialog",
+     "ExportLinks"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/TicketForm.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "TicketForm"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/TicketListPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "TicketListPage"
+    ]
+   }
+  ],
+  "frontend/src/components/ui/label.tsx": [
+   {
+    "path": "frontend/src/features/executions/ExecutionsPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "ExecutionsPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/FinalClassification.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "FinalClassificationPanel"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/TicketForm.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "TicketForm"
+    ]
+   }
+  ],
+  "frontend/src/components/ui/select.tsx": [
+   {
+    "path": "frontend/src/features/tickets/FinalClassification.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "FinalClassificationPanel"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/TicketDetailPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "TicketDetailPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/TicketForm.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "TicketForm"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/TicketListPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "TicketListPage"
+    ]
+   }
+  ],
+  "frontend/src/components/ui/table.tsx": [
+   {
+    "path": "frontend/src/features/comparisons/ComparisonsPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "ComparisonTable",
+     "ComparisonsPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/executions/ExecutionsPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "ExecutionsPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/ImportExport.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "ImportDialog",
+     "ExportLinks"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/TicketListPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "TicketListPage"
+    ]
+   }
+  ],
+  "frontend/src/components/ui/textarea.tsx": [
+   {
+    "path": "frontend/src/features/tickets/TicketDetailPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "TicketDetailPage"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/TicketForm.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "TicketForm"
+    ]
+   }
+  ],
+  "frontend/src/features/compare/ComparePage.tsx": [
+   {
+    "path": "frontend/src/features/compare/useCompareRun.ts",
+    "batchIndex": 4,
+    "symbols": [
+     "useCompareRun",
+     "useElapsed",
+     "formatElapsed"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/TicketForm.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "TicketForm"
+    ]
+   },
+   {
+    "path": "frontend/src/features/tickets/hooks.ts",
+    "batchIndex": 4,
+    "symbols": [
+     "useTickets",
+     "useTicket",
+     "useCreateTicket",
+     "useUpdateTicket",
+     "useAddNote",
+     "useSetFinal",
+     "useTicketRuns",
+     "useRunProvider",
+     "useDeleteTicket",
+     "useImportTickets"
+    ]
+   },
+   {
+    "path": "frontend/src/services/queries.ts",
+    "batchIndex": 4,
+    "symbols": [
+     "useTaxonomy",
+     "useProviderStatus"
+    ]
+   },
+   {
+    "path": "frontend/src/types/api.ts",
+    "batchIndex": 4,
+    "symbols": []
+   }
+  ],
+  "frontend/src/features/compare/ProviderColumn.tsx": [
+   {
+    "path": "frontend/src/features/compare/useCompareRun.ts",
+    "batchIndex": 4,
+    "symbols": [
+     "useCompareRun",
+     "useElapsed",
+     "formatElapsed"
+    ]
+   },
+   {
+    "path": "frontend/src/lib/format.ts",
+    "batchIndex": 4,
+    "symbols": [
+     "formatDateTime",
+     "seconds",
+     "SIDE_LABELS",
+     "formatEscalation",
+     "formatTokens",
+     "formatCost"
+    ]
+   },
+   {
+    "path": "frontend/src/types/api.ts",
+    "batchIndex": 4,
+    "symbols": []
+   },
+   {
+    "path": "frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+    "batchIndex": 4,
+    "symbols": [
+     "ComparisonDetailPage"
+    ]
+   }
+  ]
+ }
+}

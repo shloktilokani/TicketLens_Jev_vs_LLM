@@ -1,0 +1,528 @@
+{
+ "batchIndex": 4,
+ "files": [
+  {
+   "path": "backend/app/repositories/bulk_jobs.py",
+   "language": "python",
+   "sizeLines": 51,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/schemas/app_settings.py",
+   "language": "python",
+   "sizeLines": 73,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/services/app_settings.py",
+   "language": "python",
+   "sizeLines": 214,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/tests/test_app_settings.py",
+   "language": "python",
+   "sizeLines": 431,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/tests/test_bulk_jobs.py",
+   "language": "python",
+   "sizeLines": 250,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/tests/test_retries.py",
+   "language": "python",
+   "sizeLines": 125,
+   "fileCategory": "code"
+  }
+ ],
+ "batchImportData": {
+  "backend/app/repositories/bulk_jobs.py": [
+   "backend/app/core/taxonomy.py"
+  ],
+  "backend/app/schemas/app_settings.py": [
+   "backend/app/core/taxonomy.py"
+  ],
+  "backend/app/services/app_settings.py": [
+   "backend/app/core/__init__.py",
+   "backend/app/core/clock.py",
+   "backend/app/core/pricing.py",
+   "backend/app/core/settings.py",
+   "backend/app/core/taxonomy.py",
+   "backend/app/providers/__init__.py",
+   "backend/app/providers/base.py",
+   "backend/app/providers/definitions.py",
+   "backend/app/providers/http.py",
+   "backend/app/providers/registry.py",
+   "backend/app/repositories/__init__.py",
+   "backend/app/schemas/app_settings.py",
+   "backend/app/schemas/executions.py"
+  ],
+  "backend/tests/test_app_settings.py": [
+   "backend/app/core/__init__.py",
+   "backend/app/core/settings.py",
+   "backend/app/core/taxonomy.py",
+   "backend/app/jobs/__init__.py",
+   "backend/app/jobs/bulk.py",
+   "backend/app/main.py",
+   "backend/app/providers/__init__.py",
+   "backend/app/providers/base.py",
+   "backend/app/providers/jev.py",
+   "backend/app/providers/ollama.py",
+   "backend/app/services/__init__.py",
+   "backend/app/services/app_settings.py"
+  ],
+  "backend/tests/test_bulk_jobs.py": [
+   "backend/app/core/taxonomy.py",
+   "backend/app/jobs/__init__.py",
+   "backend/app/jobs/bulk.py",
+   "backend/app/main.py"
+  ],
+  "backend/tests/test_retries.py": [
+   "backend/app/core/settings.py",
+   "backend/app/providers/__init__.py",
+   "backend/app/providers/base.py",
+   "backend/app/providers/http.py"
+  ]
+ },
+ "neighborMap": {
+  "backend/app/repositories/bulk_jobs.py": [
+   {
+    "path": "backend/app/core/taxonomy.py",
+    "batchIndex": 3,
+    "symbols": [
+     "Category",
+     "Priority",
+     "Sentiment",
+     "TicketStatus",
+     "Channel",
+     "Provider",
+     "ExecutionStatus",
+     "ComparisonStatus",
+     "BulkJobStatus",
+     "set_active",
+     "reset",
+     "active_version",
+     "active_categories",
+     "is_valid_pair",
+     "as_dict"
+    ]
+   },
+   {
+    "path": "backend/app/api/bulk_jobs.py",
+    "batchIndex": 3,
+    "symbols": [
+     "create_bulk_job",
+     "list_bulk_jobs",
+     "get_bulk_job"
+    ]
+   },
+   {
+    "path": "backend/app/jobs/bulk.py",
+    "batchIndex": 3,
+    "symbols": [
+     "BulkError",
+     "select_tickets",
+     "create",
+     "already_succeeded",
+     "process_ticket",
+     "finish",
+     "run_job",
+     "mark_interrupted"
+    ]
+   }
+  ],
+  "backend/app/schemas/app_settings.py": [
+   {
+    "path": "backend/app/core/taxonomy.py",
+    "batchIndex": 3,
+    "symbols": [
+     "Category",
+     "Priority",
+     "Sentiment",
+     "TicketStatus",
+     "Channel",
+     "Provider",
+     "ExecutionStatus",
+     "ComparisonStatus",
+     "BulkJobStatus",
+     "set_active",
+     "reset",
+     "active_version",
+     "active_categories",
+     "is_valid_pair",
+     "as_dict"
+    ]
+   },
+   {
+    "path": "backend/app/api/app_settings.py",
+    "batchIndex": 3,
+    "symbols": [
+     "saved",
+     "get_settings",
+     "update_settings",
+     "update_prompt",
+     "update_taxonomy",
+     "update_pricing",
+     "list_models"
+    ]
+   }
+  ],
+  "backend/app/services/app_settings.py": [
+   {
+    "path": "backend/app/core/__init__.py",
+    "batchIndex": 5,
+    "symbols": []
+   },
+   {
+    "path": "backend/app/core/clock.py",
+    "batchIndex": 3,
+    "symbols": [
+     "utc_now"
+    ]
+   },
+   {
+    "path": "backend/app/core/pricing.py",
+    "batchIndex": 3,
+    "symbols": [
+     "local_rates",
+     "snapshot_for",
+     "estimate"
+    ]
+   },
+   {
+    "path": "backend/app/core/settings.py",
+    "batchIndex": 5,
+    "symbols": [
+     "Settings",
+     "get_settings",
+     "is_local"
+    ]
+   },
+   {
+    "path": "backend/app/core/taxonomy.py",
+    "batchIndex": 3,
+    "symbols": [
+     "Category",
+     "Priority",
+     "Sentiment",
+     "TicketStatus",
+     "Channel",
+     "Provider",
+     "ExecutionStatus",
+     "ComparisonStatus",
+     "BulkJobStatus",
+     "set_active",
+     "reset",
+     "active_version",
+     "active_categories",
+     "is_valid_pair",
+     "as_dict"
+    ]
+   },
+   {
+    "path": "backend/app/providers/__init__.py",
+    "batchIndex": 3,
+    "symbols": []
+   },
+   {
+    "path": "backend/app/providers/base.py",
+    "batchIndex": 3,
+    "symbols": [
+     "ProviderInput",
+     "build_input",
+     "ProviderResult",
+     "ProviderFailure",
+     "failure_for_status",
+     "Adapter"
+    ]
+   },
+   {
+    "path": "backend/app/providers/definitions.py",
+    "batchIndex": 3,
+    "symbols": [
+     "category_criteria",
+     "subcategory_criteria"
+    ]
+   },
+   {
+    "path": "backend/app/providers/http.py",
+    "batchIndex": 3,
+    "symbols": [
+     "get_json",
+     "post_json",
+     "pause",
+     "retry_wait",
+     "send_once",
+     "send_with_retries",
+     "request_json"
+    ]
+   },
+   {
+    "path": "backend/app/providers/registry.py",
+    "batchIndex": 3,
+    "symbols": [
+     "provider_labels",
+     "provider_ready",
+     "requested_model",
+     "jev_adapter",
+     "llm_adapter",
+     "get_adapter"
+    ]
+   },
+   {
+    "path": "backend/app/repositories/__init__.py",
+    "batchIndex": 3,
+    "symbols": []
+   },
+   {
+    "path": "backend/app/schemas/executions.py",
+    "batchIndex": 4,
+    "symbols": [
+     "Usage",
+     "PricingSnapshot",
+     "EstimatedCost",
+     "ProviderError",
+     "Execution"
+    ]
+   },
+   {
+    "path": "backend/app/api/providers.py",
+    "batchIndex": 5,
+    "symbols": [
+     "provider_status"
+    ]
+   },
+   {
+    "path": "backend/app/jobs/bulk.py",
+    "batchIndex": 3,
+    "symbols": [
+     "BulkError",
+     "select_tickets",
+     "create",
+     "already_succeeded",
+     "process_ticket",
+     "finish",
+     "run_job",
+     "mark_interrupted"
+    ]
+   },
+   {
+    "path": "backend/app/main.py",
+    "batchIndex": 5,
+    "symbols": [
+     "create_app"
+    ]
+   },
+   {
+    "path": "backend/app/services/executions.py",
+    "batchIndex": 4,
+    "symbols": [
+     "failed",
+     "attempt",
+     "cost_fields",
+     "run"
+    ]
+   }
+  ],
+  "backend/tests/test_app_settings.py": [
+   {
+    "path": "backend/app/core/__init__.py",
+    "batchIndex": 5,
+    "symbols": []
+   },
+   {
+    "path": "backend/app/core/settings.py",
+    "batchIndex": 5,
+    "symbols": [
+     "Settings",
+     "get_settings",
+     "is_local"
+    ]
+   },
+   {
+    "path": "backend/app/core/taxonomy.py",
+    "batchIndex": 3,
+    "symbols": [
+     "Category",
+     "Priority",
+     "Sentiment",
+     "TicketStatus",
+     "Channel",
+     "Provider",
+     "ExecutionStatus",
+     "ComparisonStatus",
+     "BulkJobStatus",
+     "set_active",
+     "reset",
+     "active_version",
+     "active_categories",
+     "is_valid_pair",
+     "as_dict"
+    ]
+   },
+   {
+    "path": "backend/app/jobs/__init__.py",
+    "batchIndex": 3,
+    "symbols": []
+   },
+   {
+    "path": "backend/app/jobs/bulk.py",
+    "batchIndex": 3,
+    "symbols": [
+     "BulkError",
+     "select_tickets",
+     "create",
+     "already_succeeded",
+     "process_ticket",
+     "finish",
+     "run_job",
+     "mark_interrupted"
+    ]
+   },
+   {
+    "path": "backend/app/main.py",
+    "batchIndex": 5,
+    "symbols": [
+     "create_app"
+    ]
+   },
+   {
+    "path": "backend/app/providers/__init__.py",
+    "batchIndex": 3,
+    "symbols": []
+   },
+   {
+    "path": "backend/app/providers/base.py",
+    "batchIndex": 3,
+    "symbols": [
+     "ProviderInput",
+     "build_input",
+     "ProviderResult",
+     "ProviderFailure",
+     "failure_for_status",
+     "Adapter"
+    ]
+   },
+   {
+    "path": "backend/app/providers/jev.py",
+    "batchIndex": 3,
+    "symbols": [
+     "choice",
+     "build_request",
+     "build_subcategory_request",
+     "parse_output",
+     "total_usage",
+     "JevAdapter"
+    ]
+   },
+   {
+    "path": "backend/app/providers/ollama.py",
+    "batchIndex": 3,
+    "symbols": [
+     "schema",
+     "system_prompt",
+     "build_request",
+     "OllamaAdapter"
+    ]
+   },
+   {
+    "path": "backend/app/services/__init__.py",
+    "batchIndex": 5,
+    "symbols": []
+   }
+  ],
+  "backend/tests/test_bulk_jobs.py": [
+   {
+    "path": "backend/app/core/taxonomy.py",
+    "batchIndex": 3,
+    "symbols": [
+     "Category",
+     "Priority",
+     "Sentiment",
+     "TicketStatus",
+     "Channel",
+     "Provider",
+     "ExecutionStatus",
+     "ComparisonStatus",
+     "BulkJobStatus",
+     "set_active",
+     "reset",
+     "active_version",
+     "active_categories",
+     "is_valid_pair",
+     "as_dict"
+    ]
+   },
+   {
+    "path": "backend/app/jobs/__init__.py",
+    "batchIndex": 3,
+    "symbols": []
+   },
+   {
+    "path": "backend/app/jobs/bulk.py",
+    "batchIndex": 3,
+    "symbols": [
+     "BulkError",
+     "select_tickets",
+     "create",
+     "already_succeeded",
+     "process_ticket",
+     "finish",
+     "run_job",
+     "mark_interrupted"
+    ]
+   },
+   {
+    "path": "backend/app/main.py",
+    "batchIndex": 5,
+    "symbols": [
+     "create_app"
+    ]
+   }
+  ],
+  "backend/tests/test_retries.py": [
+   {
+    "path": "backend/app/core/settings.py",
+    "batchIndex": 5,
+    "symbols": [
+     "Settings",
+     "get_settings",
+     "is_local"
+    ]
+   },
+   {
+    "path": "backend/app/providers/__init__.py",
+    "batchIndex": 3,
+    "symbols": []
+   },
+   {
+    "path": "backend/app/providers/base.py",
+    "batchIndex": 3,
+    "symbols": [
+     "ProviderInput",
+     "build_input",
+     "ProviderResult",
+     "ProviderFailure",
+     "failure_for_status",
+     "Adapter"
+    ]
+   },
+   {
+    "path": "backend/app/providers/http.py",
+    "batchIndex": 3,
+    "symbols": [
+     "get_json",
+     "post_json",
+     "pause",
+     "retry_wait",
+     "send_once",
+     "send_with_retries",
+     "request_json"
+    ]
+   }
+  ]
+ }
+}

@@ -1,6 +1,8 @@
 # Coding Agent Instructions
 
-You are implementing **TicketLens_Jev_vs_LLM**. Treat this repository's documentation as the source of truth.
+You are working on **TicketLens_Jev_vs_LLM**. Treat this repository's documentation as the source of truth.
+
+**Current state (2026-11-11):** the app is built and runs on local models. Start with `.context/PROGRESS.md` (status and handover). The paid APIs (hosted TypeSafe Jev and OpenAI) are deferred by owner decision; keep their architecture intact and do not add paid calls without the owner's approval.
 
 ## 1. Read before coding
 
@@ -11,9 +13,12 @@ Spec and status documents are in `.context/`. Read, in order:
 4. `.context/data-model.md`
 5. `.context/ai-evaluation.md`
 6. `.context/design.md`
-7. `.context/implementation.md`
+7. `.context/implementation.md` (the historical build plan)
+8. `.context/code-size-standards.md`
 
-Do not begin by generating a large amount of code. Follow the implementation phases and their acceptance criteria sequentially.
+The spec documents end with an "As built" section; where it differs from the text above it, the "As built" section is correct.
+
+Do not begin by generating a large amount of code. New work should be scoped like a phase, with acceptance criteria and tests.
 
 ## 2. Autonomy expectations
 
@@ -30,7 +35,7 @@ Do not begin by generating a large amount of code. Follow the implementation pha
 - Use Tailwind CSS and shadcn/ui; keep components reusable and accessible.
 - Use Python + FastAPI + Pydantic for the backend.
 - Use the official `pymongo` package and MongoDB Community Edition locally. Do not add Docker for local development.
-- Keep Jev and OpenAI integrations behind separate provider adapter modules and a shared normalized result contract.
+- Keep each provider (Jev, the LLM side, and any future OpenAI adapter) behind its own adapter module and the shared contract in `backend/app/providers/base.py`. The internal key `gpt` means the LLM side.
 - API keys must remain server-side in environment variables. Never place secrets in frontend code, Vite variables, source control, logs, or error responses.
 - Use a single canonical taxonomy shared by the UI, backend validation, provider adapters, and evaluation code.
 - Use stable IDs and UTC timestamps. Store timestamps as BSON dates.

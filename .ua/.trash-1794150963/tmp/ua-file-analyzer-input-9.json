@@ -1,0 +1,17 @@
+{
+  "projectRoot": "/Users/shloktilokani/Projects/TicketLens_Jev_vs_LLM",
+  "batchFiles": [
+    {"path": "e2e/personas/analysts/adversarial-input-tester.md", "language": "markdown", "sizeLines": 12, "fileCategory": "docs"},
+    {"path": "e2e/personas/analysts/careful-power-user.md", "language": "markdown", "sizeLines": 7, "fileCategory": "docs"},
+    {"path": "e2e/personas/analysts/first-time-user.md", "language": "markdown", "sizeLines": 7, "fileCategory": "docs"},
+    {"path": "e2e/personas/analysts/keyboard-screen-reader.md", "language": "markdown", "sizeLines": 7, "fileCategory": "docs"},
+    {"path": "e2e/personas/analysts/rushed-operator.md", "language": "markdown", "sizeLines": 7, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    "e2e/personas/analysts/adversarial-input-tester.md": [],
+    "e2e/personas/analysts/careful-power-user.md": [],
+    "e2e/personas/analysts/first-time-user.md": [],
+    "e2e/personas/analysts/keyboard-screen-reader.md": [],
+    "e2e/personas/analysts/rushed-operator.md": []
+  }
+}

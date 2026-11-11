@@ -1,0 +1,105 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 1,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 1,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 1
+    }
+  },
+  "results": [
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 179,
+      "nonEmptyLines": 131,
+      "sections": [
+        {
+          "heading": "TicketLens_Jev_vs_LLM",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "What it does",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "What each AI connection needs",
+          "level": 2,
+          "line": 17
+        },
+        {
+          "heading": "Run it locally",
+          "level": 2,
+          "line": 29
+        },
+        {
+          "heading": "1. Start MongoDB",
+          "level": 3,
+          "line": 33
+        },
+        {
+          "heading": "2. Configure the backend",
+          "level": 3,
+          "line": 47
+        },
+        {
+          "heading": "3. Start the backend",
+          "level": 3,
+          "line": 71
+        },
+        {
+          "heading": "4. Start the frontend",
+          "level": 3,
+          "line": 86
+        },
+        {
+          "heading": "Use it",
+          "level": 2,
+          "line": 100
+        },
+        {
+          "heading": "Good to know",
+          "level": 2,
+          "line": 115
+        },
+        {
+          "heading": "Troubleshooting",
+          "level": 2,
+          "line": 123
+        },
+        {
+          "heading": "Check it works",
+          "level": 2,
+          "line": 141
+        },
+        {
+          "heading": "Documentation",
+          "level": 2,
+          "line": 165
+        },
+        {
+          "heading": "Scope",
+          "level": 2,
+          "line": 177
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 14
+      }
+    }
+  ]
+}

@@ -1,0 +1,1810 @@
+{
+ "nodes": [
+  {
+   "id": "file:backend/app/repositories/executions.py",
+   "type": "file",
+   "name": "executions.py",
+   "filePath": "backend/app/repositories/executions.py",
+   "summary": "MongoDB data-access layer for provider execution records: insert, update, lookup, bulk-run resume queries, cancellation of running attempts and filtered search.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "executions",
+    "data-access"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/repositories/executions.py:insert",
+   "type": "function",
+   "name": "insert",
+   "filePath": "backend/app/repositories/executions.py",
+   "lineRange": [
+    18,
+    19
+   ],
+   "summary": "Repository function `insert` querying MongoDB.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/executions.py:update",
+   "type": "function",
+   "name": "update",
+   "filePath": "backend/app/repositories/executions.py",
+   "lineRange": [
+    22,
+    28
+   ],
+   "summary": "Updates ticket fields.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/executions.py:get",
+   "type": "function",
+   "name": "get",
+   "filePath": "backend/app/repositories/executions.py",
+   "lineRange": [
+    31,
+    32
+   ],
+   "summary": "Repository function `get` querying MongoDB.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/executions.py:link_comparison",
+   "type": "function",
+   "name": "link_comparison",
+   "filePath": "backend/app/repositories/executions.py",
+   "lineRange": [
+    35,
+    38
+   ],
+   "summary": "Repository function `link_comparison` querying MongoDB.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/executions.py:succeeded_ticket_ids",
+   "type": "function",
+   "name": "succeeded_ticket_ids",
+   "filePath": "backend/app/repositories/executions.py",
+   "lineRange": [
+    41,
+    53
+   ],
+   "summary": "Repository function `succeeded_ticket_ids` querying MongoDB.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/executions.py:cancel_running",
+   "type": "function",
+   "name": "cancel_running",
+   "filePath": "backend/app/repositories/executions.py",
+   "lineRange": [
+    56,
+    67
+   ],
+   "summary": "Repository function `cancel_running` querying MongoDB.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/executions.py:latest_finished_real",
+   "type": "function",
+   "name": "latest_finished_real",
+   "filePath": "backend/app/repositories/executions.py",
+   "lineRange": [
+    70,
+    94
+   ],
+   "summary": "Repository function `latest_finished_real` querying MongoDB.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/executions.py:latest_by_ticket",
+   "type": "function",
+   "name": "latest_by_ticket",
+   "filePath": "backend/app/repositories/executions.py",
+   "lineRange": [
+    97,
+    111
+   ],
+   "summary": "Repository function `latest_by_ticket` querying MongoDB.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/executions.py:search",
+   "type": "function",
+   "name": "search",
+   "filePath": "backend/app/repositories/executions.py",
+   "lineRange": [
+    114,
+    138
+   ],
+   "summary": "Repository function `search` querying MongoDB.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/repositories/tickets.py",
+   "type": "file",
+   "name": "tickets.py",
+   "filePath": "backend/app/repositories/tickets.py",
+   "summary": "MongoDB data-access layer for tickets: ID generation, insert/update, fingerprint duplicate checks, cascading delete, search and status counts.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "tickets",
+    "data-access"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/repositories/tickets.py:next_ticket_id",
+   "type": "function",
+   "name": "next_ticket_id",
+   "filePath": "backend/app/repositories/tickets.py",
+   "lineRange": [
+    18,
+    27
+   ],
+   "summary": "Repository function `next_ticket_id` querying MongoDB.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/tickets.py:insert",
+   "type": "function",
+   "name": "insert",
+   "filePath": "backend/app/repositories/tickets.py",
+   "lineRange": [
+    30,
+    31
+   ],
+   "summary": "Repository function `insert` querying MongoDB.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/tickets.py:get",
+   "type": "function",
+   "name": "get",
+   "filePath": "backend/app/repositories/tickets.py",
+   "lineRange": [
+    34,
+    35
+   ],
+   "summary": "Repository function `get` querying MongoDB.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/tickets.py:eligible_ids",
+   "type": "function",
+   "name": "eligible_ids",
+   "filePath": "backend/app/repositories/tickets.py",
+   "lineRange": [
+    38,
+    41
+   ],
+   "summary": "Repository function `eligible_ids` querying MongoDB.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/tickets.py:fingerprint_exists",
+   "type": "function",
+   "name": "fingerprint_exists",
+   "filePath": "backend/app/repositories/tickets.py",
+   "lineRange": [
+    44,
+    45
+   ],
+   "summary": "Repository function `fingerprint_exists` querying MongoDB.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/tickets.py:update",
+   "type": "function",
+   "name": "update",
+   "filePath": "backend/app/repositories/tickets.py",
+   "lineRange": [
+    48,
+    55
+   ],
+   "summary": "Updates ticket fields.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/tickets.py:delete_with_dependents",
+   "type": "function",
+   "name": "delete_with_dependents",
+   "filePath": "backend/app/repositories/tickets.py",
+   "lineRange": [
+    58,
+    66
+   ],
+   "summary": "Repository function `delete_with_dependents` querying MongoDB.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/tickets.py:search",
+   "type": "function",
+   "name": "search",
+   "filePath": "backend/app/repositories/tickets.py",
+   "lineRange": [
+    69,
+    101
+   ],
+   "summary": "Repository function `search` querying MongoDB.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/tickets.py:counts",
+   "type": "function",
+   "name": "counts",
+   "filePath": "backend/app/repositories/tickets.py",
+   "lineRange": [
+    104,
+    108
+   ],
+   "summary": "Repository function `counts` querying MongoDB.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/schemas/bulk_jobs.py",
+   "type": "file",
+   "name": "bulk_jobs.py",
+   "filePath": "backend/app/schemas/bulk_jobs.py",
+   "summary": "Pydantic schemas for bulk classification jobs: creation request, per-ticket outcomes, stored job and job list.",
+   "tags": [
+    "schema",
+    "pydantic",
+    "bulk-jobs",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/bulk_jobs.py:BulkJobCreate",
+   "type": "class",
+   "name": "BulkJobCreate",
+   "filePath": "backend/app/schemas/bulk_jobs.py",
+   "lineRange": [
+    9,
+    26
+   ],
+   "summary": "Class BulkJobCreate defined in bulk_jobs.py.",
+   "tags": [
+    "class",
+    "schema"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/bulk_jobs.py:BulkOutcome",
+   "type": "class",
+   "name": "BulkOutcome",
+   "filePath": "backend/app/schemas/bulk_jobs.py",
+   "lineRange": [
+    29,
+    33
+   ],
+   "summary": "Class BulkOutcome defined in bulk_jobs.py.",
+   "tags": [
+    "class",
+    "schema"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/bulk_jobs.py:BulkJob",
+   "type": "class",
+   "name": "BulkJob",
+   "filePath": "backend/app/schemas/bulk_jobs.py",
+   "lineRange": [
+    36,
+    52
+   ],
+   "summary": "Class BulkJob defined in bulk_jobs.py.",
+   "tags": [
+    "class",
+    "schema"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/bulk_jobs.py:BulkJobList",
+   "type": "class",
+   "name": "BulkJobList",
+   "filePath": "backend/app/schemas/bulk_jobs.py",
+   "lineRange": [
+    55,
+    57
+   ],
+   "summary": "Class BulkJobList defined in bulk_jobs.py.",
+   "tags": [
+    "class",
+    "schema"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/schemas/classification.py",
+   "type": "file",
+   "name": "classification.py",
+   "filePath": "backend/app/schemas/classification.py",
+   "summary": "Pydantic models for ticket classification results, manual final classification and the normalized provider result contract, validated against the shared taxonomy.",
+   "tags": [
+    "schema",
+    "pydantic",
+    "classification",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/classification.py:Classification",
+   "type": "class",
+   "name": "Classification",
+   "filePath": "backend/app/schemas/classification.py",
+   "lineRange": [
+    8,
+    22
+   ],
+   "summary": "Class Classification defined in classification.py.",
+   "tags": [
+    "class",
+    "schema"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/classification.py:FinalClassificationInput",
+   "type": "class",
+   "name": "FinalClassificationInput",
+   "filePath": "backend/app/schemas/classification.py",
+   "lineRange": [
+    25,
+    28
+   ],
+   "summary": "Class FinalClassificationInput defined in classification.py.",
+   "tags": [
+    "class",
+    "schema"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/classification.py:FinalClassification",
+   "type": "class",
+   "name": "FinalClassification",
+   "filePath": "backend/app/schemas/classification.py",
+   "lineRange": [
+    31,
+    37
+   ],
+   "summary": "Class FinalClassification defined in classification.py.",
+   "tags": [
+    "class",
+    "schema"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/classification.py:NormalizedResult",
+   "type": "class",
+   "name": "NormalizedResult",
+   "filePath": "backend/app/schemas/classification.py",
+   "lineRange": [
+    40,
+    47
+   ],
+   "summary": "Class NormalizedResult defined in classification.py.",
+   "tags": [
+    "class",
+    "schema"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/services/executions.py",
+   "type": "file",
+   "name": "executions.py",
+   "filePath": "backend/app/services/executions.py",
+   "summary": "Runs a single provider attempt on a ticket, records success or failure as an execution log with cost fields and redacted payloads.",
+   "tags": [
+    "service",
+    "executions",
+    "provider-adapter",
+    "cost-calculation"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/services/executions.py:failed",
+   "type": "function",
+   "name": "failed",
+   "filePath": "backend/app/services/executions.py",
+   "lineRange": [
+    29,
+    38
+   ],
+   "summary": "Builds a failed execution record from a provider error.",
+   "tags": [
+    "service",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/executions.py:attempt",
+   "type": "function",
+   "name": "attempt",
+   "filePath": "backend/app/services/executions.py",
+   "lineRange": [
+    41,
+    74
+   ],
+   "summary": "Performs one provider call and persists the resulting execution log.",
+   "tags": [
+    "service",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/executions.py:cost_fields",
+   "type": "function",
+   "name": "cost_fields",
+   "filePath": "backend/app/services/executions.py",
+   "lineRange": [
+    77,
+    84
+   ],
+   "summary": "Computes token and cost fields for an execution.",
+   "tags": [
+    "service",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/executions.py:run",
+   "type": "function",
+   "name": "run",
+   "filePath": "backend/app/services/executions.py",
+   "lineRange": [
+    87,
+    131
+   ],
+   "summary": "Runs the configured provider on a ticket and returns the saved execution.",
+   "tags": [
+    "service",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/services/tickets.py",
+   "type": "file",
+   "name": "tickets.py",
+   "filePath": "backend/app/services/tickets.py",
+   "summary": "Ticket business logic: creation with fingerprint dedupe, updates, notes, and setting the final classification from a usable run.",
+   "tags": [
+    "service",
+    "tickets",
+    "business-logic",
+    "validation"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/services/tickets.py:create",
+   "type": "function",
+   "name": "create",
+   "filePath": "backend/app/services/tickets.py",
+   "lineRange": [
+    26,
+    47
+   ],
+   "summary": "Creates a ticket with duplicate detection.",
+   "tags": [
+    "service",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/tickets.py:update",
+   "type": "function",
+   "name": "update",
+   "filePath": "backend/app/services/tickets.py",
+   "lineRange": [
+    50,
+    52
+   ],
+   "summary": "Updates ticket fields.",
+   "tags": [
+    "service",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/tickets.py:add_note",
+   "type": "function",
+   "name": "add_note",
+   "filePath": "backend/app/services/tickets.py",
+   "lineRange": [
+    55,
+    60
+   ],
+   "summary": "Appends a note to a ticket.",
+   "tags": [
+    "service",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/tickets.py:run_result",
+   "type": "function",
+   "name": "run_result",
+   "filePath": "backend/app/services/tickets.py",
+   "lineRange": [
+    63,
+    70
+   ],
+   "summary": "Fetches a usable execution result for a ticket.",
+   "tags": [
+    "service",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/tickets.py:set_classification",
+   "type": "function",
+   "name": "set_classification",
+   "filePath": "backend/app/services/tickets.py",
+   "lineRange": [
+    73,
+    89
+   ],
+   "summary": "Sets the manual final classification from a run result.",
+   "tags": [
+    "service",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/services/tickets.py:RunNotUsable",
+   "type": "class",
+   "name": "RunNotUsable",
+   "filePath": "backend/app/services/tickets.py",
+   "lineRange": [
+    22,
+    23
+   ],
+   "summary": "Class RunNotUsable defined in tickets.py.",
+   "tags": [
+    "class",
+    "exception"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/tests/test_live_adapters.py",
+   "type": "file",
+   "name": "test_live_adapters.py",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "summary": "Tests for the live Jev and Ollama provider adapters using mocked HTTP: two-step Jev flow, token counting, failure safety, structured JSON parsing and registry selection.",
+   "tags": [
+    "test",
+    "provider-adapter",
+    "jev",
+    "ollama"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:client",
+   "type": "function",
+   "name": "client",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    19,
+    20
+   ],
+   "summary": "Pytest fixture or helper `client` for adapter tests.",
+   "tags": [
+    "test",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:jev",
+   "type": "function",
+   "name": "jev",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    23,
+    32
+   ],
+   "summary": "Pytest fixture or helper `jev` for adapter tests.",
+   "tags": [
+    "test",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:choice",
+   "type": "function",
+   "name": "choice",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    35,
+    41
+   ],
+   "summary": "Pytest fixture or helper `choice` for adapter tests.",
+   "tags": [
+    "test",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:two_step",
+   "type": "function",
+   "name": "two_step",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    57,
+    66
+   ],
+   "summary": "Pytest fixture or helper `two_step` for adapter tests.",
+   "tags": [
+    "test",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:test_jev_asks_category_first_then_only_that_categorys_subcategories",
+   "type": "function",
+   "name": "test_jev_asks_category_first_then_only_that_categorys_subcategories",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    69,
+    93
+   ],
+   "summary": "Test case: jev asks category first then only that categorys subcategories.",
+   "tags": [
+    "test",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:test_jev_counts_tokens_from_both_steps_and_stores_both_payloads",
+   "type": "function",
+   "name": "test_jev_counts_tokens_from_both_steps_and_stores_both_payloads",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    96,
+    105
+   ],
+   "summary": "Test case: jev counts tokens from both steps and stores both payloads.",
+   "tags": [
+    "test",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:test_jev_rejects_an_unknown_category_without_a_second_call",
+   "type": "function",
+   "name": "test_jev_rejects_an_unknown_category_without_a_second_call",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    108,
+    121
+   ],
+   "summary": "Test case: jev rejects an unknown category without a second call.",
+   "tags": [
+    "test",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:test_jev_failure_in_the_second_step_keeps_the_first_steps_payload",
+   "type": "function",
+   "name": "test_jev_failure_in_the_second_step_keeps_the_first_steps_payload",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    124,
+    133
+   ],
+   "summary": "Test case: jev failure in the second step keeps the first steps payload.",
+   "tags": [
+    "test",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:test_jev_sends_the_key_when_one_is_configured",
+   "type": "function",
+   "name": "test_jev_sends_the_key_when_one_is_configured",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    136,
+    145
+   ],
+   "summary": "Test case: jev sends the key when one is configured.",
+   "tags": [
+    "test",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:test_jev_escalation_uses_the_threshold",
+   "type": "function",
+   "name": "test_jev_escalation_uses_the_threshold",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    149,
+    152
+   ],
+   "summary": "Test case: jev escalation uses the threshold.",
+   "tags": [
+    "test",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:test_jev_failures_are_safe",
+   "type": "function",
+   "name": "test_jev_failures_are_safe",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    164,
+    168
+   ],
+   "summary": "Test case: jev failures are safe.",
+   "tags": [
+    "test",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:test_unreachable_and_slow_servers",
+   "type": "function",
+   "name": "test_unreachable_and_slow_servers",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    171,
+    184
+   ],
+   "summary": "Test case: unreachable and slow servers.",
+   "tags": [
+    "test",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:test_ollama_requests_structured_json_and_parses_it",
+   "type": "function",
+   "name": "test_ollama_requests_structured_json_and_parses_it",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    198,
+    231
+   ],
+   "summary": "Test case: ollama requests structured json and parses it.",
+   "tags": [
+    "test",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:test_ollama_non_json_reply_is_an_invalid_response",
+   "type": "function",
+   "name": "test_ollama_non_json_reply_is_an_invalid_response",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    234,
+    246
+   ],
+   "summary": "Test case: ollama non json reply is an invalid response.",
+   "tags": [
+    "test",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:test_registry_picks_local_models_and_needs_no_key",
+   "type": "function",
+   "name": "test_registry_picks_local_models_and_needs_no_key",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    252,
+    262
+   ],
+   "summary": "Test case: registry picks local models and needs no key.",
+   "tags": [
+    "test",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:test_registry_needs_a_key_for_hosted_jev",
+   "type": "function",
+   "name": "test_registry_needs_a_key_for_hosted_jev",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    265,
+    270
+   ],
+   "summary": "Test case: registry needs a key for hosted jev.",
+   "tags": [
+    "test",
+    "function"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:test_mock_mode_labels",
+   "type": "function",
+   "name": "test_mock_mode_labels",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    273,
+    276
+   ],
+   "summary": "Test case: mock mode labels.",
+   "tags": [
+    "test",
+    "function"
+   ],
+   "complexity": "simple"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:insert",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:insert",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:update",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:update",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:get",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:get",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:link_comparison",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:link_comparison",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:succeeded_ticket_ids",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:succeeded_ticket_ids",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:cancel_running",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:cancel_running",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:latest_finished_real",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:latest_finished_real",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:latest_by_ticket",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:latest_by_ticket",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:search",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:search",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:next_ticket_id",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:next_ticket_id",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:insert",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:insert",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:get",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:get",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:eligible_ids",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:eligible_ids",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:fingerprint_exists",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:fingerprint_exists",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:update",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:update",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:delete_with_dependents",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:delete_with_dependents",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:search",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:search",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:counts",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:counts",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/bulk_jobs.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/schemas/bulk_jobs.py",
+   "target": "class:backend/app/schemas/bulk_jobs.py:BulkJobCreate",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/bulk_jobs.py",
+   "target": "class:backend/app/schemas/bulk_jobs.py:BulkJobCreate",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/bulk_jobs.py",
+   "target": "class:backend/app/schemas/bulk_jobs.py:BulkOutcome",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/bulk_jobs.py",
+   "target": "class:backend/app/schemas/bulk_jobs.py:BulkOutcome",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/bulk_jobs.py",
+   "target": "class:backend/app/schemas/bulk_jobs.py:BulkJob",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/bulk_jobs.py",
+   "target": "class:backend/app/schemas/bulk_jobs.py:BulkJob",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/bulk_jobs.py",
+   "target": "class:backend/app/schemas/bulk_jobs.py:BulkJobList",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/bulk_jobs.py",
+   "target": "class:backend/app/schemas/bulk_jobs.py:BulkJobList",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/classification.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/schemas/classification.py",
+   "target": "class:backend/app/schemas/classification.py:Classification",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/classification.py",
+   "target": "class:backend/app/schemas/classification.py:Classification",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/classification.py",
+   "target": "class:backend/app/schemas/classification.py:FinalClassificationInput",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/classification.py",
+   "target": "class:backend/app/schemas/classification.py:FinalClassificationInput",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/classification.py",
+   "target": "class:backend/app/schemas/classification.py:FinalClassification",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/classification.py",
+   "target": "class:backend/app/schemas/classification.py:FinalClassification",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/classification.py",
+   "target": "class:backend/app/schemas/classification.py:NormalizedResult",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/classification.py",
+   "target": "class:backend/app/schemas/classification.py:NormalizedResult",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/app/core/clock.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/app/core/pricing.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/app/core/redaction.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/app/core/settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/app/providers/base.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/app/providers/registry.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/app/repositories/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/app/repositories/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/app/schemas/classification.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/app/schemas/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/app/services/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/app/services/app_settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "function:backend/app/services/executions.py:failed",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "function:backend/app/services/executions.py:failed",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "function:backend/app/services/executions.py:attempt",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "function:backend/app/services/executions.py:attempt",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "function:backend/app/services/executions.py:cost_fields",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "function:backend/app/services/executions.py:cost_fields",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "function:backend/app/services/executions.py:run",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "function:backend/app/services/executions.py:run",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "file:backend/app/core/clock.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "file:backend/app/repositories/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "file:backend/app/repositories/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "file:backend/app/repositories/tickets.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "file:backend/app/schemas/classification.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "file:backend/app/schemas/tickets.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "function:backend/app/services/tickets.py:create",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "function:backend/app/services/tickets.py:create",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "function:backend/app/services/tickets.py:update",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "function:backend/app/services/tickets.py:update",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "function:backend/app/services/tickets.py:add_note",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "function:backend/app/services/tickets.py:add_note",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "function:backend/app/services/tickets.py:run_result",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "function:backend/app/services/tickets.py:run_result",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "function:backend/app/services/tickets.py:set_classification",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "function:backend/app/services/tickets.py:set_classification",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "class:backend/app/services/tickets.py:RunNotUsable",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "class:backend/app/services/tickets.py:RunNotUsable",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "file:backend/app/providers/base.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "file:backend/app/providers/jev.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "file:backend/app/providers/ollama.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "file:backend/app/providers/registry.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "file:backend/app/schemas/classification.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "file:backend/tests/test_providers.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:client",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:jev",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:choice",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:two_step",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:test_jev_asks_category_first_then_only_that_categorys_subcategories",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:test_jev_counts_tokens_from_both_steps_and_stores_both_payloads",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:test_jev_rejects_an_unknown_category_without_a_second_call",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:test_jev_failure_in_the_second_step_keeps_the_first_steps_payload",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:test_jev_sends_the_key_when_one_is_configured",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:test_jev_escalation_uses_the_threshold",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:test_jev_failures_are_safe",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:test_unreachable_and_slow_servers",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:test_ollama_requests_structured_json_and_parses_it",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:test_ollama_non_json_reply_is_an_invalid_response",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:test_registry_picks_local_models_and_needs_no_key",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:test_registry_needs_a_key_for_hosted_jev",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:test_mock_mode_labels",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  }
+ ]
+}

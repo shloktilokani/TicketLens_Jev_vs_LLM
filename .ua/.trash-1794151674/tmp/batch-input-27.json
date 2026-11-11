@@ -1,0 +1,22 @@
+{
+ "batchIndex": 27,
+ "files": [
+  {
+   "path": ".context/DEPLOYMENT_DECISIONS.md",
+   "language": "markdown",
+   "sizeLines": 115,
+   "fileCategory": "docs"
+  },
+  {
+   "path": ".context/implementation.md",
+   "language": "markdown",
+   "sizeLines": 403,
+   "fileCategory": "docs"
+  }
+ ],
+ "batchImportData": {
+  ".context/DEPLOYMENT_DECISIONS.md": [],
+  ".context/implementation.md": []
+ },
+ "neighborMap": {}
+}

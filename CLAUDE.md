@@ -1,10 +1,12 @@
 # CLAUDE.md
 
-TicketLens_Jev_vs_LLM: local single-user app comparing Jev and GPT on ShopKart ticket classification.
+TicketLens_Jev_vs_LLM: local single-user app comparing Jev and an LLM on ShopKart ticket classification. It runs on local models (AutoTrust JEV and an Ollama LLM); the paid APIs, hosted Jev and OpenAI, are deferred by owner decision.
 
 @AGENTS.md
 
-Status and next phase: `.context/PROGRESS.md`. Build order: `.context/implementation.md`, one phase at a time.
+Status and handover: `.context/PROGRESS.md` (start there). How the app works: `.context/architecture.md` and `.context/data-model.md`.
+
+**Code size:** apply the `ponytail` skill (level `full`) to every coding, development and database task, and follow `.context/code-size-standards.md`. Never cut security, validation, tests or required behaviour to save lines.
 
 ## Commands (from the repository root)
 
@@ -13,9 +15,10 @@ backend/.venv/bin/pytest backend -q
 backend/.venv/bin/ruff check backend
 npm --prefix frontend run lint
 npm --prefix frontend run build
+npm --prefix e2e test        # browser tests on an isolated stack; add -- --headed to watch
 ```
 
-Run the app: `README.md`, "Run locally".
+Run the app: `README.md`, "Run it locally".
 
 <!-- BEGIN skillpack (generated; edit outside this block; re-run skillpack to refresh) -->
 ## Engineering skills library

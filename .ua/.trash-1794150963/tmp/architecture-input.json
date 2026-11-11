@@ -1,0 +1,6622 @@
+{
+"nodes": [
+{
+"id": "file:backend/app/api/dashboard.py",
+"type": "file",
+"name": "dashboard.py",
+"filePath": "backend/app/api/dashboard.py",
+"summary": "FastAPI routes for the Overview metrics and for listing and reading stored Jev-vs-LLM comparisons, delegating all work to the dashboard service.",
+"tags": [
+"api-handler",
+"dashboard",
+"fastapi",
+"comparisons",
+"tested"
+]
+},
+{
+"id": "file:backend/app/api/deps.py",
+"type": "file",
+"name": "deps.py",
+"filePath": "backend/app/api/deps.py",
+"summary": "Shared FastAPI dependency that exposes the MongoDB database held on application state as the injectable `Db` type used by every route module.",
+"tags": [
+"middleware",
+"dependency-injection",
+"fastapi",
+"database"
+]
+},
+{
+"id": "file:backend/app/api/executions.py",
+"type": "file",
+"name": "executions.py",
+"filePath": "backend/app/api/executions.py",
+"summary": "FastAPI routes for the execution log: a filtered, paginated list of every AI attempt without payloads, and a detail route returning one attempt in full.",
+"tags": [
+"api-handler",
+"execution-log",
+"fastapi",
+"pagination"
+]
+},
+{
+"id": "file:backend/app/api/imports.py",
+"type": "file",
+"name": "imports.py",
+"filePath": "backend/app/api/imports.py",
+"summary": "FastAPI routes for the CSV import template, ticket imports with a dry-run mode and a 5 MB size limit, and CSV downloads of tickets, executions and comparisons.",
+"tags": [
+"api-handler",
+"csv",
+"import-export",
+"fastapi",
+"validation",
+"tested"
+]
+},
+{
+"id": "file:backend/app/api/runs.py",
+"type": "file",
+"name": "runs.py",
+"filePath": "backend/app/api/runs.py",
+"summary": "FastAPI routes that run one provider on one ticket and record a comparison between finished Jev and GPT runs, without ever choosing a winner.",
+"tags": [
+"api-handler",
+"provider-runs",
+"comparisons",
+"fastapi",
+"tested"
+]
+},
+{
+"id": "file:backend/app/api/tickets.py",
+"type": "file",
+"name": "tickets.py",
+"filePath": "backend/app/api/tickets.py",
+"summary": "FastAPI CRUD routes for tickets, covering search, filtering, sorting, pagination, notes, the operator's final classification and cascading deletion.",
+"tags": [
+"api-handler",
+"tickets",
+"crud",
+"fastapi",
+"pagination",
+"tested"
+]
+},
+{
+"id": "file:backend/app/core/clock.py",
+"type": "file",
+"name": "clock.py",
+"filePath": "backend/app/core/clock.py",
+"summary": "Provides the UTC clock used for stored timestamps, truncated to the millisecond precision that BSON dates keep.",
+"tags": [
+"utility",
+"time",
+"bson",
+"timestamps"
+]
+},
+{
+"id": "file:backend/app/repositories/__init__.py",
+"type": "file",
+"name": "__init__.py",
+"filePath": "backend/app/repositories/__init__.py",
+"summary": "Empty package marker for the MongoDB repository layer.",
+"tags": [
+"package-marker",
+"repository-layer",
+"python"
+]
+},
+{
+"id": "file:backend/app/repositories/comparisons.py",
+"type": "file",
+"name": "comparisons.py",
+"filePath": "backend/app/repositories/comparisons.py",
+"summary": "MongoDB access for Jev-vs-GPT comparison records: insert, newest-first listing, counting and lookup by ID.",
+"tags": [
+"repository",
+"data-access",
+"mongodb",
+"comparisons"
+]
+},
+{
+"id": "file:backend/app/repositories/executions.py",
+"type": "file",
+"name": "executions.py",
+"filePath": "backend/app/repositories/executions.py",
+"summary": "MongoDB access for AI execution records, including updates, comparison linking, each ticket's latest run and a paginated search that leaves out payloads.",
+"tags": [
+"repository",
+"data-access",
+"mongodb",
+"execution-log",
+"aggregation"
+]
+},
+{
+"id": "file:backend/app/repositories/labels.py",
+"type": "file",
+"name": "labels.py",
+"filePath": "backend/app/repositories/labels.py",
+"summary": "Write-only MongoDB access for evaluation labels, which are kept apart from tickets and never read when building provider requests.",
+"tags": [
+"repository",
+"data-access",
+"mongodb",
+"evaluation-labels"
+]
+},
+{
+"id": "file:backend/app/repositories/tickets.py",
+"type": "file",
+"name": "tickets.py",
+"filePath": "backend/app/repositories/tickets.py",
+"summary": "MongoDB access for tickets and the atomic ticket-ID counter, with plain-text search, priority-ranked sorting, status counts and dependents-first deletion.",
+"tags": [
+"repository",
+"data-access",
+"mongodb",
+"tickets",
+"aggregation",
+"tested"
+]
+},
+{
+"id": "file:backend/app/schemas/comparisons.py",
+"type": "file",
+"name": "comparisons.py",
+"filePath": "backend/app/schemas/comparisons.py",
+"summary": "Pydantic models for a Jev-vs-GPT comparison record, its per-field values and the request that creates one.",
+"tags": [
+"data-model",
+"validation",
+"pydantic",
+"comparisons"
+]
+},
+{
+"id": "file:backend/app/schemas/imports.py",
+"type": "file",
+"name": "imports.py",
+"filePath": "backend/app/schemas/imports.py",
+"summary": "Pydantic models for the CSV import result: row-level errors and the summary of imported, invalid and duplicate rows.",
+"tags": [
+"data-model",
+"validation",
+"pydantic",
+"csv"
+]
+},
+{
+"id": "file:backend/app/services/__init__.py",
+"type": "file",
+"name": "__init__.py",
+"filePath": "backend/app/services/__init__.py",
+"summary": "Empty package marker for the service layer.",
+"tags": [
+"package-marker",
+"service-layer",
+"python"
+]
+},
+{
+"id": "file:backend/app/services/comparisons.py",
+"type": "file",
+"name": "comparisons.py",
+"filePath": "backend/app/services/comparisons.py",
+"summary": "Compares one Jev run with one GPT run on the five shared fields, validates both executions and stores the agreement figures while leaving the final answer to the operator.",
+"tags": [
+"service",
+"comparisons",
+"evaluation",
+"business-logic"
+]
+},
+{
+"id": "file:backend/app/services/csv_export.py",
+"type": "file",
+"name": "csv_export.py",
+"filePath": "backend/app/services/csv_export.py",
+"summary": "Builds CSV exports of tickets, AI executions and comparisons from declarative column maps, omitting payloads and neutralizing spreadsheet formula injection.",
+"tags": [
+"service",
+"csv",
+"serialization",
+"security",
+"import-export",
+"tested"
+]
+},
+{
+"id": "file:backend/app/services/csv_import.py",
+"type": "file",
+"name": "csv_import.py",
+"filePath": "backend/app/services/csv_import.py",
+"summary": "Imports tickets from CSV with row-level validation, value normalization, fingerprint-based duplicate detection, a dry-run mode and separately stored evaluation labels.",
+"tags": [
+"service",
+"csv",
+"validation",
+"idempotent-import",
+"evaluation-labels",
+"tested"
+]
+},
+{
+"id": "file:backend/app/services/dashboard.py",
+"type": "file",
+"name": "dashboard.py",
+"filePath": "backend/app/services/dashboard.py",
+"summary": "Assembles Overview and Comparisons page data by joining stored comparisons with their runs and tickets, keeping fake-provider runs out of the metrics.",
+"tags": [
+"service",
+"dashboard",
+"metrics",
+"comparisons",
+"tested"
+]
+},
+{
+"id": "file:backend/app/services/run_metrics.py",
+"type": "file",
+"name": "run_metrics.py",
+"filePath": "backend/app/services/run_metrics.py",
+"summary": "Computes pure metrics for a set of Jev-vs-LLM comparisons: per-field agreement and Cohen's kappa, latency, tokens, outcomes, cost, Jev confidence, distributions and disagreements.",
+"tags": [
+"service",
+"metrics",
+"statistics",
+"evaluation",
+"pure-functions",
+"tested"
+]
+},
+{
+"id": "file:backend/app/services/run_report.py",
+"type": "file",
+"name": "run_report.py",
+"filePath": "backend/app/services/run_report.py",
+"summary": "Renders one test run as a self-contained HTML report with inline CSS, SVG charts and summary tables, escaping stored text and stating that agreement is not accuracy.",
+"tags": [
+"service",
+"report",
+"html-rendering",
+"svg-charts",
+"evaluation"
+]
+},
+{
+"id": "file:backend/scripts/run_report.py",
+"type": "file",
+"name": "run_report.py",
+"filePath": "backend/scripts/run_report.py",
+"summary": "Command-line entry point that loads named comparisons from MongoDB and writes a test run's HTML report and JSON record to reports/test-runs.",
+"tags": [
+"entry-point",
+"cli",
+"report",
+"script"
+]
+},
+{
+"id": "file:backend/tests/test_csv.py",
+"type": "file",
+"name": "test_csv.py",
+"filePath": "backend/tests/test_csv.py",
+"summary": "API-level tests for CSV import and export, covering row counts, normalization, duplicates, dry runs, label separation, malformed files, formula neutralization and payload exclusion.",
+"tags": [
+"test",
+"csv",
+"api-test",
+"import-export"
+]
+},
+{
+"id": "file:backend/tests/test_run_metrics.py",
+"type": "file",
+"name": "test_run_metrics.py",
+"filePath": "backend/tests/test_run_metrics.py",
+"summary": "Unit tests for the run metrics, using hand-built rows to check percentile, kappa, completed-only agreement, latency, tokens, outcomes, cost and Jev confidence.",
+"tags": [
+"test",
+"metrics",
+"unit-test",
+"statistics"
+]
+},
+{
+"id": "file:backend/app/core/pricing.py",
+"type": "file",
+"name": "pricing.py",
+"filePath": "backend/app/core/pricing.py",
+"summary": "Default provider rates and token-cost estimation: picks a pricing snapshot per provider and computes exact Decimal costs, returning None rather than guessing when a price or token count is missing.",
+"tags": [
+"utility",
+"pricing",
+"cost-estimation",
+"decimal",
+"tested"
+]
+},
+{
+"id": "file:backend/app/core/redaction.py",
+"type": "file",
+"name": "redaction.py",
+"filePath": "backend/app/core/redaction.py",
+"summary": "Recursively strips credentials from provider payloads by replacing the values of secret-looking keys, so stored and displayed request and response data never holds secrets.",
+"tags": [
+"utility",
+"security",
+"redaction",
+"sanitization",
+"tested"
+]
+},
+{
+"id": "file:backend/app/core/taxonomy.py",
+"type": "file",
+"name": "taxonomy.py",
+"filePath": "backend/app/core/taxonomy.py",
+"summary": "Canonical taxonomy shared by validation, providers, evaluation and the UI: enums for categories, priorities, sentiments and statuses, the category-to-subcategory map, and the version constant.",
+"tags": [
+"data-model",
+"taxonomy",
+"enums",
+"single-source-of-truth",
+"tested"
+]
+},
+{
+"id": "file:backend/app/providers/__init__.py",
+"type": "file",
+"name": "__init__.py",
+"filePath": "backend/app/providers/__init__.py",
+"summary": "Empty package marker that makes the provider adapters importable as app.providers.",
+"tags": [
+"package-marker",
+"providers",
+"python-package"
+]
+},
+{
+"id": "file:backend/app/providers/base.py",
+"type": "file",
+"name": "base.py",
+"filePath": "backend/app/providers/base.py",
+"summary": "The contract every provider adapter follows: the fixed input both models see, the raw result shape, the safe ProviderFailure exception, HTTP status mapping and the Adapter protocol.",
+"tags": [
+"provider-contract",
+"type-definition",
+"error-handling",
+"fairness",
+"service",
+"tested"
+]
+},
+{
+"id": "file:backend/app/providers/definitions.py",
+"type": "file",
+"name": "definitions.py",
+"filePath": "backend/app/providers/definitions.py",
+"summary": "Task definitions given identically to Jev and the LLM (priority, sentiment, escalation, category and subcategory meanings plus base instructions), keeping the comparison fair.",
+"tags": [
+"configuration",
+"prompt-definitions",
+"fairness",
+"providers"
+]
+},
+{
+"id": "file:backend/app/providers/http.py",
+"type": "file",
+"name": "http.py",
+"filePath": "backend/app/providers/http.py",
+"summary": "The single HTTP helper both real adapters use: posts JSON with a timeout, maps transport and status errors to safe ProviderFailure objects, and deliberately never retries because calls can cost money.",
+"tags": [
+"utility",
+"http-client",
+"error-handling",
+"providers",
+"tested"
+]
+},
+{
+"id": "file:backend/app/providers/jev.py",
+"type": "file",
+"name": "jev.py",
+"filePath": "backend/app/providers/jev.py",
+"summary": "Jev adapter over the System One decision API, for hosted TypeSafe or local AutoTrust models: runs a two-step classification (category and other fields, then that category's subcategories) and marks free text as unsupported.",
+"tags": [
+"service",
+"provider-adapter",
+"jev",
+"two-step-classification",
+"api-client",
+"tested"
+]
+},
+{
+"id": "file:backend/app/providers/mock.py",
+"type": "file",
+"name": "mock.py",
+"filePath": "backend/app/providers/mock.py",
+"summary": "Deterministic fake Jev and GPT provider for tests and UI work: keyword rules produce classifications with no network or cost, and title markers simulate failures, timeouts and invalid answers.",
+"tags": [
+"test-double",
+"provider-adapter",
+"mock",
+"deterministic",
+"tested"
+]
+},
+{
+"id": "file:backend/app/providers/ollama.py",
+"type": "file",
+"name": "ollama.py",
+"filePath": "backend/app/providers/ollama.py",
+"summary": "LLM adapter through a local Ollama chat model: builds a system prompt from the shared definitions, forces valid enum values with a JSON schema, and parses the structured reply and token counts.",
+"tags": [
+"service",
+"provider-adapter",
+"ollama",
+"structured-output",
+"api-client",
+"tested"
+]
+},
+{
+"id": "file:backend/app/providers/registry.py",
+"type": "file",
+"name": "registry.py",
+"filePath": "backend/app/providers/registry.py",
+"summary": "Chooses the provider adapter from settings: mock, Jev (hosted or local) or the LLM backend, supplies UI labels and requested model names, and raises not_configured failures when something is missing.",
+"tags": [
+"factory",
+"provider-registry",
+"configuration",
+"service",
+"tested"
+]
+},
+{
+"id": "file:backend/app/schemas/bulk_jobs.py",
+"type": "file",
+"name": "bulk_jobs.py",
+"filePath": "backend/app/schemas/bulk_jobs.py",
+"summary": "Pydantic models for bulk classification jobs: the create request that needs exactly one ticket selection mode, per-ticket outcomes, and persisted job progress.",
+"tags": [
+"data-model",
+"validation",
+"bulk-jobs",
+"schema-definition",
+"tested"
+]
+},
+{
+"id": "file:backend/app/schemas/classification.py",
+"type": "file",
+"name": "classification.py",
+"filePath": "backend/app/schemas/classification.py",
+"summary": "Pydantic models for the five compared classification fields, the operator's final answer and a provider's normalized result, rejecting any category and subcategory pair that does not belong together.",
+"tags": [
+"data-model",
+"validation",
+"classification",
+"schema-definition",
+"tested"
+]
+},
+{
+"id": "file:backend/app/schemas/executions.py",
+"type": "file",
+"name": "executions.py",
+"filePath": "backend/app/schemas/executions.py",
+"summary": "Pydantic models for a provider attempt record: token usage, the pricing snapshot, estimated Decimal cost, a user-safe error and the full execution document including failures.",
+"tags": [
+"data-model",
+"execution-log",
+"pricing",
+"schema-definition",
+"tested"
+]
+},
+{
+"id": "file:backend/app/schemas/tickets.py",
+"type": "file",
+"name": "tickets.py",
+"filePath": "backend/app/schemas/tickets.py",
+"summary": "Pydantic models and field constraints for ticket creation, partial update, notes and the stored ticket returned by the API, including trimming rules and paged results.",
+"tags": [
+"data-model",
+"validation",
+"tickets",
+"schema-definition",
+"tested"
+]
+},
+{
+"id": "file:backend/app/services/executions.py",
+"type": "file",
+"name": "executions.py",
+"filePath": "backend/app/services/executions.py",
+"summary": "Runs one provider on one ticket and always records the attempt: writes a Running record first, then stores the validated outcome, redacted payloads and cost, returning failures rather than raising them.",
+"tags": [
+"service",
+"orchestration",
+"execution-log",
+"error-handling",
+"provider-isolation",
+"tested"
+]
+},
+{
+"id": "file:backend/app/services/tickets.py",
+"type": "file",
+"name": "tickets.py",
+"filePath": "backend/app/services/tickets.py",
+"summary": "Ticket workflows that turn API input into stored documents: creation, partial updates, operator notes and saving the operator's final classification with its source run and edit flag.",
+"tags": [
+"service",
+"tickets",
+"business-logic",
+"final-classification"
+]
+},
+{
+"id": "file:backend/tests/test_execution_log.py",
+"type": "file",
+"name": "test_execution_log.py",
+"filePath": "backend/tests/test_execution_log.py",
+"summary": "Tests for cost calculation, rate snapshots that stay fixed over time, secret-free stored records, and the execution list and detail API filters, paging and payload handling.",
+"tags": [
+"test",
+"execution-log",
+"pricing",
+"api-tests"
+]
+},
+{
+"id": "file:backend/tests/test_live_adapters.py",
+"type": "file",
+"name": "test_live_adapters.py",
+"filePath": "backend/tests/test_live_adapters.py",
+"summary": "Tests the Jev and Ollama adapters against simulated HTTP replies with no network, covering the two-step flow, token totals, failure handling, escalation thresholds and registry selection.",
+"tags": [
+"test",
+"provider-adapter",
+"simulated-http",
+"jev",
+"ollama"
+]
+},
+{
+"id": "file:backend/tests/test_providers.py",
+"type": "file",
+"name": "test_providers.py",
+"filePath": "backend/tests/test_providers.py",
+"summary": "Tests the provider contract and run recording: input fairness, HTTP failure mapping, redaction, mock behaviour, and that every attempt is logged including failures, crashes and missing keys.",
+"tags": [
+"test",
+"provider-contract",
+"execution-log",
+"redaction"
+]
+},
+{
+"id": "file:backend/tests/test_schemas.py",
+"type": "file",
+"name": "test_schemas.py",
+"filePath": "backend/tests/test_schemas.py",
+"summary": "Validation tests for the classification, execution, ticket and bulk-job schemas, including invalid pairs, trimming rules, unsupported Jev free text and taxonomy version recording.",
+"tags": [
+"test",
+"validation",
+"schemas",
+"taxonomy"
+]
+},
+{
+"id": "file:frontend/src/app/AppShell.tsx",
+"type": "file",
+"name": "AppShell.tsx",
+"filePath": "frontend/src/app/AppShell.tsx",
+"summary": "Application layout route that renders the responsive sidebar and mobile navigation sheet, header with provider status badges and global ticket search, and the routed page outlet; it also keeps the document title in sync with the matched route.",
+"tags": [
+"component",
+"layout",
+"navigation",
+"entry-point",
+"accessibility"
+]
+},
+{
+"id": "file:frontend/src/app/PlaceholderPage.tsx",
+"type": "file",
+"name": "PlaceholderPage.tsx",
+"filePath": "frontend/src/app/PlaceholderPage.tsx",
+"summary": "Provides the honest stand-in page for features a later build phase delivers and the catch-all not-found page, both built on the shared empty state.",
+"tags": [
+"component",
+"placeholder",
+"error-page",
+"routing"
+]
+},
+{
+"id": "file:frontend/src/app/router.tsx",
+"type": "file",
+"name": "router.tsx",
+"filePath": "frontend/src/app/router.tsx",
+"summary": "Declares the browser router: AppShell as the layout route with child routes for the overview dashboard, tickets, compare, comparisons, executions, a placeholder settings page, and a not-found fallback.",
+"tags": [
+"routing",
+"entry-point",
+"configuration",
+"navigation"
+]
+},
+{
+"id": "file:frontend/src/components/ConfirmDialog.tsx",
+"type": "file",
+"name": "ConfirmDialog.tsx",
+"filePath": "frontend/src/components/ConfirmDialog.tsx",
+"summary": "Reusable confirmation dialog for destructive actions that stays open with a pending label until the caller closes it after the request succeeds.",
+"tags": [
+"component",
+"dialog",
+"confirmation",
+"reusable"
+]
+},
+{
+"id": "file:frontend/src/components/Detail.tsx",
+"type": "file",
+"name": "Detail.tsx",
+"filePath": "frontend/src/components/Detail.tsx",
+"summary": "Tiny presentational component rendering one labelled value inside a definition list, with a dash for missing values.",
+"tags": [
+"component",
+"presentational",
+"reusable",
+"utility"
+]
+},
+{
+"id": "file:frontend/src/components/ListControls.tsx",
+"type": "file",
+"name": "ListControls.tsx",
+"filePath": "frontend/src/components/ListControls.tsx",
+"summary": "Shared list-page controls: a dropdown filter with an All option and a pager showing the total, current page, and previous and next buttons.",
+"tags": [
+"component",
+"filtering",
+"pagination",
+"reusable"
+]
+},
+{
+"id": "file:frontend/src/components/states.tsx",
+"type": "file",
+"name": "states.tsx",
+"filePath": "frontend/src/components/states.tsx",
+"summary": "Shared loading, error, and empty state components that give every page consistent async feedback, using status and alert ARIA roles.",
+"tags": [
+"component",
+"loading-state",
+"error-handling",
+"accessibility",
+"reusable"
+]
+},
+{
+"id": "file:frontend/src/components/ui/alert-dialog.tsx",
+"type": "file",
+"name": "alert-dialog.tsx",
+"filePath": "frontend/src/components/ui/alert-dialog.tsx",
+"summary": "shadcn/ui alert dialog primitives wrapping Radix AlertDialog with project styling, including size variants plus action and cancel buttons built on Button.",
+"tags": [
+"component",
+"ui-primitive",
+"shadcn",
+"dialog",
+"accessibility"
+]
+},
+{
+"id": "file:frontend/src/components/ui/badge.tsx",
+"type": "file",
+"name": "badge.tsx",
+"filePath": "frontend/src/components/ui/badge.tsx",
+"summary": "shadcn/ui badge component with class-variance-authority variants and optional rendering through a Radix Slot.",
+"tags": [
+"component",
+"ui-primitive",
+"shadcn",
+"variants"
+]
+},
+{
+"id": "file:frontend/src/components/ui/button.tsx",
+"type": "file",
+"name": "button.tsx",
+"filePath": "frontend/src/components/ui/button.tsx",
+"summary": "shadcn/ui button defining the project's variant and size styles with class-variance-authority, with optional Radix Slot rendering; other UI primitives build on it.",
+"tags": [
+"component",
+"ui-primitive",
+"shadcn",
+"variants"
+]
+},
+{
+"id": "file:frontend/src/components/ui/card.tsx",
+"type": "file",
+"name": "card.tsx",
+"filePath": "frontend/src/components/ui/card.tsx",
+"summary": "shadcn/ui card family of styled div wrappers for the header, title, description, action, content, and footer regions of a card.",
+"tags": [
+"component",
+"ui-primitive",
+"shadcn",
+"layout"
+]
+},
+{
+"id": "file:frontend/src/components/ui/dialog.tsx",
+"type": "file",
+"name": "dialog.tsx",
+"filePath": "frontend/src/components/ui/dialog.tsx",
+"summary": "shadcn/ui modal dialog primitives wrapping Radix Dialog, with an overlay, optional close buttons, and header and footer layout helpers.",
+"tags": [
+"component",
+"ui-primitive",
+"shadcn",
+"dialog",
+"accessibility"
+]
+},
+{
+"id": "file:frontend/src/components/ui/input.tsx",
+"type": "file",
+"name": "input.tsx",
+"filePath": "frontend/src/components/ui/input.tsx",
+"summary": "shadcn/ui styled single-line text input wrapping the native input element.",
+"tags": [
+"component",
+"ui-primitive",
+"shadcn",
+"form"
+]
+},
+{
+"id": "file:frontend/src/components/ui/label.tsx",
+"type": "file",
+"name": "label.tsx",
+"filePath": "frontend/src/components/ui/label.tsx",
+"summary": "shadcn/ui form label wrapping the Radix Label primitive with project styling.",
+"tags": [
+"component",
+"ui-primitive",
+"shadcn",
+"form",
+"accessibility"
+]
+},
+{
+"id": "file:frontend/src/components/ui/select.tsx",
+"type": "file",
+"name": "select.tsx",
+"filePath": "frontend/src/components/ui/select.tsx",
+"summary": "shadcn/ui dropdown select primitives wrapping Radix Select, with a styled trigger, portalled content, items, separators, and scroll buttons.",
+"tags": [
+"component",
+"ui-primitive",
+"shadcn",
+"form",
+"accessibility"
+]
+},
+{
+"id": "file:frontend/src/components/ui/sheet.tsx",
+"type": "file",
+"name": "sheet.tsx",
+"filePath": "frontend/src/components/ui/sheet.tsx",
+"summary": "shadcn/ui slide-in side panel built on the Radix Dialog primitive, supporting top, right, bottom, and left placement; AppShell uses it for mobile navigation.",
+"tags": [
+"component",
+"ui-primitive",
+"shadcn",
+"dialog",
+"navigation"
+]
+},
+{
+"id": "file:frontend/src/components/ui/table.tsx",
+"type": "file",
+"name": "table.tsx",
+"filePath": "frontend/src/components/ui/table.tsx",
+"summary": "shadcn/ui table family of styled semantic table elements, with a container that scrolls horizontally on overflow.",
+"tags": [
+"component",
+"ui-primitive",
+"shadcn",
+"table"
+]
+},
+{
+"id": "file:frontend/src/components/ui/textarea.tsx",
+"type": "file",
+"name": "textarea.tsx",
+"filePath": "frontend/src/components/ui/textarea.tsx",
+"summary": "shadcn/ui styled multi-line text input wrapping the native textarea element.",
+"tags": [
+"component",
+"ui-primitive",
+"shadcn",
+"form"
+]
+},
+{
+"id": "file:frontend/src/features/compare/ComparePage.tsx",
+"type": "file",
+"name": "ComparePage.tsx",
+"filePath": "frontend/src/features/compare/ComparePage.tsx",
+"summary": "Compare workbench page where the user loads or creates a ticket, runs Jev and the LLM side by side, and sees the field agreement summary without any winner being chosen.",
+"tags": [
+"component",
+"page",
+"comparison",
+"workbench",
+"entry-point"
+]
+},
+{
+"id": "file:frontend/src/features/compare/ProviderColumn.tsx",
+"type": "file",
+"name": "ProviderColumn.tsx",
+"filePath": "frontend/src/features/compare/ProviderColumn.tsx",
+"summary": "Renders one provider's side of the compare workbench: live status and elapsed timer, normalized classification fields with agreement markers, free text, and token and cost usage.",
+"tags": [
+"component",
+"comparison",
+"provider-result",
+"presentational"
+]
+},
+{
+"id": "file:frontend/src/features/compare/useCompareRun.ts",
+"type": "file",
+"name": "useCompareRun.ts",
+"filePath": "frontend/src/features/compare/useCompareRun.ts",
+"summary": "Drives the live Compare workbench: runs Jev and GPT concurrently as separate requests so each column finishes independently, then asks the backend to save a comparison. Also provides the elapsed-time timer hook and its formatter.",
+"tags": [
+"hook",
+"concurrency",
+"comparison",
+"timer"
+]
+},
+{
+"id": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+"type": "file",
+"name": "ComparisonDetailPage.tsx",
+"filePath": "frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+"summary": "Page that shows one saved comparison, reusing the live provider columns with timers frozen at each run's stored duration. States how many fields agree and that agreement is not accuracy.",
+"tags": [
+"component",
+"page",
+"comparison",
+"read-only"
+]
+},
+{
+"id": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+"type": "file",
+"name": "ComparisonsPage.tsx",
+"filePath": "frontend/src/features/comparisons/ComparisonsPage.tsx",
+"summary": "Page listing saved comparisons newest first, and the shared comparison table that the dashboard and ticket detail views also render. Flags fake-AI runs with a badge.",
+"tags": [
+"component",
+"page",
+"comparison",
+"table"
+]
+},
+{
+"id": "file:frontend/src/features/comparisons/hooks.ts",
+"type": "file",
+"name": "hooks.ts",
+"filePath": "frontend/src/features/comparisons/hooks.ts",
+"summary": "Single React Query hook that fetches saved comparisons, optionally for one ticket, and polls every 5 seconds so new runs appear during a test.",
+"tags": [
+"hook",
+"data-fetching",
+"comparison",
+"polling"
+]
+},
+{
+"id": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+"type": "file",
+"name": "DashboardPage.tsx",
+"filePath": "frontend/src/features/dashboard/DashboardPage.tsx",
+"summary": "Dashboard page summarising real comparison runs: ticket counts, agreement rates, side-by-side distribution charts, latency, success and estimated cost. It polls every 5 seconds, excludes fake-AI comparisons and states that agreement is not accuracy.",
+"tags": [
+"component",
+"page",
+"dashboard",
+"charts",
+"metrics"
+]
+},
+{
+"id": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+"type": "file",
+"name": "ExecutionDetailPage.tsx",
+"filePath": "frontend/src/features/executions/ExecutionDetailPage.tsx",
+"summary": "Page for one AI run: status, models, versions, token usage, the pricing snapshot saved with the run and any error. Collapsible, copyable JSON blocks expose the validated result, input snapshot and redacted request and response payloads.",
+"tags": [
+"component",
+"page",
+"execution-log",
+"debugging",
+"cost"
+]
+},
+{
+"id": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+"type": "file",
+"name": "ExecutionsPage.tsx",
+"filePath": "frontend/src/features/executions/ExecutionsPage.tsx",
+"summary": "Paginated log of every AI run, including failures, with provider, status, ticket and UTC date filters kept in the URL so a filtered view can be bookmarked. Also links to the executions CSV export.",
+"tags": [
+"component",
+"page",
+"execution-log",
+"filtering",
+"pagination"
+]
+},
+{
+"id": "file:frontend/src/features/tickets/AiResults.tsx",
+"type": "file",
+"name": "AiResults.tsx",
+"filePath": "frontend/src/features/tickets/AiResults.tsx",
+"summary": "Ticket-level AI panel with buttons that run Jev or the LLM on demand, the ticket's run history and its comparisons. Each successful run offers a 'Use this answer' action that seeds the final classification form.",
+"tags": [
+"component",
+"ticket",
+"provider-run",
+"history"
+]
+},
+{
+"id": "file:frontend/src/features/tickets/FinalClassification.tsx",
+"type": "file",
+"name": "FinalClassification.tsx",
+"filePath": "frontend/src/features/tickets/FinalClassification.tsx",
+"summary": "Panel where the operator views and sets a ticket's final classification, by hand or starting from an AI answer. The value changes only on Save, escalation has no default, and changing category clears the subcategory.",
+"tags": [
+"component",
+"form",
+"ticket",
+"classification",
+"human-in-the-loop"
+]
+},
+{
+"id": "file:frontend/src/features/tickets/ImportExport.tsx",
+"type": "file",
+"name": "ImportExport.tsx",
+"filePath": "frontend/src/features/tickets/ImportExport.tsx",
+"summary": "CSV import dialog with a dry-run check that reports valid, invalid and duplicate rows before anything is saved, plus download links for the ticket, execution and comparison CSV exports.",
+"tags": [
+"component",
+"csv-import",
+"csv-export",
+"dialog",
+"validation"
+]
+},
+{
+"id": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+"type": "file",
+"name": "NewTicketPage.tsx",
+"filePath": "frontend/src/features/tickets/NewTicketPage.tsx",
+"summary": "Page that loads the taxonomy, renders the ticket form and, once the API confirms creation, shows a success state with a link to the new ticket. No AI runs on creation.",
+"tags": [
+"component",
+"page",
+"ticket",
+"form"
+]
+},
+{
+"id": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"type": "file",
+"name": "TicketDetailPage.tsx",
+"filePath": "frontend/src/features/tickets/TicketDetailPage.tsx",
+"summary": "Ticket detail page composing ticket info, status select, edit form, final classification, AI results, internal notes and confirmed deletion. Status changes and edits appear only after the API confirms them.",
+"tags": [
+"component",
+"page",
+"ticket",
+"crud",
+"composition"
+]
+},
+{
+"id": "file:frontend/src/features/tickets/TicketForm.tsx",
+"type": "file",
+"name": "TicketForm.tsx",
+"filePath": "frontend/src/features/tickets/TicketForm.tsx",
+"summary": "Shared create and edit form for tickets, validated client-side with a Zod schema that mirrors the backend's schema. Blank optional fields are sent as null, and the description is kept untrimmed.",
+"tags": [
+"component",
+"form",
+"validation",
+"ticket",
+"accessibility"
+]
+},
+{
+"id": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"type": "file",
+"name": "TicketListPage.tsx",
+"filePath": "frontend/src/features/tickets/TicketListPage.tsx",
+"summary": "Ticket list page with search, taxonomy filters, sort and pagination kept in the URL, plus import and export actions. Rows navigate to the ticket and show its final classification and latest AI run.",
+"tags": [
+"component",
+"page",
+"ticket",
+"filtering",
+"pagination"
+]
+},
+{
+"id": "file:frontend/src/features/tickets/hooks.ts",
+"type": "file",
+"name": "hooks.ts",
+"filePath": "frontend/src/features/tickets/hooks.ts",
+"summary": "React Query hooks for ticket reads and writes, per-ticket AI runs and CSV import. Writes update the cache only after the API confirms them, and paid provider runs are never retried automatically.",
+"tags": [
+"hook",
+"data-fetching",
+"mutation",
+"ticket",
+"cache"
+]
+},
+{
+"id": "file:frontend/src/lib/format.ts",
+"type": "file",
+"name": "format.ts",
+"filePath": "frontend/src/lib/format.ts",
+"summary": "Display formatters for dates, durations, escalation, tokens and estimated costs, plus the labels that show the gpt provider as 'LLM'. Missing values render as an em dash.",
+"tags": [
+"utility",
+"formatting",
+"display",
+"cost"
+]
+},
+{
+"id": "file:frontend/src/lib/utils.ts",
+"type": "file",
+"name": "utils.ts",
+"filePath": "frontend/src/lib/utils.ts",
+"summary": "One-line re-export of the cn class-name merging helper from the external cn package, used by UI components.",
+"tags": [
+"utility",
+"barrel",
+"styling"
+]
+},
+{
+"id": "file:frontend/src/services/api.ts",
+"type": "file",
+"name": "api.ts",
+"filePath": "frontend/src/services/api.ts",
+"summary": "The frontend's single HTTP client for the TicketLens backend, with a typed fetch wrapper, an ApiError class and readable messages from FastAPI errors. The browser never calls Jev or OpenAI directly.",
+"tags": [
+"service",
+"http-client",
+"error-handling",
+"api-client"
+]
+},
+{
+"id": "file:frontend/src/services/queries.ts",
+"type": "file",
+"name": "queries.ts",
+"filePath": "frontend/src/services/queries.ts",
+"summary": "Shared React Query hooks for the taxonomy, cached indefinitely as fixed per backend version, and for provider configuration status, cached for one minute.",
+"tags": [
+"hook",
+"data-fetching",
+"taxonomy",
+"cache"
+]
+},
+{
+"id": "file:frontend/src/types/api.ts",
+"type": "file",
+"name": "api.ts",
+"filePath": "frontend/src/types/api.ts",
+"summary": "TypeScript shapes for every TicketLens API response and request, including tickets, executions, comparisons, imports and dashboard metrics. Enum-like values stay plain strings because the allowed values come from the taxonomy endpoint.",
+"tags": [
+"type-definition",
+"api-contract",
+"data-model",
+"typescript"
+]
+},
+{
+"id": "file:backend/app/api/__init__.py",
+"type": "file",
+"name": "__init__.py",
+"filePath": "backend/app/api/__init__.py",
+"summary": "Empty package marker that makes the API routers importable as app.api.",
+"tags": [
+"barrel",
+"python-package",
+"api"
+]
+},
+{
+"id": "file:backend/app/api/health.py",
+"type": "file",
+"name": "health.py",
+"filePath": "backend/app/api/health.py",
+"summary": "FastAPI router for process health and MongoDB readiness probes, returning 503 with a safe setup message when the database is unreachable.",
+"tags": [
+"api-handler",
+"health-check",
+"readiness",
+"mongodb",
+"tested"
+]
+},
+{
+"id": "file:backend/app/api/providers.py",
+"type": "file",
+"name": "providers.py",
+"filePath": "backend/app/api/providers.py",
+"summary": "FastAPI router reporting whether the Jev and LLM sides can run and their display labels, without exposing API key values.",
+"tags": [
+"api-handler",
+"provider-status",
+"security",
+"configuration",
+"tested"
+]
+},
+{
+"id": "file:backend/app/api/taxonomy.py",
+"type": "file",
+"name": "taxonomy.py",
+"filePath": "backend/app/api/taxonomy.py",
+"summary": "FastAPI router serving the canonical categories and enum values so the frontend reads the taxonomy rather than copying it.",
+"tags": [
+"api-handler",
+"taxonomy",
+"single-source-of-truth",
+"tested"
+]
+},
+{
+"id": "file:backend/app/core/__init__.py",
+"type": "file",
+"name": "__init__.py",
+"filePath": "backend/app/core/__init__.py",
+"summary": "Empty package marker for the core settings, taxonomy, and pricing modules.",
+"tags": [
+"barrel",
+"python-package",
+"core"
+]
+},
+{
+"id": "file:backend/app/core/settings.py",
+"type": "file",
+"name": "settings.py",
+"filePath": "backend/app/core/settings.py",
+"summary": "Typed backend settings and the only module that reads environment variables or backend/.env, covering MongoDB, provider backends, secrets, timeouts, and mock mode.",
+"tags": [
+"configuration",
+"settings",
+"secrets",
+"validation",
+"singleton",
+"tested"
+]
+},
+{
+"id": "file:backend/app/main.py",
+"type": "file",
+"name": "main.py",
+"filePath": "backend/app/main.py",
+"summary": "TicketLens API entry point whose application factory wires the MongoDB lifespan, CORS for the local frontend, all routers, and a 503 handler for database connection failures.",
+"tags": [
+"entry-point",
+"factory",
+"fastapi",
+"middleware",
+"error-handling",
+"tested"
+]
+},
+{
+"id": "file:backend/app/repositories/database.py",
+"type": "file",
+"name": "database.py",
+"filePath": "backend/app/repositories/database.py",
+"summary": "MongoDB access layer defining the client factory, readiness ping, index specifications, exact Decimal128 money codec, and shared read helpers.",
+"tags": [
+"database",
+"repository",
+"mongodb",
+"indexes",
+"serialization",
+"tested"
+]
+},
+{
+"id": "file:backend/scripts/init_db.py",
+"type": "file",
+"name": "init_db.py",
+"filePath": "backend/scripts/init_db.py",
+"summary": "Repeatable command-line script that creates all TicketLens MongoDB indexes and exits non-zero with setup guidance when the database is unreachable.",
+"tags": [
+"script",
+"database",
+"indexes",
+"entry-point",
+"idempotent",
+"tested"
+]
+},
+{
+"id": "file:backend/tests/conftest.py",
+"type": "file",
+"name": "conftest.py",
+"filePath": "backend/tests/conftest.py",
+"summary": "Shared pytest fixtures providing settings isolated from backend/.env and a throwaway MongoDB test database that skips tests when MongoDB is down.",
+"tags": [
+"test",
+"fixtures",
+"pytest",
+"mongodb"
+]
+},
+{
+"id": "file:backend/tests/test_app_starts.py",
+"type": "file",
+"name": "test_app_starts.py",
+"filePath": "backend/tests/test_app_starts.py",
+"summary": "Smoke tests confirming the app imports and serves Swagger UI and an OpenAPI schema titled TicketLens API.",
+"tags": [
+"test",
+"smoke-test",
+"openapi",
+"fastapi"
+]
+},
+{
+"id": "file:backend/tests/test_dashboard.py",
+"type": "file",
+"name": "test_dashboard.py",
+"filePath": "backend/tests/test_dashboard.py",
+"summary": "API tests for dashboard metrics, comparison listing and detail, and each ticket's latest run, including exclusion of fake runs from real metrics.",
+"tags": [
+"test",
+"dashboard",
+"comparisons",
+"api-test",
+"metrics"
+]
+},
+{
+"id": "file:backend/tests/test_health.py",
+"type": "file",
+"name": "test_health.py",
+"filePath": "backend/tests/test_health.py",
+"summary": "Tests the health and readiness endpoints with MongoDB reachable and unreachable, and checks connection credentials never reach the response.",
+"tags": [
+"test",
+"health-check",
+"readiness",
+"security"
+]
+},
+{
+"id": "file:backend/tests/test_indexes.py",
+"type": "file",
+"name": "test_indexes.py",
+"filePath": "backend/tests/test_indexes.py",
+"summary": "Tests that MongoDB index creation is correct and repeatable, that tickets without fingerprints do not collide, and that the init_db script reports success and failure.",
+"tags": [
+"test",
+"database",
+"indexes",
+"script"
+]
+},
+{
+"id": "file:backend/tests/test_runs_and_comparisons.py",
+"type": "file",
+"name": "test_runs_and_comparisons.py",
+"filePath": "backend/tests/test_runs_and_comparisons.py",
+"summary": "API tests for provider runs, agreement-counting comparisons, partial and unavailable outcomes, final answer selection, and keeping the chosen answer out of model input.",
+"tags": [
+"test",
+"provider-runs",
+"comparisons",
+"evaluation-integrity",
+"api-test"
+]
+},
+{
+"id": "file:backend/tests/test_settings.py",
+"type": "file",
+"name": "test_settings.py",
+"filePath": "backend/tests/test_settings.py",
+"summary": "Tests settings defaults, environment overrides, empty-value handling, secret masking, range validation, and that .env.example lists every setting.",
+"tags": [
+"test",
+"configuration",
+"settings",
+"secrets",
+"validation"
+]
+},
+{
+"id": "file:backend/tests/test_shell_support.py",
+"type": "file",
+"name": "test_shell_support.py",
+"filePath": "backend/tests/test_shell_support.py",
+"summary": "Tests the CORS allow-list for the configured frontend origin and that provider status reports readiness without revealing API keys.",
+"tags": [
+"test",
+"cors",
+"provider-status",
+"security"
+]
+},
+{
+"id": "file:backend/tests/test_taxonomy.py",
+"type": "file",
+"name": "test_taxonomy.py",
+"filePath": "backend/tests/test_taxonomy.py",
+"summary": "Tests that the canonical taxonomy matches the specification exactly, including enum values, valid category-subcategory pairs, and the taxonomy endpoint response.",
+"tags": [
+"test",
+"taxonomy",
+"validation",
+"specification"
+]
+},
+{
+"id": "file:backend/tests/test_tickets.py",
+"type": "file",
+"name": "test_tickets.py",
+"filePath": "backend/tests/test_tickets.py",
+"summary": "End-to-end API tests for ticket creation, updates, notes, classification, search, filtering, sorting, pagination, dependent-safe deletion, and database outage responses.",
+"tags": [
+"test",
+"tickets",
+"api-test",
+"crud",
+"search"
+]
+},
+{
+"id": "document:.context/DEPLOYMENT_DECISIONS.md",
+"type": "document",
+"name": "DEPLOYMENT_DECISIONS.md",
+"filePath": ".context/DEPLOYMENT_DECISIONS.md",
+"summary": "Lists the hosting, database, authentication, domain, backup and budget decisions the owner must make before any cloud deployment, plus non-negotiable constraints such as never deploying the no-auth demo publicly.",
+"tags": [
+"documentation",
+"deployment",
+"security",
+"decision-record"
+]
+},
+{
+"id": "document:.context/PROGRESS.md",
+"type": "document",
+"name": "PROGRESS.md",
+"filePath": ".context/PROGRESS.md",
+"summary": "Living status log of the 19-phase build: phase checklist, blockers, spec gaps and assumptions, and dated notes per phase. It also records the required fix to the sample dataset before any paid evaluation.",
+"tags": [
+"documentation",
+"project-status",
+"changelog",
+"development"
+]
+},
+{
+"id": "document:.context/ROADMAP.md",
+"type": "document",
+"name": "ROADMAP.md",
+"filePath": ".context/ROADMAP.md",
+"summary": "Plain-language table of all phases with where the owner's input is needed, followed by step-by-step owner plans for MongoDB, API keys, model and price choice, spend approval, dataset review and deployment decisions.",
+"tags": [
+"documentation",
+"roadmap",
+"project-planning",
+"owner-input"
+]
+},
+{
+"id": "document:.context/ai-evaluation.md",
+"type": "document",
+"name": "ai-evaluation.md",
+"filePath": ".context/ai-evaluation.md",
+"summary": "Specifies the shared classification contract and taxonomy, Jev and GPT adapter behaviour, fair comparison rules, the labelled dataset, execution logging, cost calculation, retries and privacy handling.",
+"tags": [
+"documentation",
+"ai-evaluation",
+"taxonomy",
+"cost-logging",
+"provider-contract"
+]
+},
+{
+"id": "document:.context/architecture.md",
+"type": "document",
+"name": "architecture.md",
+"filePath": ".context/architecture.md",
+"summary": "Describes the local-first system: React UI, FastAPI backend and local MongoDB, the provider adapter boundary, canonical provider input, request flows for runs, bulk, import and deletion, and the deployment boundary.",
+"tags": [
+"documentation",
+"architecture",
+"provider-adapters",
+"request-flows",
+"system-design"
+]
+},
+{
+"id": "document:.context/code-size-standards.md",
+"type": "document",
+"name": "code-size-standards.md",
+"filePath": ".context/code-size-standards.md",
+"summary": "Owner-mandated standards for keeping the codebase small without losing functionality or security: research basis, thresholds for sharing code, per-task rules, and enforcement through tools such as Ruff complexity checks.",
+"tags": [
+"documentation",
+"coding-standards",
+"code-quality",
+"development"
+]
+},
+{
+"id": "document:.context/data-model.md",
+"type": "document",
+"name": "data-model.md",
+"filePath": ".context/data-model.md",
+"summary": "Defines the `ticketlens` MongoDB collections (tickets, evaluation_labels, ai_executions, comparisons, bulk_jobs, app_settings, counters), their document shapes, required indexes and deletion behaviour.",
+"tags": [
+"documentation",
+"database",
+"schema-definition",
+"mongodb"
+]
+},
+{
+"id": "document:.context/design.md",
+"type": "document",
+"name": "design.md",
+"filePath": ".context/design.md",
+"summary": "Frontend design specification for a Linear-inspired dashboard: application shell, routes, each page's layout and states, CSV import/export UX, theme tokens, accessibility rules and non-goals.",
+"tags": [
+"documentation",
+"frontend-design",
+"ui-spec",
+"accessibility"
+]
+},
+{
+"id": "document:.context/implementation.md",
+"type": "document",
+"name": "implementation.md",
+"filePath": ".context/implementation.md",
+"summary": "Authoritative sequential build plan from Phase 0 repository setup to Phase 18 deployment readiness, with steps and acceptance criteria per phase and a final definition of done.",
+"tags": [
+"documentation",
+"implementation-plan",
+"acceptance-criteria",
+"project-planning"
+]
+},
+{
+"id": "document:.context/requirements.md",
+"type": "document",
+"name": "requirements.md",
+"filePath": ".context/requirements.md",
+"summary": "Product and technical requirements for TicketLens, a single-user demo for fictional marketplace ShopKart: ticket lifecycle and fields, classification taxonomy, provider behaviour, comparison, CSV, dashboard, settings and non-functional needs.",
+"tags": [
+"documentation",
+"requirements",
+"product-spec",
+"taxonomy"
+]
+},
+{
+"id": "table:.context/sample_tickets_100.csv:sample_tickets_100",
+"type": "table",
+"name": "sample_tickets_100.csv",
+"filePath": ".context/sample_tickets_100.csv",
+"summary": "100 fictional labelled ShopKart tickets, balanced across six categories and four channels, with expected category, subcategory, priority, sentiment and escalation columns. Every title equals its expected_subcategory, so it leaks a label and PROGRESS.md bars it from evaluation until corrected.",
+"tags": [
+"sample-data",
+"evaluation-dataset",
+"synthetic-data",
+"csv-import",
+"ground-truth"
+]
+},
+{
+"id": "table:.context/sample_tickets_template.csv:sample_tickets_template",
+"type": "table",
+"name": "sample_tickets_template.csv",
+"filePath": ".context/sample_tickets_template.csv",
+"summary": "Header-only CSV listing the 12 ticket import columns: seven ticket fields and five expected_* label fields. `test_csv.py` compares it to the importer's COLUMNS constant, which the template download endpoint uses to build its response.",
+"tags": [
+"csv-import",
+"template",
+"schema-definition",
+"data-format"
+]
+},
+{
+"id": "config:.mcp.json",
+"type": "config",
+"name": ".mcp.json",
+"filePath": ".mcp.json",
+"summary": "Project-scoped MCP server configuration that launches version-pinned Playwright and Chrome DevTools servers against an isolated Chrome for Testing binary. It limits Playwright to the local frontend and backend origins and turns off DevTools usage statistics and CrUX lookups while redacting network headers.",
+"tags": [
+"configuration",
+"mcp",
+"browser-automation",
+"ui-testing",
+"security"
+]
+},
+{
+"id": "document:AGENTS.md",
+"type": "document",
+"name": "AGENTS.md",
+"filePath": "AGENTS.md",
+"summary": "Operating instructions for autonomous coding agents, covering required spec reading order, autonomy expectations, technical guardrails, per-phase definition of done, developer-experience deliverables, and scope exclusions. Its guardrails fix key rules such as server-side secrets, a shared taxonomy, withholding ground-truth labels from models, and bounded retries.",
+"tags": [
+"documentation",
+"agent-instructions",
+"guardrails",
+"development",
+"scope"
+]
+},
+{
+"id": "document:CLAUDE.md",
+"type": "document",
+"name": "CLAUDE.md",
+"filePath": "CLAUDE.md",
+"summary": "Claude Code entry-point instructions that pull in AGENTS.md, point to the progress and build-order documents, and list the backend and frontend test, lint, and build commands. It also sets the rules for the engineering skills library, including routing, security, and which actions need owner approval.",
+"tags": [
+"documentation",
+"agent-instructions",
+"development",
+"entry-point",
+"skills-routing"
+]
+},
+{
+"id": "document:README.md",
+"type": "document",
+"name": "README.md",
+"filePath": "README.md",
+"summary": "Project overview for the single-user ShopKart ticket classification demo comparing Jev with a configurable GPT model, including a documentation map, stack summary, and local-first scope boundary. Its run guide covers MongoDB, backend, and frontend startup, Ollama-based local models, mock providers, health checks, and test-run reports.",
+"tags": [
+"documentation",
+"entry-point",
+"overview",
+"getting-started",
+"local-development"
+]
+},
+{
+"id": "config:backend/.env.example",
+"type": "config",
+"name": ".env.example",
+"filePath": "backend/.env.example",
+"summary": "Template of 21 backend environment variables covering the API host and port, local MongoDB connection, blank provider API keys, Jev and LLM backend selection (hosted or local Ollama), request timeouts and concurrency, mock-provider mode, and log level.",
+"tags": [
+"configuration",
+"environment-variables",
+"provider-selection",
+"mongodb",
+"developer-experience"
+]
+},
+{
+"id": "config:backend/pyproject.toml",
+"type": "config",
+"name": "pyproject.toml",
+"filePath": "backend/pyproject.toml",
+"summary": "Tool-only backend configuration that sets pytest test paths and Ruff linting for Python 3.13, including a 100-character line length, a McCabe complexity limit of 10, and a long-line exemption for the run-report HTML template.",
+"tags": [
+"configuration",
+"build-system",
+"linting",
+"testing",
+"python"
+]
+},
+{
+"id": "document:backend/requirements.txt",
+"type": "document",
+"name": "requirements.txt",
+"filePath": "backend/requirements.txt",
+"summary": "Pinned direct Python dependencies for the backend: FastAPI, Uvicorn, pydantic-settings, PyMongo and httpx at runtime, plus pytest and Ruff for testing and linting.",
+"tags": [
+"dependencies",
+"python",
+"build-system",
+"version-pinning"
+]
+},
+{
+"id": "document:e2e/personas/analysts/adversarial-input-tester.md",
+"type": "document",
+"name": "adversarial-input-tester.md",
+"filePath": "e2e/personas/analysts/adversarial-input-tester.md",
+"summary": "Test persona brief for an analyst who probes input handling with boundary lengths, hostile markup, malformed emails, double submits, and ticket text that tries to steer the model. It flags rendered markup, form and API validation mismatches, altered data, crashes, and models obeying instructions in ticket text.",
+"tags": [
+"documentation",
+"test-persona",
+"e2e-testing",
+"input-validation",
+"security"
+]
+},
+{
+"id": "document:e2e/personas/analysts/careful-power-user.md",
+"type": "document",
+"name": "careful-power-user.md",
+"filePath": "e2e/personas/analysts/careful-power-user.md",
+"summary": "Test persona brief for an experienced analyst who combines search, filters and sorting, compares Jev and GPT results field by field, and checks CSV exports against the screen. It flags mismatches across list, detail, comparison and export views, wrong counts, inconsistent numeric precision or units, and filter state lost on reload.",
+"tags": [
+"documentation",
+"test-persona",
+"e2e-testing",
+"data-consistency"
+]
+},
+{
+"id": "document:e2e/personas/analysts/first-time-user.md",
+"type": "document",
+"name": "first-time-user.md",
+"filePath": "e2e/personas/analysts/first-time-user.md",
+"summary": "Test persona brief for a newcomer who explores navigation and empty states, submits forms with missing or wrong fields, then corrects them. It checks that error messages say what to fix, empty states point to the next step, and placeholder pages explain themselves.",
+"tags": [
+"documentation",
+"test-persona",
+"e2e-testing",
+"usability",
+"onboarding"
+]
+},
+{
+"id": "document:e2e/personas/analysts/keyboard-screen-reader.md",
+"type": "document",
+"name": "keyboard-screen-reader.md",
+"filePath": "e2e/personas/analysts/keyboard-screen-reader.md",
+"summary": "Test persona brief for a user who navigates by keyboard only and reads pages through accessibility snapshots, intended to pair with the accessibility-specialist skill. It flags unreachable controls, lost or invisible focus, keyboard-inoperable selects, unannounced form errors, unlabelled controls, and dark-theme contrast problems.",
+"tags": [
+"documentation",
+"test-persona",
+"e2e-testing",
+"accessibility",
+"keyboard-navigation"
+]
+},
+{
+"id": "document:e2e/personas/analysts/rushed-operator.md",
+"type": "document",
+"name": "rushed-operator.md",
+"filePath": "e2e/personas/analysts/rushed-operator.md",
+"summary": "Test persona brief for a support analyst clearing a queue quickly by pasting text, double-clicking submit, using the back button mid-flow, and skipping optional fields. It flags duplicate tickets from double submits, input lost on navigating back, buttons left enabled while saving, and unclear loading states.",
+"tags": [
+"documentation",
+"test-persona",
+"e2e-testing",
+"idempotency",
+"loading-states"
+]
+},
+{
+"id": "document:e2e/personas/customers/angry-impatient.md",
+"type": "document",
+"name": "angry-impatient.md",
+"filePath": "e2e/personas/customers/angry-impatient.md",
+"summary": "E2E test persona for a frustrated repeat-contact customer who writes short, heated tickets with capitals and threats to leave, but no insults. Checks that classification finds the underlying issue rather than just 'Complaint' and that sentiment is Negative.",
+"tags": [
+"documentation",
+"test-persona",
+"e2e-testing",
+"sentiment",
+"classification"
+]
+},
+{
+"id": "document:e2e/personas/customers/casual-typos.md",
+"type": "document",
+"name": "casual-typos.md",
+"filePath": "e2e/personas/customers/casual-typos.md",
+"summary": "E2E test persona for a hurried phone user writing lowercase text with abbreviations, typos, emoji and everyday words instead of taxonomy terms. Checks that classification copes with noisy text and that the UI stores and shows emoji correctly.",
+"tags": [
+"documentation",
+"test-persona",
+"e2e-testing",
+"noisy-input",
+"classification"
+]
+},
+{
+"id": "document:e2e/personas/customers/non-native-english.md",
+"type": "document",
+"name": "non-native-english.md",
+"filePath": "e2e/personas/customers/non-native-english.md",
+"summary": "E2E test persona for a ShopKart customer writing understandable but imperfect English, with dropped articles and literal phrasing, and no other languages or transliteration. Checks that classification is robust to grammar variation.",
+"tags": [
+"documentation",
+"test-persona",
+"e2e-testing",
+"grammar-variation",
+"classification"
+]
+},
+{
+"id": "document:e2e/personas/customers/rambling-multi-issue.md",
+"type": "document",
+"name": "rambling-multi-issue.md",
+"filePath": "e2e/personas/customers/rambling-multi-issue.md",
+"summary": "E2E test persona for a customer who writes long, tangential tickets where the main ask arrives late alongside one minor issue from a different category. Checks that models pick the primary issue and handle long input, up to the 10,000-character description limit.",
+"tags": [
+"documentation",
+"test-persona",
+"e2e-testing",
+"long-input",
+"classification"
+]
+},
+{
+"id": "document:e2e/personas/customers/terse.md",
+"type": "document",
+"name": "terse.md",
+"filePath": "e2e/personas/customers/terse.md",
+"summary": "E2E test persona for a customer who writes one line or a fragment plus an order number, under about 12 words while staying classifiable. Checks classification with very little context and how confidence and priority behave.",
+"tags": [
+"documentation",
+"test-persona",
+"e2e-testing",
+"minimal-input",
+"classification"
+]
+},
+{
+"id": "document:e2e/personas/customers/vague.md",
+"type": "document",
+"name": "vague.md",
+"filePath": "e2e/personas/customers/vague.md",
+"summary": "E2E test persona for a polite, hedging customer whose ticket leaves out exactly one key detail, such as which order or what went wrong. Checks that models still land in the right category and that confidence drops sensibly.",
+"tags": [
+"documentation",
+"test-persona",
+"e2e-testing",
+"ambiguous-input",
+"classification"
+]
+},
+{
+"id": "config:frontend/.prettierrc.json",
+"type": "config",
+"name": ".prettierrc.json",
+"filePath": "frontend/.prettierrc.json",
+"summary": "Prettier configuration for the frontend that disables semicolons and otherwise keeps Prettier's default formatting rules.",
+"tags": [
+"configuration",
+"formatting",
+"prettier",
+"code-style"
+]
+},
+{
+"id": "config:frontend/components.json",
+"type": "config",
+"name": "components.json",
+"filePath": "frontend/components.json",
+"summary": "shadcn/ui CLI configuration selecting the radix-nova style, neutral base color with CSS variables, lucide icons, and the @/ alias locations where generated TSX components, hooks, and utilities are placed.",
+"tags": [
+"configuration",
+"shadcn-ui",
+"tailwind",
+"design-system",
+"path-alias"
+]
+},
+{
+"id": "file:frontend/index.html",
+"type": "file",
+"name": "index.html",
+"filePath": "frontend/index.html",
+"summary": "Vite HTML entry page for the TicketLens single-page app, providing the #root mount element and loading /src/main.tsx as an ES module.",
+"tags": [
+"entry-point",
+"html",
+"vite",
+"spa-shell"
+]
+},
+{
+"id": "config:frontend/package.json",
+"type": "config",
+"name": "package.json",
+"filePath": "frontend/package.json",
+"summary": "Private ES-module package manifest for the TicketLens frontend, defining Vite dev, build, and preview scripts plus ESLint and Prettier commands, with dependencies on React 19, React Router, TanStack Query, Radix UI, Recharts, and Zod.",
+"tags": [
+"configuration",
+"build-system",
+"dependencies",
+"npm-scripts",
+"vite"
+]
+},
+{
+"id": "config:frontend/tsconfig.app.json",
+"type": "config",
+"name": "tsconfig.app.json",
+"filePath": "frontend/tsconfig.app.json",
+"summary": "TypeScript project configuration for browser application code under src, targeting ES2023 and the DOM with bundler module resolution, react-jsx, no emit, unused-code checks, and the @/* path alias.",
+"tags": [
+"configuration",
+"typescript",
+"build-system",
+"react",
+"path-alias"
+]
+},
+{
+"id": "config:frontend/tsconfig.json",
+"type": "config",
+"name": "tsconfig.json",
+"filePath": "frontend/tsconfig.json",
+"summary": "Root TypeScript solution file that compiles no files itself and references the separate app and node projects while declaring the @/* path alias for tooling.",
+"tags": [
+"configuration",
+"typescript",
+"build-system",
+"project-references"
+]
+},
+{
+"id": "config:frontend/tsconfig.node.json",
+"type": "config",
+"name": "tsconfig.node.json",
+"filePath": "frontend/tsconfig.node.json",
+"summary": "TypeScript project configuration for Node-side build tooling, type-checking only vite.config.ts with nodenext modules, Node types, no emit, and unused-code checks.",
+"tags": [
+"configuration",
+"typescript",
+"build-system",
+"node",
+"vite"
+]
+},
+{
+"id": "config:.claude/settings.json",
+"type": "config",
+"name": "settings.json",
+"filePath": ".claude/settings.json",
+"summary": "Project Claude Code settings that allow read-only git and test commands, deny secret-file reads, docker and every git write, and add a prompt hook enforcing skill routing.",
+"tags": [
+"configuration",
+"security",
+"agent-tooling",
+"permissions",
+"hooks"
+]
+},
+{
+"id": "file:.gitattributes",
+"type": "file",
+"name": ".gitattributes",
+"filePath": ".gitattributes",
+"summary": "Git attributes that normalize text to LF, keep CSV spec data byte-for-byte (BOM and CRLF preserved), and mark images and fonts as binary.",
+"tags": [
+"configuration",
+"git",
+"line-endings",
+"build-system"
+]
+},
+{
+"id": "file:backend/app/__init__.py",
+"type": "file",
+"name": "__init__.py",
+"filePath": "backend/app/__init__.py",
+"summary": "Empty marker that makes the backend `app` directory a Python package.",
+"tags": [
+"python-package",
+"package-marker",
+"backend"
+]
+},
+{
+"id": "file:backend/app/jobs/__init__.py",
+"type": "file",
+"name": "__init__.py",
+"filePath": "backend/app/jobs/__init__.py",
+"summary": "Empty marker that makes the backend `app.jobs` directory a Python package.",
+"tags": [
+"python-package",
+"package-marker",
+"jobs"
+]
+},
+{
+"id": "file:backend/app/schemas/__init__.py",
+"type": "file",
+"name": "__init__.py",
+"filePath": "backend/app/schemas/__init__.py",
+"summary": "Empty marker that makes the backend `app.schemas` directory a Python package.",
+"tags": [
+"python-package",
+"package-marker",
+"schemas"
+]
+},
+{
+"id": "file:backend/tests/__init__.py",
+"type": "file",
+"name": "__init__.py",
+"filePath": "backend/tests/__init__.py",
+"summary": "Empty marker that makes the backend test directory a Python package.",
+"tags": [
+"python-package",
+"package-marker",
+"test"
+]
+},
+{
+"id": "document:e2e/README.md",
+"type": "document",
+"name": "README.md",
+"filePath": "e2e/README.md",
+"summary": "Guide to UI testing through the real interface, covering the isolated test stack, what each browser tool is for, commands, how to write test cases and personas, the unbuilt real-provider mode, and tool data-risk settings.",
+"tags": [
+"documentation",
+"testing",
+"e2e",
+"playwright",
+"development"
+]
+},
+{
+"id": "config:e2e/package.json",
+"type": "config",
+"name": "package.json",
+"filePath": "e2e/package.json",
+"summary": "Standalone npm package for UI testing that pins `@playwright/test` and `agent-browser` and defines scripts for the test stack, tests, baseline updates, reports, and a visible Chrome for Testing browser.",
+"tags": [
+"configuration",
+"testing",
+"e2e",
+"npm-scripts",
+"build-system"
+]
+},
+{
+"id": "document:e2e/personas/README.md",
+"type": "document",
+"name": "README.md",
+"filePath": "e2e/personas/README.md",
+"summary": "Explains how a persona run pairs a customer voice (how the ticket is written) with an analyst (how the app is used), and sets rules for synthetic data, taxonomy limits, and never typing expected labels.",
+"tags": [
+"documentation",
+"testing",
+"personas",
+"synthetic-data"
+]
+},
+{
+"id": "file:e2e/playwright.config.ts",
+"type": "file",
+"name": "playwright.config.ts",
+"filePath": "e2e/playwright.config.ts",
+"summary": "Playwright configuration that runs tests serially against the isolated stack on port 5174, on desktop and Pixel 7 Chromium projects, with a 1% screenshot diff tolerance and traces kept on failure.",
+"tags": [
+"config",
+"testing",
+"e2e",
+"playwright",
+"visual-regression"
+]
+},
+{
+"id": "file:e2e/scripts/reset_db.py",
+"type": "file",
+"name": "reset_db.py",
+"filePath": "e2e/scripts/reset_db.py",
+"summary": "Safety-guarded script that drops the UI-test MongoDB database so each stack start is clean, refusing any database name not ending in `_e2e`.",
+"tags": [
+"script",
+"testing",
+"database",
+"safety-guard",
+"e2e"
+]
+},
+{
+"id": "file:e2e/scripts/stack.sh",
+"type": "file",
+"name": "stack.sh",
+"filePath": "e2e/scripts/stack.sh",
+"summary": "Starts the isolated UI-test stack: resets `ticketlens_e2e`, launches the backend with mock providers on port 8001, waits for the database readiness check, then starts Vite on port 5174, and refuses real-provider mode.",
+"tags": [
+"script",
+"testing",
+"e2e",
+"process-management",
+"entry-point"
+]
+},
+{
+"id": "document:e2e/test-cases/TC-001-create-ticket.md",
+"type": "document",
+"name": "TC-001-create-ticket.md",
+"filePath": "e2e/test-cases/TC-001-create-ticket.md",
+"summary": "Test case for creating a duplicate-charge ticket and finding it again by search, with expected labels, field-validation outcomes, and visual checkpoints for desktop and mobile.",
+"tags": [
+"documentation",
+"testing",
+"test-case",
+"tickets"
+]
+},
+{
+"id": "document:e2e/test-cases/TEMPLATE.md",
+"type": "document",
+"name": "TEMPLATE.md",
+"filePath": "e2e/test-cases/TEMPLATE.md",
+"summary": "Copyable template for persona test cases, with sections for mode, personas, preconditions, ticket intent, expected labels, steps, expected results, and visual checkpoints.",
+"tags": [
+"documentation",
+"testing",
+"template",
+"test-case"
+]
+},
+{
+"id": "file:e2e/tests/smoke.spec.ts",
+"type": "file",
+"name": "smoke.spec.ts",
+"filePath": "e2e/tests/smoke.spec.ts",
+"summary": "End-to-end smoke test that creates a ticket through the form, finds it in the list and on its detail page, and checks pixel baselines with changing rows and totals masked.",
+"tags": [
+"test",
+"e2e",
+"playwright",
+"visual-regression",
+"tickets"
+]
+},
+{
+"id": "file:frontend/.prettierignore",
+"type": "file",
+"name": ".prettierignore",
+"filePath": "frontend/.prettierignore",
+"summary": "Prettier ignore list that excludes build output, dependencies, the lockfile, and generated shadcn components so their updates diff cleanly.",
+"tags": [
+"configuration",
+"formatting",
+"frontend",
+"shadcn"
+]
+},
+{
+"id": "file:frontend/eslint.config.js",
+"type": "file",
+"name": "eslint.config.js",
+"filePath": "frontend/eslint.config.js",
+"summary": "ESLint flat config for TypeScript and React that combines the recommended rule sets with Prettier, enforces a maximum complexity of 10, and relaxes the fast-refresh export rule for shadcn files.",
+"tags": [
+"config",
+"linting",
+"code-quality",
+"frontend",
+"build-system"
+]
+},
+{
+"id": "file:frontend/src/components/ui/sonner.tsx",
+"type": "file",
+"name": "sonner.tsx",
+"filePath": "frontend/src/components/ui/sonner.tsx",
+"summary": "shadcn wrapper around the Sonner toaster that follows the active theme, sets the status icons, and maps toast colors and radius to the app's design tokens.",
+"tags": [
+"component",
+"ui",
+"notifications",
+"theming",
+"shadcn"
+]
+},
+{
+"id": "file:frontend/src/features/settings/.gitkeep",
+"type": "file",
+"name": ".gitkeep",
+"filePath": "frontend/src/features/settings/.gitkeep",
+"summary": "Empty placeholder that keeps the settings feature directory in git.",
+"tags": [
+"placeholder",
+"git",
+"frontend"
+]
+},
+{
+"id": "file:frontend/src/index.css",
+"type": "file",
+"name": "index.css",
+"filePath": "frontend/src/index.css",
+"summary": "Global stylesheet that imports Tailwind and shadcn styles, defines the light and dark theme tokens, maps them into the Tailwind theme, and sets base element styles.",
+"tags": [
+"styles",
+"theming",
+"design-tokens",
+"tailwind",
+"frontend"
+]
+},
+{
+"id": "file:frontend/src/main.tsx",
+"type": "file",
+"name": "main.tsx",
+"filePath": "frontend/src/main.tsx",
+"summary": "React entry point that mounts the app under StrictMode with the theme provider (light by default, remembered per browser), TanStack Query client, router, and global toaster.",
+"tags": [
+"entry-point",
+"bootstrap",
+"providers",
+"react",
+"frontend"
+]
+},
+{
+"id": "file:frontend/src/services/.gitkeep",
+"type": "file",
+"name": ".gitkeep",
+"filePath": "frontend/src/services/.gitkeep",
+"summary": "Empty placeholder that keeps the frontend services directory in git.",
+"tags": [
+"placeholder",
+"git",
+"frontend"
+]
+},
+{
+"id": "file:frontend/src/types/.gitkeep",
+"type": "file",
+"name": ".gitkeep",
+"filePath": "frontend/src/types/.gitkeep",
+"summary": "Empty placeholder that keeps the frontend types directory in git.",
+"tags": [
+"placeholder",
+"git",
+"frontend"
+]
+},
+{
+"id": "file:frontend/vite.config.ts",
+"type": "file",
+"name": "vite.config.ts",
+"filePath": "frontend/vite.config.ts",
+"summary": "Vite configuration with the React and Tailwind plugins, the `@` alias for `src`, and a dev server fixed to localhost:5173 because the backend allows exactly that CORS origin.",
+"tags": [
+"config",
+"build-system",
+"vite",
+"frontend",
+"dev-server"
+]
+}
+],
+"importEdges": [
+{
+"source": "file:backend/app/api/dashboard.py",
+"target": "file:backend/app/api/deps.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/dashboard.py",
+"target": "file:backend/app/services/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/dashboard.py",
+"target": "file:backend/app/services/dashboard.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/executions.py",
+"target": "file:backend/app/api/deps.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/executions.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/executions.py",
+"target": "file:backend/app/repositories/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/executions.py",
+"target": "file:backend/app/repositories/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/executions.py",
+"target": "file:backend/app/schemas/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/imports.py",
+"target": "file:backend/app/api/deps.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/imports.py",
+"target": "file:backend/app/schemas/imports.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/imports.py",
+"target": "file:backend/app/services/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/imports.py",
+"target": "file:backend/app/services/csv_export.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/imports.py",
+"target": "file:backend/app/services/csv_import.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/runs.py",
+"target": "file:backend/app/api/deps.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/runs.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/runs.py",
+"target": "file:backend/app/repositories/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/runs.py",
+"target": "file:backend/app/repositories/tickets.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/runs.py",
+"target": "file:backend/app/schemas/comparisons.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/runs.py",
+"target": "file:backend/app/schemas/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/runs.py",
+"target": "file:backend/app/services/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/runs.py",
+"target": "file:backend/app/services/comparisons.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/runs.py",
+"target": "file:backend/app/services/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/tickets.py",
+"target": "file:backend/app/api/deps.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/tickets.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/tickets.py",
+"target": "file:backend/app/repositories/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/tickets.py",
+"target": "file:backend/app/repositories/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/tickets.py",
+"target": "file:backend/app/repositories/tickets.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/tickets.py",
+"target": "file:backend/app/schemas/classification.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/tickets.py",
+"target": "file:backend/app/schemas/tickets.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/tickets.py",
+"target": "file:backend/app/services/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/repositories/tickets.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/schemas/comparisons.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/comparisons.py",
+"target": "file:backend/app/core/clock.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/comparisons.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/comparisons.py",
+"target": "file:backend/app/repositories/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/comparisons.py",
+"target": "file:backend/app/repositories/comparisons.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/comparisons.py",
+"target": "file:backend/app/repositories/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/csv_export.py",
+"target": "file:backend/app/repositories/database.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/csv_export.py",
+"target": "file:backend/app/services/csv_import.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/csv_import.py",
+"target": "file:backend/app/core/clock.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/csv_import.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/csv_import.py",
+"target": "file:backend/app/repositories/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/csv_import.py",
+"target": "file:backend/app/repositories/labels.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/csv_import.py",
+"target": "file:backend/app/schemas/classification.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/csv_import.py",
+"target": "file:backend/app/schemas/imports.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/csv_import.py",
+"target": "file:backend/app/schemas/tickets.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/csv_import.py",
+"target": "file:backend/app/services/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/dashboard.py",
+"target": "file:backend/app/repositories/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/dashboard.py",
+"target": "file:backend/app/repositories/comparisons.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/dashboard.py",
+"target": "file:backend/app/repositories/database.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/dashboard.py",
+"target": "file:backend/app/repositories/tickets.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/dashboard.py",
+"target": "file:backend/app/services/run_metrics.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/run_report.py",
+"target": "file:backend/app/services/run_metrics.py",
+"type": "imports"
+},
+{
+"source": "file:backend/scripts/run_report.py",
+"target": "file:backend/app/core/clock.py",
+"type": "imports"
+},
+{
+"source": "file:backend/scripts/run_report.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/scripts/run_report.py",
+"target": "file:backend/app/repositories/database.py",
+"type": "imports"
+},
+{
+"source": "file:backend/scripts/run_report.py",
+"target": "file:backend/app/services/dashboard.py",
+"type": "imports"
+},
+{
+"source": "file:backend/scripts/run_report.py",
+"target": "file:backend/app/services/run_metrics.py",
+"type": "imports"
+},
+{
+"source": "file:backend/scripts/run_report.py",
+"target": "file:backend/app/services/run_report.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_csv.py",
+"target": "file:backend/app/main.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_csv.py",
+"target": "file:backend/app/services/csv_import.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_run_metrics.py",
+"target": "file:backend/app/services/run_metrics.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/core/pricing.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/core/pricing.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/core/pricing.py",
+"target": "file:backend/app/schemas/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/base.py",
+"target": "file:backend/app/core/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/base.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/base.py",
+"target": "file:backend/app/schemas/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/definitions.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/http.py",
+"target": "file:backend/app/providers/base.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/jev.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/jev.py",
+"target": "file:backend/app/providers/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/jev.py",
+"target": "file:backend/app/providers/base.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/jev.py",
+"target": "file:backend/app/providers/http.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/jev.py",
+"target": "file:backend/app/schemas/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/mock.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/mock.py",
+"target": "file:backend/app/providers/base.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/mock.py",
+"target": "file:backend/app/schemas/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/ollama.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/ollama.py",
+"target": "file:backend/app/providers/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/ollama.py",
+"target": "file:backend/app/providers/base.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/ollama.py",
+"target": "file:backend/app/providers/http.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/ollama.py",
+"target": "file:backend/app/schemas/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/registry.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/registry.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/registry.py",
+"target": "file:backend/app/providers/base.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/registry.py",
+"target": "file:backend/app/providers/jev.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/registry.py",
+"target": "file:backend/app/providers/mock.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/registry.py",
+"target": "file:backend/app/providers/ollama.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/schemas/bulk_jobs.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/schemas/classification.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/schemas/executions.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/schemas/executions.py",
+"target": "file:backend/app/schemas/classification.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/schemas/tickets.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/schemas/tickets.py",
+"target": "file:backend/app/schemas/classification.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/executions.py",
+"target": "file:backend/app/core/clock.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/executions.py",
+"target": "file:backend/app/core/pricing.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/executions.py",
+"target": "file:backend/app/core/redaction.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/executions.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/executions.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/executions.py",
+"target": "file:backend/app/providers/base.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/executions.py",
+"target": "file:backend/app/providers/registry.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/executions.py",
+"target": "file:backend/app/repositories/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/executions.py",
+"target": "file:backend/app/repositories/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/executions.py",
+"target": "file:backend/app/schemas/classification.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/executions.py",
+"target": "file:backend/app/schemas/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/tickets.py",
+"target": "file:backend/app/core/clock.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/tickets.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/tickets.py",
+"target": "file:backend/app/repositories/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/tickets.py",
+"target": "file:backend/app/repositories/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/tickets.py",
+"target": "file:backend/app/repositories/tickets.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/tickets.py",
+"target": "file:backend/app/schemas/classification.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/tickets.py",
+"target": "file:backend/app/schemas/tickets.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_execution_log.py",
+"target": "file:backend/app/core/pricing.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_execution_log.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_execution_log.py",
+"target": "file:backend/app/main.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_execution_log.py",
+"target": "file:backend/app/providers/base.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_execution_log.py",
+"target": "file:backend/app/providers/mock.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_execution_log.py",
+"target": "file:backend/app/schemas/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_live_adapters.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_live_adapters.py",
+"target": "file:backend/app/providers/base.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_live_adapters.py",
+"target": "file:backend/app/providers/jev.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_live_adapters.py",
+"target": "file:backend/app/providers/ollama.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_live_adapters.py",
+"target": "file:backend/app/providers/registry.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_live_adapters.py",
+"target": "file:backend/app/schemas/classification.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_live_adapters.py",
+"target": "file:backend/tests/test_providers.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_providers.py",
+"target": "file:backend/app/core/redaction.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_providers.py",
+"target": "file:backend/app/providers/base.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_providers.py",
+"target": "file:backend/app/providers/mock.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_providers.py",
+"target": "file:backend/app/schemas/classification.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_providers.py",
+"target": "file:backend/app/schemas/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_providers.py",
+"target": "file:backend/app/services/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_schemas.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_schemas.py",
+"target": "file:backend/app/schemas/bulk_jobs.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_schemas.py",
+"target": "file:backend/app/schemas/classification.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_schemas.py",
+"target": "file:backend/app/schemas/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_schemas.py",
+"target": "file:backend/app/schemas/tickets.py",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/AppShell.tsx",
+"target": "file:frontend/src/components/ui/badge.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/AppShell.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/AppShell.tsx",
+"target": "file:frontend/src/components/ui/input.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/AppShell.tsx",
+"target": "file:frontend/src/components/ui/sheet.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/AppShell.tsx",
+"target": "file:frontend/src/lib/utils.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/AppShell.tsx",
+"target": "file:frontend/src/services/queries.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/PlaceholderPage.tsx",
+"target": "file:frontend/src/components/states.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/router.tsx",
+"target": "file:frontend/src/app/AppShell.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/router.tsx",
+"target": "file:frontend/src/app/PlaceholderPage.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/router.tsx",
+"target": "file:frontend/src/features/compare/ComparePage.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/router.tsx",
+"target": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/router.tsx",
+"target": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/router.tsx",
+"target": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/router.tsx",
+"target": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/router.tsx",
+"target": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/router.tsx",
+"target": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/router.tsx",
+"target": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/router.tsx",
+"target": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/components/ConfirmDialog.tsx",
+"target": "file:frontend/src/components/ui/alert-dialog.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/components/ListControls.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/components/ListControls.tsx",
+"target": "file:frontend/src/components/ui/select.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/components/states.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/components/ui/alert-dialog.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/components/ui/dialog.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/components/ui/sheet.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ComparePage.tsx",
+"target": "file:frontend/src/components/states.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ComparePage.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ComparePage.tsx",
+"target": "file:frontend/src/components/ui/card.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ComparePage.tsx",
+"target": "file:frontend/src/components/ui/input.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ComparePage.tsx",
+"target": "file:frontend/src/features/compare/ProviderColumn.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ComparePage.tsx",
+"target": "file:frontend/src/features/compare/useCompareRun.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ComparePage.tsx",
+"target": "file:frontend/src/features/tickets/TicketForm.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ComparePage.tsx",
+"target": "file:frontend/src/features/tickets/hooks.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ComparePage.tsx",
+"target": "file:frontend/src/services/queries.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ComparePage.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+"target": "file:frontend/src/components/ui/badge.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+"target": "file:frontend/src/components/ui/card.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+"target": "file:frontend/src/features/compare/useCompareRun.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+"target": "file:frontend/src/lib/format.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/useCompareRun.ts",
+"target": "file:frontend/src/services/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/useCompareRun.ts",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+"target": "file:frontend/src/components/states.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+"target": "file:frontend/src/features/compare/ProviderColumn.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+"target": "file:frontend/src/features/compare/useCompareRun.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+"target": "file:frontend/src/lib/format.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+"target": "file:frontend/src/services/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+"target": "file:frontend/src/components/states.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+"target": "file:frontend/src/components/ui/badge.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+"target": "file:frontend/src/components/ui/table.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+"target": "file:frontend/src/features/comparisons/hooks.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+"target": "file:frontend/src/lib/format.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/hooks.ts",
+"target": "file:frontend/src/services/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/hooks.ts",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+"target": "file:frontend/src/components/states.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+"target": "file:frontend/src/components/ui/card.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+"target": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+"target": "file:frontend/src/features/comparisons/hooks.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+"target": "file:frontend/src/lib/format.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+"target": "file:frontend/src/services/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+"target": "file:frontend/src/components/Detail.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+"target": "file:frontend/src/components/states.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+"target": "file:frontend/src/components/ui/card.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+"target": "file:frontend/src/lib/format.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+"target": "file:frontend/src/services/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+"target": "file:frontend/src/components/ListControls.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+"target": "file:frontend/src/components/states.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+"target": "file:frontend/src/components/ui/input.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+"target": "file:frontend/src/components/ui/label.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+"target": "file:frontend/src/components/ui/table.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+"target": "file:frontend/src/lib/format.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+"target": "file:frontend/src/services/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+"target": "file:frontend/src/services/queries.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/AiResults.tsx",
+"target": "file:frontend/src/components/states.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/AiResults.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/AiResults.tsx",
+"target": "file:frontend/src/components/ui/card.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/AiResults.tsx",
+"target": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/AiResults.tsx",
+"target": "file:frontend/src/features/comparisons/hooks.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/AiResults.tsx",
+"target": "file:frontend/src/features/tickets/hooks.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/AiResults.tsx",
+"target": "file:frontend/src/lib/format.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/AiResults.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+"target": "file:frontend/src/components/Detail.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+"target": "file:frontend/src/components/states.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+"target": "file:frontend/src/components/ui/card.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+"target": "file:frontend/src/components/ui/label.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+"target": "file:frontend/src/components/ui/select.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+"target": "file:frontend/src/features/tickets/hooks.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+"target": "file:frontend/src/lib/format.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+"target": "file:frontend/src/services/queries.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/ImportExport.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/ImportExport.tsx",
+"target": "file:frontend/src/components/ui/dialog.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/ImportExport.tsx",
+"target": "file:frontend/src/components/ui/input.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/ImportExport.tsx",
+"target": "file:frontend/src/components/ui/table.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/ImportExport.tsx",
+"target": "file:frontend/src/features/tickets/hooks.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/ImportExport.tsx",
+"target": "file:frontend/src/services/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/ImportExport.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+"target": "file:frontend/src/components/states.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+"target": "file:frontend/src/features/tickets/TicketForm.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+"target": "file:frontend/src/features/tickets/hooks.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+"target": "file:frontend/src/services/queries.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/components/ConfirmDialog.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/components/Detail.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/components/states.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/components/ui/card.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/components/ui/select.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/components/ui/textarea.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/features/tickets/AiResults.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/features/tickets/FinalClassification.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/features/tickets/TicketForm.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/features/tickets/hooks.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/lib/format.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/services/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/services/queries.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketForm.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketForm.tsx",
+"target": "file:frontend/src/components/ui/input.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketForm.tsx",
+"target": "file:frontend/src/components/ui/label.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketForm.tsx",
+"target": "file:frontend/src/components/ui/select.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketForm.tsx",
+"target": "file:frontend/src/components/ui/textarea.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketForm.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/components/ListControls.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/components/states.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/components/ui/badge.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/components/ui/input.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/components/ui/select.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/components/ui/table.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/features/tickets/ImportExport.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/features/tickets/hooks.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/lib/format.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/services/queries.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/hooks.ts",
+"target": "file:frontend/src/services/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/hooks.ts",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/services/queries.ts",
+"target": "file:frontend/src/services/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/services/queries.ts",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/health.py",
+"target": "file:backend/app/repositories/database.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/providers.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/providers.py",
+"target": "file:backend/app/providers/registry.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/taxonomy.py",
+"target": "file:backend/app/core/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/taxonomy.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/main.py",
+"target": "file:backend/app/api/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/main.py",
+"target": "file:backend/app/api/dashboard.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/main.py",
+"target": "file:backend/app/api/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/main.py",
+"target": "file:backend/app/api/health.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/main.py",
+"target": "file:backend/app/api/imports.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/main.py",
+"target": "file:backend/app/api/providers.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/main.py",
+"target": "file:backend/app/api/runs.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/main.py",
+"target": "file:backend/app/api/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/main.py",
+"target": "file:backend/app/api/tickets.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/main.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/main.py",
+"target": "file:backend/app/repositories/database.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/repositories/database.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/scripts/init_db.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/scripts/init_db.py",
+"target": "file:backend/app/repositories/database.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/conftest.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_app_starts.py",
+"target": "file:backend/app/main.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_dashboard.py",
+"target": "file:backend/app/main.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_health.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_health.py",
+"target": "file:backend/app/main.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_health.py",
+"target": "file:backend/tests/conftest.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_indexes.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_indexes.py",
+"target": "file:backend/app/repositories/database.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_indexes.py",
+"target": "file:backend/tests/conftest.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_runs_and_comparisons.py",
+"target": "file:backend/app/main.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_settings.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_shell_support.py",
+"target": "file:backend/app/main.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_taxonomy.py",
+"target": "file:backend/app/core/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_taxonomy.py",
+"target": "file:backend/app/main.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_tickets.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_tickets.py",
+"target": "file:backend/app/main.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_tickets.py",
+"target": "file:backend/app/repositories/tickets.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_tickets.py",
+"target": "file:backend/tests/conftest.py",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/main.tsx",
+"target": "file:frontend/src/app/router.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/main.tsx",
+"target": "file:frontend/src/components/ui/sonner.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/main.tsx",
+"target": "file:frontend/src/index.css",
+"type": "imports"
+},
+{
+"source": "file:e2e/scripts/reset_db.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+}
+],
+"allEdges": [
+{
+"source": "file:backend/app/api/dashboard.py",
+"target": "file:backend/app/api/deps.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/dashboard.py",
+"target": "file:backend/app/services/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/dashboard.py",
+"target": "file:backend/app/services/dashboard.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/executions.py",
+"target": "file:backend/app/api/deps.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/executions.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/executions.py",
+"target": "file:backend/app/repositories/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/executions.py",
+"target": "file:backend/app/repositories/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/executions.py",
+"target": "file:backend/app/schemas/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/imports.py",
+"target": "file:backend/app/api/deps.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/imports.py",
+"target": "file:backend/app/schemas/imports.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/imports.py",
+"target": "file:backend/app/services/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/imports.py",
+"target": "file:backend/app/services/csv_export.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/imports.py",
+"target": "file:backend/app/services/csv_import.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/runs.py",
+"target": "file:backend/app/api/deps.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/runs.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/runs.py",
+"target": "file:backend/app/repositories/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/runs.py",
+"target": "file:backend/app/repositories/tickets.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/runs.py",
+"target": "file:backend/app/schemas/comparisons.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/runs.py",
+"target": "file:backend/app/schemas/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/runs.py",
+"target": "file:backend/app/services/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/runs.py",
+"target": "file:backend/app/services/comparisons.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/runs.py",
+"target": "file:backend/app/services/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/tickets.py",
+"target": "file:backend/app/api/deps.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/tickets.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/tickets.py",
+"target": "file:backend/app/repositories/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/tickets.py",
+"target": "file:backend/app/repositories/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/tickets.py",
+"target": "file:backend/app/repositories/tickets.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/tickets.py",
+"target": "file:backend/app/schemas/classification.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/tickets.py",
+"target": "file:backend/app/schemas/tickets.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/tickets.py",
+"target": "file:backend/app/services/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/tickets.py",
+"target": "file:backend/app/services/tickets.py",
+"type": "depends_on"
+},
+{
+"source": "file:backend/app/api/imports.py",
+"target": "file:backend/tests/test_csv.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/repositories/tickets.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/repositories/tickets.py",
+"target": "file:backend/tests/test_tickets.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/schemas/comparisons.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/comparisons.py",
+"target": "file:backend/app/core/clock.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/comparisons.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/comparisons.py",
+"target": "file:backend/app/repositories/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/comparisons.py",
+"target": "file:backend/app/repositories/comparisons.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/comparisons.py",
+"target": "file:backend/app/repositories/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/csv_export.py",
+"target": "file:backend/app/repositories/database.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/csv_export.py",
+"target": "file:backend/app/services/csv_import.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/csv_import.py",
+"target": "file:backend/app/core/clock.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/csv_import.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/csv_import.py",
+"target": "file:backend/app/repositories/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/csv_import.py",
+"target": "file:backend/app/repositories/labels.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/csv_import.py",
+"target": "file:backend/app/schemas/classification.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/csv_import.py",
+"target": "file:backend/app/schemas/imports.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/csv_import.py",
+"target": "file:backend/app/schemas/tickets.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/csv_import.py",
+"target": "file:backend/app/services/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/csv_import.py",
+"target": "file:backend/app/services/tickets.py",
+"type": "depends_on"
+},
+{
+"source": "file:backend/app/services/csv_import.py",
+"target": "file:backend/app/repositories/tickets.py",
+"type": "depends_on"
+},
+{
+"source": "file:backend/app/services/csv_import.py",
+"target": "file:backend/tests/test_csv.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/services/csv_export.py",
+"target": "file:backend/tests/test_csv.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/services/dashboard.py",
+"target": "file:backend/app/repositories/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/dashboard.py",
+"target": "file:backend/app/repositories/comparisons.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/dashboard.py",
+"target": "file:backend/app/repositories/database.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/dashboard.py",
+"target": "file:backend/app/repositories/tickets.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/dashboard.py",
+"target": "file:backend/app/services/run_metrics.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/run_report.py",
+"target": "file:backend/app/services/run_metrics.py",
+"type": "imports"
+},
+{
+"source": "file:backend/scripts/run_report.py",
+"target": "file:backend/app/core/clock.py",
+"type": "imports"
+},
+{
+"source": "file:backend/scripts/run_report.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/scripts/run_report.py",
+"target": "file:backend/app/repositories/database.py",
+"type": "imports"
+},
+{
+"source": "file:backend/scripts/run_report.py",
+"target": "file:backend/app/services/dashboard.py",
+"type": "imports"
+},
+{
+"source": "file:backend/scripts/run_report.py",
+"target": "file:backend/app/services/run_metrics.py",
+"type": "imports"
+},
+{
+"source": "file:backend/scripts/run_report.py",
+"target": "file:backend/app/services/run_report.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_csv.py",
+"target": "file:backend/app/main.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_csv.py",
+"target": "file:backend/app/services/csv_import.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_run_metrics.py",
+"target": "file:backend/app/services/run_metrics.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/run_metrics.py",
+"target": "file:backend/tests/test_run_metrics.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/core/pricing.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/core/pricing.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/core/pricing.py",
+"target": "file:backend/app/schemas/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/base.py",
+"target": "file:backend/app/core/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/base.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/base.py",
+"target": "file:backend/app/schemas/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/definitions.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/http.py",
+"target": "file:backend/app/providers/base.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/core/pricing.py",
+"target": "file:backend/tests/test_execution_log.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/providers/base.py",
+"target": "file:backend/tests/test_live_adapters.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/providers/http.py",
+"target": "file:backend/tests/test_live_adapters.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/core/redaction.py",
+"target": "file:backend/tests/test_providers.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/providers/base.py",
+"target": "file:backend/tests/test_providers.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/providers/jev.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/jev.py",
+"target": "file:backend/app/providers/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/jev.py",
+"target": "file:backend/app/providers/base.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/jev.py",
+"target": "file:backend/app/providers/http.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/jev.py",
+"target": "file:backend/app/schemas/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/mock.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/mock.py",
+"target": "file:backend/app/providers/base.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/mock.py",
+"target": "file:backend/app/schemas/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/ollama.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/ollama.py",
+"target": "file:backend/app/providers/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/ollama.py",
+"target": "file:backend/app/providers/base.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/ollama.py",
+"target": "file:backend/app/providers/http.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/ollama.py",
+"target": "file:backend/app/schemas/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/registry.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/registry.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/registry.py",
+"target": "file:backend/app/providers/base.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/registry.py",
+"target": "file:backend/app/providers/jev.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/registry.py",
+"target": "file:backend/app/providers/mock.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/registry.py",
+"target": "file:backend/app/providers/ollama.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/schemas/bulk_jobs.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/schemas/classification.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/schemas/executions.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/schemas/executions.py",
+"target": "file:backend/app/schemas/classification.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/providers/jev.py",
+"target": "file:backend/app/providers/definitions.py",
+"type": "depends_on"
+},
+{
+"source": "file:backend/app/providers/ollama.py",
+"target": "file:backend/app/providers/definitions.py",
+"type": "depends_on"
+},
+{
+"source": "file:backend/app/schemas/executions.py",
+"target": "file:backend/tests/test_execution_log.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/providers/mock.py",
+"target": "file:backend/tests/test_execution_log.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/providers/jev.py",
+"target": "file:backend/tests/test_live_adapters.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/providers/ollama.py",
+"target": "file:backend/tests/test_live_adapters.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/providers/registry.py",
+"target": "file:backend/tests/test_live_adapters.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/providers/mock.py",
+"target": "file:backend/tests/test_providers.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/schemas/classification.py",
+"target": "file:backend/tests/test_providers.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/schemas/bulk_jobs.py",
+"target": "file:backend/tests/test_schemas.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/schemas/classification.py",
+"target": "file:backend/tests/test_schemas.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/schemas/executions.py",
+"target": "file:backend/tests/test_schemas.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/schemas/tickets.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/schemas/tickets.py",
+"target": "file:backend/app/schemas/classification.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/executions.py",
+"target": "file:backend/app/core/clock.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/executions.py",
+"target": "file:backend/app/core/pricing.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/executions.py",
+"target": "file:backend/app/core/redaction.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/executions.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/executions.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/executions.py",
+"target": "file:backend/app/providers/base.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/executions.py",
+"target": "file:backend/app/providers/registry.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/executions.py",
+"target": "file:backend/app/repositories/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/executions.py",
+"target": "file:backend/app/repositories/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/executions.py",
+"target": "file:backend/app/schemas/classification.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/executions.py",
+"target": "file:backend/app/schemas/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/tickets.py",
+"target": "file:backend/app/core/clock.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/tickets.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/tickets.py",
+"target": "file:backend/app/repositories/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/tickets.py",
+"target": "file:backend/app/repositories/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/tickets.py",
+"target": "file:backend/app/repositories/tickets.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/tickets.py",
+"target": "file:backend/app/schemas/classification.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/services/tickets.py",
+"target": "file:backend/app/schemas/tickets.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_execution_log.py",
+"target": "file:backend/app/core/pricing.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_execution_log.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_execution_log.py",
+"target": "file:backend/app/main.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_execution_log.py",
+"target": "file:backend/app/providers/base.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_execution_log.py",
+"target": "file:backend/app/providers/mock.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_execution_log.py",
+"target": "file:backend/app/schemas/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_live_adapters.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_live_adapters.py",
+"target": "file:backend/app/providers/base.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_live_adapters.py",
+"target": "file:backend/app/providers/jev.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_live_adapters.py",
+"target": "file:backend/app/providers/ollama.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_live_adapters.py",
+"target": "file:backend/app/providers/registry.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_live_adapters.py",
+"target": "file:backend/app/schemas/classification.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_live_adapters.py",
+"target": "file:backend/tests/test_providers.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_providers.py",
+"target": "file:backend/app/core/redaction.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_providers.py",
+"target": "file:backend/app/providers/base.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_providers.py",
+"target": "file:backend/app/providers/mock.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_providers.py",
+"target": "file:backend/app/schemas/classification.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_providers.py",
+"target": "file:backend/app/schemas/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_providers.py",
+"target": "file:backend/app/services/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_schemas.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_schemas.py",
+"target": "file:backend/app/schemas/bulk_jobs.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_schemas.py",
+"target": "file:backend/app/schemas/classification.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_schemas.py",
+"target": "file:backend/app/schemas/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_schemas.py",
+"target": "file:backend/app/schemas/tickets.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/main.py",
+"target": "file:backend/tests/test_execution_log.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/services/executions.py",
+"target": "file:backend/tests/test_execution_log.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/services/executions.py",
+"target": "file:backend/tests/test_providers.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/schemas/tickets.py",
+"target": "file:backend/tests/test_schemas.py",
+"type": "tested_by"
+},
+{
+"source": "file:frontend/src/app/AppShell.tsx",
+"target": "file:frontend/src/components/ui/badge.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/AppShell.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/AppShell.tsx",
+"target": "file:frontend/src/components/ui/input.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/AppShell.tsx",
+"target": "file:frontend/src/components/ui/sheet.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/AppShell.tsx",
+"target": "file:frontend/src/lib/utils.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/AppShell.tsx",
+"target": "file:frontend/src/services/queries.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/PlaceholderPage.tsx",
+"target": "file:frontend/src/components/states.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/router.tsx",
+"target": "file:frontend/src/app/AppShell.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/router.tsx",
+"target": "file:frontend/src/app/PlaceholderPage.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/router.tsx",
+"target": "file:frontend/src/features/compare/ComparePage.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/router.tsx",
+"target": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/router.tsx",
+"target": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/router.tsx",
+"target": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/router.tsx",
+"target": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/router.tsx",
+"target": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/router.tsx",
+"target": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/router.tsx",
+"target": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/router.tsx",
+"target": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/components/ConfirmDialog.tsx",
+"target": "file:frontend/src/components/ui/alert-dialog.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/components/ListControls.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/components/ListControls.tsx",
+"target": "file:frontend/src/components/ui/select.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/components/states.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/app/AppShell.tsx",
+"target": "file:frontend/src/services/queries.ts",
+"type": "depends_on"
+},
+{
+"source": "file:frontend/src/components/ui/alert-dialog.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/components/ui/dialog.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/components/ui/sheet.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ComparePage.tsx",
+"target": "file:frontend/src/components/states.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ComparePage.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ComparePage.tsx",
+"target": "file:frontend/src/components/ui/card.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ComparePage.tsx",
+"target": "file:frontend/src/components/ui/input.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ComparePage.tsx",
+"target": "file:frontend/src/features/compare/ProviderColumn.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ComparePage.tsx",
+"target": "file:frontend/src/features/compare/useCompareRun.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ComparePage.tsx",
+"target": "file:frontend/src/features/tickets/TicketForm.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ComparePage.tsx",
+"target": "file:frontend/src/features/tickets/hooks.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ComparePage.tsx",
+"target": "file:frontend/src/services/queries.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ComparePage.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+"target": "file:frontend/src/components/ui/badge.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+"target": "file:frontend/src/components/ui/card.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+"target": "file:frontend/src/features/compare/useCompareRun.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+"target": "file:frontend/src/lib/format.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/ComparePage.tsx",
+"target": "file:frontend/src/features/compare/useCompareRun.ts",
+"type": "depends_on"
+},
+{
+"source": "file:frontend/src/features/compare/ComparePage.tsx",
+"target": "file:frontend/src/features/tickets/hooks.ts",
+"type": "depends_on"
+},
+{
+"source": "file:frontend/src/features/compare/ComparePage.tsx",
+"target": "file:frontend/src/services/queries.ts",
+"type": "depends_on"
+},
+{
+"source": "file:frontend/src/features/compare/ProviderColumn.tsx",
+"target": "file:frontend/src/features/compare/useCompareRun.ts",
+"type": "depends_on"
+},
+{
+"source": "file:frontend/src/features/compare/useCompareRun.ts",
+"target": "file:frontend/src/services/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/compare/useCompareRun.ts",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+"target": "file:frontend/src/components/states.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+"target": "file:frontend/src/features/compare/ProviderColumn.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+"target": "file:frontend/src/features/compare/useCompareRun.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+"target": "file:frontend/src/lib/format.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+"target": "file:frontend/src/services/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+"target": "file:frontend/src/components/states.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+"target": "file:frontend/src/components/ui/badge.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+"target": "file:frontend/src/components/ui/table.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+"target": "file:frontend/src/features/comparisons/hooks.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+"target": "file:frontend/src/lib/format.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/hooks.ts",
+"target": "file:frontend/src/services/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/hooks.ts",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+"target": "file:frontend/src/components/states.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+"target": "file:frontend/src/components/ui/card.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+"target": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+"target": "file:frontend/src/features/comparisons/hooks.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+"target": "file:frontend/src/lib/format.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+"target": "file:frontend/src/services/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+"target": "file:frontend/src/components/Detail.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+"target": "file:frontend/src/components/states.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+"target": "file:frontend/src/components/ui/card.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+"target": "file:frontend/src/lib/format.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+"target": "file:frontend/src/services/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+"target": "file:frontend/src/components/ListControls.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+"target": "file:frontend/src/components/states.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+"target": "file:frontend/src/components/ui/input.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+"target": "file:frontend/src/components/ui/label.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+"target": "file:frontend/src/components/ui/table.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+"target": "file:frontend/src/lib/format.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+"target": "file:frontend/src/services/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+"target": "file:frontend/src/services/queries.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+"target": "file:frontend/src/features/comparisons/hooks.ts",
+"type": "depends_on"
+},
+{
+"source": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+"target": "file:frontend/src/features/comparisons/hooks.ts",
+"type": "depends_on"
+},
+{
+"source": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+"target": "file:frontend/src/services/queries.ts",
+"type": "depends_on"
+},
+{
+"source": "file:frontend/src/features/tickets/AiResults.tsx",
+"target": "file:frontend/src/components/states.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/AiResults.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/AiResults.tsx",
+"target": "file:frontend/src/components/ui/card.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/AiResults.tsx",
+"target": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/AiResults.tsx",
+"target": "file:frontend/src/features/comparisons/hooks.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/AiResults.tsx",
+"target": "file:frontend/src/features/tickets/hooks.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/AiResults.tsx",
+"target": "file:frontend/src/lib/format.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/AiResults.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+"target": "file:frontend/src/components/Detail.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+"target": "file:frontend/src/components/states.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+"target": "file:frontend/src/components/ui/card.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+"target": "file:frontend/src/components/ui/label.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+"target": "file:frontend/src/components/ui/select.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+"target": "file:frontend/src/features/tickets/hooks.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+"target": "file:frontend/src/lib/format.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+"target": "file:frontend/src/services/queries.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/ImportExport.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/ImportExport.tsx",
+"target": "file:frontend/src/components/ui/dialog.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/ImportExport.tsx",
+"target": "file:frontend/src/components/ui/input.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/ImportExport.tsx",
+"target": "file:frontend/src/components/ui/table.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/ImportExport.tsx",
+"target": "file:frontend/src/features/tickets/hooks.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/ImportExport.tsx",
+"target": "file:frontend/src/services/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/ImportExport.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+"target": "file:frontend/src/components/states.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+"target": "file:frontend/src/features/tickets/TicketForm.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+"target": "file:frontend/src/features/tickets/hooks.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+"target": "file:frontend/src/services/queries.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/components/ConfirmDialog.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/components/Detail.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/components/states.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/components/ui/card.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/components/ui/select.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/components/ui/textarea.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/features/tickets/AiResults.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/features/tickets/FinalClassification.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/features/tickets/TicketForm.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/features/tickets/hooks.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/lib/format.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/services/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/services/queries.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketForm.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketForm.tsx",
+"target": "file:frontend/src/components/ui/input.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketForm.tsx",
+"target": "file:frontend/src/components/ui/label.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketForm.tsx",
+"target": "file:frontend/src/components/ui/select.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketForm.tsx",
+"target": "file:frontend/src/components/ui/textarea.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketForm.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/components/ListControls.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/components/states.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/components/ui/badge.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/components/ui/button.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/components/ui/input.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/components/ui/select.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/components/ui/table.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/features/tickets/ImportExport.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/features/tickets/hooks.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/lib/format.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/services/queries.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/AiResults.tsx",
+"target": "file:frontend/src/features/comparisons/hooks.ts",
+"type": "depends_on"
+},
+{
+"source": "file:frontend/src/features/tickets/AiResults.tsx",
+"target": "file:frontend/src/features/tickets/hooks.ts",
+"type": "depends_on"
+},
+{
+"source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+"target": "file:frontend/src/features/tickets/hooks.ts",
+"type": "depends_on"
+},
+{
+"source": "file:frontend/src/features/tickets/FinalClassification.tsx",
+"target": "file:frontend/src/services/queries.ts",
+"type": "depends_on"
+},
+{
+"source": "file:frontend/src/features/tickets/ImportExport.tsx",
+"target": "file:frontend/src/features/tickets/hooks.ts",
+"type": "depends_on"
+},
+{
+"source": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+"target": "file:frontend/src/features/tickets/hooks.ts",
+"type": "depends_on"
+},
+{
+"source": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+"target": "file:frontend/src/services/queries.ts",
+"type": "depends_on"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/features/tickets/hooks.ts",
+"type": "depends_on"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"target": "file:frontend/src/services/queries.ts",
+"type": "depends_on"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/features/tickets/hooks.ts",
+"type": "depends_on"
+},
+{
+"source": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"target": "file:frontend/src/services/queries.ts",
+"type": "depends_on"
+},
+{
+"source": "file:frontend/src/features/tickets/hooks.ts",
+"target": "file:frontend/src/services/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/features/tickets/hooks.ts",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/services/queries.ts",
+"target": "file:frontend/src/services/api.ts",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/services/queries.ts",
+"target": "file:frontend/src/types/api.ts",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/health.py",
+"target": "file:backend/app/repositories/database.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/providers.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/providers.py",
+"target": "file:backend/app/providers/registry.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/taxonomy.py",
+"target": "file:backend/app/core/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/taxonomy.py",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/main.py",
+"target": "file:backend/app/api/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/main.py",
+"target": "file:backend/app/api/dashboard.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/main.py",
+"target": "file:backend/app/api/executions.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/main.py",
+"target": "file:backend/app/api/health.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/main.py",
+"target": "file:backend/app/api/imports.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/main.py",
+"target": "file:backend/app/api/providers.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/main.py",
+"target": "file:backend/app/api/runs.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/main.py",
+"target": "file:backend/app/api/taxonomy.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/main.py",
+"target": "file:backend/app/api/tickets.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/main.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/main.py",
+"target": "file:backend/app/repositories/database.py",
+"type": "imports"
+},
+{
+"source": "file:backend/app/api/health.py",
+"target": "file:backend/tests/test_health.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/api/providers.py",
+"target": "file:backend/tests/test_shell_support.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/api/taxonomy.py",
+"target": "file:backend/tests/test_taxonomy.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/core/settings.py",
+"target": "file:backend/tests/test_settings.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/main.py",
+"target": "file:backend/tests/test_app_starts.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/main.py",
+"target": "file:backend/tests/test_shell_support.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/repositories/database.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/scripts/init_db.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/scripts/init_db.py",
+"target": "file:backend/app/repositories/database.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/conftest.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_app_starts.py",
+"target": "file:backend/app/main.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_dashboard.py",
+"target": "file:backend/app/main.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_health.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_health.py",
+"target": "file:backend/app/main.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_health.py",
+"target": "file:backend/tests/conftest.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_indexes.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_indexes.py",
+"target": "file:backend/app/repositories/database.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_indexes.py",
+"target": "file:backend/tests/conftest.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_dashboard.py",
+"target": "file:backend/tests/conftest.py",
+"type": "depends_on"
+},
+{
+"source": "file:backend/tests/test_indexes.py",
+"target": "file:backend/scripts/init_db.py",
+"type": "depends_on"
+},
+{
+"source": "file:backend/app/repositories/database.py",
+"target": "file:backend/tests/test_indexes.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/scripts/init_db.py",
+"target": "file:backend/tests/test_indexes.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/api/dashboard.py",
+"target": "file:backend/tests/test_dashboard.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/services/dashboard.py",
+"target": "file:backend/tests/test_dashboard.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/tests/test_runs_and_comparisons.py",
+"target": "file:backend/app/main.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_settings.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_shell_support.py",
+"target": "file:backend/app/main.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_taxonomy.py",
+"target": "file:backend/app/core/__init__.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_taxonomy.py",
+"target": "file:backend/app/main.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_tickets.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_tickets.py",
+"target": "file:backend/app/main.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_tickets.py",
+"target": "file:backend/app/repositories/tickets.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_tickets.py",
+"target": "file:backend/tests/conftest.py",
+"type": "imports"
+},
+{
+"source": "file:backend/tests/test_runs_and_comparisons.py",
+"target": "file:backend/tests/conftest.py",
+"type": "depends_on"
+},
+{
+"source": "file:backend/tests/test_shell_support.py",
+"target": "file:backend/tests/conftest.py",
+"type": "depends_on"
+},
+{
+"source": "file:backend/tests/test_taxonomy.py",
+"target": "file:backend/tests/conftest.py",
+"type": "depends_on"
+},
+{
+"source": "file:backend/app/core/taxonomy.py",
+"target": "file:backend/tests/test_taxonomy.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/api/runs.py",
+"target": "file:backend/tests/test_runs_and_comparisons.py",
+"type": "tested_by"
+},
+{
+"source": "file:backend/app/api/tickets.py",
+"target": "file:backend/tests/test_tickets.py",
+"type": "tested_by"
+},
+{
+"source": "document:.context/PROGRESS.md",
+"target": "file:backend/app/main.py",
+"type": "documents"
+},
+{
+"source": "document:.context/PROGRESS.md",
+"target": "file:backend/app/core/settings.py",
+"type": "documents"
+},
+{
+"source": "document:.context/PROGRESS.md",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "documents"
+},
+{
+"source": "document:.context/PROGRESS.md",
+"target": "file:backend/app/core/pricing.py",
+"type": "documents"
+},
+{
+"source": "document:.context/PROGRESS.md",
+"target": "file:backend/app/repositories/database.py",
+"type": "documents"
+},
+{
+"source": "document:.context/PROGRESS.md",
+"target": "file:backend/app/repositories/tickets.py",
+"type": "documents"
+},
+{
+"source": "document:.context/PROGRESS.md",
+"target": "file:backend/app/repositories/comparisons.py",
+"type": "documents"
+},
+{
+"source": "document:.context/PROGRESS.md",
+"target": "file:backend/app/services/csv_import.py",
+"type": "documents"
+},
+{
+"source": "document:.context/PROGRESS.md",
+"target": "file:backend/app/services/csv_export.py",
+"type": "documents"
+},
+{
+"source": "document:.context/PROGRESS.md",
+"target": "file:backend/app/services/comparisons.py",
+"type": "documents"
+},
+{
+"source": "document:.context/PROGRESS.md",
+"target": "file:backend/app/services/executions.py",
+"type": "documents"
+},
+{
+"source": "document:.context/PROGRESS.md",
+"target": "file:backend/app/services/run_report.py",
+"type": "documents"
+},
+{
+"source": "document:.context/PROGRESS.md",
+"target": "file:backend/app/providers/registry.py",
+"type": "documents"
+},
+{
+"source": "document:.context/PROGRESS.md",
+"target": "file:backend/app/providers/jev.py",
+"type": "documents"
+},
+{
+"source": "document:.context/PROGRESS.md",
+"target": "file:backend/app/providers/ollama.py",
+"type": "documents"
+},
+{
+"source": "document:.context/PROGRESS.md",
+"target": "file:backend/app/providers/mock.py",
+"type": "documents"
+},
+{
+"source": "document:.context/PROGRESS.md",
+"target": "file:frontend/src/app/AppShell.tsx",
+"type": "documents"
+},
+{
+"source": "document:.context/PROGRESS.md",
+"target": "file:frontend/src/app/router.tsx",
+"type": "documents"
+},
+{
+"source": "document:.context/PROGRESS.md",
+"target": "file:frontend/src/features/compare/ComparePage.tsx",
+"type": "documents"
+},
+{
+"source": "document:.context/PROGRESS.md",
+"target": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"type": "documents"
+},
+{
+"source": "document:.context/PROGRESS.md",
+"target": "document:.context/implementation.md",
+"type": "related"
+},
+{
+"source": "document:.context/PROGRESS.md",
+"target": "document:.context/ROADMAP.md",
+"type": "related"
+},
+{
+"source": "document:.context/PROGRESS.md",
+"target": "document:README.md",
+"type": "related"
+},
+{
+"source": "document:.context/PROGRESS.md",
+"target": "table:.context/sample_tickets_100.csv:sample_tickets_100",
+"type": "related"
+},
+{
+"source": "document:.context/ROADMAP.md",
+"target": "document:.context/implementation.md",
+"type": "related"
+},
+{
+"source": "document:.context/ROADMAP.md",
+"target": "document:.context/DEPLOYMENT_DECISIONS.md",
+"type": "related"
+},
+{
+"source": "document:.context/ROADMAP.md",
+"target": "config:backend/.env.example",
+"type": "related"
+},
+{
+"source": "document:.context/ai-evaluation.md",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "documents"
+},
+{
+"source": "document:.context/ai-evaluation.md",
+"target": "file:backend/app/core/pricing.py",
+"type": "documents"
+},
+{
+"source": "document:.context/ai-evaluation.md",
+"target": "file:backend/app/schemas/classification.py",
+"type": "documents"
+},
+{
+"source": "document:.context/ai-evaluation.md",
+"target": "file:backend/app/schemas/executions.py",
+"type": "documents"
+},
+{
+"source": "document:.context/ai-evaluation.md",
+"target": "file:backend/app/providers/base.py",
+"type": "documents"
+},
+{
+"source": "document:.context/ai-evaluation.md",
+"target": "file:backend/app/providers/jev.py",
+"type": "documents"
+},
+{
+"source": "document:.context/ai-evaluation.md",
+"target": "file:backend/app/providers/definitions.py",
+"type": "documents"
+},
+{
+"source": "document:.context/ai-evaluation.md",
+"target": "file:backend/app/services/executions.py",
+"type": "documents"
+},
+{
+"source": "document:.context/ai-evaluation.md",
+"target": "file:backend/app/services/comparisons.py",
+"type": "documents"
+},
+{
+"source": "document:.context/ai-evaluation.md",
+"target": "document:.context/requirements.md",
+"type": "related"
+},
+{
+"source": "document:.context/ai-evaluation.md",
+"target": "table:.context/sample_tickets_100.csv:sample_tickets_100",
+"type": "documents"
+},
+{
+"source": "document:.context/architecture.md",
+"target": "file:backend/app/main.py",
+"type": "documents"
+},
+{
+"source": "document:.context/architecture.md",
+"target": "file:backend/app/providers/base.py",
+"type": "documents"
+},
+{
+"source": "document:.context/architecture.md",
+"target": "file:backend/app/providers/jev.py",
+"type": "documents"
+},
+{
+"source": "document:.context/architecture.md",
+"target": "file:backend/app/providers/definitions.py",
+"type": "documents"
+},
+{
+"source": "document:.context/architecture.md",
+"target": "file:backend/app/providers/ollama.py",
+"type": "documents"
+},
+{
+"source": "document:.context/architecture.md",
+"target": "file:backend/app/providers/registry.py",
+"type": "documents"
+},
+{
+"source": "document:.context/architecture.md",
+"target": "file:backend/app/services/csv_import.py",
+"type": "documents"
+},
+{
+"source": "document:.context/architecture.md",
+"target": "document:.context/data-model.md",
+"type": "related"
+},
+{
+"source": "document:.context/code-size-standards.md",
+"target": "document:AGENTS.md",
+"type": "related"
+},
+{
+"source": "document:.context/code-size-standards.md",
+"target": "document:.context/architecture.md",
+"type": "related"
+},
+{
+"source": "document:.context/code-size-standards.md",
+"target": "config:backend/pyproject.toml",
+"type": "related"
+},
+{
+"source": "document:.context/data-model.md",
+"target": "file:backend/app/repositories/database.py",
+"type": "documents"
+},
+{
+"source": "document:.context/data-model.md",
+"target": "file:backend/app/repositories/tickets.py",
+"type": "documents"
+},
+{
+"source": "document:.context/data-model.md",
+"target": "file:backend/app/repositories/executions.py",
+"type": "documents"
+},
+{
+"source": "document:.context/data-model.md",
+"target": "file:backend/app/repositories/comparisons.py",
+"type": "documents"
+},
+{
+"source": "document:.context/data-model.md",
+"target": "file:backend/app/repositories/labels.py",
+"type": "documents"
+},
+{
+"source": "document:.context/data-model.md",
+"target": "file:backend/app/schemas/tickets.py",
+"type": "documents"
+},
+{
+"source": "document:.context/data-model.md",
+"target": "file:backend/app/schemas/executions.py",
+"type": "documents"
+},
+{
+"source": "document:.context/data-model.md",
+"target": "file:backend/app/schemas/comparisons.py",
+"type": "documents"
+},
+{
+"source": "document:.context/data-model.md",
+"target": "file:backend/app/schemas/bulk_jobs.py",
+"type": "documents"
+},
+{
+"source": "document:.context/design.md",
+"target": "file:frontend/src/app/AppShell.tsx",
+"type": "documents"
+},
+{
+"source": "document:.context/design.md",
+"target": "file:frontend/src/app/router.tsx",
+"type": "documents"
+},
+{
+"source": "document:.context/design.md",
+"target": "file:frontend/src/index.css",
+"type": "documents"
+},
+{
+"source": "document:.context/design.md",
+"target": "file:frontend/src/features/tickets/TicketListPage.tsx",
+"type": "documents"
+},
+{
+"source": "document:.context/design.md",
+"target": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+"type": "documents"
+},
+{
+"source": "document:.context/design.md",
+"target": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+"type": "documents"
+},
+{
+"source": "document:.context/design.md",
+"target": "file:frontend/src/features/tickets/ImportExport.tsx",
+"type": "documents"
+},
+{
+"source": "document:.context/design.md",
+"target": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+"type": "documents"
+},
+{
+"source": "document:.context/design.md",
+"target": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+"type": "documents"
+},
+{
+"source": "document:.context/implementation.md",
+"target": "file:backend/app/main.py",
+"type": "documents"
+},
+{
+"source": "document:.context/implementation.md",
+"target": "file:backend/scripts/init_db.py",
+"type": "documents"
+},
+{
+"source": "document:.context/implementation.md",
+"target": "document:.context/requirements.md",
+"type": "related"
+},
+{
+"source": "document:.context/implementation.md",
+"target": "document:.context/architecture.md",
+"type": "related"
+},
+{
+"source": "document:.context/implementation.md",
+"target": "document:.context/data-model.md",
+"type": "related"
+},
+{
+"source": "document:.context/implementation.md",
+"target": "document:.context/ai-evaluation.md",
+"type": "related"
+},
+{
+"source": "document:.context/implementation.md",
+"target": "document:.context/design.md",
+"type": "related"
+},
+{
+"source": "document:.context/implementation.md",
+"target": "document:.context/DEPLOYMENT_DECISIONS.md",
+"type": "related"
+},
+{
+"source": "document:.context/implementation.md",
+"target": "document:AGENTS.md",
+"type": "related"
+},
+{
+"source": "document:.context/implementation.md",
+"target": "document:CLAUDE.md",
+"type": "related"
+},
+{
+"source": "document:.context/implementation.md",
+"target": "document:README.md",
+"type": "related"
+},
+{
+"source": "document:.context/implementation.md",
+"target": "table:.context/sample_tickets_100.csv:sample_tickets_100",
+"type": "documents"
+},
+{
+"source": "document:.context/implementation.md",
+"target": "table:.context/sample_tickets_template.csv:sample_tickets_template",
+"type": "documents"
+},
+{
+"source": "document:.context/requirements.md",
+"target": "file:backend/app/core/taxonomy.py",
+"type": "documents"
+},
+{
+"source": "document:.context/requirements.md",
+"target": "file:backend/app/schemas/tickets.py",
+"type": "documents"
+},
+{
+"source": "table:.context/sample_tickets_template.csv:sample_tickets_template",
+"target": "file:backend/app/services/csv_import.py",
+"type": "defines_schema"
+},
+{
+"source": "table:.context/sample_tickets_template.csv:sample_tickets_template",
+"target": "file:backend/tests/test_csv.py",
+"type": "related"
+},
+{
+"source": "table:.context/sample_tickets_100.csv:sample_tickets_100",
+"target": "file:backend/tests/test_csv.py",
+"type": "related"
+},
+{
+"source": "table:.context/sample_tickets_100.csv:sample_tickets_100",
+"target": "table:.context/sample_tickets_template.csv:sample_tickets_template",
+"type": "related"
+},
+{
+"source": "document:CLAUDE.md",
+"target": "document:AGENTS.md",
+"type": "depends_on"
+},
+{
+"source": "document:CLAUDE.md",
+"target": "document:README.md",
+"type": "related"
+},
+{
+"source": "document:AGENTS.md",
+"target": "document:README.md",
+"type": "depends_on"
+},
+{
+"source": "document:README.md",
+"target": "document:AGENTS.md",
+"type": "related"
+},
+{
+"source": "document:README.md",
+"target": "document:CLAUDE.md",
+"type": "related"
+},
+{
+"source": "document:AGENTS.md",
+"target": "document:.context/requirements.md",
+"type": "depends_on"
+},
+{
+"source": "document:AGENTS.md",
+"target": "document:.context/architecture.md",
+"type": "depends_on"
+},
+{
+"source": "document:AGENTS.md",
+"target": "document:.context/data-model.md",
+"type": "depends_on"
+},
+{
+"source": "document:AGENTS.md",
+"target": "document:.context/ai-evaluation.md",
+"type": "depends_on"
+},
+{
+"source": "document:AGENTS.md",
+"target": "document:.context/design.md",
+"type": "depends_on"
+},
+{
+"source": "document:AGENTS.md",
+"target": "document:.context/implementation.md",
+"type": "depends_on"
+},
+{
+"source": "document:AGENTS.md",
+"target": "document:.context/code-size-standards.md",
+"type": "depends_on"
+},
+{
+"source": "document:AGENTS.md",
+"target": "document:.context/PROGRESS.md",
+"type": "related"
+},
+{
+"source": "document:CLAUDE.md",
+"target": "document:.context/PROGRESS.md",
+"type": "related"
+},
+{
+"source": "document:CLAUDE.md",
+"target": "document:.context/implementation.md",
+"type": "related"
+},
+{
+"source": "document:CLAUDE.md",
+"target": "document:.context/code-size-standards.md",
+"type": "related"
+},
+{
+"source": "document:README.md",
+"target": "document:.context/code-size-standards.md",
+"type": "related"
+},
+{
+"source": "document:README.md",
+"target": "document:.context/ROADMAP.md",
+"type": "related"
+},
+{
+"source": "document:README.md",
+"target": "document:.context/implementation.md",
+"type": "related"
+},
+{
+"source": "document:README.md",
+"target": "document:.context/design.md",
+"type": "related"
+},
+{
+"source": "document:README.md",
+"target": "document:.context/architecture.md",
+"type": "related"
+},
+{
+"source": "document:README.md",
+"target": "document:.context/requirements.md",
+"type": "related"
+},
+{
+"source": "document:README.md",
+"target": "document:.context/data-model.md",
+"type": "related"
+},
+{
+"source": "document:README.md",
+"target": "document:.context/ai-evaluation.md",
+"type": "related"
+},
+{
+"source": "document:README.md",
+"target": "document:.context/PROGRESS.md",
+"type": "related"
+},
+{
+"source": "document:README.md",
+"target": "document:e2e/README.md",
+"type": "related"
+},
+{
+"source": "config:.mcp.json",
+"target": "document:e2e/README.md",
+"type": "related"
+},
+{
+"source": "document:README.md",
+"target": "file:backend/app/main.py",
+"type": "documents"
+},
+{
+"source": "document:README.md",
+"target": "file:backend/scripts/init_db.py",
+"type": "documents"
+},
+{
+"source": "document:README.md",
+"target": "file:backend/scripts/run_report.py",
+"type": "documents"
+},
+{
+"source": "config:backend/pyproject.toml",
+"target": "document:backend/requirements.txt",
+"type": "related"
+},
+{
+"source": "document:e2e/personas/analysts/rushed-operator.md",
+"target": "document:e2e/personas/analysts/adversarial-input-tester.md",
+"type": "related"
+},
+{
+"source": "document:e2e/personas/analysts/first-time-user.md",
+"target": "document:e2e/personas/analysts/adversarial-input-tester.md",
+"type": "related"
+},
+{
+"source": "document:e2e/personas/analysts/first-time-user.md",
+"target": "document:e2e/personas/analysts/keyboard-screen-reader.md",
+"type": "related"
+},
+{
+"source": "document:e2e/personas/analysts/careful-power-user.md",
+"target": "document:e2e/personas/analysts/rushed-operator.md",
+"type": "related"
+},
+{
+"source": "document:e2e/personas/customers/terse.md",
+"target": "document:e2e/personas/customers/vague.md",
+"type": "related"
+},
+{
+"source": "document:e2e/personas/customers/casual-typos.md",
+"target": "document:e2e/personas/customers/non-native-english.md",
+"type": "related"
+},
+{
+"source": "config:frontend/tsconfig.json",
+"target": "config:frontend/tsconfig.app.json",
+"type": "depends_on"
+},
+{
+"source": "config:frontend/tsconfig.json",
+"target": "config:frontend/tsconfig.node.json",
+"type": "depends_on"
+},
+{
+"source": "config:frontend/package.json",
+"target": "config:frontend/tsconfig.json",
+"type": "depends_on"
+},
+{
+"source": "config:frontend/package.json",
+"target": "config:frontend/.prettierrc.json",
+"type": "depends_on"
+},
+{
+"source": "config:frontend/package.json",
+"target": "file:frontend/index.html",
+"type": "configures"
+},
+{
+"source": "config:frontend/package.json",
+"target": "config:frontend/components.json",
+"type": "related"
+},
+{
+"source": "config:frontend/components.json",
+"target": "config:frontend/tsconfig.json",
+"type": "related"
+},
+{
+"source": "file:frontend/src/main.tsx",
+"target": "file:frontend/src/app/router.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/main.tsx",
+"target": "file:frontend/src/components/ui/sonner.tsx",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/main.tsx",
+"target": "file:frontend/src/index.css",
+"type": "imports"
+},
+{
+"source": "file:frontend/src/components/ui/sonner.tsx",
+"target": "file:frontend/src/index.css",
+"type": "depends_on"
+},
+{
+"source": "file:e2e/scripts/stack.sh",
+"target": "file:e2e/scripts/reset_db.py",
+"type": "depends_on"
+},
+{
+"source": "file:e2e/scripts/stack.sh",
+"target": "file:frontend/vite.config.ts",
+"type": "depends_on"
+},
+{
+"source": "file:e2e/playwright.config.ts",
+"target": "file:e2e/scripts/stack.sh",
+"type": "depends_on"
+},
+{
+"source": "file:e2e/playwright.config.ts",
+"target": "file:e2e/tests/smoke.spec.ts",
+"type": "configures"
+},
+{
+"source": "config:e2e/package.json",
+"target": "file:e2e/playwright.config.ts",
+"type": "configures"
+},
+{
+"source": "config:e2e/package.json",
+"target": "file:e2e/scripts/stack.sh",
+"type": "depends_on"
+},
+{
+"source": "document:e2e/README.md",
+"target": "file:e2e/scripts/stack.sh",
+"type": "documents"
+},
+{
+"source": "document:e2e/README.md",
+"target": "file:e2e/scripts/reset_db.py",
+"type": "documents"
+},
+{
+"source": "document:e2e/README.md",
+"target": "config:e2e/package.json",
+"type": "documents"
+},
+{
+"source": "document:e2e/README.md",
+"target": "document:e2e/test-cases/TEMPLATE.md",
+"type": "documents"
+},
+{
+"source": "document:e2e/README.md",
+"target": "document:e2e/personas/README.md",
+"type": "documents"
+},
+{
+"source": "document:e2e/test-cases/TC-001-create-ticket.md",
+"target": "document:e2e/test-cases/TEMPLATE.md",
+"type": "related"
+},
+{
+"source": "document:e2e/test-cases/TC-001-create-ticket.md",
+"target": "file:e2e/tests/smoke.spec.ts",
+"type": "related"
+},
+{
+"source": "document:e2e/personas/README.md",
+"target": "document:e2e/test-cases/TEMPLATE.md",
+"type": "related"
+},
+{
+"source": "file:frontend/vite.config.ts",
+"target": "file:frontend/src/main.tsx",
+"type": "configures"
+},
+{
+"source": "file:frontend/eslint.config.js",
+"target": "file:frontend/src/main.tsx",
+"type": "configures"
+},
+{
+"source": "file:frontend/eslint.config.js",
+"target": "file:frontend/src/components/ui/sonner.tsx",
+"type": "configures"
+},
+{
+"source": "file:frontend/.prettierignore",
+"target": "file:frontend/src/components/ui/sonner.tsx",
+"type": "configures"
+},
+{
+"source": "file:.gitattributes",
+"target": "file:e2e/scripts/stack.sh",
+"type": "configures"
+},
+{
+"source": "file:frontend/index.html",
+"target": "file:frontend/src/main.tsx",
+"type": "depends_on"
+},
+{
+"source": "config:frontend/tsconfig.node.json",
+"target": "file:frontend/vite.config.ts",
+"type": "configures"
+},
+{
+"source": "config:frontend/components.json",
+"target": "file:frontend/src/index.css",
+"type": "configures"
+},
+{
+"source": "file:e2e/scripts/reset_db.py",
+"target": "file:backend/app/core/settings.py",
+"type": "imports"
+},
+{
+"source": "file:e2e/scripts/stack.sh",
+"target": "file:backend/app/main.py",
+"type": "depends_on"
+},
+{
+"source": "config:backend/.env.example",
+"target": "file:backend/app/core/settings.py",
+"type": "configures"
+},
+{
+"source": "config:backend/pyproject.toml",
+"target": "file:backend/app/services/run_report.py",
+"type": "configures"
+}
+]
+}

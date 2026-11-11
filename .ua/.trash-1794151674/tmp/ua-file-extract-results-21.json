@@ -1,0 +1,483 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 5,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 5,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 5,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "frontend/src/app/AppShell.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 225,
+      "nonEmptyLines": 215,
+      "functions": [
+        {
+          "name": "NavList",
+          "startLine": 39,
+          "endLine": 61,
+          "params": [
+            "{ onNavigate }"
+          ]
+        },
+        {
+          "name": "ThemeToggle",
+          "startLine": 63,
+          "endLine": 77,
+          "params": []
+        },
+        {
+          "name": "Sidebar",
+          "startLine": 79,
+          "endLine": 98,
+          "params": [
+            "{ onNavigate }"
+          ]
+        },
+        {
+          "name": "ProviderBadges",
+          "startLine": 100,
+          "endLine": 129,
+          "params": []
+        },
+        {
+          "name": "GlobalSearch",
+          "startLine": 131,
+          "endLine": 158,
+          "params": []
+        },
+        {
+          "name": "AppShell",
+          "startLine": 160,
+          "endLine": 225,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "AppShell",
+          "line": 160,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "NavList",
+          "callee": "NAV.map",
+          "lineNumber": 42
+        },
+        {
+          "caller": "NavList",
+          "callee": "cn",
+          "lineNumber": 49
+        },
+        {
+          "caller": "ThemeToggle",
+          "callee": "useTheme",
+          "lineNumber": 64
+        },
+        {
+          "caller": "ThemeToggle",
+          "callee": "setTheme",
+          "lineNumber": 71
+        },
+        {
+          "caller": "ProviderBadges",
+          "callee": "useProviderStatus",
+          "lineNumber": 101
+        },
+        {
+          "caller": "ProviderBadges",
+          "callee": "([\"jev\", \"gpt\"] as const).map",
+          "lineNumber": 105
+        },
+        {
+          "caller": "ProviderBadges",
+          "callee": "cn",
+          "lineNumber": 116
+        },
+        {
+          "caller": "ProviderBadges",
+          "callee": "label.split(\" · \").at",
+          "lineNumber": 123
+        },
+        {
+          "caller": "ProviderBadges",
+          "callee": "label.split",
+          "lineNumber": 123
+        },
+        {
+          "caller": "GlobalSearch",
+          "callee": "useNavigate",
+          "lineNumber": 132
+        },
+        {
+          "caller": "GlobalSearch",
+          "callee": "event.preventDefault",
+          "lineNumber": 138
+        },
+        {
+          "caller": "GlobalSearch",
+          "callee": "String(\n          new FormData(event.currentTarget).get(\"q\") ?? \"\",\n        ).trim",
+          "lineNumber": 139
+        },
+        {
+          "caller": "GlobalSearch",
+          "callee": "String",
+          "lineNumber": 139
+        },
+        {
+          "caller": "GlobalSearch",
+          "callee": "new FormData(event.currentTarget).get",
+          "lineNumber": 140
+        },
+        {
+          "caller": "GlobalSearch",
+          "callee": "navigate",
+          "lineNumber": 142
+        },
+        {
+          "caller": "GlobalSearch",
+          "callee": "encodeURIComponent",
+          "lineNumber": 142
+        },
+        {
+          "caller": "AppShell",
+          "callee": "useState",
+          "lineNumber": 161
+        },
+        {
+          "caller": "AppShell",
+          "callee": "useMatches()\n      .map((match) => (match.handle as { title?: string } | undefined)?.title)\n      .filter(Boolean)\n      .at",
+          "lineNumber": 163
+        },
+        {
+          "caller": "AppShell",
+          "callee": "useMatches()\n      .map((match) => (match.handle as { title?: string } | undefined)?.title)\n      .filter",
+          "lineNumber": 163
+        },
+        {
+          "caller": "AppShell",
+          "callee": "useMatches()\n      .map",
+          "lineNumber": 163
+        },
+        {
+          "caller": "AppShell",
+          "callee": "useMatches",
+          "lineNumber": 163
+        },
+        {
+          "caller": "AppShell",
+          "callee": "useEffect",
+          "lineNumber": 168
+        },
+        {
+          "caller": "AppShell",
+          "callee": "setMenuOpen",
+          "lineNumber": 188
+        },
+        {
+          "caller": "AppShell",
+          "callee": "setMenuOpen",
+          "lineNumber": 198
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 1,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/app/PlaceholderPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 16,
+      "nonEmptyLines": 14,
+      "functions": [
+        {
+          "name": "NotFoundPage",
+          "startLine": 5,
+          "endLine": 16,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "NotFoundPage",
+          "line": 5,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/app/router.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 85,
+      "nonEmptyLines": 83,
+      "exports": [
+        {
+          "name": "router",
+          "line": 18,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 13,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/components/ConfirmDialog.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 57,
+      "nonEmptyLines": 55,
+      "functions": [
+        {
+          "name": "ConfirmDialog",
+          "startLine": 24,
+          "endLine": 57,
+          "params": [
+            "{\n  open,\n  onOpenChange,\n  title,\n  description,\n  confirmLabel,\n  onConfirm,\n  pending,\n  variant = \"destructive\",\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ConfirmDialog",
+          "line": 24,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ConfirmDialog",
+          "callee": "event.preventDefault",
+          "lineNumber": 47
+        },
+        {
+          "caller": "ConfirmDialog",
+          "callee": "onConfirm",
+          "lineNumber": 48
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "frontend/src/features/compare/ComparePage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 199,
+      "nonEmptyLines": 190,
+      "functions": [
+        {
+          "name": "ExistingTicket",
+          "startLine": 20,
+          "endLine": 43,
+          "params": [
+            "{ onLoad }"
+          ]
+        },
+        {
+          "name": "NewTicket",
+          "startLine": 45,
+          "endLine": 61,
+          "params": [
+            "{ onCreated }"
+          ]
+        },
+        {
+          "name": "TicketPanel",
+          "startLine": 63,
+          "endLine": 80,
+          "params": [
+            "{ ticket }"
+          ]
+        },
+        {
+          "name": "Agreement",
+          "startLine": 82,
+          "endLine": 121,
+          "params": [
+            "{\n  comparison,\n  ready,\n}"
+          ]
+        },
+        {
+          "name": "TicketChooser",
+          "startLine": 123,
+          "endLine": 152,
+          "params": [
+            "{ onChoose }"
+          ]
+        },
+        {
+          "name": "ComparePage",
+          "startLine": 154,
+          "endLine": 199,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ComparePage",
+          "line": 154,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ExistingTicket",
+          "callee": "event.preventDefault",
+          "lineNumber": 25
+        },
+        {
+          "caller": "ExistingTicket",
+          "callee": "String(new FormData(event.currentTarget).get(\"id\") ?? \"\")\n          .trim()\n          .toUpperCase",
+          "lineNumber": 26
+        },
+        {
+          "caller": "ExistingTicket",
+          "callee": "String(new FormData(event.currentTarget).get(\"id\") ?? \"\")\n          .trim",
+          "lineNumber": 26
+        },
+        {
+          "caller": "ExistingTicket",
+          "callee": "String",
+          "lineNumber": 26
+        },
+        {
+          "caller": "ExistingTicket",
+          "callee": "new FormData(event.currentTarget).get",
+          "lineNumber": 26
+        },
+        {
+          "caller": "ExistingTicket",
+          "callee": "onLoad",
+          "lineNumber": 29
+        },
+        {
+          "caller": "NewTicket",
+          "callee": "useTaxonomy",
+          "lineNumber": 46
+        },
+        {
+          "caller": "NewTicket",
+          "callee": "useCreateTicket",
+          "lineNumber": 47
+        },
+        {
+          "caller": "NewTicket",
+          "callee": "create.mutate",
+          "lineNumber": 54
+        },
+        {
+          "caller": "NewTicket",
+          "callee": "onCreated",
+          "lineNumber": 55
+        },
+        {
+          "caller": "NewTicket",
+          "callee": "toast.error",
+          "lineNumber": 56
+        },
+        {
+          "caller": "Agreement",
+          "callee": "Math.round",
+          "lineNumber": 102
+        },
+        {
+          "caller": "TicketChooser",
+          "callee": "useState",
+          "lineNumber": 124
+        },
+        {
+          "caller": "TicketChooser",
+          "callee": "([\"existing\", \"new\"] as const).map",
+          "lineNumber": 128
+        },
+        {
+          "caller": "TicketChooser",
+          "callee": "setMode",
+          "lineNumber": 134
+        },
+        {
+          "caller": "TicketChooser",
+          "callee": "setMode",
+          "lineNumber": 145
+        },
+        {
+          "caller": "TicketChooser",
+          "callee": "onChoose",
+          "lineNumber": 146
+        },
+        {
+          "caller": "ComparePage",
+          "callee": "useSearchParams",
+          "lineNumber": 155
+        },
+        {
+          "caller": "ComparePage",
+          "callee": "useTicket",
+          "lineNumber": 156
+        },
+        {
+          "caller": "ComparePage",
+          "callee": "params.get",
+          "lineNumber": 156
+        },
+        {
+          "caller": "ComparePage",
+          "callee": "useCompareRun",
+          "lineNumber": 157
+        },
+        {
+          "caller": "choose",
+          "callee": "compare.reset",
+          "lineNumber": 160
+        },
+        {
+          "caller": "choose",
+          "callee": "setParams",
+          "lineNumber": 161
+        },
+        {
+          "caller": "ComparePage",
+          "callee": "compare.start",
+          "lineNumber": 177
+        }
+      ],
+      "metrics": {
+        "importCount": 10,
+        "exportCount": 1,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    }
+  ]
+}

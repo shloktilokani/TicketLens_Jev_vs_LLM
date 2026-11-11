@@ -45,13 +45,13 @@ Escalate when the issue involves safety, suspected fraud, account compromise, le
 
 ## 4. Language handling
 
-- Input may be English, Hindi, or Hinglish.
+- Input is English only (owner decision, 2026-11-07; Hindi and Hinglish were dropped).
 - Preserve the original title and description.
 - Do not translate or rewrite the original ticket before sending it.
 - Both providers receive the same language instruction and original text.
 - All GPT summaries and suggested resolutions must be in English.
 - Classification labels must use the canonical English enum values.
-- Synthetic evaluation tickets should include a meaningful mix of English, Hindi, and Hinglish. Do not assume a language from customer name or other metadata.
+- Synthetic evaluation tickets are in English.
 
 ## 5. Canonical provider input
 
@@ -147,7 +147,7 @@ Extract usage from the official response object where available. Store requested
 
 ## 9. Labelled sample dataset
 
-Generate 100 synthetic tickets across all six categories and across English, Hindi, and Hinglish.
+Generate 100 synthetic English tickets across all six categories.
 
 Requirements:
 - Each sample ticket has expected category, subcategory, priority, sentiment, and escalation label.
@@ -219,3 +219,23 @@ Formula:
 Use synthetic data only. Provider calls send ticket content to external AI services. TypeSafe's current privacy FAQ says customer inputs/outputs are not used to train Jev and describes US processing; verify current terms before using real data. Reference: https://help.typesafe.ai/articles/5974925716-how-is-submitted-data-used-or-retained
 
 The application stores full redacted request/response logs locally in MongoDB because the product owner explicitly requested detailed auditability.
+
+## 14. As built (2026-11-11)
+
+This document is the original intent. Where the app differs, this section wins. Architecture: `architecture.md`; decisions and history: `PROGRESS.md`.
+
+- **Providers in use: local models only.** The Jev side is AutoTrust's open JEV model (`autotrust-jev:9b`), served by Ollama through the same System One API. It is not TypeSafe's Jev. The LLM side is an Ollama chat model (`qwen3:8b`). The internal key `gpt` means "the LLM side".
+- **Paid APIs are deferred by owner decision (2026-11-11).** The hosted-Jev path (`JEV_BASE_URL=https://api.typesafe.ai` with `TYPESAFE_API_KEY`) is built but has never run with a real key. The OpenAI adapter in section 7 is not built: `LLM_BACKEND=openai` records a `not_configured` run. The architecture is kept so either can be added later.
+- **Jev asks in two steps** (section 6): category, priority, sentiment and escalation first, then only that category's subcategories. AutoTrust accepts 2 to 16 options per `choice` question, so Jev can never return a mismatched pair. The escalation threshold is editable on the Settings page.
+- **Model lists** come from `GET {base}/v1/models` on both sides (Settings, Refresh). A saved model name is checked against the list when the server answers.
+- **Provider input** (section 5) never includes the customer's name or email, and also carries the saved prompt text and its version.
+- **Prompt:** one instruction text is shared by both sides, editable and versioned on the Settings page. Each run stores the text and version it used.
+- **Dataset** (section 9): the supplied 100 tickets are corrected in `.context/sample_tickets_100_v2.csv`, with the same labels, realistic titles and English text. `shopkart-synthetic-v1` is kept as the dataset version. The labels have not yet been reviewed by a person, so accuracy figures are preliminary.
+- **Accuracy** (`services/evaluation.py`): each side's latest finished non-fake run per labelled ticket is scored. Failed runs are counted apart, not as wrong. Macro-F1 is shown from 30 answered tickets up. The confusion matrices leave out subcategory, because 36 by 36 is unreadable.
+- **Cost** (section 11):
+  - Local models are recorded at $0, as `local-no-charge`.
+  - Hosted Jev's default is $0.042 per million input tokens.
+  - OpenAI has no default rate.
+  - Rates can be saved per side and model on the Settings page, and each run keeps its rate snapshot. Money is stored as exact `Decimal128`.
+- **Retries** (section 12) are as specified: at most 3 attempts for a refused connection, 429 and 5xx, honouring `Retry-After` up to 10 s. Timeouts and other 4xx are not retried.
+- **Privacy** (section 13): with local models, ticket text never leaves this computer.

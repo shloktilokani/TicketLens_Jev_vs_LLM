@@ -1,0 +1,650 @@
+{
+ "nodes": [
+  {
+   "id": "file:frontend/src/app/AppShell.tsx",
+   "type": "file",
+   "name": "AppShell.tsx",
+   "filePath": "frontend/src/app/AppShell.tsx",
+   "summary": "Application shell layout with sidebar navigation, theme toggle, provider status badges, global search, and bulk-run banner wrapping routed pages.",
+   "tags": [
+    "layout",
+    "component",
+    "navigation",
+    "react"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:frontend/src/app/AppShell.tsx:NavList",
+   "type": "function",
+   "name": "NavList",
+   "filePath": "frontend/src/app/AppShell.tsx",
+   "lineRange": [
+    39,
+    61
+   ],
+   "summary": "Renders the list of sidebar navigation links.",
+   "tags": [
+    "component",
+    "navigation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/app/AppShell.tsx:ThemeToggle",
+   "type": "function",
+   "name": "ThemeToggle",
+   "filePath": "frontend/src/app/AppShell.tsx",
+   "lineRange": [
+    63,
+    77
+   ],
+   "summary": "Button toggling light and dark theme.",
+   "tags": [
+    "component",
+    "theme"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/app/AppShell.tsx:Sidebar",
+   "type": "function",
+   "name": "Sidebar",
+   "filePath": "frontend/src/app/AppShell.tsx",
+   "lineRange": [
+    79,
+    98
+   ],
+   "summary": "Sidebar containing branding and navigation list.",
+   "tags": [
+    "component",
+    "navigation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/app/AppShell.tsx:ProviderBadges",
+   "type": "function",
+   "name": "ProviderBadges",
+   "filePath": "frontend/src/app/AppShell.tsx",
+   "lineRange": [
+    100,
+    129
+   ],
+   "summary": "Shows Jev and LLM provider readiness badges from provider status query.",
+   "tags": [
+    "component",
+    "status",
+    "provider"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/app/AppShell.tsx:GlobalSearch",
+   "type": "function",
+   "name": "GlobalSearch",
+   "filePath": "frontend/src/app/AppShell.tsx",
+   "lineRange": [
+    131,
+    158
+   ],
+   "summary": "Header search input that navigates to ticket search results.",
+   "tags": [
+    "component",
+    "search"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/app/AppShell.tsx:AppShell",
+   "type": "function",
+   "name": "AppShell",
+   "filePath": "frontend/src/app/AppShell.tsx",
+   "lineRange": [
+    160,
+    225
+   ],
+   "summary": "Top-level layout composing sidebar, mobile sheet, header, bulk banner and outlet.",
+   "tags": [
+    "component",
+    "layout"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:frontend/src/app/PlaceholderPage.tsx",
+   "type": "file",
+   "name": "PlaceholderPage.tsx",
+   "filePath": "frontend/src/app/PlaceholderPage.tsx",
+   "summary": "Not-found fallback page shown for unknown routes.",
+   "tags": [
+    "component",
+    "routing",
+    "error-state"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/app/PlaceholderPage.tsx:NotFoundPage",
+   "type": "function",
+   "name": "NotFoundPage",
+   "filePath": "frontend/src/app/PlaceholderPage.tsx",
+   "lineRange": [
+    5,
+    16
+   ],
+   "summary": "Renders an empty-state message for unmatched routes.",
+   "tags": [
+    "component",
+    "routing"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:frontend/src/app/router.tsx",
+   "type": "file",
+   "name": "router.tsx",
+   "filePath": "frontend/src/app/router.tsx",
+   "summary": "Defines the React Router route tree mapping all feature pages inside the AppShell layout.",
+   "tags": [
+    "routing",
+    "entry-point",
+    "configuration",
+    "react"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:frontend/src/components/ConfirmDialog.tsx",
+   "type": "file",
+   "name": "ConfirmDialog.tsx",
+   "filePath": "frontend/src/components/ConfirmDialog.tsx",
+   "summary": "Reusable accessible confirmation dialog built on the alert-dialog primitive.",
+   "tags": [
+    "component",
+    "dialog",
+    "reusable",
+    "accessibility"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/components/ConfirmDialog.tsx:ConfirmDialog",
+   "type": "function",
+   "name": "ConfirmDialog",
+   "filePath": "frontend/src/components/ConfirmDialog.tsx",
+   "lineRange": [
+    24,
+    57
+   ],
+   "summary": "Confirmation dialog with title, description, and confirm/cancel actions for destructive operations.",
+   "tags": [
+    "component",
+    "dialog"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:frontend/src/features/compare/ComparePage.tsx",
+   "type": "file",
+   "name": "ComparePage.tsx",
+   "filePath": "frontend/src/features/compare/ComparePage.tsx",
+   "summary": "Compare workbench page where a user picks or creates a ticket and runs Jev and the LLM side by side, showing provider columns and agreement.",
+   "tags": [
+    "page",
+    "component",
+    "compare",
+    "react"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:frontend/src/features/compare/ComparePage.tsx:ExistingTicket",
+   "type": "function",
+   "name": "ExistingTicket",
+   "filePath": "frontend/src/features/compare/ComparePage.tsx",
+   "lineRange": [
+    20,
+    43
+   ],
+   "summary": "Panel for choosing an existing ticket to compare.",
+   "tags": [
+    "component",
+    "ticket"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/compare/ComparePage.tsx:NewTicket",
+   "type": "function",
+   "name": "NewTicket",
+   "filePath": "frontend/src/features/compare/ComparePage.tsx",
+   "lineRange": [
+    45,
+    61
+   ],
+   "summary": "Panel with a form for creating a new ticket to compare.",
+   "tags": [
+    "component",
+    "form"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/compare/ComparePage.tsx:TicketPanel",
+   "type": "function",
+   "name": "TicketPanel",
+   "filePath": "frontend/src/features/compare/ComparePage.tsx",
+   "lineRange": [
+    63,
+    80
+   ],
+   "summary": "Displays the selected ticket details for comparison.",
+   "tags": [
+    "component",
+    "ticket"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/compare/ComparePage.tsx:Agreement",
+   "type": "function",
+   "name": "Agreement",
+   "filePath": "frontend/src/features/compare/ComparePage.tsx",
+   "lineRange": [
+    82,
+    121
+   ],
+   "summary": "Summarizes whether Jev and the LLM agree on the classification.",
+   "tags": [
+    "component",
+    "comparison"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/compare/ComparePage.tsx:TicketChooser",
+   "type": "function",
+   "name": "TicketChooser",
+   "filePath": "frontend/src/features/compare/ComparePage.tsx",
+   "lineRange": [
+    123,
+    152
+   ],
+   "summary": "Toggle between existing and new ticket input modes.",
+   "tags": [
+    "component",
+    "ticket"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:frontend/src/features/compare/ComparePage.tsx:ComparePage",
+   "type": "function",
+   "name": "ComparePage",
+   "filePath": "frontend/src/features/compare/ComparePage.tsx",
+   "lineRange": [
+    154,
+    199
+   ],
+   "summary": "Page component orchestrating ticket selection, the compare run hook, and provider columns.",
+   "tags": [
+    "page",
+    "component"
+   ],
+   "complexity": "moderate"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "function:frontend/src/app/AppShell.tsx:NavList",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "function:frontend/src/app/AppShell.tsx:ThemeToggle",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "function:frontend/src/app/AppShell.tsx:Sidebar",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "function:frontend/src/app/AppShell.tsx:ProviderBadges",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "function:frontend/src/app/AppShell.tsx:GlobalSearch",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "function:frontend/src/app/AppShell.tsx:AppShell",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "function:frontend/src/app/AppShell.tsx:AppShell",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/app/PlaceholderPage.tsx",
+   "target": "function:frontend/src/app/PlaceholderPage.tsx:NotFoundPage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/app/PlaceholderPage.tsx",
+   "target": "function:frontend/src/app/PlaceholderPage.tsx:NotFoundPage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/components/ConfirmDialog.tsx",
+   "target": "function:frontend/src/components/ConfirmDialog.tsx:ConfirmDialog",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/components/ConfirmDialog.tsx",
+   "target": "function:frontend/src/components/ConfirmDialog.tsx:ConfirmDialog",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "function:frontend/src/features/compare/ComparePage.tsx:ExistingTicket",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "function:frontend/src/features/compare/ComparePage.tsx:NewTicket",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "function:frontend/src/features/compare/ComparePage.tsx:TicketPanel",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "function:frontend/src/features/compare/ComparePage.tsx:Agreement",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "function:frontend/src/features/compare/ComparePage.tsx:TicketChooser",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "function:frontend/src/features/compare/ComparePage.tsx:ComparePage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "function:frontend/src/features/compare/ComparePage.tsx:ComparePage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "file:frontend/src/components/ui/badge.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "file:frontend/src/components/ui/button.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "file:frontend/src/components/ui/input.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "file:frontend/src/components/ui/sheet.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "file:frontend/src/features/bulk/BulkBanner.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "file:frontend/src/lib/utils.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/AppShell.tsx",
+   "target": "file:frontend/src/services/queries.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/PlaceholderPage.tsx",
+   "target": "file:frontend/src/components/states.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/router.tsx",
+   "target": "file:frontend/src/app/AppShell.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/router.tsx",
+   "target": "file:frontend/src/app/PlaceholderPage.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/router.tsx",
+   "target": "file:frontend/src/features/bulk/BulkRunsPage.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/router.tsx",
+   "target": "file:frontend/src/features/compare/ComparePage.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/router.tsx",
+   "target": "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/router.tsx",
+   "target": "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/router.tsx",
+   "target": "file:frontend/src/features/dashboard/DashboardPage.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/router.tsx",
+   "target": "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/router.tsx",
+   "target": "file:frontend/src/features/executions/ExecutionsPage.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/router.tsx",
+   "target": "file:frontend/src/features/settings/SettingsPage.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/router.tsx",
+   "target": "file:frontend/src/features/tickets/NewTicketPage.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/router.tsx",
+   "target": "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/app/router.tsx",
+   "target": "file:frontend/src/features/tickets/TicketListPage.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/components/ConfirmDialog.tsx",
+   "target": "file:frontend/src/components/ui/alert-dialog.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "file:frontend/src/components/states.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "file:frontend/src/components/ui/button.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "file:frontend/src/components/ui/card.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "file:frontend/src/components/ui/input.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "file:frontend/src/features/compare/ProviderColumn.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "file:frontend/src/features/compare/useCompareRun.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "file:frontend/src/features/tickets/TicketForm.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "file:frontend/src/features/tickets/hooks.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "file:frontend/src/services/queries.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:frontend/src/features/compare/ComparePage.tsx",
+   "target": "file:frontend/src/types/api.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  }
+ ]
+}

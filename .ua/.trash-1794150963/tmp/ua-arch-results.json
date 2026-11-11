@@ -1,0 +1,1512 @@
+{
+  "scriptCompleted": true,
+  "directoryGroups": {
+    "backend/app/api": [
+      "file:backend/app/api/dashboard.py",
+      "file:backend/app/api/deps.py",
+      "file:backend/app/api/executions.py",
+      "file:backend/app/api/imports.py",
+      "file:backend/app/api/runs.py",
+      "file:backend/app/api/tickets.py",
+      "file:backend/app/api/__init__.py",
+      "file:backend/app/api/health.py",
+      "file:backend/app/api/providers.py",
+      "file:backend/app/api/taxonomy.py"
+    ],
+    "backend/app/core": [
+      "file:backend/app/core/clock.py",
+      "file:backend/app/core/pricing.py",
+      "file:backend/app/core/redaction.py",
+      "file:backend/app/core/taxonomy.py",
+      "file:backend/app/core/__init__.py",
+      "file:backend/app/core/settings.py"
+    ],
+    "backend/app/repositories": [
+      "file:backend/app/repositories/__init__.py",
+      "file:backend/app/repositories/comparisons.py",
+      "file:backend/app/repositories/executions.py",
+      "file:backend/app/repositories/labels.py",
+      "file:backend/app/repositories/tickets.py",
+      "file:backend/app/repositories/database.py"
+    ],
+    "backend/app/schemas": [
+      "file:backend/app/schemas/comparisons.py",
+      "file:backend/app/schemas/imports.py",
+      "file:backend/app/schemas/bulk_jobs.py",
+      "file:backend/app/schemas/classification.py",
+      "file:backend/app/schemas/executions.py",
+      "file:backend/app/schemas/tickets.py",
+      "file:backend/app/schemas/__init__.py"
+    ],
+    "backend/app/services": [
+      "file:backend/app/services/__init__.py",
+      "file:backend/app/services/comparisons.py",
+      "file:backend/app/services/csv_export.py",
+      "file:backend/app/services/csv_import.py",
+      "file:backend/app/services/dashboard.py",
+      "file:backend/app/services/run_metrics.py",
+      "file:backend/app/services/run_report.py",
+      "file:backend/app/services/executions.py",
+      "file:backend/app/services/tickets.py"
+    ],
+    "backend/scripts": [
+      "file:backend/scripts/run_report.py",
+      "file:backend/scripts/init_db.py"
+    ],
+    "backend/tests": [
+      "file:backend/tests/test_csv.py",
+      "file:backend/tests/test_run_metrics.py",
+      "file:backend/tests/test_execution_log.py",
+      "file:backend/tests/test_live_adapters.py",
+      "file:backend/tests/test_providers.py",
+      "file:backend/tests/test_schemas.py",
+      "file:backend/tests/conftest.py",
+      "file:backend/tests/test_app_starts.py",
+      "file:backend/tests/test_dashboard.py",
+      "file:backend/tests/test_health.py",
+      "file:backend/tests/test_indexes.py",
+      "file:backend/tests/test_runs_and_comparisons.py",
+      "file:backend/tests/test_settings.py",
+      "file:backend/tests/test_shell_support.py",
+      "file:backend/tests/test_taxonomy.py",
+      "file:backend/tests/test_tickets.py",
+      "file:backend/tests/__init__.py"
+    ],
+    "backend/app/providers": [
+      "file:backend/app/providers/__init__.py",
+      "file:backend/app/providers/base.py",
+      "file:backend/app/providers/definitions.py",
+      "file:backend/app/providers/http.py",
+      "file:backend/app/providers/jev.py",
+      "file:backend/app/providers/mock.py",
+      "file:backend/app/providers/ollama.py",
+      "file:backend/app/providers/registry.py"
+    ],
+    "frontend/src/app": [
+      "file:frontend/src/app/AppShell.tsx",
+      "file:frontend/src/app/PlaceholderPage.tsx",
+      "file:frontend/src/app/router.tsx"
+    ],
+    "frontend/src/components": [
+      "file:frontend/src/components/ConfirmDialog.tsx",
+      "file:frontend/src/components/Detail.tsx",
+      "file:frontend/src/components/ListControls.tsx",
+      "file:frontend/src/components/states.tsx",
+      "file:frontend/src/components/ui/alert-dialog.tsx",
+      "file:frontend/src/components/ui/badge.tsx",
+      "file:frontend/src/components/ui/button.tsx",
+      "file:frontend/src/components/ui/card.tsx",
+      "file:frontend/src/components/ui/dialog.tsx",
+      "file:frontend/src/components/ui/input.tsx",
+      "file:frontend/src/components/ui/label.tsx",
+      "file:frontend/src/components/ui/select.tsx",
+      "file:frontend/src/components/ui/sheet.tsx",
+      "file:frontend/src/components/ui/table.tsx",
+      "file:frontend/src/components/ui/textarea.tsx",
+      "file:frontend/src/components/ui/sonner.tsx"
+    ],
+    "frontend/src/features": [
+      "file:frontend/src/features/compare/ComparePage.tsx",
+      "file:frontend/src/features/compare/ProviderColumn.tsx",
+      "file:frontend/src/features/compare/useCompareRun.ts",
+      "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+      "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+      "file:frontend/src/features/comparisons/hooks.ts",
+      "file:frontend/src/features/dashboard/DashboardPage.tsx",
+      "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+      "file:frontend/src/features/executions/ExecutionsPage.tsx",
+      "file:frontend/src/features/tickets/AiResults.tsx",
+      "file:frontend/src/features/tickets/FinalClassification.tsx",
+      "file:frontend/src/features/tickets/ImportExport.tsx",
+      "file:frontend/src/features/tickets/NewTicketPage.tsx",
+      "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+      "file:frontend/src/features/tickets/TicketForm.tsx",
+      "file:frontend/src/features/tickets/TicketListPage.tsx",
+      "file:frontend/src/features/tickets/hooks.ts",
+      "file:frontend/src/features/settings/.gitkeep"
+    ],
+    "frontend/src/lib": [
+      "file:frontend/src/lib/format.ts",
+      "file:frontend/src/lib/utils.ts"
+    ],
+    "frontend/src/services": [
+      "file:frontend/src/services/api.ts",
+      "file:frontend/src/services/queries.ts",
+      "file:frontend/src/services/.gitkeep"
+    ],
+    "frontend/src/types": [
+      "file:frontend/src/types/api.ts",
+      "file:frontend/src/types/.gitkeep"
+    ],
+    "backend/app": [
+      "file:backend/app/main.py",
+      "file:backend/app/__init__.py"
+    ],
+    ".context": [
+      "document:.context/DEPLOYMENT_DECISIONS.md",
+      "document:.context/PROGRESS.md",
+      "document:.context/ROADMAP.md",
+      "document:.context/ai-evaluation.md",
+      "document:.context/architecture.md",
+      "document:.context/code-size-standards.md",
+      "document:.context/data-model.md",
+      "document:.context/design.md",
+      "document:.context/implementation.md",
+      "document:.context/requirements.md",
+      "table:.context/sample_tickets_100.csv:sample_tickets_100",
+      "table:.context/sample_tickets_template.csv:sample_tickets_template"
+    ],
+    "root": [
+      "config:.mcp.json",
+      "document:AGENTS.md",
+      "document:CLAUDE.md",
+      "document:README.md",
+      "file:.gitattributes"
+    ],
+    "backend": [
+      "config:backend/.env.example",
+      "config:backend/pyproject.toml",
+      "document:backend/requirements.txt"
+    ],
+    "e2e": [
+      "document:e2e/personas/analysts/adversarial-input-tester.md",
+      "document:e2e/personas/analysts/careful-power-user.md",
+      "document:e2e/personas/analysts/first-time-user.md",
+      "document:e2e/personas/analysts/keyboard-screen-reader.md",
+      "document:e2e/personas/analysts/rushed-operator.md",
+      "document:e2e/personas/customers/angry-impatient.md",
+      "document:e2e/personas/customers/casual-typos.md",
+      "document:e2e/personas/customers/non-native-english.md",
+      "document:e2e/personas/customers/rambling-multi-issue.md",
+      "document:e2e/personas/customers/terse.md",
+      "document:e2e/personas/customers/vague.md",
+      "document:e2e/README.md",
+      "config:e2e/package.json",
+      "document:e2e/personas/README.md",
+      "file:e2e/playwright.config.ts",
+      "file:e2e/scripts/reset_db.py",
+      "file:e2e/scripts/stack.sh",
+      "document:e2e/test-cases/TC-001-create-ticket.md",
+      "document:e2e/test-cases/TEMPLATE.md",
+      "file:e2e/tests/smoke.spec.ts"
+    ],
+    "frontend": [
+      "config:frontend/.prettierrc.json",
+      "config:frontend/components.json",
+      "file:frontend/index.html",
+      "config:frontend/package.json",
+      "config:frontend/tsconfig.app.json",
+      "config:frontend/tsconfig.json",
+      "config:frontend/tsconfig.node.json",
+      "file:frontend/.prettierignore",
+      "file:frontend/eslint.config.js",
+      "file:frontend/vite.config.ts"
+    ],
+    ".claude": [
+      "config:.claude/settings.json"
+    ],
+    "backend/app/jobs": [
+      "file:backend/app/jobs/__init__.py"
+    ],
+    "frontend/src": [
+      "file:frontend/src/index.css",
+      "file:frontend/src/main.tsx"
+    ]
+  },
+  "nodeTypeGroups": {
+    "file": [
+      "file:backend/app/api/dashboard.py",
+      "file:backend/app/api/deps.py",
+      "file:backend/app/api/executions.py",
+      "file:backend/app/api/imports.py",
+      "file:backend/app/api/runs.py",
+      "file:backend/app/api/tickets.py",
+      "file:backend/app/core/clock.py",
+      "file:backend/app/repositories/__init__.py",
+      "file:backend/app/repositories/comparisons.py",
+      "file:backend/app/repositories/executions.py",
+      "file:backend/app/repositories/labels.py",
+      "file:backend/app/repositories/tickets.py",
+      "file:backend/app/schemas/comparisons.py",
+      "file:backend/app/schemas/imports.py",
+      "file:backend/app/services/__init__.py",
+      "file:backend/app/services/comparisons.py",
+      "file:backend/app/services/csv_export.py",
+      "file:backend/app/services/csv_import.py",
+      "file:backend/app/services/dashboard.py",
+      "file:backend/app/services/run_metrics.py",
+      "file:backend/app/services/run_report.py",
+      "file:backend/scripts/run_report.py",
+      "file:backend/tests/test_csv.py",
+      "file:backend/tests/test_run_metrics.py",
+      "file:backend/app/core/pricing.py",
+      "file:backend/app/core/redaction.py",
+      "file:backend/app/core/taxonomy.py",
+      "file:backend/app/providers/__init__.py",
+      "file:backend/app/providers/base.py",
+      "file:backend/app/providers/definitions.py",
+      "file:backend/app/providers/http.py",
+      "file:backend/app/providers/jev.py",
+      "file:backend/app/providers/mock.py",
+      "file:backend/app/providers/ollama.py",
+      "file:backend/app/providers/registry.py",
+      "file:backend/app/schemas/bulk_jobs.py",
+      "file:backend/app/schemas/classification.py",
+      "file:backend/app/schemas/executions.py",
+      "file:backend/app/schemas/tickets.py",
+      "file:backend/app/services/executions.py",
+      "file:backend/app/services/tickets.py",
+      "file:backend/tests/test_execution_log.py",
+      "file:backend/tests/test_live_adapters.py",
+      "file:backend/tests/test_providers.py",
+      "file:backend/tests/test_schemas.py",
+      "file:frontend/src/app/AppShell.tsx",
+      "file:frontend/src/app/PlaceholderPage.tsx",
+      "file:frontend/src/app/router.tsx",
+      "file:frontend/src/components/ConfirmDialog.tsx",
+      "file:frontend/src/components/Detail.tsx",
+      "file:frontend/src/components/ListControls.tsx",
+      "file:frontend/src/components/states.tsx",
+      "file:frontend/src/components/ui/alert-dialog.tsx",
+      "file:frontend/src/components/ui/badge.tsx",
+      "file:frontend/src/components/ui/button.tsx",
+      "file:frontend/src/components/ui/card.tsx",
+      "file:frontend/src/components/ui/dialog.tsx",
+      "file:frontend/src/components/ui/input.tsx",
+      "file:frontend/src/components/ui/label.tsx",
+      "file:frontend/src/components/ui/select.tsx",
+      "file:frontend/src/components/ui/sheet.tsx",
+      "file:frontend/src/components/ui/table.tsx",
+      "file:frontend/src/components/ui/textarea.tsx",
+      "file:frontend/src/features/compare/ComparePage.tsx",
+      "file:frontend/src/features/compare/ProviderColumn.tsx",
+      "file:frontend/src/features/compare/useCompareRun.ts",
+      "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx",
+      "file:frontend/src/features/comparisons/ComparisonsPage.tsx",
+      "file:frontend/src/features/comparisons/hooks.ts",
+      "file:frontend/src/features/dashboard/DashboardPage.tsx",
+      "file:frontend/src/features/executions/ExecutionDetailPage.tsx",
+      "file:frontend/src/features/executions/ExecutionsPage.tsx",
+      "file:frontend/src/features/tickets/AiResults.tsx",
+      "file:frontend/src/features/tickets/FinalClassification.tsx",
+      "file:frontend/src/features/tickets/ImportExport.tsx",
+      "file:frontend/src/features/tickets/NewTicketPage.tsx",
+      "file:frontend/src/features/tickets/TicketDetailPage.tsx",
+      "file:frontend/src/features/tickets/TicketForm.tsx",
+      "file:frontend/src/features/tickets/TicketListPage.tsx",
+      "file:frontend/src/features/tickets/hooks.ts",
+      "file:frontend/src/lib/format.ts",
+      "file:frontend/src/lib/utils.ts",
+      "file:frontend/src/services/api.ts",
+      "file:frontend/src/services/queries.ts",
+      "file:frontend/src/types/api.ts",
+      "file:backend/app/api/__init__.py",
+      "file:backend/app/api/health.py",
+      "file:backend/app/api/providers.py",
+      "file:backend/app/api/taxonomy.py",
+      "file:backend/app/core/__init__.py",
+      "file:backend/app/core/settings.py",
+      "file:backend/app/main.py",
+      "file:backend/app/repositories/database.py",
+      "file:backend/scripts/init_db.py",
+      "file:backend/tests/conftest.py",
+      "file:backend/tests/test_app_starts.py",
+      "file:backend/tests/test_dashboard.py",
+      "file:backend/tests/test_health.py",
+      "file:backend/tests/test_indexes.py",
+      "file:backend/tests/test_runs_and_comparisons.py",
+      "file:backend/tests/test_settings.py",
+      "file:backend/tests/test_shell_support.py",
+      "file:backend/tests/test_taxonomy.py",
+      "file:backend/tests/test_tickets.py",
+      "file:frontend/index.html",
+      "file:.gitattributes",
+      "file:backend/app/__init__.py",
+      "file:backend/app/jobs/__init__.py",
+      "file:backend/app/schemas/__init__.py",
+      "file:backend/tests/__init__.py",
+      "file:e2e/playwright.config.ts",
+      "file:e2e/scripts/reset_db.py",
+      "file:e2e/scripts/stack.sh",
+      "file:e2e/tests/smoke.spec.ts",
+      "file:frontend/.prettierignore",
+      "file:frontend/eslint.config.js",
+      "file:frontend/src/components/ui/sonner.tsx",
+      "file:frontend/src/features/settings/.gitkeep",
+      "file:frontend/src/index.css",
+      "file:frontend/src/main.tsx",
+      "file:frontend/src/services/.gitkeep",
+      "file:frontend/src/types/.gitkeep",
+      "file:frontend/vite.config.ts"
+    ],
+    "document": [
+      "document:.context/DEPLOYMENT_DECISIONS.md",
+      "document:.context/PROGRESS.md",
+      "document:.context/ROADMAP.md",
+      "document:.context/ai-evaluation.md",
+      "document:.context/architecture.md",
+      "document:.context/code-size-standards.md",
+      "document:.context/data-model.md",
+      "document:.context/design.md",
+      "document:.context/implementation.md",
+      "document:.context/requirements.md",
+      "document:AGENTS.md",
+      "document:CLAUDE.md",
+      "document:README.md",
+      "document:backend/requirements.txt",
+      "document:e2e/personas/analysts/adversarial-input-tester.md",
+      "document:e2e/personas/analysts/careful-power-user.md",
+      "document:e2e/personas/analysts/first-time-user.md",
+      "document:e2e/personas/analysts/keyboard-screen-reader.md",
+      "document:e2e/personas/analysts/rushed-operator.md",
+      "document:e2e/personas/customers/angry-impatient.md",
+      "document:e2e/personas/customers/casual-typos.md",
+      "document:e2e/personas/customers/non-native-english.md",
+      "document:e2e/personas/customers/rambling-multi-issue.md",
+      "document:e2e/personas/customers/terse.md",
+      "document:e2e/personas/customers/vague.md",
+      "document:e2e/README.md",
+      "document:e2e/personas/README.md",
+      "document:e2e/test-cases/TC-001-create-ticket.md",
+      "document:e2e/test-cases/TEMPLATE.md"
+    ],
+    "table": [
+      "table:.context/sample_tickets_100.csv:sample_tickets_100",
+      "table:.context/sample_tickets_template.csv:sample_tickets_template"
+    ],
+    "config": [
+      "config:.mcp.json",
+      "config:backend/.env.example",
+      "config:backend/pyproject.toml",
+      "config:frontend/.prettierrc.json",
+      "config:frontend/components.json",
+      "config:frontend/package.json",
+      "config:frontend/tsconfig.app.json",
+      "config:frontend/tsconfig.json",
+      "config:frontend/tsconfig.node.json",
+      "config:.claude/settings.json",
+      "config:e2e/package.json"
+    ]
+  },
+  "crossCategoryEdges": [
+    {
+      "fromType": "file",
+      "toType": "file",
+      "edgeType": "imports",
+      "count": 327
+    },
+    {
+      "fromType": "document",
+      "toType": "file",
+      "edgeType": "documents",
+      "count": 63
+    },
+    {
+      "fromType": "document",
+      "toType": "document",
+      "edgeType": "related",
+      "count": 43
+    },
+    {
+      "fromType": "file",
+      "toType": "file",
+      "edgeType": "tested_by",
+      "count": 37
+    },
+    {
+      "fromType": "file",
+      "toType": "file",
+      "edgeType": "depends_on",
+      "count": 35
+    },
+    {
+      "fromType": "document",
+      "toType": "document",
+      "edgeType": "depends_on",
+      "count": 9
+    },
+    {
+      "fromType": "config",
+      "toType": "file",
+      "edgeType": "configures",
+      "count": 6
+    },
+    {
+      "fromType": "file",
+      "toType": "file",
+      "edgeType": "configures",
+      "count": 6
+    },
+    {
+      "fromType": "config",
+      "toType": "config",
+      "edgeType": "depends_on",
+      "count": 4
+    },
+    {
+      "fromType": "document",
+      "toType": "table",
+      "edgeType": "documents",
+      "count": 3
+    },
+    {
+      "fromType": "document",
+      "toType": "config",
+      "edgeType": "related",
+      "count": 2
+    },
+    {
+      "fromType": "table",
+      "toType": "file",
+      "edgeType": "related",
+      "count": 2
+    },
+    {
+      "fromType": "config",
+      "toType": "document",
+      "edgeType": "related",
+      "count": 2
+    },
+    {
+      "fromType": "config",
+      "toType": "config",
+      "edgeType": "related",
+      "count": 2
+    },
+    {
+      "fromType": "document",
+      "toType": "document",
+      "edgeType": "documents",
+      "count": 2
+    },
+    {
+      "fromType": "document",
+      "toType": "table",
+      "edgeType": "related",
+      "count": 1
+    },
+    {
+      "fromType": "table",
+      "toType": "file",
+      "edgeType": "defines_schema",
+      "count": 1
+    },
+    {
+      "fromType": "table",
+      "toType": "table",
+      "edgeType": "related",
+      "count": 1
+    },
+    {
+      "fromType": "config",
+      "toType": "file",
+      "edgeType": "depends_on",
+      "count": 1
+    },
+    {
+      "fromType": "document",
+      "toType": "config",
+      "edgeType": "documents",
+      "count": 1
+    },
+    {
+      "fromType": "document",
+      "toType": "file",
+      "edgeType": "related",
+      "count": 1
+    }
+  ],
+  "interGroupImports": [
+    {
+      "from": "frontend/src/features",
+      "to": "frontend/src/components",
+      "count": 58
+    },
+    {
+      "from": "frontend/src/features",
+      "to": "frontend/src/types",
+      "count": 16
+    },
+    {
+      "from": "backend/app/services",
+      "to": "backend/app/repositories",
+      "count": 15
+    },
+    {
+      "from": "frontend/src/features",
+      "to": "frontend/src/services",
+      "count": 15
+    },
+    {
+      "from": "backend/app/services",
+      "to": "backend/app/core",
+      "count": 11
+    },
+    {
+      "from": "backend/tests",
+      "to": "backend/app/core",
+      "count": 11
+    },
+    {
+      "from": "frontend/src/features",
+      "to": "frontend/src/lib",
+      "count": 10
+    },
+    {
+      "from": "backend/app/api",
+      "to": "backend/app/services",
+      "count": 9
+    },
+    {
+      "from": "backend/tests",
+      "to": "backend/app",
+      "count": 9
+    },
+    {
+      "from": "frontend/src/app",
+      "to": "frontend/src/features",
+      "count": 9
+    },
+    {
+      "from": "backend/app",
+      "to": "backend/app/api",
+      "count": 9
+    },
+    {
+      "from": "backend/app/api",
+      "to": "backend/app/repositories",
+      "count": 8
+    },
+    {
+      "from": "backend/app/providers",
+      "to": "backend/app/core",
+      "count": 8
+    },
+    {
+      "from": "backend/tests",
+      "to": "backend/app/providers",
+      "count": 8
+    },
+    {
+      "from": "backend/tests",
+      "to": "backend/app/schemas",
+      "count": 8
+    },
+    {
+      "from": "backend/app/services",
+      "to": "backend/app/schemas",
+      "count": 7
+    },
+    {
+      "from": "backend/app/api",
+      "to": "backend/app/core",
+      "count": 6
+    },
+    {
+      "from": "backend/app/api",
+      "to": "backend/app/schemas",
+      "count": 6
+    },
+    {
+      "from": "backend/app/schemas",
+      "to": "backend/app/core",
+      "count": 5
+    },
+    {
+      "from": "frontend/src/app",
+      "to": "frontend/src/components",
+      "count": 5
+    },
+    {
+      "from": "backend/app/providers",
+      "to": "backend/app/schemas",
+      "count": 4
+    },
+    {
+      "from": "backend/scripts",
+      "to": "backend/app/core",
+      "count": 3
+    },
+    {
+      "from": "backend/scripts",
+      "to": "backend/app/services",
+      "count": 3
+    },
+    {
+      "from": "backend/tests",
+      "to": "backend/app/services",
+      "count": 3
+    },
+    {
+      "from": "backend/app/repositories",
+      "to": "backend/app/core",
+      "count": 2
+    },
+    {
+      "from": "backend/scripts",
+      "to": "backend/app/repositories",
+      "count": 2
+    },
+    {
+      "from": "backend/app/services",
+      "to": "backend/app/providers",
+      "count": 2
+    },
+    {
+      "from": "backend/tests",
+      "to": "backend/app/repositories",
+      "count": 2
+    },
+    {
+      "from": "backend/app/core",
+      "to": "backend/app/schemas",
+      "count": 1
+    },
+    {
+      "from": "frontend/src/app",
+      "to": "frontend/src/lib",
+      "count": 1
+    },
+    {
+      "from": "frontend/src/app",
+      "to": "frontend/src/services",
+      "count": 1
+    },
+    {
+      "from": "frontend/src/services",
+      "to": "frontend/src/types",
+      "count": 1
+    },
+    {
+      "from": "backend/app/api",
+      "to": "backend/app/providers",
+      "count": 1
+    },
+    {
+      "from": "backend/app",
+      "to": "backend/app/core",
+      "count": 1
+    },
+    {
+      "from": "backend/app",
+      "to": "backend/app/repositories",
+      "count": 1
+    },
+    {
+      "from": "frontend/src",
+      "to": "frontend/src/app",
+      "count": 1
+    },
+    {
+      "from": "frontend/src",
+      "to": "frontend/src/components",
+      "count": 1
+    },
+    {
+      "from": "e2e",
+      "to": "backend/app/core",
+      "count": 1
+    }
+  ],
+  "groupRelations": {
+    "backend/app/api": {
+      "importsFrom": [
+        "backend/app/services",
+        "backend/app/repositories",
+        "backend/app/core",
+        "backend/app/schemas",
+        "backend/app/providers"
+      ],
+      "importedBy": [
+        "backend/app"
+      ]
+    },
+    "backend/app/core": {
+      "importsFrom": [
+        "backend/app/schemas"
+      ],
+      "importedBy": [
+        "backend/app/services",
+        "backend/tests",
+        "backend/app/providers",
+        "backend/app/api",
+        "backend/app/schemas",
+        "backend/scripts",
+        "backend/app/repositories",
+        "backend/app",
+        "e2e"
+      ]
+    },
+    "backend/app/repositories": {
+      "importsFrom": [
+        "backend/app/core"
+      ],
+      "importedBy": [
+        "backend/app/services",
+        "backend/app/api",
+        "backend/scripts",
+        "backend/tests",
+        "backend/app"
+      ]
+    },
+    "backend/app/schemas": {
+      "importsFrom": [
+        "backend/app/core"
+      ],
+      "importedBy": [
+        "backend/tests",
+        "backend/app/services",
+        "backend/app/api",
+        "backend/app/providers",
+        "backend/app/core"
+      ]
+    },
+    "backend/app/services": {
+      "importsFrom": [
+        "backend/app/repositories",
+        "backend/app/core",
+        "backend/app/schemas",
+        "backend/app/providers"
+      ],
+      "importedBy": [
+        "backend/app/api",
+        "backend/scripts",
+        "backend/tests"
+      ]
+    },
+    "backend/scripts": {
+      "importsFrom": [
+        "backend/app/core",
+        "backend/app/services",
+        "backend/app/repositories"
+      ],
+      "importedBy": []
+    },
+    "backend/tests": {
+      "importsFrom": [
+        "backend/app/core",
+        "backend/app",
+        "backend/app/providers",
+        "backend/app/schemas",
+        "backend/app/services",
+        "backend/app/repositories"
+      ],
+      "importedBy": []
+    },
+    "backend/app/providers": {
+      "importsFrom": [
+        "backend/app/core",
+        "backend/app/schemas"
+      ],
+      "importedBy": [
+        "backend/tests",
+        "backend/app/services",
+        "backend/app/api"
+      ]
+    },
+    "frontend/src/app": {
+      "importsFrom": [
+        "frontend/src/features",
+        "frontend/src/components",
+        "frontend/src/lib",
+        "frontend/src/services"
+      ],
+      "importedBy": [
+        "frontend/src"
+      ]
+    },
+    "frontend/src/components": {
+      "importsFrom": [],
+      "importedBy": [
+        "frontend/src/features",
+        "frontend/src/app",
+        "frontend/src"
+      ]
+    },
+    "frontend/src/features": {
+      "importsFrom": [
+        "frontend/src/components",
+        "frontend/src/types",
+        "frontend/src/services",
+        "frontend/src/lib"
+      ],
+      "importedBy": [
+        "frontend/src/app"
+      ]
+    },
+    "frontend/src/lib": {
+      "importsFrom": [],
+      "importedBy": [
+        "frontend/src/features",
+        "frontend/src/app"
+      ]
+    },
+    "frontend/src/services": {
+      "importsFrom": [
+        "frontend/src/types"
+      ],
+      "importedBy": [
+        "frontend/src/features",
+        "frontend/src/app"
+      ]
+    },
+    "frontend/src/types": {
+      "importsFrom": [],
+      "importedBy": [
+        "frontend/src/features",
+        "frontend/src/services"
+      ]
+    },
+    "backend/app": {
+      "importsFrom": [
+        "backend/app/api",
+        "backend/app/core",
+        "backend/app/repositories"
+      ],
+      "importedBy": [
+        "backend/tests"
+      ]
+    },
+    ".context": {
+      "importsFrom": [],
+      "importedBy": []
+    },
+    "root": {
+      "importsFrom": [],
+      "importedBy": []
+    },
+    "backend": {
+      "importsFrom": [],
+      "importedBy": []
+    },
+    "e2e": {
+      "importsFrom": [
+        "backend/app/core"
+      ],
+      "importedBy": []
+    },
+    "frontend": {
+      "importsFrom": [],
+      "importedBy": []
+    },
+    ".claude": {
+      "importsFrom": [],
+      "importedBy": []
+    },
+    "backend/app/jobs": {
+      "importsFrom": [],
+      "importedBy": []
+    },
+    "frontend/src": {
+      "importsFrom": [
+        "frontend/src/app",
+        "frontend/src/components"
+      ],
+      "importedBy": []
+    }
+  },
+  "intraGroupDensity": {
+    "backend/app/api": {
+      "internalEdges": 5,
+      "totalEdges": 44,
+      "density": 0.114
+    },
+    "backend/app/core": {
+      "internalEdges": 2,
+      "totalEdges": 51,
+      "density": 0.039
+    },
+    "backend/app/repositories": {
+      "internalEdges": 0,
+      "totalEdges": 30,
+      "density": 0
+    },
+    "backend/app/schemas": {
+      "internalEdges": 2,
+      "totalEdges": 33,
+      "density": 0.061
+    },
+    "backend/app/services": {
+      "internalEdges": 4,
+      "totalEdges": 54,
+      "density": 0.074
+    },
+    "backend/scripts": {
+      "internalEdges": 0,
+      "totalEdges": 8,
+      "density": 0
+    },
+    "backend/tests": {
+      "internalEdges": 4,
+      "totalEdges": 45,
+      "density": 0.089
+    },
+    "backend/app/providers": {
+      "internalEdges": 12,
+      "totalEdges": 35,
+      "density": 0.343
+    },
+    "frontend/src/app": {
+      "internalEdges": 2,
+      "totalEdges": 19,
+      "density": 0.105
+    },
+    "frontend/src/components": {
+      "internalEdges": 7,
+      "totalEdges": 71,
+      "density": 0.099
+    },
+    "frontend/src/features": {
+      "internalEdges": 23,
+      "totalEdges": 131,
+      "density": 0.176
+    },
+    "frontend/src/lib": {
+      "internalEdges": 0,
+      "totalEdges": 11,
+      "density": 0
+    },
+    "frontend/src/services": {
+      "internalEdges": 1,
+      "totalEdges": 18,
+      "density": 0.056
+    },
+    "frontend/src/types": {
+      "internalEdges": 0,
+      "totalEdges": 17,
+      "density": 0
+    },
+    "backend/app": {
+      "internalEdges": 0,
+      "totalEdges": 20,
+      "density": 0
+    },
+    ".context": {
+      "internalEdges": 0,
+      "totalEdges": 0,
+      "density": 0
+    },
+    "root": {
+      "internalEdges": 0,
+      "totalEdges": 0,
+      "density": 0
+    },
+    "backend": {
+      "internalEdges": 0,
+      "totalEdges": 0,
+      "density": 0
+    },
+    "e2e": {
+      "internalEdges": 0,
+      "totalEdges": 1,
+      "density": 0
+    },
+    "frontend": {
+      "internalEdges": 0,
+      "totalEdges": 0,
+      "density": 0
+    },
+    ".claude": {
+      "internalEdges": 0,
+      "totalEdges": 0,
+      "density": 0
+    },
+    "backend/app/jobs": {
+      "internalEdges": 0,
+      "totalEdges": 0,
+      "density": 0
+    },
+    "frontend/src": {
+      "internalEdges": 1,
+      "totalEdges": 3,
+      "density": 0.333
+    }
+  },
+  "patternMatches": {
+    "backend/app/api": "api",
+    "backend/app/core": "service",
+    "backend/app/repositories": "data",
+    "backend/app/schemas": "types",
+    "backend/app/services": "service",
+    "backend/tests": "test",
+    "frontend/src/components": "ui",
+    "frontend/src/lib": "service",
+    "frontend/src/services": "service",
+    "frontend/src/types": "types",
+    "backend/app/jobs": "service"
+  },
+  "filePatternMatches": {
+    "file:backend/app/repositories/__init__.py": "entry",
+    "file:backend/app/services/__init__.py": "entry",
+    "file:backend/tests/test_csv.py": "test",
+    "file:backend/tests/test_run_metrics.py": "test",
+    "file:backend/app/providers/__init__.py": "entry",
+    "file:backend/tests/test_execution_log.py": "test",
+    "file:backend/tests/test_live_adapters.py": "test",
+    "file:backend/tests/test_providers.py": "test",
+    "file:backend/tests/test_schemas.py": "test",
+    "file:backend/app/api/__init__.py": "entry",
+    "file:backend/app/core/__init__.py": "entry",
+    "file:backend/tests/test_app_starts.py": "test",
+    "file:backend/tests/test_dashboard.py": "test",
+    "file:backend/tests/test_health.py": "test",
+    "file:backend/tests/test_indexes.py": "test",
+    "file:backend/tests/test_runs_and_comparisons.py": "test",
+    "file:backend/tests/test_settings.py": "test",
+    "file:backend/tests/test_shell_support.py": "test",
+    "file:backend/tests/test_taxonomy.py": "test",
+    "file:backend/tests/test_tickets.py": "test",
+    "document:.context/DEPLOYMENT_DECISIONS.md": "documentation",
+    "document:.context/PROGRESS.md": "documentation",
+    "document:.context/ROADMAP.md": "documentation",
+    "document:.context/ai-evaluation.md": "documentation",
+    "document:.context/architecture.md": "documentation",
+    "document:.context/code-size-standards.md": "documentation",
+    "document:.context/data-model.md": "documentation",
+    "document:.context/design.md": "documentation",
+    "document:.context/implementation.md": "documentation",
+    "document:.context/requirements.md": "documentation",
+    "document:AGENTS.md": "documentation",
+    "document:CLAUDE.md": "documentation",
+    "document:README.md": "documentation",
+    "document:e2e/personas/analysts/adversarial-input-tester.md": "documentation",
+    "document:e2e/personas/analysts/careful-power-user.md": "documentation",
+    "document:e2e/personas/analysts/first-time-user.md": "documentation",
+    "document:e2e/personas/analysts/keyboard-screen-reader.md": "documentation",
+    "document:e2e/personas/analysts/rushed-operator.md": "documentation",
+    "document:e2e/personas/customers/angry-impatient.md": "documentation",
+    "document:e2e/personas/customers/casual-typos.md": "documentation",
+    "document:e2e/personas/customers/non-native-english.md": "documentation",
+    "document:e2e/personas/customers/rambling-multi-issue.md": "documentation",
+    "document:e2e/personas/customers/terse.md": "documentation",
+    "document:e2e/personas/customers/vague.md": "documentation",
+    "file:backend/app/__init__.py": "entry",
+    "file:backend/app/jobs/__init__.py": "entry",
+    "file:backend/app/schemas/__init__.py": "entry",
+    "file:backend/tests/__init__.py": "entry",
+    "document:e2e/README.md": "documentation",
+    "document:e2e/personas/README.md": "documentation",
+    "document:e2e/test-cases/TC-001-create-ticket.md": "documentation",
+    "document:e2e/test-cases/TEMPLATE.md": "documentation",
+    "file:e2e/tests/smoke.spec.ts": "test"
+  },
+  "deploymentTopology": {
+    "hasDockerfile": false,
+    "hasCompose": false,
+    "hasK8s": false,
+    "hasTerraform": false,
+    "hasCI": false,
+    "infraFiles": []
+  },
+  "dataPipeline": {
+    "schemaFiles": [],
+    "migrationFiles": [],
+    "dataModelFiles": [
+      "backend/app/repositories/__init__.py",
+      "backend/app/repositories/comparisons.py",
+      "backend/app/repositories/executions.py",
+      "backend/app/repositories/labels.py",
+      "backend/app/repositories/tickets.py",
+      "backend/app/schemas/comparisons.py",
+      "backend/app/schemas/imports.py",
+      "backend/app/schemas/bulk_jobs.py",
+      "backend/app/schemas/classification.py",
+      "backend/app/schemas/executions.py",
+      "backend/app/schemas/tickets.py",
+      "backend/app/repositories/database.py",
+      "backend/app/schemas/__init__.py"
+    ],
+    "apiHandlerFiles": [
+      "backend/app/api/dashboard.py",
+      "backend/app/api/deps.py",
+      "backend/app/api/executions.py",
+      "backend/app/api/imports.py",
+      "backend/app/api/runs.py",
+      "backend/app/api/tickets.py",
+      "backend/app/api/__init__.py",
+      "backend/app/api/health.py",
+      "backend/app/api/providers.py",
+      "backend/app/api/taxonomy.py"
+    ]
+  },
+  "docCoverage": {
+    "groupsWithDocs": 4,
+    "totalGroups": 23,
+    "coverageRatio": 0.17,
+    "undocumentedGroups": [
+      "backend/app/api",
+      "backend/app/core",
+      "backend/app/repositories",
+      "backend/app/schemas",
+      "backend/app/services",
+      "backend/scripts",
+      "backend/tests",
+      "backend/app/providers",
+      "frontend/src/app",
+      "frontend/src/components",
+      "frontend/src/features",
+      "frontend/src/lib",
+      "frontend/src/services",
+      "frontend/src/types",
+      "backend/app",
+      "frontend",
+      ".claude",
+      "backend/app/jobs",
+      "frontend/src"
+    ]
+  },
+  "dependencyDirection": [
+    {
+      "dependent": "backend/app/api",
+      "dependsOn": "backend/app/services"
+    },
+    {
+      "dependent": "backend/app/api",
+      "dependsOn": "backend/app/core"
+    },
+    {
+      "dependent": "backend/app/api",
+      "dependsOn": "backend/app/repositories"
+    },
+    {
+      "dependent": "backend/app/api",
+      "dependsOn": "backend/app/schemas"
+    },
+    {
+      "dependent": "backend/app/repositories",
+      "dependsOn": "backend/app/core"
+    },
+    {
+      "dependent": "backend/app/schemas",
+      "dependsOn": "backend/app/core"
+    },
+    {
+      "dependent": "backend/app/services",
+      "dependsOn": "backend/app/core"
+    },
+    {
+      "dependent": "backend/app/services",
+      "dependsOn": "backend/app/repositories"
+    },
+    {
+      "dependent": "backend/app/services",
+      "dependsOn": "backend/app/schemas"
+    },
+    {
+      "dependent": "backend/scripts",
+      "dependsOn": "backend/app/core"
+    },
+    {
+      "dependent": "backend/scripts",
+      "dependsOn": "backend/app/repositories"
+    },
+    {
+      "dependent": "backend/scripts",
+      "dependsOn": "backend/app/services"
+    },
+    {
+      "dependent": "backend/tests",
+      "dependsOn": "backend/app"
+    },
+    {
+      "dependent": "backend/tests",
+      "dependsOn": "backend/app/services"
+    },
+    {
+      "dependent": "backend/app/providers",
+      "dependsOn": "backend/app/core"
+    },
+    {
+      "dependent": "backend/app/providers",
+      "dependsOn": "backend/app/schemas"
+    },
+    {
+      "dependent": "backend/app/services",
+      "dependsOn": "backend/app/providers"
+    },
+    {
+      "dependent": "backend/tests",
+      "dependsOn": "backend/app/core"
+    },
+    {
+      "dependent": "backend/tests",
+      "dependsOn": "backend/app/providers"
+    },
+    {
+      "dependent": "backend/tests",
+      "dependsOn": "backend/app/schemas"
+    },
+    {
+      "dependent": "frontend/src/app",
+      "dependsOn": "frontend/src/components"
+    },
+    {
+      "dependent": "frontend/src/app",
+      "dependsOn": "frontend/src/lib"
+    },
+    {
+      "dependent": "frontend/src/app",
+      "dependsOn": "frontend/src/services"
+    },
+    {
+      "dependent": "frontend/src/app",
+      "dependsOn": "frontend/src/features"
+    },
+    {
+      "dependent": "frontend/src/features",
+      "dependsOn": "frontend/src/components"
+    },
+    {
+      "dependent": "frontend/src/features",
+      "dependsOn": "frontend/src/services"
+    },
+    {
+      "dependent": "frontend/src/features",
+      "dependsOn": "frontend/src/types"
+    },
+    {
+      "dependent": "frontend/src/features",
+      "dependsOn": "frontend/src/lib"
+    },
+    {
+      "dependent": "frontend/src/services",
+      "dependsOn": "frontend/src/types"
+    },
+    {
+      "dependent": "backend/app/api",
+      "dependsOn": "backend/app/providers"
+    },
+    {
+      "dependent": "backend/app",
+      "dependsOn": "backend/app/api"
+    },
+    {
+      "dependent": "backend/app",
+      "dependsOn": "backend/app/core"
+    },
+    {
+      "dependent": "backend/app",
+      "dependsOn": "backend/app/repositories"
+    },
+    {
+      "dependent": "backend/tests",
+      "dependsOn": "backend/app/repositories"
+    },
+    {
+      "dependent": "frontend/src",
+      "dependsOn": "frontend/src/app"
+    },
+    {
+      "dependent": "frontend/src",
+      "dependsOn": "frontend/src/components"
+    },
+    {
+      "dependent": "e2e",
+      "dependsOn": "backend/app/core"
+    }
+  ],
+  "fileStats": {
+    "totalFileNodes": 165,
+    "filesPerGroup": {
+      "backend/app/api": 10,
+      "backend/app/core": 6,
+      "backend/app/repositories": 6,
+      "backend/app/schemas": 7,
+      "backend/app/services": 9,
+      "backend/scripts": 2,
+      "backend/tests": 17,
+      "backend/app/providers": 8,
+      "frontend/src/app": 3,
+      "frontend/src/components": 16,
+      "frontend/src/features": 18,
+      "frontend/src/lib": 2,
+      "frontend/src/services": 3,
+      "frontend/src/types": 2,
+      "backend/app": 2,
+      ".context": 12,
+      "root": 5,
+      "backend": 3,
+      "e2e": 20,
+      "frontend": 10,
+      ".claude": 1,
+      "backend/app/jobs": 1,
+      "frontend/src": 2
+    },
+    "nodeTypeCounts": {
+      "file": 123,
+      "document": 29,
+      "table": 2,
+      "config": 11
+    }
+  },
+  "fileFanIn": {
+    "file:backend/app/api/deps.py": 5,
+    "file:backend/app/services/__init__.py": 5,
+    "file:backend/app/services/dashboard.py": 2,
+    "file:backend/app/core/taxonomy.py": 24,
+    "file:backend/app/repositories/__init__.py": 8,
+    "file:backend/app/repositories/executions.py": 5,
+    "file:backend/app/schemas/executions.py": 11,
+    "file:backend/app/schemas/imports.py": 2,
+    "file:backend/app/services/csv_export.py": 1,
+    "file:backend/app/services/csv_import.py": 3,
+    "file:backend/app/repositories/tickets.py": 5,
+    "file:backend/app/schemas/comparisons.py": 1,
+    "file:backend/app/services/comparisons.py": 1,
+    "file:backend/app/services/executions.py": 2,
+    "file:backend/app/schemas/classification.py": 9,
+    "file:backend/app/schemas/tickets.py": 4,
+    "file:backend/app/core/clock.py": 5,
+    "file:backend/app/repositories/comparisons.py": 2,
+    "file:backend/app/repositories/database.py": 7,
+    "file:backend/app/repositories/labels.py": 1,
+    "file:backend/app/services/run_metrics.py": 4,
+    "file:backend/app/core/settings.py": 14,
+    "file:backend/app/services/run_report.py": 1,
+    "file:backend/app/main.py": 9,
+    "file:backend/app/core/__init__.py": 3,
+    "file:backend/app/providers/base.py": 9,
+    "file:backend/app/providers/__init__.py": 2,
+    "file:backend/app/providers/http.py": 2,
+    "file:backend/app/providers/jev.py": 2,
+    "file:backend/app/providers/mock.py": 3,
+    "file:backend/app/providers/ollama.py": 2,
+    "file:backend/app/core/pricing.py": 2,
+    "file:backend/app/core/redaction.py": 2,
+    "file:backend/app/providers/registry.py": 3,
+    "file:backend/tests/test_providers.py": 1,
+    "file:backend/app/schemas/bulk_jobs.py": 1,
+    "file:frontend/src/components/ui/badge.tsx": 4,
+    "file:frontend/src/components/ui/button.tsx": 18,
+    "file:frontend/src/components/ui/input.tsx": 6,
+    "file:frontend/src/components/ui/sheet.tsx": 1,
+    "file:frontend/src/lib/utils.ts": 1,
+    "file:frontend/src/services/queries.ts": 7,
+    "file:frontend/src/components/states.tsx": 12,
+    "file:frontend/src/app/AppShell.tsx": 1,
+    "file:frontend/src/app/PlaceholderPage.tsx": 1,
+    "file:frontend/src/features/compare/ComparePage.tsx": 1,
+    "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx": 1,
+    "file:frontend/src/features/comparisons/ComparisonsPage.tsx": 3,
+    "file:frontend/src/features/dashboard/DashboardPage.tsx": 1,
+    "file:frontend/src/features/executions/ExecutionDetailPage.tsx": 1,
+    "file:frontend/src/features/executions/ExecutionsPage.tsx": 1,
+    "file:frontend/src/features/tickets/NewTicketPage.tsx": 1,
+    "file:frontend/src/features/tickets/TicketDetailPage.tsx": 1,
+    "file:frontend/src/features/tickets/TicketListPage.tsx": 1,
+    "file:frontend/src/components/ui/alert-dialog.tsx": 1,
+    "file:frontend/src/components/ui/select.tsx": 5,
+    "file:frontend/src/components/ui/card.tsx": 7,
+    "file:frontend/src/features/compare/ProviderColumn.tsx": 2,
+    "file:frontend/src/features/compare/useCompareRun.ts": 3,
+    "file:frontend/src/features/tickets/TicketForm.tsx": 3,
+    "file:frontend/src/features/tickets/hooks.ts": 7,
+    "file:frontend/src/types/api.ts": 17,
+    "file:frontend/src/lib/format.ts": 10,
+    "file:frontend/src/services/api.ts": 10,
+    "file:frontend/src/components/ui/table.tsx": 4,
+    "file:frontend/src/features/comparisons/hooks.ts": 3,
+    "file:frontend/src/components/Detail.tsx": 3,
+    "file:frontend/src/components/ListControls.tsx": 2,
+    "file:frontend/src/components/ui/label.tsx": 3,
+    "file:frontend/src/components/ui/dialog.tsx": 1,
+    "file:frontend/src/components/ConfirmDialog.tsx": 1,
+    "file:frontend/src/components/ui/textarea.tsx": 2,
+    "file:frontend/src/features/tickets/AiResults.tsx": 1,
+    "file:frontend/src/features/tickets/FinalClassification.tsx": 1,
+    "file:frontend/src/features/tickets/ImportExport.tsx": 1,
+    "file:backend/app/api/__init__.py": 1,
+    "file:backend/app/api/dashboard.py": 1,
+    "file:backend/app/api/executions.py": 1,
+    "file:backend/app/api/health.py": 1,
+    "file:backend/app/api/imports.py": 1,
+    "file:backend/app/api/providers.py": 1,
+    "file:backend/app/api/runs.py": 1,
+    "file:backend/app/api/taxonomy.py": 1,
+    "file:backend/app/api/tickets.py": 1,
+    "file:backend/tests/conftest.py": 3,
+    "file:frontend/src/app/router.tsx": 1,
+    "file:frontend/src/components/ui/sonner.tsx": 1,
+    "file:frontend/src/index.css": 1
+  },
+  "fileFanOut": {
+    "file:backend/app/api/dashboard.py": 3,
+    "file:backend/app/api/executions.py": 5,
+    "file:backend/app/api/imports.py": 5,
+    "file:backend/app/api/runs.py": 9,
+    "file:backend/app/api/tickets.py": 8,
+    "file:backend/app/repositories/tickets.py": 1,
+    "file:backend/app/schemas/comparisons.py": 1,
+    "file:backend/app/services/comparisons.py": 5,
+    "file:backend/app/services/csv_export.py": 2,
+    "file:backend/app/services/csv_import.py": 8,
+    "file:backend/app/services/dashboard.py": 5,
+    "file:backend/app/services/run_report.py": 1,
+    "file:backend/scripts/run_report.py": 6,
+    "file:backend/tests/test_csv.py": 2,
+    "file:backend/tests/test_run_metrics.py": 1,
+    "file:backend/app/core/pricing.py": 3,
+    "file:backend/app/providers/base.py": 3,
+    "file:backend/app/providers/definitions.py": 1,
+    "file:backend/app/providers/http.py": 1,
+    "file:backend/app/providers/jev.py": 5,
+    "file:backend/app/providers/mock.py": 3,
+    "file:backend/app/providers/ollama.py": 5,
+    "file:backend/app/providers/registry.py": 6,
+    "file:backend/app/schemas/bulk_jobs.py": 1,
+    "file:backend/app/schemas/classification.py": 1,
+    "file:backend/app/schemas/executions.py": 2,
+    "file:backend/app/schemas/tickets.py": 2,
+    "file:backend/app/services/executions.py": 11,
+    "file:backend/app/services/tickets.py": 7,
+    "file:backend/tests/test_execution_log.py": 6,
+    "file:backend/tests/test_live_adapters.py": 7,
+    "file:backend/tests/test_providers.py": 6,
+    "file:backend/tests/test_schemas.py": 5,
+    "file:frontend/src/app/AppShell.tsx": 6,
+    "file:frontend/src/app/PlaceholderPage.tsx": 1,
+    "file:frontend/src/app/router.tsx": 11,
+    "file:frontend/src/components/ConfirmDialog.tsx": 1,
+    "file:frontend/src/components/ListControls.tsx": 2,
+    "file:frontend/src/components/states.tsx": 1,
+    "file:frontend/src/components/ui/alert-dialog.tsx": 1,
+    "file:frontend/src/components/ui/dialog.tsx": 1,
+    "file:frontend/src/components/ui/sheet.tsx": 1,
+    "file:frontend/src/features/compare/ComparePage.tsx": 10,
+    "file:frontend/src/features/compare/ProviderColumn.tsx": 5,
+    "file:frontend/src/features/compare/useCompareRun.ts": 2,
+    "file:frontend/src/features/comparisons/ComparisonDetailPage.tsx": 6,
+    "file:frontend/src/features/comparisons/ComparisonsPage.tsx": 7,
+    "file:frontend/src/features/comparisons/hooks.ts": 2,
+    "file:frontend/src/features/dashboard/DashboardPage.tsx": 8,
+    "file:frontend/src/features/executions/ExecutionDetailPage.tsx": 7,
+    "file:frontend/src/features/executions/ExecutionsPage.tsx": 10,
+    "file:frontend/src/features/tickets/AiResults.tsx": 8,
+    "file:frontend/src/features/tickets/FinalClassification.tsx": 10,
+    "file:frontend/src/features/tickets/ImportExport.tsx": 7,
+    "file:frontend/src/features/tickets/NewTicketPage.tsx": 5,
+    "file:frontend/src/features/tickets/TicketDetailPage.tsx": 15,
+    "file:frontend/src/features/tickets/TicketForm.tsx": 6,
+    "file:frontend/src/features/tickets/TicketListPage.tsx": 12,
+    "file:frontend/src/features/tickets/hooks.ts": 2,
+    "file:frontend/src/services/queries.ts": 2,
+    "file:backend/app/api/health.py": 1,
+    "file:backend/app/api/providers.py": 2,
+    "file:backend/app/api/taxonomy.py": 2,
+    "file:backend/app/main.py": 11,
+    "file:backend/app/repositories/database.py": 1,
+    "file:backend/scripts/init_db.py": 2,
+    "file:backend/tests/conftest.py": 1,
+    "file:backend/tests/test_app_starts.py": 1,
+    "file:backend/tests/test_dashboard.py": 1,
+    "file:backend/tests/test_health.py": 3,
+    "file:backend/tests/test_indexes.py": 3,
+    "file:backend/tests/test_runs_and_comparisons.py": 1,
+    "file:backend/tests/test_settings.py": 1,
+    "file:backend/tests/test_shell_support.py": 1,
+    "file:backend/tests/test_taxonomy.py": 2,
+    "file:backend/tests/test_tickets.py": 4,
+    "file:frontend/src/main.tsx": 3,
+    "file:e2e/scripts/reset_db.py": 1
+  }
+}

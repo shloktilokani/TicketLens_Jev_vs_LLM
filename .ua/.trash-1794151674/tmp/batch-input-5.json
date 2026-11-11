@@ -1,0 +1,155 @@
+{
+ "batchIndex": 5,
+ "files": [
+  {
+   "path": "backend/app/api/evaluation.py",
+   "language": "python",
+   "sizeLines": 12,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/app/services/evaluation.py",
+   "language": "python",
+   "sizeLines": 147,
+   "fileCategory": "code"
+  }
+ ],
+ "batchImportData": {
+  "backend/app/api/evaluation.py": [
+   "backend/app/api/deps.py",
+   "backend/app/services/__init__.py",
+   "backend/app/services/evaluation.py"
+  ],
+  "backend/app/services/evaluation.py": [
+   "backend/app/core/taxonomy.py",
+   "backend/app/repositories/__init__.py",
+   "backend/app/repositories/executions.py",
+   "backend/app/repositories/labels.py",
+   "backend/app/services/run_metrics.py"
+  ]
+ },
+ "neighborMap": {
+  "backend/app/api/evaluation.py": [
+   {
+    "path": "backend/app/api/deps.py",
+    "batchIndex": 3,
+    "symbols": [
+     "get_db"
+    ]
+   },
+   {
+    "path": "backend/app/services/__init__.py",
+    "batchIndex": 5,
+    "symbols": []
+   },
+   {
+    "path": "backend/app/main.py",
+    "batchIndex": 5,
+    "symbols": [
+     "create_app"
+    ]
+   }
+  ],
+  "backend/app/services/evaluation.py": [
+   {
+    "path": "backend/app/core/taxonomy.py",
+    "batchIndex": 3,
+    "symbols": [
+     "Category",
+     "Priority",
+     "Sentiment",
+     "TicketStatus",
+     "Channel",
+     "Provider",
+     "ExecutionStatus",
+     "ComparisonStatus",
+     "BulkJobStatus",
+     "set_active",
+     "reset",
+     "active_version",
+     "active_categories",
+     "is_valid_pair",
+     "as_dict"
+    ]
+   },
+   {
+    "path": "backend/app/repositories/__init__.py",
+    "batchIndex": 3,
+    "symbols": []
+   },
+   {
+    "path": "backend/app/repositories/executions.py",
+    "batchIndex": 4,
+    "symbols": [
+     "insert",
+     "update",
+     "get",
+     "link_comparison",
+     "succeeded_ticket_ids",
+     "cancel_running",
+     "latest_finished_real",
+     "latest_by_ticket",
+     "search"
+    ]
+   },
+   {
+    "path": "backend/app/repositories/labels.py",
+    "batchIndex": 5,
+    "symbols": [
+     "insert",
+     "expected_by_ticket"
+    ]
+   },
+   {
+    "path": "backend/app/services/run_metrics.py",
+    "batchIndex": 6,
+    "symbols": [
+     "percentile",
+     "kappa",
+     "latency",
+     "tokens",
+     "outcomes",
+     "cost",
+     "jev_confidence",
+     "compute"
+    ]
+   },
+   {
+    "path": "backend/scripts/run_report.py",
+    "batchIndex": 6,
+    "symbols": [
+     "load_run",
+     "main"
+    ]
+   },
+   {
+    "path": "backend/tests/test_evaluation.py",
+    "batchIndex": 6,
+    "symbols": [
+     "rows",
+     "test_v2_keeps_every_label_in_order",
+     "test_v2_titles_no_longer_give_away_the_answer",
+     "test_v2_titles_are_unique_and_text_is_english",
+     "test_v2_covers_all_six_categories_without_severe_imbalance",
+     "test_v2_passes_the_real_import_checks",
+     "run",
+     "test_macro_f1_matches_a_hand_calculation",
+     "test_accuracy_uses_only_scored_runs_and_reports_every_denominator",
+     "test_head_to_head_counts_only_tickets_both_sides_answered",
+     "test_confusion_matrix_rows_are_expected_and_columns_are_predicted",
+     "test_escalation_is_labelled_in_words_in_the_matrix",
+     "test_macro_f1_appears_once_there_are_enough_samples",
+     "test_results_are_reproducible",
+     "test_report_section_shows_scores_with_denominators",
+     "api",
+     "import_labelled",
+     "test_no_labels_is_an_empty_state_not_zero_percent",
+     "test_fake_runs_are_never_scored",
+     "test_real_runs_are_scored_using_the_latest_finished_attempt",
+     "test_labels_never_reach_a_model",
+     "test_the_dataset_downloads_and_does_not_seed_the_database"
+    ]
+   }
+  ]
+ }
+}

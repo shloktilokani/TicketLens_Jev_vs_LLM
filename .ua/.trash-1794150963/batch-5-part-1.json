@@ -1,0 +1,558 @@
+{
+ "nodes": [
+  {
+   "id": "file:backend/app/api/__init__.py",
+   "type": "file",
+   "name": "__init__.py",
+   "filePath": "backend/app/api/__init__.py",
+   "summary": "Empty package marker that makes the API routers importable as app.api.",
+   "tags": [
+    "barrel",
+    "python-package",
+    "api"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/api/health.py",
+   "type": "file",
+   "name": "health.py",
+   "filePath": "backend/app/api/health.py",
+   "summary": "FastAPI router for process health and MongoDB readiness probes, returning 503 with a safe setup message when the database is unreachable.",
+   "tags": [
+    "api-handler",
+    "health-check",
+    "readiness",
+    "mongodb"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/health.py:health",
+   "type": "function",
+   "name": "health",
+   "filePath": "backend/app/api/health.py",
+   "lineRange": [
+    10,
+    12
+   ],
+   "summary": "Liveness endpoint that reports process status without touching the database.",
+   "tags": [
+    "api-handler",
+    "health-check",
+    "liveness"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/health.py:ready",
+   "type": "function",
+   "name": "ready",
+   "filePath": "backend/app/api/health.py",
+   "lineRange": [
+    16,
+    27
+   ],
+   "summary": "Readiness endpoint that pings MongoDB and returns 503 with a safe setup message when it is unreachable.",
+   "tags": [
+    "api-handler",
+    "readiness",
+    "mongodb"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/api/providers.py",
+   "type": "file",
+   "name": "providers.py",
+   "filePath": "backend/app/api/providers.py",
+   "summary": "FastAPI router reporting whether the Jev and LLM sides can run and their display labels, without exposing API key values.",
+   "tags": [
+    "api-handler",
+    "provider-status",
+    "security",
+    "configuration"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/providers.py:provider_status",
+   "type": "function",
+   "name": "provider_status",
+   "filePath": "backend/app/api/providers.py",
+   "lineRange": [
+    10,
+    20
+   ],
+   "summary": "Computes whether the Jev and LLM sides are configured from mock mode, local backends, or key presence, and returns their labels without key values.",
+   "tags": [
+    "api-handler",
+    "provider-status",
+    "security"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/api/taxonomy.py",
+   "type": "file",
+   "name": "taxonomy.py",
+   "filePath": "backend/app/api/taxonomy.py",
+   "summary": "FastAPI router serving the canonical categories and enum values so the frontend reads the taxonomy rather than copying it.",
+   "tags": [
+    "api-handler",
+    "taxonomy",
+    "single-source-of-truth"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/api/taxonomy.py:get_taxonomy",
+   "type": "function",
+   "name": "get_taxonomy",
+   "filePath": "backend/app/api/taxonomy.py",
+   "lineRange": [
+    9,
+    11
+   ],
+   "summary": "Returns the canonical taxonomy and enum values for the frontend.",
+   "tags": [
+    "api-handler",
+    "taxonomy",
+    "single-source-of-truth"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/core/__init__.py",
+   "type": "file",
+   "name": "__init__.py",
+   "filePath": "backend/app/core/__init__.py",
+   "summary": "Empty package marker for the core settings, taxonomy, and pricing modules.",
+   "tags": [
+    "barrel",
+    "python-package",
+    "core"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/core/settings.py",
+   "type": "file",
+   "name": "settings.py",
+   "filePath": "backend/app/core/settings.py",
+   "summary": "Typed backend settings and the only module that reads environment variables or backend/.env, covering MongoDB, provider backends, secrets, timeouts, and mock mode.",
+   "tags": [
+    "configuration",
+    "settings",
+    "secrets",
+    "validation",
+    "singleton"
+   ],
+   "complexity": "simple",
+   "languageNotes": "The extra='forbid' and env_ignore_empty options make misspelt variables fail at startup while treating empty values from a copied .env.example as unset."
+  },
+  {
+   "id": "function:backend/app/core/settings.py:get_settings",
+   "type": "function",
+   "name": "get_settings",
+   "filePath": "backend/app/core/settings.py",
+   "lineRange": [
+    55,
+    56
+   ],
+   "summary": "Returns a cached process-wide Settings instance.",
+   "tags": [
+    "configuration",
+    "singleton",
+    "cache"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/core/settings.py:is_local",
+   "type": "function",
+   "name": "is_local",
+   "filePath": "backend/app/core/settings.py",
+   "lineRange": [
+    59,
+    60
+   ],
+   "summary": "Checks whether a URL's hostname refers to the local machine.",
+   "tags": [
+    "utility",
+    "url",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/core/settings.py:Settings",
+   "type": "class",
+   "name": "Settings",
+   "filePath": "backend/app/core/settings.py",
+   "lineRange": [
+    14,
+    51
+   ],
+   "summary": "Pydantic settings model for app, MongoDB, provider, timeout, and mock-mode values, rejecting unknown keys and holding API keys as optional SecretStr values.",
+   "tags": [
+    "configuration",
+    "data-model",
+    "validation",
+    "secrets"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:backend/app/main.py",
+   "type": "file",
+   "name": "main.py",
+   "filePath": "backend/app/main.py",
+   "summary": "TicketLens API entry point whose application factory wires the MongoDB lifespan, CORS for the local frontend, all routers, and a 503 handler for database connection failures.",
+   "tags": [
+    "entry-point",
+    "factory",
+    "fastapi",
+    "middleware",
+    "error-handling"
+   ],
+   "complexity": "moderate",
+   "languageNotes": "The lifespan closure captures the settings passed to create_app, so tests can build isolated apps with their own configuration."
+  },
+  {
+   "id": "function:backend/app/main.py:create_app",
+   "type": "function",
+   "name": "create_app",
+   "filePath": "backend/app/main.py",
+   "lineRange": [
+    21,
+    60
+   ],
+   "summary": "Builds the FastAPI app with a lifespan that connects MongoDB and ensures indexes, a restricted CORS policy, all routers, and a 503 handler for connection failures.",
+   "tags": [
+    "factory",
+    "entry-point",
+    "fastapi",
+    "middleware"
+   ],
+   "complexity": "moderate"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:backend/app/api/health.py",
+   "target": "function:backend/app/api/health.py:health",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/health.py",
+   "target": "function:backend/app/api/health.py:health",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/health.py",
+   "target": "function:backend/app/api/health.py:ready",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/health.py",
+   "target": "function:backend/app/api/health.py:ready",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/health.py",
+   "target": "file:backend/app/repositories/database.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/providers.py",
+   "target": "function:backend/app/api/providers.py:provider_status",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/providers.py",
+   "target": "function:backend/app/api/providers.py:provider_status",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/providers.py",
+   "target": "file:backend/app/core/settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/providers.py",
+   "target": "file:backend/app/providers/registry.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/taxonomy.py",
+   "target": "function:backend/app/api/taxonomy.py:get_taxonomy",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/api/taxonomy.py",
+   "target": "function:backend/app/api/taxonomy.py:get_taxonomy",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/taxonomy.py",
+   "target": "file:backend/app/core/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/api/taxonomy.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/core/settings.py",
+   "target": "function:backend/app/core/settings.py:get_settings",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/core/settings.py",
+   "target": "function:backend/app/core/settings.py:get_settings",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/core/settings.py",
+   "target": "function:backend/app/core/settings.py:is_local",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/core/settings.py",
+   "target": "function:backend/app/core/settings.py:is_local",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/core/settings.py",
+   "target": "class:backend/app/core/settings.py:Settings",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/core/settings.py",
+   "target": "class:backend/app/core/settings.py:Settings",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "function:backend/app/main.py:create_app",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "function:backend/app/main.py:create_app",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/api/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/api/dashboard.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/api/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/api/health.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/api/imports.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/api/providers.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/api/runs.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/api/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/api/tickets.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/core/settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/app/repositories/database.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "function:backend/app/api/health.py:ready",
+   "target": "function:backend/app/repositories/database.py:is_reachable",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/providers.py:provider_status",
+   "target": "function:backend/app/core/settings.py:is_local",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/providers.py:provider_status",
+   "target": "function:backend/app/providers/registry.py:provider_labels",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/api/taxonomy.py:get_taxonomy",
+   "target": "function:backend/app/core/taxonomy.py:as_dict",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/main.py:create_app",
+   "target": "function:backend/app/core/settings.py:get_settings",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/main.py:create_app",
+   "target": "function:backend/app/repositories/database.py:connect",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/main.py:create_app",
+   "target": "function:backend/app/repositories/database.py:ensure_indexes",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/api/health.py",
+   "target": "file:backend/tests/test_health.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/api/providers.py",
+   "target": "file:backend/tests/test_shell_support.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/api/taxonomy.py",
+   "target": "file:backend/tests/test_taxonomy.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/core/settings.py",
+   "target": "file:backend/tests/test_settings.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/tests/test_app_starts.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/main.py",
+   "target": "file:backend/tests/test_shell_support.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  }
+ ]
+}

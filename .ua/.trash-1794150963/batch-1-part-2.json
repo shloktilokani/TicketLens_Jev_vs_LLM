@@ -1,0 +1,730 @@
+{
+ "nodes": [
+  {
+   "id": "file:backend/app/core/clock.py",
+   "type": "file",
+   "name": "clock.py",
+   "filePath": "backend/app/core/clock.py",
+   "summary": "Provides the UTC clock used for stored timestamps, truncated to the millisecond precision that BSON dates keep.",
+   "tags": [
+    "utility",
+    "time",
+    "bson",
+    "timestamps"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/core/clock.py:utc_now",
+   "type": "function",
+   "name": "utc_now",
+   "filePath": "backend/app/core/clock.py",
+   "lineRange": [
+    4,
+    10
+   ],
+   "summary": "Returns the current UTC time truncated to milliseconds, so values returned at creation match those read back from MongoDB.",
+   "tags": [
+    "utility",
+    "time",
+    "bson"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/repositories/__init__.py",
+   "type": "file",
+   "name": "__init__.py",
+   "filePath": "backend/app/repositories/__init__.py",
+   "summary": "Empty package marker for the MongoDB repository layer.",
+   "tags": [
+    "package-marker",
+    "repository-layer",
+    "python"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/repositories/comparisons.py",
+   "type": "file",
+   "name": "comparisons.py",
+   "filePath": "backend/app/repositories/comparisons.py",
+   "summary": "MongoDB access for Jev-vs-GPT comparison records: insert, newest-first listing, counting and lookup by ID.",
+   "tags": [
+    "repository",
+    "data-access",
+    "mongodb",
+    "comparisons"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/comparisons.py:insert",
+   "type": "function",
+   "name": "insert",
+   "filePath": "backend/app/repositories/comparisons.py",
+   "lineRange": [
+    6,
+    7
+   ],
+   "summary": "Inserts a copy of a comparison document so the caller's dict does not gain an ObjectId.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "write"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/comparisons.py:newest_first",
+   "type": "function",
+   "name": "newest_first",
+   "filePath": "backend/app/repositories/comparisons.py",
+   "lineRange": [
+    10,
+    14
+   ],
+   "summary": "Returns comparisons newest first, optionally for one ticket, with a limit of 0 meaning all.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "query"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/comparisons.py:count",
+   "type": "function",
+   "name": "count",
+   "filePath": "backend/app/repositories/comparisons.py",
+   "lineRange": [
+    17,
+    18
+   ],
+   "summary": "Counts comparisons, optionally for one ticket.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "query"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/comparisons.py:get",
+   "type": "function",
+   "name": "get",
+   "filePath": "backend/app/repositories/comparisons.py",
+   "lineRange": [
+    21,
+    22
+   ],
+   "summary": "Fetches one comparison by ID without the MongoDB _id.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "query"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/repositories/executions.py",
+   "type": "file",
+   "name": "executions.py",
+   "filePath": "backend/app/repositories/executions.py",
+   "summary": "MongoDB access for AI execution records, including updates, comparison linking, each ticket's latest run and a paginated search that leaves out payloads.",
+   "tags": [
+    "repository",
+    "data-access",
+    "mongodb",
+    "execution-log",
+    "aggregation"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/repositories/executions.py:insert",
+   "type": "function",
+   "name": "insert",
+   "filePath": "backend/app/repositories/executions.py",
+   "lineRange": [
+    16,
+    17
+   ],
+   "summary": "Inserts a copy of an execution document so the caller's dict does not gain an ObjectId.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "write"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/executions.py:update",
+   "type": "function",
+   "name": "update",
+   "filePath": "backend/app/repositories/executions.py",
+   "lineRange": [
+    20,
+    26
+   ],
+   "summary": "Applies field changes to an execution and returns the updated document.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "write"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/executions.py:get",
+   "type": "function",
+   "name": "get",
+   "filePath": "backend/app/repositories/executions.py",
+   "lineRange": [
+    29,
+    30
+   ],
+   "summary": "Fetches one execution by ID without the MongoDB _id.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "query"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/executions.py:link_comparison",
+   "type": "function",
+   "name": "link_comparison",
+   "filePath": "backend/app/repositories/executions.py",
+   "lineRange": [
+    33,
+    36
+   ],
+   "summary": "Sets the comparison ID on the given executions.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "write"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/executions.py:latest_by_ticket",
+   "type": "function",
+   "name": "latest_by_ticket",
+   "filePath": "backend/app/repositories/executions.py",
+   "lineRange": [
+    39,
+    53
+   ],
+   "summary": "Aggregates each ticket's most recent run into a map of provider, status and start time.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "aggregation"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/repositories/executions.py:search",
+   "type": "function",
+   "name": "search",
+   "filePath": "backend/app/repositories/executions.py",
+   "lineRange": [
+    56,
+    80
+   ],
+   "summary": "Returns one page of runs newest first, without payloads, plus the total, treating the end date as the whole UTC day.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "pagination",
+    "search"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:backend/app/repositories/labels.py",
+   "type": "file",
+   "name": "labels.py",
+   "filePath": "backend/app/repositories/labels.py",
+   "summary": "Write-only MongoDB access for evaluation labels, which are kept apart from tickets and never read when building provider requests.",
+   "tags": [
+    "repository",
+    "data-access",
+    "mongodb",
+    "evaluation-labels"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/labels.py:insert",
+   "type": "function",
+   "name": "insert",
+   "filePath": "backend/app/repositories/labels.py",
+   "lineRange": [
+    9,
+    10
+   ],
+   "summary": "Inserts one evaluation label document.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "evaluation-labels"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/repositories/tickets.py",
+   "type": "file",
+   "name": "tickets.py",
+   "filePath": "backend/app/repositories/tickets.py",
+   "summary": "MongoDB access for tickets and the atomic ticket-ID counter, with plain-text search, priority-ranked sorting, status counts and dependents-first deletion.",
+   "tags": [
+    "repository",
+    "data-access",
+    "mongodb",
+    "tickets",
+    "aggregation"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/repositories/tickets.py:next_ticket_id",
+   "type": "function",
+   "name": "next_ticket_id",
+   "filePath": "backend/app/repositories/tickets.py",
+   "lineRange": [
+    18,
+    27
+   ],
+   "summary": "Issues the next SK-prefixed ticket ID from an atomic upserted counter; IDs are never reused and gaps are acceptable.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "id-generation",
+    "concurrency"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/tickets.py:insert",
+   "type": "function",
+   "name": "insert",
+   "filePath": "backend/app/repositories/tickets.py",
+   "lineRange": [
+    30,
+    31
+   ],
+   "summary": "Inserts a copy of a ticket document so the caller's dict does not gain an ObjectId.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "write"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/tickets.py:get",
+   "type": "function",
+   "name": "get",
+   "filePath": "backend/app/repositories/tickets.py",
+   "lineRange": [
+    34,
+    35
+   ],
+   "summary": "Fetches one ticket by ID without the MongoDB _id.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "query"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/tickets.py:fingerprint_exists",
+   "type": "function",
+   "name": "fingerprint_exists",
+   "filePath": "backend/app/repositories/tickets.py",
+   "lineRange": [
+    38,
+    39
+   ],
+   "summary": "Checks whether a ticket with the given import fingerprint is already stored.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "deduplication"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/tickets.py:update",
+   "type": "function",
+   "name": "update",
+   "filePath": "backend/app/repositories/tickets.py",
+   "lineRange": [
+    42,
+    49
+   ],
+   "summary": "Applies MongoDB update operators and returns the updated ticket, or None if it does not exist.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "write"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/tickets.py:delete_with_dependents",
+   "type": "function",
+   "name": "delete_with_dependents",
+   "filePath": "backend/app/repositories/tickets.py",
+   "lineRange": [
+    52,
+    60
+   ],
+   "summary": "Deletes a ticket's comparisons, executions and labels first and the ticket last, so a failed delete can simply be retried on standalone MongoDB.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "deletion",
+    "data-integrity"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/repositories/tickets.py:search",
+   "type": "function",
+   "name": "search",
+   "filePath": "backend/app/repositories/tickets.py",
+   "lineRange": [
+    63,
+    95
+   ],
+   "summary": "Returns one page of tickets plus the total, escaping search text and ranking by priority with unclassified tickets always last.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "aggregation",
+    "search",
+    "pagination"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:backend/app/repositories/tickets.py:counts",
+   "type": "function",
+   "name": "counts",
+   "filePath": "backend/app/repositories/tickets.py",
+   "lineRange": [
+    98,
+    102
+   ],
+   "summary": "Returns the total number of tickets and the number in each status.",
+   "tags": [
+    "repository",
+    "mongodb",
+    "aggregation"
+   ],
+   "complexity": "simple"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:backend/app/core/clock.py",
+   "target": "function:backend/app/core/clock.py:utc_now",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/core/clock.py",
+   "target": "function:backend/app/core/clock.py:utc_now",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/comparisons.py",
+   "target": "function:backend/app/repositories/comparisons.py:insert",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/comparisons.py",
+   "target": "function:backend/app/repositories/comparisons.py:insert",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/comparisons.py",
+   "target": "function:backend/app/repositories/comparisons.py:newest_first",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/comparisons.py",
+   "target": "function:backend/app/repositories/comparisons.py:newest_first",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/comparisons.py",
+   "target": "function:backend/app/repositories/comparisons.py:count",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/comparisons.py",
+   "target": "function:backend/app/repositories/comparisons.py:count",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/comparisons.py",
+   "target": "function:backend/app/repositories/comparisons.py:get",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/comparisons.py",
+   "target": "function:backend/app/repositories/comparisons.py:get",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:insert",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:insert",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:update",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:update",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:get",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:get",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:link_comparison",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:link_comparison",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:latest_by_ticket",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:latest_by_ticket",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:search",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/executions.py",
+   "target": "function:backend/app/repositories/executions.py:search",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/labels.py",
+   "target": "function:backend/app/repositories/labels.py:insert",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/labels.py",
+   "target": "function:backend/app/repositories/labels.py:insert",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:next_ticket_id",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:next_ticket_id",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:insert",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:insert",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:get",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:get",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:fingerprint_exists",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:fingerprint_exists",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:update",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:update",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:delete_with_dependents",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:delete_with_dependents",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:search",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:search",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:counts",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "function:backend/app/repositories/tickets.py:counts",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/repositories/tickets.py",
+   "target": "file:backend/tests/test_tickets.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  }
+ ]
+}

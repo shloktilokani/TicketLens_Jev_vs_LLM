@@ -1,0 +1,79 @@
+{
+  "nodes": [
+    {
+      "id": "document:e2e/personas/analysts/adversarial-input-tester.md",
+      "type": "document",
+      "name": "adversarial-input-tester.md",
+      "filePath": "e2e/personas/analysts/adversarial-input-tester.md",
+      "summary": "Test persona brief for an analyst who probes input handling with boundary lengths, hostile markup, malformed emails, double submits, and ticket text that tries to steer the model. It flags rendered markup, form and API validation mismatches, altered data, crashes, and models obeying instructions in ticket text.",
+      "tags": ["documentation", "test-persona", "e2e-testing", "input-validation", "security"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:e2e/personas/analysts/careful-power-user.md",
+      "type": "document",
+      "name": "careful-power-user.md",
+      "filePath": "e2e/personas/analysts/careful-power-user.md",
+      "summary": "Test persona brief for an experienced analyst who combines search, filters and sorting, compares Jev and GPT results field by field, and checks CSV exports against the screen. It flags mismatches across list, detail, comparison and export views, wrong counts, inconsistent numeric precision or units, and filter state lost on reload.",
+      "tags": ["documentation", "test-persona", "e2e-testing", "data-consistency"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:e2e/personas/analysts/first-time-user.md",
+      "type": "document",
+      "name": "first-time-user.md",
+      "filePath": "e2e/personas/analysts/first-time-user.md",
+      "summary": "Test persona brief for a newcomer who explores navigation and empty states, submits forms with missing or wrong fields, then corrects them. It checks that error messages say what to fix, empty states point to the next step, and placeholder pages explain themselves.",
+      "tags": ["documentation", "test-persona", "e2e-testing", "usability", "onboarding"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:e2e/personas/analysts/keyboard-screen-reader.md",
+      "type": "document",
+      "name": "keyboard-screen-reader.md",
+      "filePath": "e2e/personas/analysts/keyboard-screen-reader.md",
+      "summary": "Test persona brief for a user who navigates by keyboard only and reads pages through accessibility snapshots, intended to pair with the accessibility-specialist skill. It flags unreachable controls, lost or invisible focus, keyboard-inoperable selects, unannounced form errors, unlabelled controls, and dark-theme contrast problems.",
+      "tags": ["documentation", "test-persona", "e2e-testing", "accessibility", "keyboard-navigation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:e2e/personas/analysts/rushed-operator.md",
+      "type": "document",
+      "name": "rushed-operator.md",
+      "filePath": "e2e/personas/analysts/rushed-operator.md",
+      "summary": "Test persona brief for a support analyst clearing a queue quickly by pasting text, double-clicking submit, using the back button mid-flow, and skipping optional fields. It flags duplicate tickets from double submits, input lost on navigating back, buttons left enabled while saving, and unclear loading states.",
+      "tags": ["documentation", "test-persona", "e2e-testing", "idempotency", "loading-states"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:e2e/personas/analysts/rushed-operator.md",
+      "target": "document:e2e/personas/analysts/adversarial-input-tester.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:e2e/personas/analysts/first-time-user.md",
+      "target": "document:e2e/personas/analysts/adversarial-input-tester.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:e2e/personas/analysts/first-time-user.md",
+      "target": "document:e2e/personas/analysts/keyboard-screen-reader.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:e2e/personas/analysts/careful-power-user.md",
+      "target": "document:e2e/personas/analysts/rushed-operator.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

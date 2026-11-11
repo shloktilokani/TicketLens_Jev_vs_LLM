@@ -1,0 +1,171 @@
+{
+ "batchIndex": 1,
+ "files": [
+  {
+   "path": "frontend/src/features/bulk/BulkBanner.tsx",
+   "language": "typescript",
+   "sizeLines": 62,
+   "fileCategory": "code"
+  },
+  {
+   "path": "frontend/src/features/bulk/BulkRunsPage.tsx",
+   "language": "typescript",
+   "sizeLines": 192,
+   "fileCategory": "code"
+  },
+  {
+   "path": "frontend/src/features/bulk/hooks.ts",
+   "language": "typescript",
+   "sizeLines": 38,
+   "fileCategory": "code"
+  }
+ ],
+ "batchImportData": {
+  "frontend/src/features/bulk/BulkBanner.tsx": [
+   "frontend/src/features/bulk/hooks.ts",
+   "frontend/src/types/api.ts"
+  ],
+  "frontend/src/features/bulk/BulkRunsPage.tsx": [
+   "frontend/src/components/Detail.tsx",
+   "frontend/src/components/states.tsx",
+   "frontend/src/components/ui/button.tsx",
+   "frontend/src/components/ui/card.tsx",
+   "frontend/src/components/ui/table.tsx",
+   "frontend/src/features/bulk/hooks.ts",
+   "frontend/src/lib/format.ts",
+   "frontend/src/services/api.ts",
+   "frontend/src/types/api.ts"
+  ],
+  "frontend/src/features/bulk/hooks.ts": [
+   "frontend/src/services/api.ts",
+   "frontend/src/types/api.ts"
+  ]
+ },
+ "neighborMap": {
+  "frontend/src/features/bulk/BulkBanner.tsx": [
+   {
+    "path": "frontend/src/types/api.ts",
+    "batchIndex": 2,
+    "symbols": []
+   },
+   {
+    "path": "frontend/src/app/AppShell.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "AppShell"
+    ]
+   }
+  ],
+  "frontend/src/features/bulk/BulkRunsPage.tsx": [
+   {
+    "path": "frontend/src/components/Detail.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "Detail"
+    ]
+   },
+   {
+    "path": "frontend/src/components/states.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "LoadingState",
+     "ErrorState",
+     "EmptyState"
+    ]
+   },
+   {
+    "path": "frontend/src/components/ui/button.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "Button",
+     "buttonVariants"
+    ]
+   },
+   {
+    "path": "frontend/src/components/ui/card.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "Card",
+     "CardHeader",
+     "CardFooter",
+     "CardTitle",
+     "CardAction",
+     "CardDescription",
+     "CardContent"
+    ]
+   },
+   {
+    "path": "frontend/src/components/ui/table.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "Table",
+     "TableHeader",
+     "TableBody",
+     "TableFooter",
+     "TableHead",
+     "TableRow",
+     "TableCell",
+     "TableCaption"
+    ]
+   },
+   {
+    "path": "frontend/src/lib/format.ts",
+    "batchIndex": 2,
+    "symbols": [
+     "formatDateTime",
+     "seconds",
+     "SIDE_LABELS",
+     "formatEscalation",
+     "formatTokens",
+     "formatCost"
+    ]
+   },
+   {
+    "path": "frontend/src/services/api.ts",
+    "batchIndex": 2,
+    "symbols": [
+     "BASE_URL",
+     "ApiError",
+     "api",
+     "send"
+    ]
+   },
+   {
+    "path": "frontend/src/types/api.ts",
+    "batchIndex": 2,
+    "symbols": []
+   },
+   {
+    "path": "frontend/src/app/router.tsx",
+    "batchIndex": 1,
+    "symbols": [
+     "router"
+    ]
+   }
+  ],
+  "frontend/src/features/bulk/hooks.ts": [
+   {
+    "path": "frontend/src/services/api.ts",
+    "batchIndex": 2,
+    "symbols": [
+     "BASE_URL",
+     "ApiError",
+     "api",
+     "send"
+    ]
+   },
+   {
+    "path": "frontend/src/types/api.ts",
+    "batchIndex": 2,
+    "symbols": []
+   },
+   {
+    "path": "frontend/src/features/tickets/BulkToolbar.tsx",
+    "batchIndex": 2,
+    "symbols": [
+     "BulkToolbar"
+    ]
+   }
+  ]
+ }
+}

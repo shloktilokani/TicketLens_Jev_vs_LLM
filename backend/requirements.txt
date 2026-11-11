@@ -1,4 +1,4 @@
-# Direct dependencies, pinned. The OpenAI SDK is added in Phase 10.
+# Direct dependencies, pinned. No OpenAI SDK: the OpenAI adapter is deferred by owner decision.
 fastapi==0.162.0
 uvicorn[standard]==0.54.0
 pydantic-settings==2.16.2

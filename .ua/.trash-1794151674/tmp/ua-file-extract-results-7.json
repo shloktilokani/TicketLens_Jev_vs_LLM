@@ -1,0 +1,172 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 1,
+  "filesSkipped": [
+    ".context/sample_tickets_100_v2.csv"
+  ],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 1,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 1
+    }
+  },
+  "results": [
+    {
+      "path": ".context/PROGRESS.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 488,
+      "nonEmptyLines": 368,
+      "sections": [
+        {
+          "heading": "Progress",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Status",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Phases",
+          "level": 2,
+          "line": 15
+        },
+        {
+          "heading": "Blockers",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Required fix before any paid evaluation (Phase 14)",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Assumptions and spec gaps",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "Phase 1 notes",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "Phase 2 notes (2026-11-07)",
+          "level": 2,
+          "line": 84
+        },
+        {
+          "heading": "Phase 3 notes (2026-11-07)",
+          "level": 2,
+          "line": 108
+        },
+        {
+          "heading": "Phase 4 notes (2026-11-07)",
+          "level": 2,
+          "line": 128
+        },
+        {
+          "heading": "Phase 5 notes (2026-11-07)",
+          "level": 2,
+          "line": 157
+        },
+        {
+          "heading": "Phase 6 notes (2026-11-07)",
+          "level": 2,
+          "line": 182
+        },
+        {
+          "heading": "Phase 7 notes (2026-11-07)",
+          "level": 2,
+          "line": 196
+        },
+        {
+          "heading": "Phase 8 notes (2026-11-07)",
+          "level": 2,
+          "line": 222
+        },
+        {
+          "heading": "Compare workbench, brought forward from Phase 12 (2026-11-07)",
+          "level": 2,
+          "line": 244
+        },
+        {
+          "heading": "Visual check with Playwright (2026-11-07)",
+          "level": 2,
+          "line": 274
+        },
+        {
+          "heading": "Local models and test-run reports (2026-11-07)",
+          "level": 2,
+          "line": 294
+        },
+        {
+          "heading": "Phase 11 notes (2026-11-08)",
+          "level": 2,
+          "line": 327
+        },
+        {
+          "heading": "Phase 12 notes (2026-11-08)",
+          "level": 2,
+          "line": 342
+        },
+        {
+          "heading": "Phase 13 notes (2026-11-08)",
+          "level": 2,
+          "line": 357
+        },
+        {
+          "heading": "Phase 14 notes (2026-11-08)",
+          "level": 2,
+          "line": 373
+        },
+        {
+          "heading": "Phase 15 notes (2026-11-08)",
+          "level": 2,
+          "line": 402
+        },
+        {
+          "heading": "Phase 16 notes (2026-11-08)",
+          "level": 2,
+          "line": 418
+        },
+        {
+          "heading": "Phases 17 and 18 notes (2026-11-08)",
+          "level": 2,
+          "line": 444
+        },
+        {
+          "heading": "Completion report (2026-11-08)",
+          "level": 2,
+          "line": 452
+        },
+        {
+          "heading": "Code size requirement (2026-11-07)",
+          "level": 2,
+          "line": 480
+        },
+        {
+          "heading": "Skills",
+          "level": 2,
+          "line": 484
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 27
+      }
+    }
+  ]
+}

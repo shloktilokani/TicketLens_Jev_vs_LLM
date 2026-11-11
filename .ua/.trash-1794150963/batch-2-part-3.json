@@ -1,0 +1,1804 @@
+{
+ "nodes": [
+  {
+   "id": "file:backend/app/schemas/tickets.py",
+   "type": "file",
+   "name": "tickets.py",
+   "filePath": "backend/app/schemas/tickets.py",
+   "summary": "Pydantic models and field constraints for ticket creation, partial update, notes and the stored ticket returned by the API, including trimming rules and paged results.",
+   "tags": [
+    "data-model",
+    "validation",
+    "tickets",
+    "schema-definition"
+   ],
+   "complexity": "moderate",
+   "languageNotes": "Annotated types bundle reusable constraints; TicketUpdate defaults are not validated, so an omitted field passes while an explicit null is rejected."
+  },
+  {
+   "id": "class:backend/app/schemas/tickets.py:TicketCreate",
+   "type": "class",
+   "name": "TicketCreate",
+   "filePath": "backend/app/schemas/tickets.py",
+   "lineRange": [
+    42,
+    51
+   ],
+   "summary": "Manual ticket input matching the create form and CSV columns, keeping the description exactly as typed.",
+   "tags": [
+    "data-model",
+    "validation",
+    "api-input"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/tickets.py:TicketUpdate",
+   "type": "class",
+   "name": "TicketUpdate",
+   "filePath": "backend/app/schemas/tickets.py",
+   "lineRange": [
+    54,
+    73
+   ],
+   "summary": "Partial ticket update that forbids unknown fields and rejects an empty change.",
+   "tags": [
+    "data-model",
+    "validation",
+    "api-input"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/tickets.py:NoteCreate",
+   "type": "class",
+   "name": "NoteCreate",
+   "filePath": "backend/app/schemas/tickets.py",
+   "lineRange": [
+    76,
+    77
+   ],
+   "summary": "Input for adding an operator note.",
+   "tags": [
+    "data-model",
+    "api-input"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/tickets.py:Customer",
+   "type": "class",
+   "name": "Customer",
+   "filePath": "backend/app/schemas/tickets.py",
+   "lineRange": [
+    80,
+    82
+   ],
+   "summary": "Customer name and email embedded in a stored ticket.",
+   "tags": [
+    "data-model",
+    "tickets"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/tickets.py:OrderInfo",
+   "type": "class",
+   "name": "OrderInfo",
+   "filePath": "backend/app/schemas/tickets.py",
+   "lineRange": [
+    85,
+    87
+   ],
+   "summary": "Optional order ID and product name embedded in a stored ticket.",
+   "tags": [
+    "data-model",
+    "tickets"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/tickets.py:Note",
+   "type": "class",
+   "name": "Note",
+   "filePath": "backend/app/schemas/tickets.py",
+   "lineRange": [
+    90,
+    93
+   ],
+   "summary": "A stored operator note with its ID and timestamp.",
+   "tags": [
+    "data-model",
+    "tickets"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/tickets.py:Source",
+   "type": "class",
+   "name": "Source",
+   "filePath": "backend/app/schemas/tickets.py",
+   "lineRange": [
+    96,
+    99
+   ],
+   "summary": "Where a ticket came from, manual entry or a CSV import, with batch and fingerprint.",
+   "tags": [
+    "data-model",
+    "csv-import",
+    "tickets"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/tickets.py:LatestRun",
+   "type": "class",
+   "name": "LatestRun",
+   "filePath": "backend/app/schemas/tickets.py",
+   "lineRange": [
+    102,
+    105
+   ],
+   "summary": "Short view of a ticket's latest provider run.",
+   "tags": [
+    "data-model",
+    "tickets",
+    "execution-log"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/tickets.py:Ticket",
+   "type": "class",
+   "name": "Ticket",
+   "filePath": "backend/app/schemas/tickets.py",
+   "lineRange": [
+    108,
+    125
+   ],
+   "summary": "A stored ticket as returned by the API, including the final classification, notes and source.",
+   "tags": [
+    "data-model",
+    "tickets",
+    "api-response"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:backend/app/schemas/tickets.py:TicketPage",
+   "type": "class",
+   "name": "TicketPage",
+   "filePath": "backend/app/schemas/tickets.py",
+   "lineRange": [
+    128,
+    132
+   ],
+   "summary": "One page of tickets with total and paging details.",
+   "tags": [
+    "data-model",
+    "pagination",
+    "api-response"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/app/services/executions.py",
+   "type": "file",
+   "name": "executions.py",
+   "filePath": "backend/app/services/executions.py",
+   "summary": "Runs one provider on one ticket and always records the attempt: writes a Running record first, then stores the validated outcome, redacted payloads and cost, returning failures rather than raising them.",
+   "tags": [
+    "service",
+    "orchestration",
+    "execution-log",
+    "error-handling",
+    "provider-isolation"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/services/executions.py:failed",
+   "type": "function",
+   "name": "failed",
+   "filePath": "backend/app/services/executions.py",
+   "lineRange": [
+    28,
+    37
+   ],
+   "summary": "Converts a ProviderFailure into the failure fields stored on an execution.",
+   "tags": [
+    "error-handling",
+    "serialization",
+    "execution-log"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/executions.py:attempt",
+   "type": "function",
+   "name": "attempt",
+   "filePath": "backend/app/services/executions.py",
+   "lineRange": [
+    40,
+    73
+   ],
+   "summary": "Calls the adapter and validates its output, converting failures, crashes and taxonomy violations into recorded outcomes with redacted payloads.",
+   "tags": [
+    "orchestration",
+    "error-handling",
+    "validation"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/app/services/executions.py:cost_fields",
+   "type": "function",
+   "name": "cost_fields",
+   "filePath": "backend/app/services/executions.py",
+   "lineRange": [
+    76,
+    83
+   ],
+   "summary": "Produces the rate snapshot and estimated cost stored with a run.",
+   "tags": [
+    "pricing",
+    "cost-estimation",
+    "execution-log"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/executions.py:run",
+   "type": "function",
+   "name": "run",
+   "filePath": "backend/app/services/executions.py",
+   "lineRange": [
+    86,
+    128
+   ],
+   "summary": "Inserts a Running record, attempts the provider, then completes the record with outcome, cost and duration.",
+   "tags": [
+    "orchestration",
+    "execution-log",
+    "entry-point"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:backend/app/services/tickets.py",
+   "type": "file",
+   "name": "tickets.py",
+   "filePath": "backend/app/services/tickets.py",
+   "summary": "Ticket workflows that turn API input into stored documents: creation, partial updates, operator notes and saving the operator's final classification with its source run and edit flag.",
+   "tags": [
+    "service",
+    "tickets",
+    "business-logic",
+    "final-classification"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:backend/app/services/tickets.py:RunNotUsable",
+   "type": "class",
+   "name": "RunNotUsable",
+   "filePath": "backend/app/services/tickets.py",
+   "lineRange": [
+    22,
+    23
+   ],
+   "summary": "Raised when a named run cannot supply a ticket's final classification.",
+   "tags": [
+    "error-handling",
+    "exception",
+    "final-classification"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/tickets.py:create",
+   "type": "function",
+   "name": "create",
+   "filePath": "backend/app/services/tickets.py",
+   "lineRange": [
+    26,
+    47
+   ],
+   "summary": "Builds a new ticket document with a generated ID and stores it.",
+   "tags": [
+    "tickets",
+    "persistence",
+    "business-logic"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/tickets.py:update",
+   "type": "function",
+   "name": "update",
+   "filePath": "backend/app/services/tickets.py",
+   "lineRange": [
+    50,
+    52
+   ],
+   "summary": "Applies a partial update, mapping flat API fields to nested document paths.",
+   "tags": [
+    "tickets",
+    "persistence",
+    "business-logic"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/tickets.py:add_note",
+   "type": "function",
+   "name": "add_note",
+   "filePath": "backend/app/services/tickets.py",
+   "lineRange": [
+    55,
+    60
+   ],
+   "summary": "Appends a timestamped operator note to a ticket.",
+   "tags": [
+    "tickets",
+    "persistence",
+    "notes"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/tickets.py:run_result",
+   "type": "function",
+   "name": "run_result",
+   "filePath": "backend/app/services/tickets.py",
+   "lineRange": [
+    63,
+    70
+   ],
+   "summary": "Returns the validated answer of a successful run belonging to this ticket, or raises RunNotUsable.",
+   "tags": [
+    "validation",
+    "final-classification",
+    "business-logic"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/app/services/tickets.py:set_classification",
+   "type": "function",
+   "name": "set_classification",
+   "filePath": "backend/app/services/tickets.py",
+   "lineRange": [
+    73,
+    85
+   ],
+   "summary": "Stores the operator's final answer, recording the source run and whether it was edited.",
+   "tags": [
+    "final-classification",
+    "persistence",
+    "business-logic"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/tests/test_execution_log.py",
+   "type": "file",
+   "name": "test_execution_log.py",
+   "filePath": "backend/tests/test_execution_log.py",
+   "summary": "Tests for cost calculation, rate snapshots that stay fixed over time, secret-free stored records, and the execution list and detail API filters, paging and payload handling.",
+   "tags": [
+    "test",
+    "execution-log",
+    "pricing",
+    "api-tests"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/tests/test_execution_log.py:priced",
+   "type": "function",
+   "name": "priced",
+   "filePath": "backend/tests/test_execution_log.py",
+   "lineRange": [
+    113,
+    138
+   ],
+   "summary": "Fixture providing a test client whose patched Jev adapter reports real token counts and a secret header, with no network.",
+   "tags": [
+    "test",
+    "fixture",
+    "monkeypatch"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_execution_log.py:test_old_runs_keep_their_rates_when_rates_change",
+   "type": "function",
+   "name": "test_old_runs_keep_their_rates_when_rates_change",
+   "filePath": "backend/tests/test_execution_log.py",
+   "lineRange": [
+    150,
+    163
+   ],
+   "summary": "Verifies an earlier run keeps its stored pricing version after the rates change.",
+   "tags": [
+    "test",
+    "pricing",
+    "immutability"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_execution_log.py:test_list_filters_by_provider_status_ticket_and_date",
+   "type": "function",
+   "name": "test_list_filters_by_provider_status_ticket_and_date",
+   "filePath": "backend/tests/test_execution_log.py",
+   "lineRange": [
+    176,
+    194
+   ],
+   "summary": "Verifies the execution list filters by provider, status, ticket and date.",
+   "tags": [
+    "test",
+    "api-tests",
+    "filtering"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_execution_log.py:test_list_is_newest_first_paged_and_leaves_out_payloads",
+   "type": "function",
+   "name": "test_list_is_newest_first_paged_and_leaves_out_payloads",
+   "filePath": "backend/tests/test_execution_log.py",
+   "lineRange": [
+    197,
+    207
+   ],
+   "summary": "Verifies the execution list is newest first, paged and without payloads.",
+   "tags": [
+    "test",
+    "api-tests",
+    "pagination"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/tests/test_live_adapters.py",
+   "type": "file",
+   "name": "test_live_adapters.py",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "summary": "Tests the Jev and Ollama adapters against simulated HTTP replies with no network, covering the two-step flow, token totals, failure handling, escalation thresholds and registry selection.",
+   "tags": [
+    "test",
+    "provider-adapter",
+    "simulated-http",
+    "jev",
+    "ollama"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:jev",
+   "type": "function",
+   "name": "jev",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    23,
+    32
+   ],
+   "summary": "Helper that builds a JevAdapter wired to a simulated HTTP handler.",
+   "tags": [
+    "test",
+    "test-helper",
+    "jev"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:two_step",
+   "type": "function",
+   "name": "two_step",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    57,
+    66
+   ],
+   "summary": "Helper handler that records each simulated Jev request and returns the canned reply.",
+   "tags": [
+    "test",
+    "test-helper",
+    "simulated-http"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:test_jev_asks_category_first_then_only_that_categorys_subcategories",
+   "type": "function",
+   "name": "test_jev_asks_category_first_then_only_that_categorys_subcategories",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    69,
+    93
+   ],
+   "summary": "Verifies Jev's second request offers only the chosen category's subcategories.",
+   "tags": [
+    "test",
+    "jev",
+    "two-step-classification"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:test_jev_counts_tokens_from_both_steps_and_stores_both_payloads",
+   "type": "function",
+   "name": "test_jev_counts_tokens_from_both_steps_and_stores_both_payloads",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    96,
+    105
+   ],
+   "summary": "Verifies tokens are summed and both step payloads are stored.",
+   "tags": [
+    "test",
+    "jev",
+    "usage-tracking"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:test_jev_rejects_an_unknown_category_without_a_second_call",
+   "type": "function",
+   "name": "test_jev_rejects_an_unknown_category_without_a_second_call",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    108,
+    121
+   ],
+   "summary": "Verifies an unknown category fails without making a second paid call.",
+   "tags": [
+    "test",
+    "jev",
+    "error-handling"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:test_jev_failure_in_the_second_step_keeps_the_first_steps_payload",
+   "type": "function",
+   "name": "test_jev_failure_in_the_second_step_keeps_the_first_steps_payload",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    124,
+    134
+   ],
+   "summary": "Verifies a second-step failure still reports the first step's payload.",
+   "tags": [
+    "test",
+    "jev",
+    "error-handling"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:test_jev_sends_the_key_when_one_is_configured",
+   "type": "function",
+   "name": "test_jev_sends_the_key_when_one_is_configured",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    137,
+    146
+   ],
+   "summary": "Verifies the bearer header carries the configured API key.",
+   "tags": [
+    "test",
+    "jev",
+    "authentication"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:test_unreachable_and_slow_servers",
+   "type": "function",
+   "name": "test_unreachable_and_slow_servers",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    172,
+    185
+   ],
+   "summary": "Verifies network errors and timeouts become safe failures.",
+   "tags": [
+    "test",
+    "error-handling",
+    "simulated-http"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:test_ollama_requests_structured_json_and_parses_it",
+   "type": "function",
+   "name": "test_ollama_requests_structured_json_and_parses_it",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    199,
+    232
+   ],
+   "summary": "Verifies the Ollama request shape and the parsing of its JSON answer into a valid result.",
+   "tags": [
+    "test",
+    "ollama",
+    "structured-output"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:test_ollama_non_json_reply_is_an_invalid_response",
+   "type": "function",
+   "name": "test_ollama_non_json_reply_is_an_invalid_response",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    235,
+    247
+   ],
+   "summary": "Verifies a non-JSON Ollama reply becomes an invalid_response failure.",
+   "tags": [
+    "test",
+    "ollama",
+    "error-handling"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_live_adapters.py:test_registry_picks_local_models_and_needs_no_key",
+   "type": "function",
+   "name": "test_registry_picks_local_models_and_needs_no_key",
+   "filePath": "backend/tests/test_live_adapters.py",
+   "lineRange": [
+    253,
+    263
+   ],
+   "summary": "Verifies the registry selects local Jev and Ollama adapters without API keys.",
+   "tags": [
+    "test",
+    "provider-registry",
+    "configuration"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/tests/test_providers.py",
+   "type": "file",
+   "name": "test_providers.py",
+   "filePath": "backend/tests/test_providers.py",
+   "summary": "Tests the provider contract and run recording: input fairness, HTTP failure mapping, redaction, mock behaviour, and that every attempt is logged including failures, crashes and missing keys.",
+   "tags": [
+    "test",
+    "provider-contract",
+    "execution-log",
+    "redaction"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/tests/test_providers.py:test_input_holds_only_ticket_content_and_taxonomy",
+   "type": "function",
+   "name": "test_input_holds_only_ticket_content_and_taxonomy",
+   "filePath": "backend/tests/test_providers.py",
+   "lineRange": [
+    33,
+    47
+   ],
+   "summary": "Verifies provider input excludes the final classification, operator notes, customer email and the sample flag.",
+   "tags": [
+    "test",
+    "fairness",
+    "security"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_providers.py:test_redaction_removes_credentials_at_any_depth",
+   "type": "function",
+   "name": "test_redaction_removes_credentials_at_any_depth",
+   "filePath": "backend/tests/test_providers.py",
+   "lineRange": [
+    73,
+    85
+   ],
+   "summary": "Verifies credentials are removed from nested structures without changing the input.",
+   "tags": [
+    "test",
+    "redaction",
+    "security"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_providers.py:test_successful_run_is_recorded",
+   "type": "function",
+   "name": "test_successful_run_is_recorded",
+   "filePath": "backend/tests/test_providers.py",
+   "lineRange": [
+    133,
+    144
+   ],
+   "summary": "Verifies a successful run produces a complete stored execution record.",
+   "tags": [
+    "test",
+    "execution-log",
+    "persistence"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_providers.py:test_record_exists_before_the_provider_answers",
+   "type": "function",
+   "name": "test_record_exists_before_the_provider_answers",
+   "filePath": "backend/tests/test_providers.py",
+   "lineRange": [
+    147,
+    158
+   ],
+   "summary": "Verifies the Running record is written before the provider is called.",
+   "tags": [
+    "test",
+    "execution-log",
+    "ordering"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_providers.py:test_payloads_are_redacted_before_saving",
+   "type": "function",
+   "name": "test_payloads_are_redacted_before_saving",
+   "filePath": "backend/tests/test_providers.py",
+   "lineRange": [
+    199,
+    217
+   ],
+   "summary": "Verifies credentials in provider payloads never reach the stored execution.",
+   "tags": [
+    "test",
+    "redaction",
+    "security"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:backend/tests/test_schemas.py",
+   "type": "file",
+   "name": "test_schemas.py",
+   "filePath": "backend/tests/test_schemas.py",
+   "summary": "Validation tests for the classification, execution, ticket and bulk-job schemas, including invalid pairs, trimming rules, unsupported Jev free text and taxonomy version recording.",
+   "tags": [
+    "test",
+    "validation",
+    "schemas",
+    "taxonomy"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:backend/tests/test_schemas.py:test_execution_records_taxonomy_version",
+   "type": "function",
+   "name": "test_execution_records_taxonomy_version",
+   "filePath": "backend/tests/test_schemas.py",
+   "lineRange": [
+    60,
+    72
+   ],
+   "summary": "Verifies an execution record defaults to the current taxonomy version.",
+   "tags": [
+    "test",
+    "schemas",
+    "taxonomy"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:backend/tests/test_schemas.py:test_ticket_create_trims_short_fields_and_keeps_description_exactly",
+   "type": "function",
+   "name": "test_ticket_create_trims_short_fields_and_keeps_description_exactly",
+   "filePath": "backend/tests/test_schemas.py",
+   "lineRange": [
+    75,
+    91
+   ],
+   "summary": "Verifies short fields are trimmed and normalized while the description stays exactly as typed.",
+   "tags": [
+    "test",
+    "schemas",
+    "validation"
+   ],
+   "complexity": "simple"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:backend/app/schemas/tickets.py",
+   "target": "class:backend/app/schemas/tickets.py:TicketCreate",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/tickets.py",
+   "target": "class:backend/app/schemas/tickets.py:TicketCreate",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/tickets.py",
+   "target": "class:backend/app/schemas/tickets.py:TicketUpdate",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/tickets.py",
+   "target": "class:backend/app/schemas/tickets.py:TicketUpdate",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/tickets.py",
+   "target": "class:backend/app/schemas/tickets.py:NoteCreate",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/tickets.py",
+   "target": "class:backend/app/schemas/tickets.py:NoteCreate",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/tickets.py",
+   "target": "class:backend/app/schemas/tickets.py:Customer",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/tickets.py",
+   "target": "class:backend/app/schemas/tickets.py:Customer",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/tickets.py",
+   "target": "class:backend/app/schemas/tickets.py:OrderInfo",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/tickets.py",
+   "target": "class:backend/app/schemas/tickets.py:OrderInfo",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/tickets.py",
+   "target": "class:backend/app/schemas/tickets.py:Note",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/tickets.py",
+   "target": "class:backend/app/schemas/tickets.py:Note",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/tickets.py",
+   "target": "class:backend/app/schemas/tickets.py:Source",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/tickets.py",
+   "target": "class:backend/app/schemas/tickets.py:Source",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/tickets.py",
+   "target": "class:backend/app/schemas/tickets.py:LatestRun",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/tickets.py",
+   "target": "class:backend/app/schemas/tickets.py:LatestRun",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/tickets.py",
+   "target": "class:backend/app/schemas/tickets.py:Ticket",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/tickets.py",
+   "target": "class:backend/app/schemas/tickets.py:Ticket",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/tickets.py",
+   "target": "class:backend/app/schemas/tickets.py:TicketPage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/schemas/tickets.py",
+   "target": "class:backend/app/schemas/tickets.py:TicketPage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/schemas/tickets.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/schemas/tickets.py",
+   "target": "file:backend/app/schemas/classification.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "function:backend/app/services/executions.py:failed",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "function:backend/app/services/executions.py:failed",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "function:backend/app/services/executions.py:attempt",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "function:backend/app/services/executions.py:attempt",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "function:backend/app/services/executions.py:cost_fields",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "function:backend/app/services/executions.py:cost_fields",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "function:backend/app/services/executions.py:run",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "function:backend/app/services/executions.py:run",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/app/core/clock.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/app/core/pricing.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/app/core/redaction.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/app/core/settings.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/app/providers/base.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/app/providers/registry.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/app/repositories/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/app/repositories/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/app/schemas/classification.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/app/schemas/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "class:backend/app/services/tickets.py:RunNotUsable",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "class:backend/app/services/tickets.py:RunNotUsable",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "function:backend/app/services/tickets.py:create",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "function:backend/app/services/tickets.py:create",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "function:backend/app/services/tickets.py:update",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "function:backend/app/services/tickets.py:update",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "function:backend/app/services/tickets.py:add_note",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "function:backend/app/services/tickets.py:add_note",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "function:backend/app/services/tickets.py:run_result",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "function:backend/app/services/tickets.py:run_result",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "function:backend/app/services/tickets.py:set_classification",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "function:backend/app/services/tickets.py:set_classification",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "file:backend/app/core/clock.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "file:backend/app/repositories/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "file:backend/app/repositories/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "file:backend/app/repositories/tickets.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "file:backend/app/schemas/classification.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/app/services/tickets.py",
+   "target": "file:backend/app/schemas/tickets.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_execution_log.py",
+   "target": "function:backend/tests/test_execution_log.py:priced",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_execution_log.py",
+   "target": "function:backend/tests/test_execution_log.py:test_old_runs_keep_their_rates_when_rates_change",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_execution_log.py",
+   "target": "function:backend/tests/test_execution_log.py:test_list_filters_by_provider_status_ticket_and_date",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_execution_log.py",
+   "target": "function:backend/tests/test_execution_log.py:test_list_is_newest_first_paged_and_leaves_out_payloads",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_execution_log.py",
+   "target": "file:backend/app/core/pricing.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_execution_log.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_execution_log.py",
+   "target": "file:backend/app/main.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_execution_log.py",
+   "target": "file:backend/app/providers/base.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_execution_log.py",
+   "target": "file:backend/app/providers/mock.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_execution_log.py",
+   "target": "file:backend/app/schemas/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:jev",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:two_step",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:test_jev_asks_category_first_then_only_that_categorys_subcategories",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:test_jev_counts_tokens_from_both_steps_and_stores_both_payloads",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:test_jev_rejects_an_unknown_category_without_a_second_call",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:test_jev_failure_in_the_second_step_keeps_the_first_steps_payload",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:test_jev_sends_the_key_when_one_is_configured",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:test_unreachable_and_slow_servers",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:test_ollama_requests_structured_json_and_parses_it",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:test_ollama_non_json_reply_is_an_invalid_response",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "function:backend/tests/test_live_adapters.py:test_registry_picks_local_models_and_needs_no_key",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "file:backend/app/providers/base.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "file:backend/app/providers/jev.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "file:backend/app/providers/ollama.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "file:backend/app/providers/registry.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "file:backend/app/schemas/classification.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_live_adapters.py",
+   "target": "file:backend/tests/test_providers.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_providers.py",
+   "target": "function:backend/tests/test_providers.py:test_input_holds_only_ticket_content_and_taxonomy",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_providers.py",
+   "target": "function:backend/tests/test_providers.py:test_redaction_removes_credentials_at_any_depth",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_providers.py",
+   "target": "function:backend/tests/test_providers.py:test_successful_run_is_recorded",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_providers.py",
+   "target": "function:backend/tests/test_providers.py:test_record_exists_before_the_provider_answers",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_providers.py",
+   "target": "function:backend/tests/test_providers.py:test_payloads_are_redacted_before_saving",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_providers.py",
+   "target": "file:backend/app/core/redaction.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_providers.py",
+   "target": "file:backend/app/providers/base.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_providers.py",
+   "target": "file:backend/app/providers/mock.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_providers.py",
+   "target": "file:backend/app/schemas/classification.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_providers.py",
+   "target": "file:backend/app/schemas/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_providers.py",
+   "target": "file:backend/app/services/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_schemas.py",
+   "target": "function:backend/tests/test_schemas.py:test_execution_records_taxonomy_version",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_schemas.py",
+   "target": "function:backend/tests/test_schemas.py:test_ticket_create_trims_short_fields_and_keeps_description_exactly",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:backend/tests/test_schemas.py",
+   "target": "file:backend/app/core/taxonomy.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_schemas.py",
+   "target": "file:backend/app/schemas/bulk_jobs.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_schemas.py",
+   "target": "file:backend/app/schemas/classification.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_schemas.py",
+   "target": "file:backend/app/schemas/executions.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:backend/tests/test_schemas.py",
+   "target": "file:backend/app/schemas/tickets.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "function:backend/app/services/executions.py:attempt",
+   "target": "function:backend/app/providers/registry.py:get_adapter",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/executions.py:attempt",
+   "target": "function:backend/app/core/redaction.py:redact",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/executions.py:attempt",
+   "target": "function:backend/app/services/executions.py:failed",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/executions.py:cost_fields",
+   "target": "function:backend/app/core/pricing.py:snapshot_for",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/executions.py:cost_fields",
+   "target": "function:backend/app/core/pricing.py:estimate",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/executions.py:run",
+   "target": "function:backend/app/providers/base.py:build_input",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/executions.py:run",
+   "target": "function:backend/app/providers/registry.py:requested_model",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/executions.py:run",
+   "target": "function:backend/app/services/executions.py:attempt",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/executions.py:run",
+   "target": "function:backend/app/services/executions.py:cost_fields",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/executions.py:run",
+   "target": "function:backend/app/core/clock.py:utc_now",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/executions.py:run",
+   "target": "function:backend/app/repositories/executions.py:insert",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/executions.py:run",
+   "target": "function:backend/app/repositories/executions.py:update",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/tickets.py:create",
+   "target": "function:backend/app/core/clock.py:utc_now",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/tickets.py:create",
+   "target": "function:backend/app/repositories/tickets.py:next_ticket_id",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/tickets.py:create",
+   "target": "function:backend/app/repositories/tickets.py:insert",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/tickets.py:update",
+   "target": "function:backend/app/core/clock.py:utc_now",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/tickets.py:update",
+   "target": "function:backend/app/repositories/tickets.py:update",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/tickets.py:add_note",
+   "target": "function:backend/app/core/clock.py:utc_now",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/tickets.py:add_note",
+   "target": "function:backend/app/repositories/tickets.py:update",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/tickets.py:run_result",
+   "target": "function:backend/app/repositories/executions.py:get",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/tickets.py:set_classification",
+   "target": "function:backend/app/services/tickets.py:run_result",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/tickets.py:set_classification",
+   "target": "function:backend/app/core/clock.py:utc_now",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/app/services/tickets.py:set_classification",
+   "target": "function:backend/app/repositories/tickets.py:update",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_execution_log.py:priced",
+   "target": "function:backend/app/main.py:create_app",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_providers.py:test_input_holds_only_ticket_content_and_taxonomy",
+   "target": "function:backend/app/providers/base.py:build_input",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_providers.py:test_redaction_removes_credentials_at_any_depth",
+   "target": "function:backend/app/core/redaction.py:redact",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_providers.py:test_successful_run_is_recorded",
+   "target": "function:backend/app/services/executions.py:run",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_providers.py:test_record_exists_before_the_provider_answers",
+   "target": "function:backend/app/services/executions.py:run",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_providers.py:test_payloads_are_redacted_before_saving",
+   "target": "function:backend/app/services/executions.py:run",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_live_adapters.py:test_registry_picks_local_models_and_needs_no_key",
+   "target": "function:backend/app/providers/registry.py:get_adapter",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:backend/tests/test_live_adapters.py:test_registry_picks_local_models_and_needs_no_key",
+   "target": "function:backend/app/providers/registry.py:provider_labels",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:backend/tests/test_execution_log.py",
+   "target": "file:backend/app/main.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/tests/test_execution_log.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/services/executions.py",
+   "target": "file:backend/tests/test_providers.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:backend/app/schemas/tickets.py",
+   "target": "file:backend/tests/test_schemas.py",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  }
+ ]
+}

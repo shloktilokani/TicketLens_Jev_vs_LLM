@@ -1,0 +1,3 @@
+node_modules/
+# Screenshots, run folders, reports and traces. Approved baselines live in tests/*-snapshots/.
+output/

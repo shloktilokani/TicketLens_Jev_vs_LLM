@@ -2,7 +2,9 @@
 
 Project: **TicketLens_Jev_vs_LLM**
 
-This is the authoritative, sequential implementation plan. Build one phase at a time. Do not skip acceptance criteria.
+This was the sequential build plan. **It is now historical:** Phases 0-8 and 11-18 are built, and the paid-API parts of Phases 9 and 10 (hosted TypeSafe Jev and OpenAI) are **deferred by owner decision (2026-11-11)**. For current status and every deviation from this plan, see `PROGRESS.md`. For how the app works today, see `architecture.md` and `data-model.md`. The "As built" sections of `requirements.md`, `design.md` and `ai-evaluation.md` list the differences.
+
+Keep this file for its acceptance criteria. A future phase for the paid APIs can start from Phases 9 and 10 below.
 
 ## Phase 0 — Repository and agent setup
 
@@ -66,6 +68,7 @@ TicketLens_Jev_vs_LLM/
     DEPLOYMENT_DECISIONS.md
     sample_tickets_template.csv
     sample_tickets_100.csv
+    sample_tickets_100_v2.csv
     PROGRESS.md
 ```
 
@@ -93,7 +96,7 @@ Acceptance:
 6. Implement `/api/health/ready` to verify MongoDB connectivity.
 7. Create index initialization for all collections described in `data-model.md`.
 8. Create an explicit `scripts/init_db.py` or equivalent for database/index initialization.
-9. The human operator installs and starts MongoDB Community Edition locally. The coding agent must not install MongoDB, use Docker, or expose MongoDB publicly.
+9. The human operator installs MongoDB Community Edition locally. The coding agent may start it on loopback (`127.0.0.1`) only, as delegated by the owner on 2026-11-07. The agent must not install MongoDB, use Docker, or expose MongoDB publicly.
 10. Show a clear setup error if MongoDB is unavailable.
 
 Acceptance:
@@ -162,7 +165,7 @@ Acceptance:
 5. Add notes section.
 6. Add delete confirmation dialog.
 7. Add empty states and validation messages.
-8. Preserve Hindi/Hinglish text exactly in inputs and display.
+8. Preserve ticket text exactly as entered, in inputs and display.
 
 Acceptance:
 - Manual ticket creation and editing work end to end.
@@ -205,6 +208,8 @@ Acceptance:
 
 ## Phase 9 — Jev integration
 
+> **Status:** items 2 to 10 are built in `backend/app/providers/jev.py` and run against local AutoTrust JEV. Category and subcategory are asked in two steps, because of AutoTrust's limit of 2 to 16 options per question. Live use of hosted TypeSafe Jev (item 11's live test) is deferred by owner decision (2026-11-11).
+
 1. Read current TypeSafe API documentation: `https://api.typesafe.ai/redoc`.
 2. Implement model discovery using `GET /v1/models`.
 3. Implement `POST /v1/systemone` with Bearer authentication.
@@ -225,6 +230,8 @@ Acceptance:
 - API key never reaches the browser or logs.
 
 ## Phase 10 — GPT integration
+
+> **Status:** deferred by owner decision (2026-11-11). The LLM side runs on a local Ollama model (`backend/app/providers/ollama.py`), which meets items 2 to 7. The OpenAI adapter is not built: `LLM_BACKEND=openai` records a `not_configured` run, and the adapter would plug into `providers/registry.llm_adapter`.
 
 1. Read current official OpenAI Python SDK and Responses API documentation.
 2. Implement structured output with the five shared fields plus English summary and suggested resolution.
@@ -297,7 +304,7 @@ Acceptance:
 ## Phase 14 — Evaluation dataset and analytics
 
 1. Generate 100 synthetic ShopKart tickets across six categories.
-2. Include English, Hindi, and Hinglish examples.
+2. Write all tickets in English (Hindi and Hinglish dropped by the owner, 2026-11-07).
 3. Include expected labels for five shared fields.
 4. Export labelled dataset as CSV; do not auto-seed.
 5. Store labels in `evaluation_labels`, separate from tickets and provider inputs.

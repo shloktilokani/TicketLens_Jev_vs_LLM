@@ -1,0 +1,271 @@
+{
+ "batchIndex": 26,
+ "files": [
+  {
+   "path": "backend/app/services/run_report.py",
+   "language": "python",
+   "sizeLines": 385,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/scripts/run_report.py",
+   "language": "python",
+   "sizeLines": 83,
+   "fileCategory": "code"
+  },
+  {
+   "path": "backend/tests/conftest.py",
+   "language": "python",
+   "sizeLines": 43,
+   "fileCategory": "code"
+  }
+ ],
+ "batchImportData": {
+  "backend/app/services/run_report.py": [
+   "backend/app/services/run_metrics.py"
+  ],
+  "backend/scripts/run_report.py": [
+   "backend/app/core/clock.py",
+   "backend/app/core/settings.py",
+   "backend/app/repositories/database.py",
+   "backend/app/services/dashboard.py",
+   "backend/app/services/evaluation.py",
+   "backend/app/services/run_metrics.py",
+   "backend/app/services/run_report.py"
+  ],
+  "backend/tests/conftest.py": [
+   "backend/app/core/__init__.py",
+   "backend/app/core/settings.py",
+   "backend/app/core/taxonomy.py",
+   "backend/app/providers/__init__.py",
+   "backend/app/providers/http.py"
+  ]
+ },
+ "neighborMap": {
+  "backend/app/services/run_report.py": [
+   {
+    "path": "backend/app/services/run_metrics.py",
+    "batchIndex": 6,
+    "symbols": [
+     "percentile",
+     "kappa",
+     "latency",
+     "tokens",
+     "outcomes",
+     "cost",
+     "jev_confidence",
+     "compute"
+    ]
+   },
+   {
+    "path": "backend/tests/test_evaluation.py",
+    "batchIndex": 6,
+    "symbols": [
+     "rows",
+     "test_v2_keeps_every_label_in_order",
+     "test_v2_titles_no_longer_give_away_the_answer",
+     "test_v2_titles_are_unique_and_text_is_english",
+     "test_v2_covers_all_six_categories_without_severe_imbalance",
+     "test_v2_passes_the_real_import_checks",
+     "run",
+     "test_macro_f1_matches_a_hand_calculation",
+     "test_accuracy_uses_only_scored_runs_and_reports_every_denominator",
+     "test_head_to_head_counts_only_tickets_both_sides_answered",
+     "test_confusion_matrix_rows_are_expected_and_columns_are_predicted",
+     "test_escalation_is_labelled_in_words_in_the_matrix",
+     "test_macro_f1_appears_once_there_are_enough_samples",
+     "test_results_are_reproducible",
+     "test_report_section_shows_scores_with_denominators",
+     "api",
+     "import_labelled",
+     "test_no_labels_is_an_empty_state_not_zero_percent",
+     "test_fake_runs_are_never_scored",
+     "test_real_runs_are_scored_using_the_latest_finished_attempt",
+     "test_labels_never_reach_a_model",
+     "test_the_dataset_downloads_and_does_not_seed_the_database"
+    ]
+   }
+  ],
+  "backend/scripts/run_report.py": [
+   {
+    "path": "backend/app/core/clock.py",
+    "batchIndex": 3,
+    "symbols": [
+     "utc_now"
+    ]
+   },
+   {
+    "path": "backend/app/core/settings.py",
+    "batchIndex": 5,
+    "symbols": [
+     "Settings",
+     "get_settings",
+     "is_local"
+    ]
+   },
+   {
+    "path": "backend/app/repositories/database.py",
+    "batchIndex": 5,
+    "symbols": [
+     "DecimalCodec",
+     "connect",
+     "is_reachable",
+     "ensure_indexes",
+     "find_all",
+     "find_in"
+    ]
+   },
+   {
+    "path": "backend/app/services/dashboard.py",
+    "batchIndex": 5,
+    "symbols": [
+     "load_rows",
+     "is_fake",
+     "model_of",
+     "summary",
+     "list_item",
+     "list_comparisons",
+     "detail"
+    ]
+   },
+   {
+    "path": "backend/app/services/evaluation.py",
+    "batchIndex": 5,
+    "symbols": [
+     "rate",
+     "macro_f1",
+     "is_scored",
+     "as_label",
+     "confusion",
+     "field_score",
+     "side_summary",
+     "head_to_head_field",
+     "compute",
+     "summary"
+    ]
+   },
+   {
+    "path": "backend/app/services/run_metrics.py",
+    "batchIndex": 6,
+    "symbols": [
+     "percentile",
+     "kappa",
+     "latency",
+     "tokens",
+     "outcomes",
+     "cost",
+     "jev_confidence",
+     "compute"
+    ]
+   }
+  ],
+  "backend/tests/conftest.py": [
+   {
+    "path": "backend/app/core/__init__.py",
+    "batchIndex": 5,
+    "symbols": []
+   },
+   {
+    "path": "backend/app/core/settings.py",
+    "batchIndex": 5,
+    "symbols": [
+     "Settings",
+     "get_settings",
+     "is_local"
+    ]
+   },
+   {
+    "path": "backend/app/core/taxonomy.py",
+    "batchIndex": 3,
+    "symbols": [
+     "Category",
+     "Priority",
+     "Sentiment",
+     "TicketStatus",
+     "Channel",
+     "Provider",
+     "ExecutionStatus",
+     "ComparisonStatus",
+     "BulkJobStatus",
+     "set_active",
+     "reset",
+     "active_version",
+     "active_categories",
+     "is_valid_pair",
+     "as_dict"
+    ]
+   },
+   {
+    "path": "backend/app/providers/__init__.py",
+    "batchIndex": 3,
+    "symbols": []
+   },
+   {
+    "path": "backend/app/providers/http.py",
+    "batchIndex": 3,
+    "symbols": [
+     "get_json",
+     "post_json",
+     "pause",
+     "retry_wait",
+     "send_once",
+     "send_with_retries",
+     "request_json"
+    ]
+   },
+   {
+    "path": "backend/tests/test_health.py",
+    "batchIndex": 6,
+    "symbols": [
+     "test_health_reports_process_up",
+     "test_ready_when_database_is_reachable",
+     "test_not_ready_when_database_is_unreachable"
+    ]
+   },
+   {
+    "path": "backend/tests/test_indexes.py",
+    "batchIndex": 6,
+    "symbols": [
+     "keys_of",
+     "test_indexes_are_created_and_safe_to_rerun",
+     "test_tickets_without_fingerprint_do_not_collide",
+     "init_db_settings",
+     "test_init_db_script_is_repeatable",
+     "test_init_db_script_explains_when_database_is_down"
+    ]
+   },
+   {
+    "path": "backend/tests/test_tickets.py",
+    "batchIndex": 6,
+    "symbols": [
+     "api",
+     "create",
+     "classify",
+     "ids",
+     "test_create_assigns_sequential_ids_and_defaults",
+     "test_ids_stay_unique_under_concurrent_creation",
+     "test_get_returns_ticket_or_404",
+     "test_invalid_input_is_rejected",
+     "test_ticket_text_is_kept_exactly",
+     "test_update_changes_only_given_fields",
+     "test_invalid_updates_are_rejected",
+     "test_update_unknown_ticket_is_404",
+     "test_notes_are_appended",
+     "test_manual_classification_is_stored_with_version",
+     "test_inconsistent_classification_is_rejected",
+     "test_search_matches_each_searchable_field",
+     "test_search_treats_input_as_plain_text",
+     "test_filters_by_status_category_and_priority",
+     "test_sorts_by_created_date",
+     "test_sorts_by_priority_most_urgent_first_unclassified_last",
+     "test_pagination_is_bounded",
+     "seed_dependents",
+     "test_delete_removes_ticket_and_its_dependents_only",
+     "test_repeated_delete_is_safe",
+     "test_failed_dependent_delete_keeps_the_ticket",
+     "test_ticket_endpoints_explain_when_database_is_down"
+    ]
+   }
+  ]
+ }
+}

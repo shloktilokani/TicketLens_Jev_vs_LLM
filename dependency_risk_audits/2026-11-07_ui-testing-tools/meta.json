@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-07",
+  "title": "UI testing tools",
+  "report_url": "dependency_risk_audits/2026-11-07_ui-testing-tools/index.html",
+  "tools_audited": [
+    "@playwright/mcp@0.0.84",
+    "@playwright/test@1.65.0",
+    "chrome-devtools-mcp@1.12.0",
+    "agent-browser@0.41.2",
+    "@puppeteer/browsers@3.2.6",
+    "Chrome for Testing (stable)"
+  ],
+  "verdict_counts": {
+    "no_structural_risk": 0,
+    "low_metadata_only": 5,
+    "content_exposure": 1,
+    "training_risk": 0
+  },
+  "flagged_for_action": [
+    "chrome-devtools-mcp: usage statistics and CrUX on by default; disabled with --no-usage-statistics --no-performance-crux and CHROME_DEVTOOLS_MCP_NO_USAGE_STATISTICS=1"
+  ]
+}

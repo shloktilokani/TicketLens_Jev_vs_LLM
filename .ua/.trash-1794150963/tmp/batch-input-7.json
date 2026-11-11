@@ -1,0 +1,36 @@
+{
+ "batchIndex": 7,
+ "files": [
+  {
+   "path": ".mcp.json",
+   "language": "json",
+   "sizeLines": 36,
+   "fileCategory": "config"
+  },
+  {
+   "path": "AGENTS.md",
+   "language": "markdown",
+   "sizeLines": 70,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "CLAUDE.md",
+   "language": "markdown",
+   "sizeLines": 34,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "README.md",
+   "language": "markdown",
+   "sizeLines": 86,
+   "fileCategory": "docs"
+  }
+ ],
+ "batchImportData": {
+  ".mcp.json": [],
+  "AGENTS.md": [],
+  "CLAUDE.md": [],
+  "README.md": []
+ },
+ "neighborMap": {}
+}

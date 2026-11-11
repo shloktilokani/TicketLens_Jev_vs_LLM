@@ -26,7 +26,21 @@
       "Bash(git remote add*)",
       "Bash(gh repo create*)",
       "Bash(docker *)",
-      "Bash(brew install mongodb*)"
+      "Bash(brew install mongodb*)",
+      "Bash(git add*)",
+      "Bash(git commit*)",
+      "Bash(git stash*)",
+      "Bash(git reset*)",
+      "Bash(git restore*)",
+      "Bash(git checkout*)",
+      "Bash(git switch*)",
+      "Bash(git merge*)",
+      "Bash(git rebase*)",
+      "Bash(git cherry-pick*)",
+      "Bash(git revert*)",
+      "Bash(git tag*)",
+      "Bash(git rm*)",
+      "Bash(git mv*)"
     ]
   },
   "hooks": {

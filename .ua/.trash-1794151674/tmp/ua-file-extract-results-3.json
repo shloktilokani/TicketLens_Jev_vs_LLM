@@ -1,0 +1,671 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 3,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 3,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "backend/app/api/app_settings.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 59,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "saved",
+          "startLine": 14,
+          "endLine": 20,
+          "params": [
+            "request",
+            "db",
+            "write"
+          ]
+        },
+        {
+          "name": "get_settings",
+          "startLine": 24,
+          "endLine": 26,
+          "params": [
+            "request",
+            "db"
+          ]
+        },
+        {
+          "name": "update_settings",
+          "startLine": 30,
+          "endLine": 32,
+          "params": [
+            "data",
+            "request",
+            "db"
+          ]
+        },
+        {
+          "name": "update_prompt",
+          "startLine": 36,
+          "endLine": 38,
+          "params": [
+            "data",
+            "request",
+            "db"
+          ]
+        },
+        {
+          "name": "update_taxonomy",
+          "startLine": 42,
+          "endLine": 44,
+          "params": [
+            "data",
+            "request",
+            "db"
+          ]
+        },
+        {
+          "name": "update_pricing",
+          "startLine": 48,
+          "endLine": 50,
+          "params": [
+            "data",
+            "request",
+            "db"
+          ]
+        },
+        {
+          "name": "list_models",
+          "startLine": 54,
+          "endLine": 59,
+          "params": [
+            "side",
+            "request"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "saved",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "get_settings",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "update_settings",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "update_prompt",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "update_taxonomy",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "update_pricing",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "list_models",
+          "line": 53,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "saved",
+          "callee": "write",
+          "lineNumber": 17
+        },
+        {
+          "caller": "saved",
+          "callee": "HTTPException",
+          "lineNumber": 19
+        },
+        {
+          "caller": "saved",
+          "callee": "str",
+          "lineNumber": 19
+        },
+        {
+          "caller": "saved",
+          "callee": "service.view",
+          "lineNumber": 20
+        },
+        {
+          "caller": "get_settings",
+          "callee": "service.view",
+          "lineNumber": 26
+        },
+        {
+          "caller": "update_settings",
+          "callee": "saved",
+          "lineNumber": 32
+        },
+        {
+          "caller": "update_settings",
+          "callee": "service.update_values",
+          "lineNumber": 32
+        },
+        {
+          "caller": "update_prompt",
+          "callee": "saved",
+          "lineNumber": 38
+        },
+        {
+          "caller": "update_prompt",
+          "callee": "service.save_prompt",
+          "lineNumber": 38
+        },
+        {
+          "caller": "update_taxonomy",
+          "callee": "saved",
+          "lineNumber": 44
+        },
+        {
+          "caller": "update_taxonomy",
+          "callee": "service.save_taxonomy",
+          "lineNumber": 44
+        },
+        {
+          "caller": "update_pricing",
+          "callee": "saved",
+          "lineNumber": 50
+        },
+        {
+          "caller": "update_pricing",
+          "callee": "service.save_pricing",
+          "lineNumber": 50
+        },
+        {
+          "caller": "list_models",
+          "callee": "service.available_models",
+          "lineNumber": 57
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "backend/app/api/bulk_jobs.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 35,
+      "nonEmptyLines": 26,
+      "functions": [
+        {
+          "name": "create_bulk_job",
+          "startLine": 14,
+          "endLine": 21,
+          "params": [
+            "data",
+            "background",
+            "request",
+            "db"
+          ]
+        },
+        {
+          "name": "list_bulk_jobs",
+          "startLine": 25,
+          "endLine": 27,
+          "params": [
+            "db",
+            "limit"
+          ]
+        },
+        {
+          "name": "get_bulk_job",
+          "startLine": 31,
+          "endLine": 35,
+          "params": [
+            "job_id",
+            "db"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "create_bulk_job",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "list_bulk_jobs",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "get_bulk_job",
+          "line": 30,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "create_bulk_job",
+          "callee": "bulk.create",
+          "lineNumber": 17
+        },
+        {
+          "caller": "create_bulk_job",
+          "callee": "HTTPException",
+          "lineNumber": 19
+        },
+        {
+          "caller": "create_bulk_job",
+          "callee": "str",
+          "lineNumber": 19
+        },
+        {
+          "caller": "create_bulk_job",
+          "callee": "background.add_task",
+          "lineNumber": 20
+        },
+        {
+          "caller": "list_bulk_jobs",
+          "callee": "Query",
+          "lineNumber": 25
+        },
+        {
+          "caller": "list_bulk_jobs",
+          "callee": "bulk_jobs.newest_first",
+          "lineNumber": 27
+        },
+        {
+          "caller": "list_bulk_jobs",
+          "callee": "bulk_jobs.count",
+          "lineNumber": 27
+        },
+        {
+          "caller": "get_bulk_job",
+          "callee": "bulk_jobs.get",
+          "lineNumber": 32
+        },
+        {
+          "caller": "get_bulk_job",
+          "callee": "HTTPException",
+          "lineNumber": 34
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "backend/app/jobs/bulk.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 157,
+      "nonEmptyLines": 135,
+      "functions": [
+        {
+          "name": "select_tickets",
+          "startLine": 35,
+          "endLine": 45,
+          "params": [
+            "db",
+            "data"
+          ]
+        },
+        {
+          "name": "create",
+          "startLine": 48,
+          "endLine": 71,
+          "params": [
+            "db",
+            "data"
+          ]
+        },
+        {
+          "name": "already_succeeded",
+          "startLine": 74,
+          "endLine": 84,
+          "params": [
+            "db",
+            "job",
+            "settings"
+          ]
+        },
+        {
+          "name": "process_ticket",
+          "startLine": 87,
+          "endLine": 108,
+          "params": [
+            "db",
+            "job",
+            "ticket_id",
+            "skip",
+            "settings"
+          ]
+        },
+        {
+          "name": "finish",
+          "startLine": 111,
+          "endLine": 122,
+          "params": [
+            "db",
+            "job_id"
+          ]
+        },
+        {
+          "name": "run_job",
+          "startLine": 125,
+          "endLine": 148,
+          "params": [
+            "db",
+            "job_id",
+            "settings"
+          ]
+        },
+        {
+          "name": "mark_interrupted",
+          "startLine": 151,
+          "endLine": 157,
+          "params": [
+            "db"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "BulkError",
+          "startLine": 29,
+          "endLine": 32,
+          "methods": [
+            "__init__"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "BulkError",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "select_tickets",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "create",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "already_succeeded",
+          "line": 74,
+          "isDefault": false
+        },
+        {
+          "name": "process_ticket",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "finish",
+          "line": 111,
+          "isDefault": false
+        },
+        {
+          "name": "run_job",
+          "line": 125,
+          "isDefault": false
+        },
+        {
+          "name": "mark_interrupted",
+          "line": 151,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 31
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 31
+        },
+        {
+          "caller": "select_tickets",
+          "callee": "tickets.eligible_ids",
+          "lineNumber": 37
+        },
+        {
+          "caller": "select_tickets",
+          "callee": "BulkError",
+          "lineNumber": 39
+        },
+        {
+          "caller": "select_tickets",
+          "callee": "find_in",
+          "lineNumber": 41
+        },
+        {
+          "caller": "select_tickets",
+          "callee": "BulkError",
+          "lineNumber": 44
+        },
+        {
+          "caller": "select_tickets",
+          "callee": "', '.join",
+          "lineNumber": 44
+        },
+        {
+          "caller": "create",
+          "callee": "bulk_jobs.has_active",
+          "lineNumber": 51
+        },
+        {
+          "caller": "create",
+          "callee": "BulkError",
+          "lineNumber": 52
+        },
+        {
+          "caller": "create",
+          "callee": "select_tickets",
+          "lineNumber": 53
+        },
+        {
+          "caller": "create",
+          "callee": "uuid4",
+          "lineNumber": 55
+        },
+        {
+          "caller": "create",
+          "callee": "len",
+          "lineNumber": 60
+        },
+        {
+          "caller": "create",
+          "callee": "len",
+          "lineNumber": 60
+        },
+        {
+          "caller": "create",
+          "callee": "utc_now",
+          "lineNumber": 65
+        },
+        {
+          "caller": "create",
+          "callee": "bulk_jobs.insert",
+          "lineNumber": 70
+        },
+        {
+          "caller": "already_succeeded",
+          "callee": "set",
+          "lineNumber": 77
+        },
+        {
+          "caller": "already_succeeded",
+          "callee": "executions.succeeded_ticket_ids",
+          "lineNumber": 80
+        },
+        {
+          "caller": "already_succeeded",
+          "callee": "requested_model",
+          "lineNumber": 81
+        },
+        {
+          "caller": "already_succeeded",
+          "callee": "Provider",
+          "lineNumber": 81
+        },
+        {
+          "caller": "process_ticket",
+          "callee": "tickets.get",
+          "lineNumber": 91
+        },
+        {
+          "caller": "process_ticket",
+          "callee": "bulk_jobs.record_outcome",
+          "lineNumber": 96
+        },
+        {
+          "caller": "process_ticket",
+          "callee": "run_provider",
+          "lineNumber": 98
+        },
+        {
+          "caller": "process_ticket",
+          "callee": "bulk_jobs.record_outcome",
+          "lineNumber": 101
+        },
+        {
+          "caller": "process_ticket",
+          "callee": "len",
+          "lineNumber": 107
+        },
+        {
+          "caller": "process_ticket",
+          "callee": "len",
+          "lineNumber": 107
+        },
+        {
+          "caller": "process_ticket",
+          "callee": "comparisons.create",
+          "lineNumber": 108
+        },
+        {
+          "caller": "finish",
+          "callee": "bulk_jobs.get",
+          "lineNumber": 112
+        },
+        {
+          "caller": "finish",
+          "callee": "bulk_jobs.update",
+          "lineNumber": 114
+        },
+        {
+          "caller": "finish",
+          "callee": "utc_now",
+          "lineNumber": 119
+        },
+        {
+          "caller": "run_job",
+          "callee": "bulk_jobs.update",
+          "lineNumber": 126
+        },
+        {
+          "caller": "run_job",
+          "callee": "utc_now",
+          "lineNumber": 126
+        },
+        {
+          "caller": "run_job",
+          "callee": "app_settings.effective",
+          "lineNumber": 128
+        },
+        {
+          "caller": "run_job",
+          "callee": "already_succeeded",
+          "lineNumber": 129
+        },
+        {
+          "caller": "run_job",
+          "callee": "ThreadPoolExecutor",
+          "lineNumber": 130
+        },
+        {
+          "caller": "run_job",
+          "callee": "pool.submit",
+          "lineNumber": 132
+        },
+        {
+          "caller": "run_job",
+          "callee": "future.result",
+          "lineNumber": 136
+        },
+        {
+          "caller": "run_job",
+          "callee": "finish",
+          "lineNumber": 137
+        },
+        {
+          "caller": "run_job",
+          "callee": "log.exception",
+          "lineNumber": 139
+        },
+        {
+          "caller": "run_job",
+          "callee": "bulk_jobs.update",
+          "lineNumber": 140
+        },
+        {
+          "caller": "run_job",
+          "callee": "utc_now",
+          "lineNumber": 145
+        },
+        {
+          "caller": "mark_interrupted",
+          "callee": "utc_now",
+          "lineNumber": 155
+        },
+        {
+          "caller": "mark_interrupted",
+          "callee": "bulk_jobs.mark_active_interrupted",
+          "lineNumber": 156
+        },
+        {
+          "caller": "mark_interrupted",
+          "callee": "executions.cancel_running",
+          "lineNumber": 157
+        }
+      ],
+      "metrics": {
+        "importCount": 14,
+        "exportCount": 8,
+        "functionCount": 7,
+        "classCount": 1
+      }
+    }
+  ]
+}

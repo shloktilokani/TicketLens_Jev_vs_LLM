@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Understand-Anything audit</title>
+<style>
+  :root { color-scheme: light dark; --bg:#fff; --fg:#1c1c1c; --muted:#5f5f5f; --line:#ddd; --warn:#a4400f; --warnbg:#fdf1ea; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#141414; --fg:#eee; --muted:#aaa; --line:#3a3a3a; --warn:#f0a27c; --warnbg:#2c1c14; } }
+  body { background:var(--bg); color:var(--fg); font:16px/1.5 system-ui,sans-serif; margin:0 auto; max-width:900px; padding:24px 16px; }
+  h1 { font-size:1.5rem; } h2 { font-size:1.15rem; margin-top:2rem; }
+  .muted { color:var(--muted); }
+  .callout { background:var(--warnbg); border:1px solid var(--warn); border-radius:8px; padding:12px 16px; margin:12px 0; }
+  .callout b { color:var(--warn); }
+  .wrap { overflow-x:auto; }
+  table { border-collapse:collapse; width:100%; font-size:.92rem; }
+  th,td { border-bottom:1px solid var(--line); padding:8px; text-align:left; vertical-align:top; }
+  code { font-size:.88em; overflow-wrap:anywhere; }
+</style>
+</head>
+<body>
+<h1>Dependency data-risk audit: Understand-Anything</h1>
+<p class="muted">2026-11-08. For the project owner. Scope: what running <code>/understand-anything:understand</code> brings in.</p>
+<p><b>Summary:</b> 1 content-exposure item (mitigated), 3 low or metadata-only, 1 group with no structural risk. No training-risk verdict could be confirmed or ruled out: see the first callout.</p>
+
+<h2>Needs a decision or a mitigation</h2>
+<div class="callout">
+  <p><b>Content exposure: the plugin sends project files to the AI model.</b> Its analysis agents read source files in this Claude Code session, so that content goes to Anthropic. This is the same destination as any Claude Code session on this project, not a new third party. The plugin's own code adds no other destination for this command.</p>
+  <p><b>Not checked:</b> whether this account's data may be used for model training. That depends on the account's settings, which this audit cannot see. The owner can check them in the Claude account's privacy settings.</p>
+</div>
+<div class="callout">
+  <p><b>Secrets are not excluded by default.</b> <code>.env</code> and <code>*.pem</code> are absent from <code>DEFAULT_IGNORE_PATTERNS</code>, appear only as commented-out suggestions in the generated <code>.understandignore</code>, and the scanner classes <code>.env</code> files as config to analyse.</p>
+  <p><b>Mitigation applied:</b> these patterns are switched on in <code>.ua/.understandignore</code> and must be confirmed against the scan's file list before analysis. No <code>.env</code> file other than <code>backend/.env.example</code> was found within four folder levels of the project root, excluding dependency folders.</p>
+</div>
+
+<h2>All items</h2>
+<div class="wrap">
+<table>
+<thead><tr><th>Item</th><th>Verdict</th><th>Evidence</th></tr></thead>
+<tbody>
+<tr>
+  <td>Understand-Anything plugin 2.9.8 (analysis)</td>
+  <td>Content exposure, mitigated</td>
+  <td>Installed source: the only non-test <code>fetch</code> calls outside the dashboard are in <code>packages/core/src/figma/source/api-source.ts</code>, used by the separate Figma command. Python scripts import no network modules. No telemetry signatures. Hooks read local files and run <code>git rev-parse</code>; they act only with <code>autoUpdate: true</code>, which is not enabled. Corroboration: third-party guides say code reaches the configured LLM provider (<a href="https://mer.vin/2026/05/understand-anything-codebase-knowledge-graphs-for-claude-code-and-ai-agents/">mer.vin</a>, <a href="https://knightli.com/en/2026/06/07/understand-anything-codebase-knowledge-graph/">knightli.com</a>). No vendor privacy statement was found.</td>
+</tr>
+<tr>
+  <td>pnpm 10.34.9</td>
+  <td>Low / metadata only</td>
+  <td>Tarball inspected before install: no install scripts, no dependencies, MIT. Telemetry search of <code>dist/pnpm.cjs</code> found only a Yarn message-code name, <code>TELEMETRY_NOTICE</code>. Contacts the package registry during installs. Inconclusive on policy: a web search found no pnpm statement on data collection. Installed in <code>~/.local</code>, not system-wide.</td>
+</tr>
+<tr>
+  <td>Plugin install chain: 423 locked packages</td>
+  <td>Low / metadata only</td>
+  <td><code>pnpm install --frozen-lockfile</code>; lockfile byte-identical afterwards (<code>cmp</code>). No custom tarball sources in the lockfile, and no telemetry-named packages. The 14 packages allowed to run install scripts are the tree-sitter grammars and esbuild; those sampled run <code>node-gyp-build</code> or esbuild's <code>install.js</code>. Install scripts were not read line by line.</td>
+</tr>
+<tr>
+  <td>Plugin dashboard</td>
+  <td>Low / metadata only</td>
+  <td><code>packages/dashboard/index.html</code> loads Google Fonts, so opening it sends your IP address and browser details to Google. The server binds to <code>127.0.0.1</code> and requires an access token (<code>vite.config.ts</code>). The fonts were not removed, to avoid editing the plugin.</td>
+</tr>
+<tr>
+  <td>fuse.js, ignore, yaml, zod, tree-sitter-typescript, -python, -javascript (sampled)</td>
+  <td>No structural risk</td>
+  <td>Installed-code search for HTTP clients and telemetry SDKs: 0 files. web-tree-sitter is a separate case: 8 files matched the search, which is consistent with its WebAssembly loader but was not confirmed line by line. Other grammars are assumed alike and share this one pass.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h2>Commands used</h2>
+<p><code>npm pack pnpm@10.34.9</code>, then <code>grep</code> over <code>dist/pnpm.cjs</code>. <code>grep -rlE "fetch\(|XMLHttpRequest|node:https?|node:net|posthog|mixpanel|sentry"</code> over plugin source and installed packages. Network behaviour was not observed live with a proxy.</p>
+</body>
+</html>

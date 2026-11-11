@@ -114,9 +114,9 @@ Find where model names are configured (global and per-stage), where per-request 
 <!-- project-tailoring:begin -->
 ## Project tailoring
 
-- Compare Jev and GPT on the five shared fields only: category, subcategory, priority, sentiment, escalation_required.
+- Compare Jev and the LLM side (key `gpt`) on the five shared fields only: category, subcategory, priority, sentiment, escalation_required.
 - Never send labels, earlier model output, comparison results or the final classification to a provider.
 - Agreement is not accuracy: report them separately, with denominators. Never pick a winner automatically.
-- Jev confidence and GPT self-reported confidence are not comparable measures.
-- `.context/sample_tickets_100.csv` must not be used for paid evaluation until the Phase 14 fix in `.context/PROGRESS.md` is done: every title currently equals its expected subcategory.
+- Jev confidence and any LLM self-reported confidence are not comparable measures.
+- Evaluate with `.context/sample_tickets_100_v2.csv`. Never use `sample_tickets_100.csv`, whose titles equal their expected subcategory. Accuracy comes from `services/evaluation.py` (`GET /api/evaluation`), and test-run reports from `backend/scripts/run_report.py`. The v2 labels are not yet owner-reviewed, so call results preliminary.
 <!-- project-tailoring:end -->
