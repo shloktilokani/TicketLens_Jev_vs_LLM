@@ -540,6 +540,8 @@ disagreements, and a per-ticket table. There is no accuracy figure without human
 
 Every claim in the README is either measured here (median 1.43 s vs 2.74 s on 10 tickets; Jev 0 and LLM 2 invalid answers on 100 tickets; category 89% vs 86%) or comes from a linked source. The README makes no token or cost claim. The badges load from `img.shields.io`; audit: `dependency_risk_audits/2026-11-11_readme-badges/` (host's logging policy not confirmed).
 
+The README also has a "How it was built" section (planning with ChatGPT and Gemini, development with Claude Code, testing with Claude Code and a Playwright MCP server; about 7 to 8 hours against an estimated month or two). Those figures are the owner's own and were not measured here. The same story is in the LinkedIn post drafted for the demo video.
+
 **Not verified:** how the Mermaid diagram and badges render on GitHub (only visible after a push). The vendor descriptions of Jev come from secondary sources; TypeSafe's own docs were not read.
 
 ## Code size requirement (2026-11-07)
