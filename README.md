@@ -34,6 +34,8 @@ In the code and API, the LLM side's internal key is `gpt`, a name kept from the 
 
 You need Python 3.13, Node 22.12 or newer, and MongoDB Community Edition. Docker is not used. Run the commands below from the repository root unless a step says otherwise.
 
+**Quick start on a Mac:** once MongoDB and Ollama are installed (and the setup in steps 2 to 4 has been done once), double-click `start-ticketlens.command`. It starts MongoDB, Ollama, the backend and the frontend, skips any that are already running, and opens http://localhost:5173 in your default browser. Closing its Terminal window stops the backend and frontend it started; MongoDB and Ollama keep running. If `backend/.env` sets no AI, it uses the local models. Logs are in `~/Library/Logs/TicketLens/`. The steps below do the same thing by hand.
+
 ### 1. Start MongoDB
 
 Install it using the [official guide for your system](https://www.mongodb.com/docs/manual/administration/install-community/), then start it on this computer only. Create the data folder first, and do not use `sudo`, or later starts as your user will fail:
