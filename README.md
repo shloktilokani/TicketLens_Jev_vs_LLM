@@ -76,6 +76,16 @@ Anywhere software has to choose from a known set of options before something els
 - **Guardrail gates:** is a request allowed, or does it need review, before it reaches a larger model?
 - **Workflow branching:** send a case to the right queue, team or approval path.
 
+## How it was built
+
+The whole project was built with AI, without the owner touching a single code file:
+
+- **Planning:** ChatGPT and Gemini.
+- **Development:** Claude Code, from scratch.
+- **Testing:** Claude Code with a Playwright MCP server, automating the browser tests and the testing process.
+
+Work that would normally take a month or two took about 7 to 8 hours (the owner's estimate). AI did not replace the thinking: it removed the weeks of typing. The takeaway is to learn to work with AI and master it before it masters you.
+
 ## Technologies
 
 | Area | What is used |
