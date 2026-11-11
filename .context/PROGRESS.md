@@ -516,6 +516,12 @@ disagreements, and a per-ticket table. There is no accuracy figure without human
 
 **Not verified:** the YAML parses and follows GitHub's documented keys, but Dependabot itself has not run on it. The middle of GitHub's options page was read only as a summary, so `groups` and `cooldown` are worth a look in the repository's Dependabot tab after the first run.
 
+## Double-click launcher (2026-11-11)
+
+`start-ticketlens.command` (repository root, macOS) starts MongoDB (127.0.0.1 only), Ollama, the backend (8000) and the frontend (5173), reuses anything already up, and opens the app in the default browser. It runs the backend without `--reload`, so code edits need a restart. It leaves MongoDB and Ollama running when closed. It reads `backend/.env` only to check whether `JEV_BASE_URL` or `MOCK_PROVIDERS` is set; if neither is, it supplies the local-model settings from the README.
+
+**Tested:** `bash -n`, and a run with all four services already up (browser skipped with `NO_BROWSER=1`). **Not tested:** the start-up paths (stopped services, first-run installs), because the owner's servers were running.
+
 ## Code size requirement (2026-11-07)
 
 The owner requires a small, clean codebase without losing functionality or security. Rules, evidence and enforcement are in `code-size-standards.md`. `ponytail` is installed and always on for coding tasks. Lint limits: ruff `C90` (complexity 10) and `SIM`; ESLint `complexity: 10`.
