@@ -2,7 +2,8 @@
 
 - Jev side ("jev"): TypeSafe's hosted Jev (needs TYPESAFE_API_KEY) or a local System One server
   such as Ollama running AutoTrust's open JEV models (no key), chosen by JEV_BASE_URL.
-- LLM side (key "gpt", kept for now; shown as "LLM"): local Ollama by default, or OpenAI.
+- LLM side (internal key "gpt", a name kept from the original plan; shown as "LLM"): a local
+  Ollama model. LLM_BACKEND=openai is accepted, but the OpenAI adapter is deferred (owner decision).
 - MOCK_PROVIDERS=true replaces both with fake providers.
 """
 
@@ -72,8 +73,11 @@ def llm_adapter(settings: Settings) -> OllamaAdapter:
         raise ProviderFailure(
             "not_configured", "OpenAI is not configured. Add OPENAI_API_KEY to backend/.env."
         )
-    # shortcut: the OpenAI adapter is not built yet; it arrives with Phase 10 when a key exists.
-    raise ProviderFailure("not_configured", "The OpenAI connection is not built yet (Phase 10).")
+    # The OpenAI adapter is deferred by owner decision (2026-11-11). A future adapter plugs in here,
+    # following the contract in providers/base.py.
+    raise ProviderFailure(
+        "not_configured", "OpenAI is not available: it is deferred. Use LLM_BACKEND=ollama."
+    )
 
 
 def get_adapter(provider: Provider | str, settings: Settings) -> Adapter:

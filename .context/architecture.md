@@ -1,216 +1,136 @@
-# System Architecture
+# System Architecture (as built, 2026-11-11)
+
+This describes the code as it is. Product intent is in `requirements.md`; status, decisions and history are in `PROGRESS.md`.
 
 ## 1. Overview
 
-TicketLens is a local-first, single-user web application.
+TicketLens is a local-first, single-user web app. There is no login.
 
 ```text
-Browser
-  |
-  | React + Vite UI
-  v
-FastAPI backend (localhost)
-  |                 |
-  |                 +----------------------+
-  |                                        |
-  v                                        v
-MongoDB Community                    AI Provider Adapters
-(local machine)                       |             |
-                                      v             v
-                                 TypeSafe Jev    OpenAI GPT
+Browser (React + Vite, localhost:5173)
+   │  HTTP, JSON
+   ▼
+FastAPI backend (127.0.0.1:8000) ──────► MongoDB Community (127.0.0.1:27017, database "ticketlens")
+   │
+   ▼  provider adapters (backend only)
+   ├─ Jev side:  AutoTrust JEV via Ollama's System One API   (in use)
+   │             TypeSafe's hosted Jev, same API              (built, deferred: needs a paid key)
+   ├─ LLM side:  Ollama chat model, such as qwen3:8b          (in use)
+   │             OpenAI                                       (not built, deferred by owner decision)
+   └─ Fake AI:   MOCK_PROVIDERS=true, no network, no cost
 ```
 
-The browser never calls Jev or OpenAI directly. All provider requests pass through FastAPI so API keys remain private.
+- **The browser never calls an AI provider.** All provider calls go through FastAPI, so keys stay server-side.
+- **The paid APIs (hosted Jev and OpenAI) are deferred** by the owner (2026-11-11). Their architecture is kept so they can be added later; see section 4.
 
-## 2. Technology choices
+## 2. Code layout
 
-### Frontend
-- React + Vite + TypeScript
-- Tailwind CSS + shadcn/ui
-- React Router for pages
-- TanStack Query for API state, caching, invalidation, and polling
-- React Hook Form + Zod for forms and validation
-- Recharts for dashboard charts
+### Backend (`backend/app/`)
 
-### Backend
-- FastAPI for HTTP endpoints and OpenAPI docs
-- Pydantic for request/response schemas
-- PyMongo for MongoDB access
-- HTTPX for provider HTTP calls
-- Pydantic Settings or python-dotenv for configuration
-- pytest for tests
+| Folder | Role |
+|---|---|
+| `main.py` | App factory. On startup it connects to MongoDB, creates indexes, marks interrupted work and loads the saved taxonomy. Also mounts the routers, CORS and the 503 handler for a missing database. Production turns the API docs off. |
+| `api/` | Route handlers only: validate input, call a service, map errors to HTTP. `deps.py` provides the database handle. |
+| `services/` | Workflows: `tickets`, `executions` (one AI run), `comparisons`, `csv_import`, `csv_export`, `dashboard`, `evaluation` (accuracy), `run_metrics` and `run_report` (reports), `app_settings` (saved settings). |
+| `jobs/bulk.py` | Bulk runs: an in-process worker pool. |
+| `providers/` | AI adapters behind one contract: `base.py` (contract, input building, failure kinds), `jev.py`, `ollama.py`, `mock.py`, `registry.py` (picks the adapter for each side), `http.py` (the shared HTTP call with bounded retries), `definitions.py` (task definitions both sides receive). |
+| `repositories/` | All MongoDB access. Only this layer talks to PyMongo. `database.py` holds the connection, indexes and the Decimal codec. |
+| `schemas/` | Pydantic request and response models. |
+| `core/` | `settings.py` (the only reader of environment variables), `taxonomy.py` (canonical values and the active taxonomy), `pricing.py`, `redaction.py`, `clock.py`. |
 
-Use a straightforward layered structure:
-- `api/`: route handlers
-- `schemas/`: request and response contracts
-- `services/`: business workflows
-- `providers/`: Jev and GPT adapters
-- `repositories/`: MongoDB access
-- `core/`: settings, taxonomy, logging, errors
-- `jobs/`: in-process bulk job runner
+Scripts: `backend/scripts/init_db.py` (create indexes) and `run_report.py` (HTML test-run report).
 
-## 3. Provider adapter boundary
+### Frontend (`frontend/src/`)
 
-Expose a common application-level interface such as:
+| Folder | Role |
+|---|---|
+| `app/` | Router, app shell (sidebar, header badges, search, theme toggle, bulk-run banner) and the not-found page. |
+| `features/` | One folder per area: `tickets`, `compare`, `comparisons`, `executions`, `bulk`, `dashboard`, `settings`. |
+| `components/` | Shared pieces (`states`, `ConfirmDialog`, `Detail`, `ListControls`) and shadcn/ui primitives in `ui/`. |
+| `services/api.ts` | The one HTTP client. `queries.ts` holds shared queries (taxonomy, provider status). |
+| `types/api.ts` | API response types. Enum values come from `GET /api/taxonomy`, not hard-coded lists. |
+| `lib/format.ts` | Date, duration, cost and side-label formatting. |
 
-- `classify(ticket, taxonomy, prompt_config) -> ProviderExecutionResult`
+Stack: React 19, Vite, TypeScript, Tailwind 4, shadcn/ui, React Router, TanStack Query, React Hook Form + Zod, Recharts, lucide-react, sonner.
 
-Provider adapters own:
-- authentication
-- provider-specific request shape
-- provider-specific response parsing
-- provider usage extraction
-- safe error normalization
+## 3. Naming: "gpt" means the LLM side
 
-The service layer owns:
-- creating an execution record before/at request start
-- duration and status measurement
-- cost calculation using the pricing snapshot
-- result validation against the current taxonomy
-- persisting raw and normalized records
-- creating/updating comparison records
+The original spec compared Jev with OpenAI GPT. The internal provider key stays `gpt` (in the API, stored records and code) and means **the LLM side**, whichever model serves it. The UI says "LLM". Renaming the key would change stored data and the API, so it was deliberately left alone.
 
-Do not leak provider-specific response structures into React. Return a normalized API response and retain raw provider data only for the execution detail/log view.
+## 4. Provider adapters
 
-## 4. Jev-specific behavior
+Contract (`providers/base.py`): `Adapter.classify(data: ProviderInput) -> ProviderResult`, which raises `ProviderFailure(kind, message, ...)` with a user-safe message.
 
-**Local option (2026-11-07):** `JEV_BASE_URL=http://127.0.0.1:11434` with `JEV_MODEL=autotrust-jev:9b` sends the same System One request to Ollama, which serves AutoTrust's open JEV model locally with no key. The adapter is `backend/app/providers/jev.py`.
+| Owned by the adapter | Owned by `services/executions.run` |
+|---|---|
+| Request shape, authentication, response parsing, usage extraction, mapping errors to failure kinds | Writing the run record as Running before the call, timing it, validating the answer against the taxonomy, redacting payloads, cost from the rate snapshot, storing the outcome. A failure is recorded and returned, never raised. |
 
-Official API reference: https://api.typesafe.ai/redoc
+**Input** (`build_input`): ticket ID, title, description, order ID, product name, channel, language, taxonomy version, allowed categories, priorities and sentiments, and the saved prompt text. **Never sent:** labels, earlier results, the final classification, notes, customer name or email. Tests check this.
 
-Relevant documented endpoints:
-- `GET https://api.typesafe.ai/v1/models`
-- `POST https://api.typesafe.ai/v1/systemone`
+**Jev side** (`jev.py`): System One `POST {JEV_BASE_URL}/v1/systemone`. It asks in two steps, because AutoTrust accepts only 2 to 16 options per `choice` question and the taxonomy has 36 subcategories:
+1. `choice` for category, priority and sentiment, and `noul` for escalation (yes if the probability is at least `JEV_ESCALATION_THRESHOLD`).
+2. `choice` among only the chosen category's subcategories.
 
-Authentication: `Authorization: Bearer <API_KEY>`.
+Both steps' payloads are stored as `{"steps": [...]}` and their token counts are summed. Jev returns typed decisions only, so summary and suggested resolution are marked unsupported. A local URL needs no key; a hosted one needs `TYPESAFE_API_KEY` and sends it as a Bearer token.
 
-The System One request includes `model`, `state`, and named `questions`. Supported documented question types include:
-- `choice`: select one of a defined set of options; response includes selected choice, confidence, and probabilities.
-- `noul`: yes/no probability.
-- `score`: probability-weighted score against ordered criteria.
+**LLM side** (`ollama.py`): `POST {OLLAMA_BASE_URL}/api/chat` with a JSON schema whose enums come from the active taxonomy, `temperature 0` and `think: false`. It returns all five fields plus an English summary and suggested resolution. It can still pair a subcategory with the wrong category; validation records that as `Invalid Response`. `LLM_BACKEND=openai` exists in settings, but the OpenAI adapter is not built: runs record `not_configured` (deferred by owner decision).
 
-The response includes the model used, named answers, and `usage.input_tokens` / `usage.output_tokens`.
+**Fake AI** (`mock.py`): deterministic keyword rules with a fake delay. Putting `[mock-fail]`, `[mock-timeout]` or `[mock-invalid]` in a title simulates failures. Runs are labelled `mock-*`, never scored and never priced.
 
-Use `choice` for category, subcategory, priority, and sentiment; use `noul` for escalation. Validate all returned choice names and category/subcategory combinations. Store confidence/probabilities.
+**Retries** (`http.py`): at most 3 attempts. Only a refused connection (nothing was sent), HTTP 429 and 5xx are retried, with growing delays plus jitter and `Retry-After` honoured up to 10 s. Other 4xx, timeouts and broken connections are never retried, because the provider may already have processed and charged for the call.
 
-Jev does not provide general free-form text generation in this documented API. Do not fabricate summaries or resolutions. Mark those fields unsupported for Jev.
+## 5. Request flows
 
-Do not hardcode a model if the authenticated model list is available. Provide a model refresh/test action in Settings if feasible; otherwise load models at backend startup or on demand and cache briefly.
+**One side, one ticket:** `POST /api/tickets/{id}/runs/{jev|gpt}` runs synchronously and returns the run record, whatever happened.
 
-## 5. GPT-specific behavior
+**Both sides (Compare page):** the browser sends two run requests in parallel, so each column's timer stops on its own, then `POST /api/comparisons` with both run IDs. The comparison is Completed, Partial (one side failed) or Unavailable. There is no server-side "run both" endpoint (a deviation from the original plan): closing the browser mid-run keeps the runs but saves no comparison.
 
-**Local default (2026-11-07):** `LLM_BACKEND=ollama` with `OLLAMA_MODEL=qwen3:8b` calls Ollama's `/api/chat` with a JSON schema that restricts every enum field to the taxonomy (`backend/app/providers/ollama.py`). `LLM_BACKEND=openai` selects OpenAI once its adapter is built. Both sides receive the same task definitions (`backend/app/providers/definitions.py`).
+**Final answer:** `PUT /api/tickets/{id}/final-classification`. It optionally names a successful run of the same ticket, and the server records whether the answer was edited. Nothing ever sets it automatically.
 
-Use the official OpenAI Python SDK and the currently documented Responses API with structured output / JSON schema support. Confirm current SDK/API details during implementation.
+**Bulk** (`jobs/bulk.py`):
+- `POST /api/bulk-jobs` takes a ticket list, or `all_eligible`, plus the sides.
+- One job runs at a time (a second gets 409), on a request background task with `BULK_CONCURRENCY` tickets at once. Each ticket's sides run one after another, and a comparison is made when both sides ran.
+- "Eligible" means Open or In Progress. In an all-eligible run, a side that already succeeded on that ticket with the same model is Skipped.
+- Progress is saved after every attempt, using atomic `$push` and `$inc`.
+- On startup, Queued or Running jobs become Interrupted and Running runs become Cancelled. Neither is resumed.
 
-The GPT adapter should:
-- receive the same canonical ticket input and taxonomy as Jev
-- request a strict structured classification schema
-- validate the response with Pydantic
-- extract provider-reported token usage when available
-- store requested and actual model identifiers
-- produce English summary and suggested resolution
+**Accuracy** (`services/evaluation.py`): for each labelled ticket, each side's latest finished non-fake run is scored against `evaluation_labels`, giving per-field accuracy, exact match, macro-F1 (from 30 answered tickets), confusion matrices and head-to-head counts. Failed runs are counted separately and not as wrong.
 
-The GPT model name is configurable. Do not assume a model name is permanently valid; make it a setting and validate provider errors clearly.
+**Settings** (`services/app_settings.py`): saved values in `app_settings` overlay the environment defaults per run (`effective()`):
+- **Models**, threshold and concurrency.
+- **Prompt and taxonomy:** a new version (1.0, 1.1, …) with history on every change. Labels used by stored records cannot be removed (409), and each level needs 2 to 16 options.
+- **Rates:** saved per side and model.
 
-## 6. Canonical provider input
+**CSV import:** validates each row, normalises values to canonical case, finds duplicates by a fingerprint of normalised fields, and stores optional `expected_*` labels in `evaluation_labels`. A dry run is available, and import never runs AI.
 
-Both providers receive the same safe, normalized input:
-- ticket ID (optional if it does not bias the model; use consistently)
-- title
-- original description
-- customer/order/product context if present
-- submission channel
-- language note (English only)
-- taxonomy version and allowed labels
-- classification definitions
+**Delete ticket:** deletes comparisons, runs and labels first, then the ticket. A failure keeps the ticket, so a retry can finish the job. Standalone MongoDB has no transactions.
 
-Never include:
-- expected/ground-truth labels
-- previous provider outputs
-- comparison result
-- manually selected final classification
-- API keys or secrets
+## 6. API routes
 
-Use identical ticket content and definitions. Provider-specific serialization may differ, but semantic input must be equivalent.
+| Area | Routes |
+|---|---|
+| Health | `GET /api/health`, `GET /api/health/ready` |
+| Reference | `GET /api/taxonomy`, `GET /api/providers/status` |
+| Tickets | `POST/GET /api/tickets`, `GET/PATCH/DELETE /api/tickets/{id}`, `POST /api/tickets/{id}/notes`, `PUT /api/tickets/{id}/final-classification` |
+| Import and export | `GET /api/imports/template`, `GET /api/imports/sample-dataset`, `POST /api/imports/tickets?dry_run=`, `GET /api/exports/{tickets\|executions\|comparisons}.csv` |
+| Runs | `POST /api/tickets/{id}/runs/{jev\|gpt}`, `GET /api/executions` (filters, paging), `GET /api/executions/{id}` |
+| Comparisons | `POST /api/comparisons`, `GET /api/comparisons?limit=&ticket_id=`, `GET /api/comparisons/{id}` |
+| Bulk | `POST/GET /api/bulk-jobs`, `GET /api/bulk-jobs/{id}` |
+| Overview | `GET /api/dashboard`, `GET /api/evaluation` |
+| Settings | `GET/PATCH /api/settings`, `PUT /api/settings/{prompt\|taxonomy\|pricing}`, `GET /api/settings/models/{jev\|llm}` |
 
-## 7. Request flows
+Interactive docs: http://127.0.0.1:8000/docs (development only).
 
-### Single provider execution
-1. UI requests Jev or GPT execution for a ticket.
-2. FastAPI verifies the ticket exists and validates the provider choice.
-3. Backend creates an execution record with `Running` status and start timestamp.
-4. Provider adapter sends request.
-5. Backend extracts raw response and usage.
-6. Backend validates and normalizes the result.
-7. Backend calculates estimated cost using the pricing snapshot.
-8. Backend updates the execution record to success/failure.
-9. UI refreshes ticket history and execution detail.
+## 7. Data
 
-### Run both / compare
-1. Create a comparison group/record for the ticket.
-2. Start Jev and GPT independently, preferably concurrently with bounded timeouts.
-3. Persist each execution independently.
-4. If both succeed, compare the five shared classification fields.
-5. If one fails, retain the successful result and mark comparison partial.
-6. Never select a winner automatically.
-7. UI displays side-by-side outputs and field-level agreement.
+Collections and fields: `data-model.md`. Money is stored as exact `Decimal128`. Timestamps are UTC.
 
-### Bulk processing
-- UI sends selected ticket IDs or an explicit `all eligible` instruction plus provider mode.
-- Backend validates and creates a `bulk_jobs` record.
-- An in-process background worker processes tickets with bounded concurrency (default 2; configurable).
-- Each provider call creates its own execution log.
-- Job status records total, completed, failed, skipped, and current progress.
-- UI polls job status and can navigate away without losing persisted progress.
-- On backend restart, mark interrupted jobs as `Interrupted`; do not silently resume paid requests.
+## 8. Runtime, security and limits
 
-### CSV import
-1. UI uploads CSV to backend.
-2. Backend parses and validates each row.
-3. Normalize whitespace, email, channel, and enum values.
-4. Compute duplicate fingerprint using stable normalized ticket fields; if source has an external ticket key, include it.
-5. Insert valid non-duplicate rows.
-6. Return imported/invalid/duplicate counts and row-level errors.
-7. Never run AI automatically after import.
-
-### Ticket deletion
-Delete dependent comparisons and execution records first, then delete the ticket. If any dependent deletion fails, do not delete the parent ticket. Make the operation idempotent and report failure clearly. This avoids requiring MongoDB replica-set transactions for the local standalone setup.
-
-## 8. MongoDB collections
-
-See `data-model.md` for complete document shapes:
-- `tickets`
-- `ai_executions`
-- `comparisons`
-- `bulk_jobs`
-- `app_settings`
-- `counters`
-
-Use MongoDB-generated `_id` values internally and explicit `ticket_id` for human-readable IDs.
-
-## 9. Local runtime and CORS
-
-- Frontend default: `http://localhost:5173`
-- Backend default: `http://127.0.0.1:8000`
-- MongoDB default: `mongodb://127.0.0.1:27017`
-- Database: `ticketlens`
-- Configure CORS for the exact local frontend origin only.
-- Bind backend to loopback for local use.
-- Do not bind MongoDB to a public interface.
-- Provide `/api/health` and `/api/health/ready` (or equivalent) to distinguish process health from database readiness.
-
-## 10. Deployment boundary
-
-No hosting platform has been selected. The initial target is local execution and deployment readiness, not a specific cloud provider.
-
-A local MongoDB instance cannot serve a cloud-hosted backend through `localhost`. Before public/cloud deployment:
-1. choose a hosting platform,
-2. provision a reachable, secured production MongoDB service,
-3. configure production secrets,
-4. add authentication/access control,
-5. restrict CORS and network access,
-6. configure HTTPS, backups, monitoring, and retention,
-7. run migration and production smoke tests.
-
-Do not expose the unauthenticated initial demo publicly. Do not attempt to tunnel the local MongoDB port to the internet.
+- **Bindings:** frontend `localhost:5173`, backend `127.0.0.1:8000`, MongoDB `127.0.0.1:27017`, Ollama `127.0.0.1:11434`. Everything binds to loopback.
+- **CORS** allows one exact origin (`FRONTEND_ORIGIN`).
+- **Health:** `/api/health` (process up) and `/api/health/ready` (database reachable, otherwise 503).
+- **Secrets** are read only in `core/settings.py`, are `SecretStr`, and are redacted from stored payloads (`core/redaction.py`). Settings errors never echo input values.
+- **One backend process only.** The active taxonomy is held in memory, and startup marks unfinished bulk work as interrupted, so a second worker would break both. Both are marked as `shortcut:` in the code.
+- **Production** (`APP_ENV=production`) refuses to start with a local database, a non-https origin, fake AI, or without `ACCESS_CONTROL_CONFIRMED=true`. See `DEPLOYMENT_DECISIONS.md`.
+- **No login.** Do not expose the app publicly as it is.

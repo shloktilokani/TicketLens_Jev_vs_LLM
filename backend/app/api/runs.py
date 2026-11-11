@@ -18,13 +18,13 @@ async def run_provider(ticket_id: str, provider: Provider, request: Request, db:
     ticket = tickets.get(db, ticket_id)
     if ticket is None:
         raise HTTPException(status_code=404, detail="Ticket not found")
-    # Provider calls block; run them off the event loop so Jev and GPT can run side by side.
+    # Provider calls block; run them off the event loop so Jev and the LLM can run side by side.
     return await run_in_threadpool(run, db, ticket, provider, request.app.state.settings)
 
 
 @router.post("/api/comparisons", status_code=201, response_model=Comparison)
 def create_comparison(data: ComparisonCreate, db: Db):
-    """Compare finished Jev and GPT runs of one ticket. Never picks a winner."""
+    """Compare finished Jev and LLM (key "gpt") runs of one ticket. Never picks a winner."""
     try:
         return comparisons.create(db, data.ticket_id, data.jev_execution_id, data.gpt_execution_id)
     except comparisons.ComparisonError as exc:

@@ -2,7 +2,7 @@
 
 Copy this file to `TC-NNN-short-slug.md`. Plain English is fine; agents read it as written.
 
-- **Mode**: mock (free, fake Jev and GPT) or real (paid; runs only when the owner asks by name, at most 10 tickets per run)
+- **Mode**: mock (free, fake AI on both sides) or local (the local Jev and LLM models, no cost; see `e2e/README.md`). Paid modes are deferred.
 - **Customer voices**: e.g. angry-impatient, terse (or "any")
 - **Analysts**: e.g. rushed-operator (or "any")
 - **Preconditions**: what must exist first (e.g. "one ticket already created"); "none" if empty
@@ -13,7 +13,7 @@ What the customer needs, in one sentence. Personas rephrase this in their own vo
 
 > Reference wording (optional; a starting point, not typed verbatim): ...
 
-## Expected labels (real mode only, never typed into the app)
+## Expected labels (checked only on real models, never typed into the app)
 
 - Category: one of the taxonomy categories
 - Subcategory: one of that category's subcategories

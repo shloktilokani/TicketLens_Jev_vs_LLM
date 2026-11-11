@@ -2,7 +2,9 @@
 
 Project: **TicketLens_Jev_vs_LLM**
 
-This is the authoritative, sequential implementation plan. Build one phase at a time. Do not skip acceptance criteria.
+This was the sequential build plan. **It is now historical:** Phases 0-8 and 11-18 are built, and the paid-API parts of Phases 9 and 10 (hosted TypeSafe Jev and OpenAI) are **deferred by owner decision (2026-11-11)**. For current status and every deviation from this plan, see `PROGRESS.md`. For how the app works today, see `architecture.md` and `data-model.md`. The "As built" sections of `requirements.md`, `design.md` and `ai-evaluation.md` list the differences.
+
+Keep this file for its acceptance criteria. A future phase for the paid APIs can start from Phases 9 and 10 below.
 
 ## Phase 0 — Repository and agent setup
 
@@ -206,6 +208,8 @@ Acceptance:
 
 ## Phase 9 — Jev integration
 
+> **Status:** items 2 to 10 are built in `backend/app/providers/jev.py` and run against local AutoTrust JEV. Category and subcategory are asked in two steps, because of AutoTrust's limit of 2 to 16 options per question. Live use of hosted TypeSafe Jev (item 11's live test) is deferred by owner decision (2026-11-11).
+
 1. Read current TypeSafe API documentation: `https://api.typesafe.ai/redoc`.
 2. Implement model discovery using `GET /v1/models`.
 3. Implement `POST /v1/systemone` with Bearer authentication.
@@ -226,6 +230,8 @@ Acceptance:
 - API key never reaches the browser or logs.
 
 ## Phase 10 — GPT integration
+
+> **Status:** deferred by owner decision (2026-11-11). The LLM side runs on a local Ollama model (`backend/app/providers/ollama.py`), which meets items 2 to 7. The OpenAI adapter is not built: `LLM_BACKEND=openai` records a `not_configured` run, and the adapter would plug into `providers/registry.llm_adapter`.
 
 1. Read current official OpenAI Python SDK and Responses API documentation.
 2. Implement structured output with the five shared fields plus English summary and suggested resolution.

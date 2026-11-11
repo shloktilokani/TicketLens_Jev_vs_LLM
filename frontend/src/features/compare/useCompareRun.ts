@@ -25,8 +25,9 @@ const IDLE: Record<ProviderName, ProviderRun> = {
 }
 
 /**
- * Runs Jev and GPT at the same time with separate requests, so each column finishes (and its
- * timer stops) the moment that provider answers. Then asks the backend to compare and save.
+ * Runs Jev and the LLM (key "gpt") at the same time with separate requests, so each column
+ * finishes (and its timer stops) the moment that side answers. Then asks the backend to compare
+ * and save. There is no server-side "run both" endpoint.
  */
 export function useCompareRun() {
   const [runs, setRuns] = useState(IDLE)

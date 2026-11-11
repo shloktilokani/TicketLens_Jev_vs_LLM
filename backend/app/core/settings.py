@@ -36,7 +36,8 @@ class Settings(BaseSettings):
     # Jev side: TypeSafe's hosted API, or a local System One server (Ollama with AutoTrust JEV).
     jev_base_url: str = "https://api.typesafe.ai"
     jev_model: str = "jev-latest"
-    # LLM side: a local Ollama model by default, or OpenAI.
+    # LLM side: a local Ollama model. "openai" is accepted, but its adapter is deferred (owner
+    # decision), so runs record not_configured.
     llm_backend: Literal["ollama", "openai"] = "ollama"
     ollama_base_url: str = "http://127.0.0.1:11434"
     ollama_model: str = "qwen3:8b"
@@ -46,9 +47,9 @@ class Settings(BaseSettings):
     bulk_concurrency: int = Field(default=2, ge=1)
     jev_escalation_threshold: float = Field(default=0.5, ge=0, le=1)
 
-    # Fake Jev and GPT: no network, no cost. Results are labelled mock-*, never passing as real.
+    # Fake Jev and LLM: no network, no cost. Results are labelled mock-*, never passing as real.
     mock_providers: bool = False
-    # Fake thinking time so the UI timers visibly run: Jev waits this long, GPT twice as long.
+    # Fake thinking time so the UI timers visibly run: Jev waits this long, the LLM twice as long.
     mock_delay_seconds: float = Field(default=1.5, ge=0, le=30)
 
     log_level: str = "INFO"

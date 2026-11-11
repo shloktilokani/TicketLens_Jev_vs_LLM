@@ -1,4 +1,4 @@
-"""The contract every provider adapter follows (architecture.md section 3).
+"""The contract every provider adapter follows (architecture.md section 4).
 
 An adapter owns authentication, the provider's request shape, response parsing, usage extraction
 and turning provider errors into a safe ProviderFailure. Everything else is the service's job.

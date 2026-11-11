@@ -97,7 +97,7 @@ function Fields({
             <dt className="text-muted-foreground">{label}</dt>
             <dd>
               {show(result?.[key])}
-              {/* Jev's own confidence; not comparable with anything GPT reports (ai-evaluation.md 8) */}
+              {/* Jev's own confidence; not comparable with anything the LLM reports (ai-evaluation.md 8) */}
               {provider === "jev" && confidence !== undefined && (
                 <span className="ml-1 text-xs text-muted-foreground">
                   {Math.round(confidence * 100)}% conf.

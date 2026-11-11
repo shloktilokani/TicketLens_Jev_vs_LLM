@@ -1,4 +1,4 @@
-// The one HTTP client for the TicketLens backend. The browser never calls Jev or OpenAI.
+// The one HTTP client for the TicketLens backend. The browser never calls an AI provider.
 export const BASE_URL =
   import.meta.env.VITE_API_BASE_URL ?? "http://127.0.0.1:8000"
 

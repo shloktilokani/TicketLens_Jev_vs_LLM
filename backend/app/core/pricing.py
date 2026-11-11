@@ -1,7 +1,8 @@
 """Rates and cost estimates (ai-evaluation.md section 11).
 
 Each run stores a snapshot of the rates in force, so old costs never change when rates do.
-Rates here are defaults: the Settings page manages them in Phase 15.
+Rates here are the defaults. Rates saved on the Settings page take precedence; see
+services/app_settings.rates_for.
 """
 
 from decimal import Decimal
@@ -34,7 +35,8 @@ def snapshot_for(provider: Provider, settings: Settings) -> PricingSnapshot | No
             output_per_million=Decimal(0),
             pricing_version=TYPESAFE_JEV_VERSION,
         )
-    # shortcut: OpenAI rates depend on the chosen model; they arrive with its adapter and Settings.
+    # OpenAI has no default rate: it depends on the model, and the adapter is deferred (owner
+    # decision). Rates for any model can be saved on the Settings page.
     return local_rates() if settings.llm_backend == "ollama" else None
 
 

@@ -62,7 +62,7 @@ word for general helpers would blur two layers. So:
 |---|---|---|
 | Database access | `backend/app/repositories/` | One small base helper for common queries, timestamps and pagination; one module per collection |
 | Cross-cutting backend helpers | `backend/app/core/` | Settings, taxonomy, errors, redaction, money and cost maths, time helpers |
-| Provider plumbing | `backend/app/providers/` | One shared HTTP call, timeout and retry helper used by both the Jev and GPT adapters |
+| Provider plumbing | `backend/app/providers/` | One shared HTTP call, timeout and retry helper (`providers/http.py`) used by the Jev and Ollama adapters and the Settings model list |
 | Business workflows | `backend/app/services/` | Run one provider, run both, bulk jobs, imports |
 | Frontend API access | `frontend/src/services/` | One API client; shared TanStack Query hooks |
 | Frontend UI | `frontend/src/components/` | shadcn components plus shared loading, error, empty and confirm states |

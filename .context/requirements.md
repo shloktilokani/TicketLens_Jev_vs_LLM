@@ -234,3 +234,17 @@ Database:
 - Structured application logs for operational errors, separate from persisted AI execution records.
 - Unit and integration tests for critical workflows.
 - No model training or fine-tuning.
+
+## 15. As built (2026-11-11)
+
+This document is the original intent. Where the app differs, this section wins. Status and decisions: `PROGRESS.md`; architecture: `architecture.md`.
+
+- **Providers (section 5):** only local models are in use. AutoTrust JEV runs on the Jev side and an Ollama model on the LLM side. **Hosted Jev and OpenAI are deferred by owner decision (2026-11-11)**: hosted Jev is built but has never run with a real key, and OpenAI is not built. The UI says "LLM" for the side this document calls GPT.
+- **Running both sides:** done from the Compare page, which sends two parallel requests and then saves a comparison. There is no server-side "run both" endpoint.
+- **Bulk runs (section 5):** "all eligible" means tickets that are Open or In Progress. A side that already succeeded on a ticket with the same model is skipped in that mode. One bulk run at a time. Progress shows on every page and on a Bulk Runs page.
+- **Ticket management (section 8):** category and priority change through the final classification, which can start from an AI run's answer or be set by hand. It never changes on its own.
+- **Execution statuses (section 6):** `Running` is also used while a call is in progress. `Cancelled` marks runs cut off by a backend restart.
+- **Dataset (section 9):** use `.context/sample_tickets_100_v2.csv`. The original `sample_tickets_100.csv` gives the answers away in its titles and is kept only for reference.
+- **Dashboard (section 10):** the Overview page shows ticket counts, agreement, median times, cost, charts by field and side, recent comparisons and an accuracy section. Figures from fake AI are excluded.
+- **Settings (section 12):** besides the model, prompt, taxonomy and prices, it sets the Jev escalation threshold and the bulk speed. Taxonomy edits need 2 to 16 options per level, the limit Jev accepts.
+- **Language:** English only.

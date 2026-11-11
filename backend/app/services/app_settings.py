@@ -95,7 +95,7 @@ def available_models(
     elif settings.llm_backend == "ollama":
         base, label = settings.ollama_base_url, "Ollama"
     else:
-        raise ProviderFailure("not_configured", "The OpenAI connection is not built yet.")
+        raise ProviderFailure("not_configured", "OpenAI is not available: it is deferred.")
     body = get_json(
         base.rstrip("/") + "/v1/models",
         label=label,

@@ -84,7 +84,7 @@ export const useTicketRuns = (ticketId: string) =>
       ),
   })
 
-/** One provider on one ticket. Paid calls are never retried automatically (AGENTS.md section 3). */
+/** One side on one ticket. The browser never retries; the backend retries only temporary failures. */
 export function useRunProvider(ticketId: string, provider: "jev" | "gpt") {
   const queryClient = useQueryClient()
   return useMutation({

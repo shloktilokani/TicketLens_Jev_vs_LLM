@@ -11,7 +11,7 @@ The customer was charged twice for one order and wants the extra payment refunde
 
 > Reference wording: "I was charged twice for order ORD-48213. Please refund the extra payment."
 
-## Expected labels (real mode only, never typed into the app)
+## Expected labels (checked only on real models, never typed into the app)
 
 - Category: Payments & Billing
 - Subcategory: Duplicate Charge

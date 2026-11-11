@@ -1,4 +1,4 @@
-"""MongoDB access for Jev-vs-GPT comparison records."""
+"""MongoDB access for Jev-vs-LLM comparison records."""
 
 from pymongo.database import Database
 

@@ -19,12 +19,16 @@ ShopKart is a fictional Indian e-commerce marketplace. Use synthetic data only, 
 | Side | Option | What it needs | State |
 |---|---|---|---|
 | Jev | AutoTrust JEV, an open model run locally by Ollama | Ollama | Working, tested on 100 tickets |
-| Jev | TypeSafe's hosted Jev | `TYPESAFE_API_KEY` | Built, not yet tried with a real key |
+| Jev | TypeSafe's hosted Jev | `TYPESAFE_API_KEY` | Built but never run with a real key; **deferred** (paid) |
 | LLM | A local model through Ollama, such as `qwen3:8b` | Ollama | Working, tested on 100 tickets |
-| LLM | OpenAI | `OPENAI_API_KEY` | **Not built yet** |
+| LLM | OpenAI | `OPENAI_API_KEY` | **Not built; deferred** (paid) |
 | Both | Fake AI (`MOCK_PROVIDERS=true`) | Nothing | Working. No cost, results labelled `mock-*`, never scored |
 
 AutoTrust JEV is an open model, not TypeSafe's hosted Jev. Jev returns typed decisions only, so summary and suggested resolution are marked unsupported on that side.
+
+**Paid APIs are deferred by owner decision (2026-11-11).** The supported setup is local models. The architecture for hosted Jev and OpenAI is kept, so either can be added later; see `.context/architecture.md`, section 4.
+
+In the code and API, the LLM side's internal key is `gpt`, a name kept from the original plan; the UI calls it "LLM".
 
 ## Run it locally
 
@@ -64,7 +68,7 @@ PROVIDER_TIMEOUT_SECONDS=300
 
 **Fake AI, to try the app with no models.** Set `MOCK_PROVIDERS=true`.
 
-**Hosted Jev.** Get a key from [TypeSafe](https://www.typesafe.ai) and set `TYPESAFE_API_KEY`, leaving `JEV_BASE_URL` and `JEV_MODEL` at their defaults. Hosted calls cost money.
+**Hosted Jev (deferred, paid).** Not part of the current scope. If it is ever wanted: get a key from [TypeSafe](https://www.typesafe.ai), set `TYPESAFE_API_KEY`, and leave `JEV_BASE_URL` and `JEV_MODEL` at their defaults. Every hosted call costs money.
 
 API keys belong only in `backend/.env`, which git ignores. Never put a key in frontend code or a `VITE_` variable. The app never shows keys and has no way to change them.
 
@@ -134,7 +138,7 @@ The frontend calls the backend at `http://127.0.0.1:8000`. To change that, set `
 | Jev rejects the API key (401 or 403) | Check `TYPESAFE_API_KEY` in `backend/.env` and restart. Not retried. |
 | Jev reports insufficient credits (402) | Add credits to your TypeSafe account. Not retried. |
 | "is limiting requests" (429) | Quota or rate limit. Wait, lower the bulk speed in Settings, or check the provider account. |
-| OpenAI says it is "not built yet" | The OpenAI connection does not exist yet. Use `LLM_BACKEND=ollama`. |
+| A run says the OpenAI connection is not built | OpenAI is deferred and has no adapter. Use `LLM_BACKEND=ollama`. |
 | The browser console shows a CORS error | `FRONTEND_ORIGIN` must exactly match the address in your browser, and `localhost` and `127.0.0.1` count as different. Restart the backend after changing it. |
 | Ports 8000 or 5173 are busy | Stop whatever is using them, or pass another port, then update `FRONTEND_ORIGIN` or `VITE_API_BASE_URL` to match. |
 
@@ -164,7 +168,9 @@ Local verification checklist:
 
 ## Documentation
 
-- `.context/PROGRESS.md`: what is built, decisions, test results and what is left.
+- `.context/PROGRESS.md`: start here when taking over. It has the status, a handover summary, decisions and test results.
+- `.context/README.md`: what each spec and status document is for.
+- `backend/README.md`, `frontend/README.md`, `reports/README.md`: what each folder holds.
 - `.context/DEPLOYMENT_DECISIONS.md`: deployment readiness, and what must be decided before going online.
 - `.context/ROADMAP.md`: phase order in plain language, and the steps that need the owner.
 - `.context/requirements.md`, `architecture.md`, `data-model.md`, `ai-evaluation.md`, `design.md`, `implementation.md`: the specification.

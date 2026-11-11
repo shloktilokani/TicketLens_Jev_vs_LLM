@@ -140,7 +140,7 @@ Identify the app's services and how each is started locally, the ports they use,
 
 TicketLens: local single-user app, no login. Everything lives in `e2e/` (start with `e2e/README.md`).
 
-**Stack.** Start it with `npm --prefix e2e run stack` through Bash `run_in_background`. Wait for http://localhost:5174 to respond. The frontend is on :5174, the backend on 127.0.0.1:8001, the database is `ticketlens_e2e` (emptied on every start), and providers are mocked. Never test against the dev servers (5173, 8000) or the `ticketlens` database; the parallel build session uses them. Stop the stack when the run ends, and check that nothing is still listening on 5174 or 8001.
+**Stack.** Start it with `npm --prefix e2e run stack` through Bash `run_in_background`. Wait for http://localhost:5174 to respond. The frontend is on :5174, the backend on 127.0.0.1:8001, the database is `ticketlens_e2e` (emptied on every start), and providers are mocked. Never test against the dev servers (5173, 8000) or the `ticketlens` database; they hold the owner's real data. Stop the stack when the run ends, and check that nothing is still listening on 5174 or 8001.
 
 **Which tool does what** (one job each, so runs stay comparable):
 - Playwright MCP (`playwright` in `.mcp.json`): the default for persona runs. Visible browser, isolated profile. Locators come from `browser_snapshot` refs, passed as `target`.
@@ -154,8 +154,8 @@ TicketLens: local single-user app, no login. Everything lives in `e2e/` (start w
 
 **Modes.**
 - Mock is the default: free and repeatable.
-- Real (paid Jev and GPT) runs only when the owner asks for a real run by name, at most 10 tickets per run unless they raise it for that run. It ends with a cost summary taken from the app's AI Executions log.
-- Real mode isn't built yet: `stack.sh` refuses it until the classify endpoints and the cost guard exist (Phases 9 to 12).
+- Local models (no cost) are possible by starting the isolated backend with the local-model settings; see `e2e/README.md`, "Other provider modes".
+- Paid modes (hosted Jev, OpenAI) are deferred by owner decision (2026-11-11), and `stack.sh` refuses them. If they return, run them only when the owner asks by name, at most 10 tickets per run, ending with a cost summary from the AI Executions log.
 
 **Run folders.** Use `e2e/output/runs/<YYYYMMDD_HHMMSS>-<TC-id>/` (git-ignored), containing `manifest.md`, the screenshots, `failures.jsonl` and `report.md`. Playwright MCP's own snapshots and console logs land in `e2e/output/mcp/`.
 

@@ -12,7 +12,7 @@ class FieldComparison(BaseModel):
 
 
 class Comparison(BaseModel):
-    """Jev vs GPT on the five shared fields. Never picks a winner (data-model.md section 4)."""
+    """Jev vs the LLM side (key "gpt") on the five shared fields. Never picks a winner."""
 
     comparison_id: str
     ticket_id: str

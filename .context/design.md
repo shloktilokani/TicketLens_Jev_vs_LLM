@@ -278,3 +278,17 @@ Spacing:
 ## 14. Frontend non-goals
 
 No customer-facing portal, login, role management, email inbox, notification center, payment features, or complex workflow builder.
+
+## 13. As built (2026-11-11)
+
+Where the app differs from this design, this section wins. Wherever this document says GPT, read "the LLM side": the UI says "LLM", and the internal key `gpt` is kept.
+
+- **Navigation:** Overview, Tickets, Compare, Comparisons, AI Executions, Bulk Runs, Settings. Compare and Bulk Runs were added to the original list.
+- **Header:** the badges name each side's model, for example "Jev: autotrust-jev:9b" and "LLM: qwen3:8b". On phones the header search is hidden, because the Tickets page has its own.
+- **Compare page:** loads or creates a ticket, runs both sides in parallel with live timers, and shows field-level agreement. The final answer is chosen on the ticket's own page.
+- **Ticket detail (section 7):** has Run Jev, Run LLM and Compare both buttons, the run history with each answer, a "Use this answer" button on every successful run, comparison history, and a final-answer form.
+- **Ticket list (section 5):** has checkboxes and a bulk toolbar (Run Jev, Run LLM, Compare both, Select all eligible, Clear selection). Nothing starts until a confirmation.
+- **Bulk progress:** a banner on every page while a bulk run is active, or for 10 minutes after it ends, linking to the Bulk Runs detail page.
+- **Overview (section 4):** labelled accuracy appears only when labelled tickets have been run on real models. Otherwise the page explains why and shows no chart.
+- **Execution log:** date filters use UTC days, and the table shows local time; the page says so.
+- **Colours:** Jev is blue and the LLM orange, as `--series-jev` and `--series-llm` in `frontend/src/index.css`. Both pairs were checked for colour-blind separation in light and dark.

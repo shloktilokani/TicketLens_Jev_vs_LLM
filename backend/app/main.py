@@ -55,7 +55,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     docs = {"docs_url": None, "redoc_url": None, "openapi_url": None}
     extra = docs if settings.app_env == "production" else {}
     app = FastAPI(title="TicketLens API", version="0.1.0", lifespan=lifespan, **extra)
-    # Only the local frontend may call the API from a browser (architecture.md section 9).
+    # Only the local frontend may call the API from a browser (architecture.md section 8).
     app.add_middleware(
         CORSMiddleware,
         allow_origins=[settings.frontend_origin],

@@ -418,7 +418,7 @@ requirements.
 <!-- project-tailoring:begin -->
 ## Project tailoring
 
-TicketLens: local single-user React + FastAPI + MongoDB app comparing Jev and GPT on ticket classification. Spec and status docs live in `.context/`; start with `AGENTS.md` in the root. `.context/implementation.md` sets the phase order and `.context/PROGRESS.md` tracks it.
+TicketLens: local single-user React + FastAPI + MongoDB app comparing Jev and an LLM on ticket classification. It runs on local models (AutoTrust JEV and an Ollama LLM); the paid APIs, hosted Jev and OpenAI, are deferred by owner decision (2026-11-11). The internal provider key `gpt` means the LLM side. Spec and status docs live in `.context/`; start with `.context/PROGRESS.md` (status and handover), then `AGENTS.md`.
 
 Project routing: provider adapters and prompts route to `llm-application-architecture` and `prompt-and-context-design`; evaluation metrics route to `llm-model-evaluation` and `data-scientist`; charts route to `data-presentation-standards`.
 

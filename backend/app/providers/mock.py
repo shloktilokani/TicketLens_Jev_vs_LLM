@@ -1,4 +1,4 @@
-"""Fake Jev and GPT for tests and UI work: no network, no cost, deterministic.
+"""Fake Jev and LLM for tests and UI work: no network, no cost, deterministic.
 
 Enabled only with MOCK_PROVIDERS=true. Models are named mock-jev / mock-gpt so a mock result can
 never pass for a real one, and usage is reported as unavailable because token counts are never
@@ -36,7 +36,7 @@ class MockProvider:
         self.delay_seconds = delay_seconds
 
     def classify(self, data: ProviderInput) -> ProviderResult:
-        # Fake thinking time so the UI timers have something to show; GPT "thinks" twice as long.
+        # Fake thinking time so the UI timers have something to show; the LLM takes twice as long.
         time.sleep(self.delay_seconds * (1 if self.provider is Provider.JEV else 2))
         title = data.title.lower()
         if "[mock-fail]" in title:

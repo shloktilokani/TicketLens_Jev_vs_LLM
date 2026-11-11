@@ -28,8 +28,8 @@ export function NewTicketPage() {
           Ticket {id} created
         </p>
         <p className="text-sm text-muted-foreground">
-          It is saved as Open. No AI has run on it. Running Jev, GPT or both
-          arrives with the AI phases (9 to 12).
+          It is saved as Open. No AI has run on it yet: run Jev, the LLM or both
+          from its page, or from Compare.
         </p>
         <div className="flex gap-2">
           <Button asChild>

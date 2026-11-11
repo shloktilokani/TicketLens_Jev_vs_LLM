@@ -1,4 +1,4 @@
-"""Compare one Jev run with one GPT run on the five shared fields (ai-evaluation.md section 8).
+"""Compare one Jev run with one LLM run (key "gpt") on the five shared fields.
 
 Agreement is not accuracy, and no winner is ever chosen: the operator picks the final answer.
 """

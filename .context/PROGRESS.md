@@ -2,15 +2,34 @@
 
 Build order and acceptance criteria: `implementation.md`. Update this file after every phase.
 
-## Status
+## Status (2026-11-11)
 
-Phases 0 to 8 and 11 to 18 are complete on local models. **Phases 9 and 10 stay open:** hosted Jev has never run with a real key, and the OpenAI connection is not built. Both need keys from the owner. See the completion report below.
+**The app is complete for local use.** Phases 0-8 and 11-18 are done, and it runs end to end on local models: AutoTrust JEV on the Jev side and an Ollama LLM such as `qwen3:8b` on the LLM side.
 
-Plain-language phase order and every step that needs the owner: `ROADMAP.md`.
+**Paid APIs deferred by owner decision (2026-11-11).** Hosted TypeSafe Jev (Phase 9's live part) and OpenAI (Phase 10) are not needed for now. Their architecture is kept so they can be added later:
+- the provider contract in `providers/base.py`
+- the hosted-Jev path in `providers/jev.py`, built but never run with a real key
+- the `LLM_BACKEND=openai` setting and its not-configured path in `providers/registry.py`
+- per-run rate snapshots
 
-**Next session:** the Phase 11 to 18 work was committed as `dbdf828` on `shlok-ai-dev`. The owner's open steps are listed in the completion report below.
+Code is committed on branch `shlok-ai-dev` (latest `1049480`). The knowledge graph of the code is in `.ua/knowledge-graph.json` (see `.ua/RESUME.md`).
 
-Separate side task, finished 2026-11-08: the Understand-Anything knowledge graph is saved in `.ua/knowledge-graph.json` (details and gaps in `.ua/RESUME.md`). It covers all 192 files as of commit `0e90f74`. Run `/understand-anything:understand` after later changes, once they are committed.
+## Handover: start here
+
+- **Run it:** follow `README.md`, "Run it locally". MongoDB, Ollama with two models, the backend on `:8000` and the frontend on `:5173`.
+- **How it works:** `architecture.md` (layers, adapters, flows, routes) and `data-model.md` (collections, fields, indexes).
+- **What it was meant to do:** `requirements.md`, `design.md` and `ai-evaluation.md`. Each ends with an "As built" section listing the differences.
+- **Checks:** the commands in `CLAUDE.md`. Latest results (2026-11-11): `pytest` 335 passed; ruff, lint and build clean; Playwright 14 of 14 on desktop and phone.
+- **Rules for agents:** `AGENTS.md`, `CLAUDE.md` and `code-size-standards.md`. The agent never commits; the owner does.
+- **Known limits:**
+  - one backend process only (the active taxonomy and bulk jobs live in memory)
+  - no login, so do not expose it publicly
+  - accuracy figures are preliminary until the dataset is reviewed
+  - the knowledge graph has some generic function summaries
+- **Open owner steps:** review dataset rows 4, 11, 30, 46, 52, 64, 81, 88, 95 and 100 (ROADMAP E); follow the README once (F); deployment decisions only if going online (G).
+- **Likely next work, if wanted:** an OpenAI adapter (`providers/registry.llm_adapter`), live tests of hosted Jev, login before any hosting, and a richer `--full` rebuild of the knowledge graph.
+
+The dated notes below are the build history, oldest first. Where a later note contradicts an earlier one, the later one wins.
 
 ## Phases
 
@@ -23,8 +42,8 @@ Separate side task, finished 2026-11-08: the Understand-Anything knowledge graph
 - [x] Phase 6: Ticket screens
 - [x] Phase 7: CSV template, import, and export
 - [x] Phase 8: Provider adapter contracts and mock mode
-- [ ] Phase 9: Jev integration
-- [ ] Phase 10: GPT integration
+- [~] Phase 9: Jev integration (local AutoTrust JEV done; hosted TypeSafe Jev deferred)
+- [~] Phase 10: GPT integration (local Ollama LLM done; OpenAI deferred)
 - [x] Phase 11: Execution history and cost logging
 - [x] Phase 12: Comparison workflow
 - [x] Phase 13: Bulk processing
@@ -34,20 +53,9 @@ Separate side task, finished 2026-11-08: the Understand-Anything knowledge graph
 - [x] Phase 17: Local release and documentation
 - [x] Phase 18: Deployment readiness (documents and safety checks; nothing deployed)
 
-## Blockers
+## Dataset note (resolved in Phase 14)
 
-- **Phase 2:** none. MongoDB 9.0.4 is installed by the owner; starting it is delegated to the agent (loopback only).
-- **Phases 9 and 10, real calls only:** `TYPESAFE_API_KEY` and `OPENAI_API_KEY` go in `backend/.env`. Mock mode covers development until then.
-- **Phase 10:** `OPENAI_MODEL` has no default in `.env.example` and must be chosen.
-
-## Required fix before any paid evaluation (Phase 14)
-
-`sample_tickets_100.csv` is kept exactly as supplied, but it must not be used for evaluation yet:
-
-- In all 100 rows, `title` is identical to `expected_subcategory`. Titles are sent to both providers, so this leaks a ground-truth label and breaks the rule in `AGENTS.md`.
-- About 30 rows are romanised Hindi or Hinglish. The spec is now English only, so these rows are rewritten in English.
-
-Create a corrected English dataset in Phase 14 with realistic titles, keeping the labels and the 100-row size. The owner reviews it before any paid run.
+`sample_tickets_100.csv` is kept exactly as supplied and must not be used for evaluation: every title equals its expected subcategory, which leaks the answer, and about 30 rows were not in English. Use `sample_tickets_100_v2.csv`, which has the same labels, realistic titles and English text.
 
 ## Assumptions and spec gaps
 
@@ -71,7 +79,7 @@ Create a corrected English dataset in Phase 14 with realistic titles, keeping th
 - TypeScript is 6.0.x, not the template's 7.0.2. `typescript-eslint` 8.72 supports only versions below 6.1. Revisit when it supports 7.
 - The system font stack replaces shadcn's default Geist font, as `design.md` asks.
 - `react-refresh/only-export-components` is off for `src/components/ui` only, because shadcn exports variants beside components.
-- The OpenAI SDK is added in Phase 10, when it is first used.
+- The OpenAI SDK is added in Phase 10, when it is first used. (Phase 10 is now deferred by owner decision, so the SDK is not installed.)
 
 **Dependency review (2026-11-04):**
 - `pip-audit` on `backend/requirements.txt`: no known vulnerabilities.
@@ -337,7 +345,7 @@ disagreements, and a per-ticket table. There is no accuracy figure without human
 **Tests run:** `pytest` 213 passed; ruff clean; frontend lint and build pass. Visible-browser check at desktop size: one real local run on SK-1012, then the list, paging, every filter, empty and not-found states, failed-run detail, copy button, ticket list and Overview. Dark mode was looked at on the list and the failed-run detail only.
 **Credential check:** no credentials in the payloads of SK-1012's 4 runs. The browser check's first failure was a false match on the page text "SK-1012StatusSuccee".
 **Not run:** the scripted `npm --prefix e2e test` suite (baselines still need the owner's review). No frontend unit tests yet. Hosted Jev pricing has never been exercised by a real paid call.
-**Cleanup for the owner:** `frontend/src/features/executions/.gitkeep` is no longer needed. A safety check blocked my removal command, so it is still there.
+**Cleanup for the owner:** the old `.gitkeep` in `frontend/src/features/executions/` is no longer needed. (Done: it was gone by 2026-11-11.)
 
 ## Phase 12 notes (2026-11-08)
 
@@ -455,7 +463,7 @@ disagreements, and a per-ticket table. There is no accuracy figure without human
 
 **Final definition of done (`implementation.md`):**
 - [x] Local workflows operate end to end.
-- [ ] **Both provider integrations work with real credentials. Not met:** hosted Jev is untested with a real key, and the OpenAI adapter does not exist. The working comparison is AutoTrust JEV against an Ollama LLM.
+- [ ] **Both provider integrations work with real credentials. Deferred by owner decision (2026-11-11):** hosted Jev is untested with a real key, and the OpenAI adapter does not exist. The working comparison is AutoTrust JEV against an Ollama LLM.
 - [x] Every provider attempt is logged with usage and estimated cost.
 - [x] 100 labelled synthetic tickets are available for manual import.
 - [x] Evaluation and comparison dashboards work.
@@ -463,13 +471,12 @@ disagreements, and a per-ticket table. There is no accuracy figure without human
 - [x] The local setup is documented.
 - [x] Production prerequisites are documented, without pretending local MongoDB can serve a cloud backend.
 
-**Waiting on the owner:**
-1. API keys and the choice of OpenAI model (Phases 9 and 10), and approval of any paid run.
+**Waiting on the owner** (updated 2026-11-11):
+1. ~~API keys and OpenAI model~~: paid APIs are deferred by owner decision, so nothing is needed.
 2. Review the corrected dataset (rows 4, 11, 30, 46, 52, 64, 81, 88, 95, 100). The accuracy figures stay preliminary until then.
 3. Follow the README once.
-4. Add the local-model settings to `backend/.env`. That file does not exist yet, so the dev server has them only as process settings; a plain restart falls back to the hosted Jev default.
+4. Keep the local-model settings in `backend/.env` (see the README). Without them, a backend restart falls back to the hosted-Jev default, which needs a key.
 5. Deployment decisions, only if going online.
-6. Optional: open the knowledge graph with `/understand-anything:understand-dashboard` (stop the frontend first; the dashboard uses port 5173).
 
 **Final checks:** `pytest` 335 passed; ruff clean; frontend lint and build pass. A real `mongodump` and `mongorestore` round trip worked on a throwaway database. The real `ticketlens` database still has no saved settings and no labels; these phases only added the runs on SK-1023 and SK-1024 described above.
 
@@ -477,12 +484,33 @@ disagreements, and a per-ticket table. There is no accuracy figure without human
 
 **Known limits:** the active taxonomy and bulk jobs assume one backend process. The harmless `next-themes` console warning remains. Phone width was not checked for the newest screens beyond the scripted phone tests. Dataset labels were not independently verified.
 
+## Documentation sync for handover (2026-11-11)
+
+**Owner decision:** the paid APIs (hosted TypeSafe Jev and OpenAI) are deferred, and their architecture is kept.
+
+**What changed:**
+- `architecture.md` and `data-model.md` were rewritten from the code.
+- `requirements.md`, `design.md` and `ai-evaluation.md` each gained an "As built" section.
+- `implementation.md` is now marked historical, and `ROADMAP.md` was updated.
+- New READMEs: `backend/`, `frontend/`, `reports/` and `.context/`.
+- The e2e docs, the skill tailoring blocks and memory notes were updated.
+- Stale code comments and UI copy were fixed. Comments only; no behaviour changed, except that the OpenAI `not_configured` message now says "deferred".
+
+**Evidence:**
+- Live `/openapi.json`: every `/api/...` route named in the docs exists.
+- A visible-browser walkthrough of every page on the fake-AI stack: the navigation and page titles match `design.md` section 13.
+- A path check of the backticked file names in the docs.
+
+**Tests run:** `pytest` 335 passed; ruff clean; frontend lint and build pass; `npm --prefix e2e test -- --headed` 14 passed.
+
+**Seen, not fixed:** during the e2e run, React logged "two children with the same key, `1.0`". It most likely comes from the prompt history list in `SettingsPage.tsx`, which uses `key={item.version}`. That means the test database held two history entries for version 1.0; the cause was not investigated. The "script tag" console error is the known `next-themes` warning.
+
 ## Code size requirement (2026-11-07)
 
 The owner requires a small, clean codebase without losing functionality or security. Rules, evidence and enforcement are in `code-size-standards.md`. `ponytail` is installed and always on for coding tasks. Lint limits: ruff `C90` (complexity 10) and `SIM`; ESLint `complexity: 10`.
 
 ## Skills
 
-34 skills are installed in `.claude/skills/` from Claude_Skills commit `058b511`. Reasons for exclusions are in the `_orchestrator` tailoring block. Project-specific notes live only in tailoring blocks.
+36 skills are installed in `.claude/skills/`: 34 from Claude_Skills commit `058b511`, plus `agent-browser` and `persona-ui-testing`, copied by hand on 2026-11-07. `_templates/` holds skill templates, not a skill. Reasons for exclusions are in the `_orchestrator` tailoring block. Project-specific notes live only in tailoring blocks.
 
 The skill drift hook is left out because `~/Projects/Claude_Skills` has 65 untracked `SKILL (1).md` files, which make its skill hashes differ. Run `skillpack` from a clean clone, or remove those files first.

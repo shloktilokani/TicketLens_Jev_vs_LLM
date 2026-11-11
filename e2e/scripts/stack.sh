@@ -7,8 +7,8 @@ set -euo pipefail
 cd "$(dirname "$0")/../.."  # repository root
 
 if [ "${E2E_PROVIDERS:-mock}" != "mock" ]; then
-  # Paid runs need the 10-ticket cost guard, which is built once the classify endpoints exist.
-  echo "Real-provider mode is not available yet (see e2e/README.md, 'Real mode')." >&2
+  # Paid APIs are deferred by owner decision; a run cap would be needed before enabling them.
+  echo "Real-provider mode is not available: paid APIs are deferred (see e2e/README.md, 'Other provider modes')." >&2
   exit 1
 fi
 

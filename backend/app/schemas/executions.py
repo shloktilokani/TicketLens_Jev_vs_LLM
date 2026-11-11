@@ -42,7 +42,7 @@ class ProviderError(BaseModel):
 
 
 class Execution(BaseModel):
-    """One provider attempt, including failures (data-model.md section 3)."""
+    """One provider attempt, including failures (data-model.md section 2)."""
 
     execution_id: str
     ticket_id: str
