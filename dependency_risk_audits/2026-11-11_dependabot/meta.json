@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-11",
+  "title": "Dependabot",
+  "report_url": "dependency_risk_audits/2026-11-11_dependabot/index.html",
+  "tools_audited": [
+    "GitHub Dependabot version updates (.github/dependabot.yml)",
+    "GitHub Dependabot security updates (repository setting)"
+  ],
+  "verdict_counts": {
+    "no_structural_risk": 0,
+    "low_metadata_only": 1,
+    "content_exposure": 0,
+    "training_risk": 0
+  },
+  "flagged_for_action": [
+    "GitHub's data-use terms for private repository content were not checked; this applies to the repository being on GitHub at all, not to Dependabot alone"
+  ]
+}
