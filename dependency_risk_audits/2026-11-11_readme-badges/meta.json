@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-11",
+  "title": "README badges (shields.io)",
+  "report_url": "dependency_risk_audits/2026-11-11_readme-badges/index.html",
+  "tools_audited": [
+    "img.shields.io static badge images (9, in README.md)"
+  ],
+  "verdict_counts": {
+    "no_structural_risk": 0,
+    "low_metadata_only": 1,
+    "content_exposure": 0,
+    "training_risk": 0
+  },
+  "flagged_for_action": [
+    "shields.io's own logging policy and GitHub's image-proxy behaviour could not be confirmed; remove the badges from README.md if the exposure matters"
+  ]
+}

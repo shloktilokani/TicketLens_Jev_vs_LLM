@@ -30,7 +30,7 @@ This is the plain-language view of the build and of where the owner is needed. A
 
 ### A. MongoDB: done
 
-MongoDB 9.0.4 is installed from the official archive, with mongosh, the database tools and Compass. It runs on `127.0.0.1` only, and the start command is in the README. Never start it with `sudo`, or the data folder becomes owned by root.
+MongoDB 9.0.4 is installed from the official archive, with mongosh, the database tools and Compass. It runs on `127.0.0.1` only, and the start command is in `SETUP.md`. Never start it with `sudo`, or the data folder becomes owned by root.
 
 ### B. API keys: deferred, needed only if paid APIs return
 
