@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dependabot audit</title>
+<style>
+  :root { color-scheme: light dark; --bg:#fff; --fg:#1c1c1c; --muted:#5f5f5f; --line:#ddd; --warn:#a4400f; --warnbg:#fdf1ea; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#141414; --fg:#eee; --muted:#aaa; --line:#3a3a3a; --warn:#f0a27c; --warnbg:#2c1c14; } }
+  body { background:var(--bg); color:var(--fg); font:16px/1.5 system-ui,sans-serif; margin:0 auto; max-width:900px; padding:24px 16px; }
+  h1 { font-size:1.5rem; } h2 { font-size:1.15rem; margin-top:2rem; }
+  .muted { color:var(--muted); }
+  .callout { background:var(--warnbg); border:1px solid var(--warn); border-radius:8px; padding:12px 16px; margin:12px 0; }
+  .callout b { color:var(--warn); }
+  .wrap { overflow-x:auto; }
+  table { border-collapse:collapse; width:100%; font-size:.92rem; }
+  th,td { border-bottom:1px solid var(--line); padding:8px; text-align:left; vertical-align:top; }
+  code { font-size:.88em; overflow-wrap:anywhere; }
+</style>
+</head>
+<body>
+<h1>Dependency data-risk audit: Dependabot</h1>
+<p class="muted">2026-11-11. For the project owner. Scope: GitHub Dependabot version updates, configured in <code>.github/dependabot.yml</code>, and security updates, which are switched on in the repository settings.</p>
+<p><b>Summary:</b> 1 item, low / metadata only. Dependabot is a GitHub service, and the repository is already hosted on GitHub, so it adds no new destination for the code. Training risk was not checked: see the callout.</p>
+
+<h2>Needs a decision or a mitigation</h2>
+<div class="callout">
+  <p><b>Not checked: GitHub's data-use terms for repository content.</b> This audit found no GitHub page on how Dependabot jobs process or retain private-repository content. This applies to the repository as a whole, not to Dependabot alone, because the code is already on GitHub. The owner can check GitHub's privacy statement and the account's settings if it matters.</p>
+  <p><b>Supply-chain mitigations in the config:</b> a 7-day cooldown, so Dependabot skips releases younger than a week. Every update arrives as a pull request that a person reviews and tests locally; nothing merges automatically.</p>
+</div>
+
+<h2>All items</h2>
+<div class="wrap">
+<table>
+<thead><tr><th>Item</th><th>Verdict</th><th>Evidence</th></tr></thead>
+<tbody>
+<tr>
+  <td>GitHub Dependabot (version and security updates)</td>
+  <td>Low / metadata only</td>
+  <td>A hosted service, so there is no installed code to inspect. GitHub's docs say Dependabot jobs run as GitHub Actions workflows on GitHub-hosted runners (<a href="https://docs.github.com/en/code-security/concepts/supply-chain-security/dependabot-on-actions">Dependabot on GitHub Actions runners</a>). The jobs read the manifests already in this repository, and ask PyPI and npm for newer versions. Those requests carry only package names and versions, which are public. Config contract: <a href="https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference">Dependabot options reference</a>. The config adds no registry credentials or secrets.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h2>Sources used</h2>
+<p>The two GitHub docs pages linked above, and <a href="https://docs.github.com/en/code-security/concepts/supply-chain-security/about-the-dependabot-yml-file">About the dependabot.yml file</a>. Network behaviour was not observed directly.</p>
+</body>
+</html>

@@ -505,6 +505,17 @@ disagreements, and a per-ticket table. There is no accuracy figure without human
 
 **Seen, not fixed:** during the e2e run, React logged "two children with the same key, `1.0`". It most likely comes from the prompt history list in `SettingsPage.tsx`, which uses `key={item.version}`. That means the test database held two history entries for version 1.0; the cause was not investigated. The "script tag" console error is the known `next-themes` warning.
 
+## Dependabot (2026-11-11)
+
+`.github/dependabot.yml` was added: weekly version updates for `/backend` (pip), `/frontend` and `/e2e` (npm), minor and patch updates grouped into one PR per ecosystem, and a 7-day cooldown on new releases. Major updates arrive as their own PRs. `typescript` major and minor updates are ignored, because `typescript-eslint` 8.x supports only TypeScript below 6.1 (see Phase 1 notes). Audit: `dependency_risk_audits/2026-11-11_dependabot/`.
+
+**Owner steps (not done by me):**
+- Commit and push the file, and merge it into `main`: GitHub reads `dependabot.yml` only from the default branch.
+- In the repository's Settings, under Code security, turn on Dependabot alerts and security updates. These are not set in the file.
+- There is no CI, so run the commands in `CLAUDE.md` locally on each Dependabot PR.
+
+**Not verified:** the YAML parses and follows GitHub's documented keys, but Dependabot itself has not run on it. The middle of GitHub's options page was read only as a summary, so `groups` and `cooldown` are worth a look in the repository's Dependabot tab after the first run.
+
 ## Code size requirement (2026-11-07)
 
 The owner requires a small, clean codebase without losing functionality or security. Rules, evidence and enforcement are in `code-size-standards.md`. `ponytail` is installed and always on for coding tasks. Lint limits: ruff `C90` (complexity 10) and `SIM`; ESLint `complexity: 10`.

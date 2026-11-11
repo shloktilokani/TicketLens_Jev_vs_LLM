@@ -123,6 +123,7 @@ The frontend calls the backend at `http://127.0.0.1:8000`. To change that, set `
 - **Costs are estimates.** Each run keeps the rates it used, so changing a price never alters past costs. Local models cost nothing per call, and OpenAI has no default rate. Check hosted rates against the provider's current price list, and set them on the Settings page.
 - **Categories:** labels already used by a record cannot be removed or renamed. Each level needs 2 to 16 options, the limit Jev accepts.
 - **One backend process.** The active categories and bulk runs live in the backend process, so do not run several workers.
+- **Dependency updates:** Dependabot (`.github/dependabot.yml`) opens a weekly pull request for the backend, frontend and e2e packages, and skips releases younger than 7 days. There is no CI, so run the checks in `CLAUDE.md` locally before merging one.
 
 ## Troubleshooting
 
@@ -177,6 +178,7 @@ Local verification checklist:
 - `.context/code-size-standards.md`: code size and reuse rules.
 - `e2e/README.md`: browser, visual and persona testing.
 - `backend/.env.example`: every setting.
+- `.github/dependabot.yml` and `dependency_risk_audits/`: dependency update config and the data-risk audits.
 - `.context/sample_tickets_100_v2.csv`: the 100 labelled tickets to use. `sample_tickets_100.csv` is the file as first supplied, kept for reference. Do not evaluate with it, because its titles give away the answers.
 - `AGENTS.md`, `CLAUDE.md`: instructions for coding agents.
 
