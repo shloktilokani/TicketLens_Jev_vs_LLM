@@ -18,7 +18,7 @@ npm --prefix frontend run build
 npm --prefix e2e test        # browser tests on an isolated stack; add -- --headed to watch
 ```
 
-Run the app: `README.md`, "Run it locally".
+Run the app: `README.md`, "Run it locally" (quick start), and `SETUP.md` for the full steps and troubleshooting.
 
 <!-- BEGIN skillpack (generated; edit outside this block; re-run skillpack to refresh) -->
 ## Engineering skills library

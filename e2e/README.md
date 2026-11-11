@@ -13,7 +13,7 @@ Functional and visual testing of TicketLens through its real UI, by scripted tes
 | Database | `ticketlens_e2e`, emptied on every start | `ticketlens` |
 | Providers | fake AI on both sides (no cost) | as configured |
 
-MongoDB must be running (root `README.md`, "Run locally"). `scripts/reset_db.py` refuses any database not ending in `_e2e`.
+MongoDB must be running (root `SETUP.md`, "Run it locally"). `scripts/reset_db.py` refuses any database not ending in `_e2e`.
 
 ## Tools: one job each
 
@@ -58,7 +58,7 @@ A one-command screen recording of Jev vs LLM on three new tickets, for LinkedIn 
 ## Other provider modes
 
 - **Paid APIs:** deferred by owner decision (2026-11-11). `stack.sh` refuses `E2E_PROVIDERS=real`. If paid runs ever return, add a small loopback proxy in front of the backend that counts paid requests and returns 429 after a cap (for example 10 tickets), so the limit holds even if an agent loops.
-- **Local models, no cost:** `stack.sh` has no switch for them. Start the isolated backend yourself on port 8001, using `MONGODB_DATABASE=ticketlens_e2e`, `MOCK_PROVIDERS=false`, the local-model variables from the root README and `FRONTEND_ORIGIN=http://localhost:5174`. Then start the frontend with `VITE_API_BASE_URL=http://127.0.0.1:8001`. Run 3 in `reports/test-runs/` was made this way.
+- **Local models, no cost:** `stack.sh` has no switch for them. Start the isolated backend yourself on port 8001, using `MONGODB_DATABASE=ticketlens_e2e`, `MOCK_PROVIDERS=false`, the local-model variables from `SETUP.md` and `FRONTEND_ORIGIN=http://localhost:5174`. Then start the frontend with `VITE_API_BASE_URL=http://127.0.0.1:8001`. Run 3 in `reports/test-runs/` was made this way.
 
 ## Tool audit
 

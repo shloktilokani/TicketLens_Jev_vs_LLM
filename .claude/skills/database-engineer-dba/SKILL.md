@@ -90,6 +90,6 @@ Before proposing schema, query, or migration changes, inspect the project to det
 - Ticket deletion order: comparisons, AI executions, evaluation labels, then the ticket last. Stop and keep the ticket if a dependent delete fails; repeat attempts must be safe.
 - `evaluation_labels` is a separate collection and must never be read by provider request-building code.
 - Store timestamps as UTC BSON dates, and money as Decimal128 or integer micro-units.
-- The operator installs MongoDB; the agent may start it on `127.0.0.1` only (`README.md`, "Run locally"). Never install it, use Docker for it, or expose its port.
+- The operator installs MongoDB; the agent may start it on `127.0.0.1` only (`SETUP.md`, "Run it locally"). Never install it, use Docker for it, or expose its port.
 - Repositories: one small shared base helper for common operations (timestamps, pagination, find-by-ID), and one module per collection. Do not build a generic CRUD framework ahead of need (`.context/code-size-standards.md`).
 <!-- project-tailoring:end -->

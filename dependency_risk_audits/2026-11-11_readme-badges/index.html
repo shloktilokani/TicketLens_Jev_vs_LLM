@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>README badges audit</title>
+<style>
+  :root { color-scheme: light dark; --bg:#fff; --fg:#1c1c1c; --muted:#5f5f5f; --line:#ddd; --warn:#a4400f; --warnbg:#fdf1ea; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#141414; --fg:#eee; --muted:#aaa; --line:#3a3a3a; --warn:#f0a27c; --warnbg:#2c1c14; } }
+  body { background:var(--bg); color:var(--fg); font:16px/1.5 system-ui,sans-serif; margin:0 auto; max-width:900px; padding:24px 16px; }
+  h1 { font-size:1.5rem; } h2 { font-size:1.15rem; margin-top:2rem; }
+  .muted { color:var(--muted); }
+  .callout { background:var(--warnbg); border:1px solid var(--warn); border-radius:8px; padding:12px 16px; margin:12px 0; }
+  .callout b { color:var(--warn); }
+  .wrap { overflow-x:auto; }
+  table { border-collapse:collapse; width:100%; font-size:.92rem; }
+  th,td { border-bottom:1px solid var(--line); padding:8px; text-align:left; vertical-align:top; }
+  code { font-size:.88em; overflow-wrap:anywhere; }
+</style>
+</head>
+<body>
+<h1>Dependency data-risk audit: README badges (shields.io)</h1>
+<p class="muted">2026-11-11. For the project owner. Scope: the nine badge images at the top of <code>README.md</code>, loaded from <code>img.shields.io</code>.</p>
+<p><b>Summary:</b> 1 item, low / metadata only. The host's own logging policy could not be confirmed: see the callout.</p>
+
+<h2>Needs a decision or a mitigation</h2>
+<div class="callout">
+  <p><b>Not confirmed: shields.io's logging of requests.</b> A web search found no official shields.io privacy statement, and nothing on how GitHub's image proxy handles README images. Two privacy pages found were for unrelated mirror hosts and were not used. The expected exposure is the viewer's IP address and browser details reaching a third-party host when the README is opened, or GitHub's servers instead of the viewer if GitHub proxies the images. Neither was verified.</p>
+  <p><b>Mitigations already in place:</b> the badge URLs are static (label, version, colour, logo name) and carry no project data, tokens or repository details, and nothing in the app itself loads them: only the README page does. If this exposure matters, remove the badges from <code>README.md</code>: nothing else depends on them.</p>
+</div>
+
+<h2>All items</h2>
+<div class="wrap">
+<table>
+<thead><tr><th>Item</th><th>Verdict</th><th>Evidence</th></tr></thead>
+<tbody>
+<tr>
+  <td><code>https://img.shields.io/badge/...</code> (9 static badges in <code>README.md</code>)</td>
+  <td>Low / metadata only</td>
+  <td>Each badge is an image request that carries only what any image request does: IP address, user-agent and referrer. The URLs hold fixed text such as <code>React-19</code> and a logo name, and no secret or project data (checked by reading the nine URLs in <code>README.md</code>). No script or stylesheet is loaded. The host's retention and logging policy is inconclusive, as above.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h2>Commands used</h2>
+<p>Reading the badge URLs in <code>README.md</code>, and one web search for the shields.io privacy policy (no official page found). Network behaviour was not observed directly.</p>
+</body>
+</html>

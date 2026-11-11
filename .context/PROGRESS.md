@@ -16,7 +16,7 @@ Code is committed on branch `shlok-ai-dev` (latest `1049480`). The knowledge gra
 
 ## Handover: start here
 
-- **Run it:** follow `README.md`, "Run it locally". MongoDB, Ollama with two models, the backend on `:8000` and the frontend on `:5173`.
+- **Run it:** follow `SETUP.md`, "Run it locally" (the README has a short quick start). MongoDB, Ollama with two models, the backend on `:8000` and the frontend on `:5173`.
 - **How it works:** `architecture.md` (layers, adapters, flows, routes) and `data-model.md` (collections, fields, indexes).
 - **What it was meant to do:** `requirements.md`, `design.md` and `ai-evaluation.md`. Each ends with an "As built" section listing the differences.
 - **Checks:** the commands in `CLAUDE.md`. Latest results (2026-11-11): `pytest` 335 passed; ruff, lint and build clean; Playwright 14 of 14 on desktop and phone.
@@ -26,7 +26,7 @@ Code is committed on branch `shlok-ai-dev` (latest `1049480`). The knowledge gra
   - no login, so do not expose it publicly
   - accuracy figures are preliminary until the dataset is reviewed
   - the knowledge graph has some generic function summaries
-- **Open owner steps:** review dataset rows 4, 11, 30, 46, 52, 64, 81, 88, 95 and 100 (ROADMAP E); follow the README once (F); deployment decisions only if going online (G).
+- **Open owner steps:** review dataset rows 4, 11, 30, 46, 52, 64, 81, 88, 95 and 100 (ROADMAP E); follow `SETUP.md` once (F); deployment decisions only if going online (G).
 - **Likely next work, if wanted:** an OpenAI adapter (`providers/registry.llm_adapter`), live tests of hosted Jev, login before any hosting, and a richer `--full` rebuild of the knowledge graph.
 
 The dated notes below are the build history, oldest first. Where a later note contradicts an earlier one, the later one wins.
@@ -474,8 +474,8 @@ disagreements, and a per-ticket table. There is no accuracy figure without human
 **Waiting on the owner** (updated 2026-11-11):
 1. ~~API keys and OpenAI model~~: paid APIs are deferred by owner decision, so nothing is needed.
 2. Review the corrected dataset (rows 4, 11, 30, 46, 52, 64, 81, 88, 95, 100). The accuracy figures stay preliminary until then.
-3. Follow the README once.
-4. Keep the local-model settings in `backend/.env` (see the README). Without them, a backend restart falls back to the hosted-Jev default, which needs a key.
+3. Follow `SETUP.md` once.
+4. Keep the local-model settings in `backend/.env` (see `SETUP.md`). Without them, a backend restart falls back to the hosted-Jev default, which needs a key.
 5. Deployment decisions, only if going online.
 
 **Final checks:** `pytest` 335 passed; ruff clean; frontend lint and build pass. A real `mongodump` and `mongorestore` round trip worked on a throwaway database. The real `ticketlens` database still has no saved settings and no labels; these phases only added the runs on SK-1023 and SK-1024 described above.
@@ -533,6 +533,14 @@ disagreements, and a per-ticket table. There is no accuracy figure without human
 **Left in the real database:** 6 demo tickets, SK-1025 to SK-1027 (take 1) and SK-1028 to SK-1030 (take 2). They count in the dashboard figures. Not yet deleted.
 
 **Not verified:** nobody has watched the recorded file; the owner reviews it before posting. Typing runs at about 60 ms a key, faster than most people, because three tickets must fit one minute.
+
+## README restructure (2026-11-11)
+
+`README.md` is now a showcase: what the repo is, its purpose, the demo GIF, what Jev is (TypeSafe's decision-only model; AutoTrust JEV-9B runs here), why Jev suits the routing step, where it can be used (Mermaid flow diagram), a technology table with badges, and a short "Run it locally". The full run steps, "Use it", "Good to know", troubleshooting, verification checklist, documentation index and scope warning moved word for word to the new `SETUP.md`. References that cited README steps now point at `SETUP.md`; the backend and `stack.sh` messages still say "README" and a short quick start is still there, because tests assert that word.
+
+Every claim in the README is either measured here (median 1.43 s vs 2.74 s on 10 tickets; Jev 0 and LLM 2 invalid answers on 100 tickets; category 89% vs 86%) or comes from a linked source. The README makes no token or cost claim. The badges load from `img.shields.io`; audit: `dependency_risk_audits/2026-11-11_readme-badges/` (host's logging policy not confirmed).
+
+**Not verified:** how the Mermaid diagram and badges render on GitHub (only visible after a push). The vendor descriptions of Jev come from secondary sources; TypeSafe's own docs were not read.
 
 ## Code size requirement (2026-11-07)
 

@@ -2,7 +2,7 @@
 # Double-click to start TicketLens (macOS): MongoDB, Ollama, the backend and the frontend, then open the app.
 # Anything already running is reused. Close this window or press Ctrl-C to stop the backend and frontend
 # this script started. MongoDB and Ollama keep running, so your data and models are never cut off mid-write.
-# Set NO_BROWSER=1 to skip opening the browser. Logs: ~/Library/Logs/TicketLens/. Details: README.md, "Run it locally".
+# Set NO_BROWSER=1 to skip opening the browser. Logs: ~/Library/Logs/TicketLens/. Details: SETUP.md, "Run it locally".
 cd "$(dirname "$0")" || exit 1  # repository root
 
 APP_URL=http://localhost:5173
@@ -32,7 +32,7 @@ if nc -z 127.0.0.1 27017 2>/dev/null; then
 else
   MONGOD=$(command -v mongod)
   [ -z "$MONGOD" ] && MONGOD=$(ls -d /opt/homebrew/bin/mongod /usr/local/bin/mongod "$HOME"/mongodb-*/bin/mongod 2>/dev/null | head -1)
-  [ -n "$MONGOD" ] || fail "mongod was not found. Install MongoDB Community Edition (README.md, step 1), then try again."
+  [ -n "$MONGOD" ] || fail "mongod was not found. Install MongoDB Community Edition (SETUP.md, step 1), then try again."
   mkdir -p "$HOME/data/db"
   # 127.0.0.1 only: never expose MongoDB. --fork leaves it running after this script ends.
   "$MONGOD" --dbpath "$HOME/data/db" --bind_ip 127.0.0.1 --port 27017 \
