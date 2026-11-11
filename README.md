@@ -14,6 +14,14 @@ ShopKart is a fictional Indian e-commerce marketplace. Use synthetic data only, 
 - Measure accuracy against labelled answers on the Overview page. Agreement between the two sides is shown separately, because agreement is not accuracy.
 - Change models, the prompt, categories, prices and bulk speed on the Settings page. Each run keeps the versions it used.
 
+## Demo
+
+![Jev and an LLM classifying three new tickets side by side in Compare](e2e/demo/ticketlens-demo.gif)
+
+[Full video with controls (58 s, MP4)](e2e/demo/ticketlens-demo.mp4). GitHub shows a download link for it, not an inline player.
+
+A one-minute run of the Compare page: three new tickets (easy, medium, complex) are typed in, and Jev and an LLM classify each one side by side. The idea it shows: classification and routing can be done by Jev, so an LLM is only needed for the writing that follows. On the three runs it was recorded with, Jev answered in about 1.5 to 2.0 s and the LLM in about 2.7 to 2.9 s. This is a speed demonstration, not an accuracy claim: on the 100 labelled tickets the two were close (category 89% vs 86%, all five fields 34% vs 38%; preliminary). The local Jev adapter also used more tokens than the LLM. How the video is made: `e2e/demo/README.md`.
+
 ## What each AI connection needs
 
 | Side | Option | What it needs | State |

@@ -522,6 +522,18 @@ disagreements, and a per-ticket table. There is no accuracy figure without human
 
 **Tested:** `bash -n`, and a run with all four services already up (browser skipped with `NO_BROWSER=1`). **Not tested:** the start-up paths (stopped services, first-run installs), because the owner's servers were running.
 
+## Demo recording (2026-11-11)
+
+`e2e/demo/` (`record.sh`, `record-demo.mjs`, `README.md`) records a 58 s, 1920x1080 `.mov` (macOS screen recorder) of Jev vs LLM on three new tickets typed in Compare. Purpose (owner): show Jev as the fast classification and routing step, with the LLM kept for generation. The root `README.md` has a "Demo" section with the GIF embedded and the MP4 linked.
+
+**Take 2** (`~/Movies/ticketlens-demo-20261111-174343.mov`, 57.98 s) on the real stack with local models: Jev server time 1.99, 1.48 and 1.67 s against the LLM's 2.91, 2.92 and 2.73 s; all 6 attempts succeeded. The owner converted it to `e2e/demo/ticketlens-demo.gif` (12.5 MB, embedded in the root README) and `ticketlens-demo.mp4` (19.9 MB, linked from it); the `.mov` is not in the repo. Take 1 (`...174138.mov`) was too long and had a cold first Jev run; it is not for posting.
+
+**Found while rehearsing:** the local Jev adapter used more tokens than the LLM (about 960 to 1,030 against 600 to 630 per ticket), so the video makes no token or cost claim. A cold Jev took 7 to 14 s. Identical prompt text is served from Ollama's cache in under a second, so each take needs new wording. `screencapture` cannot be stopped early, so the length is fixed.
+
+**Left in the real database:** 6 demo tickets, SK-1025 to SK-1027 (take 1) and SK-1028 to SK-1030 (take 2). They count in the dashboard figures. Not yet deleted.
+
+**Not verified:** nobody has watched the recorded file; the owner reviews it before posting. Typing runs at about 60 ms a key, faster than most people, because three tickets must fit one minute.
+
 ## Code size requirement (2026-11-07)
 
 The owner requires a small, clean codebase without losing functionality or security. Rules, evidence and enforcement are in `code-size-standards.md`. `ponytail` is installed and always on for coding tasks. Lint limits: ruff `C90` (complexity 10) and `SIM`; ESLint `complexity: 10`.

@@ -46,6 +46,10 @@ Ask an agent for a persona run in plain words, for example: "Run TC-001 with the
 
 Each test runs on desktop (1280×800) and a Pixel 7 phone size: 14 tests in all. Every test shares one database (`workers: 1`). Baselines are in `tests/smoke.spec.ts-snapshots/`. The `ticket-list` baseline masks the rows, but its height still depends on how many rows earlier tests leave behind, so look there first if it fails unexpectedly.
 
+## Demo recording (`demo/`)
+
+A one-command screen recording of Jev vs LLM on three new tickets, for LinkedIn and the root README. Unlike the tests, it runs on the real app and creates real tickets. See `demo/README.md`.
+
 ## Writing test cases and personas
 
 - Test cases: `test-cases/TC-NNN-slug.md`, copied from `test-cases/TEMPLATE.md`.
