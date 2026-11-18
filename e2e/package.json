@@ -11,6 +11,6 @@
   },
   "devDependencies": {
     "@playwright/test": "1.65.0",
-    "agent-browser": "0.41.2"
+    "agent-browser": "0.42.0"
   }
 }
